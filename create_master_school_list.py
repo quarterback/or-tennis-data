@@ -21,12 +21,12 @@ CLASSIFICATION_MAP = {
         "Mid-Willamette (5A-3)": ["Central", "Corvallis", "Crescent Valley", "Dallas", "Lebanon", "McKay", "Silverton", "South Albany", "West Albany", "Woodburn"],
         "Intermountain (5A-4)": ["Bend", "Caldera", "Mountain View", "Redmond", "Ridgeview", "Summit", "Crook County"],
     },
-    "4A/3A/2A": {
-        "Special District 1": ["Blanchet", "Catlin Gabel", "OES", "Riverdale", "Scappoose", "St. Helens", "Tillamook", "Valley Catholic", "Westside Christian"],
+    "4A/3A/2A/1A": {
+        "Special District 1": ["Blanchet", "Catlin Gabel", "OES", "Riverdale", "Riverside WLWV", "St. Helens", "Trinity Academy", "Valley Catholic", "Westside Christian"],
         "Special District 2": ["Cascade", "Estacada", "Junction City", "Marist Catholic", "Molalla", "North Marion", "Philomath", "Stayton"],
-        "Special District 3": ["Cascade Christian", "Henley", "Hidden Valley", "Klamath Union", "Marshfield", "Mazama", "North Bend", "Phoenix", "St. Mary's (Medford)"],
-        "Special District 4": ["Madras", "Sisters", "The Dalles", "Riverside", "Umatilla", "Arlington", "Condon", "Ione"],
-        "Special District 5": ["Baker", "La Grande", "McLoughlin", "Nyssa", "Ontario", "Pendleton", "Vale"],
+        "Special District 3": ["Cascade Christian", "Creswell", "Henley", "Hidden Valley", "Klamath Union", "Marshfield", "Mazama", "North Bend", "North Valley", "St. Mary's (Medford)"],
+        "Special District 4": ["Arlington", "Condon", "Ione", "Irrigon", "Madras", "Riverside", "Sherman", "Sisters", "Stanfield", "The Dalles", "Umatilla", "Weston-McEwen"],
+        "Special District 5": ["Baker", "Four Rivers", "La Grande", "McLoughlin", "Nyssa", "Ontario", "Pendleton", "Vale"],
     }
 }
 
@@ -48,10 +48,6 @@ def find_classification_and_league(school_name):
     Find the classification and league for a school using partial matching.
     Returns (classification, league) or ("Other", "Other") if not found.
     """
-    # Special case: "Riverside (West Linn - Wilsonville)" is not in the classification list
-    if "west linn" in school_name.lower() and "wilsonville" in school_name.lower() and "riverside" in school_name.lower():
-        return "Other", "Other"
-
     normalized_school = normalize_name(school_name)
 
     # Build a list of all possible matches with their classifications
@@ -108,6 +104,26 @@ def find_classification_and_league(school_name):
 
         # "Riverside (Boardman)" should match "Riverside" in Special District 4
         if normalized_key == "riverside" and "boardman" in normalized_school:
+            return classification, league
+
+        # "Riverside (West Linn - Wilsonville)" should match "Riverside WLWV"
+        if "riverside wlwv" in normalized_key and "riverside" in normalized_school and ("west linn" in normalized_school or "wilsonville" in normalized_school):
+            return classification, league
+
+        # "Four Rivers Charter" should match "Four Rivers"
+        if normalized_key == "four rivers" and "four rivers" in normalized_school:
+            return classification, league
+
+        # "Trinity Academy" should match "Trinity Academy" or "Trinity Acad."
+        if "trinity" in normalized_key and "trinity" in normalized_school:
+            return classification, league
+
+        # "Weston-McEwen" should match "Weston-McEwen"
+        if "weston" in normalized_key and "weston" in normalized_school and "mcewen" in normalized_school:
+            return classification, league
+
+        # "Stanfield" should match "Stanfield" or "Stanfield / Echo"
+        if normalized_key == "stanfield" and "stanfield" in normalized_school:
             return classification, league
 
         # Single-word matches (but avoid false positives like "Bend" matching "North Bend")
