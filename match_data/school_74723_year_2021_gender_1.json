@@ -1,0 +1,3546 @@
+{
+  "school": {
+    "id": 74723,
+    "name": "Weston-McEwen",
+    "address": "540 E MAIN ST",
+    "zipCode": "97813",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74723.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T16:11:47.000Z",
+    "deletedAt": null,
+    "cityId": 738,
+    "city": {
+      "id": 738,
+      "name": "Athena",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2743,
+      "firstName": "Troy ",
+      "lastName": "Olson",
+      "address": "540 East Main Street",
+      "phone": "(541) 310-9375",
+      "email": "troy.olson@athwestsd.org",
+      "division": "2A",
+      "schoolId": 74723,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 7,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 107847,
+      "title": "Riverside & Weston",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75339,
+        "firstName": "Tyler",
+        "lastName": "Volpi",
+        "genderId": 1,
+        "email": "tyler.volpi@morrowsd.org",
+        "phone": "(850) 348-1304",
+        "school": {
+          "name": "Riverside",
+          "logo": "school_75339.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75339,
+            "name": "Riverside",
+            "logo": "school_75339.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1104267": 8,
+                "1104268": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 552135,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1104268,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1104267,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1104268,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1104295": 8,
+                "1104296": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 552149,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1104295,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1104295,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86632,
+                    "firstName": "Adair",
+                    "lastName": "Rodriguez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-30T15:25:20.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1104296,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1104303": 8,
+                "1104304": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 552153,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1104303,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1104303,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81600,
+                    "firstName": "Jose",
+                    "lastName": "Napoles",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:51.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1104304,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1104331": 8,
+                "1104332": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 552167,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1104331,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1104331,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81599,
+                    "firstName": "Humberto",
+                    "lastName": "Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:45.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81600,
+                    "firstName": "Jose",
+                    "lastName": "Napoles",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:51.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1104332,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80492,
+                    "firstName": "Ethan ",
+                    "lastName": "Barahona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:46.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1104337": 8,
+                "1104338": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 552170,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1104337,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1104337,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 86632,
+                    "firstName": "Adair",
+                    "lastName": "Rodriguez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-30T15:25:20.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1104338,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84698,
+                    "firstName": "Seth",
+                    "lastName": "Muilenburg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84699,
+                    "firstName": "Mark",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107176,
+      "title": "Mac-Hi vs Weston McEwen",
+      "meetDateTime": "2021-05-11T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75321,
+        "firstName": "Danny",
+        "lastName": "Sanchez",
+        "genderId": 1,
+        "email": "slimer_44@hotmail.com",
+        "phone": "(541) 861-9948",
+        "school": {
+          "name": "McLoughlin",
+          "logo": "school_75321.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75321,
+            "name": "McLoughlin",
+            "logo": "school_75321.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1093513": 4,
+                "1093514": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 546758,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": "Retired",
+            "winnerTeamId": 1093514,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1093513,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85294,
+                    "firstName": "Jaime ",
+                    "lastName": "Gomez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T01:38:11.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1093514,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1093521": 8,
+                "1093522": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 546762,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1093521,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1093521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80909,
+                    "firstName": "Christopher",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:21.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1093522,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1093539": 8,
+                "1093540": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 546771,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1093539,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1093539,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80911,
+                    "firstName": "Rafael ",
+                    "lastName": "Pereyda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:54.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1093540,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1093555": 8,
+                "1093556": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 546779,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1093555,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1093555,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80909,
+                    "firstName": "Christopher",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:21.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80910,
+                    "firstName": "Rolando",
+                    "lastName": "Castillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:34.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1093556,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80492,
+                    "firstName": "Ethan ",
+                    "lastName": "Barahona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:46.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1093579": 8,
+                "1093580": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 546791,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1093579,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1093579,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80911,
+                    "firstName": "Rafael ",
+                    "lastName": "Pereyda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:54.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85294,
+                    "firstName": "Jaime ",
+                    "lastName": "Gomez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T01:38:11.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1093580,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84698,
+                    "firstName": "Seth",
+                    "lastName": "Muilenburg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106894,
+      "title": "Weston McEwen Vs. Ione at WM",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy ",
+        "lastName": "Olson",
+        "genderId": 1,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-9375",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1089129": 8,
+                "1089130": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544566,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089130,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089129,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089130,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81016,
+                    "firstName": "Jaiden",
+                    "lastName": "Ruloph",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:31:30.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089131": 8,
+                "1089132": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544567,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089132,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089131,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089132,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84987,
+                    "firstName": "Gary",
+                    "lastName": "Walls",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T04:09:46.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089133": 8,
+                "1089134": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544568,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089134,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089133,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089134,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81008,
+                    "firstName": "Josh",
+                    "lastName": "Bleth",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1089151": 8,
+                "1089152": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544577,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089152,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089151,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80492,
+                    "firstName": "Ethan ",
+                    "lastName": "Barahona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:46.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089152,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81015,
+                    "firstName": "Kalvin",
+                    "lastName": "Rietmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-16T16:59:14.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81017,
+                    "firstName": "Sam",
+                    "lastName": "Valle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:32:10.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089153": 8,
+                "1089154": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544578,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089154,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089153,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84698,
+                    "firstName": "Seth",
+                    "lastName": "Muilenburg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84699,
+                    "firstName": "Mark",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089154,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81015,
+                    "firstName": "Kalvin",
+                    "lastName": "Rietmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-16T16:59:14.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81017,
+                    "firstName": "Sam",
+                    "lastName": "Valle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:32:10.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102491,
+      "title": "Weston McEwen @ Stanfield ",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75825,
+        "firstName": "Rylie",
+        "lastName": "Smith",
+        "genderId": 1,
+        "email": "rylie.smith@stanfieldsd.org",
+        "phone": "(541) 720-8449",
+        "school": {
+          "name": "Stanfield",
+          "logo": "school_75825.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076237": 0,
+                "1076238": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538120,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076238,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076237,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81738,
+                    "firstName": "Dysen",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:28:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076238,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076247": 8,
+                "1076248": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538125,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076247,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076247,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076248,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076249": 8,
+                "1076250": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538126,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076249,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076249,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81737,
+                    "firstName": "Jay ",
+                    "lastName": "Chavez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076250,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076251": 9,
+                "1076252": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538127,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076251,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076251,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81732,
+                    "firstName": "Uriel ",
+                    "lastName": "Carrillo ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:20:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81733,
+                    "firstName": "Ricky ",
+                    "lastName": "Carrillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:20:58.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076252,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076289": 8,
+                "1076290": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538146,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81735,
+                    "firstName": "Enrique ",
+                    "lastName": "Arellano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 87806,
+                    "firstName": "Pablo ",
+                    "lastName": "Arellano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T18:26:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076290,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076293": 8,
+                "1076294": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538148,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076293,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076293,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81736,
+                    "firstName": "Efrain",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T18:26:46.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 87806,
+                    "firstName": "Pablo ",
+                    "lastName": "Arellano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T18:26:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076294,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84699,
+                    "firstName": "Mark",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105364,
+      "title": "Weston McEwen vs. Umatilla at WM",
+      "meetDateTime": "2021-05-04T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy ",
+        "lastName": "Olson",
+        "genderId": 1,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-9375",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1069069": 8,
+                "1069070": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 534536,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069069,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069069,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069070,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069073": 8,
+                "1069074": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 534538,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069074,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069073,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069074,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105327,
+      "title": "Weston-McEwen & Condon @ Arlington",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066749": 8,
+                "1066750": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533376,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066749,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066749,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066750,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066751": 2,
+                "1066752": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533377,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066752,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066751,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80492,
+                    "firstName": "Ethan ",
+                    "lastName": "Barahona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:46.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066752,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103216,
+      "title": "Mac-Hi vs Weston McEwen",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75321,
+        "firstName": "Danny",
+        "lastName": "Sanchez",
+        "genderId": 1,
+        "email": "slimer_44@hotmail.com",
+        "phone": "(541) 861-9948",
+        "school": {
+          "name": "McLoughlin",
+          "logo": "school_75321.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75321,
+            "name": "McLoughlin",
+            "logo": "school_75321.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1031893": 5,
+                "1031894": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515948,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1031894,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031893,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80909,
+                    "firstName": "Christopher",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:21.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031894,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1031899": 8,
+                "1031900": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515951,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1031899,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031899,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80911,
+                    "firstName": "Rafael ",
+                    "lastName": "Pereyda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:54.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031900,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1031945": 8,
+                "1031946": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515974,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1031945,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031945,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80910,
+                    "firstName": "Rolando",
+                    "lastName": "Castillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:34.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85294,
+                    "firstName": "Jaime ",
+                    "lastName": "Gomez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T01:38:11.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031946,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102875,
+      "title": "Weston McEwen vs. Stanfield",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy ",
+        "lastName": "Olson",
+        "genderId": 1,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-9375",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1026857": 8,
+                "1026858": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513430,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026857,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026857,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026858,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81738,
+                    "firstName": "Dysen",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:28:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026881": 8,
+                "1026882": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513442,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026882,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026881,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026882,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026885": 8,
+                "1026886": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513444,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026886,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026885,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026886,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81734,
+                    "firstName": "Josue ",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:13.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1026899": 8,
+                "1026900": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1026899": null,
+                "1026900": null,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513451,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1026900,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026899,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026900,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81732,
+                    "firstName": "Uriel ",
+                    "lastName": "Carrillo ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:20:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81740,
+                    "firstName": "Alexis",
+                    "lastName": "Carrillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026905": 8,
+                "1026906": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513454,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1026906,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026905,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84698,
+                    "firstName": "Seth",
+                    "lastName": "Muilenburg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026906,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81736,
+                    "firstName": "Efrain",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T18:26:46.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81737,
+                    "firstName": "Jay ",
+                    "lastName": "Chavez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102097,
+      "title": "Weston McEwen @ Umatilla",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75865,
+        "firstName": "Maximo ",
+        "lastName": "Bedolla",
+        "genderId": 1,
+        "email": "bedollam@umatillasd.org",
+        "phone": "(541) 701-8009",
+        "school": {
+          "name": "Umatilla",
+          "logo": "school_75865.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015899": 8,
+                "1015900": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507951,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015900,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015899,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75765,
+                    "firstName": "Ulises",
+                    "lastName": "Armenta",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-16T17:52:25.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015900,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015901": 9,
+                "1015902": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507952,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015901,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015901,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75768,
+                    "firstName": "Chris",
+                    "lastName": "Self",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:17:42.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015902,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015905": 8,
+                "1015906": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507954,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015905,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015905,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015906,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101462,
+      "title": "WM vs Riverside (At WM)",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy ",
+        "lastName": "Olson",
+        "genderId": 1,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-9375",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75339,
+            "name": "Riverside",
+            "logo": "school_75339.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1008325": 8,
+                "1008326": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 504164,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1008325,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008325,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008326,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81599,
+                    "firstName": "Humberto",
+                    "lastName": "Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:45.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1009805": 8,
+                "1009806": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 504904,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009805,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009805,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009806,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009809": 8,
+                "1009810": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 504906,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009810,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009809,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80494,
+                    "firstName": "Seth",
+                    "lastName": "Lynde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009810,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81600,
+                    "firstName": "Jose",
+                    "lastName": "Napoles",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:51.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

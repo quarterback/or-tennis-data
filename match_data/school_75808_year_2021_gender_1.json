@@ -1,0 +1,5073 @@
+{
+  "school": {
+    "id": 75808,
+    "name": "Thurston",
+    "address": "333 58TH ST",
+    "zipCode": "97478",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75808.png",
+    "createdAt": "2020-02-11T06:38:50.000Z",
+    "updatedAt": "2026-01-15T16:04:48.000Z",
+    "deletedAt": null,
+    "cityId": 17247,
+    "city": {
+      "id": 17247,
+      "name": "Springfield",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2806,
+      "firstName": "John",
+      "lastName": "Lovdokken",
+      "address": "2889 Hayden Bridge Rd.",
+      "phone": "(541) 520-4012",
+      "email": "john.lovdokken@springfield.k12.or.us",
+      "division": "5A",
+      "schoolId": 75808,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 8,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107611,
+      "title": "Thurston vs. Willamette",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75808,
+        "firstName": "John",
+        "lastName": "Lovdokken",
+        "genderId": 1,
+        "email": "john.lovdokken@springfield.k12.or.us",
+        "phone": "(541) 520-4012",
+        "school": {
+          "name": "Thurston",
+          "logo": "school_75808.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74829,
+            "name": "Willamette",
+            "logo": "school_74829.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1100151": 1,
+                "1100152": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1100151": 6,
+                "1100152": 7,
+                "number": 2,
+                "tie": 2
+              }
+            ],
+            "id": 550077,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1100152,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100151,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100152,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84579,
+                    "firstName": "Mathew",
+                    "lastName": "Belknap",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T22:03:01.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1100155": 4,
+                "1100156": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1100155": 7,
+                "1100156": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1100155": 18,
+                "1100156": 16,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 550079,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1100155,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100155,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100156,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80669,
+                    "firstName": "Alexander",
+                    "lastName": "Willoughby",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1100157": 6,
+                "1100158": 7,
+                "number": 1,
+                "tie": 4
+              },
+              {
+                "1100157": 3,
+                "1100158": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550080,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1100158,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100157,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82409,
+                    "firstName": "Jack",
+                    "lastName": "Burrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100158,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80666,
+                    "firstName": "Connor",
+                    "lastName": "Beauchamp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:19:05.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1100163": 6,
+                "1100164": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1100163": 6,
+                "1100164": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550083,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1100163,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100163,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100164,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80665,
+                    "firstName": "Orion",
+                    "lastName": "Tate",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80667,
+                    "firstName": "Gabriel",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T20:17:22.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1100165": 3,
+                "1100166": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1100165": 6,
+                "1100166": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1100165": 10,
+                "1100166": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 550084,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1100165,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100165,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100166,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80668,
+                    "firstName": "Ethan ",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:22:37.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85196,
+                    "firstName": "Brinton ",
+                    "lastName": "Reed",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 550085,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1100167,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1100167,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1100168,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85296,
+                    "firstName": "Jorien",
+                    "lastName": "Flores",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86747,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106990,
+      "title": "Thurston vs. South Eugene",
+      "meetDateTime": "2021-05-11T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75808,
+        "firstName": "John",
+        "lastName": "Lovdokken",
+        "genderId": 1,
+        "email": "john.lovdokken@springfield.k12.or.us",
+        "phone": "(541) 520-4012",
+        "school": {
+          "name": "Thurston",
+          "logo": "school_75808.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1090747": 0,
+                "1090748": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090747": 0,
+                "1090748": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545375,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090748,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090747,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090748,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090749": 1,
+                "1090750": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090749": 0,
+                "1090750": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545376,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090750,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090749,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090750,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090751": 0,
+                "1090752": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090751": 0,
+                "1090752": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545377,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090752,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090751,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090752,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1090757": 0,
+                "1090758": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090757": 4,
+                "1090758": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545380,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090758,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090757,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090758,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090759": 0,
+                "1090760": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090759": 0,
+                "1090760": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545381,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090760,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090759,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82409,
+                    "firstName": "Jack",
+                    "lastName": "Burrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090760,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090761": 2,
+                "1090762": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090761": 1,
+                "1090762": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545382,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090762,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090761,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090762,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81139,
+                    "firstName": "Michael",
+                    "lastName": "Ahn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:51:45.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105710,
+      "title": "North Eugene vs Thurston",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75808,
+        "firstName": "John",
+        "lastName": "Lovdokken",
+        "genderId": 1,
+        "email": "john.lovdokken@springfield.k12.or.us",
+        "phone": "(541) 520-4012",
+        "school": {
+          "name": "Thurston",
+          "logo": "school_75808.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75031,
+            "name": "North Eugene",
+            "logo": "school_75031.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1072159": 3,
+                "1072160": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072159": 2,
+                "1072160": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536081,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1072160,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072159,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072160,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86093,
+                    "firstName": "Ryan",
+                    "lastName": "Rhodes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:21:47.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1072165": 6,
+                "1072166": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072165": 6,
+                "1072166": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536084,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1072165,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072165,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82409,
+                    "firstName": "Jack",
+                    "lastName": "Burrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072166,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86091,
+                    "firstName": "Gage",
+                    "lastName": "Rehberger",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:21:27.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1072175": 6,
+                "1072176": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072175": 5,
+                "1072176": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1072175": 10,
+                "1072176": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 536089,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1072175,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072175,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072176,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86094,
+                    "firstName": "Fen",
+                    "lastName": "Truitt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:22:03.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1072195": 1,
+                "1072196": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072195": 0,
+                "1072196": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536099,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1072196,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072195,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072196,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86089,
+                    "firstName": "Donaven",
+                    "lastName": "Brown",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-30T17:10:29.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86092,
+                    "firstName": "Evan",
+                    "lastName": "Remedios",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:21:37.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1072199": 1,
+                "1072200": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072199": 1,
+                "1072200": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536101,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1072200,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072199,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072200,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86081,
+                    "firstName": "Kaden",
+                    "lastName": "Baker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-14T17:48:21.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86090,
+                    "firstName": "Kane",
+                    "lastName": "Ettel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:21:13.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1072203": 0,
+                "1072204": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1072203": 1,
+                "1072204": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536103,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1072204,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1072203,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82406,
+                    "firstName": "Joel",
+                    "lastName": "Booren",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1072204,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86084,
+                    "firstName": "Jasper",
+                    "lastName": "Epperson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:19:51.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 86085,
+                    "firstName": "Axell",
+                    "lastName": "Hall",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75031,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T18:20:03.000Z",
+                    "school": {
+                      "name": "North Eugene",
+                      "logo": "school_75031.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105372,
+      "title": "Thurston vs. Marist",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75808,
+        "firstName": "John",
+        "lastName": "Lovdokken",
+        "genderId": 1,
+        "email": "john.lovdokken@springfield.k12.or.us",
+        "phone": "(541) 520-4012",
+        "school": {
+          "name": "Thurston",
+          "logo": "school_75808.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124728,
+            "name": "Marist Catholic",
+            "logo": "school_124728.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066867": 0,
+                "1066868": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066867": 0,
+                "1066868": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533435,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066868,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066867,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066868,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82509,
+                    "firstName": "Lucas",
+                    "lastName": "Franssen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:21.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066869": 0,
+                "1066870": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066869": 0,
+                "1066870": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533436,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066870,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066869,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066870,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82513,
+                    "firstName": "Kai",
+                    "lastName": "Villano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:01.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066871": 0,
+                "1066872": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066871": 0,
+                "1066872": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533437,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066872,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066871,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066872,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82505,
+                    "firstName": "Sam ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066875": 0,
+                "1066876": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066875": 0,
+                "1066876": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533439,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066876,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066875,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066876,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82514,
+                    "firstName": "Jack",
+                    "lastName": "Kiefer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:10.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82516,
+                    "firstName": "Peyton",
+                    "lastName": "Tyner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:32.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066877": 0,
+                "1066878": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066877": 1,
+                "1066878": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533440,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066878,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066877,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066878,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82511,
+                    "firstName": "Ethan",
+                    "lastName": "Hakala",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82515,
+                    "firstName": "Sam ",
+                    "lastName": "Thornton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:20.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066879": 0,
+                "1066880": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066879": 3,
+                "1066880": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533441,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066880,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066879,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066880,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82508,
+                    "firstName": "Ryan ",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:08.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82510,
+                    "firstName": "Alexander ",
+                    "lastName": "Charbonneau",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:34.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104613,
+      "title": "CHS vs Thurston (Away)",
+      "meetDateTime": "2021-05-01T19:30:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75034,
+        "firstName": "Matthaeyus ",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "Rock2casbah@yahoo.com",
+        "phone": "(541) 513-8338",
+        "school": {
+          "name": "Churchill",
+          "logo": "school_75034.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75034,
+            "name": "Churchill",
+            "logo": "school_75034.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1056897": 6,
+                "1056898": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056897": 6,
+                "1056898": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528450,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056897,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056897,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74950,
+                    "firstName": "Carsen",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:03.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056898,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056903": 6,
+                "1056904": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056903": null,
+                "1056904": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1056903": 6,
+                "1056904": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528453,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056903,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056903,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80149,
+                    "firstName": "Nate",
+                    "lastName": "Blythe",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056904,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056907": 6,
+                "1056908": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056907": null,
+                "1056908": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1056907": 6,
+                "1056908": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528455,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056907,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056907,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74952,
+                    "firstName": "Aaron",
+                    "lastName": "Rezaee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:28:00.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056908,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1056901": 6,
+                "1056902": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056901": null,
+                "1056902": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1056901": 6,
+                "1056902": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528452,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1056901,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056901,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74949,
+                    "firstName": "Bennett",
+                    "lastName": "Krupka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:26:33.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74954,
+                    "firstName": "Sho-un",
+                    "lastName": "Tanaka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T04:08:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056902,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056913": 2,
+                "1056914": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056913": 2,
+                "1056914": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528458,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1056913,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056913,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74951,
+                    "firstName": "Jacob",
+                    "lastName": "Montoya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:38.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80212,
+                    "firstName": "Jordan",
+                    "lastName": "Dillon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056914,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056915": 2,
+                "1056916": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056915": 2,
+                "1056916": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528459,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1056915,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056915,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74948,
+                    "firstName": "Grayson",
+                    "lastName": "Kassube",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:25:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74954,
+                    "firstName": "Sho-un",
+                    "lastName": "Tanaka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T04:08:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056916,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101399,
+      "title": "CHS vs Thurston HS (Away)",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75034,
+        "firstName": "Matthaeyus ",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "Rock2casbah@yahoo.com",
+        "phone": "(541) 513-8338",
+        "school": {
+          "name": "Churchill",
+          "logo": "school_75034.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75034,
+            "name": "Churchill",
+            "logo": "school_75034.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1050085": 6,
+                "1050086": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050085": 6,
+                "1050086": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525044,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050085,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050085,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74950,
+                    "firstName": "Carsen",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:03.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050086,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050087": null,
+                "1050088": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1050087": 6,
+                "1050088": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050087": 6,
+                "1050088": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525045,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050087,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050087,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80149,
+                    "firstName": "Nate",
+                    "lastName": "Blythe",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050088,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050093": 6,
+                "1050094": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050093": 6,
+                "1050094": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525048,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050093,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050093,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80212,
+                    "firstName": "Jordan",
+                    "lastName": "Dillon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050094,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1050103": 6,
+                "1050104": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050103": 6,
+                "1050104": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525053,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050103,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050103,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74951,
+                    "firstName": "Jacob",
+                    "lastName": "Montoya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:38.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74955,
+                    "firstName": "Brayden",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050104,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050105": 6,
+                "1050106": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050105": 6,
+                "1050106": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525054,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050105,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050105,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74949,
+                    "firstName": "Bennett",
+                    "lastName": "Krupka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:26:33.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74952,
+                    "firstName": "Aaron",
+                    "lastName": "Rezaee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:28:00.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050106,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050109": 6,
+                "1050110": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050109": 6,
+                "1050110": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525056,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050109,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050109,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74947,
+                    "firstName": "Kai",
+                    "lastName": "Hutson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:25:31.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74954,
+                    "firstName": "Sho-un",
+                    "lastName": "Tanaka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T04:08:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050110,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82406,
+                    "firstName": "Joel",
+                    "lastName": "Booren",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82411,
+                    "firstName": "Joseph",
+                    "lastName": "Cifuentes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:37:56.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104049,
+      "title": "Sheldon high school vs Thurston high school",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75032,
+        "firstName": "Weston",
+        "lastName": "Hudson",
+        "genderId": 1,
+        "email": "westonhudson@gmail.com",
+        "phone": "(323) 253-0997",
+        "school": {
+          "name": "Sheldon",
+          "logo": "school_75032.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75032,
+            "name": "Sheldon",
+            "logo": "school_75032.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1045479": 6,
+                "1045480": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045479": 6,
+                "1045480": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522741,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045479,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045479,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79637,
+                    "firstName": "Cam",
+                    "lastName": "Mirablie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:35.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045480,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1045491": 6,
+                "1045492": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045491": 6,
+                "1045492": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522747,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045491,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045491,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79636,
+                    "firstName": "Owen",
+                    "lastName": "Mau",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:11.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045492,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1045495": 7,
+                "1045496": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045495": 6,
+                "1045496": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522749,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045495,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045495,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79642,
+                    "firstName": "Ethan",
+                    "lastName": "Halliwill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-23T18:54:56.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045496,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1045505": 6,
+                "1045506": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045505": 6,
+                "1045506": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522754,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1045505,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045505,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75073,
+                    "firstName": "Carter",
+                    "lastName": "Neuman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:57:44.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79657,
+                    "firstName": "Ben",
+                    "lastName": "Carter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:12:17.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045506,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1045513": 6,
+                "1045514": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045513": 6,
+                "1045514": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522758,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1045513,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045513,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79635,
+                    "firstName": "Zack",
+                    "lastName": "Cater",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:58:47.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79638,
+                    "firstName": "Nate",
+                    "lastName": "Kokkel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:59.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045514,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1045527": 6,
+                "1045528": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045527": 6,
+                "1045528": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522765,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1045527,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045527,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75072,
+                    "firstName": "Shane",
+                    "lastName": "Schwake",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:57:37.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75076,
+                    "firstName": "Cash",
+                    "lastName": "Daughters",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045528,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82406,
+                    "firstName": "Joel",
+                    "lastName": "Booren",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82411,
+                    "firstName": "Joseph",
+                    "lastName": "Cifuentes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:37:56.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102801,
+      "title": "Willamette Home",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74829,
+        "firstName": "Jason",
+        "lastName": "Burke",
+        "genderId": 1,
+        "email": "jasonconradburke@gmail.com",
+        "phone": "(541) 221-3312",
+        "school": {
+          "name": "Willamette",
+          "logo": "school_74829.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74829,
+            "name": "Willamette",
+            "logo": "school_74829.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1025549": 6,
+                "1025550": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025549": 4,
+                "1025550": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1025549": 10,
+                "1025550": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512776,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025550,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025549,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80669,
+                    "firstName": "Alexander",
+                    "lastName": "Willoughby",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025550,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025571": 0,
+                "1025572": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025571": 3,
+                "1025572": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512787,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025571,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025571,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84579,
+                    "firstName": "Mathew",
+                    "lastName": "Belknap",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T22:03:01.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025572,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025575": 7,
+                "1025576": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025575": 6,
+                "1025576": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512789,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025576,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025575,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80666,
+                    "firstName": "Connor",
+                    "lastName": "Beauchamp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:19:05.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025576,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82409,
+                    "firstName": "Jack",
+                    "lastName": "Burrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1025581": 5,
+                "1025582": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025581": 6,
+                "1025582": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1025581": 3,
+                "1025582": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512792,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025581,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025581,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80665,
+                    "firstName": "Orion",
+                    "lastName": "Tate",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84580,
+                    "firstName": "Jody",
+                    "lastName": "Vargus Romero",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025582,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025587": 6,
+                "1025588": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025587": 6,
+                "1025588": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1025587": 8,
+                "1025588": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512795,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025587,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025587,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80667,
+                    "firstName": "Gabriel",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T20:17:22.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80668,
+                    "firstName": "Ethan ",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:22:37.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025588,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101801,
+      "title": "South Eugene vs Thurston, at SEHS April 15",
+      "meetDateTime": "2021-04-15T22:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013703": 6,
+                "1013704": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013703": 6,
+                "1013704": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 506853,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013703,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013703,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013704,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013705": 6,
+                "1013706": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013705": 6,
+                "1013706": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 506854,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013705,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013705,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013706,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013709": 6,
+                "1013710": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013709": null,
+                "1013710": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013709": 6,
+                "1013710": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506856,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013709,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013709,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81135,
+                    "firstName": "Benjamin",
+                    "lastName": "Butler",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-13T06:30:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013710,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1014845": 6,
+                "1014846": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014845": 6,
+                "1014846": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507424,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014845,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014845,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014846,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1014847": 6,
+                "1014848": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014847": 6,
+                "1014848": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507425,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014847,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014847,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014848,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1014849": 6,
+                "1014850": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014849": 6,
+                "1014850": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507426,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014849,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014849,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014850,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

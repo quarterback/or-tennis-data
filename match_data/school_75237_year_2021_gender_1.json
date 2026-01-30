@@ -1,0 +1,4672 @@
+{
+  "school": {
+    "id": 75237,
+    "name": "Lakeridge",
+    "address": "PO BOX 739",
+    "zipCode": "97034",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75237.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:24:20.000Z",
+    "deletedAt": null,
+    "cityId": 9742,
+    "city": {
+      "id": 9742,
+      "name": "Lake oswego",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2818,
+      "firstName": "Charles",
+      "lastName": "Eidenschink",
+      "address": "1235 Overlook Drive Lake Oswego OR 97034",
+      "phone": "(971) 255-3694",
+      "email": "Charlestennis566@gmail.com",
+      "division": "Three ",
+      "schoolId": 75237,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 6,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 106093,
+      "title": "Lakeridge versus Tigard",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75848,
+            "name": "Tigard",
+            "logo": "school_75848.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1077063": 2,
+                "1077064": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077063": 2,
+                "1077064": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538533,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1077063,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077063,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077064,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077067": 6,
+                "1077068": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077067": null,
+                "1077068": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1077067": 6,
+                "1077068": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538535,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1077067,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077067,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077068,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81293,
+                    "firstName": "Cooper ",
+                    "lastName": "Christenson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:12.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077069": 6,
+                "1077070": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077069": null,
+                "1077070": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1077069": 6,
+                "1077070": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538536,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1077069,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077069,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077070,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81292,
+                    "firstName": "Clay",
+                    "lastName": "Skeen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:19:33.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1077075": 6,
+                "1077076": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077075": 6,
+                "1077076": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538539,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077075,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077075,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077076,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81291,
+                    "firstName": "Keegan",
+                    "lastName": "Bailey-Darland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:19:21.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81302,
+                    "firstName": "Skylar",
+                    "lastName": "Soon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:21:59.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077077": 3,
+                "1077078": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077077": 6,
+                "1077078": 7,
+                "number": 2,
+                "tie": 3
+              }
+            ],
+            "id": 538540,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077078,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077077,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81401,
+                    "firstName": "Peter",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-18T15:57:25.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81405,
+                    "firstName": "Drew",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077078,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81296,
+                    "firstName": "Owen",
+                    "lastName": "Magnusen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:43.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81306,
+                    "firstName": "Zyrus",
+                    "lastName": "Zaragoza",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:22:38.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077079": 6,
+                "1077080": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077079": 7,
+                "1077080": 6,
+                "number": 2,
+                "tie": 2
+              }
+            ],
+            "id": 538541,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077079,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077079,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81402,
+                    "firstName": "Jack",
+                    "lastName": "Hebert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:19.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077080,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81294,
+                    "firstName": "Colin",
+                    "lastName": "Fry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:26.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81307,
+                    "firstName": "Dylan",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:22:49.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104730,
+      "title": "Vs Lakeridge ",
+      "meetDateTime": "2021-04-30T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74852,
+        "firstName": "Luke ",
+        "lastName": "Schroeter",
+        "genderId": 1,
+        "email": "lukeschroeter@gmail.com",
+        "phone": "(503) 358-3180",
+        "school": {
+          "name": "Canby",
+          "logo": "school_74852.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74852,
+            "name": "Canby",
+            "logo": "school_74852.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1056413": null,
+                "1056414": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1056413": 0,
+                "1056414": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056413": 0,
+                "1056414": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528208,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056414,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056413,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82164,
+                    "firstName": "Ryan",
+                    "lastName": "Scarborough",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-31T07:02:33.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056414,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056417": 2,
+                "1056418": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056417": 2,
+                "1056418": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528210,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056418,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056417,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82165,
+                    "firstName": "Edwin",
+                    "lastName": "DeJesus",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:52.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056418,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81405,
+                    "firstName": "Drew",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056421": 1,
+                "1056422": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056421": 0,
+                "1056422": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528212,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1056422,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056421,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82166,
+                    "firstName": "Landan",
+                    "lastName": "Maylunns",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056422,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81406,
+                    "firstName": "Ethan ",
+                    "lastName": "Westerdahl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:32.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1056469": 1,
+                "1056470": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056469": 0,
+                "1056470": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528236,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1056470,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056469,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82167,
+                    "firstName": "Jake",
+                    "lastName": "Reirson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:56.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82168,
+                    "firstName": "Eli",
+                    "lastName": "Rupp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:58.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056470,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81396,
+                    "firstName": "Hewett",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:28:06.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056477": 2,
+                "1056478": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056477": 0,
+                "1056478": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528240,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1056478,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056477,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82169,
+                    "firstName": "Zach",
+                    "lastName": "Woodruff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:21:01.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82170,
+                    "firstName": "Evan",
+                    "lastName": "Kinzie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:21:33.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056478,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81399,
+                    "firstName": "Sebastian",
+                    "lastName": "Stenfert Kroese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:17.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1056485": 0,
+                "1056486": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1056485": 0,
+                "1056486": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528244,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1056486,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1056485,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82163,
+                    "firstName": "Caden",
+                    "lastName": "Kuhl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:47.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82171,
+                    "firstName": "Jerimiah",
+                    "lastName": "Vockrodt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:42.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1056486,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104450,
+      "title": "Lakeridge at Tualatin",
+      "meetDateTime": "2021-04-28T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75840,
+            "name": "Tualatin",
+            "logo": "school_75840.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1051715": 3,
+                "1051716": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051715": 6,
+                "1051716": 7,
+                "number": 2,
+                "tie": 5
+              }
+            ],
+            "id": 525859,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051716,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051715,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051716,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81407,
+                    "firstName": "Andrew",
+                    "lastName": "Monkarsh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051717": 6,
+                "1051718": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051717": 7,
+                "1051718": 6,
+                "number": 2,
+                "tie": 3
+              }
+            ],
+            "id": 525860,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051717,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051717,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051718,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81408,
+                    "firstName": "Tommy",
+                    "lastName": "Monkarsh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T16:37:58.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051719": 6,
+                "1051720": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051719": 6,
+                "1051720": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525861,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051719,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051719,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051720,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81409,
+                    "firstName": "Sean",
+                    "lastName": "Khanna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-14T04:49:36.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1051725": 6,
+                "1051726": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051725": 6,
+                "1051726": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525864,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051725,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051725,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051726,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81411,
+                    "firstName": "Keaton",
+                    "lastName": "Redding",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81412,
+                    "firstName": "Caden",
+                    "lastName": "Morthland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051731": 6,
+                "1051732": 7,
+                "number": 1,
+                "tie": 1
+              },
+              {
+                "1051731": 4,
+                "1051732": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525867,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051732,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051731,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81399,
+                    "firstName": "Sebastian",
+                    "lastName": "Stenfert Kroese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:17.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81401,
+                    "firstName": "Peter",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-18T15:57:25.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051732,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81415,
+                    "firstName": "Chris",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81416,
+                    "firstName": "Campbell",
+                    "lastName": "Carlberg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:43:15.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051741": 6,
+                "1051742": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051741": 6,
+                "1051742": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525872,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051741,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051741,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81405,
+                    "firstName": "Drew",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81406,
+                    "firstName": "Ethan ",
+                    "lastName": "Westerdahl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:32.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051742,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81414,
+                    "firstName": "Khang",
+                    "lastName": "Ngyuen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-14T04:49:58.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 86501,
+                    "firstName": "Kent",
+                    "lastName": "Pham",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T20:08:52.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104006,
+      "title": "Lakeridge versus West Linn",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75880,
+            "name": "West Linn",
+            "logo": "school_75880.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1048113": 0,
+                "1048114": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048113": 0,
+                "1048114": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524058,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048114,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048113,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048114,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86345,
+                    "firstName": "Jaxson",
+                    "lastName": "Ledwith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:16:52.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048399": 0,
+                "1048400": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048399": 3,
+                "1048400": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524201,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048400,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048399,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048400,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86346,
+                    "firstName": "Camerson",
+                    "lastName": "Paulsen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:17:15.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048401": 4,
+                "1048402": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048401": 1,
+                "1048402": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524202,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048402,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048401,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048402,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86347,
+                    "firstName": "Garrett",
+                    "lastName": "Jackson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:17:50.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1048405": 6,
+                "1048406": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048405": 6,
+                "1048406": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1048405": 6,
+                "1048406": 1,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 524204,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048405,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048405,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048406,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86349,
+                    "firstName": "Jake ",
+                    "lastName": "Siegal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:20:08.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86350,
+                    "firstName": "Mitch",
+                    "lastName": "Winters",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:20:18.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048407": 1,
+                "1048408": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048407": 0,
+                "1048408": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524205,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048408,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048407,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81396,
+                    "firstName": "Hewett",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:28:06.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81401,
+                    "firstName": "Peter",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-18T15:57:25.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048408,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86351,
+                    "firstName": "Grant",
+                    "lastName": "Hawkins",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:20:40.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86352,
+                    "firstName": "Nick",
+                    "lastName": "Owens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-02-19T22:06:46.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048409": 0,
+                "1048410": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048409": 0,
+                "1048410": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524206,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048410,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048409,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81402,
+                    "firstName": "Jack",
+                    "lastName": "Hebert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:19.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048410,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86353,
+                    "firstName": "Joey",
+                    "lastName": "Binder",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:21:18.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86354,
+                    "firstName": "Ryan",
+                    "lastName": "Hsaio",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T17:21:38.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103500,
+      "title": "Lakeridge versus Lake Oswego",
+      "meetDateTime": "2021-04-23T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1037253": 1,
+                "1037254": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037253": 3,
+                "1037254": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518628,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037254,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037253,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037254,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79865,
+                    "firstName": "Alec",
+                    "lastName": "Beecham",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:02:39.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037255": 3,
+                "1037256": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037255": 5,
+                "1037256": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518629,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037256,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037255,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037256,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74966,
+                    "firstName": "Cooper",
+                    "lastName": "Whittington",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-26T09:54:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037257": 2,
+                "1037258": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037257": 3,
+                "1037258": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518630,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037258,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037257,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037258,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79867,
+                    "firstName": "Kyle",
+                    "lastName": "Freeman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:02:57.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1037261": 0,
+                "1037262": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037261": 1,
+                "1037262": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518632,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037262,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037261,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81405,
+                    "firstName": "Drew",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81406,
+                    "firstName": "Ethan ",
+                    "lastName": "Westerdahl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:32.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037262,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74965,
+                    "firstName": "Connor",
+                    "lastName": "Whittington",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-26T09:54:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79869,
+                    "firstName": "Chris",
+                    "lastName": "Detmer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:03:15.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037263": 0,
+                "1037264": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037263": 0,
+                "1037264": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518633,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037264,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037263,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83204,
+                    "firstName": "Basim",
+                    "lastName": "Ibsies",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-24T21:38:32.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037264,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79866,
+                    "firstName": "Kyle",
+                    "lastName": "Zhang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:02:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79868,
+                    "firstName": "Kadin",
+                    "lastName": "Freeman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:03:04.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037275": 3,
+                "1037276": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037275": 1,
+                "1037276": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518639,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037276,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037275,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83206,
+                    "firstName": "Michael",
+                    "lastName": "Shin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-24T21:38:57.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83207,
+                    "firstName": "Daniel ",
+                    "lastName": "Shin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-24T21:38:59.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037276,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79875,
+                    "firstName": "Derrick",
+                    "lastName": "Drango",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:05:52.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79878,
+                    "firstName": "Mason",
+                    "lastName": "Men",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T08:06:33.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104206,
+      "title": "Lakeridge at Tigard",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75848,
+            "name": "Tigard",
+            "logo": "school_75848.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1048079": 6,
+                "1048080": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048079": 6,
+                "1048080": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524041,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048079,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048079,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048080,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81295,
+                    "firstName": "Arslan",
+                    "lastName": "Krebs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:35.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048081": 6,
+                "1048082": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048081": 6,
+                "1048082": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524042,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048081,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048081,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048082,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81293,
+                    "firstName": "Cooper ",
+                    "lastName": "Christenson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:12.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048083": 6,
+                "1048084": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048083": 6,
+                "1048084": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524043,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048083,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048083,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048084,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81292,
+                    "firstName": "Clay",
+                    "lastName": "Skeen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:19:33.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1048093": 6,
+                "1048094": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048093": 6,
+                "1048094": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524048,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048093,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048093,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048094,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81302,
+                    "firstName": "Skylar",
+                    "lastName": "Soon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:21:59.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81309,
+                    "firstName": "Jeremy",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:23:21.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048123": 6,
+                "1048124": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048123": 6,
+                "1048124": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524063,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048123,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048123,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81405,
+                    "firstName": "Drew",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81406,
+                    "firstName": "Ethan ",
+                    "lastName": "Westerdahl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T06:14:32.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048124,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81296,
+                    "firstName": "Owen",
+                    "lastName": "Magnusen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:20:43.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81306,
+                    "firstName": "Zyrus",
+                    "lastName": "Zaragoza",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:22:38.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048393": 6,
+                "1048394": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048393": 6,
+                "1048394": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524198,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048393,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048393,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81399,
+                    "firstName": "Sebastian",
+                    "lastName": "Stenfert Kroese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:17.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048394,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81305,
+                    "firstName": "Logan",
+                    "lastName": "Keehn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81307,
+                    "firstName": "Dylan",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T13:22:49.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102040,
+      "title": "vs Lakeridge (at home) ",
+      "meetDateTime": "2021-04-14T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74852,
+        "firstName": "Luke ",
+        "lastName": "Schroeter",
+        "genderId": 1,
+        "email": "lukeschroeter@gmail.com",
+        "phone": "(503) 358-3180",
+        "school": {
+          "name": "Canby",
+          "logo": "school_74852.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74852,
+            "name": "Canby",
+            "logo": "school_74852.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015471": null,
+                "1015472": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1015471": 0,
+                "1015472": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015471": 0,
+                "1015472": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507737,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015472,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015471,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82163,
+                    "firstName": "Caden",
+                    "lastName": "Kuhl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:47.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015472,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015473": 0,
+                "1015474": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015473": 0,
+                "1015474": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507738,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015474,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015473,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82164,
+                    "firstName": "Ryan",
+                    "lastName": "Scarborough",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-31T07:02:33.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015474,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015481": 0,
+                "1015482": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015481": 0,
+                "1015482": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507742,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015482,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015481,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82165,
+                    "firstName": "Edwin",
+                    "lastName": "DeJesus",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:52.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015482,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1015485": 0,
+                "1015486": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015485": 0,
+                "1015486": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507744,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015486,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015485,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82167,
+                    "firstName": "Jake",
+                    "lastName": "Reirson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:56.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82168,
+                    "firstName": "Eli",
+                    "lastName": "Rupp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:58.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015486,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81396,
+                    "firstName": "Hewett",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:28:06.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015487": 0,
+                "1015488": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015487": null,
+                "1015488": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1015487": 1,
+                "1015488": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507745,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015488,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015487,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82169,
+                    "firstName": "Zach",
+                    "lastName": "Woodruff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:21:01.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82170,
+                    "firstName": "Evan",
+                    "lastName": "Kinzie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:21:33.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015488,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81401,
+                    "firstName": "Peter",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-18T15:57:25.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015489": 1,
+                "1015490": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015489": 1,
+                "1015490": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507746,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015490,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015489,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82171,
+                    "firstName": "Jerimiah",
+                    "lastName": "Vockrodt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:20:42.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82172,
+                    "firstName": "Matt",
+                    "lastName": "Delzer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74852,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T06:48:37.000Z",
+                    "school": {
+                      "name": "Canby",
+                      "logo": "school_74852.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015490,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81402,
+                    "firstName": "Jack",
+                    "lastName": "Hebert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:19.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101644,
+      "title": "Tualatin vs Lakeridge",
+      "meetDateTime": "2021-04-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "Charles",
+        "lastName": "Eidenschink",
+        "genderId": 1,
+        "email": "Charlestennis566@gmail.com",
+        "phone": "(971) 255-3694",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75840,
+            "name": "Tualatin",
+            "logo": "school_75840.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1010257": 4,
+                "1010258": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010257": 2,
+                "1010258": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505130,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010258,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010257,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75082,
+                    "firstName": "Sammy",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:11.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010258,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81407,
+                    "firstName": "Andrew",
+                    "lastName": "Monkarsh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010285": 6,
+                "1010286": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010285": 6,
+                "1010286": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505144,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010285,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010285,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81397,
+                    "firstName": "Daniel",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:14.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010286,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81408,
+                    "firstName": "Tommy",
+                    "lastName": "Monkarsh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T16:37:58.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010289": 7,
+                "1010290": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010289": 6,
+                "1010290": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505146,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81398,
+                    "firstName": "Kalevi",
+                    "lastName": "Kaukonen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:16.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010290,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81409,
+                    "firstName": "Sean",
+                    "lastName": "Khanna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-14T04:49:36.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1010303": 6,
+                "1010304": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010303": 6,
+                "1010304": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505153,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010303,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010303,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75083,
+                    "firstName": "Nathan",
+                    "lastName": "Mittelstadt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T19:54:26.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81395,
+                    "firstName": "Tyler",
+                    "lastName": "Pyle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:33:22.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010304,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81411,
+                    "firstName": "Keaton",
+                    "lastName": "Redding",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81412,
+                    "firstName": "Caden",
+                    "lastName": "Morthland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010313": 6,
+                "1010314": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1010313": 7,
+                "1010314": 6,
+                "number": 1,
+                "tie": 3
+              }
+            ],
+            "id": 505158,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010313,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010313,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81396,
+                    "firstName": "Hewett",
+                    "lastName": "Polliak",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:28:06.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81401,
+                    "firstName": "Peter",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-18T15:57:25.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010314,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81413,
+                    "firstName": "Ryder",
+                    "lastName": "Gilman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81414,
+                    "firstName": "Khang",
+                    "lastName": "Ngyuen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-14T04:49:58.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010319": 6,
+                "1010320": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1010319": 7,
+                "1010320": 6,
+                "number": 1,
+                "tie": 8
+              }
+            ],
+            "id": 505161,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010319,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010319,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81402,
+                    "firstName": "Jack",
+                    "lastName": "Hebert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:19.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81404,
+                    "firstName": "Ian",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:36:20.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010320,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81415,
+                    "firstName": "Chris",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81416,
+                    "firstName": "Campbell",
+                    "lastName": "Carlberg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:43:15.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

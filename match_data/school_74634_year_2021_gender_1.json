@@ -1,0 +1,693 @@
+{
+  "school": {
+    "id": 74634,
+    "name": "Hillsboro",
+    "address": "3285 SE ROOD BRIDGE RD",
+    "zipCode": "97123",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74634.png",
+    "createdAt": "2020-02-11T06:38:47.000Z",
+    "updatedAt": "2026-01-15T15:18:55.000Z",
+    "deletedAt": null,
+    "cityId": 8233,
+    "city": {
+      "id": 8233,
+      "name": "Hillsboro",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2757,
+      "firstName": "Charles",
+      "lastName": "Mosley",
+      "address": "3635 NW Columbia Ave",
+      "phone": "(503) 449-3772",
+      "email": "charles_daniela@hotmail.com",
+      "division": "5A",
+      "schoolId": 74634,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 1,
+    "tie": 2
+  },
+  "meets": [
+    {
+      "id": 105962,
+      "title": "Parkrose vs Hillsboro",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75448,
+        "firstName": "Joe ",
+        "lastName": "Malboeuf",
+        "genderId": 1,
+        "email": "joemalboeuf@gmail.com",
+        "phone": "(206) 380-1275",
+        "school": {
+          "name": "Parkrose",
+          "logo": "school_75448.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75448,
+            "name": "Parkrose",
+            "logo": "school_75448.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74634,
+            "name": "Hillsboro",
+            "logo": "school_74634.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1075313": 6,
+                "1075314": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075313": 6,
+                "1075314": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537658,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075313,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075313,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81805,
+                    "firstName": "Jason",
+                    "lastName": "Lien",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:19:01.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075314,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80610,
+                    "firstName": "Her",
+                    "lastName": "Isaac",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-06-02T18:33:27.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075325": 6,
+                "1075326": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075325": 6,
+                "1075326": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537664,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075326,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075325,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81812,
+                    "firstName": "Lekchok",
+                    "lastName": "Kartsang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:22:16.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075326,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80607,
+                    "firstName": "Hank",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075347": 6,
+                "1075348": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075347": 6,
+                "1075348": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537675,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075347,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075347,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 87647,
+                    "firstName": "Danny ",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-07T02:31:34.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075348,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86562,
+                    "firstName": "Michael",
+                    "lastName": "Gross",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104670,
+      "title": "Milwaukie High School VS Hillsboro High School",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75387,
+        "firstName": "Katie ",
+        "lastName": "Tkachenko",
+        "genderId": 1,
+        "email": "tkachenkok@nclack.k12.or.us",
+        "phone": "(360) 991-2829",
+        "school": {
+          "name": "Milwaukie / Milwaukie Acad. of the Arts",
+          "logo": "school_75387.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74634,
+            "name": "Hillsboro",
+            "logo": "school_74634.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75387,
+            "name": "Milwaukie / Milwaukie Acad. of the Arts",
+            "logo": "school_75387.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1055229": 4,
+                "1055230": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1055229": 6,
+                "1055230": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1055229": 4,
+                "1055230": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 527616,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1055230,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055229,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77692,
+                    "firstName": "Justin",
+                    "lastName": "Valyavskiy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75387,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Milwaukie / Milwaukie Acad. of the Arts",
+                      "logo": "school_75387.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055230,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80610,
+                    "firstName": "Her",
+                    "lastName": "Isaac",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-06-02T18:33:27.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1055235": 6,
+                "1055236": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1055235": 6,
+                "1055236": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527619,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1055235,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055235,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77691,
+                    "firstName": "Robert ",
+                    "lastName": "Lewy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75387,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T22:32:32.000Z",
+                    "school": {
+                      "name": "Milwaukie / Milwaukie Acad. of the Arts",
+                      "logo": "school_75387.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055236,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80607,
+                    "firstName": "Hank",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102859,
+      "title": "Exhibition with Century HS",
+      "meetDateTime": "2021-04-22T23:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74634,
+        "firstName": "Charles",
+        "lastName": "Mosley",
+        "genderId": 1,
+        "email": "charles_daniela@hotmail.com",
+        "phone": "(503) 449-3772",
+        "school": {
+          "name": "Hillsboro",
+          "logo": "school_74634.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74631,
+            "name": "Century",
+            "logo": "school_74631.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74634,
+            "name": "Hillsboro",
+            "logo": "school_74634.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1026545": 10,
+                "1026546": 8,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1026545": 6,
+                "1026546": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1026545": 5,
+                "1026546": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513274,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026545,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026545,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80610,
+                    "firstName": "Her",
+                    "lastName": "Isaac",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-06-02T18:33:27.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026546,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80009,
+                    "firstName": "Henry",
+                    "lastName": "Duong ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74631,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T14:57:51.000Z",
+                    "school": {
+                      "name": "Century",
+                      "logo": "school_74631.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026547": 3,
+                "1026548": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1026547": 4,
+                "1026548": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513275,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026548,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026547,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80607,
+                    "firstName": "Hank",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026548,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80010,
+                    "firstName": "Shelby",
+                    "lastName": "Coleman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74631,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T14:57:52.000Z",
+                    "school": {
+                      "name": "Century",
+                      "logo": "school_74631.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

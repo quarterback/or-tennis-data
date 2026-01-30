@@ -1,0 +1,2166 @@
+{
+  "school": {
+    "id": 75366,
+    "name": "North Bend",
+    "address": "2323 PACIFIC AVE",
+    "zipCode": "97459",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75366.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:36:49.000Z",
+    "deletedAt": null,
+    "cityId": 13117,
+    "city": {
+      "id": 13117,
+      "name": "North bend",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2870,
+      "firstName": "Corey",
+      "lastName": "Goll",
+      "address": "2530 Pacific Street",
+      "phone": "(541) 602-1354",
+      "email": "cgoll@nbend.k12.or.us",
+      "division": "5A",
+      "schoolId": 75366,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 2,
+    "loss": 1,
+    "tie": 2
+  },
+  "meets": [
+    {
+      "id": 106878,
+      "title": "NBHS vs Creswell",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75366,
+        "firstName": "Corey",
+        "lastName": "Goll",
+        "genderId": 1,
+        "email": "cgoll@nbend.k12.or.us",
+        "phone": "(541) 602-1354",
+        "school": {
+          "name": "North Bend",
+          "logo": "school_75366.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74934,
+            "name": "Creswell",
+            "logo": "school_74934.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75366,
+            "name": "North Bend",
+            "logo": "school_75366.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1088843": 7,
+                "1088844": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088843": 0,
+                "1088844": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1088843": 7,
+                "1088844": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 544423,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1088844,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088843,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088844,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85089,
+                    "firstName": "Chance",
+                    "lastName": "Leach",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:04:36.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1088849": 7,
+                "1088850": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088849": 6,
+                "1088850": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544426,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1088849,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088849,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088850,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85092,
+                    "firstName": "Ben",
+                    "lastName": "Rodrigues",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:10.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85095,
+                    "firstName": "Cayle",
+                    "lastName": "Walker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:30.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106353,
+      "title": "NBHS vs SMS",
+      "meetDateTime": "2021-05-08T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75366,
+        "firstName": "Corey",
+        "lastName": "Goll",
+        "genderId": 1,
+        "email": "cgoll@nbend.k12.or.us",
+        "phone": "(541) 602-1354",
+        "school": {
+          "name": "North Bend",
+          "logo": "school_75366.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124823,
+            "name": "St Mary's of Medford",
+            "logo": "school_124823.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75366,
+            "name": "North Bend",
+            "logo": "school_75366.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1081035": 2,
+                "1081036": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1081035": 6,
+                "1081036": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1081035": 5,
+                "1081036": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 540519,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1081036,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1081035,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1081036,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83629,
+                    "firstName": "Aidan",
+                    "lastName": "Flaherty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-09T04:25:47.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1081037": 6,
+                "1081038": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1081037": 7,
+                "1081038": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 540520,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1081037,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1081037,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1081038,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75029,
+                    "firstName": "Tom",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:45:20.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1081039": 6,
+                "1081040": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1081039": 4,
+                "1081040": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1081039": 7,
+                "1081040": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 540521,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1081040,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1081039,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1081040,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75033,
+                    "firstName": "Nathan",
+                    "lastName": "Lemely",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-25T04:54:24.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1081043": 8,
+                "1081044": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 540523,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1081043,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1081043,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1081044,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75030,
+                    "firstName": "Alex",
+                    "lastName": "Wilk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:45:43.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83630,
+                    "firstName": "Matthew",
+                    "lastName": "Poisson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-09T04:30:42.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1081113": 2,
+                "1081114": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1081113": 4,
+                "1081114": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 540558,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1081114,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1081113,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81331,
+                    "firstName": "Beau",
+                    "lastName": "Parrott",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:49:24.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1081114,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75031,
+                    "firstName": "Logan",
+                    "lastName": "Diaz Mcneal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:46:32.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75032,
+                    "firstName": "David ",
+                    "lastName": "Noble",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:47:10.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105688,
+      "title": "NBHS vs. MHS",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75366,
+        "firstName": "Corey",
+        "lastName": "Goll",
+        "genderId": 1,
+        "email": "cgoll@nbend.k12.or.us",
+        "phone": "(541) 602-1354",
+        "school": {
+          "name": "North Bend",
+          "logo": "school_75366.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75366,
+            "name": "North Bend",
+            "logo": "school_75366.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74929,
+            "name": "Marshfield",
+            "logo": "school_74929.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1071681": 6,
+                "1071682": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1071681": 6,
+                "1071682": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 535842,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1071681,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1071681,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1071682,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82399,
+                    "firstName": "Marco ",
+                    "lastName": "Bruno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:59.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1071685": 3,
+                "1071686": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1071685": 6,
+                "1071686": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1071685": 10,
+                "1071686": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 535844,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1071685,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1071685,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1071686,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82398,
+                    "firstName": "Titus ",
+                    "lastName": "Simon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:58.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1071687": 6,
+                "1071688": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1071687": 6,
+                "1071688": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535845,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1071687,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1071687,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1071688,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82400,
+                    "firstName": "Cullen",
+                    "lastName": "Cribbins",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1071695": 3,
+                "1071696": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 535849,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1071696,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1071695,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81331,
+                    "firstName": "Beau",
+                    "lastName": "Parrott",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:49:24.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1071696,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82398,
+                    "firstName": "Titus ",
+                    "lastName": "Simon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:58.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82399,
+                    "firstName": "Marco ",
+                    "lastName": "Bruno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:59.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1071697": 6,
+                "1071698": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1071697": 6,
+                "1071698": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535850,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1071697,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1071697,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1071698,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82400,
+                    "firstName": "Cullen",
+                    "lastName": "Cribbins",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82401,
+                    "firstName": "Spencer ",
+                    "lastName": "Pedersen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T13:41:09.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103477,
+      "title": "NB Boys @ MHS",
+      "meetDateTime": "2021-04-24T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75366,
+        "firstName": "Corey",
+        "lastName": "Goll",
+        "genderId": 1,
+        "email": "cgoll@nbend.k12.or.us",
+        "phone": "(541) 602-1354",
+        "school": {
+          "name": "North Bend",
+          "logo": "school_75366.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75366,
+            "name": "North Bend",
+            "logo": "school_75366.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74929,
+            "name": "Marshfield",
+            "logo": "school_74929.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036783": 6,
+                "1036784": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036783": 6,
+                "1036784": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518393,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036783,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036783,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036784,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82399,
+                    "firstName": "Marco ",
+                    "lastName": "Bruno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:59.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036785": 6,
+                "1036786": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036785": 6,
+                "1036786": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518394,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036785,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036785,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036786,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84139,
+                    "firstName": "Addison ",
+                    "lastName": "Rusth ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036787": 6,
+                "1036788": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036787": 6,
+                "1036788": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518395,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036787,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036787,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036788,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82401,
+                    "firstName": "Spencer ",
+                    "lastName": "Pedersen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T13:41:09.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1036873": 6,
+                "1036874": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036873": 6,
+                "1036874": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518438,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036873,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036874,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82399,
+                    "firstName": "Marco ",
+                    "lastName": "Bruno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:33:59.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82401,
+                    "firstName": "Spencer ",
+                    "lastName": "Pedersen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T13:41:09.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036877": 6,
+                "1036878": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036877": 6,
+                "1036878": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518440,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036877,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036877,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81331,
+                    "firstName": "Beau",
+                    "lastName": "Parrott",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:49:24.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036878,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82400,
+                    "firstName": "Cullen",
+                    "lastName": "Cribbins",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84139,
+                    "firstName": "Addison ",
+                    "lastName": "Rusth ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74929,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Marshfield",
+                      "logo": "school_74929.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102294,
+      "title": "St. Mary's @North Bend-Boys",
+      "meetDateTime": "2021-04-17T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75366,
+        "firstName": "Corey",
+        "lastName": "Goll",
+        "genderId": 1,
+        "email": "cgoll@nbend.k12.or.us",
+        "phone": "(541) 602-1354",
+        "school": {
+          "name": "North Bend",
+          "logo": "school_75366.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75366,
+            "name": "North Bend",
+            "logo": "school_75366.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124823,
+            "name": "St Mary's of Medford",
+            "logo": "school_124823.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1018649": 4,
+                "1018650": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1018649": 6,
+                "1018650": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1018649": 1,
+                "1018650": 0,
+                "number": 3,
+                "tie": 5
+              }
+            ],
+            "id": 509326,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1018649,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1018649,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1018650,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75028,
+                    "firstName": "Brady ",
+                    "lastName": "Reed",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:44:58.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1018651": 1,
+                "1018652": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1018651": 1,
+                "1018652": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 509327,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1018652,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1018651,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1018652,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83629,
+                    "firstName": "Aidan",
+                    "lastName": "Flaherty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-09T04:25:47.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1018653": 6,
+                "1018654": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1018653": 6,
+                "1018654": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 509328,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1018653,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1018653,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1018654,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75033,
+                    "firstName": "Nathan",
+                    "lastName": "Lemely",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-25T04:54:24.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1018657": 8,
+                "1018658": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 509330,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1018657,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1018657,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81328,
+                    "firstName": "Brody",
+                    "lastName": "Ault",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81333,
+                    "firstName": "Kade",
+                    "lastName": "Spini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:50:15.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1018658,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75029,
+                    "firstName": "Tom",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:45:20.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 75031,
+                    "firstName": "Logan",
+                    "lastName": "Diaz Mcneal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:46:32.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1018659": 6,
+                "1018660": 7,
+                "number": 1,
+                "tie": 6
+              },
+              {
+                "1018659": 1,
+                "1018660": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 509331,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1018660,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1018659,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81331,
+                    "firstName": "Beau",
+                    "lastName": "Parrott",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:49:24.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81332,
+                    "firstName": "Kaileb",
+                    "lastName": "Pickett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75366,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "North Bend",
+                      "logo": "school_75366.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1018660,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75030,
+                    "firstName": "Alex",
+                    "lastName": "Wilk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T01:45:43.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83630,
+                    "firstName": "Matthew",
+                    "lastName": "Poisson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124823,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-09T04:30:42.000Z",
+                    "school": {
+                      "name": "St Mary's of Medford",
+                      "logo": "school_124823.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

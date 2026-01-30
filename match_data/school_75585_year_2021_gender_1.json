@@ -1,0 +1,463 @@
+{
+  "school": {
+    "id": 75585,
+    "name": "Redmond",
+    "address": "675 SW RIMROCK DR",
+    "zipCode": "97756",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75585.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:47:11.000Z",
+    "deletedAt": null,
+    "cityId": 15220,
+    "city": {
+      "id": 15220,
+      "name": "Redmond",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2816,
+      "firstName": "Nathan",
+      "lastName": "Saito",
+      "address": "1435 NW Teakwood Ct.",
+      "phone": "(541) 279-3294",
+      "email": "nathan.saito@redmondschools.org",
+      "division": "5A",
+      "schoolId": 75585,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 1,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 106999,
+      "title": "Hood River Valley vs Redmond",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75142,
+        "firstName": "Jon",
+        "lastName": "Hiatt",
+        "genderId": 1,
+        "email": "hrvtennis@gmail.com",
+        "phone": "(503) 351-4422",
+        "school": {
+          "name": "Hood River Valley",
+          "logo": "school_75142.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75142,
+            "name": "Hood River Valley",
+            "logo": "school_75142.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75585,
+            "name": "Redmond",
+            "logo": "school_75585.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1090621": 6,
+                "1090622": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090621": 6,
+                "1090622": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545312,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090621,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090621,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80641,
+                    "firstName": "Vaughn",
+                    "lastName": "Reardon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:53:20.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090622,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090625": 6,
+                "1090626": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090625": 6,
+                "1090626": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545314,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090626,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090625,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80642,
+                    "firstName": "Ben",
+                    "lastName": "Garofalo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:53:35.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090626,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090629": 6,
+                "1090630": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090629": 6,
+                "1090630": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545316,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090630,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090629,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80659,
+                    "firstName": "Jenner",
+                    "lastName": "Baumhackl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:56:18.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090630,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1090637": 6,
+                "1090638": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090637": 6,
+                "1090638": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545320,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090638,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090637,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80646,
+                    "firstName": "Toby",
+                    "lastName": "Fenner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:13.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80649,
+                    "firstName": "Nelson",
+                    "lastName": "Van Cottt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:35.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090638,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090641": 6,
+                "1090642": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090641": 6,
+                "1090642": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545322,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090642,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090641,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80647,
+                    "firstName": "Tavish",
+                    "lastName": "Fenner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:24.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80651,
+                    "firstName": "Parker",
+                    "lastName": "Ford",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:54.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090642,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090643": 6,
+                "1090644": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090643": 6,
+                "1090644": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545323,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090644,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090643,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80653,
+                    "firstName": "Zayd",
+                    "lastName": "Ziada",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:55:21.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80655,
+                    "firstName": "Lewis",
+                    "lastName": "Heck",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:55:33.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090644,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
