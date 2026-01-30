@@ -1,0 +1,5854 @@
+{
+  "school": {
+    "id": 74917,
+    "name": "Corvallis",
+    "address": "1400 NW BUCHANAN AVE",
+    "zipCode": "97330",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74917.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T14:02:41.000Z",
+    "deletedAt": null,
+    "cityId": 4055,
+    "city": {
+      "id": 4055,
+      "name": "Corvallis",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2782,
+      "firstName": "Nicholas",
+      "lastName": "Weaver",
+      "address": "6202 SW Grand Oaks Dr",
+      "phone": "(541) 224-4101",
+      "email": "nicholas.weaver@corvallis.k12.or.us",
+      "division": "5A",
+      "schoolId": 74917,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 4,
+    "loss": 6,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107402,
+      "title": "Sprague vs. Corvallis",
+      "meetDateTime": "2021-05-13T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75685,
+        "firstName": "Jennifer",
+        "lastName": "Schmelling",
+        "genderId": 2,
+        "email": "schmelling_jennifer@salkeiz.k12.or.us",
+        "phone": "(503) 881-9120",
+        "school": {
+          "name": "Sprague",
+          "logo": "school_75685.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75685,
+            "name": "Sprague",
+            "logo": "school_75685.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1102655": 6,
+                "1102656": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102655": 6,
+                "1102656": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551329,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102655,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102655,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75158,
+                    "firstName": "Tirzah",
+                    "lastName": "Tarbox",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:29:50.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102656,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102657": 6,
+                "1102658": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102657": 6,
+                "1102658": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551330,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102657,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102657,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75152,
+                    "firstName": "Drew",
+                    "lastName": "Fiskum",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102658,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102659": 6,
+                "1102660": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102659": 6,
+                "1102660": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551331,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102659,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102659,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75144,
+                    "firstName": "Anna",
+                    "lastName": "Ainsworth",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:25:35.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102660,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1102667": 6,
+                "1102668": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102667": 6,
+                "1102668": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551335,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102667,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102667,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75153,
+                    "firstName": "Eva",
+                    "lastName": "Hammond",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:28:22.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75154,
+                    "firstName": "Ellie",
+                    "lastName": "Horn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:28:32.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102668,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102669": 6,
+                "1102670": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102669": 6,
+                "1102670": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551336,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102669,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102669,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74676,
+                    "firstName": "Paige ",
+                    "lastName": "Schmelling",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-01-27T23:57:13.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 75145,
+                    "firstName": "Reese",
+                    "lastName": "Beyrouty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:26:03.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102670,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102677": 6,
+                "1102678": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102677": 6,
+                "1102678": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551340,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102677,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102677,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75157,
+                    "firstName": "Hallie",
+                    "lastName": "Trueax",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T04:36:17.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80639,
+                    "firstName": "Angelina",
+                    "lastName": "Tesfu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:38:13.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102678,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80600,
+                    "firstName": "Arianna",
+                    "lastName": "Hendler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:28.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106879,
+      "title": "West Albany vs. Corvallis",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74694,
+        "firstName": "Carrie",
+        "lastName": "Harrington",
+        "genderId": 2,
+        "email": "westalbanycoach@comcast.net",
+        "phone": "(541) 619-5608",
+        "school": {
+          "name": "West Albany",
+          "logo": "school_74694.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74694,
+            "name": "West Albany",
+            "logo": "school_74694.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1088863": 6,
+                "1088864": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088863": 6,
+                "1088864": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544433,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1088863,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088863,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83045,
+                    "firstName": "Sarah",
+                    "lastName": "Aufranc",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:37.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088864,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1088865": 6,
+                "1088866": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088865": 3,
+                "1088866": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544434,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1088866,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088865,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83046,
+                    "firstName": "Morgan",
+                    "lastName": "Linde",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:38.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088866,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1088869": 6,
+                "1088870": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088869": 6,
+                "1088870": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544436,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1088869,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088869,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83048,
+                    "firstName": "Tatum",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:39.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088870,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1088873": 6,
+                "1088874": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088873": 7,
+                "1088874": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544438,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1088873,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83052,
+                    "firstName": "Patrizia",
+                    "lastName": "Alpapara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:54.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83053,
+                    "firstName": "Maggie ",
+                    "lastName": "Berry",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:54.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088874,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1088875": 7,
+                "1088876": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088875": 3,
+                "1088876": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1088875": 6,
+                "1088876": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 544439,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1088875,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088875,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83049,
+                    "firstName": "Maci",
+                    "lastName": "Van Dyke",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T19:13:51.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83050,
+                    "firstName": "Avery",
+                    "lastName": "Nahorniak",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:42.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088876,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1088879": 2,
+                "1088880": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1088879": 6,
+                "1088880": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1088879": 0,
+                "1088880": 1,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 544441,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1088880,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1088879,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83054,
+                    "firstName": "Grace ",
+                    "lastName": "Horner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:29:53.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83057,
+                    "firstName": "Maddie",
+                    "lastName": "Richey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74694,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Albany",
+                      "logo": "school_74694.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1088880,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80600,
+                    "firstName": "Arianna",
+                    "lastName": "Hendler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:28.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100603,
+      "title": "Corvallis High School Girls Tennis versus McNary High School at home",
+      "meetDateTime": "2021-05-05T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74917,
+        "firstName": "Nicholas",
+        "lastName": "Weaver",
+        "genderId": 2,
+        "email": "nicholas.weaver@corvallis.k12.or.us",
+        "phone": "(541) 224-4101",
+        "school": {
+          "name": "Corvallis",
+          "logo": "school_74917.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75683,
+            "name": "McNary",
+            "logo": "school_75683.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1075409": 6,
+                "1075410": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075409": 6,
+                "1075410": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537706,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075409,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075409,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075410,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80189,
+                    "firstName": "Fabiola",
+                    "lastName": "Falcon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:32:34.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075415": 6,
+                "1075416": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075415": 6,
+                "1075416": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537709,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075415,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075415,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075416,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80206,
+                    "firstName": "Emilie",
+                    "lastName": "Vu Magee",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:36:14.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075427": 6,
+                "1075428": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075427": 6,
+                "1075428": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537715,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075427,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075427,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075428,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80184,
+                    "firstName": "Savana",
+                    "lastName": "Brownell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1075443": 6,
+                "1075444": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075443": 6,
+                "1075444": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537723,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075443,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075443,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075444,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80186,
+                    "firstName": "Kelly",
+                    "lastName": "Candland",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:31:57.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80194,
+                    "firstName": "Juliana",
+                    "lastName": "Marshall",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075449": 6,
+                "1075450": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075449": 6,
+                "1075450": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537726,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075449,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075449,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075450,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80183,
+                    "firstName": "Taylor",
+                    "lastName": "Argue",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80196,
+                    "firstName": "Taylor",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075459": 6,
+                "1075460": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075459": 6,
+                "1075460": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537731,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075459,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075459,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80600,
+                    "firstName": "Arianna",
+                    "lastName": "Hendler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:28.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075460,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80195,
+                    "firstName": "Karla",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:33:56.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80198,
+                    "firstName": "Marisol",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100602,
+      "title": "Corvallis High School Girls Tennis versus South Albany at home",
+      "meetDateTime": "2021-05-03T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74917,
+        "firstName": "Nicholas",
+        "lastName": "Weaver",
+        "genderId": 2,
+        "email": "nicholas.weaver@corvallis.k12.or.us",
+        "phone": "(541) 224-4101",
+        "school": {
+          "name": "Corvallis",
+          "logo": "school_74917.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74695,
+            "name": "South Albany",
+            "logo": "school_74695.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1069237": 6,
+                "1069238": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069237": 6,
+                "1069238": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534620,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069237,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069237,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069238,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79218,
+                    "firstName": "Ava",
+                    "lastName": "Cordle",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:04:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069243": 0,
+                "1069244": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069243": 0,
+                "1069244": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534623,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069243,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069243,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069244,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79227,
+                    "firstName": "Isabel",
+                    "lastName": "Solis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:09:09.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069247": 6,
+                "1069248": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069247": 6,
+                "1069248": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534625,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069247,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069247,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069248,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79217,
+                    "firstName": "Lesly",
+                    "lastName": "Cordero-Lagos",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:03:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1069257": 6,
+                "1069258": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069257": 6,
+                "1069258": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534630,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069257,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069257,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069258,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79216,
+                    "firstName": "Haley",
+                    "lastName": "Bendele",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:02:36.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79222,
+                    "firstName": "Katelyn",
+                    "lastName": "Haury",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:06:33.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069259": 6,
+                "1069260": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069259": 6,
+                "1069260": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534631,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069259,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069259,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069260,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79219,
+                    "firstName": "Acacia",
+                    "lastName": "Don",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:05:01.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79220,
+                    "firstName": "Aliyah",
+                    "lastName": "Foote",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069261": 8,
+                "1069262": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 534632,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069261,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069261,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80600,
+                    "firstName": "Arianna",
+                    "lastName": "Hendler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:28.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069262,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79217,
+                    "firstName": "Lesly",
+                    "lastName": "Cordero-Lagos",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:03:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79227,
+                    "firstName": "Isabel",
+                    "lastName": "Solis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:09:09.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100749,
+      "title": "South Salem v Corvallis",
+      "meetDateTime": "2021-04-29T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75686,
+        "firstName": "Alejandro ",
+        "lastName": "B\u00e9jar",
+        "genderId": 2,
+        "email": "bejarandres_alejandro@salkeiz.k12.or.us",
+        "phone": "(864) 923-7096",
+        "school": {
+          "name": "South Salem",
+          "logo": "school_75686.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75686,
+            "name": "South Salem",
+            "logo": "school_75686.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053495": 6,
+                "1053496": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053495": 6,
+                "1053496": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526749,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053495,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053495,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77768,
+                    "firstName": "Sadie",
+                    "lastName": "Paterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-01-21T23:18:07.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053496,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053497": 6,
+                "1053498": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053497": 6,
+                "1053498": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526750,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053498,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053497,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77777,
+                    "firstName": "Ella",
+                    "lastName": "Dieker",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-01T20:24:13.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053498,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76639,
+                    "firstName": "Ronja",
+                    "lastName": "Soares",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-26T15:48:58.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053499": 6,
+                "1053500": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053499": 6,
+                "1053500": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 526751,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053500,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053499,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77776,
+                    "firstName": "Katie",
+                    "lastName": "Corner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-03T17:24:51.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053500,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053503": 6,
+                "1053504": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053503": 6,
+                "1053504": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526753,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053503,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053503,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77770,
+                    "firstName": "Esha",
+                    "lastName": "Puri",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-03T16:44:33.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77771,
+                    "firstName": "Erin",
+                    "lastName": "Cridge",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-03T16:44:44.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053504,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053505": 6,
+                "1053506": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053505": 6,
+                "1053506": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526754,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053505,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053505,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77769,
+                    "firstName": "Andria ",
+                    "lastName": "Yao",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-22T21:20:24.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77786,
+                    "firstName": "Neha",
+                    "lastName": "Srinivasan",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-01-22T00:30:16.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053506,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053507": 0,
+                "1053508": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053507": 7,
+                "1053508": 6,
+                "number": 2,
+                "tie": 75
+              },
+              {
+                "1053507": 6,
+                "1053508": 1,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526755,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053507,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053507,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77775,
+                    "firstName": "Katherine",
+                    "lastName": "Campell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-01-21T23:20:23.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77785,
+                    "firstName": "Lindy",
+                    "lastName": "Rybloom",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-03T17:27:35.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053508,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80599,
+                    "firstName": "Ingrid",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:25.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80601,
+                    "firstName": "Cate",
+                    "lastName": "Fehrenbach",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-26T15:53:18.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103870,
+      "title": "Silverton vs. Corvallis",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75762,
+        "firstName": "Shawn",
+        "lastName": "Pool",
+        "genderId": 2,
+        "email": "pool_shawn@silverfalls.k12.or.us",
+        "phone": "(971) 304-6735",
+        "school": {
+          "name": "Silverton",
+          "logo": "school_75762.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75762,
+            "name": "Silverton",
+            "logo": "school_75762.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1043011": 6,
+                "1043012": 7,
+                "number": 1,
+                "tie": 5
+              },
+              {
+                "1043011": 4,
+                "1043012": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521507,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1043012,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043011,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78508,
+                    "firstName": "Andrea",
+                    "lastName": "Khieu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T16:41:37.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043012,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1043013": 6,
+                "1043014": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1043013": 6,
+                "1043014": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521508,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1043013,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043013,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78509,
+                    "firstName": "Lindsey",
+                    "lastName": "Gardner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:31:31.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043014,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1043015": 6,
+                "1043016": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1043015": 6,
+                "1043016": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521509,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1043015,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043015,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78512,
+                    "firstName": "Millie",
+                    "lastName": "Leikem",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043016,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1043029": 6,
+                "1043030": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1043029": 6,
+                "1043030": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521516,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1043029,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043029,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78513,
+                    "firstName": "Genavieve",
+                    "lastName": "Pavlicek",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:32:49.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78517,
+                    "firstName": "Paige",
+                    "lastName": "Davisson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:21.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043030,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1043033": 2,
+                "1043034": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1043033": 6,
+                "1043034": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1043033": 2,
+                "1043034": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 521518,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1043034,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043033,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78516,
+                    "firstName": "Olivia",
+                    "lastName": "Rosborough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:12.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78521,
+                    "firstName": "Melia",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:53.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043034,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1043039": 6,
+                "1043040": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1043039": 6,
+                "1043040": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521521,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1043039,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1043039,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78510,
+                    "firstName": "Melia",
+                    "lastName": "Horner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:32:14.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78520,
+                    "firstName": "Anna",
+                    "lastName": "Muller",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:42.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1043040,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76626,
+                    "firstName": "Phoebe",
+                    "lastName": "Appah",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-26T15:49:20.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80600,
+                    "firstName": "Arianna",
+                    "lastName": "Hendler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:28.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107033,
+      "title": "CV vs Corvallis HS",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Mandy",
+        "lastName": "Degelsmith",
+        "genderId": 2,
+        "email": "mdegelsmith@gmail.com",
+        "phone": "(603) 856-8353",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1091149": 6,
+                "1091150": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1091149": 6,
+                "1091150": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545576,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1091149,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091149,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79352,
+                    "firstName": "SOPHIE",
+                    "lastName": "BRYAN",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091150,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1091151": 6,
+                "1091152": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1091151": 6,
+                "1091152": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545577,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1091151,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091151,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79355,
+                    "firstName": "KERRY",
+                    "lastName": "LIN",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091152,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1091153": 6,
+                "1091154": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1091153": 6,
+                "1091154": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 545578,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1091153,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091153,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79368,
+                    "firstName": "KARA",
+                    "lastName": "PATERSON",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T18:06:03.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091154,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1091191": 6,
+                "1091192": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1091191": 6,
+                "1091192": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545597,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1091191,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091191,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79347,
+                    "firstName": "AYDRI",
+                    "lastName": "BARLOW",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T18:11:49.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79359,
+                    "firstName": "ANNA",
+                    "lastName": "NGUYEN",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T18:00:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091192,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1091203": 6,
+                "1091204": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1091203": 3,
+                "1091204": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1091203": 1,
+                "1091204": 0,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 545603,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1091204,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091203,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79357,
+                    "firstName": "MICHAELA",
+                    "lastName": "MUELLER",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T04:36:10.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79360,
+                    "firstName": "KELSEY",
+                    "lastName": "OLIVAS",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T18:01:23.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091204,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1091209": 6,
+                "1091210": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1091209": 6,
+                "1091210": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545606,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1091209,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1091209,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79348,
+                    "firstName": "BRIELLE",
+                    "lastName": "BARLOW",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79362,
+                    "firstName": "ANNA",
+                    "lastName": "RICHARDS",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T18:01:58.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1091210,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80599,
+                    "firstName": "Ingrid",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:25.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100598,
+      "title": "Corvallis High School Girls Tennis versus Central High School at home",
+      "meetDateTime": "2021-04-19T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74917,
+        "firstName": "Nicholas",
+        "lastName": "Weaver",
+        "genderId": 2,
+        "email": "nicholas.weaver@corvallis.k12.or.us",
+        "phone": "(541) 224-4101",
+        "school": {
+          "name": "Corvallis",
+          "logo": "school_74917.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74876,
+            "name": "Central (Independence)",
+            "logo": "school_74876.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024057": 6,
+                "1024058": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024057": 6,
+                "1024058": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 512030,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024057,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024057,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024058,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77042,
+                    "firstName": "Jillian",
+                    "lastName": "McBeth",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-29T22:00:54.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024059": 6,
+                "1024060": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024059": 6,
+                "1024060": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512031,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024059,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024059,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024060,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79150,
+                    "firstName": "Dara",
+                    "lastName": "Hillyer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:31:36.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024061": 6,
+                "1024062": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024061": 6,
+                "1024062": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512032,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024061,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024061,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024062,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79154,
+                    "firstName": "Mckenzie",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:34:02.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024065": 6,
+                "1024066": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024065": 6,
+                "1024066": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512034,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024065,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024065,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76638,
+                    "firstName": "River",
+                    "lastName": "Ribeiro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024066,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79151,
+                    "firstName": "Vanya (Sam)",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:32:24.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79153,
+                    "firstName": "Daisy",
+                    "lastName": "Torres Flores",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:33:42.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024067": 0,
+                "1024068": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024067": 6,
+                "1024068": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024067": 6,
+                "1024068": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512035,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024067,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024067,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024068,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77040,
+                    "firstName": "Berean ",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-29T21:59:48.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77041,
+                    "firstName": "Phoebe",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-29T22:00:27.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024069": 6,
+                "1024070": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024069": 6,
+                "1024070": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512036,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024069,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024069,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76632,
+                    "firstName": "Grace",
+                    "lastName": "Kaufmann",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-26T15:52:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024070,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77039,
+                    "firstName": "Ruby ",
+                    "lastName": "Elliott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:35:17.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79148,
+                    "firstName": "Makayla",
+                    "lastName": "Guest",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T17:30:58.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100597,
+      "title": "Corvallis High School Girls Tennis against West Salem at home",
+      "meetDateTime": "2021-04-15T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74917,
+        "firstName": "Nicholas",
+        "lastName": "Weaver",
+        "genderId": 2,
+        "email": "nicholas.weaver@corvallis.k12.or.us",
+        "phone": "(541) 224-4101",
+        "school": {
+          "name": "Corvallis",
+          "logo": "school_74917.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015227": 3,
+                "1015228": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015227": 6,
+                "1015228": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1015227": 6,
+                "1015228": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 507615,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015228,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015227,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015228,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78211,
+                    "firstName": "Miranda",
+                    "lastName": "Brewen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:50.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015231": 6,
+                "1015232": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015231": 6,
+                "1015232": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507617,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015232,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015231,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015232,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81646,
+                    "firstName": "Katie",
+                    "lastName": "Nadeau",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T16:01:42.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015235": 7,
+                "1015236": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015235": 3,
+                "1015236": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1015235": 7,
+                "1015236": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 507619,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015236,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015235,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015236,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81644,
+                    "firstName": "Jolie",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T16:00:40.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1015239": 6,
+                "1015240": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015239": 6,
+                "1015240": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507621,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015240,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015239,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76625,
+                    "firstName": "Sofia",
+                    "lastName": "Alzugaray-Orella",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:48:59.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015240,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78213,
+                    "firstName": "Anna",
+                    "lastName": "Emerson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:44.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78267,
+                    "firstName": "Paige",
+                    "lastName": "Swanson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:55.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015253": 4,
+                "1015254": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015253": 7,
+                "1015254": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1015253": 6,
+                "1015254": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 507628,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015254,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015253,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80599,
+                    "firstName": "Ingrid",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:25.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015254,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78209,
+                    "firstName": "Pardis",
+                    "lastName": "Ahmadi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:49.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78264,
+                    "firstName": "Laci",
+                    "lastName": "Jespersen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T16:01:28.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015261": 6,
+                "1015262": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015261": 6,
+                "1015262": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507632,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015262,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015261,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76628,
+                    "firstName": "Rose",
+                    "lastName": "Davis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:14.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76637,
+                    "firstName": "Clarissa",
+                    "lastName": "Perez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:53:13.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015262,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78214,
+                    "firstName": "Jori",
+                    "lastName": "Huhn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:45.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78215,
+                    "firstName": "Jillian",
+                    "lastName": "Huhn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T19:18:47.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101405,
+      "title": "McNary vs. Corvallis",
+      "meetDateTime": "2021-04-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75683,
+        "firstName": "Lisa",
+        "lastName": "Reid",
+        "genderId": 2,
+        "email": "REID_LISA@salkeiz.k12.or.us",
+        "phone": "(503) 884-9617",
+        "school": {
+          "name": "McNary",
+          "logo": "school_75683.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75683,
+            "name": "McNary",
+            "logo": "school_75683.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1007735": 1,
+                "1007736": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007735": 0,
+                "1007736": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503869,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007736,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007735,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80189,
+                    "firstName": "Fabiola",
+                    "lastName": "Falcon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:32:34.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007736,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80594,
+                    "firstName": "Hanna",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007737": 3,
+                "1007738": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007737": 3,
+                "1007738": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503870,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007738,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007737,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80185,
+                    "firstName": "Allison",
+                    "lastName": "Candland",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:31:43.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007738,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80596,
+                    "firstName": "Emma",
+                    "lastName": "Ciechanowski",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T03:33:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007739": 0,
+                "1007740": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007739": 0,
+                "1007740": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503871,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007740,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007739,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80198,
+                    "firstName": "Marisol",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007740,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76630,
+                    "firstName": "Maggie",
+                    "lastName": "Hackethorn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:52.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1007743": 7,
+                "1007744": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007743": 6,
+                "1007744": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503873,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007743,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007743,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80201,
+                    "firstName": "Andrea",
+                    "lastName": "Salisbury",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80208,
+                    "firstName": "Melia",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007744,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76631,
+                    "firstName": "Sofia",
+                    "lastName": "Isaias-Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T01:31:40.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80597,
+                    "firstName": "Annaleise",
+                    "lastName": "Earl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:21.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007745": 3,
+                "1007746": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007745": 2,
+                "1007746": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503874,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007746,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007745,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80194,
+                    "firstName": "Juliana",
+                    "lastName": "Marshall",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80206,
+                    "firstName": "Emilie",
+                    "lastName": "Vu Magee",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:36:14.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007746,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76635,
+                    "firstName": "Jimena",
+                    "lastName": "Noa-Guevara",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:52:36.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80599,
+                    "firstName": "Ingrid",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-01T23:42:25.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007747": 2,
+                "1007748": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007747": 1,
+                "1007748": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503875,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007748,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007747,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80183,
+                    "firstName": "Taylor",
+                    "lastName": "Argue",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80195,
+                    "firstName": "Karla",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:33:56.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007748,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76628,
+                    "firstName": "Rose",
+                    "lastName": "Davis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:14.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76629,
+                    "firstName": "Jazmin",
+                    "lastName": "Estrada",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-26T02:50:33.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

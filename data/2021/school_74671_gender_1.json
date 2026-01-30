@@ -1,0 +1,927 @@
+{
+  "school": {
+    "id": 74671,
+    "name": "The Dalles",
+    "address": "220 E 10TH ST",
+    "zipCode": "97058",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74671.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T16:04:27.000Z",
+    "deletedAt": null,
+    "cityId": 18070,
+    "city": {
+      "id": 18070,
+      "name": "The dalles",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2740,
+      "firstName": "Sergio",
+      "lastName": "Lopez",
+      "address": "1005 Home St.",
+      "phone": "(541) 844-5228",
+      "email": "Lopezs@nwasco.k12.or.us",
+      "division": "4A",
+      "schoolId": 74671,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107575,
+      "title": "Hood River Valley vs The Dalles",
+      "meetDateTime": "2021-05-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75142,
+        "firstName": "Jon",
+        "lastName": "Hiatt",
+        "genderId": 1,
+        "email": "hrvtennis@gmail.com",
+        "phone": "(503) 351-4422",
+        "school": {
+          "name": "Hood River Valley",
+          "logo": "school_75142.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75142,
+            "name": "Hood River Valley",
+            "logo": "school_75142.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74671,
+            "name": "The Dalles",
+            "logo": "school_74671.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1099707": 6,
+                "1099708": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1099707": 6,
+                "1099708": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549855,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1099707,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1099707,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80641,
+                    "firstName": "Vaughn",
+                    "lastName": "Reardon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:53:20.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1099708,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87038,
+                    "firstName": "Paul ",
+                    "lastName": "Capek",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T16:18:03.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1099711": 6,
+                "1099712": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1099711": 6,
+                "1099712": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549857,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1099711,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1099711,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80642,
+                    "firstName": "Ben",
+                    "lastName": "Garofalo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:53:35.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1099712,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87041,
+                    "firstName": "Henry",
+                    "lastName": "Perez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T16:19:18.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1099715": 6,
+                "1099716": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1099715": 7,
+                "1099716": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549859,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1099716,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1099715,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80646,
+                    "firstName": "Toby",
+                    "lastName": "Fenner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:13.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80649,
+                    "firstName": "Nelson",
+                    "lastName": "Van Cottt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:35.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1099716,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 87037,
+                    "firstName": "Paul ",
+                    "lastName": "Kelly",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T16:31:11.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 87039,
+                    "firstName": "Gavin ",
+                    "lastName": "Cates",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T16:18:18.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1099721": 6,
+                "1099722": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1099721": 7,
+                "1099722": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549862,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1099721,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1099721,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80647,
+                    "firstName": "Tavish",
+                    "lastName": "Fenner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:24.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80651,
+                    "firstName": "Parker",
+                    "lastName": "Ford",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:54:54.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1099722,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87040,
+                    "firstName": "Derrick ",
+                    "lastName": "Santillan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 87046,
+                    "firstName": "Ivan",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T16:20:05.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1099725": 7,
+                "1099726": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1099725": 7,
+                "1099726": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549864,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1099726,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1099725,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80653,
+                    "firstName": "Zayd",
+                    "lastName": "Ziada",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:55:21.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80655,
+                    "firstName": "Lewis",
+                    "lastName": "Heck",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T04:55:33.000Z",
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1099726,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 87042,
+                    "firstName": "Jack",
+                    "lastName": "McAllister",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 87044,
+                    "firstName": "Grey",
+                    "lastName": "Roetcisoender",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74671,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T16:19:49.000Z",
+                    "school": {
+                      "name": "The Dalles",
+                      "logo": "school_74671.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101895,
+      "title": "The Dalles at Ridgeview",
+      "meetDateTime": "2021-04-14T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 7070583,
+        "firstName": "DJ",
+        "lastName": "Holloway",
+        "genderId": 1,
+        "email": "dj.holloway@redmondschools.org",
+        "phone": "(541) 504-3600",
+        "school": {
+          "name": "Ridgeview ",
+          "logo": "school_7070583.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 7070583,
+            "name": "Ridgeview ",
+            "logo": "school_7070583.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74671,
+            "name": "The Dalles",
+            "logo": "school_74671.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1013373": 7,
+                "1013374": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013373": 6,
+                "1013374": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506688,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013373,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013373,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80840,
+                    "firstName": "Walter",
+                    "lastName": "Gates",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:06:19.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013374,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013377": 6,
+                "1013378": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013377": 6,
+                "1013378": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506690,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013377,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013377,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80843,
+                    "firstName": "Austin",
+                    "lastName": "Allen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:06:49.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013378,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013391": 6,
+                "1013392": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013391": 3,
+                "1013392": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013391": 10,
+                "1013392": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 506697,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013391,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013391,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80847,
+                    "firstName": "Aaden ",
+                    "lastName": "Poindexter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:21.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80848,
+                    "firstName": "Shad",
+                    "lastName": "Bangerter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:28.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013392,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013421": 6,
+                "1013422": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013421": 6,
+                "1013422": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506712,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013421,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013421,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80849,
+                    "firstName": "James",
+                    "lastName": "Herrin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:34.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80850,
+                    "firstName": "Riley",
+                    "lastName": "Herrin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:42.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013422,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013431": 6,
+                "1013432": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013431": 2,
+                "1013432": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013431": 10,
+                "1013432": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 506717,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013431,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013431,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80852,
+                    "firstName": "Soren",
+                    "lastName": "Stancliff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:53.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80853,
+                    "firstName": "Kroftan",
+                    "lastName": "Nyman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 7070583,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:07:59.000Z",
+                    "school": {
+                      "name": "Ridgeview ",
+                      "logo": "school_7070583.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013432,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

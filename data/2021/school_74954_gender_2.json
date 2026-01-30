@@ -1,0 +1,4763 @@
+{
+  "school": {
+    "id": 74954,
+    "name": "Dallas",
+    "address": "1250 HOLMAN AVE",
+    "zipCode": "97338",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74954.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:05:47.000Z",
+    "deletedAt": null,
+    "cityId": 4409,
+    "city": {
+      "id": 4409,
+      "name": "Dallas",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2957,
+      "firstName": "Oren",
+      "lastName": "Rogers",
+      "address": "P.O. Box 574 Dallas, OR  97338",
+      "phone": "(503) 779-5341",
+      "email": "Oren.rogers@dsd2.org",
+      "division": "5A",
+      "schoolId": 74954,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 7,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 107494,
+      "title": "Dallas vs. McNary",
+      "meetDateTime": "2021-05-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74954,
+        "firstName": "Oren",
+        "lastName": "Rogers",
+        "genderId": 2,
+        "email": "Oren.rogers@dsd2.org",
+        "phone": "(503) 779-5341",
+        "school": {
+          "name": "Dallas",
+          "logo": "school_74954.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75683,
+            "name": "McNary",
+            "logo": "school_75683.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1098469": 6,
+                "1098470": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098469": 6,
+                "1098470": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549236,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098470,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098469,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098470,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80189,
+                    "firstName": "Fabiola",
+                    "lastName": "Falcon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:32:34.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098523": 0,
+                "1098524": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098523": 0,
+                "1098524": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549263,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1098524,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098523,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87896,
+                    "firstName": "Aryanna (Love)",
+                    "lastName": "Florschuetz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098524,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80206,
+                    "firstName": "Emilie",
+                    "lastName": "Vu Magee",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:36:14.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098531": 0,
+                "1098532": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098531": 0,
+                "1098532": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549267,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1098532,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098531,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87896,
+                    "firstName": "Aryanna (Love)",
+                    "lastName": "Florschuetz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098532,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80194,
+                    "firstName": "Juliana",
+                    "lastName": "Marshall",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1098489": 6,
+                "1098490": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098489": 2,
+                "1098490": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1098489": 6,
+                "1098490": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 549246,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098490,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098489,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098490,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80185,
+                    "firstName": "Allison",
+                    "lastName": "Candland",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:31:43.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80208,
+                    "firstName": "Melia",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098495": 6,
+                "1098496": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098495": 6,
+                "1098496": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549249,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098496,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098495,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098496,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80183,
+                    "firstName": "Taylor",
+                    "lastName": "Argue",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80196,
+                    "firstName": "Taylor",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098513": 6,
+                "1098514": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098513": 6,
+                "1098514": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549258,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098513,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098513,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84368,
+                    "firstName": "Olea",
+                    "lastName": "Green",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:07:39.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85684,
+                    "firstName": "Evelyn",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:05.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098514,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80195,
+                    "firstName": "Karla",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:33:56.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80198,
+                    "firstName": "Marisol",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107294,
+      "title": "McKay vs Dallas",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75688,
+        "firstName": "Laura",
+        "lastName": "Lopez",
+        "genderId": 2,
+        "email": "lopez_laura@salkeiz.k12.or.us",
+        "phone": "(907) 347-1221",
+        "school": {
+          "name": "McKay",
+          "logo": "school_75688.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75688,
+            "name": "McKay",
+            "logo": "school_75688.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1095649": 6,
+                "1095650": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095649": 6,
+                "1095650": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547826,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095649,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095649,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78543,
+                    "firstName": "Grace",
+                    "lastName": "Caldwell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:22:04.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095650,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095651": 7,
+                "1095652": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095651": 6,
+                "1095652": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547827,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095651,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095651,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78546,
+                    "firstName": "Kayleen ",
+                    "lastName": "Ly",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095652,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095653": 2,
+                "1095654": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095653": 2,
+                "1095654": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547828,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1095653,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095653,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78552,
+                    "firstName": "Shaelee",
+                    "lastName": "Singer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:26:46.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095654,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1095657": 6,
+                "1095658": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095657": 7,
+                "1095658": 6,
+                "number": 2,
+                "tie": 10
+              }
+            ],
+            "id": 547830,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095657,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095657,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78549,
+                    "firstName": "Crystal ",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:28:22.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78554,
+                    "firstName": "Lesly",
+                    "lastName": "Tenorio",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:25:19.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095658,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095659": 6,
+                "1095660": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095659": 6,
+                "1095660": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547831,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095659,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095659,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78547,
+                    "firstName": "Piper",
+                    "lastName": "Martin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:23:20.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78555,
+                    "firstName": "Maritza",
+                    "lastName": "Torres",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095660,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095661": 7,
+                "1095662": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095661": 6,
+                "1095662": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547832,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095661,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095661,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78544,
+                    "firstName": "Leslie",
+                    "lastName": "Garfias Arreola",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:22:36.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78551,
+                    "firstName": "Edith",
+                    "lastName": "Santoyo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:28:29.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095662,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84368,
+                    "firstName": "Olea",
+                    "lastName": "Green",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:07:39.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85684,
+                    "firstName": "Evelyn",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:05.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105978,
+      "title": "Dallas vs. North Salem",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74954,
+        "firstName": "Oren",
+        "lastName": "Rogers",
+        "genderId": 2,
+        "email": "Oren.rogers@dsd2.org",
+        "phone": "(503) 779-5341",
+        "school": {
+          "name": "Dallas",
+          "logo": "school_74954.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75684,
+            "name": "North Salem",
+            "logo": "school_75684.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076537": 6,
+                "1076538": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076537": 6,
+                "1076538": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538270,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076538,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076537,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076538,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75078,
+                    "firstName": "Izayra",
+                    "lastName": "Arreola Chavez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:24:32.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076611": 0,
+                "1076612": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076611": 0,
+                "1076612": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538307,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1076612,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076611,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87896,
+                    "firstName": "Aryanna (Love)",
+                    "lastName": "Florschuetz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076612,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85417,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T14:40:17.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076617": 0,
+                "1076618": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076617": 0,
+                "1076618": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538310,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1076618,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076617,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87896,
+                    "firstName": "Aryanna (Love)",
+                    "lastName": "Florschuetz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076618,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85417,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T14:40:17.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076539": 6,
+                "1076540": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076539": 6,
+                "1076540": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538271,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076539,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076539,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076540,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75081,
+                    "firstName": "Angela",
+                    "lastName": "Gonzalez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:29:25.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75123,
+                    "firstName": "Lesli",
+                    "lastName": "Navarrete",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:31:37.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076545": 3,
+                "1076546": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076545": 6,
+                "1076546": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1076545": 6,
+                "1076546": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 538274,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076545,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076545,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076546,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75079,
+                    "firstName": "Andrea",
+                    "lastName": "DeHaro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:24:38.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75111,
+                    "firstName": "Cathy",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T05:34:18.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076565": 6,
+                "1076566": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076565": 6,
+                "1076566": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538284,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076565,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076565,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84367,
+                    "firstName": "Kiera",
+                    "lastName": "Schetzel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076566,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80452,
+                    "firstName": "Valeria",
+                    "lastName": "Piedra",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80456,
+                    "firstName": "Dahlia",
+                    "lastName": "Morales",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-29T01:29:01.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103873,
+      "title": "Silverton vs. Dallas",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75762,
+        "firstName": "Shawn",
+        "lastName": "Pool",
+        "genderId": 2,
+        "email": "pool_shawn@silverfalls.k12.or.us",
+        "phone": "(971) 304-6735",
+        "school": {
+          "name": "Silverton",
+          "logo": "school_75762.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75762,
+            "name": "Silverton",
+            "logo": "school_75762.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053221": 6,
+                "1053222": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053221": 6,
+                "1053222": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526612,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053221,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053221,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78512,
+                    "firstName": "Millie",
+                    "lastName": "Leikem",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053222,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053223": 6,
+                "1053224": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053223": 6,
+                "1053224": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526613,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053223,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053223,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78511,
+                    "firstName": "Kaitlyn",
+                    "lastName": "Gehring",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:32:28.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053224,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053227": 6,
+                "1053228": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053227": 6,
+                "1053228": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526615,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053227,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053227,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78510,
+                    "firstName": "Melia",
+                    "lastName": "Horner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:32:14.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053228,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053233": 7,
+                "1053234": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053233": 6,
+                "1053234": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526618,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053233,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053233,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78509,
+                    "firstName": "Lindsey",
+                    "lastName": "Gardner",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:31:31.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78517,
+                    "firstName": "Paige",
+                    "lastName": "Davisson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:21.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053234,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053241": 6,
+                "1053242": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053241": 6,
+                "1053242": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526622,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053241,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053241,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78516,
+                    "firstName": "Olivia",
+                    "lastName": "Rosborough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:12.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78520,
+                    "firstName": "Anna",
+                    "lastName": "Muller",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:42.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053242,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84367,
+                    "firstName": "Kiera",
+                    "lastName": "Schetzel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053247": 6,
+                "1053248": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053247": 6,
+                "1053248": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526625,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053247,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053247,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78519,
+                    "firstName": "Kylie",
+                    "lastName": "Talik",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:31.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78521,
+                    "firstName": "Melia",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T17:33:53.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053248,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84368,
+                    "firstName": "Olea",
+                    "lastName": "Green",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:07:39.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85684,
+                    "firstName": "Evelyn",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:05.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103862,
+      "title": "Dallas vs South Albany",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74954,
+        "firstName": "Oren",
+        "lastName": "Rogers",
+        "genderId": 2,
+        "email": "Oren.rogers@dsd2.org",
+        "phone": "(503) 779-5341",
+        "school": {
+          "name": "Dallas",
+          "logo": "school_74954.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74695,
+            "name": "South Albany",
+            "logo": "school_74695.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1042865": 6,
+                "1042866": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042865": 6,
+                "1042866": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521434,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1042866,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042865,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042866,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79218,
+                    "firstName": "Ava",
+                    "lastName": "Cordle",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:04:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042869": 0,
+                "1042870": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042869": 0,
+                "1042870": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521436,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1042870,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042869,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042870,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81801,
+                    "firstName": "Alyssa",
+                    "lastName": "Pospisil",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1042891": 6,
+                "1042892": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042891": 6,
+                "1042892": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521447,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042891,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042891,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042892,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79224,
+                    "firstName": "Marichelo",
+                    "lastName": "Lemus-Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79227,
+                    "firstName": "Isabel",
+                    "lastName": "Solis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:09:09.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042913": 6,
+                "1042914": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042913": 6,
+                "1042914": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521458,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042913,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042913,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042914,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79216,
+                    "firstName": "Haley",
+                    "lastName": "Bendele",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:02:36.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79222,
+                    "firstName": "Katelyn",
+                    "lastName": "Haury",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:06:33.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042925": 3,
+                "1042926": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042925": 6,
+                "1042926": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1042925": 6,
+                "1042926": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 521464,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042926,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042925,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85684,
+                    "firstName": "Evelyn",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:05.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042926,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79217,
+                    "firstName": "Lesly",
+                    "lastName": "Cordero-Lagos",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:03:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79219,
+                    "firstName": "Acacia",
+                    "lastName": "Don",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T22:05:01.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102104,
+      "title": "Sprague vs. Dallas",
+      "meetDateTime": "2021-04-22T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75685,
+        "firstName": "Jennifer",
+        "lastName": "Schmelling",
+        "genderId": 2,
+        "email": "schmelling_jennifer@salkeiz.k12.or.us",
+        "phone": "(503) 881-9120",
+        "school": {
+          "name": "Sprague",
+          "logo": "school_75685.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75685,
+            "name": "Sprague",
+            "logo": "school_75685.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1032633": 6,
+                "1032634": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032633": 6,
+                "1032634": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516318,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1032633,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032633,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75152,
+                    "firstName": "Drew",
+                    "lastName": "Fiskum",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032634,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032641": 2,
+                "1032642": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032641": 2,
+                "1032642": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516322,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1032641,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032641,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75154,
+                    "firstName": "Ellie",
+                    "lastName": "Horn",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:28:32.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032642,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032645": 2,
+                "1032646": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032645": 2,
+                "1032646": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516324,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1032645,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032645,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74676,
+                    "firstName": "Paige ",
+                    "lastName": "Schmelling",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-01-27T23:57:13.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032646,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1032659": 6,
+                "1032660": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032659": 6,
+                "1032660": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516331,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032659,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032659,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75147,
+                    "firstName": "Hannah",
+                    "lastName": "Bradshaw",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:26:36.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 75155,
+                    "firstName": "Ella",
+                    "lastName": "Mhoon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:28:52.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032660,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032665": 6,
+                "1032666": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032665": 6,
+                "1032666": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516334,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032665,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032665,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75148,
+                    "firstName": "Kelsey",
+                    "lastName": "Cochran",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:26:56.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79281,
+                    "firstName": "Jade",
+                    "lastName": "Haddad",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T05:01:01.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032666,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032673": 6,
+                "1032674": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032673": 6,
+                "1032674": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516338,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032673,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032673,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75146,
+                    "firstName": "Leah",
+                    "lastName": "Bjornsrud",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-03T03:26:18.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79282,
+                    "firstName": "Rachel",
+                    "lastName": "Marlowe",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032674,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84367,
+                    "firstName": "Kiera",
+                    "lastName": "Schetzel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102706,
+      "title": "Week 2",
+      "meetDateTime": "2021-04-19T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75688,
+        "firstName": "Laura",
+        "lastName": "Lopez",
+        "genderId": 2,
+        "email": "lopez_laura@salkeiz.k12.or.us",
+        "phone": "(907) 347-1221",
+        "school": {
+          "name": "McKay",
+          "logo": "school_75688.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75688,
+            "name": "McKay",
+            "logo": "school_75688.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024403": 6,
+                "1024404": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024403": 4,
+                "1024404": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024403": 10,
+                "1024404": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512203,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024403,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024403,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78546,
+                    "firstName": "Kayleen ",
+                    "lastName": "Ly",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024404,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024405": 6,
+                "1024406": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024405": 6,
+                "1024406": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512204,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024406,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024405,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78552,
+                    "firstName": "Shaelee",
+                    "lastName": "Singer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:26:46.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024406,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024431": 2,
+                "1024432": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024431": 2,
+                "1024432": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512217,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1024431,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024431,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78557,
+                    "firstName": "Alli",
+                    "lastName": "Xiong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:26:17.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024432,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024407": 6,
+                "1024408": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024407": 6,
+                "1024408": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512205,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024407,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024407,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78549,
+                    "firstName": "Crystal ",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:28:22.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78554,
+                    "firstName": "Lesly",
+                    "lastName": "Tenorio",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:25:19.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024408,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024417": 6,
+                "1024418": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024417": 7,
+                "1024418": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512210,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024417,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024417,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78543,
+                    "firstName": "Grace",
+                    "lastName": "Caldwell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:22:04.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78547,
+                    "firstName": "Piper",
+                    "lastName": "Martin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:23:20.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024418,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84367,
+                    "firstName": "Kiera",
+                    "lastName": "Schetzel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024427": 6,
+                "1024428": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024427": 6,
+                "1024428": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512215,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024427,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024427,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78544,
+                    "firstName": "Leslie",
+                    "lastName": "Garfias Arreola",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T19:22:36.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78551,
+                    "firstName": "Edith",
+                    "lastName": "Santoyo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:28:29.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024428,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84368,
+                    "firstName": "Olea",
+                    "lastName": "Green",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:07:39.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84369,
+                    "firstName": "Julia",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:17:35.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102360,
+      "title": "Dual Dallas@North Salem",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75684,
+        "firstName": "Richard",
+        "lastName": "Peterson",
+        "genderId": 2,
+        "email": "peterson_richard@salkeiz.k12.or.us",
+        "phone": "(503) 930-8356",
+        "school": {
+          "name": "North Salem",
+          "logo": "school_75684.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75684,
+            "name": "North Salem",
+            "logo": "school_75684.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1020003": 6,
+                "1020004": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020003": 6,
+                "1020004": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510003,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1020003,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020003,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75081,
+                    "firstName": "Angela",
+                    "lastName": "Gonzalez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:29:25.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020004,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020005": 6,
+                "1020006": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020005": 6,
+                "1020006": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510004,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1020005,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020005,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75079,
+                    "firstName": "Andrea",
+                    "lastName": "DeHaro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:24:38.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020006,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1020007": 6,
+                "1020008": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020007": 6,
+                "1020008": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1020007": 7,
+                "1020008": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 510005,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1020007,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020007,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75078,
+                    "firstName": "Izayra",
+                    "lastName": "Arreola Chavez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-01T22:24:32.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75111,
+                    "firstName": "Cathy",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T05:34:18.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020008,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020009": 6,
+                "1020010": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020009": 6,
+                "1020010": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510006,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1020010,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020009,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80455,
+                    "firstName": "Rachel ",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T05:41:54.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83631,
+                    "firstName": "Jacqueline",
+                    "lastName": "Herrera",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T05:37:19.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020010,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020011": 2,
+                "1020012": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020011": 2,
+                "1020012": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510007,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1020011,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020011,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80452,
+                    "firstName": "Valeria",
+                    "lastName": "Piedra",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80456,
+                    "firstName": "Dahlia",
+                    "lastName": "Morales",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75684,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-29T01:29:01.000Z",
+                    "school": {
+                      "name": "North Salem",
+                      "logo": "school_75684.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020012,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103662,
+      "title": "Dallas",
+      "meetDateTime": "2021-04-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74954,
+        "firstName": "Oren",
+        "lastName": "Rogers",
+        "genderId": 2,
+        "email": "Oren.rogers@dsd2.org",
+        "phone": "(503) 779-5341",
+        "school": {
+          "name": "Dallas",
+          "logo": "school_74954.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74954,
+            "name": "Dallas",
+            "logo": "school_74954.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75251,
+            "name": "Lebanon",
+            "logo": "school_75251.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1040123": 6,
+                "1040124": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040123": 6,
+                "1040124": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520063,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040123,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040123,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84362,
+                    "firstName": "Brieanna",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:34:59.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040124,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83286,
+                    "firstName": "Daisy",
+                    "lastName": "Ponce",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T03:21:49.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1040125": 6,
+                "1040126": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040125": 7,
+                "1040126": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520064,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040125,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040125,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84364,
+                    "firstName": "Katie",
+                    "lastName": "Reimer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84365,
+                    "firstName": "Haddie",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:32.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040126,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83292,
+                    "firstName": "Kayla",
+                    "lastName": "Natterer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T14:07:24.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83294,
+                    "firstName": "Jackie",
+                    "lastName": "Ramos",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T14:07:27.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040127": 6,
+                "1040128": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040127": 6,
+                "1040128": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520065,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040127,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040127,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84363,
+                    "firstName": "Chloe",
+                    "lastName": "Ellzey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T16:57:47.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84366,
+                    "firstName": "Emma",
+                    "lastName": "Blake",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T05:36:51.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040128,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83290,
+                    "firstName": "Anna",
+                    "lastName": "Dulaney",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-20T18:16:42.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83291,
+                    "firstName": "Ellen",
+                    "lastName": "Workman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T03:22:24.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040129": 6,
+                "1040130": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040129": 6,
+                "1040130": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520066,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040129,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040129,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84367,
+                    "firstName": "Kiera",
+                    "lastName": "Schetzel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84368,
+                    "firstName": "Olea",
+                    "lastName": "Green",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74954,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-25T17:07:39.000Z",
+                    "school": {
+                      "name": "Dallas",
+                      "logo": "school_74954.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040130,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83296,
+                    "firstName": "Josilin",
+                    "lastName": "Olson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83298,
+                    "firstName": "Alyvia",
+                    "lastName": "Griffiths",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

@@ -1,0 +1,5143 @@
+{
+  "school": {
+    "id": 75236,
+    "name": "Lake Oswego",
+    "address": "PO BOX 310",
+    "zipCode": "97034",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75236.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:23:59.000Z",
+    "deletedAt": null,
+    "cityId": 9742,
+    "city": {
+      "id": 9742,
+      "name": "Lake oswego",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2696,
+      "firstName": "Sherri",
+      "lastName": "Sacconaghi",
+      "address": "2501 Country Club Rd., Lake Oswego, OR 97034",
+      "phone": "(503) 621-7549",
+      "email": "bakersac@comcast.net",
+      "division": "6A",
+      "schoolId": 75236,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 8,
+    "loss": 0,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 106254,
+      "title": "Tigard vs Lake Oswego",
+      "meetDateTime": "2021-05-07T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75848,
+        "firstName": "Kelsey",
+        "lastName": "Wahl",
+        "genderId": 2,
+        "email": "kwahl@ttsd.k12.or.us",
+        "phone": "(503) 804-6932",
+        "school": {
+          "name": "Tigard",
+          "logo": "school_75848.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75848,
+            "name": "Tigard",
+            "logo": "school_75848.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1079425": 6,
+                "1079426": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079425": 0,
+                "1079426": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079425": 10,
+                "1079426": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539714,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079425,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079425,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74721,
+                    "firstName": "Sydney",
+                    "lastName": "Board",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T22:34:26.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079426,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079427": 6,
+                "1079428": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079427": 4,
+                "1079428": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079427": 3,
+                "1079428": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539715,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079428,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079427,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79091,
+                    "firstName": "Alyssa",
+                    "lastName": "Thoren",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:00:43.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079428,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079469": 3,
+                "1079470": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079469": 2,
+                "1079470": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539736,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079470,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079469,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79075,
+                    "firstName": "Haley",
+                    "lastName": "Cabrera",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T14:55:49.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079470,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1079485": 0,
+                "1079486": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079485": 2,
+                "1079486": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539744,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079486,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079485,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74713,
+                    "firstName": "Abigail",
+                    "lastName": "Gilliat",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:34:14.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74720,
+                    "firstName": "Emily",
+                    "lastName": "Sverdrup",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:35:21.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079486,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079487": 7,
+                "1079488": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079487": 3,
+                "1079488": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079487": 9,
+                "1079488": 11,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539745,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079488,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079487,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74717,
+                    "firstName": "Kennedy",
+                    "lastName": "Peery",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:34:51.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79078,
+                    "firstName": "Sophia",
+                    "lastName": "Freebury",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T14:56:36.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079488,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079489": 6,
+                "1079490": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079489": 6,
+                "1079490": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539746,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079489,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079489,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74719,
+                    "firstName": "Katelyn",
+                    "lastName": "Schaures",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:35:11.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79094,
+                    "firstName": "Alexa",
+                    "lastName": "vanderSommen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:01:14.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079490,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80732,
+                    "firstName": "Cyndee",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:30.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105777,
+      "title": "LOHS vs Canby",
+      "meetDateTime": "2021-05-05T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74852,
+            "name": "Canby",
+            "logo": "school_74852.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1073091": 6,
+                "1073092": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073091": null,
+                "1073092": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1073091": 6,
+                "1073092": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536547,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073091,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073091,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073092,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073105": 6,
+                "1073106": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073105": 6,
+                "1073106": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536554,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073105,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073105,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073106,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073123": 6,
+                "1073124": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073123": 6,
+                "1073124": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536563,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073123,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073123,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073124,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1073195": 6,
+                "1073196": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073195": 6,
+                "1073196": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536599,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073195,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073195,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073196,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073215": 6,
+                "1073216": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073215": 6,
+                "1073216": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536609,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073215,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073215,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073216,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073243": 7,
+                "1073244": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073243": 4,
+                "1073244": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1073243": 10,
+                "1073244": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 536623,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073243,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073243,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073244,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105774,
+      "title": "LOHS vs St. Mary's",
+      "meetDateTime": "2021-05-03T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124877,
+            "name": "St Marys Academy",
+            "logo": "school_124877.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1073781": 6,
+                "1073782": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073781": 6,
+                "1073782": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536892,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073781,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073781,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073782,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83688,
+                    "firstName": "Gracie",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T19:48:40.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073783": 6,
+                "1073784": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073783": 0,
+                "1073784": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1073783": 4,
+                "1073784": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 536893,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073784,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073783,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80749,
+                    "firstName": "Heather",
+                    "lastName": "Thom",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:24.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073784,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83705,
+                    "firstName": "Sofia",
+                    "lastName": "Bell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073785": 6,
+                "1073786": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073785": 6,
+                "1073786": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536894,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073785,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073785,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073786,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83700,
+                    "firstName": "Mary",
+                    "lastName": "Lazaris",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1073789": 4,
+                "1073790": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073789": 0,
+                "1073790": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536896,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073790,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073789,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073790,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83701,
+                    "firstName": "Olivia",
+                    "lastName": "Kuchela",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:54:53.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83706,
+                    "firstName": "Vy",
+                    "lastName": "Lam",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:57:37.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073799": 6,
+                "1073800": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073799": 6,
+                "1073800": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536901,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073799,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073799,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073800,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83574,
+                    "firstName": "Ally",
+                    "lastName": "Plombon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T01:00:50.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83697,
+                    "firstName": "Lilya",
+                    "lastName": "Sivertsen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:43:02.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073805": 6,
+                "1073806": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073805": 6,
+                "1073806": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536904,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073805,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073805,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80732,
+                    "firstName": "Cyndee",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:30.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073806,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83698,
+                    "firstName": "Lucie",
+                    "lastName": "Jain",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:45:44.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83702,
+                    "firstName": "Ruby",
+                    "lastName": "Ecker",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:55:21.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104994,
+      "title": "LOHS vs Tualatin",
+      "meetDateTime": "2021-04-30T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75840,
+            "name": "Tualatin",
+            "logo": "school_75840.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1061131": 6,
+                "1061132": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061131": 6,
+                "1061132": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530567,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1061131,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061131,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061132,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85171,
+                    "firstName": "Shea",
+                    "lastName": "Carlberg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:48:16.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1061133": 6,
+                "1061134": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061133": 6,
+                "1061134": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530568,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1061133,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061133,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061134,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85177,
+                    "firstName": "Shannon",
+                    "lastName": "Hunt",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:50:53.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1061135": 6,
+                "1061136": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061135": 6,
+                "1061136": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530569,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1061135,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061135,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061136,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85168,
+                    "firstName": "Lily",
+                    "lastName": "Bennett",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:46:52.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1061139": 6,
+                "1061140": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061139": 6,
+                "1061140": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530571,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1061139,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061139,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061140,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85183,
+                    "firstName": "Hannah",
+                    "lastName": "Shaub",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:52:42.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85186,
+                    "firstName": "Kate",
+                    "lastName": "Vohland",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:53:44.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1061141": 6,
+                "1061142": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061141": 6,
+                "1061142": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530572,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1061141,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061141,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061142,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85179,
+                    "firstName": "Kasidy",
+                    "lastName": "Javernick",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:51:29.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85182,
+                    "firstName": "Claire",
+                    "lastName": "Roach",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:52:25.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1061143": 6,
+                "1061144": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1061143": 6,
+                "1061144": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530573,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1061143,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1061143,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1061144,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85172,
+                    "firstName": "Taryn",
+                    "lastName": "Coulson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:48:51.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85174,
+                    "firstName": "Naiya",
+                    "lastName": "Gates",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75840,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T20:49:55.000Z",
+                    "school": {
+                      "name": "Tualatin",
+                      "logo": "school_75840.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104362,
+      "title": "LOHS vs West Linn",
+      "meetDateTime": "2021-04-28T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75880,
+            "name": "West Linn",
+            "logo": "school_75880.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1050167": 6,
+                "1050168": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050167": null,
+                "1050168": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1050167": 6,
+                "1050168": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525085,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050167,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050167,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050168,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74862,
+                    "firstName": "Megan",
+                    "lastName": "DeVall",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:14:01.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050169": 6,
+                "1050170": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050169": 6,
+                "1050170": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525086,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050169,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050169,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050170,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74860,
+                    "firstName": "Corina",
+                    "lastName": "Ounaphon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T03:25:55.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050171": 6,
+                "1050172": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050171": 7,
+                "1050172": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525087,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1050171,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050171,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050172,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74858,
+                    "firstName": "Siara",
+                    "lastName": "Agee",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:12:46.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1050175": 6,
+                "1050176": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050175": 7,
+                "1050176": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525089,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050175,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050175,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050176,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74861,
+                    "firstName": "Kate",
+                    "lastName": "DeVall",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:13:53.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74863,
+                    "firstName": "Kate",
+                    "lastName": "Bucher",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:15:40.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050177": 6,
+                "1050178": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050177": 5,
+                "1050178": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1050177": 10,
+                "1050178": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 525090,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050177,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050177,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050178,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74854,
+                    "firstName": "Ella",
+                    "lastName": "Gulbrandson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-13T00:36:09.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74859,
+                    "firstName": "Sabrina",
+                    "lastName": "Heiden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:13:03.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1050179": 6,
+                "1050180": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1050179": 6,
+                "1050180": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525091,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1050179,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1050179,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1050180,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74855,
+                    "firstName": "Emma",
+                    "lastName": "Cook",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:11:42.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74857,
+                    "firstName": "Jacqueline",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75880,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:12:34.000Z",
+                    "school": {
+                      "name": "West Linn",
+                      "logo": "school_75880.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103848,
+      "title": "OC vs LO at OC",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75437,
+        "firstName": "Chelsea",
+        "lastName": "Frankovich",
+        "genderId": 2,
+        "email": "crfrankovich@hotmail.com",
+        "phone": "(503) 706-8802",
+        "school": {
+          "name": "OREGON CITY SENIOR HIGH SCHOOL",
+          "logo": null
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75437,
+            "name": "OREGON CITY SENIOR HIGH SCHOOL",
+            "logo": null,
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1042605": 6,
+                "1042606": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042605": 6,
+                "1042606": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521304,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1042606,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042605,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80619,
+                    "firstName": "Lena",
+                    "lastName": "Jenkins",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:58:14.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042606,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042611": 6,
+                "1042612": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042611": 6,
+                "1042612": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521307,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1042612,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042611,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80613,
+                    "firstName": "Caroline",
+                    "lastName": "Benson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:56:51.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042612,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042619": 6,
+                "1042620": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042619": 6,
+                "1042620": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521311,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1042620,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042619,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80612,
+                    "firstName": "Norah",
+                    "lastName": "Beck",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:56:38.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042620,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1042627": 6,
+                "1042628": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042627": 6,
+                "1042628": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521315,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042628,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042627,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80611,
+                    "firstName": "Abby",
+                    "lastName": "Bareksten",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:56:18.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80618,
+                    "firstName": "Maddie",
+                    "lastName": "Gjovik",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:58:04.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042628,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042629": 6,
+                "1042630": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042629": 6,
+                "1042630": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521316,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042630,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042629,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80614,
+                    "firstName": "Liz",
+                    "lastName": "Bown",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:57:04.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80616,
+                    "firstName": "Katie",
+                    "lastName": "Clevenger",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:57:34.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042630,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042631": 6,
+                "1042632": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1042631": 6,
+                "1042632": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 521317,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042632,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042631,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80615,
+                    "firstName": "Hailey ",
+                    "lastName": "Charriere",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:57:18.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80624,
+                    "firstName": "Sydney",
+                    "lastName": "Gilmore",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75437,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:59:39.000Z",
+                    "school": {
+                      "name": "OREGON CITY SENIOR HIGH SCHOOL",
+                      "logo": null
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042632,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80742,
+                    "firstName": "Sophia",
+                    "lastName": "Parks",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80747,
+                    "firstName": "Claire",
+                    "lastName": "Rudinsky",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:39.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103526,
+      "title": "LOHS vs Lakeridge",
+      "meetDateTime": "2021-04-23T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1037579": 6,
+                "1037580": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037579": 6,
+                "1037580": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518791,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037579,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037579,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037580,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79565,
+                    "firstName": "Reese",
+                    "lastName": "Fitkin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037583": 6,
+                "1037584": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037583": 6,
+                "1037584": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518793,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037583,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037583,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037584,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79575,
+                    "firstName": "Taylor",
+                    "lastName": "Wright",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037587": 6,
+                "1037588": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037587": 7,
+                "1037588": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518795,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1037587,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037587,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037588,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79566,
+                    "firstName": "Natalie",
+                    "lastName": "Gentry",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1037601": 4,
+                "1037602": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037601": 4,
+                "1037602": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518802,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037602,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037601,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037602,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79558,
+                    "firstName": "Sophie",
+                    "lastName": "Lowy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T05:20:45.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79559,
+                    "firstName": "Catharine",
+                    "lastName": "Agan",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037607": 6,
+                "1037608": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037607": 4,
+                "1037608": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1037607": 10,
+                "1037608": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 518805,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037607,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037607,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037608,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79567,
+                    "firstName": "mayah",
+                    "lastName": "greenfield",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79569,
+                    "firstName": "Lulu ",
+                    "lastName": "O'toole",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1037625": 2,
+                "1037626": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1037625": 6,
+                "1037626": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1037625": 6,
+                "1037626": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 518814,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1037626,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1037625,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80747,
+                    "firstName": "Claire",
+                    "lastName": "Rudinsky",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:39.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1037626,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79571,
+                    "firstName": "Keely",
+                    "lastName": "Lipp",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T05:28:38.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79572,
+                    "firstName": "Payton",
+                    "lastName": "Moffenbeier",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T05:28:48.000Z",
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103041,
+      "title": "Lake Oswego HS vs Tigard HS",
+      "meetDateTime": "2021-04-21T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75236,
+        "firstName": "Sherri",
+        "lastName": "Sacconaghi",
+        "genderId": 2,
+        "email": "bakersac@comcast.net",
+        "phone": "(503) 621-7549",
+        "school": {
+          "name": "Lake Oswego",
+          "logo": "school_75236.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75848,
+            "name": "Tigard",
+            "logo": "school_75848.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1028983": 6,
+                "1028984": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028983": 6,
+                "1028984": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1028983": 10,
+                "1028984": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 514493,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1028983,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028983,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80740,
+                    "firstName": "Mariam",
+                    "lastName": "Nechiporuk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:36.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028984,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74721,
+                    "firstName": "Sydney",
+                    "lastName": "Board",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T22:34:26.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1028985": 6,
+                "1028986": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028985": 6,
+                "1028986": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 514494,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1028985,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028985,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028986,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79091,
+                    "firstName": "Alyssa",
+                    "lastName": "Thoren",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:00:43.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1028987": 7,
+                "1028988": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028987": 6,
+                "1028988": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 514495,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1028987,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028987,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80750,
+                    "firstName": "Anna",
+                    "lastName": "Wallin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:35.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028988,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79075,
+                    "firstName": "Haley",
+                    "lastName": "Cabrera",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T14:55:49.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1028991": 6,
+                "1028992": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028991": 6,
+                "1028992": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 514497,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1028991,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028991,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028992,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74713,
+                    "firstName": "Abigail",
+                    "lastName": "Gilliat",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:34:14.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74720,
+                    "firstName": "Emily",
+                    "lastName": "Sverdrup",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:35:21.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1028993": 6,
+                "1028994": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028993": 6,
+                "1028994": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 514498,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1028993,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028993,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028994,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74717,
+                    "firstName": "Kennedy",
+                    "lastName": "Peery",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:34:51.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79078,
+                    "firstName": "Sophia",
+                    "lastName": "Freebury",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T14:56:36.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1028995": 6,
+                "1028996": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1028995": 4,
+                "1028996": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1028995": 10,
+                "1028996": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 514499,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1028995,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1028995,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1028996,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74719,
+                    "firstName": "Katelyn",
+                    "lastName": "Schaures",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T23:35:11.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79094,
+                    "firstName": "Alexa",
+                    "lastName": "vanderSommen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75848,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:01:14.000Z",
+                    "school": {
+                      "name": "Tigard",
+                      "logo": "school_75848.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102318,
+      "title": "Lake Oswego High School vs St. Mary's Academy",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124877,
+        "firstName": "Michael",
+        "lastName": "Navarro",
+        "genderId": 2,
+        "email": "michael.navarro@smapdx.org",
+        "phone": "(503) 422-5555",
+        "school": {
+          "name": "St Marys Academy",
+          "logo": "school_124877.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75236,
+            "name": "Lake Oswego",
+            "logo": "school_75236.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124877,
+            "name": "St Marys Academy",
+            "logo": "school_124877.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1020671": 1,
+                "1020672": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020671": 1,
+                "1020672": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510337,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1020672,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020671,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83688,
+                    "firstName": "Gracie",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T19:48:40.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020672,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80744,
+                    "firstName": "Rebecca",
+                    "lastName": "Prassas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:12.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020675": 0,
+                "1020676": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020675": 1,
+                "1020676": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510339,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1020676,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020675,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83703,
+                    "firstName": "Shauna",
+                    "lastName": "Sundberg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:56:01.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020676,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80729,
+                    "firstName": "Ella",
+                    "lastName": "Eames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-15T03:58:06.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020677": 1,
+                "1020678": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020677": 0,
+                "1020678": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510340,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1020678,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020677,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83700,
+                    "firstName": "Mary",
+                    "lastName": "Lazaris",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020678,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80736,
+                    "firstName": "Emma",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:07.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1020685": 6,
+                "1020686": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020685": 7,
+                "1020686": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510344,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1020685,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020685,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83701,
+                    "firstName": "Olivia",
+                    "lastName": "Kuchela",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:54:53.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83706,
+                    "firstName": "Vy",
+                    "lastName": "Lam",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:57:37.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020686,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80727,
+                    "firstName": "Emma",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:39:49.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80751,
+                    "firstName": "Julia",
+                    "lastName": "Yazhari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:43:46.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020689": 3,
+                "1020690": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020689": 4,
+                "1020690": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510346,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1020690,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020689,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83574,
+                    "firstName": "Ally",
+                    "lastName": "Plombon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T01:00:50.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83697,
+                    "firstName": "Lilya",
+                    "lastName": "Sivertsen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:43:02.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020690,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80731,
+                    "firstName": "Ava",
+                    "lastName": "Kitchin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:21.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80738,
+                    "firstName": "Rian",
+                    "lastName": "Murphy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:41:19.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1020707": 3,
+                "1020708": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1020707": 4,
+                "1020708": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510355,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1020708,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1020707,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83698,
+                    "firstName": "Lucie",
+                    "lastName": "Jain",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:45:44.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83702,
+                    "firstName": "Ruby",
+                    "lastName": "Ecker",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124877,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-18T14:55:21.000Z",
+                    "school": {
+                      "name": "St Marys Academy",
+                      "logo": "school_124877.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1020708,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80732,
+                    "firstName": "Cyndee",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:40:30.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80745,
+                    "firstName": "Serena",
+                    "lastName": "Rothman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75236,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T13:42:24.000Z",
+                    "school": {
+                      "name": "Lake Oswego",
+                      "logo": "school_75236.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

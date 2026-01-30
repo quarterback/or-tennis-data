@@ -1,0 +1,4336 @@
+{
+  "school": {
+    "id": 75097,
+    "name": "Grants Pass",
+    "address": "830 NE 9TH ST",
+    "zipCode": "97526",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75097.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:14:07.000Z",
+    "deletedAt": null,
+    "cityId": 7267,
+    "city": {
+      "id": 7267,
+      "name": "Grants pass",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2859,
+      "firstName": "Todd",
+      "lastName": "Neville",
+      "address": "950 NE Cedar Fall Lane",
+      "phone": "(541) 647-7506",
+      "email": "tluvneville@gmail.com",
+      "division": "6A",
+      "schoolId": 75097,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 9,
+    "loss": 0,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107733,
+      "title": "match vs Roseburd",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1102411": 6,
+                "1102412": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102411": 1,
+                "1102412": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551207,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": "Retired",
+            "winnerTeamId": 1102412,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102411,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102412,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102415": 6,
+                "1102416": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102415": 6,
+                "1102416": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551209,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102415,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102415,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102416,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102417": 6,
+                "1102418": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102417": 6,
+                "1102418": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551210,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102417,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102417,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102418,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81162,
+                    "firstName": "Nicholas",
+                    "lastName": "Brown",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:28.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1102429": 6,
+                "1102430": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102429": 6,
+                "1102430": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551216,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102429,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102429,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102430,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102433": 6,
+                "1102434": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102433": 6,
+                "1102434": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551218,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102433,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102433,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102434,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102435": 6,
+                "1102436": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102435": 4,
+                "1102436": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1102435": 10,
+                "1102436": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 551219,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102435,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102435,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102436,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107518,
+      "title": "match vs N Medford",
+      "meetDateTime": "2021-05-11T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1098871": 8,
+                "1098872": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549437,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098871,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098871,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098872,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098873": 8,
+                "1098874": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549438,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098873,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80875,
+                    "firstName": "Jacob",
+                    "lastName": "Pirosco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:47.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098874,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098875": 8,
+                "1098876": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549439,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098875,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098875,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098876,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1098879": 8,
+                "1098880": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549441,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098879,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098879,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098880,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098881": 8,
+                "1098882": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549442,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098881,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098881,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098882,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105846,
+      "title": "Match vs Ashland",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1073821": 6,
+                "1073822": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073821": 6,
+                "1073822": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536912,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073821,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073821,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073822,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 87508,
+                    "firstName": "Simon",
+                    "lastName": "Cropper",
+                    "grade": "9",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073827": 6,
+                "1073828": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073827": 6,
+                "1073828": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536915,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073827,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073827,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073828,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85664,
+                    "firstName": "Charlie ",
+                    "lastName": "Dyson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073833": 6,
+                "1073834": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073833": 6,
+                "1073834": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536918,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073833,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073833,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073834,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84697,
+                    "firstName": "Wyatt",
+                    "lastName": "Roscher",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1073843": 3,
+                "1073844": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073843": 3,
+                "1073844": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536923,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073844,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073843,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073844,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84694,
+                    "firstName": "Mina",
+                    "lastName": "Schepmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-12T23:11:52.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84695,
+                    "firstName": "Ian ",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T20:05:53.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105506,
+      "title": "Match vs South Medford",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1069083": 6,
+                "1069084": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069083": 6,
+                "1069084": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534543,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069083,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069083,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069084,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85330,
+                    "firstName": "Stephen",
+                    "lastName": "Wisnovsky",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T04:34:08.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069085": 0,
+                "1069086": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069085": 1,
+                "1069086": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534544,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069086,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069085,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069086,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82094,
+                    "firstName": "Andrean",
+                    "lastName": "Gurov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:27:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069089": 6,
+                "1069090": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069089": 6,
+                "1069090": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534546,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069089,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069089,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069090,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85328,
+                    "firstName": "Jaden",
+                    "lastName": "Krupp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T04:31:56.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1069097": 6,
+                "1069098": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069097": 3,
+                "1069098": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1069097": 12,
+                "1069098": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 534550,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069097,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069097,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069098,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82097,
+                    "firstName": "Elijah",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:28:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82102,
+                    "firstName": "Samuel",
+                    "lastName": "Sykes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:31:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069101": 6,
+                "1069102": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069101": 6,
+                "1069102": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1069101": 10,
+                "1069102": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 534552,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069101,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069101,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069102,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82090,
+                    "firstName": "Hayden",
+                    "lastName": "Allen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-28T02:00:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82105,
+                    "firstName": "Diego",
+                    "lastName": "Bencomo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:33:05.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104548,
+      "title": "Roseburg Vs Grants Pass 4/29",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053517": 6,
+                "1053518": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053517": 6,
+                "1053518": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526760,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053517,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053517,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053518,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053519": 2,
+                "1053520": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053519": 4,
+                "1053520": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526761,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053520,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053519,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053520,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053521": 10,
+                "1053522": 8,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1053521": 6,
+                "1053522": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053521": 6,
+                "1053522": 7,
+                "number": 2,
+                "tie": 5
+              }
+            ],
+            "id": 526762,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053521,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053522,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053529": 2,
+                "1053530": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053529": 4,
+                "1053530": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526766,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053530,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053529,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053530,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053531": 2,
+                "1053532": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053531": 3,
+                "1053532": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526767,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053532,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053531,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053532,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80875,
+                    "firstName": "Jacob",
+                    "lastName": "Pirosco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:47.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053535": 3,
+                "1053536": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053535": 6,
+                "1053536": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053535": 12,
+                "1053536": 14,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526769,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053536,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053535,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053536,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103865,
+      "title": "Match at N Medford",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1054281": 8,
+                "1054282": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527142,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054281,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054281,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054282,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054283": 8,
+                "1054284": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527143,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054283,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054283,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054284,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054285": 8,
+                "1054286": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527144,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054285,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054285,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054286,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1054289": 8,
+                "1054290": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527146,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054290,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054291": 8,
+                "1054292": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527147,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054291,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054291,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054292,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102878,
+      "title": "Grants Pass at Ashland",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1026911": 8,
+                "1026912": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513457,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026911,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026911,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026912,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84694,
+                    "firstName": "Mina",
+                    "lastName": "Schepmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-12T23:11:52.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026915": 8,
+                "1026916": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513459,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026915,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026915,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026916,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84695,
+                    "firstName": "Ian ",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T20:05:53.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026917": 8,
+                "1026918": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513460,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1026917,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026917,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026918,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84696,
+                    "firstName": "Liam",
+                    "lastName": "Hokama",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1026927": 9,
+                "1026928": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513465,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1026927,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026927,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026928,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84694,
+                    "firstName": "Mina",
+                    "lastName": "Schepmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-12T23:11:52.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84695,
+                    "firstName": "Ian ",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T20:05:53.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1026929": 8,
+                "1026930": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 513466,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1026929,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1026929,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1026930,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84696,
+                    "firstName": "Liam",
+                    "lastName": "Hokama",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84697,
+                    "firstName": "Wyatt",
+                    "lastName": "Roscher",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101923,
+      "title": "Grants Pass at South Medford",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1016453": 6,
+                "1016454": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1016453": 6,
+                "1016454": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 508228,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1016453,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1016453,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1016454,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82094,
+                    "firstName": "Andrean",
+                    "lastName": "Gurov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:27:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1016455": 6,
+                "1016456": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1016455": 6,
+                "1016456": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 508229,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1016455,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1016455,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1016456,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82090,
+                    "firstName": "Hayden",
+                    "lastName": "Allen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-28T02:00:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1016457": 6,
+                "1016458": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1016457": 6,
+                "1016458": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 508230,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1016457,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1016457,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1016458,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82095,
+                    "firstName": "Andrew",
+                    "lastName": "Oppermann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:28:04.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1016461": 6,
+                "1016462": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1016461": 6,
+                "1016462": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 508232,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1016461,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1016461,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1016462,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82097,
+                    "firstName": "Elijah",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:28:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82102,
+                    "firstName": "Samuel",
+                    "lastName": "Sykes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:31:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101630,
+      "title": "Roseburg High School Vs Grants Pass High Boys Tennis",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1010259": 2,
+                "1010260": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010259": 0,
+                "1010260": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505131,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010260,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010259,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010260,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010261": 2,
+                "1010262": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010261": 3,
+                "1010262": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505132,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010262,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010261,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010262,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010265": 6,
+                "1010266": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010265": 5,
+                "1010266": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505134,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010266,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010265,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010266,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1010283": 1,
+                "1010284": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010283": 3,
+                "1010284": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505143,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010284,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010283,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010284,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010293": 1,
+                "1010294": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010293": 2,
+                "1010294": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505148,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010294,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010293,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010294,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010307": 6,
+                "1010308": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010307": 7,
+                "1010308": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1010307": 10,
+                "1010308": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 505155,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010307,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010307,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010308,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80872,
+                    "firstName": "Ethan",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:58.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

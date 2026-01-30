@@ -1,0 +1,5625 @@
+{
+  "school": {
+    "id": 75033,
+    "name": "South Eugene",
+    "address": "400 E 19TH AVE",
+    "zipCode": "97401",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75033.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:57:22.000Z",
+    "deletedAt": null,
+    "cityId": 5798,
+    "city": {
+      "id": 5798,
+      "name": "Eugene",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2900,
+      "firstName": "Byron",
+      "lastName": "Gold",
+      "address": "225 E 39th Ave",
+      "phone": "(541) 912-7513",
+      "email": "gold_b@4j.lane.edu",
+      "division": "6A",
+      "schoolId": 75033,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 8,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107374,
+      "title": "South Eugene vs North Eugene",
+      "meetDateTime": "2021-05-13T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75034,
+            "name": "Churchill",
+            "logo": "school_75034.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1098501": 6,
+                "1098502": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098501": 6,
+                "1098502": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549252,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098501,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098501,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81124,
+                    "firstName": "Barry ",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:41.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098502,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74950,
+                    "firstName": "Carsen",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:03.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098509": 6,
+                "1098510": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098509": 6,
+                "1098510": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549256,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098509,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098509,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098510,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80149,
+                    "firstName": "Nate",
+                    "lastName": "Blythe",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098515": 7,
+                "1098516": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098515": 6,
+                "1098516": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549259,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098515,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098515,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098516,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74952,
+                    "firstName": "Aaron",
+                    "lastName": "Rezaee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:28:00.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1098525": 6,
+                "1098526": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098525": 6,
+                "1098526": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549264,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098525,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098525,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098526,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74955,
+                    "firstName": "Brayden",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80212,
+                    "firstName": "Jordan",
+                    "lastName": "Dillon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098543": 6,
+                "1098544": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098543": 6,
+                "1098544": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549273,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098543,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098543,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098544,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74955,
+                    "firstName": "Brayden",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80212,
+                    "firstName": "Jordan",
+                    "lastName": "Dillon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098553": 6,
+                "1098554": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1098553": 6,
+                "1098554": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 549278,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098553,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098553,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098554,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74947,
+                    "firstName": "Kai",
+                    "lastName": "Hutson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:25:31.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74954,
+                    "firstName": "Sho-un",
+                    "lastName": "Tanaka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T04:08:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106990,
+      "title": "Thurston vs. South Eugene",
+      "meetDateTime": "2021-05-11T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75808,
+        "firstName": "John",
+        "lastName": "Lovdokken",
+        "genderId": 1,
+        "email": "john.lovdokken@springfield.k12.or.us",
+        "phone": "(541) 520-4012",
+        "school": {
+          "name": "Thurston",
+          "logo": "school_75808.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1090747": 0,
+                "1090748": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090747": 0,
+                "1090748": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545375,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090748,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090747,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82421,
+                    "firstName": "Easton",
+                    "lastName": "Roberson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:40.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090748,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090749": 1,
+                "1090750": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090749": 0,
+                "1090750": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545376,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090750,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090749,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090750,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090751": 0,
+                "1090752": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090751": 0,
+                "1090752": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545377,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090752,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090751,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090752,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1090757": 0,
+                "1090758": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090757": 4,
+                "1090758": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545380,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090758,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090757,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090758,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090759": 0,
+                "1090760": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090759": 0,
+                "1090760": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545381,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090760,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090759,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82409,
+                    "firstName": "Jack",
+                    "lastName": "Burrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090760,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090761": 2,
+                "1090762": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090761": 1,
+                "1090762": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545382,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090762,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090761,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82416,
+                    "firstName": "James",
+                    "lastName": "Lovdokken",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:51.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090762,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81139,
+                    "firstName": "Michael",
+                    "lastName": "Ahn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:51:45.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106074,
+      "title": "South Eugene High School vs Marist High School",
+      "meetDateTime": "2021-05-07T10:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124728,
+            "name": "Marist Catholic",
+            "logo": "school_124728.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076797": 0,
+                "1076798": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076797": 1,
+                "1076798": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538400,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076798,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076797,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81124,
+                    "firstName": "Barry ",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:41.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076798,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82504,
+                    "firstName": "Jackson ",
+                    "lastName": "Whittaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:08.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076799": 2,
+                "1076800": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076799": 2,
+                "1076800": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538401,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076800,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076799,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076800,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82509,
+                    "firstName": "Lucas",
+                    "lastName": "Franssen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:21.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076801": 6,
+                "1076802": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076801": 3,
+                "1076802": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1076801": 4,
+                "1076802": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 538402,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076802,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076801,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076802,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82513,
+                    "firstName": "Kai",
+                    "lastName": "Villano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:01.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076805": 6,
+                "1076806": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076805": 3,
+                "1076806": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538404,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076806,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076805,
+                "isWinner": false,
+                "players": []
+              },
+              {
+                "id": 1076806,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82505,
+                    "firstName": "Sam ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82506,
+                    "firstName": "Luke ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:53.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076807": 1,
+                "1076808": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1076807": 1,
+                "1076808": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538405,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076808,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076807,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076808,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82514,
+                    "firstName": "Jack",
+                    "lastName": "Kiefer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:10.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82516,
+                    "firstName": "Peyton",
+                    "lastName": "Tyner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:32.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076809": 3,
+                "1076810": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076809": 4,
+                "1076810": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538406,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076810,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076809,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076810,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74865,
+                    "firstName": "Joseph",
+                    "lastName": "Laing",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:48:31.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82507,
+                    "firstName": "Ethan",
+                    "lastName": "Cross",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:00.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105127,
+      "title": "SEHS vs Willamette High",
+      "meetDateTime": "2021-05-04T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 10,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74829,
+            "name": "Willamette",
+            "logo": "school_74829.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066773": 6,
+                "1066774": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066773": 6,
+                "1066774": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533388,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066773,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066773,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066774,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84579,
+                    "firstName": "Mathew",
+                    "lastName": "Belknap",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T22:03:01.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066781": 6,
+                "1066782": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066781": 6,
+                "1066782": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533392,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066781,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066781,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066782,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84580,
+                    "firstName": "Jody",
+                    "lastName": "Vargus Romero",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066783": 6,
+                "1066784": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066783": 6,
+                "1066784": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533393,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066783,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066783,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066784,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80669,
+                    "firstName": "Alexander",
+                    "lastName": "Willoughby",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066787": 6,
+                "1066788": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066787": 6,
+                "1066788": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533395,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066787,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066787,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066788,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80665,
+                    "firstName": "Orion",
+                    "lastName": "Tate",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80666,
+                    "firstName": "Connor",
+                    "lastName": "Beauchamp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:19:05.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066791": 6,
+                "1066792": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066791": 6,
+                "1066792": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533397,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066791,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066791,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066792,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80667,
+                    "firstName": "Gabriel",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T20:17:22.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80668,
+                    "firstName": "Ethan ",
+                    "lastName": "Ares",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T05:22:37.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066799": null,
+                "1066800": null,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1066799": 8,
+                "1066800": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533401,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066799,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066799,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81135,
+                    "firstName": "Benjamin",
+                    "lastName": "Butler",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-13T06:30:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81137,
+                    "firstName": "Alejandro",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:51:08.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066800,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80669,
+                    "firstName": "Alexander",
+                    "lastName": "Willoughby",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84580,
+                    "firstName": "Jody",
+                    "lastName": "Vargus Romero",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74829,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Willamette",
+                      "logo": "school_74829.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104544,
+      "title": "Sheldon vs South Eugene",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75032,
+        "firstName": "Weston",
+        "lastName": "Hudson",
+        "genderId": 1,
+        "email": "westonhudson@gmail.com",
+        "phone": "(323) 253-0997",
+        "school": {
+          "name": "Sheldon",
+          "logo": "school_75032.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75032,
+            "name": "Sheldon",
+            "logo": "school_75032.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053363": 3,
+                "1053364": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053363": 7,
+                "1053364": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526683,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053364,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053363,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79637,
+                    "firstName": "Cam",
+                    "lastName": "Mirablie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:35.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053364,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81124,
+                    "firstName": "Barry ",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:41.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053375": 6,
+                "1053376": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053375": 1,
+                "1053376": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053375": 8,
+                "1053376": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526689,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053376,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053375,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79641,
+                    "firstName": "Aiden",
+                    "lastName": "Chance",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:01:14.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053376,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053381": 3,
+                "1053382": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053381": 2,
+                "1053382": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526692,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053382,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053381,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79636,
+                    "firstName": "Owen",
+                    "lastName": "Mau",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:11.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053382,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053399": 5,
+                "1053400": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053399": 5,
+                "1053400": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526701,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053400,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053399,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75073,
+                    "firstName": "Carter",
+                    "lastName": "Neuman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:57:44.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79657,
+                    "firstName": "Ben",
+                    "lastName": "Carter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:12:17.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053400,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053411": 6,
+                "1053412": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053411": 6,
+                "1053412": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526707,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053411,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053411,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79635,
+                    "firstName": "Zack",
+                    "lastName": "Cater",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:58:47.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79638,
+                    "firstName": "Nate",
+                    "lastName": "Kokkel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:59:59.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053412,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053417": 6,
+                "1053418": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053417": 1,
+                "1053418": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526710,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053418,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053417,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75072,
+                    "firstName": "Shane",
+                    "lastName": "Schwake",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:57:37.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75076,
+                    "firstName": "Cash",
+                    "lastName": "Daughters",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75032,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Sheldon",
+                      "logo": "school_75032.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053418,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104107,
+      "title": "Creswell vs. South Eugene",
+      "meetDateTime": "2021-04-27T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74934,
+        "firstName": "Amanda",
+        "lastName": "Lewis ",
+        "genderId": 1,
+        "email": "alewis@creswell.k12.or.us",
+        "phone": "(541) 895-6025",
+        "school": {
+          "name": "Creswell",
+          "logo": "school_74934.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74934,
+            "name": "Creswell",
+            "logo": "school_74934.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1046687": 7,
+                "1046688": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046687": 7,
+                "1046688": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523345,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046688,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046687,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85089,
+                    "firstName": "Chance",
+                    "lastName": "Leach",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:04:36.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046688,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046689": 6,
+                "1046690": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046689": 6,
+                "1046690": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523346,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046690,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046689,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85092,
+                    "firstName": "Ben",
+                    "lastName": "Rodrigues",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:10.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046690,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046691": 6,
+                "1046692": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046691": 6,
+                "1046692": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523347,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046692,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046691,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85098,
+                    "firstName": "Evan",
+                    "lastName": "Stephens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:07:01.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046692,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1046701": 4,
+                "1046702": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046701": 2,
+                "1046702": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523352,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046702,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046701,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85089,
+                    "firstName": "Chance",
+                    "lastName": "Leach",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:04:36.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85098,
+                    "firstName": "Evan",
+                    "lastName": "Stephens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:07:01.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046702,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046703": 6,
+                "1046704": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046703": 6,
+                "1046704": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523353,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046704,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046703,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85094,
+                    "firstName": "Noah",
+                    "lastName": "Lemay",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:21.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85095,
+                    "firstName": "Cayle",
+                    "lastName": "Walker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:30.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046704,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046707": 6,
+                "1046708": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046707": 6,
+                "1046708": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523355,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046707,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046707,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85092,
+                    "firstName": "Ben",
+                    "lastName": "Rodrigues",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:10.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85096,
+                    "firstName": "Andrew",
+                    "lastName": "Smathers",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74934,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:06:37.000Z",
+                    "school": {
+                      "name": "Creswell",
+                      "logo": "school_74934.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046708,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81137,
+                    "firstName": "Alejandro",
+                    "lastName": "McClain",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:51:08.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81141,
+                    "firstName": "Brandon",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:52:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103116,
+      "title": "South Eugene vs. Marist",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124728,
+        "firstName": "Alex",
+        "lastName": "Korth",
+        "genderId": 1,
+        "email": "akorth34@gmail.com",
+        "phone": "(541) 743-6880",
+        "school": {
+          "name": "Marist Catholic",
+          "logo": "school_124728.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124728,
+            "name": "Marist Catholic",
+            "logo": "school_124728.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034143": 6,
+                "1034144": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034143": 6,
+                "1034144": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517073,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034143,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034143,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82504,
+                    "firstName": "Jackson ",
+                    "lastName": "Whittaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:08.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034144,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81124,
+                    "firstName": "Barry ",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:41.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034147": 6,
+                "1034148": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034147": 6,
+                "1034148": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517075,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034147,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034147,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82509,
+                    "firstName": "Lucas",
+                    "lastName": "Franssen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:21.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034148,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034149": 6,
+                "1034150": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034149": 6,
+                "1034150": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517076,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034149,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034149,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82513,
+                    "firstName": "Kai",
+                    "lastName": "Villano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:01.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034150,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034153": 6,
+                "1034154": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034153": 6,
+                "1034154": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517078,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034153,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034153,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82514,
+                    "firstName": "Jack",
+                    "lastName": "Kiefer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:10.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82516,
+                    "firstName": "Peyton",
+                    "lastName": "Tyner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:32.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034154,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034155": 6,
+                "1034156": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034155": 6,
+                "1034156": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517079,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034155,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034155,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82505,
+                    "firstName": "Sam ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82506,
+                    "firstName": "Luke ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:53.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034156,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034157": 6,
+                "1034158": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034157": 6,
+                "1034158": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517080,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034157,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034157,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74865,
+                    "firstName": "Joseph",
+                    "lastName": "Laing",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:48:31.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82507,
+                    "firstName": "Ethan",
+                    "lastName": "Cross",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:00.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034158,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102651,
+      "title": "South Eugene North Eugene",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75031,
+            "name": "North Eugene",
+            "logo": "school_75031.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1023369": 6,
+                "1023370": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1023369": 6,
+                "1023370": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 511686,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1023369,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1023369,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1023370,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1023371": 6,
+                "1023372": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1023371": 6,
+                "1023372": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 511687,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1023371,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1023371,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1023372,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025301": 6,
+                "1025302": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025301": 6,
+                "1025302": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512652,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025301,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025301,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025302,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1025293": 6,
+                "1025294": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025293": 6,
+                "1025294": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512648,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025293,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025293,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025294,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025295": 6,
+                "1025296": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025295": 6,
+                "1025296": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512649,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025295,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025295,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025296,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025297": 6,
+                "1025298": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025297": 6,
+                "1025298": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512650,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025297,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025297,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025298,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101801,
+      "title": "South Eugene vs Thurston, at SEHS April 15",
+      "meetDateTime": "2021-04-15T22:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75033,
+        "firstName": "Byron",
+        "lastName": "Gold",
+        "genderId": 1,
+        "email": "gold_b@4j.lane.edu",
+        "phone": "(541) 912-7513",
+        "school": {
+          "name": "South Eugene",
+          "logo": "school_75033.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75808,
+            "name": "Thurston",
+            "logo": "school_75808.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013703": 6,
+                "1013704": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013703": 6,
+                "1013704": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 506853,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013703,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013703,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013704,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82412,
+                    "firstName": "Carter",
+                    "lastName": "Hampton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82579,
+                    "firstName": "Wyatt",
+                    "lastName": "Tiller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:16:58.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013705": 6,
+                "1013706": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013705": 6,
+                "1013706": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 506854,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013705,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013705,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013706,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82413,
+                    "firstName": "Cameron",
+                    "lastName": "Herrick",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:38:33.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82417,
+                    "firstName": "Connor",
+                    "lastName": "Marchant",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:37.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013709": 6,
+                "1013710": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013709": null,
+                "1013710": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013709": 6,
+                "1013710": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506856,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013709,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013709,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81135,
+                    "firstName": "Benjamin",
+                    "lastName": "Butler",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-05-13T06:30:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81136,
+                    "firstName": "Timothy",
+                    "lastName": "Cho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013710,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1014845": 6,
+                "1014846": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014845": 6,
+                "1014846": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507424,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014845,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014845,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014846,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82404,
+                    "firstName": "Daniel",
+                    "lastName": "Bevans",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:20.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1014847": 6,
+                "1014848": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014847": 6,
+                "1014848": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507425,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014847,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014847,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81127,
+                    "firstName": "Ryman",
+                    "lastName": "Yang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014848,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82424,
+                    "firstName": "Jensen",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-10T20:42:43.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1014849": 6,
+                "1014850": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1014849": 6,
+                "1014850": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507426,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1014849,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1014849,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1014850,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82422,
+                    "firstName": "Nyole",
+                    "lastName": "Stack",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75808,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:39:52.000Z",
+                    "school": {
+                      "name": "Thurston",
+                      "logo": "school_75808.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101394,
+      "title": "CHS vs South Eugene (Home)",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75034,
+        "firstName": "Matthaeyus ",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "Rock2casbah@yahoo.com",
+        "phone": "(541) 513-8338",
+        "school": {
+          "name": "Churchill",
+          "logo": "school_75034.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75033,
+            "name": "South Eugene",
+            "logo": "school_75033.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75034,
+            "name": "Churchill",
+            "logo": "school_75034.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1009265": 7,
+                "1009266": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009265": 3,
+                "1009266": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1009265": 10,
+                "1009266": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 504634,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009265,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009265,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74950,
+                    "firstName": "Carsen",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:03.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009266,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81124,
+                    "firstName": "Barry ",
+                    "lastName": "Liu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:41.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009267": 2,
+                "1009268": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009267": 4,
+                "1009268": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1009267": null,
+                "1009268": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 504635,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009268,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009267,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80149,
+                    "firstName": "Nate",
+                    "lastName": "Blythe",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009268,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81125,
+                    "firstName": "William",
+                    "lastName": "Doer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:46:58.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009269": 3,
+                "1009270": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009269": null,
+                "1009270": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1009269": 2,
+                "1009270": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504636,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009270,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009269,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74952,
+                    "firstName": "Aaron",
+                    "lastName": "Rezaee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:28:00.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009270,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81126,
+                    "firstName": "Arvind",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:21.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1009273": 1,
+                "1009274": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009273": 0,
+                "1009274": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1009273": null,
+                "1009274": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 504638,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009274,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009273,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74955,
+                    "firstName": "Brayden",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80212,
+                    "firstName": "Jordan",
+                    "lastName": "Dillon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009274,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81128,
+                    "firstName": "Victor",
+                    "lastName": "Dossin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:47:52.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81129,
+                    "firstName": "Jalen",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:33:30.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009275": 2,
+                "1009276": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009275": 3,
+                "1009276": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504639,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009276,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009275,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74948,
+                    "firstName": "Grayson",
+                    "lastName": "Kassube",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:25:59.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74949,
+                    "firstName": "Bennett",
+                    "lastName": "Krupka",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:26:33.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009276,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81130,
+                    "firstName": "Naren",
+                    "lastName": "Mahadevan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-14T06:34:25.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81131,
+                    "firstName": "Kaellan",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009277": 0,
+                "1009278": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009277": null,
+                "1009278": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1009277": 0,
+                "1009278": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504640,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009278,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009277,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74947,
+                    "firstName": "Kai",
+                    "lastName": "Hutson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:25:31.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74951,
+                    "firstName": "Jacob",
+                    "lastName": "Montoya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75034,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-24T19:27:38.000Z",
+                    "school": {
+                      "name": "Churchill",
+                      "logo": "school_75034.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009278,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81132,
+                    "firstName": "Jakob",
+                    "lastName": "Rode",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-17T20:35:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81133,
+                    "firstName": "Elijah",
+                    "lastName": "McFarlane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75033,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T20:49:38.000Z",
+                    "school": {
+                      "name": "South Eugene",
+                      "logo": "school_75033.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

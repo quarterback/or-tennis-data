@@ -1,0 +1,2140 @@
+{
+  "school": {
+    "id": 75865,
+    "name": "Umatilla",
+    "address": "1400 7TH ST",
+    "zipCode": "97882",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75865.png",
+    "createdAt": "2020-02-11T06:38:50.000Z",
+    "updatedAt": "2026-01-15T16:07:20.000Z",
+    "deletedAt": null,
+    "cityId": 18518,
+    "city": {
+      "id": 18518,
+      "name": "Umatilla",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2719,
+      "firstName": "Maximo ",
+      "lastName": "Bedolla",
+      "address": "1400 7th St. Umatilla, OR 97882",
+      "phone": "(541) 701-8009",
+      "email": "bedollam@umatillasd.org",
+      "division": "3A",
+      "schoolId": 75865,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 6,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 105329,
+      "title": "Umatilla & Condon @ Arlington",
+      "meetDateTime": "2021-05-14T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1116561": 8,
+                "1116562": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 558282,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1116561,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1116561,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1116562,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1116565": 8,
+                "1116566": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 558284,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1116565,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1116565,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1116566,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78028,
+                    "firstName": "Cash",
+                    "lastName": "Helms",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:25.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107717,
+      "title": "Mac-Hi vs Umaillia",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75321,
+        "firstName": "Danny",
+        "lastName": "Sanchez",
+        "genderId": 1,
+        "email": "slimer_44@hotmail.com",
+        "phone": "(541) 861-9948",
+        "school": {
+          "name": "McLoughlin",
+          "logo": "school_75321.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75321,
+            "name": "McLoughlin",
+            "logo": "school_75321.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1102177": 8,
+                "1102178": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551090,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102177,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102177,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85294,
+                    "firstName": "Jaime ",
+                    "lastName": "Gomez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T01:38:11.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102178,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75763,
+                    "firstName": "Israel",
+                    "lastName": "De La Cerda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:13:47.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102183": 8,
+                "1102184": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551093,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102183,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102183,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80911,
+                    "firstName": "Rafael ",
+                    "lastName": "Pereyda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:54.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102184,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1102185": 8,
+                "1102186": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551094,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102185,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102185,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80909,
+                    "firstName": "Christopher",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:21.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80910,
+                    "firstName": "Rolando",
+                    "lastName": "Castillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:53:34.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102186,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75763,
+                    "firstName": "Israel",
+                    "lastName": "De La Cerda",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:13:47.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107821,
+      "title": "Riverside @ Umatilla",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75865,
+        "firstName": "Maximo ",
+        "lastName": "Bedolla",
+        "genderId": 1,
+        "email": "bedollam@umatillasd.org",
+        "phone": "(541) 701-8009",
+        "school": {
+          "name": "Umatilla",
+          "logo": "school_75865.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75339,
+            "name": "Riverside",
+            "logo": "school_75339.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1103721": 8,
+                "1103722": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551862,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1103722,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1103721,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1103722,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1103733": 8,
+                "1103734": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551868,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1103734,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1103733,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1103734,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86632,
+                    "firstName": "Adair",
+                    "lastName": "Rodriguez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-30T15:25:20.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1103735": 8,
+                "1103736": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 551869,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1103736,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1103735,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1103736,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81599,
+                    "firstName": "Humberto",
+                    "lastName": "Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:45.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81600,
+                    "firstName": "Jose",
+                    "lastName": "Napoles",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:51.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105364,
+      "title": "Weston McEwen vs. Umatilla at WM",
+      "meetDateTime": "2021-05-04T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy ",
+        "lastName": "Olson",
+        "genderId": 1,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-9375",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1069069": 8,
+                "1069070": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 534536,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069069,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069069,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069070,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069073": 8,
+                "1069074": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 534538,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069074,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069073,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069074,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104599,
+      "title": "Stanfield @Umatilla",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75865,
+        "firstName": "Maximo ",
+        "lastName": "Bedolla",
+        "genderId": 1,
+        "email": "bedollam@umatillasd.org",
+        "phone": "(541) 701-8009",
+        "school": {
+          "name": "Umatilla",
+          "logo": "school_75865.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1054419": 8,
+                "1054420": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527211,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054420,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054419,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054420,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103462,
+      "title": "Ione vs. Umatilla",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74665,
+        "firstName": "Maureen",
+        "lastName": "McElligott",
+        "genderId": 1,
+        "email": "maureenm@dcjllc.com",
+        "phone": "(541) 422-7131",
+        "school": {
+          "name": "Ione-Heppner",
+          "logo": "school_74665.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036379": 8,
+                "1036380": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518191,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036379,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036379,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81016,
+                    "firstName": "Jaiden",
+                    "lastName": "Ruloph",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:31:30.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036380,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036383": 8,
+                "1036384": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518193,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036383,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036383,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84987,
+                    "firstName": "Gary",
+                    "lastName": "Walls",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T04:09:46.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036384,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103101,
+      "title": "Riverside vs. Umatilla ",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75339,
+        "firstName": "Tyler",
+        "lastName": "Volpi",
+        "genderId": 1,
+        "email": "tyler.volpi@morrowsd.org",
+        "phone": "(850) 348-1304",
+        "school": {
+          "name": "Riverside",
+          "logo": "school_75339.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75339,
+            "name": "Riverside",
+            "logo": "school_75339.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1029925": 8,
+                "1029926": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 514964,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1029925,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1029925,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81598,
+                    "firstName": "Anthony",
+                    "lastName": "Standley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1029926,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1029929": 8,
+                "1029930": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 514966,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1029929,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1029929,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81599,
+                    "firstName": "Humberto",
+                    "lastName": "Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:23:45.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1029930,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102097,
+      "title": "Weston McEwen @ Umatilla",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75865,
+        "firstName": "Maximo ",
+        "lastName": "Bedolla",
+        "genderId": 1,
+        "email": "bedollam@umatillasd.org",
+        "phone": "(541) 701-8009",
+        "school": {
+          "name": "Umatilla",
+          "logo": "school_75865.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015899": 8,
+                "1015900": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507951,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015900,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015899,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75765,
+                    "firstName": "Ulises",
+                    "lastName": "Armenta",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-16T17:52:25.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015900,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80491,
+                    "firstName": "Lebraun ",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:20.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015901": 9,
+                "1015902": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507952,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015901,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015901,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75768,
+                    "firstName": "Chris",
+                    "lastName": "Self",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:17:42.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015902,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015905": 8,
+                "1015906": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507954,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015905,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015905,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015906,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80493,
+                    "firstName": "Isaac",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:03:26.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101753,
+      "title": "Umatilla @ Stanfield",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75825,
+        "firstName": "Rylie",
+        "lastName": "Smith",
+        "genderId": 1,
+        "email": "rylie.smith@stanfieldsd.org",
+        "phone": "(541) 720-8449",
+        "school": {
+          "name": "Stanfield",
+          "logo": "school_75825.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1011215": 2,
+                "1011216": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 505609,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011216,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011215,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81738,
+                    "firstName": "Dysen",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:28:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011216,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75765,
+                    "firstName": "Ulises",
+                    "lastName": "Armenta",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-16T17:52:25.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011217": 8,
+                "1011218": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 505610,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011217,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011217,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011218,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75766,
+                    "firstName": "Johan",
+                    "lastName": "Gonzalez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:16:16.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011219": 8,
+                "1011220": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 505611,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011219,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011219,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81740,
+                    "firstName": "Alexis",
+                    "lastName": "Carrillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011220,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1011221": 9,
+                "1011222": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 505612,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1011221,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011221,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81732,
+                    "firstName": "Uriel ",
+                    "lastName": "Carrillo ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:20:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81733,
+                    "firstName": "Ricky ",
+                    "lastName": "Carrillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:20:58.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011222,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75768,
+                    "firstName": "Chris",
+                    "lastName": "Self",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:17:42.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81690,
+                    "firstName": "Lynkin",
+                    "lastName": "McLeod",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:22:30.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011223": 8,
+                "1011224": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 505613,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1011223,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011223,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81734,
+                    "firstName": "Josue ",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:13.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81735,
+                    "firstName": "Enrique ",
+                    "lastName": "Arellano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011224,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75766,
+                    "firstName": "Johan",
+                    "lastName": "Gonzalez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:16:16.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
