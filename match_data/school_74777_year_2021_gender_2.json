@@ -1,0 +1,4032 @@
+{
+  "school": {
+    "id": 74777,
+    "name": "Sunset",
+    "address": "13840 NW CORNELL RD",
+    "zipCode": "97229",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74777.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T16:03:27.000Z",
+    "deletedAt": null,
+    "cityId": 14774,
+    "city": {
+      "id": 14774,
+      "name": "Portland",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2934,
+      "firstName": "Nathan",
+      "lastName": "Ramos",
+      "address": "13840 NW Cornell Rd. ",
+      "phone": "(415) 595-7345",
+      "email": "coachnathanramos@gmail.com",
+      "division": "6A",
+      "schoolId": 74777,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 3,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 106270,
+      "title": "Sunset v. Jesuit",
+      "meetDateTime": "2021-05-07T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74777,
+        "firstName": "Nathan",
+        "lastName": "Ramos",
+        "genderId": 2,
+        "email": "coachnathanramos@gmail.com",
+        "phone": "(415) 595-7345",
+        "school": {
+          "name": "Sunset",
+          "logo": "school_74777.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124879,
+            "name": "Jesuit ",
+            "logo": "school_124879.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1079669": 6,
+                "1079670": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079669": 6,
+                "1079670": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539836,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079669,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079669,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079670,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78677,
+                    "firstName": "Amreen",
+                    "lastName": "Sandhu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:09:03.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079671": 3,
+                "1079672": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079671": 3,
+                "1079672": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539837,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079672,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079671,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079672,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78688,
+                    "firstName": "Erika",
+                    "lastName": "Kobrinsky",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-08T21:00:51.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079673": 4,
+                "1079674": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079673": 3,
+                "1079674": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 539838,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1079674,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079673,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84469,
+                    "firstName": "Kathyrn",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:51.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079674,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78691,
+                    "firstName": "Ali",
+                    "lastName": "Mo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1079685": 5,
+                "1079686": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079685": 7,
+                "1079686": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079685": 10,
+                "1079686": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539844,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079685,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079685,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079686,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78680,
+                    "firstName": "Libby",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:09:44.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78683,
+                    "firstName": "Isabel ",
+                    "lastName": "Crespo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:15:34.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079699": 3,
+                "1079700": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079699": 6,
+                "1079700": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079699": 3,
+                "1079700": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539851,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079700,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079699,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84473,
+                    "firstName": "Katherine",
+                    "lastName": "Looi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T06:12:05.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079700,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78673,
+                    "firstName": "Camille ",
+                    "lastName": "Arnot",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:06:12.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78676,
+                    "firstName": "Emily",
+                    "lastName": "O'Connor",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:07:55.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1079733": 0,
+                "1079734": 63,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1079733": 6,
+                "1079734": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1079733": 6,
+                "1079734": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 539868,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1079734,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1079733,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84470,
+                    "firstName": "Parisa",
+                    "lastName": "Rouzpay",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1079734,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78675,
+                    "firstName": "Giselle ",
+                    "lastName": "Westerdahl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:07:42.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78687,
+                    "firstName": "Mimi ",
+                    "lastName": "Rawlinson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:17:32.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106088,
+      "title": "Westview vs. Sunset",
+      "meetDateTime": "2021-05-05T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74745,
+        "firstName": "JaReda ",
+        "lastName": "Webb",
+        "genderId": 2,
+        "email": "jaredaw@comcast.net",
+        "phone": "(503) 320-6604",
+        "school": {
+          "name": "Westview",
+          "logo": "school_74745.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74745,
+            "name": "Westview",
+            "logo": "school_74745.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1077005": 6,
+                "1077006": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077005": 6,
+                "1077006": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538504,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1077005,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077005,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79729,
+                    "firstName": "Neena",
+                    "lastName": "Feldman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:22:47.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077006,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077007": 6,
+                "1077008": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077007": 6,
+                "1077008": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538505,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1077007,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077007,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79733,
+                    "firstName": "Karolina",
+                    "lastName": "Dobiecka",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:08.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077008,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077009": 6,
+                "1077010": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077009": 6,
+                "1077010": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538506,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1077009,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077009,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79735,
+                    "firstName": "Riho",
+                    "lastName": "Iijimi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:36.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077010,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84469,
+                    "firstName": "Kathyrn",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:51.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1077023": 6,
+                "1077024": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077023": 7,
+                "1077024": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538513,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077023,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077023,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79720,
+                    "firstName": "Simrah",
+                    "lastName": "Bawa",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79725,
+                    "firstName": "Hasvi ",
+                    "lastName": "Patel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-13T20:27:11.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077024,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077029": 1,
+                "1077030": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077029": 2,
+                "1077030": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538516,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077030,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077029,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79734,
+                    "firstName": "Vita",
+                    "lastName": "Eachambadi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:23.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79737,
+                    "firstName": "Hannah",
+                    "lastName": "Makinster",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:49.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077030,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84473,
+                    "firstName": "Katherine",
+                    "lastName": "Looi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T06:12:05.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1077031": 3,
+                "1077032": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1077031": 1,
+                "1077032": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538517,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1077032,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1077031,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79740,
+                    "firstName": "Sriya",
+                    "lastName": "Tallapragada",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:25:21.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79742,
+                    "firstName": "Megan ",
+                    "lastName": "Yarbrough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:25:57.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1077032,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105304,
+      "title": "Sunset HS vs. Aloha HS",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74775,
+        "firstName": "Emily",
+        "lastName": "Penland",
+        "genderId": 2,
+        "email": "Emily_Penland@beaverton.k12.or.us",
+        "phone": "(503) 539-2538",
+        "school": {
+          "name": "Aloha",
+          "logo": "school_74775.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74775,
+            "name": "Aloha",
+            "logo": "school_74775.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066253": 1,
+                "1066254": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066253": 0,
+                "1066254": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533128,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066254,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066253,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79772,
+                    "firstName": "Isabella \"Bellie\"",
+                    "lastName": "Mattie",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:10:38.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066254,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066255": 5,
+                "1066256": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066255": 0,
+                "1066256": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533129,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066256,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066255,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79765,
+                    "firstName": "Paige",
+                    "lastName": "Aragon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-02T20:06:11.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066256,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066257": 4,
+                "1066258": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066257": 1,
+                "1066258": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533130,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066258,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066257,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79769,
+                    "firstName": "Michelle",
+                    "lastName": "Duong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:08:54.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066258,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84469,
+                    "firstName": "Kathyrn",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:51.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066263": 1,
+                "1066264": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066263": 1,
+                "1066264": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533133,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066264,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066263,
+                "isWinner": false,
+                "players": []
+              },
+              {
+                "id": 1066264,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066265": 0,
+                "1066266": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066265": 0,
+                "1066266": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533134,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066266,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066265,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79770,
+                    "firstName": "Estrella ",
+                    "lastName": "Garcia Diaz Leal",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79773,
+                    "firstName": "Amy",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:10:52.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066266,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066267": 0,
+                "1066268": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066267": 0,
+                "1066268": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533135,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066268,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066267,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79768,
+                    "firstName": "Emily",
+                    "lastName": "De Leon Borrayes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:08:36.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79771,
+                    "firstName": "Mitsy",
+                    "lastName": "Garcia Diaz Leal",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:10:13.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066268,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84477,
+                    "firstName": "Maxine",
+                    "lastName": "Long",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:52:03.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103981,
+      "title": "Mountainside HS  @ Sunset HS",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74777,
+        "firstName": "Nathan",
+        "lastName": "Ramos",
+        "genderId": 2,
+        "email": "coachnathanramos@gmail.com",
+        "phone": "(415) 595-7345",
+        "school": {
+          "name": "Sunset",
+          "logo": "school_74777.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 7070582,
+            "name": "Mountainside ",
+            "logo": "school_7070582.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1044453": 6,
+                "1044454": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044453": 6,
+                "1044454": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522228,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044453,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044453,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044454,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77734,
+                    "firstName": "Arushi",
+                    "lastName": "Arora",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-02T17:56:26.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044457": 7,
+                "1044458": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044457": 6,
+                "1044458": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522230,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044457,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044457,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044458,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74917,
+                    "firstName": "Geo",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-14T20:36:22.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044461": 6,
+                "1044462": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044461": 7,
+                "1044462": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522232,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044461,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044461,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84473,
+                    "firstName": "Katherine",
+                    "lastName": "Looi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T06:12:05.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044462,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77739,
+                    "firstName": "Pooja",
+                    "lastName": "Bapat",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-02T17:57:42.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1044467": 6,
+                "1044468": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044467": 6,
+                "1044468": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522235,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044467,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044467,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044468,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77736,
+                    "firstName": "Chloe",
+                    "lastName": "Shimamoto",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-02T17:57:00.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77741,
+                    "firstName": "Madeline",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-02T17:58:26.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044475": 6,
+                "1044476": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044475": 7,
+                "1044476": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522239,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044476,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044475,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84469,
+                    "firstName": "Kathyrn",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:51.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044476,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77742,
+                    "firstName": "Navy",
+                    "lastName": "Eriksson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-02T18:11:33.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80604,
+                    "firstName": "Maile",
+                    "lastName": "Chan",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044485": 3,
+                "1044486": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044485": 2,
+                "1044486": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522244,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044486,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044485,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84470,
+                    "firstName": "Parisa",
+                    "lastName": "Rouzpay",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044486,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77735,
+                    "firstName": "Brenna",
+                    "lastName": "Robin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80605,
+                    "firstName": "Sam",
+                    "lastName": "Brewer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070582,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Mountainside ",
+                      "logo": "school_7070582.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102799,
+      "title": "Jesuit vs Sunset 4-21-21",
+      "meetDateTime": "2021-04-21T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124879,
+        "firstName": "Kirsten ",
+        "lastName": "Ruchaber",
+        "genderId": 2,
+        "email": "kruchaber@jesuitportland.org",
+        "phone": "(503) 781-7305",
+        "school": {
+          "name": "Jesuit ",
+          "logo": "school_124879.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124879,
+            "name": "Jesuit ",
+            "logo": "school_124879.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1025533": 6,
+                "1025534": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025533": 6,
+                "1025534": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512768,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025533,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025533,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78686,
+                    "firstName": "Mishi",
+                    "lastName": "Batinkova",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:17:19.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025534,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025535": 6,
+                "1025536": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025535": 6,
+                "1025536": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512769,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025535,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025535,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78692,
+                    "firstName": "Carissa",
+                    "lastName": "Gerung",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:18:27.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025536,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025537": 6,
+                "1025538": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025537": 6,
+                "1025538": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512770,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025537,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025537,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78681,
+                    "firstName": "Gracie",
+                    "lastName": "Rask",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:15:11.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025538,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84473,
+                    "firstName": "Katherine",
+                    "lastName": "Looi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T06:12:05.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1025541": 7,
+                "1025542": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025541": 6,
+                "1025542": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512772,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025541,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025541,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78677,
+                    "firstName": "Amreen",
+                    "lastName": "Sandhu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:09:03.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78680,
+                    "firstName": "Libby",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:09:44.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025542,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025543": 6,
+                "1025544": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025543": 6,
+                "1025544": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512773,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025543,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025543,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78682,
+                    "firstName": "Stella",
+                    "lastName": "Eastman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:15:21.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78683,
+                    "firstName": "Isabel ",
+                    "lastName": "Crespo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:15:34.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025544,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025545": 6,
+                "1025546": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025545": 6,
+                "1025546": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512774,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025545,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025545,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78673,
+                    "firstName": "Camille ",
+                    "lastName": "Arnot",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:06:12.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78676,
+                    "firstName": "Emily",
+                    "lastName": "O'Connor",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124879,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T01:07:55.000Z",
+                    "school": {
+                      "name": "Jesuit ",
+                      "logo": "school_124879.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025546,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84477,
+                    "firstName": "Maxine",
+                    "lastName": "Long",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:52:03.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84478,
+                    "firstName": "Emily",
+                    "lastName": "Lian",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:52:12.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102751,
+      "title": "Sunset v. Westview",
+      "meetDateTime": "2021-04-19T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74777,
+        "firstName": "Nathan",
+        "lastName": "Ramos",
+        "genderId": 2,
+        "email": "coachnathanramos@gmail.com",
+        "phone": "(415) 595-7345",
+        "school": {
+          "name": "Sunset",
+          "logo": "school_74777.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74745,
+            "name": "Westview",
+            "logo": "school_74745.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024893": 3,
+                "1024894": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024893": 4,
+                "1024894": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512448,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024894,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024893,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024894,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79729,
+                    "firstName": "Neena",
+                    "lastName": "Feldman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:22:47.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024895": 0,
+                "1024896": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024895": 0,
+                "1024896": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512449,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024896,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024895,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84473,
+                    "firstName": "Katherine",
+                    "lastName": "Looi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T06:12:05.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024896,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79733,
+                    "firstName": "Karolina",
+                    "lastName": "Dobiecka",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:08.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024897": 0,
+                "1024898": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024897": 2,
+                "1024898": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512450,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024898,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024897,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024898,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79728,
+                    "firstName": "Amberly",
+                    "lastName": "Au",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024901": 7,
+                "1024902": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024901": 4,
+                "1024902": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024901": 6,
+                "1024902": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512452,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024901,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024901,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024902,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79720,
+                    "firstName": "Simrah",
+                    "lastName": "Bawa",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79725,
+                    "firstName": "Hasvi ",
+                    "lastName": "Patel",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-13T20:27:11.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024911": 6,
+                "1024912": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024911": 6,
+                "1024912": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512457,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024911,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024911,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024912,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79734,
+                    "firstName": "Vita",
+                    "lastName": "Eachambadi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:23.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79737,
+                    "firstName": "Hannah",
+                    "lastName": "Makinster",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:24:49.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024923": 1,
+                "1024924": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024923": 1,
+                "1024924": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512463,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024924,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024923,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84478,
+                    "firstName": "Emily",
+                    "lastName": "Lian",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:52:12.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84479,
+                    "firstName": "Fabiana",
+                    "lastName": "Barrentios",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024924,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79740,
+                    "firstName": "Sriya",
+                    "lastName": "Tallapragada",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:25:21.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79741,
+                    "firstName": "Misty",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74745,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:25:29.000Z",
+                    "school": {
+                      "name": "Westview",
+                      "logo": "school_74745.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102750,
+      "title": "Sunset v. Aloha",
+      "meetDateTime": "2021-04-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74777,
+        "firstName": "Nathan",
+        "lastName": "Ramos",
+        "genderId": 2,
+        "email": "coachnathanramos@gmail.com",
+        "phone": "(415) 595-7345",
+        "school": {
+          "name": "Sunset",
+          "logo": "school_74777.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74777,
+            "name": "Sunset",
+            "logo": "school_74777.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74775,
+            "name": "Aloha",
+            "logo": "school_74775.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024859": 6,
+                "1024860": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024859": 6,
+                "1024860": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512431,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024859,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024859,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84467,
+                    "firstName": "Lucy ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:46:40.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024860,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79765,
+                    "firstName": "Paige",
+                    "lastName": "Aragon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-02T20:06:11.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024861": 6,
+                "1024862": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024861": 6,
+                "1024862": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512432,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024861,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024861,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84472,
+                    "firstName": "Clare",
+                    "lastName": "Keough",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:33.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024862,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79769,
+                    "firstName": "Michelle",
+                    "lastName": "Duong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:08:54.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024863": 1,
+                "1024864": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024863": 4,
+                "1024864": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512433,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024864,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024863,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84470,
+                    "firstName": "Parisa",
+                    "lastName": "Rouzpay",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024864,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79772,
+                    "firstName": "Isabella \"Bellie\"",
+                    "lastName": "Mattie",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:10:38.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024869": 6,
+                "1024870": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024869": 6,
+                "1024870": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512436,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024869,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024869,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84468,
+                    "firstName": "Daphne",
+                    "lastName": "Wu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:49:38.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84471,
+                    "firstName": "Jovine",
+                    "lastName": "Lim",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:50:19.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024870,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79766,
+                    "firstName": "Naomi ",
+                    "lastName": "Argaw",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:07:32.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79767,
+                    "firstName": "Maya",
+                    "lastName": "Beason",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:07:55.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024871": 6,
+                "1024872": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024871": 6,
+                "1024872": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512437,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024871,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024871,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84474,
+                    "firstName": "Emily",
+                    "lastName": "McPherson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84475,
+                    "firstName": "Emily",
+                    "lastName": "Liang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024872,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79768,
+                    "firstName": "Emily",
+                    "lastName": "De Leon Borrayes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:08:36.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79773,
+                    "firstName": "Amy",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74775,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:10:52.000Z",
+                    "school": {
+                      "name": "Aloha",
+                      "logo": "school_74775.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024873": 2,
+                "1024874": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024873": 2,
+                "1024874": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512438,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1024873,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84476,
+                    "firstName": "Kayla",
+                    "lastName": "Huynh",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-02-26T06:57:10.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84477,
+                    "firstName": "Maxine",
+                    "lastName": "Long",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74777,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-20T15:52:03.000Z",
+                    "school": {
+                      "name": "Sunset",
+                      "logo": "school_74777.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024874,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
