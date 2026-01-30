@@ -423,7 +423,27 @@ def calculate_league_power_scores(rankings):
     return league_scores
 
 
-def generate_html(rankings, school_data, raw_data_cache, school_info):
+def load_state_tournament_results(filepath):
+    """Load state tournament results from CSV."""
+    results = []
+    if not filepath.exists():
+        return results
+    with open(filepath, 'r') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            results.append({
+                'year': int(row['year']),
+                'classification': row['classification'],
+                'gender': row['gender'],
+                'place': int(row['place']),
+                'team': row['team'],
+                'entries': int(row['entries']),
+                'total_points': float(row['total_points']),
+            })
+    return results
+
+
+def generate_html(rankings, school_data, raw_data_cache, school_info, state_results):
     """Generate the HTML dashboard with modern UI and playoff simulator."""
 
     years = sorted(set(r['year'] for r in rankings), reverse=True)
@@ -436,6 +456,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
 
     rankings_json = json.dumps(rankings)
     league_scores_json = json.dumps(league_scores)
+    state_results_json = json.dumps(state_results)
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -481,8 +502,25 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         .field-team:last-child {{ border-bottom: none; }}
         .field-seed {{ width: 30px; font-weight: 700; color: #198754; }}
         .field-name {{ flex: 1; font-weight: 500; }}
+        .field-record {{ width: 60px; color: #495057; font-size: 12px; }}
         .field-apr {{ width: 70px; color: #198754; font-weight: 600; }}
         .field-league {{ font-size: 12px; color: #6c757d; width: 150px; }}
+        .comparison-container {{ padding: 20px; }}
+        .comparison-toolbar {{ background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        .comparison-card {{ background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        .comparison-card h5 {{ margin-bottom: 12px; color: #198754; }}
+        .stat-highlight {{ font-size: 24px; font-weight: 700; color: #198754; }}
+        .stat-label {{ font-size: 11px; color: #6c757d; text-transform: uppercase; }}
+        .team-comparison {{ display: flex; gap: 16px; margin-bottom: 8px; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }}
+        .team-comparison:last-child {{ border-bottom: none; }}
+        .tc-rank {{ width: 40px; font-weight: 700; color: #198754; }}
+        .tc-name {{ flex: 1; font-weight: 500; }}
+        .tc-apr {{ width: 70px; }}
+        .tc-record {{ width: 60px; }}
+        .tc-state {{ width: 100px; text-align: right; }}
+        .tc-state-entries {{ color: #6f42c1; }}
+        .tc-state-points {{ color: #0d6efd; }}
+        .tc-no-state {{ color: #dc3545; font-weight: 600; }}
         .badge-autobid {{ background: #198754; }}
         .badge-atlarge {{ background: #6f42c1; }}
         .badge-bye {{ background: #ffc107; color: #000; }}
@@ -503,6 +541,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-tab="playoffs">Playoff Simulator</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-tab="comparison">APR vs State</a>
                 </li>
                 <li class="nav-item" id="analysisNavItem" style="display:none;">
                     <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
@@ -621,6 +662,45 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         </div>
     </div>
 
+    <!-- APR vs State Comparison Tab -->
+    <div id="comparison-tab" class="tab-content">
+        <div class="comparison-container">
+            <div class="comparison-toolbar">
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Year</label>
+                    <select id="compYear" class="form-select form-select-sm">
+                        {chr(10).join(f'<option value="{y}">{y}</option>' for y in years)}
+                    </select>
+                </div>
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Gender</label>
+                    <select id="compGender" class="form-select form-select-sm">
+                        {chr(10).join(f'<option value="{g}">{g}</option>' for g in genders)}
+                    </select>
+                </div>
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Classification</label>
+                    <select id="compClass" class="form-select form-select-sm">
+                        {chr(10).join(f'<option value="{c}">{c}</option>' for c in classifications)}
+                    </select>
+                </div>
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Bracket Size</label>
+                    <select id="compBracket" class="form-select form-select-sm">
+                        <option value="8">8 Teams</option>
+                        <option value="12" selected>12 Teams</option>
+                        <option value="16">16 Teams</option>
+                    </select>
+                </div>
+                <div class="form-group" style="display:inline-block;">
+                    <label style="display:block;">&nbsp;</label>
+                    <button id="runComparison" class="btn btn-success btn-sm">Compare</button>
+                </div>
+            </div>
+            <div id="comparisonResults"></div>
+        </div>
+    </div>
+
     <!-- League Analysis Tab (Hidden) -->
     <div id="analysis-tab" class="tab-content">
         <div class="analysis-container">
@@ -673,6 +753,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
     <script>
         const rankings = {rankings_json};
         const leagueScores = {league_scores_json};
+        const stateResults = {state_results_json};
         let table;
 
         // Check for analysis view URL param
@@ -845,7 +926,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 <div class="field-list">
                     <div class="field-header d-flex justify-content-between">
                         <span>Seed / Team</span>
-                        <span>APR</span>
+                        <span>Record / APR</span>
                     </div>
             `;
 
@@ -861,6 +942,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                         </span>
                         ${{hasBye ? '<span class="badge badge-bye ms-1">BYE</span>' : ''}}
                         <span class="field-league">${{team.league || '-'}}</span>
+                        <span class="field-record">${{team.record}}</span>
                         <span class="field-apr">${{team.apr.toFixed(4)}}</span>
                     </div>
                 `;
@@ -909,6 +991,200 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
 
         $('#refreshAnalysis').on('click', refreshAnalysisTable);
         $('#analysisYear, #analysisGender').on('change', refreshAnalysisTable);
+
+        // APR vs State Comparison
+        $('#runComparison').on('click', runComparison);
+
+        function runComparison() {{
+            const year = parseInt($('#compYear').val());
+            const gender = $('#compGender').val();
+            const classification = $('#compClass').val();
+            const bracketSize = parseInt($('#compBracket').val());
+
+            // Get APR-ranked teams for this classification
+            let teams = rankings.filter(r =>
+                r.year === year &&
+                r.gender === gender &&
+                r.classification === classification &&
+                (r.wins + r.losses + r.ties) >= 3
+            ).sort((a, b) => b.apr - a.apr).slice(0, bracketSize);
+
+            // Get state tournament results for this year/gender/classification
+            const stateData = stateResults.filter(s =>
+                s.year === year &&
+                s.gender === gender &&
+                s.classification === classification
+            );
+
+            // Create lookup by team name (normalized)
+            const stateLookup = {{}};
+            stateData.forEach(s => {{
+                // Normalize team names for matching
+                const normalized = s.team.toLowerCase()
+                    .replace(/st\\.? mary'?s?.*/i, 'st marys')
+                    .replace(/st\\.? mary'?s? of medford/i, 'st marys of medford')
+                    .replace(/oregon episcopal school/i, 'oregon episcopal')
+                    .replace(/ high school/i, '')
+                    .replace(/barlow/i, 'sam barlow')
+                    .replace(/^sam barlow$/i, 'sam barlow')
+                    .trim();
+                stateLookup[normalized] = s;
+            }});
+
+            // Match APR teams with state results
+            let teamsWithState = 0;
+            let teamsWithoutState = 0;
+            let totalEntries = 0;
+            let totalPoints = 0;
+            let hiddenGems = []; // Teams that would qualify by APR but had 0 or few entries
+
+            const comparisonData = teams.map((team, idx) => {{
+                const normalized = team.school_name.toLowerCase()
+                    .replace(/st\\.? mary'?s?.*/i, 'st marys of medford')
+                    .replace(/oregon episcopal school/i, 'oregon episcopal')
+                    .replace(/ high school/i, '')
+                    .trim();
+
+                // Try to find state result
+                let stateMatch = null;
+                for (const [key, val] of Object.entries(stateLookup)) {{
+                    if (normalized.includes(key) || key.includes(normalized) ||
+                        team.school_name.toLowerCase().includes(key) ||
+                        key.includes(team.school_name.toLowerCase())) {{
+                        stateMatch = val;
+                        break;
+                    }}
+                }}
+
+                if (stateMatch) {{
+                    teamsWithState++;
+                    totalEntries += stateMatch.entries;
+                    totalPoints += stateMatch.total_points;
+                }} else {{
+                    teamsWithoutState++;
+                    if (idx < bracketSize) {{
+                        hiddenGems.push(team);
+                    }}
+                }}
+
+                return {{
+                    ...team,
+                    aprRank: idx + 1,
+                    stateEntries: stateMatch ? stateMatch.entries : 0,
+                    statePoints: stateMatch ? stateMatch.total_points : 0,
+                    statePlace: stateMatch ? stateMatch.place : null,
+                    hadStatePresence: !!stateMatch
+                }};
+            }});
+
+            // Calculate insights
+            const avgEntries = teamsWithState > 0 ? (totalEntries / teamsWithState).toFixed(1) : 0;
+            const avgPoints = teamsWithState > 0 ? (totalPoints / teamsWithState).toFixed(1) : 0;
+
+            let html = `
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="comparison-card text-center">
+                            <div class="stat-highlight">${{teamsWithoutState}}</div>
+                            <div class="stat-label">APR Qualifiers with No/Few State Entries</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="comparison-card text-center">
+                            <div class="stat-highlight">${{teamsWithState}}</div>
+                            <div class="stat-label">APR Qualifiers at State Tournament</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="comparison-card text-center">
+                            <div class="stat-highlight">${{avgEntries}}</div>
+                            <div class="stat-label">Avg Entries (of those at state)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="comparison-card text-center">
+                            <div class="stat-highlight">${{avgPoints}}</div>
+                            <div class="stat-label">Avg Points (of those at state)</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            if (hiddenGems.length > 0) {{
+                html += `
+                    <div class="comparison-card">
+                        <h5>Teams Rewarded by APR Format</h5>
+                        <p class="text-muted small">These teams would qualify for team playoffs based on APR but had no entries at the individual state tournament:</p>
+                `;
+                hiddenGems.forEach(team => {{
+                    html += `
+                        <div class="team-comparison">
+                            <span class="tc-rank">#${{comparisonData.find(t => t.school_id === team.school_id)?.aprRank}}</span>
+                            <span class="tc-name">${{team.school_name}}</span>
+                            <span class="tc-record">${{team.record}}</span>
+                            <span class="tc-apr">${{team.apr.toFixed(4)}}</span>
+                            <span class="tc-state tc-no-state">No State Entries</span>
+                        </div>
+                    `;
+                }});
+                html += '</div>';
+            }}
+
+            html += `
+                <div class="comparison-card">
+                    <h5>APR Playoff Field vs State Tournament Presence</h5>
+                    <p class="text-muted small">Comparing ${{bracketSize}}-team APR playoff field with actual state tournament individual entries and points:</p>
+                    <div class="table-responsive">
+                        <table class="table table-sm">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>APR Seed</th>
+                                    <th>Team</th>
+                                    <th>Record</th>
+                                    <th>APR</th>
+                                    <th>State Entries</th>
+                                    <th>State Points</th>
+                                    <th>State Place</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+            `;
+
+            comparisonData.forEach(team => {{
+                const stateClass = team.hadStatePresence ? '' : 'table-warning';
+                html += `
+                    <tr class="${{stateClass}}">
+                        <td class="tc-rank">${{team.aprRank}}</td>
+                        <td class="school-name">${{team.school_name}}</td>
+                        <td>${{team.record}}</td>
+                        <td>${{team.apr.toFixed(4)}}</td>
+                        <td class="tc-state-entries">${{team.stateEntries || '-'}}</td>
+                        <td class="tc-state-points">${{team.statePoints || '-'}}</td>
+                        <td>${{team.statePlace || '-'}}</td>
+                    </tr>
+                `;
+            }});
+
+            html += `
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+
+            // Summary insight
+            const hiddenGemPct = ((teamsWithoutState / bracketSize) * 100).toFixed(0);
+            html += `
+                <div class="comparison-card">
+                    <h5>Key Insight</h5>
+                    <p><strong>${{hiddenGemPct}}%</strong> of teams that would qualify under the APR team playoff format had no or minimal representation at the individual state tournament.
+                    This demonstrates how the current individual-based qualification system can overlook programs with strong overall team performance throughout the dual match season.</p>
+                    <p class="text-muted small">The APR format rewards teams for season-long success across all flights, not just having a few elite individual players who qualify for state.</p>
+                </div>
+            `;
+
+            $('#comparisonResults').html(html);
+        }}
     </script>
 </body>
 </html>'''
@@ -922,6 +1198,7 @@ def main():
 
     data_dir = repo_root / 'data'
     master_school_list = repo_root / 'master_school_list.csv'
+    state_results_file = repo_root / 'state_tournament_results.csv'
     output_file = repo_root / 'index.html'
     json_output = repo_root / 'public' / 'data' / 'processed_rankings.json'
 
@@ -930,13 +1207,17 @@ def main():
     print("Building rankings...")
     rankings, school_data, raw_data_cache, school_info = build_rankings(data_dir, master_school_list)
 
+    print("Loading state tournament results...")
+    state_results = load_state_tournament_results(state_results_file)
+    print(f"Loaded {len(state_results)} state tournament entries")
+
     # Save JSON
     with open(json_output, 'w') as f:
         json.dump(rankings, f, indent=2)
     print(f"JSON saved to {json_output}")
 
     print("Generating HTML dashboard...")
-    html = generate_html(rankings, school_data, raw_data_cache, school_info)
+    html = generate_html(rankings, school_data, raw_data_cache, school_info, state_results)
 
     with open(output_file, 'w') as f:
         f.write(html)
