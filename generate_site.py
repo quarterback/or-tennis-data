@@ -1212,169 +1212,225 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             const classification = $('#compClass').val();
             const bracketSize = parseInt($('#compBracket').val());
 
-            // Get Power Index-ranked teams for this classification
-            let teams = rankings.filter(r =>
+            // Get all ranked teams for this year/gender/classification
+            const allTeams = rankings.filter(r =>
                 r.year === year &&
                 r.gender === gender &&
                 r.classification === classification &&
                 (r.wins + r.losses + r.ties) >= 3
-            ).sort((a, b) => (b.power_index || b.apr) - (a.power_index || a.apr)).slice(0, bracketSize);
+            ).sort((a, b) => (b.power_index || b.apr) - (a.power_index || a.apr));
+
+            // Power Index playoff qualifiers (top N by bracket size)
+            const piQualifiers = allTeams.slice(0, bracketSize);
+            const piQualifierIds = new Set(piQualifiers.map(t => t.school_id));
 
             // Get state tournament results for this year/gender/classification
             const stateData = stateResults.filter(s =>
                 s.year === year &&
                 s.gender === gender &&
                 s.classification === classification
-            );
+            ).sort((a, b) => a.place - b.place);
 
-            // Create lookup by team name (normalized)
-            const stateLookup = {{}};
-            stateData.forEach(s => {{
-                // Normalize team names for matching
-                const normalized = s.team.toLowerCase()
-                    .replace(/st\\.? mary'?s?.*/i, 'st marys')
-                    .replace(/st\\.? mary'?s? of medford/i, 'st marys of medford')
-                    .replace(/oregon episcopal school/i, 'oregon episcopal')
-                    .replace(/ high school/i, '')
-                    .replace(/barlow/i, 'sam barlow')
-                    .replace(/^sam barlow$/i, 'sam barlow')
-                    .trim();
-                stateLookup[normalized] = s;
-            }});
+            // Helper to normalize names for matching
+            const normalizeName = (name) => name.toLowerCase()
+                .replace(/st\\.? mary'?s?.*/i, 'st marys')
+                .replace(/oregon episcopal school/i, 'oregon episcopal')
+                .replace(/ high school/i, '')
+                .replace(/^barlow$/i, 'sam barlow')
+                .trim();
 
-            // Match APR teams with state results
-            let teamsWithState = 0;
-            let teamsWithoutState = 0;
-            let totalEntries = 0;
-            let totalPoints = 0;
-            let hiddenGems = []; // Teams that would qualify by APR but had 0 or few entries
+            // Match state tournament teams with rankings data
+            const stateTeamsWithRecords = stateData.map(stateTeam => {{
+                const stateNorm = normalizeName(stateTeam.team);
 
-            const comparisonData = teams.map((team, idx) => {{
-                const normalized = team.school_name.toLowerCase()
-                    .replace(/st\\.? mary'?s?.*/i, 'st marys of medford')
-                    .replace(/oregon episcopal school/i, 'oregon episcopal')
-                    .replace(/ high school/i, '')
-                    .trim();
+                // Find matching team in rankings
+                let rankingMatch = null;
+                let piRank = null;
 
-                // Try to find state result
-                let stateMatch = null;
-                for (const [key, val] of Object.entries(stateLookup)) {{
-                    if (normalized.includes(key) || key.includes(normalized) ||
-                        team.school_name.toLowerCase().includes(key) ||
-                        key.includes(team.school_name.toLowerCase())) {{
-                        stateMatch = val;
+                for (let i = 0; i < allTeams.length; i++) {{
+                    const teamNorm = normalizeName(allTeams[i].school_name);
+                    if (stateNorm === teamNorm ||
+                        stateNorm.includes(teamNorm) ||
+                        teamNorm.includes(stateNorm) ||
+                        stateTeam.team.toLowerCase().includes(allTeams[i].school_name.toLowerCase()) ||
+                        allTeams[i].school_name.toLowerCase().includes(stateTeam.team.toLowerCase())) {{
+                        rankingMatch = allTeams[i];
+                        piRank = i + 1;
                         break;
                     }}
                 }}
 
-                if (stateMatch) {{
-                    teamsWithState++;
-                    totalEntries += stateMatch.entries;
-                    totalPoints += stateMatch.total_points;
-                }} else {{
-                    teamsWithoutState++;
-                    if (idx < bracketSize) {{
-                        hiddenGems.push(team);
-                    }}
-                }}
+                const hasLosingRecord = rankingMatch ? rankingMatch.wins < rankingMatch.losses : false;
+                const wouldQualifyPI = rankingMatch ? piQualifierIds.has(rankingMatch.school_id) : false;
+                const winPct = rankingMatch ? rankingMatch.wins / Math.max(1, rankingMatch.wins + rankingMatch.losses + rankingMatch.ties) : null;
 
                 return {{
-                    ...team,
-                    aprRank: idx + 1,
-                    stateEntries: stateMatch ? stateMatch.entries : 0,
-                    statePoints: stateMatch ? stateMatch.total_points : 0,
-                    statePlace: stateMatch ? stateMatch.place : null,
-                    hadStatePresence: !!stateMatch
+                    ...stateTeam,
+                    rankingMatch,
+                    piRank,
+                    hasLosingRecord,
+                    wouldQualifyPI,
+                    winPct
                 }};
             }});
 
-            // Calculate insights
-            const avgEntries = teamsWithState > 0 ? (totalEntries / teamsWithState).toFixed(1) : 0;
-            const avgPoints = teamsWithState > 0 ? (totalPoints / teamsWithState).toFixed(1) : 0;
+            // Calculate statistics
+            const teamsWithLosingRecords = stateTeamsWithRecords.filter(t => t.hasLosingRecord);
+            const teamsWouldNotQualify = stateTeamsWithRecords.filter(t => !t.wouldQualifyPI && t.rankingMatch);
+            const piQualifiersNotAtState = piQualifiers.filter(team => {{
+                const teamNorm = normalizeName(team.school_name);
+                return !stateData.some(s => {{
+                    const stateNorm = normalizeName(s.team);
+                    return stateNorm === teamNorm || stateNorm.includes(teamNorm) || teamNorm.includes(stateNorm);
+                }});
+            }});
 
             let html = `
                 <div class="row mb-4">
                     <div class="col-md-3">
                         <div class="comparison-card text-center">
-                            <div class="stat-highlight">${{teamsWithoutState}}</div>
-                            <div class="stat-label">APR Qualifiers with No/Few State Entries</div>
+                            <div class="stat-highlight text-danger">${{teamsWithLosingRecords.length}}</div>
+                            <div class="stat-label">State Placers with Losing Records</div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="comparison-card text-center">
-                            <div class="stat-highlight">${{teamsWithState}}</div>
-                            <div class="stat-label">APR Qualifiers at State Tournament</div>
+                            <div class="stat-highlight text-warning">${{teamsWouldNotQualify.length}}</div>
+                            <div class="stat-label">State Placers Who Wouldn't Qualify by PI</div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="comparison-card text-center">
-                            <div class="stat-highlight">${{avgEntries}}</div>
-                            <div class="stat-label">Avg Entries (of those at state)</div>
+                            <div class="stat-highlight text-success">${{piQualifiersNotAtState.length}}</div>
+                            <div class="stat-label">PI Qualifiers NOT at State</div>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="comparison-card text-center">
-                            <div class="stat-highlight">${{avgPoints}}</div>
-                            <div class="stat-label">Avg Points (of those at state)</div>
+                            <div class="stat-highlight">${{stateData.length}}</div>
+                            <div class="stat-label">Total Teams at State Tournament</div>
                         </div>
                     </div>
                 </div>
             `;
 
-            if (hiddenGems.length > 0) {{
+            // Highlight teams that placed at state with losing records
+            if (teamsWithLosingRecords.length > 0) {{
                 html += `
-                    <div class="comparison-card">
-                        <h5>Teams Rewarded by APR Format</h5>
-                        <p class="text-muted small">These teams would qualify for team playoffs based on APR but had no entries at the individual state tournament:</p>
+                    <div class="comparison-card" style="border-left: 4px solid #dc3545;">
+                        <h5 style="color: #dc3545;">State Placers with Losing Records</h5>
+                        <p class="text-muted small">These teams placed at the state tournament despite having losing team records. Under the current individual-based system, 1-2 strong players can carry a team to state success:</p>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>State Place</th>
+                                        <th>Team</th>
+                                        <th>Record</th>
+                                        <th>Win %</th>
+                                        <th>Entries</th>
+                                        <th>Points</th>
+                                        <th>PI Rank</th>
+                                        <th>Would Qualify?</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
                 `;
-                hiddenGems.forEach(team => {{
+                teamsWithLosingRecords.forEach(team => {{
+                    const record = team.rankingMatch ? team.rankingMatch.record : 'N/A';
+                    const winPctDisplay = team.winPct !== null ? (team.winPct * 100).toFixed(0) + '%' : 'N/A';
+                    const piRankDisplay = team.piRank ? '#' + team.piRank : 'N/A';
+                    const qualifyBadge = team.wouldQualifyPI ?
+                        '<span class="badge bg-success">Yes</span>' :
+                        '<span class="badge bg-danger">No</span>';
                     html += `
-                        <div class="team-comparison">
-                            <span class="tc-rank">#${{comparisonData.find(t => t.school_id === team.school_id)?.aprRank}}</span>
-                            <span class="tc-name">${{team.school_name}}</span>
+                        <tr class="table-danger">
+                            <td><strong>${{team.place}}</strong></td>
+                            <td class="school-name">${{team.team}}</td>
+                            <td><strong style="color: #dc3545;">${{record}}</strong></td>
+                            <td style="color: #dc3545;">${{winPctDisplay}}</td>
+                            <td>${{team.entries}}</td>
+                            <td>${{team.total_points}}</td>
+                            <td>${{piRankDisplay}}</td>
+                            <td>${{qualifyBadge}}</td>
+                        </tr>
+                    `;
+                }});
+                html += '</tbody></table></div></div>';
+            }}
+
+            // Show PI qualifiers that didn't make it to state
+            if (piQualifiersNotAtState.length > 0) {{
+                html += `
+                    <div class="comparison-card" style="border-left: 4px solid #198754;">
+                        <h5 style="color: #198754;">Teams Rewarded by Power Index (No State Presence)</h5>
+                        <p class="text-muted small">These teams would qualify for playoffs under the Power Index system but had no entries at the individual state tournament:</p>
+                `;
+                piQualifiersNotAtState.slice(0, 10).forEach(team => {{
+                    const piRank = allTeams.findIndex(t => t.school_id === team.school_id) + 1;
+                    html += `
+                        <div class="team-comparison" style="background: #d1e7dd; padding: 8px; margin: 4px 0; border-radius: 4px;">
+                            <span class="tc-rank">#${{piRank}}</span>
+                            <span class="tc-name" style="font-weight: bold;">${{team.school_name}}</span>
                             <span class="tc-record">${{team.record}}</span>
-                            <span class="tc-apr">${{team.apr.toFixed(4)}}</span>
-                            <span class="tc-state tc-no-state">No State Entries</span>
+                            <span class="tc-apr">PI: ${{(team.power_index || team.apr).toFixed(4)}}</span>
+                            <span style="color: #198754;">Full roster depth, no state entries</span>
                         </div>
                     `;
                 }});
+                if (piQualifiersNotAtState.length > 10) {{
+                    html += `<p class="text-muted small">... and ${{piQualifiersNotAtState.length - 10}} more teams</p>`;
+                }}
                 html += '</div>';
             }}
 
+            // Full state tournament results table
             html += `
                 <div class="comparison-card">
-                    <h5>Power Index Playoff Field vs State Tournament Presence</h5>
-                    <p class="text-muted small">Comparing ${{bracketSize}}-team playoff field (by Power Index) with actual state tournament individual entries and points:</p>
+                    <h5>All State Tournament Placers vs Power Index Rankings</h5>
+                    <p class="text-muted small">Every team that placed at the ${{year}} ${{classification}} ${{gender === 'boys' ? "Boys'" : "Girls'"}} State Tournament, with their season record and Power Index rank:</p>
                     <div class="table-responsive">
                         <table class="table table-sm">
                             <thead class="table-light">
                                 <tr>
-                                    <th>Seed</th>
+                                    <th>State Place</th>
                                     <th>Team</th>
-                                    <th>Record</th>
+                                    <th>Season Record</th>
+                                    <th>Win %</th>
+                                    <th>Entries</th>
+                                    <th>Points</th>
                                     <th>Power Index</th>
-                                    <th>FWS</th>
-                                    <th>SOS</th>
-                                    <th>State Entries</th>
-                                    <th>State Points</th>
+                                    <th>PI Rank</th>
+                                    <th>Qualifies by PI?</th>
                                 </tr>
                             </thead>
                             <tbody>
             `;
 
-            comparisonData.forEach(team => {{
-                const stateClass = team.hadStatePresence ? '' : 'table-warning';
-                const sosClass = team.owp >= 0.55 ? 'apr-high' : (team.owp < 0.45 ? 'apr-low' : '');
+            stateTeamsWithRecords.forEach(team => {{
+                const record = team.rankingMatch ? team.rankingMatch.record : 'N/A';
+                const winPctDisplay = team.winPct !== null ? (team.winPct * 100).toFixed(0) + '%' : 'N/A';
+                const piDisplay = team.rankingMatch ? (team.rankingMatch.power_index || team.rankingMatch.apr).toFixed(4) : 'N/A';
+                const piRankDisplay = team.piRank ? '#' + team.piRank : 'N/A';
+                const qualifyBadge = team.wouldQualifyPI ?
+                    '<span class="badge bg-success">Yes</span>' :
+                    (team.rankingMatch ? '<span class="badge bg-danger">No</span>' : '<span class="badge bg-secondary">N/A</span>');
+
+                let rowClass = '';
+                if (team.hasLosingRecord) rowClass = 'table-danger';
+                else if (!team.wouldQualifyPI && team.rankingMatch) rowClass = 'table-warning';
+
                 html += `
-                    <tr class="${{stateClass}}">
-                        <td class="tc-rank">${{team.aprRank}}</td>
-                        <td class="school-name">${{team.school_name}}</td>
-                        <td>${{team.record}}</td>
-                        <td class="power-index">${{(team.power_index || team.apr).toFixed(4)}}</td>
-                        <td>${{(team.fws || 0).toFixed(2)}}</td>
-                        <td class="${{sosClass}}">${{team.owp.toFixed(3)}}</td>
-                        <td class="tc-state-entries">${{team.stateEntries || '-'}}</td>
-                        <td class="tc-state-points">${{team.statePoints || '-'}}</td>
+                    <tr class="${{rowClass}}">
+                        <td><strong>${{team.place}}</strong></td>
+                        <td class="school-name">${{team.team}}</td>
+                        <td>${{record}}</td>
+                        <td>${{winPctDisplay}}</td>
+                        <td>${{team.entries}}</td>
+                        <td>${{team.total_points}}</td>
+                        <td class="power-index">${{piDisplay}}</td>
+                        <td>${{piRankDisplay}}</td>
+                        <td>${{qualifyBadge}}</td>
                     </tr>
                 `;
             }});
@@ -1383,17 +1439,25 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             </tbody>
                         </table>
                     </div>
+                    <div class="mt-2">
+                        <span class="badge bg-danger">Red</span> = Losing record &nbsp;
+                        <span class="badge bg-warning text-dark">Yellow</span> = Wouldn't qualify by Power Index &nbsp;
+                        <span class="badge bg-light text-dark">White</span> = Would qualify
+                    </div>
                 </div>
             `;
 
             // Summary insight
-            const hiddenGemPct = ((teamsWithoutState / bracketSize) * 100).toFixed(0);
+            const losingRecordPct = stateData.length > 0 ? ((teamsWithLosingRecords.length / stateData.length) * 100).toFixed(0) : 0;
+            const wouldNotQualifyPct = stateData.length > 0 ? ((teamsWouldNotQualify.length / stateData.length) * 100).toFixed(0) : 0;
+
             html += `
                 <div class="comparison-card">
-                    <h5>Key Insight</h5>
-                    <p><strong>${{hiddenGemPct}}%</strong> of teams that would qualify under the APR team playoff format had no or minimal representation at the individual state tournament.
-                    This demonstrates how the current individual-based qualification system can overlook programs with strong overall team performance throughout the dual match season.</p>
-                    <p class="text-muted small">The APR format rewards teams for season-long success across all flights, not just having a few elite individual players who qualify for state.</p>
+                    <h5>Key Insight: Individual vs Team Success</h5>
+                    <p><strong>${{losingRecordPct}}%</strong> of teams that placed at the state tournament had <strong>losing records</strong> during the regular season.</p>
+                    <p><strong>${{wouldNotQualifyPct}}%</strong> of state tournament placers <strong>would NOT qualify</strong> for the playoffs under the Power Index system.</p>
+                    <p class="text-muted">This demonstrates how the current individual-based system allows teams to succeed at state on the strength of just 1-2 elite players,
+                    even when the team as a whole has a losing record. The Power Index system would instead reward programs that field competitive players across ALL flights throughout the dual match season.</p>
                 </div>
             `;
 
