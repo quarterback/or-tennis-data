@@ -32,13 +32,15 @@ FLIGHT_WEIGHTS = {
 # Max possible FWS per match (sum of all flight weights)
 MAX_FWS = sum(FLIGHT_WEIGHTS.values())  # 3.95
 
-# APR formula weights
-WWP_WEIGHT = 0.35
-OWP_WEIGHT = 0.65
+# Standard RPI formula weights (OSAA style)
+# APR = (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
+WP_WEIGHT = 0.25    # Team's own win percentage
+OWP_WEIGHT = 0.50   # Opponent win percentage (strength of schedule)
+OOWP_WEIGHT = 0.25  # Opponent's opponent win percentage
 
-# Power Index formula weights
-APR_WEIGHT = 0.60
-FWS_WEIGHT = 0.40
+# Power Index formula weights (50/50 split: Results vs Depth)
+APR_WEIGHT = 0.50   # Dual match outcomes (winning)
+FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
@@ -357,12 +359,15 @@ def build_rankings(data_dir, master_school_list):
             )
 
             if results:
-                wwp = calculate_wwp(results)
                 fws, fws_match_count = calculate_fws_per_match(data, school_id)
                 normalized_fws = fws / MAX_FWS  # Normalize to 0-1 range
 
+                # Calculate simple Win Percentage (WP) - ties count as 0.5 wins
+                total_duals = wins + losses + ties
+                wp = (wins + ties * 0.5) / total_duals if total_duals > 0 else 0.0
+
                 school_data[year][gender][school_id] = {
-                    'wwp': wwp,
+                    'wp': wp,  # Simple win percentage for RPI
                     'opponents': opponents,
                     'results': results,
                     'matches_played': len(results),
@@ -377,26 +382,47 @@ def build_rankings(data_dir, master_school_list):
                     'fws_match_count': fws_match_count,
                 }
 
-    # Calculate OWP, APR, and Power Index
+    # Calculate OWP (Opponent Win Percentage) - based on simple WP
     for year in school_data:
         for gender in school_data[year]:
             for school_id in school_data[year][gender]:
                 school = school_data[year][gender][school_id]
                 opponents = school['opponents']
 
-                opponent_wwps = []
+                opponent_wps = []
                 for opp_id in opponents:
                     if opp_id in school_data[year][gender]:
-                        opponent_wwps.append(school_data[year][gender][opp_id]['wwp'])
+                        opponent_wps.append(school_data[year][gender][opp_id]['wp'])
                     else:
                         # Unknown opponents (e.g., Idaho schools) rated as neutral average
-                        opponent_wwps.append(0.5)
+                        opponent_wps.append(0.5)
 
-                owp = sum(opponent_wwps) / len(opponent_wwps) if opponent_wwps else 0.5
+                owp = sum(opponent_wps) / len(opponent_wps) if opponent_wps else 0.5
                 school['owp'] = owp
-                school['apr'] = (school['wwp'] * WWP_WEIGHT) + (owp * OWP_WEIGHT)
 
-                # Calculate Power Index = (APR * 0.60) + (Normalized FWS * 0.40)
+    # Calculate OOWP (Opponent's Opponent Win Percentage) and final APR
+    for year in school_data:
+        for gender in school_data[year]:
+            for school_id in school_data[year][gender]:
+                school = school_data[year][gender][school_id]
+                opponents = school['opponents']
+
+                # OOWP = average of all opponents' OWP values
+                opponent_owps = []
+                for opp_id in opponents:
+                    if opp_id in school_data[year][gender]:
+                        opponent_owps.append(school_data[year][gender][opp_id]['owp'])
+                    else:
+                        # Unknown opponents rated as neutral average
+                        opponent_owps.append(0.5)
+
+                oowp = sum(opponent_owps) / len(opponent_owps) if opponent_owps else 0.5
+                school['oowp'] = oowp
+
+                # APR = Standard RPI formula: (WP * 0.25) + (OWP * 0.50) + (OOWP * 0.25)
+                school['apr'] = (school['wp'] * WP_WEIGHT) + (school['owp'] * OWP_WEIGHT) + (oowp * OOWP_WEIGHT)
+
+                # Power Index = 50/50 split between Results (APR) and Depth (FWS)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
 
     # Build output
@@ -428,13 +454,14 @@ def build_rankings(data_dir, master_school_list):
                     'school_name': info.get('name', f'School {school_id}'),
                     'classification': info.get('classification', ''),
                     'league': info.get('league', ''),
-                    'wwp': round(stats['wwp'], 4),
-                    'owp': round(stats['owp'], 4),
-                    'apr': round(stats['apr'], 4),
-                    'fws': round(stats['fws'], 4),
-                    'normalized_fws': round(stats['normalized_fws'], 4),
-                    'power_index': round(stats['power_index'], 4),
-                    'yaw': round(yaw, 4),
+                    'wp': round(stats['wp'], 4),      # Win Percentage (simple)
+                    'owp': round(stats['owp'], 4),    # Opponent Win Percentage
+                    'oowp': round(stats['oowp'], 4),  # Opponent's Opponent Win Percentage
+                    'apr': round(stats['apr'], 4),    # RPI: (WP*0.25)+(OWP*0.50)+(OOWP*0.25)
+                    'fws': round(stats['fws'], 4),    # Raw Flight Weighted Score
+                    'normalized_fws': round(stats['normalized_fws'], 4),  # FWS / 3.95
+                    'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(FWS*0.50)
+                    'yaw': round(yaw, 4),             # Depth vs Record indicator
                     'matches_played': stats['matches_played'],
                     'opponents_count': len(stats['opponents']),
                     'record': f"{stats['dual_wins']}-{stats['dual_losses']}-{stats['dual_ties']}",
