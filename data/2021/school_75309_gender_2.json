@@ -1,0 +1,910 @@
+{
+  "school": {
+    "id": 75309,
+    "name": "South Medford",
+    "address": "815 S OAKDALE AVE",
+    "zipCode": "97501",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75309.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:57:41.000Z",
+    "deletedAt": null,
+    "cityId": 11463,
+    "city": {
+      "id": 11463,
+      "name": "Medford",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2826,
+      "firstName": "Jay",
+      "lastName": "Rapp",
+      "address": "x",
+      "phone": "(541) 690-4282",
+      "email": "jayrapptennis@gmail.com",
+      "division": "6A",
+      "schoolId": 75309,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107286,
+      "title": "South Medford",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74713,
+        "firstName": "Martin",
+        "lastName": "Stadtmueller",
+        "genderId": 2,
+        "email": "martinizer@gmail.com",
+        "phone": "(617) 510-0502",
+        "school": {
+          "name": "Ashland",
+          "logo": "school_74713.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1095513": 5,
+                "1095514": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095513": 7,
+                "1095514": 6,
+                "number": 2,
+                "tie": 4
+              },
+              {
+                "1095513": 13,
+                "1095514": 11,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 547758,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095513,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095513,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79686,
+                    "firstName": "Zoe ",
+                    "lastName": "Zapf",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:47:09.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095514,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095515": 6,
+                "1095516": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095515": 7,
+                "1095516": 6,
+                "number": 2,
+                "tie": 1
+              }
+            ],
+            "id": 547759,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095515,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095515,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79684,
+                    "firstName": "Harper ",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:44:51.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095516,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095517": 3,
+                "1095518": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095517": 2,
+                "1095518": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547760,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095518,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095517,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79682,
+                    "firstName": "Grace",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:42:44.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095518,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1095521": 6,
+                "1095522": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095521": 6,
+                "1095522": 7,
+                "number": 2,
+                "tie": 2
+              },
+              {
+                "1095521": 10,
+                "1095522": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 547762,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095521,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79681,
+                    "firstName": "Sofia",
+                    "lastName": "Shelton",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:43:37.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79683,
+                    "firstName": "Talia",
+                    "lastName": "Vivrett",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:44:24.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095522,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095527": 6,
+                "1095528": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095527": 6,
+                "1095528": 7,
+                "number": 2,
+                "tie": 8
+              },
+              {
+                "1095527": 10,
+                "1095528": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 547765,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095527,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095527,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79679,
+                    "firstName": "Sachi ",
+                    "lastName": "Moran",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:40:57.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79685,
+                    "firstName": "Savannah ",
+                    "lastName": "Witnauer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:46:11.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095528,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095531": 6,
+                "1095532": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095531": 4,
+                "1095532": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1095531": 11,
+                "1095532": 9,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 547767,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095531,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095531,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79676,
+                    "firstName": "Claire",
+                    "lastName": "Davis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:39:06.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79677,
+                    "firstName": "Emily ",
+                    "lastName": "Hatfield",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:39:39.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095532,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107275,
+      "title": "South Medford",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74713,
+        "firstName": "Martin",
+        "lastName": "Stadtmueller",
+        "genderId": 2,
+        "email": "martinizer@gmail.com",
+        "phone": "(617) 510-0502",
+        "school": {
+          "name": "Ashland",
+          "logo": "school_74713.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1095313": 7,
+                "1095314": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095313": 6,
+                "1095314": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547658,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095313,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095313,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79686,
+                    "firstName": "Zoe ",
+                    "lastName": "Zapf",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:47:09.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095314,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095317": 6,
+                "1095318": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095317": 6,
+                "1095318": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547660,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095317,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095317,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79682,
+                    "firstName": "Grace",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:42:44.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095318,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095321": 0,
+                "1095322": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095321": 4,
+                "1095322": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547662,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095322,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095321,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79675,
+                    "firstName": "Bridget",
+                    "lastName": "Burr",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:38:29.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095322,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1095335": 6,
+                "1095336": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095335": 6,
+                "1095336": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547669,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095335,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095335,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79682,
+                    "firstName": "Grace",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:42:44.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79684,
+                    "firstName": "Harper ",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:44:51.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095336,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095339": 6,
+                "1095340": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095339": 5,
+                "1095340": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1095339": 10,
+                "1095340": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 547671,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095339,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095339,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79681,
+                    "firstName": "Sofia",
+                    "lastName": "Shelton",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:43:37.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79683,
+                    "firstName": "Talia",
+                    "lastName": "Vivrett",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:44:24.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095340,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095343": 3,
+                "1095344": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095343": 2,
+                "1095344": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547673,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095344,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095343,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79676,
+                    "firstName": "Claire",
+                    "lastName": "Davis",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:39:06.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79677,
+                    "firstName": "Emily ",
+                    "lastName": "Hatfield",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T20:39:39.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095344,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

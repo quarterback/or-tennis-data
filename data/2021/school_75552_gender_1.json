@@ -1,0 +1,5777 @@
+{
+  "school": {
+    "id": 75552,
+    "name": "Lincoln",
+    "address": "1600 SW SALMON ST",
+    "zipCode": "97205",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75552.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:27:13.000Z",
+    "deletedAt": null,
+    "cityId": 14774,
+    "city": {
+      "id": 14774,
+      "name": "Portland",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2834,
+      "firstName": "Stuart",
+      "lastName": "Allen",
+      "address": "1211 SW Hessler Drive",
+      "phone": "(503) 706-1041",
+      "email": "stuart@allentrust.com",
+      "division": "6A",
+      "schoolId": 75552,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 10,
+    "loss": 0,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 101604,
+      "title": "Lincoln @ Benson",
+      "meetDateTime": "2021-05-07T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75547,
+            "name": "Benson",
+            "logo": "school_75547.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076947": 6,
+                "1076948": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076947": 6,
+                "1076948": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538475,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076947,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076947,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076948,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81419,
+                    "firstName": "Taiki",
+                    "lastName": "Grover",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:45:29.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076949": 0,
+                "1076950": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076949": 0,
+                "1076950": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538476,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076950,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076949,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81423,
+                    "firstName": "Calvin",
+                    "lastName": "Yeargers",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:47:25.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076950,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076951": 0,
+                "1076952": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1076951": 0,
+                "1076952": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538477,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076951,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076951,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76405,
+                    "firstName": "Frederic",
+                    "lastName": "Kemple",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076952,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81427,
+                    "firstName": "Tyler",
+                    "lastName": "Decker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076955": 6,
+                "1076956": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076955": 6,
+                "1076956": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538479,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076955,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076955,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76392,
+                    "firstName": "Atharv",
+                    "lastName": "Bhingarde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:46:58.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076956,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81422,
+                    "firstName": "Felix",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81424,
+                    "firstName": "Carter ",
+                    "lastName": "Hagedorn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T04:47:35.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076957": 6,
+                "1076958": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076957": 6,
+                "1076958": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538480,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076957,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076957,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076958,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81425,
+                    "firstName": "Oliver",
+                    "lastName": "Cook",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T17:49:45.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81426,
+                    "firstName": "Tyler ",
+                    "lastName": "Wynn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T17:49:47.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076959": 6,
+                "1076960": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1076959": 6,
+                "1076960": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 538481,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076959,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076959,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76399,
+                    "firstName": "Alden",
+                    "lastName": "Russel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:08.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076960,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81428,
+                    "firstName": "Cole",
+                    "lastName": "Hagedorn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85332,
+                    "firstName": "Chaim",
+                    "lastName": "Gerber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101603,
+      "title": "Cleveland @ Lincoln",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75548,
+            "name": "Cleveland",
+            "logo": "school_75548.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1070399": 6,
+                "1070400": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070399": 6,
+                "1070400": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535201,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070399,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070399,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76405,
+                    "firstName": "Frederic",
+                    "lastName": "Kemple",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070400,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84839,
+                    "firstName": "Peter",
+                    "lastName": "Van Vleet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:03:10.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070401": 6,
+                "1070402": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070401": 6,
+                "1070402": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535202,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070401,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070401,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070402,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84836,
+                    "firstName": "Liam",
+                    "lastName": "Taylor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:02:38.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070403": 6,
+                "1070404": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070403": 6,
+                "1070404": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535203,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070403,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070403,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76408,
+                    "firstName": "Evan",
+                    "lastName": "Matthews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:29.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070404,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84834,
+                    "firstName": "Henry",
+                    "lastName": "Stroud",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:01:55.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1070411": 6,
+                "1070412": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070411": 6,
+                "1070412": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535207,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070411,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070411,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76392,
+                    "firstName": "Atharv",
+                    "lastName": "Bhingarde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:46:58.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070412,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84827,
+                    "firstName": "Frank",
+                    "lastName": "Connor",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T16:59:54.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84828,
+                    "firstName": "Santiago",
+                    "lastName": "Ferbel-Azcarate",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:00:11.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070415": 6,
+                "1070416": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070415": 6,
+                "1070416": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535209,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070415,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070415,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070416,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84821,
+                    "firstName": "Kaelan",
+                    "lastName": "Anderson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T16:57:56.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84844,
+                    "firstName": "Ethan",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:04:07.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070417": 6,
+                "1070418": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070417": 6,
+                "1070418": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535210,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070417,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070417,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76399,
+                    "firstName": "Alden",
+                    "lastName": "Russel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:08.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070418,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84833,
+                    "firstName": "Finbarr",
+                    "lastName": "O'Connell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84837,
+                    "firstName": "Stephen",
+                    "lastName": "Treat",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75548,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T17:02:53.000Z",
+                    "school": {
+                      "name": "Cleveland",
+                      "logo": "school_75548.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101587,
+      "title": "Lincoln @ Madison",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75554,
+            "name": "McDaniel High School",
+            "logo": "school_75554.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066305": 6,
+                "1066306": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066305": 6,
+                "1066306": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533154,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066305,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066305,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76405,
+                    "firstName": "Frederic",
+                    "lastName": "Kemple",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066306,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81716,
+                    "firstName": "Griffin",
+                    "lastName": "Hoffmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066307": 6,
+                "1066308": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066307": 6,
+                "1066308": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533155,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066307,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066307,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76408,
+                    "firstName": "Evan",
+                    "lastName": "Matthews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:29.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066308,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81717,
+                    "firstName": "Khoa",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T18:59:59.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066311": 6,
+                "1066312": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066311": 6,
+                "1066312": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533157,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066311,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066311,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78584,
+                    "firstName": "Kyle",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-26T17:02:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066312,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81729,
+                    "firstName": "Anthony",
+                    "lastName": "Vo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:02:43.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066313": 6,
+                "1066314": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066313": 6,
+                "1066314": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533158,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066313,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066313,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76399,
+                    "firstName": "Alden",
+                    "lastName": "Russel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:08.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066314,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81711,
+                    "firstName": "Peter Phi",
+                    "lastName": "Do",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T18:56:53.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81714,
+                    "firstName": "Alan ",
+                    "lastName": "Hoang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T18:58:48.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066315": 6,
+                "1066316": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066315": 6,
+                "1066316": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533159,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066315,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066315,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76403,
+                    "firstName": "Wil",
+                    "lastName": "Lafleur",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066316,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81708,
+                    "firstName": "Aidan",
+                    "lastName": "Cindrich",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81723,
+                    "firstName": "Jack",
+                    "lastName": "Shumaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:01:43.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066317": 6,
+                "1066318": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1066317": 6,
+                "1066318": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533160,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066317,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066317,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76402,
+                    "firstName": "Sebastian",
+                    "lastName": "Morse",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:40:21.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76406,
+                    "firstName": "Ashwin",
+                    "lastName": "Pillai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066318,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81707,
+                    "firstName": "Von",
+                    "lastName": "Butenschoen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-21T17:31:48.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81710,
+                    "firstName": "Charlie",
+                    "lastName": "Cittadini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75554,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T18:56:36.000Z",
+                    "school": {
+                      "name": "McDaniel High School",
+                      "logo": "school_75554.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101586,
+      "title": "Grant @ Lincoln",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75550,
+            "name": "Grant",
+            "logo": "school_75550.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1051213": 6,
+                "1051214": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051213": 2,
+                "1051214": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1051213": 7,
+                "1051214": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 525608,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051213,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051213,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051214,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74731,
+                    "firstName": "Alex ",
+                    "lastName": "Messer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:03:25.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051215": 6,
+                "1051216": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051215": 6,
+                "1051216": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525609,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051215,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051215,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051216,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74730,
+                    "firstName": "David ",
+                    "lastName": "Lybeck",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:03:17.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051217": 6,
+                "1051218": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051217": 6,
+                "1051218": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525610,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1051217,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051217,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76405,
+                    "firstName": "Frederic",
+                    "lastName": "Kemple",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051218,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74736,
+                    "firstName": "Jerred",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:05:06.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1051221": 3,
+                "1051222": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051221": 6,
+                "1051222": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525612,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051222,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051221,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051222,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74729,
+                    "firstName": "Levi",
+                    "lastName": "Lux",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74735,
+                    "firstName": "Burke",
+                    "lastName": "Reilly",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:04:46.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051223": 6,
+                "1051224": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051223": 6,
+                "1051224": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 525613,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051223,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051223,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76392,
+                    "firstName": "Atharv",
+                    "lastName": "Bhingarde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:46:58.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051224,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74732,
+                    "firstName": "Josiah ",
+                    "lastName": "Mones",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:03:41.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74734,
+                    "firstName": "Simon",
+                    "lastName": "Potter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:04:35.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1051227": 6,
+                "1051228": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1051227": 3,
+                "1051228": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1051227": 7,
+                "1051228": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 525615,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1051227,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1051227,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76399,
+                    "firstName": "Alden",
+                    "lastName": "Russel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:08.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1051228,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74733,
+                    "firstName": "Theo",
+                    "lastName": "Plagata",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:04:07.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74739,
+                    "firstName": "Chase",
+                    "lastName": "Travis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-11T01:05:46.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101585,
+      "title": "Wilson @ Lincoln",
+      "meetDateTime": "2021-04-23T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75555,
+            "name": "Ida B. Wells-Barnett High School",
+            "logo": "school_75555.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034873": 6,
+                "1034874": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034873": 6,
+                "1034874": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517438,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034873,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034874,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81270,
+                    "firstName": "Jordan ",
+                    "lastName": "Vollen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:14:12.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034875": 6,
+                "1034876": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034875": 6,
+                "1034876": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 517439,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034875,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034875,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034876,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81272,
+                    "firstName": "Ben ",
+                    "lastName": "Llados",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-18T15:25:56.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034885": 6,
+                "1034886": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034885": 6,
+                "1034886": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517444,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034885,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034885,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76405,
+                    "firstName": "Frederic",
+                    "lastName": "Kemple",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034886,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81271,
+                    "firstName": "Logan ",
+                    "lastName": "Horvat",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:14:23.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034897": 6,
+                "1034898": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034897": 6,
+                "1034898": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517450,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034897,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034897,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034898,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81274,
+                    "firstName": "Dylan",
+                    "lastName": "Chatard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:14:45.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81276,
+                    "firstName": "David ",
+                    "lastName": "Coodley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:14:54.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034905": 6,
+                "1034906": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034905": 6,
+                "1034906": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517454,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034905,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034905,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76392,
+                    "firstName": "Atharv",
+                    "lastName": "Bhingarde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:46:58.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034906,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81268,
+                    "firstName": "Lucas ",
+                    "lastName": "Erickson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T01:13:48.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81277,
+                    "firstName": "Sean ",
+                    "lastName": "Dunning",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-18T15:25:52.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034915": 6,
+                "1034916": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034915": 7,
+                "1034916": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517459,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034915,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034915,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76403,
+                    "firstName": "Wil",
+                    "lastName": "Lafleur",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034916,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81280,
+                    "firstName": "Ben ",
+                    "lastName": "Sage",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-18T15:26:29.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81282,
+                    "firstName": "Rohan",
+                    "lastName": "Kanui",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75555,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Ida B. Wells-Barnett High School",
+                      "logo": "school_75555.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106747,
+      "title": "Lincoln @ Roosevelt",
+      "meetDateTime": "2021-04-21T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75564,
+            "name": " Roosevelt",
+            "logo": "school_75564.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1086517": 6,
+                "1086518": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086517": 6,
+                "1086518": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543260,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1086517,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086517,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086518,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85112,
+                    "firstName": "Alex",
+                    "lastName": "Carmona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T16:46:06.000Z",
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1086521": 2,
+                "1086522": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086521": 2,
+                "1086522": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543262,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1086521,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78581,
+                    "firstName": "Ben",
+                    "lastName": "Reese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086522,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1086523": 2,
+                "1086524": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086523": 2,
+                "1086524": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543263,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1086523,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086523,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78582,
+                    "firstName": "Keanu",
+                    "lastName": "Wong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:38:23.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086524,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1086531": 6,
+                "1086532": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086531": 6,
+                "1086532": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543267,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1086531,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086531,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76392,
+                    "firstName": "Atharv",
+                    "lastName": "Bhingarde",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:46:58.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76403,
+                    "firstName": "Wil",
+                    "lastName": "Lafleur",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086532,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85113,
+                    "firstName": "Ben",
+                    "lastName": "Adams",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85114,
+                    "firstName": "Cesar",
+                    "lastName": "Diaz",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1086535": 6,
+                "1086536": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086535": 6,
+                "1086536": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543269,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1086535,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086535,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76406,
+                    "firstName": "Ashwin",
+                    "lastName": "Pillai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086536,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85115,
+                    "firstName": "Felipe",
+                    "lastName": "Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85116,
+                    "firstName": "Jesus",
+                    "lastName": "Valencia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1086541": 6,
+                "1086542": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1086541": 6,
+                "1086542": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 543272,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1086541,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1086541,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76394,
+                    "firstName": "Cyrus",
+                    "lastName": "Edlund-Farsad",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:27.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76407,
+                    "firstName": "Erik",
+                    "lastName": "Jacobson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1086542,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85117,
+                    "firstName": "Ry",
+                    "lastName": "Adams",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85118,
+                    "firstName": "Carlos",
+                    "lastName": "Diaz De Leon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75564,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-02T16:46:29.000Z",
+                    "school": {
+                      "name": " Roosevelt",
+                      "logo": "school_75564.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101582,
+      "title": "Franklin @ Lincoln",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75549,
+            "name": "Franklin",
+            "logo": "school_75549.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024843": 5,
+                "1024844": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024843": 6,
+                "1024844": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024843": 6,
+                "1024844": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512423,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024844,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024843,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76395,
+                    "firstName": "Holden",
+                    "lastName": "Kilbane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:53.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024844,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74693,
+                    "firstName": "Gabe",
+                    "lastName": "Gardner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T04:14:07.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024845": 6,
+                "1024846": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024845": 7,
+                "1024846": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512424,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024845,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024845,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76408,
+                    "firstName": "Evan",
+                    "lastName": "Matthews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:29.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024846,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74698,
+                    "firstName": "Ethan",
+                    "lastName": "Cheung",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:24.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024847": 3,
+                "1024848": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024847": 6,
+                "1024848": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024847": 4,
+                "1024848": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512425,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024848,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024847,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78584,
+                    "firstName": "Kyle",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-26T17:02:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024848,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74699,
+                    "firstName": "Jason",
+                    "lastName": "Co",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:38.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024851": 6,
+                "1024852": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024851": 6,
+                "1024852": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512427,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024851,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024851,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76406,
+                    "firstName": "Ashwin",
+                    "lastName": "Pillai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024852,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74700,
+                    "firstName": "Max",
+                    "lastName": "Emrich",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:50.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74701,
+                    "firstName": "Tony",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:03:11.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024853": 6,
+                "1024854": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024853": 6,
+                "1024854": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512428,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024853,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024853,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76394,
+                    "firstName": "Cyrus",
+                    "lastName": "Edlund-Farsad",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:27.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76407,
+                    "firstName": "Erik",
+                    "lastName": "Jacobson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024854,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74692,
+                    "firstName": "Paolo",
+                    "lastName": "Freese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74695,
+                    "firstName": "Roan",
+                    "lastName": "Clearwater",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:00:29.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024855": 6,
+                "1024856": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024855": 6,
+                "1024856": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512429,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024855,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024855,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76402,
+                    "firstName": "Sebastian",
+                    "lastName": "Morse",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-09T15:40:21.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78581,
+                    "firstName": "Ben",
+                    "lastName": "Reese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024856,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82137,
+                    "firstName": "Sam",
+                    "lastName": "O'Leary",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T20:59:13.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85078,
+                    "firstName": "Emmet",
+                    "lastName": "Bolls",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T04:42:30.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101581,
+      "title": "Central Catholic @ Lincoln",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124868,
+            "name": "Central Catholic ",
+            "logo": "school_124868.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1012381": 0,
+                "1012382": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012381": 5,
+                "1012382": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506192,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1012382,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012381,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77088,
+                    "firstName": "Gus",
+                    "lastName": "Krauel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:43:01.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012382,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78580,
+                    "firstName": "Alex",
+                    "lastName": "Dinkov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:22.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1012383": 1,
+                "1012384": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012383": 0,
+                "1012384": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506193,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1012384,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012383,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78176,
+                    "firstName": "Pace",
+                    "lastName": "Crimin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:03:40.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012384,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1012385": 4,
+                "1012386": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012385": 3,
+                "1012386": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506194,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1012386,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012385,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77106,
+                    "firstName": "Daniel",
+                    "lastName": "Woods",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:50:08.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012386,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78584,
+                    "firstName": "Kyle",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-26T17:02:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1012397": 6,
+                "1012398": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012397": 6,
+                "1012398": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506200,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1012397,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012397,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77091,
+                    "firstName": "Lucas",
+                    "lastName": "Gorretta",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:45:14.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77093,
+                    "firstName": "Parker",
+                    "lastName": "Reno-Zinn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:45:27.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012398,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76395,
+                    "firstName": "Holden",
+                    "lastName": "Kilbane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:53.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1012399": 3,
+                "1012400": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012399": 1,
+                "1012400": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506201,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1012400,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012399,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77108,
+                    "firstName": "Harris",
+                    "lastName": "Christensen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:50:34.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78178,
+                    "firstName": "Nate",
+                    "lastName": "Ernst",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:03:59.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012400,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76406,
+                    "firstName": "Ashwin",
+                    "lastName": "Pillai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1012401": 0,
+                "1012402": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1012401": 2,
+                "1012402": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506202,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1012402,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1012401,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78190,
+                    "firstName": "Colin",
+                    "lastName": "Scales",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:06:03.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78191,
+                    "firstName": "Dylan",
+                    "lastName": "Dernbach",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124868,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:06:25.000Z",
+                    "school": {
+                      "name": "Central Catholic ",
+                      "logo": "school_124868.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1012402,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76399,
+                    "firstName": "Alden",
+                    "lastName": "Russel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:08.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101580,
+      "title": "Lincoln @ Wilsonville",
+      "meetDateTime": "2021-04-14T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75881,
+            "name": "Wilsonville",
+            "logo": "school_75881.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1011459": 6,
+                "1011460": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011459": 6,
+                "1011460": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505731,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011459,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011459,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78580,
+                    "firstName": "Alex",
+                    "lastName": "Dinkov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:22.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011460,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82469,
+                    "firstName": "Jackson",
+                    "lastName": "Dean",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011461": 6,
+                "1011462": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011461": 6,
+                "1011462": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505732,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011461,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011461,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011462,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82470,
+                    "firstName": "Porter",
+                    "lastName": "Bowles",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011463": 6,
+                "1011464": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011463": 6,
+                "1011464": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505733,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1011463,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011463,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76401,
+                    "firstName": "Cooper",
+                    "lastName": "Lahti",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:09.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011464,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82471,
+                    "firstName": "Ben",
+                    "lastName": "Panoli",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1011473": 6,
+                "1011474": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011473": 6,
+                "1011474": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505738,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1011473,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011473,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76394,
+                    "firstName": "Cyrus",
+                    "lastName": "Edlund-Farsad",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:27.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011474,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82473,
+                    "firstName": "Caleb",
+                    "lastName": "Wilde",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82474,
+                    "firstName": "Bradley",
+                    "lastName": "Crane",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011479": 6,
+                "1011480": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011479": 6,
+                "1011480": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505741,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1011479,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011479,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76403,
+                    "firstName": "Wil",
+                    "lastName": "Lafleur",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011480,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82475,
+                    "firstName": "Judah",
+                    "lastName": "Lesh",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82476,
+                    "firstName": "Houston",
+                    "lastName": "Ellis",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1011489": 6,
+                "1011490": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1011489": 6,
+                "1011490": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505746,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1011489,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1011489,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76406,
+                    "firstName": "Ashwin",
+                    "lastName": "Pillai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:46.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1011490,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82477,
+                    "firstName": "Carter",
+                    "lastName": "Troha",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82478,
+                    "firstName": "Jeven",
+                    "lastName": "Lundberg",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101574,
+      "title": "Parkrose @ Lincoln",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75552,
+        "firstName": "Stuart",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "stuart@allentrust.com",
+        "phone": "(503) 706-1041",
+        "school": {
+          "name": "Lincoln",
+          "logo": "school_75552.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75552,
+            "name": "Lincoln",
+            "logo": "school_75552.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75448,
+            "name": "Parkrose",
+            "logo": "school_75448.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1009147": 6,
+                "1009148": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009147": 6,
+                "1009148": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504575,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009147,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009147,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76398,
+                    "firstName": "Sean",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:36.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009148,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81804,
+                    "firstName": "Andy",
+                    "lastName": "Truong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-17T02:53:32.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009149": 6,
+                "1009150": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009149": 6,
+                "1009150": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504576,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009149,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009149,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78584,
+                    "firstName": "Kyle",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-26T17:02:41.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009150,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81805,
+                    "firstName": "Jason",
+                    "lastName": "Lien",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:19:01.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009151": 6,
+                "1009152": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009151": 6,
+                "1009152": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504577,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009151,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009151,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76408,
+                    "firstName": "Evan",
+                    "lastName": "Matthews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:29.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009152,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81806,
+                    "firstName": "David",
+                    "lastName": "Vo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:19:02.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1009155": 6,
+                "1009156": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009155": 6,
+                "1009156": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504579,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009155,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009155,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76393,
+                    "firstName": "Cy",
+                    "lastName": "Cupper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:10.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 76395,
+                    "firstName": "Holden",
+                    "lastName": "Kilbane",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:47:53.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009156,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81808,
+                    "firstName": "Timmy",
+                    "lastName": "Le",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:19:04.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81809,
+                    "firstName": "Raymond",
+                    "lastName": "Lien",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-03-20T20:41:09.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009157": 6,
+                "1009158": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009157": 6,
+                "1009158": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504580,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009157,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009157,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76397,
+                    "firstName": "Alex",
+                    "lastName": "Haddon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:05.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76400,
+                    "firstName": "Van",
+                    "lastName": "Werner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:49:04.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009158,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81810,
+                    "firstName": "Cody",
+                    "lastName": "Bui",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:22:15.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81811,
+                    "firstName": "Dyland",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:22:16.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009159": 6,
+                "1009160": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009159": 6,
+                "1009160": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504581,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009159,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009159,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76396,
+                    "firstName": "Nick",
+                    "lastName": "Lochner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:47:02.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76403,
+                    "firstName": "Wil",
+                    "lastName": "Lafleur",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75552,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T23:48:01.000Z",
+                    "school": {
+                      "name": "Lincoln",
+                      "logo": "school_75552.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009160,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81812,
+                    "firstName": "Lekchok",
+                    "lastName": "Kartsang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T20:22:16.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

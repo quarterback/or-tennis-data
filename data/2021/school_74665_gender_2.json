@@ -1,0 +1,3276 @@
+{
+  "school": {
+    "id": 74665,
+    "name": "Ione-Heppner",
+    "address": "PO BOX 167",
+    "zipCode": "97843",
+    "lowestGrade": "KG",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74665.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:17:35.000Z",
+    "deletedAt": null,
+    "cityId": 8812,
+    "city": {
+      "id": 8812,
+      "name": "Ione",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2893,
+      "firstName": "Maureen",
+      "lastName": "McElligott",
+      "address": "oregon b",
+      "phone": "(541) 422-7131",
+      "email": "maureenm@dcjllc.com",
+      "division": "2",
+      "schoolId": 74665,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 2,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107945,
+      "title": "Mac-Hi vs Ione",
+      "meetDateTime": "2021-05-14T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75321,
+        "firstName": "Danny",
+        "lastName": "Sanchez",
+        "genderId": 2,
+        "email": "slimer_44@hotmail.com",
+        "phone": "(541) 938-5591",
+        "school": {
+          "name": "McLoughlin",
+          "logo": "school_75321.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75321,
+            "name": "McLoughlin",
+            "logo": "school_75321.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1106501": 8,
+                "1106502": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 553252,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1106501,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1106501,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80914,
+                    "firstName": "Emily ",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:55:08.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1106502,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1106507": 8,
+                "1106508": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 553255,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1106507,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1106507,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80914,
+                    "firstName": "Emily ",
+                    "lastName": "Martinez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:55:08.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80915,
+                    "firstName": "Daisy",
+                    "lastName": "Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:55:20.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1106508,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1106511": 8,
+                "1106512": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 553257,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1106511,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1106511,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80917,
+                    "firstName": "Braylin",
+                    "lastName": "Alexander",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80919,
+                    "firstName": "Kaylee",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:56:03.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1106512,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1106515": 8,
+                "1106516": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 553259,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1106515,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1106515,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80917,
+                    "firstName": "Braylin",
+                    "lastName": "Alexander",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80919,
+                    "firstName": "Kaylee",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75321,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:56:03.000Z",
+                    "school": {
+                      "name": "McLoughlin",
+                      "logo": "school_75321.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1106516,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80980,
+                    "firstName": "Sunem",
+                    "lastName": "Calvillo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T07:40:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81007,
+                    "firstName": "Leelynn",
+                    "lastName": "Vandever",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:18:36.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106897,
+      "title": "WMHS vs. Ione High School",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74723,
+        "firstName": "Troy",
+        "lastName": "Olson",
+        "genderId": 2,
+        "email": "troy.olson@athwestsd.org",
+        "phone": "(541) 310-0431",
+        "school": {
+          "name": "Weston-McEwen",
+          "logo": "school_74723.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1089155": 8,
+                "1089156": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544579,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089155,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089155,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80603,
+                    "firstName": "Emily ",
+                    "lastName": "Palmer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089156,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1089157": 8,
+                "1089158": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544580,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089158,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089157,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80595,
+                    "firstName": "Skyla",
+                    "lastName": "Muilenburg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80598,
+                    "firstName": "Makaela",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:16:33.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089158,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089159": 8,
+                "1089160": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544581,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089159,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089159,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80591,
+                    "firstName": "Jacqlyn",
+                    "lastName": "Albert",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-06T19:08:49.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80592,
+                    "firstName": "Lirian",
+                    "lastName": "Holden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T03:14:19.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089160,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80990,
+                    "firstName": "Faviola",
+                    "lastName": "Juarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:08:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089161": 7,
+                "1089162": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 544582,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089161,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089161,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80602,
+                    "firstName": "Shaely",
+                    "lastName": "McNeil",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 87135,
+                    "firstName": "Destiny",
+                    "lastName": "Wells",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089162,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105368,
+      "title": "Arlington & Condon vs Ione @ Arlington",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Hayley",
+        "lastName": "Walker",
+        "genderId": 2,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1084535": 1,
+                "1084536": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 542269,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1084536,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1084535,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82135,
+                    "firstName": "Emaly",
+                    "lastName": "Vincent",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1084536,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78813,
+                    "firstName": "Abby",
+                    "lastName": "Colby",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:59.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1084537": 4,
+                "1084538": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 542270,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1084538,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1084537,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82130,
+                    "firstName": "Mary",
+                    "lastName": "Hammond",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:39:57.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82131,
+                    "firstName": "Venesa",
+                    "lastName": "Oana",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:38:39.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1084538,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78813,
+                    "firstName": "Abby",
+                    "lastName": "Colby",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:59.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78815,
+                    "firstName": "Kyrsten",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:16:07.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1084539": 8,
+                "1084540": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 542271,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1084539,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1084539,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82133,
+                    "firstName": "Isabella ",
+                    "lastName": "Mastriona",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82134,
+                    "firstName": "Hailey",
+                    "lastName": "Ames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:39:20.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1084540,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104622,
+      "title": "Riverside Vs. Ione",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75339,
+        "firstName": "Tyler",
+        "lastName": "Volpi",
+        "genderId": 2,
+        "email": "tyler.volpi@morrowsd.org",
+        "phone": "(850) 348-1304",
+        "school": {
+          "name": "Riverside",
+          "logo": "school_75339.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75339,
+            "name": "Riverside",
+            "logo": "school_75339.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1054727": 8,
+                "1054728": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527365,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054727,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054727,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81592,
+                    "firstName": "Italia ",
+                    "lastName": "Rodriguez ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:13:54.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81593,
+                    "firstName": "Marta",
+                    "lastName": "Barajas ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:14:12.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054728,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054729": 8,
+                "1054730": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527366,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054729,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054729,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81593,
+                    "firstName": "Marta",
+                    "lastName": "Barajas ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:14:12.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81594,
+                    "firstName": "Nancy",
+                    "lastName": "Garcia ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:14:25.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054730,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80990,
+                    "firstName": "Faviola",
+                    "lastName": "Juarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:08:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054731": 6,
+                "1054732": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527367,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054731,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054731,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81592,
+                    "firstName": "Italia ",
+                    "lastName": "Rodriguez ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T15:13:54.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85064,
+                    "firstName": "Analeah",
+                    "lastName": "Ayala",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75339,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T15:51:50.000Z",
+                    "school": {
+                      "name": "Riverside",
+                      "logo": "school_75339.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054732,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103468,
+      "title": "Ione vs. Umatilla",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74665,
+        "firstName": "Maureen",
+        "lastName": "McElligott",
+        "genderId": 2,
+        "email": "maureenm@dcjllc.com",
+        "phone": "(541) 422-7131",
+        "school": {
+          "name": "Ione-Heppner",
+          "logo": "school_74665.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036435": 3,
+                "1036436": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518219,
+            "flight": "5",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036436,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036435,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036436,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75775,
+                    "firstName": "Maya",
+                    "lastName": "Meza Rodriguez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:23:11.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1036437": 8,
+                "1036438": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518220,
+            "flight": "5",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036437,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036437,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036438,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75773,
+                    "firstName": "Alexa",
+                    "lastName": "Castanon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-12T21:22:50.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75774,
+                    "firstName": "Jenexy",
+                    "lastName": "Rivera Armenta",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-02-08T17:04:46.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036439": 0,
+                "1036440": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518221,
+            "flight": "5",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036440,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036439,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80990,
+                    "firstName": "Faviola",
+                    "lastName": "Juarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:08:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036440,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75776,
+                    "firstName": "Emilia",
+                    "lastName": "Rivera",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:23:12.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75777,
+                    "firstName": "Leslie",
+                    "lastName": "Rivera Castro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-02T19:52:48.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036441": 8,
+                "1036442": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518222,
+            "flight": "5",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036442,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036441,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036442,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75776,
+                    "firstName": "Emilia",
+                    "lastName": "Rivera",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:23:12.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75777,
+                    "firstName": "Leslie",
+                    "lastName": "Rivera Castro",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-02T19:52:48.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103465,
+      "title": "Ione vs. Condon High Schol",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74665,
+        "firstName": "Maureen",
+        "lastName": "McElligott",
+        "genderId": 2,
+        "email": "maureenm@dcjllc.com",
+        "phone": "(541) 422-7131",
+        "school": {
+          "name": "Ione-Heppner",
+          "logo": "school_74665.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036401": 6,
+                "1036402": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518202,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036401,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036401,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036402,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78821,
+                    "firstName": "Theresa",
+                    "lastName": "Campbell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:16:40.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1036403": 9,
+                "1036404": 8,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036403": 7,
+                "1036404": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518203,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036403,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036403,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036404,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78813,
+                    "firstName": "Abby",
+                    "lastName": "Colby",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:59.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78815,
+                    "firstName": "Kyrsten",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:16:07.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036405": 8,
+                "1036406": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518204,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036405,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036405,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80990,
+                    "firstName": "Faviola",
+                    "lastName": "Juarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:08:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81001,
+                    "firstName": "Cecilia",
+                    "lastName": "McElligott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:11:03.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036406,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78818,
+                    "firstName": "Autumn",
+                    "lastName": "Ackerman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78821,
+                    "firstName": "Theresa",
+                    "lastName": "Campbell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:16:40.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036411": 8,
+                "1036412": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 518207,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036411,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036411,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036412,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78810,
+                    "firstName": "Alyssa",
+                    "lastName": "Greenwood",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:38.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78817,
+                    "firstName": "Maecie",
+                    "lastName": "Lantis ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105322,
+      "title": "Ione vs Arlington",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Hayley",
+        "lastName": "Walker",
+        "genderId": 2,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 0,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066487": 8,
+                "1066488": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533245,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066487,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066487,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82133,
+                    "firstName": "Isabella ",
+                    "lastName": "Mastriona",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066488,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066489": 8,
+                "1066490": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533246,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066489,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066489,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82131,
+                    "firstName": "Venesa",
+                    "lastName": "Oana",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:38:39.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066490,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066497": 6,
+                "1066498": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533250,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066498,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066497,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78808,
+                    "firstName": "Sidney",
+                    "lastName": "Geer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:28.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78811,
+                    "firstName": "Megan ",
+                    "lastName": "Aamodt",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:15:50.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066498,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82130,
+                    "firstName": "Mary",
+                    "lastName": "Hammond",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:39:57.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82135,
+                    "firstName": "Emaly",
+                    "lastName": "Vincent",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1066499": 4,
+                "1066500": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533251,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066500,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066499,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80980,
+                    "firstName": "Sunem",
+                    "lastName": "Calvillo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T07:40:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81007,
+                    "firstName": "Leelynn",
+                    "lastName": "Vandever",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:18:36.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066500,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82132,
+                    "firstName": "Grace",
+                    "lastName": "Claughton",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82134,
+                    "firstName": "Hailey",
+                    "lastName": "Ames",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-04T17:39:20.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101760,
+      "title": "Stanfield vs. Ione ",
+      "meetDateTime": "2021-04-17T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75825,
+        "firstName": "Rylie",
+        "lastName": "Smith",
+        "genderId": 2,
+        "email": "rylie.smith@stanfieldsd.org",
+        "phone": "(541) 701-4009",
+        "school": {
+          "name": "Stanfield",
+          "logo": "school_75825.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1021947": 9,
+                "1021948": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510975,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021947,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021947,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81662,
+                    "firstName": "Zoe ",
+                    "lastName": "Russell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T16:36:27.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021948,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021949": 5,
+                "1021950": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510976,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021950,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021949,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81674,
+                    "firstName": "Gracie ",
+                    "lastName": "Bryan ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021950,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021951": 0,
+                "1021952": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510977,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021952,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021951,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81667,
+                    "firstName": "Amanda",
+                    "lastName": "Clark ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T05:52:51.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021952,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80990,
+                    "firstName": "Faviola",
+                    "lastName": "Juarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:08:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1021953": 1,
+                "1021954": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510978,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021954,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021953,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81665,
+                    "firstName": "Eida ",
+                    "lastName": "Piercy  ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T16:36:27.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81674,
+                    "firstName": "Gracie ",
+                    "lastName": "Bryan ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021954,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81002,
+                    "firstName": "Grace",
+                    "lastName": "Ogden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:13:15.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81004,
+                    "firstName": "Haylie",
+                    "lastName": "Peterson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:14:52.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021955": 3,
+                "1021956": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510979,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021956,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021955,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81668,
+                    "firstName": "Adamary ",
+                    "lastName": "Torres",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81669,
+                    "firstName": "Nayeli",
+                    "lastName": "Mendez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021956,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80982,
+                    "firstName": "Kelly",
+                    "lastName": "Doherty",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:07:07.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81005,
+                    "firstName": "Sophie ",
+                    "lastName": "Qualls",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021957": 8,
+                "1021958": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 510980,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021957,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021957,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81668,
+                    "firstName": "Adamary ",
+                    "lastName": "Torres",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81669,
+                    "firstName": "Nayeli",
+                    "lastName": "Mendez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021958,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80980,
+                    "firstName": "Sunem",
+                    "lastName": "Calvillo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T07:40:59.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81007,
+                    "firstName": "Leelynn",
+                    "lastName": "Vandever",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:18:36.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

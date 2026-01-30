@@ -1,0 +1,2228 @@
+{
+  "school": {
+    "id": 75818,
+    "name": "St Helens",
+    "address": "2375 GABLE RD",
+    "zipCode": "97051",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75818.png",
+    "createdAt": "2020-02-11T06:38:50.000Z",
+    "updatedAt": "2026-01-15T16:01:03.000Z",
+    "deletedAt": null,
+    "cityId": 17292,
+    "city": {
+      "id": 17292,
+      "name": "St helens",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2821,
+      "firstName": "Troy",
+      "lastName": "McNeil",
+      "address": "2375 Gable Rd.",
+      "phone": "(503) 935-9215",
+      "email": "troymc@sthelens.k12.or.us",
+      "division": "5A",
+      "schoolId": 75818,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 108782,
+      "title": "McMinnville vs St Helens",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75289,
+        "firstName": "Doug",
+        "lastName": "Barsotti ",
+        "genderId": 1,
+        "email": "DBarsotti@msd.k12.or.us",
+        "phone": "(971) 267-6720",
+        "school": {
+          "name": "McMinnville",
+          "logo": "school_75289.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75289,
+            "name": "McMinnville",
+            "logo": "school_75289.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75818,
+            "name": "St Helens",
+            "logo": "school_75818.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1121409": 6,
+                "1121410": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121409": 6,
+                "1121410": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560706,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121409,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121409,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78387,
+                    "firstName": "Cody",
+                    "lastName": "Pickar",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T03:06:46.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121410,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80673,
+                    "firstName": "Sam",
+                    "lastName": "Moehring",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121413": 6,
+                "1121414": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121413": 6,
+                "1121414": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560708,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121413,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121413,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79699,
+                    "firstName": "Quincy ",
+                    "lastName": "Reuter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:00:52.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121414,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80676,
+                    "firstName": "Jack ",
+                    "lastName": "Salisbury",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121415": 6,
+                "1121416": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121415": 6,
+                "1121416": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560709,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121415,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121415,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79701,
+                    "firstName": "Silas",
+                    "lastName": "Sumner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:06.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121416,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80677,
+                    "firstName": "Colby",
+                    "lastName": "Shafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1121423": 4,
+                "1121424": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121423": 6,
+                "1121424": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1121423": 10,
+                "1121424": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 560713,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1121423,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121423,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79703,
+                    "firstName": "Rowan",
+                    "lastName": "Hesch",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:29.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79707,
+                    "firstName": "Owen",
+                    "lastName": "Wark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121424,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80679,
+                    "firstName": "Cameron",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121425": 6,
+                "1121426": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121425": 6,
+                "1121426": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560714,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1121425,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121425,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78388,
+                    "firstName": "James",
+                    "lastName": "Eitzen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T03:06:57.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79698,
+                    "firstName": "Graham",
+                    "lastName": "Sommers",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:00:38.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121426,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80671,
+                    "firstName": "Jacob",
+                    "lastName": "Matzke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:15.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121427": 0,
+                "1121428": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121427": 0,
+                "1121428": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560715,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1121427,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121427,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79704,
+                    "firstName": "Luke",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:36.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79705,
+                    "firstName": "Graysen",
+                    "lastName": "Terry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:43.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121428,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 108783,
+      "title": "McMinnville vs St Helens #2",
+      "meetDateTime": "2021-05-05T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75289,
+        "firstName": "Doug",
+        "lastName": "Barsotti ",
+        "genderId": 1,
+        "email": "DBarsotti@msd.k12.or.us",
+        "phone": "(971) 267-6720",
+        "school": {
+          "name": "McMinnville",
+          "logo": "school_75289.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75289,
+            "name": "McMinnville",
+            "logo": "school_75289.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75818,
+            "name": "St Helens",
+            "logo": "school_75818.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1121433": 6,
+                "1121434": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121433": 6,
+                "1121434": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560718,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121433,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121433,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79702,
+                    "firstName": "Thomas",
+                    "lastName": "Gabrielsen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:23.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121434,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80673,
+                    "firstName": "Sam",
+                    "lastName": "Moehring",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121435": 6,
+                "1121436": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121435": 6,
+                "1121436": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560719,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121435,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121435,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78389,
+                    "firstName": "Heath ",
+                    "lastName": "Elmer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T03:07:06.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121436,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80679,
+                    "firstName": "Cameron",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121439": 6,
+                "1121440": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121439": 6,
+                "1121440": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560721,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1121439,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121439,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79706,
+                    "firstName": "Emerson",
+                    "lastName": "Teller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:52.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121440,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80672,
+                    "firstName": "Kodi ",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:28.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1121445": 6,
+                "1121446": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121445": 6,
+                "1121446": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560724,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1121445,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121445,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79695,
+                    "firstName": "Matthew ",
+                    "lastName": "Washburn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:00:00.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79705,
+                    "firstName": "Graysen",
+                    "lastName": "Terry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:43.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121446,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80671,
+                    "firstName": "Jacob",
+                    "lastName": "Matzke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:15.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80676,
+                    "firstName": "Jack ",
+                    "lastName": "Salisbury",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121451": 6,
+                "1121453": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121451": 6,
+                "1121453": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560727,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1121451,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121451,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79697,
+                    "firstName": "Dane",
+                    "lastName": "Foster",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:00:30.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81757,
+                    "firstName": "Dominique",
+                    "lastName": "Rentsch",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T20:01:06.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121453,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80677,
+                    "firstName": "Colby",
+                    "lastName": "Shafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1121473": 2,
+                "1121474": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1121473": 2,
+                "1121474": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 560738,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1121473,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1121473,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79699,
+                    "firstName": "Quincy ",
+                    "lastName": "Reuter",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:00:52.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79704,
+                    "firstName": "Luke",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75289,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:01:36.000Z",
+                    "school": {
+                      "name": "McMinnville",
+                      "logo": "school_75289.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1121474,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103731,
+      "title": "LaSalle vs St. Helens",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124831,
+        "firstName": "Mike",
+        "lastName": "Stone",
+        "genderId": 1,
+        "email": "lsboystennis@gmail.com",
+        "phone": "(503) 680-8563",
+        "school": {
+          "name": "La Salle Prep",
+          "logo": "school_124831.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75818,
+            "name": "St Helens",
+            "logo": "school_75818.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1040735": 6,
+                "1040736": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040735": 6,
+                "1040736": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520369,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040735,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040735,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81785,
+                    "firstName": "Colin",
+                    "lastName": "Wong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-24T21:58:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040736,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80673,
+                    "firstName": "Sam",
+                    "lastName": "Moehring",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040737": 6,
+                "1040738": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040737": 6,
+                "1040738": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520370,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040737,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040737,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81786,
+                    "firstName": "Ryan ",
+                    "lastName": "Cechini",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T20:15:23.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040738,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80676,
+                    "firstName": "Jack ",
+                    "lastName": "Salisbury",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040747": 6,
+                "1040748": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040747": 6,
+                "1040748": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520375,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040747,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040747,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81792,
+                    "firstName": "Owen ",
+                    "lastName": "Nichols",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040748,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80679,
+                    "firstName": "Cameron",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1040761": 6,
+                "1040762": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040761": 6,
+                "1040762": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520382,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040761,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040761,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81789,
+                    "firstName": "Blake ",
+                    "lastName": "Martin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T20:15:47.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81790,
+                    "firstName": "Darren",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T20:16:13.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040762,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80672,
+                    "firstName": "Kodi ",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:28.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80678,
+                    "firstName": "Dylan",
+                    "lastName": "Schafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040765": 6,
+                "1040766": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040765": 6,
+                "1040766": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520384,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040765,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040765,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81793,
+                    "firstName": "Eldon",
+                    "lastName": "Nichols",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T15:42:33.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81794,
+                    "firstName": "Breslin",
+                    "lastName": "Nichols",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040766,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80677,
+                    "firstName": "Colby",
+                    "lastName": "Shafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040769": 6,
+                "1040770": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040769": 6,
+                "1040770": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520386,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040769,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040769,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81787,
+                    "firstName": "Aidan",
+                    "lastName": "McBride",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T15:42:27.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81791,
+                    "firstName": "Andy",
+                    "lastName": "Shaw",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T20:16:19.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040770,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80671,
+                    "firstName": "Jacob",
+                    "lastName": "Matzke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:15.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103272,
+      "title": "Franklin @ St Helens",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75549,
+        "firstName": "Kasi ",
+        "lastName": "Muthu ",
+        "genderId": 1,
+        "email": "kasimuthu1@gmail.com",
+        "phone": "(503) 916-5140",
+        "school": {
+          "name": "Franklin",
+          "logo": "school_75549.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75549,
+            "name": "Franklin",
+            "logo": "school_75549.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75818,
+            "name": "St Helens",
+            "logo": "school_75818.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1033097": 0,
+                "1033098": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033097": 0,
+                "1033098": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516550,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1033097,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033097,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74698,
+                    "firstName": "Ethan",
+                    "lastName": "Cheung",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:24.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033098,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80676,
+                    "firstName": "Jack ",
+                    "lastName": "Salisbury",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1033099": 0,
+                "1033100": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033099": 0,
+                "1033100": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516551,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1033099,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033099,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74699,
+                    "firstName": "Jason",
+                    "lastName": "Co",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:38.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033100,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80679,
+                    "firstName": "Cameron",
+                    "lastName": "Waite",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1033105": 2,
+                "1033106": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033105": 2,
+                "1033106": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516554,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 1033105,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033105,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74697,
+                    "firstName": "Elliot",
+                    "lastName": "Byrne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T20:59:07.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033106,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1033101": 4,
+                "1033102": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033101": 7,
+                "1033102": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1033101": 7,
+                "1033102": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 516552,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1033102,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033101,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74700,
+                    "firstName": "Max",
+                    "lastName": "Emrich",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:02:50.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74701,
+                    "firstName": "Tony",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:03:11.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033102,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80672,
+                    "firstName": "Kodi ",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T06:24:28.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80678,
+                    "firstName": "Dylan",
+                    "lastName": "Schafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1033103": 7,
+                "1033104": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033103": 4,
+                "1033104": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1033103": 5,
+                "1033104": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 516553,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1033103,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033103,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74692,
+                    "firstName": "Paolo",
+                    "lastName": "Freese",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74695,
+                    "firstName": "Roan",
+                    "lastName": "Clearwater",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T21:00:29.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033104,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80670,
+                    "firstName": "Ross",
+                    "lastName": "Cahill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80677,
+                    "firstName": "Colby",
+                    "lastName": "Shafer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75818,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "St Helens",
+                      "logo": "school_75818.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1033109": 2,
+                "1033110": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1033109": 2,
+                "1033110": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516556,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1033109,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033109,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82137,
+                    "firstName": "Sam",
+                    "lastName": "O'Leary",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75549,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T20:59:13.000Z",
+                    "school": {
+                      "name": "Franklin",
+                      "logo": "school_75549.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033110,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

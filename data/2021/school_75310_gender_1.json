@@ -1,0 +1,1639 @@
+{
+  "school": {
+    "id": 75310,
+    "name": "North Medford",
+    "address": "1900 N KEENE WAY DR",
+    "zipCode": "97501",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75310.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:39:06.000Z",
+    "deletedAt": null,
+    "cityId": 11463,
+    "city": {
+      "id": 11463,
+      "name": "Medford",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 3260,
+      "firstName": "Dave",
+      "lastName": "Vistaunet",
+      "address": "2957 Chancery Cir",
+      "phone": "(541) 727-2088",
+      "email": "davevistaunet@yahoo.com",
+      "division": "OSAA S",
+      "schoolId": 75310,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107518,
+      "title": "match vs N Medford",
+      "meetDateTime": "2021-05-11T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1098871": 8,
+                "1098872": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549437,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098871,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098871,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098872,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098873": 8,
+                "1098874": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549438,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098873,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098873,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80875,
+                    "firstName": "Jacob",
+                    "lastName": "Pirosco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:47.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098874,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098875": 8,
+                "1098876": 6,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549439,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1098875,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098875,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098876,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1098879": 8,
+                "1098880": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549441,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098879,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098879,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098880,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1098881": 8,
+                "1098882": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 549442,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1098881,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1098881,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1098882,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106077,
+      "title": "Roseburg High School Vs North Medford High School",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076847": 8,
+                "1076848": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538425,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076847,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076847,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076848,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076851": 8,
+                "1076852": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538427,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076851,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076851,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076852,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076853": 8,
+                "1076854": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538428,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076853,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076853,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076854,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076859": 8,
+                "1076860": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538431,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076860,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076859,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076860,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076861": 8,
+                "1076862": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538432,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076861,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076861,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076862,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103865,
+      "title": "Match at N Medford",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1054281": 8,
+                "1054282": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527142,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054281,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054281,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054282,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054283": 8,
+                "1054284": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527143,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054283,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054283,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054284,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054285": 8,
+                "1054286": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527144,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054285,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054285,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054286,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1054289": 8,
+                "1054290": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527146,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054290,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054291": 8,
+                "1054292": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 527147,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054291,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054291,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054292,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103266,
+      "title": "SMHS vs NMHS",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75309,
+        "firstName": "Dan ",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "nevillefamily1@gmail.com",
+        "phone": "(541) 227-3231",
+        "school": {
+          "name": "South Medford",
+          "logo": "school_75309.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1032991": 8,
+                "1032992": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 516497,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1032991,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032991,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82094,
+                    "firstName": "Andrean",
+                    "lastName": "Gurov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:27:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032992,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032995": 8,
+                "1032996": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 516499,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1032995,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032995,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85328,
+                    "firstName": "Jaden",
+                    "lastName": "Krupp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T04:31:56.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032996,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1032999": 8,
+                "1033000": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 516501,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032999,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032999,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82090,
+                    "firstName": "Hayden",
+                    "lastName": "Allen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-28T02:00:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82095,
+                    "firstName": "Andrew",
+                    "lastName": "Oppermann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:28:04.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033000,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1033003": 8,
+                "1033004": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 516503,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1033003,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1033003,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82105,
+                    "firstName": "Diego",
+                    "lastName": "Bencomo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:33:05.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85329,
+                    "firstName": "Miles",
+                    "lastName": "Karrigan",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1033004,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

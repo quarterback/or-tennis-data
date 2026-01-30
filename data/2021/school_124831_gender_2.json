@@ -1,0 +1,3766 @@
+{
+  "school": {
+    "id": 124831,
+    "name": "La Salle Prep",
+    "address": "x",
+    "zipCode": "97222",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_124831.png",
+    "createdAt": "2020-02-11T06:40:39.000Z",
+    "updatedAt": "2026-01-15T15:25:13.000Z",
+    "deletedAt": null,
+    "cityId": 11852,
+    "city": {
+      "id": 11852,
+      "name": "Milwaukie",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 3240,
+      "firstName": "David",
+      "lastName": "Lane",
+      "address": "11999 SE Fuller Rd, Milwaukie, OR 97222",
+      "phone": "(423) 800-1588",
+      "email": "dlane@lsprep.org",
+      "division": "5A",
+      "schoolId": 124831,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 2,
+    "loss": 5,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107015,
+      "title": "Wilsonville vs LaSalle",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75881,
+        "firstName": "Chase",
+        "lastName": "Eisenbrandt",
+        "genderId": 2,
+        "email": "eisenbrc@wlwv.k12.or.us",
+        "phone": "(503) 789-1751",
+        "school": {
+          "name": "Wilsonville",
+          "logo": "school_75881.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75881,
+            "name": "Wilsonville",
+            "logo": "school_75881.png",
+            "score": 9,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1090891": 6,
+                "1090892": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090891": 6,
+                "1090892": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545447,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090891,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090891,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81534,
+                    "firstName": "Mikayla",
+                    "lastName": "Brehm",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:03.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090892,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85474,
+                    "firstName": "Ellen",
+                    "lastName": "Dierkes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:47:12.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090893": 6,
+                "1090894": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090893": 6,
+                "1090894": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545448,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090893,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090893,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81555,
+                    "firstName": "Rachel",
+                    "lastName": "Westing",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:42:59.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090894,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85476,
+                    "firstName": "Olivia",
+                    "lastName": "Aragon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090899": 6,
+                "1090900": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090899": 6,
+                "1090900": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545451,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1090899,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090899,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81545,
+                    "firstName": "Ellie",
+                    "lastName": "Wettstein",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:41:14.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090900,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86273,
+                    "firstName": "Eunice",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-10T04:06:41.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1090907": 6,
+                "1090908": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090907": 6,
+                "1090908": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545455,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090907,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090907,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81538,
+                    "firstName": "DuQuette",
+                    "lastName": "Maddy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:16.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84517,
+                    "firstName": "Julia",
+                    "lastName": "Tatsumi",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090908,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85478,
+                    "firstName": "Katherine",
+                    "lastName": "Tang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85479,
+                    "firstName": "Nataly",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090911": 6,
+                "1090912": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090911": 6,
+                "1090912": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 545457,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090911,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090911,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81536,
+                    "firstName": "Syndey",
+                    "lastName": "Burns",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:05.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81540,
+                    "firstName": "Wright ",
+                    "lastName": "Lily",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:35.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090912,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85480,
+                    "firstName": "Citali",
+                    "lastName": "Marreno",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:25.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85481,
+                    "firstName": "Meg",
+                    "lastName": "Metzler-Gilbertz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:53.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1090917": 2,
+                "1090918": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1090917": 6,
+                "1090918": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1090917": 6,
+                "1090918": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 545460,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1090917,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1090917,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81542,
+                    "firstName": "Mia",
+                    "lastName": "Poppe",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:37:43.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81546,
+                    "firstName": "Katie",
+                    "lastName": "Scoggins",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:41:17.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1090918,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85482,
+                    "firstName": "Avery",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:10.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86799,
+                    "firstName": "Gabbi",
+                    "lastName": "Tassinari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:33.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105330,
+      "title": "LaSalle vs. Liberty ",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74645,
+        "firstName": "Hector",
+        "lastName": "Alcayde",
+        "genderId": 2,
+        "email": "alcaydeh@hsd.k12.or.us",
+        "phone": "(808) 224-2124",
+        "school": {
+          "name": "Liberty",
+          "logo": "school_74645.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74645,
+            "name": "Liberty",
+            "logo": "school_74645.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1078711": 0,
+                "1078712": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539357,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1078712,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078711,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83326,
+                    "firstName": "Keilyn ",
+                    "lastName": "Futter ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-06T20:44:21.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078712,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85474,
+                    "firstName": "Ellen",
+                    "lastName": "Dierkes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:47:12.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1078713": 8,
+                "1078714": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539358,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1078713,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078713,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83324,
+                    "firstName": "Mackenzie ",
+                    "lastName": "Caldwell ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T05:54:15.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078714,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85475,
+                    "firstName": "Megan",
+                    "lastName": "Snyder",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T22:53:50.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1078717": 0,
+                "1078718": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539360,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1078718,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078717,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83334,
+                    "firstName": "Nicole ",
+                    "lastName": "Alekperov ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T05:56:43.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078718,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86273,
+                    "firstName": "Eunice",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-10T04:06:41.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1078721": 0,
+                "1078722": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539362,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1078722,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078721,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83325,
+                    "firstName": "Sidney ",
+                    "lastName": "Deiss",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-06T20:44:22.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83330,
+                    "firstName": "Chloe ",
+                    "lastName": "Parker ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078722,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85478,
+                    "firstName": "Katherine",
+                    "lastName": "Tang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85479,
+                    "firstName": "Nataly",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1078723": 1,
+                "1078724": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539363,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1078724,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078723,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83329,
+                    "firstName": "Makena ",
+                    "lastName": "Oglesby ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-06T20:44:16.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83332,
+                    "firstName": "Eva ",
+                    "lastName": "Simpson ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-06T20:44:14.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078724,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85482,
+                    "firstName": "Avery",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:10.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86799,
+                    "firstName": "Gabbi",
+                    "lastName": "Tassinari",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:33.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1078725": 1,
+                "1078726": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 539364,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1078726,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1078725,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83325,
+                    "firstName": "Sidney ",
+                    "lastName": "Deiss",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-06T20:44:22.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83330,
+                    "firstName": "Chloe ",
+                    "lastName": "Parker ",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74645,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Liberty",
+                      "logo": "school_74645.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1078726,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85487,
+                    "firstName": "Mia",
+                    "lastName": "McCaffrey",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:51:25.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86274,
+                    "firstName": "Mckenzie",
+                    "lastName": "Fitzgerald",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T00:33:19.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104108,
+      "title": "La Salle @ Hillsboro",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74634,
+        "firstName": "Bianca",
+        "lastName": "Nava",
+        "genderId": 2,
+        "email": "bnava0925@gmail.com",
+        "phone": "(408) 401-6919",
+        "school": {
+          "name": "Hillsboro",
+          "logo": "school_74634.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74634,
+            "name": "Hillsboro",
+            "logo": "school_74634.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1046693": 6,
+                "1046694": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046693": 6,
+                "1046694": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523348,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046693,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046693,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83897,
+                    "firstName": "Margaret",
+                    "lastName": "Shively",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:54:53.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046694,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85474,
+                    "firstName": "Ellen",
+                    "lastName": "Dierkes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:47:12.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046695": 6,
+                "1046696": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046695": 6,
+                "1046696": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523349,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046695,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046695,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83892,
+                    "firstName": "Lyllian",
+                    "lastName": "Her",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:53:33.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046696,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85475,
+                    "firstName": "Megan",
+                    "lastName": "Snyder",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T22:53:50.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046697": 6,
+                "1046698": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046697": 7,
+                "1046698": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523350,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1046697,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046697,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83887,
+                    "firstName": "Audrey",
+                    "lastName": "Allida",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:51:41.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046698,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85478,
+                    "firstName": "Katherine",
+                    "lastName": "Tang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1046711": 4,
+                "1046712": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046711": 2,
+                "1046712": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523357,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046712,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046711,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83886,
+                    "firstName": "Tatiana",
+                    "lastName": "Aguilar",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:51:29.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83890,
+                    "firstName": "Diana",
+                    "lastName": "Garcia Balderrama",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:52:34.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046712,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85480,
+                    "firstName": "Citali",
+                    "lastName": "Marreno",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:25.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85481,
+                    "firstName": "Meg",
+                    "lastName": "Metzler-Gilbertz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:53.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046713": 0,
+                "1046714": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046713": 2,
+                "1046714": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523358,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046714,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046713,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83888,
+                    "firstName": "Marisol",
+                    "lastName": "Chavez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:51:53.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83889,
+                    "firstName": "Yeili",
+                    "lastName": "Figueroa",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046714,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85482,
+                    "firstName": "Avery",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:10.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85483,
+                    "firstName": "Sophie ",
+                    "lastName": "Hauer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-04T18:22:54.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1046715": 5,
+                "1046716": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1046715": 1,
+                "1046716": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523359,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1046716,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1046715,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83896,
+                    "firstName": "Helen",
+                    "lastName": "Riedweg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:54:33.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83898,
+                    "firstName": "Natalie",
+                    "lastName": "Thomas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1046716,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86274,
+                    "firstName": "Mckenzie",
+                    "lastName": "Fitzgerald",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T00:33:19.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86275,
+                    "firstName": "Mia ",
+                    "lastName": "Kritzer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T05:47:09.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103354,
+      "title": "Parkrose v. La Salle",
+      "meetDateTime": "2021-04-22T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75448,
+        "firstName": "Jamie ",
+        "lastName": "Schuknecht ",
+        "genderId": 2,
+        "email": "schukjam@parkrose.k12.or.us",
+        "phone": "(503) 351-4350",
+        "school": {
+          "name": "Parkrose",
+          "logo": "school_75448.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75448,
+            "name": "Parkrose",
+            "logo": "school_75448.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034403": 0,
+                "1034404": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034403": 0,
+                "1034404": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517203,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034404,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034403,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80292,
+                    "firstName": "Angeline",
+                    "lastName": "Vu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:51.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034404,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034407": 6,
+                "1034408": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034407": 7,
+                "1034408": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517205,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034407,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034407,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80261,
+                    "firstName": "Shayla",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:44:57.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034408,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034409": 6,
+                "1034410": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034409": 6,
+                "1034410": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517206,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034409,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034409,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80892,
+                    "firstName": "Alena",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:01:08.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034410,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034413": 4,
+                "1034414": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034413": 6,
+                "1034414": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034413": 6,
+                "1034414": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517208,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034413,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034413,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74804,
+                    "firstName": "Camilla",
+                    "lastName": "Napa'a",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T00:10:23.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80321,
+                    "firstName": "Anita",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:13:41.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034414,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034417": 6,
+                "1034418": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034417": 6,
+                "1034418": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517210,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034417,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034417,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80287,
+                    "firstName": "Sophie",
+                    "lastName": "Tran",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:12.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80331,
+                    "firstName": "Jenny",
+                    "lastName": "Co",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:17:08.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034418,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034419": 6,
+                "1034420": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034419": 3,
+                "1034420": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034419": 4,
+                "1034420": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517211,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034420,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034419,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80295,
+                    "firstName": "Silvia",
+                    "lastName": "Xiong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:52:04.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80323,
+                    "firstName": "Alyssa",
+                    "lastName": "Kha",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:14:31.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034420,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103381,
+      "title": "Parkrose v. La Salle",
+      "meetDateTime": "2021-04-22T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75448,
+        "firstName": "Jamie ",
+        "lastName": "Schuknecht ",
+        "genderId": 2,
+        "email": "schukjam@parkrose.k12.or.us",
+        "phone": "(503) 351-4350",
+        "school": {
+          "name": "Parkrose",
+          "logo": "school_75448.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75448,
+            "name": "Parkrose",
+            "logo": "school_75448.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034667": 0,
+                "1034668": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034667": 0,
+                "1034668": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517335,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034668,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034667,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80292,
+                    "firstName": "Angeline",
+                    "lastName": "Vu",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:51.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034668,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85474,
+                    "firstName": "Ellen",
+                    "lastName": "Dierkes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:47:12.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034669": 6,
+                "1034670": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034669": 7,
+                "1034670": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517336,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034669,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034669,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80261,
+                    "firstName": "Shayla",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:44:57.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034670,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85475,
+                    "firstName": "Megan",
+                    "lastName": "Snyder",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T22:53:50.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034671": 6,
+                "1034672": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034671": 6,
+                "1034672": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517337,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034671,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034671,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80892,
+                    "firstName": "Alena",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T16:01:08.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034672,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85476,
+                    "firstName": "Olivia",
+                    "lastName": "Aragon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034699": 4,
+                "1034700": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034699": 6,
+                "1034700": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034699": 6,
+                "1034700": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517351,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034699,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034699,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74804,
+                    "firstName": "Camilla",
+                    "lastName": "Napa'a",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T00:10:23.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80321,
+                    "firstName": "Anita",
+                    "lastName": "Nguyen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:13:41.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034700,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85478,
+                    "firstName": "Katherine",
+                    "lastName": "Tang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85479,
+                    "firstName": "Nataly",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034701": 6,
+                "1034702": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034701": 6,
+                "1034702": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517352,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034701,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034701,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80287,
+                    "firstName": "Sophie",
+                    "lastName": "Tran",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:12.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80331,
+                    "firstName": "Jenny",
+                    "lastName": "Co",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:17:08.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034702,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85480,
+                    "firstName": "Citali",
+                    "lastName": "Marreno",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:25.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85481,
+                    "firstName": "Meg",
+                    "lastName": "Metzler-Gilbertz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:53.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034717": 6,
+                "1034718": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034717": 3,
+                "1034718": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034717": 4,
+                "1034718": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517360,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034718,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034717,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80295,
+                    "firstName": "Silvia",
+                    "lastName": "Xiong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:52:04.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80323,
+                    "firstName": "Alyssa",
+                    "lastName": "Kha",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75448,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T20:14:31.000Z",
+                    "school": {
+                      "name": "Parkrose",
+                      "logo": "school_75448.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034718,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85482,
+                    "firstName": "Avery",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-20T15:19:10.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85483,
+                    "firstName": "Sophie ",
+                    "lastName": "Hauer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-04T18:22:54.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104934,
+      "title": "La Salle vs Grant",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75550,
+        "firstName": "Tiffani ",
+        "lastName": "da Cunha",
+        "genderId": 2,
+        "email": "tidacunha@pps.net",
+        "phone": "(832) 461-9498",
+        "school": {
+          "name": "Grant",
+          "logo": "school_75550.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75550,
+            "name": "Grant",
+            "logo": "school_75550.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1060447": 6,
+                "1060448": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060447": 6,
+                "1060448": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530225,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060447,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060447,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84371,
+                    "firstName": "Eve",
+                    "lastName": "Laurent",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060448,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85475,
+                    "firstName": "Megan",
+                    "lastName": "Snyder",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-15T22:53:50.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060449": 7,
+                "1060450": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060449": 2,
+                "1060450": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1060449": 10,
+                "1060450": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 530226,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060449,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060449,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84700,
+                    "firstName": "Megan",
+                    "lastName": "Cavallucci",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060450,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85476,
+                    "firstName": "Olivia",
+                    "lastName": "Aragon",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060451": 6,
+                "1060452": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060451": 6,
+                "1060452": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530227,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060451,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060451,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84710,
+                    "firstName": "Juliet",
+                    "lastName": "Hanson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-30T16:09:45.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060452,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86273,
+                    "firstName": "Eunice",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-10T04:06:41.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1060455": 6,
+                "1060456": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060455": 6,
+                "1060456": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530229,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1060455,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060455,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84703,
+                    "firstName": "Marina",
+                    "lastName": "Seidl",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T04:43:41.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84704,
+                    "firstName": "Hayley",
+                    "lastName": "Kreps",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T04:43:55.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060456,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85478,
+                    "firstName": "Katherine",
+                    "lastName": "Tang",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:48:43.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85479,
+                    "firstName": "Nataly",
+                    "lastName": "Ramirez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:00.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060457": 6,
+                "1060458": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060457": 6,
+                "1060458": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530230,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1060457,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060457,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84705,
+                    "firstName": "Elizabeth",
+                    "lastName": "Madsen",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T03:43:03.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84706,
+                    "firstName": "Quinn",
+                    "lastName": "Koppleman",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T03:43:11.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060458,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85480,
+                    "firstName": "Citali",
+                    "lastName": "Marreno",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:25.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 85481,
+                    "firstName": "Meg",
+                    "lastName": "Metzler-Gilbertz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T19:49:53.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060459": 6,
+                "1060460": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060459": 6,
+                "1060460": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530231,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1060459,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060459,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84709,
+                    "firstName": "Collette",
+                    "lastName": "Switzer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-29T03:43:33.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86796,
+                    "firstName": "Ellie",
+                    "lastName": "Matteri",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75550,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-05-02T14:27:13.000Z",
+                    "school": {
+                      "name": "Grant",
+                      "logo": "school_75550.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060460,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86274,
+                    "firstName": "Mckenzie",
+                    "lastName": "Fitzgerald",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T00:33:19.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 86275,
+                    "firstName": "Mia ",
+                    "lastName": "Kritzer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T05:47:09.000Z",
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101231,
+      "title": "FGHS @ La Salle Prep",
+      "meetDateTime": "2021-04-14T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75069,
+        "firstName": "Andrew ",
+        "lastName": "Garrett",
+        "genderId": 2,
+        "email": "agarrett@fgsd.k12.or.us",
+        "phone": "(928) 225-0647",
+        "school": {
+          "name": "Forest Grove",
+          "logo": "school_75069.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75069,
+            "name": "Forest Grove",
+            "logo": "school_75069.png",
+            "score": 9,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1010665": 6,
+                "1010666": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010665": null,
+                "1010666": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1010665": 6,
+                "1010666": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505334,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010665,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010665,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80144,
+                    "firstName": "Rebecca",
+                    "lastName": "Frawley",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:40:14.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010666,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010667": 6,
+                "1010668": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010667": 7,
+                "1010668": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505335,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010667,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010667,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80145,
+                    "firstName": "Kim ",
+                    "lastName": "Auran",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:40:29.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010668,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010669": 6,
+                "1010670": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010669": 6,
+                "1010670": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505336,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010669,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010669,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80154,
+                    "firstName": "Vanessa",
+                    "lastName": "Barboza Sagrero",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:49:05.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010670,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1010681": 7,
+                "1010682": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010681": 6,
+                "1010682": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505342,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010681,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010681,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80152,
+                    "firstName": "Wesley",
+                    "lastName": "Armendarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:48:38.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80165,
+                    "firstName": "Uma",
+                    "lastName": "Kirchler",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:50:46.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010682,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010691": 6,
+                "1010692": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010691": 6,
+                "1010692": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505347,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010691,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010691,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80166,
+                    "firstName": "Abbigail",
+                    "lastName": "Klaus",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:50:58.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80167,
+                    "firstName": "Allison",
+                    "lastName": "Klaus",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:51:06.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010692,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010693": 6,
+                "1010694": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010693": 6,
+                "1010694": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505348,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010693,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010693,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80159,
+                    "firstName": "Siera ",
+                    "lastName": "Case",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:49:49.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80164,
+                    "firstName": "Evi ",
+                    "lastName": "Kintz",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T17:50:34.000Z",
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010694,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

@@ -1,0 +1,5185 @@
+{
+  "school": {
+    "id": 124656,
+    "name": "Valley Catholic School",
+    "address": "x",
+    "zipCode": "97007",
+    "lowestGrade": "7",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_124656.png",
+    "createdAt": "2020-02-11T06:40:38.000Z",
+    "updatedAt": "2026-01-15T16:08:41.000Z",
+    "deletedAt": null,
+    "cityId": 1208,
+    "city": {
+      "id": 1208,
+      "name": "Beaverton",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2767,
+      "firstName": "Kadin",
+      "lastName": "Hashimoto",
+      "address": "4275 SW 148th Ave, Beaverton, OR 97078",
+      "phone": "(503) 853-3793",
+      "email": "khashimoto@valleycatholic.org",
+      "division": "4A",
+      "schoolId": 124656,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 4,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 110182,
+      "title": "Event (District Tournament). District Tournament  ",
+      "meetDateTime": "2021-05-30T01:05:47.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": 207,
+      "winnerSchoolId": null,
+      "coach": null,
+      "schools": {
+        "winners": [
+          {
+            "id": 124884,
+            "name": "Oregon Episcopal School",
+            "logo": "school_124884.png",
+            "score": 15,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124895,
+            "name": "Catlin Gabel School",
+            "logo": "school_124895.png",
+            "score": 13,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 6,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 75619,
+            "name": "Riverdale",
+            "logo": "school_75619.png",
+            "score": 4,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 124983,
+            "name": "Blanchet School",
+            "logo": "school_124983.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1147142": 6,
+                "1147143": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147142": 6,
+                "1147143": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573573,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1147142,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147142,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81820,
+                    "firstName": "Will",
+                    "lastName": "Silver",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:10.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81821,
+                    "firstName": "Peter",
+                    "lastName": "Ye",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:22.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147143,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81150,
+                    "firstName": "Michael",
+                    "lastName": "LeMaster",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:58.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81155,
+                    "firstName": "Matthew",
+                    "lastName": "Ilg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:10:52.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1147144": 0,
+                "1147145": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147144": 0,
+                "1147145": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573574,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1147145,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147144,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147145,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80291,
+                    "firstName": "Charlie ",
+                    "lastName": "Hatcher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:42.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80293,
+                    "firstName": "Owen",
+                    "lastName": "Raymond",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:55.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1147146": 6,
+                "1147147": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147146": 6,
+                "1147147": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573575,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1147146,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147146,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81820,
+                    "firstName": "Will",
+                    "lastName": "Silver",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:10.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81821,
+                    "firstName": "Peter",
+                    "lastName": "Ye",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:22.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147147,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80291,
+                    "firstName": "Charlie ",
+                    "lastName": "Hatcher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:42.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80293,
+                    "firstName": "Owen",
+                    "lastName": "Raymond",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:55.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1147178": 6,
+                "1147179": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147178": 6,
+                "1147179": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573591,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1147178,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147178,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147179,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80804,
+                    "firstName": "Gavin",
+                    "lastName": "Baca",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:20.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1147180": 6,
+                "1147181": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147180": 6,
+                "1147181": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573592,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1147180,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147180,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147181,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81818,
+                    "firstName": "Nathan ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:47:35.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1147182": 6,
+                "1147183": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1147182": 6,
+                "1147183": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 573593,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1147182,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1147182,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1147183,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81817,
+                    "firstName": "Tai ",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": {
+        "id": 207,
+        "bracketType": 32,
+        "name": "Class 4A/3A/2A/1A Special District 1 Tournament",
+        "logo": null
+      }
+    },
+    {
+      "id": 101594,
+      "title": "Blanchet vs Valley Catholic",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124983,
+        "firstName": "Kevin",
+        "lastName": "FitzPatrick",
+        "genderId": 1,
+        "email": "kevinfitzpatrick@blanchetcatholicschool.com",
+        "phone": "(503) 510-9851",
+        "school": {
+          "name": "Blanchet School",
+          "logo": "school_124983.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124983,
+            "name": "Blanchet School",
+            "logo": "school_124983.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1085791": 1,
+                "1085792": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085791": 2,
+                "1085792": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542897,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085792,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085791,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81148,
+                    "firstName": "Andy",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:38.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085792,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085795": 1,
+                "1085796": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085795": 3,
+                "1085796": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542899,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085796,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085795,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81145,
+                    "firstName": "Ismael",
+                    "lastName": "Lopez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:07:41.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085796,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085801": 6,
+                "1085802": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085801": 6,
+                "1085802": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542902,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085801,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085801,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81156,
+                    "firstName": "Benjamin",
+                    "lastName": "Alley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:11:14.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085802,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80804,
+                    "firstName": "Gavin",
+                    "lastName": "Baca",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:20.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1085805": 2,
+                "1085806": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085805": 4,
+                "1085806": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542904,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085806,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085805,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81150,
+                    "firstName": "Michael",
+                    "lastName": "LeMaster",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:58.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81156,
+                    "firstName": "Benjamin",
+                    "lastName": "Alley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:11:14.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085806,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085807": 1,
+                "1085808": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085807": 2,
+                "1085808": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542905,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085808,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085807,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81146,
+                    "firstName": "Braeden",
+                    "lastName": "Duffy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:01.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81147,
+                    "firstName": "Diego",
+                    "lastName": "Diaz-Diaz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:20.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085808,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085809": 1,
+                "1085810": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085809": 6,
+                "1085810": 7,
+                "number": 2,
+                "tie": 73
+              }
+            ],
+            "id": 542906,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085810,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085809,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81147,
+                    "firstName": "Diego",
+                    "lastName": "Diaz-Diaz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:20.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81153,
+                    "firstName": "Caiden",
+                    "lastName": "Cummings",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:10:14.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085810,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106679,
+      "title": "VC vs. Riverdale",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124656,
+        "firstName": "Kadin",
+        "lastName": "Hashimoto",
+        "genderId": 1,
+        "email": "khashimoto@valleycatholic.org",
+        "phone": "(503) 853-3793",
+        "school": {
+          "name": "Valley Catholic School",
+          "logo": "school_124656.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75619,
+            "name": "Riverdale",
+            "logo": "school_75619.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1085437": 6,
+                "1085438": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085437": 6,
+                "1085438": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542720,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085437,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085437,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085438,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78571,
+                    "firstName": "Maxwell",
+                    "lastName": "Furman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:00:27.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085439": 6,
+                "1085440": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085439": 6,
+                "1085440": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542721,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085439,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085439,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085440,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78575,
+                    "firstName": "Goran",
+                    "lastName": "Pope",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:18.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1085445": 4,
+                "1085446": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085445": 2,
+                "1085446": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542724,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085446,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085445,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085446,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78572,
+                    "firstName": "Shotaro",
+                    "lastName": "Norville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:00:52.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78578,
+                    "firstName": "Henry",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:03:10.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085447": 6,
+                "1085448": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085447": 7,
+                "1085448": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542725,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085447,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085447,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085448,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78573,
+                    "firstName": "Atticus",
+                    "lastName": "Perry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78577,
+                    "firstName": "Ezra",
+                    "lastName": "Schnadig",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:54.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085449": 6,
+                "1085450": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085449": 6,
+                "1085450": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542726,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085449,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085449,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80800,
+                    "firstName": "Sihoon (Sean)",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:32:25.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80803,
+                    "firstName": "Landon ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085450,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78576,
+                    "firstName": "Winslow",
+                    "lastName": "Reece",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:36.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78579,
+                    "firstName": "Cyrus",
+                    "lastName": "Weeden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105806,
+      "title": "catlin gabel vs valley catholic",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124895,
+        "firstName": "Hedy ",
+        "lastName": "Jackson",
+        "genderId": 1,
+        "email": "Jacksonh@catlin.edu",
+        "phone": "(503) 351-6550",
+        "school": {
+          "name": "Catlin Gabel School",
+          "logo": "school_124895.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124895,
+            "name": "Catlin Gabel School",
+            "logo": "school_124895.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1073427": 4,
+                "1073428": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073427": 6,
+                "1073428": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1073427": 3,
+                "1073428": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 536715,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073428,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073427,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81817,
+                    "firstName": "Tai ",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073428,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073433": 6,
+                "1073434": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073433": 6,
+                "1073434": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536718,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073433,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073433,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81816,
+                    "firstName": "Ben",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:46:47.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073434,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073437": 7,
+                "1073438": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073437": 6,
+                "1073438": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536720,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1073438,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073437,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81818,
+                    "firstName": "Nathan ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:47:35.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073438,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1073447": 6,
+                "1073448": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073447": 6,
+                "1073448": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536725,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073447,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073447,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81820,
+                    "firstName": "Will",
+                    "lastName": "Silver",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:10.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81821,
+                    "firstName": "Peter",
+                    "lastName": "Ye",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:48:22.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073448,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073451": 6,
+                "1073452": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073451": 6,
+                "1073452": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536727,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073451,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073451,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81822,
+                    "firstName": "Lucas ",
+                    "lastName": "Holliday",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-25T20:05:33.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81823,
+                    "firstName": "Ben ",
+                    "lastName": "Rosenfeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:49:07.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073452,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1073457": 6,
+                "1073458": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1073457": 6,
+                "1073458": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 536730,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1073457,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1073457,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81824,
+                    "firstName": "Rishi",
+                    "lastName": "Alluri",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:49:25.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81825,
+                    "firstName": "Caden ",
+                    "lastName": "Zamastil",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124895,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T21:49:49.000Z",
+                    "school": {
+                      "name": "Catlin Gabel School",
+                      "logo": "school_124895.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1073458,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104415,
+      "title": "OES",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124884,
+        "firstName": "Frank",
+        "lastName": "Collie",
+        "genderId": 1,
+        "email": "collief@oes.edu",
+        "phone": "(425) 753-0560",
+        "school": {
+          "name": "Oregon Episcopal School",
+          "logo": "school_124884.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124884,
+            "name": "Oregon Episcopal School",
+            "logo": "school_124884.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1052577": 0,
+                "1052578": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052577": 2,
+                "1052578": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526290,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1052578,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052577,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80274,
+                    "firstName": "Sameer ",
+                    "lastName": "Shenoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-01T20:23:25.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052578,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1052581": 6,
+                "1052582": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052581": 6,
+                "1052582": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526292,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1052581,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052581,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80276,
+                    "firstName": "Ethan",
+                    "lastName": "Tieu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-01T20:23:38.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052582,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1052591": 6,
+                "1052592": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052591": 6,
+                "1052592": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526297,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1052591,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052591,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80286,
+                    "firstName": "Will",
+                    "lastName": "Perry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:12.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052592,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1052623": 6,
+                "1052624": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052623": 6,
+                "1052624": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526313,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1052623,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052623,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80281,
+                    "firstName": "Richard",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:24.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052624,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1052633": 6,
+                "1052634": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052633": 6,
+                "1052634": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526318,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1052633,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052633,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80283,
+                    "firstName": "Cameron ",
+                    "lastName": "Getz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:43.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80285,
+                    "firstName": "Oscar",
+                    "lastName": "Hapke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:59.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052634,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1052647": 6,
+                "1052648": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1052647": 6,
+                "1052648": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526325,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1052647,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1052647,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80288,
+                    "firstName": "Rand",
+                    "lastName": "Freres",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:54:56.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80291,
+                    "firstName": "Charlie ",
+                    "lastName": "Hatcher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:42.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1052648,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104226,
+      "title": "VC vs. Blanchet",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124656,
+        "firstName": "Kadin",
+        "lastName": "Hashimoto",
+        "genderId": 1,
+        "email": "khashimoto@valleycatholic.org",
+        "phone": "(503) 853-3793",
+        "school": {
+          "name": "Valley Catholic School",
+          "logo": "school_124656.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124983,
+            "name": "Blanchet School",
+            "logo": "school_124983.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1048337": 6,
+                "1048338": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048337": 6,
+                "1048338": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524170,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048337,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048337,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048338,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81155,
+                    "firstName": "Matthew",
+                    "lastName": "Ilg",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:10:52.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048349": 6,
+                "1048350": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048349": 6,
+                "1048350": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524176,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048349,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048349,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048350,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81148,
+                    "firstName": "Andy",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:38.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048353": 6,
+                "1048354": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048353": 6,
+                "1048354": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524178,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1048353,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048353,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048354,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81144,
+                    "firstName": "Jerry",
+                    "lastName": "Ruiz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:04:15.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1048363": 6,
+                "1048364": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048363": 7,
+                "1048364": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524183,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048363,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048363,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048364,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81147,
+                    "firstName": "Diego",
+                    "lastName": "Diaz-Diaz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:20.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81150,
+                    "firstName": "Michael",
+                    "lastName": "LeMaster",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:58.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048369": 6,
+                "1048370": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048369": 6,
+                "1048370": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524186,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048369,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048369,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048370,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81146,
+                    "firstName": "Braeden",
+                    "lastName": "Duffy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:08:01.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81151,
+                    "firstName": "Keven",
+                    "lastName": "Silva-Sanchez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:09:23.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1048377": 6,
+                "1048378": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1048377": 7,
+                "1048378": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 524190,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1048377,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1048377,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1048378,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81152,
+                    "firstName": "Sebastian",
+                    "lastName": "Ramos",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:09:48.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81153,
+                    "firstName": "Caiden",
+                    "lastName": "Cummings",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124983,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:10:14.000Z",
+                    "school": {
+                      "name": "Blanchet School",
+                      "logo": "school_124983.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103373,
+      "title": "Valley Catholic vs. OES",
+      "meetDateTime": "2021-04-21T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124656,
+        "firstName": "Kadin",
+        "lastName": "Hashimoto",
+        "genderId": 1,
+        "email": "khashimoto@valleycatholic.org",
+        "phone": "(503) 853-3793",
+        "school": {
+          "name": "Valley Catholic School",
+          "logo": "school_124656.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124884,
+            "name": "Oregon Episcopal School",
+            "logo": "school_124884.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034519": 2,
+                "1034520": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034519": 1,
+                "1034520": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517261,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034520,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034519,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034520,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034525": 7,
+                "1034526": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034525": 6,
+                "1034526": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517264,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034525,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034525,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034526,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80283,
+                    "firstName": "Cameron ",
+                    "lastName": "Getz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:43.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034527": 0,
+                "1034528": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034527": 0,
+                "1034528": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517265,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034528,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034527,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034528,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80286,
+                    "firstName": "Will",
+                    "lastName": "Perry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:12.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034537": 1,
+                "1034538": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034537": 2,
+                "1034538": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517270,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034538,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034537,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034538,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80276,
+                    "firstName": "Ethan",
+                    "lastName": "Tieu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-01T20:23:38.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80281,
+                    "firstName": "Richard",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:24.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034539": 2,
+                "1034540": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034539": 6,
+                "1034540": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034539": 2,
+                "1034540": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517271,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034540,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034539,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034540,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80285,
+                    "firstName": "Oscar",
+                    "lastName": "Hapke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:59.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80297,
+                    "firstName": "Justin",
+                    "lastName": "Dao",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:52:22.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034545": 1,
+                "1034546": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034545": 2,
+                "1034546": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517274,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034546,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034545,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034546,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80288,
+                    "firstName": "Rand",
+                    "lastName": "Freres",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:54:56.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80291,
+                    "firstName": "Charlie ",
+                    "lastName": "Hatcher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:51:42.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102943,
+      "title": "VC Vs. Riverdale",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124656,
+        "firstName": "Kadin",
+        "lastName": "Hashimoto",
+        "genderId": 1,
+        "email": "khashimoto@valleycatholic.org",
+        "phone": "(503) 853-3793",
+        "school": {
+          "name": "Valley Catholic School",
+          "logo": "school_124656.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75619,
+            "name": "Riverdale",
+            "logo": "school_75619.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1027495": 6,
+                "1027496": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027495": 6,
+                "1027496": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513749,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1027495,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027495,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027496,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78572,
+                    "firstName": "Shotaro",
+                    "lastName": "Norville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:00:52.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1027497": 4,
+                "1027498": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027497": 5,
+                "1027498": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513750,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1027498,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027497,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027498,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78571,
+                    "firstName": "Maxwell",
+                    "lastName": "Furman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:00:27.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1027499": 6,
+                "1027500": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027499": 6,
+                "1027500": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513751,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1027499,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027499,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80794,
+                    "firstName": "Thomas ",
+                    "lastName": "King",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:41.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027500,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78574,
+                    "firstName": "Maddox",
+                    "lastName": "Philpott",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1027503": 6,
+                "1027504": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027503": 5,
+                "1027504": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1027503": 6,
+                "1027504": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 513753,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1027504,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027503,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027504,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78570,
+                    "firstName": "Tolga",
+                    "lastName": "Daim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T20:59:58.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78575,
+                    "firstName": "Goran",
+                    "lastName": "Pope",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:18.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1027505": 7,
+                "1027506": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027505": 4,
+                "1027506": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1027505": 4,
+                "1027506": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 513754,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1027506,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027505,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027506,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78577,
+                    "firstName": "Ezra",
+                    "lastName": "Schnadig",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:54.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78578,
+                    "firstName": "Henry",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:03:10.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1027507": 7,
+                "1027508": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1027507": 6,
+                "1027508": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 513755,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1027507,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1027507,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1027508,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78573,
+                    "firstName": "Atticus",
+                    "lastName": "Perry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78576,
+                    "firstName": "Winslow",
+                    "lastName": "Reece",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75619,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T21:02:36.000Z",
+                    "school": {
+                      "name": "Riverdale",
+                      "logo": "school_75619.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101408,
+      "title": "OES vs Valley Catholic",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 124884,
+        "firstName": "Frank",
+        "lastName": "Collie",
+        "genderId": 1,
+        "email": "collief@oes.edu",
+        "phone": "(425) 753-0560",
+        "school": {
+          "name": "Oregon Episcopal School",
+          "logo": "school_124884.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124884,
+            "name": "Oregon Episcopal School",
+            "logo": "school_124884.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124656,
+            "name": "Valley Catholic School",
+            "logo": "school_124656.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1009981": 7,
+                "1009982": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009981": 6,
+                "1009982": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504992,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009981,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009981,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80272,
+                    "firstName": "Shiloh",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:48:57.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009982,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80793,
+                    "firstName": "Miguel",
+                    "lastName": "Rodriguez-Guenther",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:34:30.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009983": 6,
+                "1009984": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009983": 6,
+                "1009984": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504993,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009983,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009983,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80274,
+                    "firstName": "Sameer ",
+                    "lastName": "Shenoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-01T20:23:25.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009984,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80801,
+                    "firstName": "Samir",
+                    "lastName": "Chakravarty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-10T20:53:46.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 504994,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1009985,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009985,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80278,
+                    "firstName": "Maxwell",
+                    "lastName": "Tsai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:49:54.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009986,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80800,
+                    "firstName": "Sihoon (Sean)",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:32:25.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1009989": 6,
+                "1009990": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009989": 6,
+                "1009990": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504996,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009989,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009989,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80276,
+                    "firstName": "Ethan",
+                    "lastName": "Tieu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-01T20:23:38.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80281,
+                    "firstName": "Richard",
+                    "lastName": "Li",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:24.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009990,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80795,
+                    "firstName": "Michael ",
+                    "lastName": "Mellilo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:28:52.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80798,
+                    "firstName": "Lucas",
+                    "lastName": "Day",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009991": 6,
+                "1009992": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009991": 6,
+                "1009992": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504997,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009991,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009991,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80283,
+                    "firstName": "Cameron ",
+                    "lastName": "Getz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:43.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80285,
+                    "firstName": "Oscar",
+                    "lastName": "Hapke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:50:59.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009992,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80796,
+                    "firstName": "Dika ",
+                    "lastName": "Rusli",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:00.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80797,
+                    "firstName": "Nicklaus",
+                    "lastName": "Leong",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:29:49.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1009993": 6,
+                "1009994": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1009993": 6,
+                "1009994": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504998,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1009993,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1009993,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80288,
+                    "firstName": "Rand",
+                    "lastName": "Freres",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T14:54:56.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80297,
+                    "firstName": "Justin",
+                    "lastName": "Dao",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124884,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T19:52:22.000Z",
+                    "school": {
+                      "name": "Oregon Episcopal School",
+                      "logo": "school_124884.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1009994,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80802,
+                    "firstName": "Christopher ",
+                    "lastName": "Cannard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80806,
+                    "firstName": "Kristopher",
+                    "lastName": "Bielefeld",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124656,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T14:35:44.000Z",
+                    "school": {
+                      "name": "Valley Catholic School",
+                      "logo": "school_124656.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

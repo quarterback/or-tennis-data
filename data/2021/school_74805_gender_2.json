@@ -1,0 +1,634 @@
+{
+  "school": {
+    "id": 74805,
+    "name": "Mountain View",
+    "address": "2755 NE 27TH ST",
+    "zipCode": "97701",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74805.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:35:03.000Z",
+    "deletedAt": null,
+    "cityId": 1361,
+    "city": {
+      "id": 1361,
+      "name": "Bend",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2738,
+      "firstName": "Stacey",
+      "lastName": "Jellen",
+      "address": "2457 NW Sacagawea Ln",
+      "phone": "(310) 880-5102",
+      "email": "staceylaurenj@gmail.com",
+      "division": "5A",
+      "schoolId": 74805,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 0,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 100867,
+      "title": "Mountain View at Sisters",
+      "meetDateTime": "2021-05-03T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75764,
+        "firstName": "Bruce",
+        "lastName": "Fenn",
+        "genderId": 2,
+        "email": "brucew10@hotmail.com",
+        "phone": "(419) 806-0167",
+        "school": {
+          "name": "Sisters",
+          "logo": "school_75764.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74805,
+            "name": "Mountain View",
+            "logo": "school_74805.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1064933": 6,
+                "1064934": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064933": 6,
+                "1064934": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532468,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1064933,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064933,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76924,
+                    "firstName": "Juhree",
+                    "lastName": "Kizziar",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:16:43.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064934,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84106,
+                    "firstName": "Kailei",
+                    "lastName": "Ouellette",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T15:59:36.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1064935": 6,
+                "1064936": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064935": 7,
+                "1064936": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532469,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1064935,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064935,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76930,
+                    "firstName": "Katie",
+                    "lastName": "Ryan",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:18:00.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064936,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74923,
+                    "firstName": "Mollie",
+                    "lastName": "Wagno",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1064937": 7,
+                "1064938": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064937": 6,
+                "1064938": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1064937": 10,
+                "1064938": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 532470,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1064938,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064937,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79114,
+                    "firstName": "Brooke ",
+                    "lastName": "Harper",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064938,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74920,
+                    "firstName": "Reeve",
+                    "lastName": "Mikalson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-08T03:20:23.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1064941": 6,
+                "1064942": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064941": 7,
+                "1064942": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532472,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1064942,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064941,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76929,
+                    "firstName": "Ellie",
+                    "lastName": "Rush",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-29T01:42:28.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77765,
+                    "firstName": "Sophia",
+                    "lastName": "Silva",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-03T12:17:30.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064942,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74918,
+                    "firstName": "Raelee",
+                    "lastName": "Abbott",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-16T20:43:41.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74921,
+                    "firstName": "Liliana",
+                    "lastName": "Overcash",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-16T20:44:26.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1064943": 6,
+                "1064944": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064943": 6,
+                "1064944": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532473,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1064943,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064943,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 76923,
+                    "firstName": "Jenna",
+                    "lastName": "Kizziar",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:16:37.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 76928,
+                    "firstName": "Josie",
+                    "lastName": "Patton",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:17:53.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064944,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74922,
+                    "firstName": "Ella",
+                    "lastName": "Morris",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-08T03:20:37.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84109,
+                    "firstName": "Madalyn",
+                    "lastName": "Aegerter",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-08T03:20:57.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1064945": 6,
+                "1064946": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1064945": 1,
+                "1064946": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1064945": 10,
+                "1064946": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 532474,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1064946,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1064945,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 76925,
+                    "firstName": "Elana",
+                    "lastName": "Mansfield",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:16:50.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79118,
+                    "firstName": "Charlotte",
+                    "lastName": "Seymour",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T22:18:57.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1064946,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74919,
+                    "firstName": "Renata",
+                    "lastName": "Krongberg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-08T03:20:16.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84111,
+                    "firstName": "Tressa",
+                    "lastName": "Maxwell",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74805,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Mountain View",
+                      "logo": "school_74805.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
