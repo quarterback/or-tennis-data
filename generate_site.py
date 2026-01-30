@@ -443,160 +443,72 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oregon HS Tennis Rankings</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
-        * {{ font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }}
-        body {{ background: #0f0f0f; color: #e5e5e5; font-size: 13px; }}
-        .navbar {{ background: #1a1a1a; border-bottom: 1px solid #2a2a2a; padding: 0.5rem 1rem; }}
-        .navbar-brand {{ font-weight: 700; font-size: 15px; color: #fff !important; }}
-        .nav-tabs {{ border: none; gap: 4px; }}
-        .nav-tabs .nav-link {{
-            background: transparent; border: none; color: #888; font-size: 13px;
-            font-weight: 500; padding: 6px 12px; border-radius: 6px;
-        }}
-        .nav-tabs .nav-link:hover {{ color: #fff; background: #2a2a2a; }}
-        .nav-tabs .nav-link.active {{ background: #3b82f6; color: #fff; }}
-        .toolbar {{
-            background: #1a1a1a; border-bottom: 1px solid #2a2a2a;
-            padding: 8px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
-        }}
-        .toolbar select, .toolbar input {{
-            background: #2a2a2a; border: 1px solid #3a3a3a; color: #e5e5e5;
-            font-size: 12px; padding: 5px 10px; border-radius: 4px; min-width: 120px;
-        }}
-        .toolbar select:focus, .toolbar input:focus {{ outline: none; border-color: #3b82f6; }}
-        .toolbar label {{ color: #888; font-size: 11px; font-weight: 500; text-transform: uppercase; margin-right: 4px; }}
-        .filter-group {{ display: flex; align-items: center; gap: 4px; }}
-        .table-container {{ padding: 0; }}
-        table.dataTable {{ margin: 0 !important; }}
-        table.dataTable thead th {{
-            background: #1a1a1a; color: #888; font-size: 11px; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.5px; padding: 10px 12px;
-            border-bottom: 1px solid #2a2a2a !important;
-        }}
-        table.dataTable tbody td {{
-            padding: 8px 12px; border-bottom: 1px solid #1f1f1f !important;
-            vertical-align: middle; color: #e5e5e5;
-        }}
-        table.dataTable tbody tr {{ background: #0f0f0f; }}
-        table.dataTable tbody tr:hover {{ background: #1a1a1a; }}
-        .rank-cell {{ font-weight: 600; color: #888; }}
-        .rank-1 {{ color: #fbbf24 !important; }}
-        .rank-2 {{ color: #94a3b8 !important; }}
-        .rank-3 {{ color: #d97706 !important; }}
-        .school-name {{ font-weight: 600; color: #fff; }}
-        .apr-value {{ font-weight: 600; font-variant-numeric: tabular-nums; }}
-        .apr-high {{ color: #22c55e; }}
-        .apr-mid {{ color: #888; }}
-        .apr-low {{ color: #ef4444; }}
-        .pct-value {{ font-variant-numeric: tabular-nums; color: #888; }}
-        .record {{ font-variant-numeric: tabular-nums; color: #888; }}
-        .badge-class {{
-            font-size: 10px; font-weight: 600; padding: 2px 6px; border-radius: 3px;
-        }}
-        .badge-6a {{ background: #3b82f6; color: #fff; }}
-        .badge-5a {{ background: #8b5cf6; color: #fff; }}
-        .badge-4a {{ background: #22c55e; color: #fff; }}
-        .badge-league {{
-            font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 3px;
-            background: #2a2a2a; color: #888; cursor: help; position: relative;
-        }}
-        .badge-league:hover {{ background: #3a3a3a; }}
-        .league-tooltip {{
-            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
-            background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 4px;
-            padding: 8px 12px; white-space: nowrap; z-index: 1000;
-            font-size: 11px; color: #e5e5e5; display: none; margin-bottom: 4px;
-        }}
-        .badge-league:hover .league-tooltip {{ display: block; }}
-        .tooltip-label {{ color: #666; }}
-        .tooltip-value {{ color: #22c55e; font-weight: 600; }}
-        .dataTables_wrapper .dataTables_length select {{ width: auto; }}
-        .dataTables_wrapper .dataTables_filter {{ display: none; }}
-        .dataTables_wrapper .dataTables_info {{ color: #666; font-size: 11px; }}
-        .dataTables_wrapper .dataTables_paginate .paginate_button {{
-            color: #888 !important; background: #1a1a1a !important; border: 1px solid #2a2a2a !important;
-        }}
-        .dataTables_wrapper .dataTables_paginate .paginate_button.current {{
-            background: #3b82f6 !important; color: #fff !important; border-color: #3b82f6 !important;
-        }}
-        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {{
-            background: #2a2a2a !important; color: #fff !important;
-        }}
+        body {{ background: #f8f9fa; }}
+        .navbar {{ background: #198754; }}
+        .navbar-brand {{ color: #fff !important; font-weight: 600; }}
+        .nav-tabs .nav-link {{ color: rgba(255,255,255,0.7); }}
+        .nav-tabs .nav-link:hover {{ color: #fff; }}
+        .nav-tabs .nav-link.active {{ background: rgba(255,255,255,0.2); color: #fff; border: none; }}
+        .toolbar {{ background: #fff; border-bottom: 1px solid #dee2e6; padding: 12px 16px; }}
+        .filter-group {{ display: inline-flex; align-items: center; gap: 6px; margin-right: 16px; }}
+        .filter-group label {{ font-size: 12px; font-weight: 600; color: #6c757d; margin: 0; }}
+        .filter-group select, .filter-group input {{ font-size: 13px; }}
+        .table {{ font-size: 13px; }}
+        .table th {{ font-size: 11px; text-transform: uppercase; color: #6c757d; font-weight: 600; }}
+        .rank-1 {{ color: #ffc107; font-weight: 700; }}
+        .rank-2 {{ color: #6c757d; font-weight: 700; }}
+        .rank-3 {{ color: #cd7f32; font-weight: 700; }}
+        .school-name {{ font-weight: 600; }}
+        .apr-high {{ color: #198754; font-weight: 600; }}
+        .apr-mid {{ color: #6c757d; }}
+        .apr-low {{ color: #dc3545; }}
+        .badge-6a {{ background: #0d6efd; }}
+        .badge-5a {{ background: #6f42c1; }}
+        .badge-4a {{ background: #198754; }}
+        .badge-league {{ background: #e9ecef; color: #495057; font-size: 11px; }}
         .tab-content {{ display: none; }}
         .tab-content.active {{ display: block; }}
-        /* Playoff Simulator */
         .playoff-container {{ padding: 20px; }}
-        .playoff-toolbar {{
-            background: #1a1a1a; border-radius: 8px; padding: 16px;
-            margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap;
-        }}
-        .playoff-toolbar .form-group {{ display: flex; flex-direction: column; gap: 4px; }}
-        .playoff-toolbar label {{ color: #888; font-size: 11px; font-weight: 600; text-transform: uppercase; }}
-        .playoff-toolbar select, .playoff-toolbar input {{
-            background: #2a2a2a; border: 1px solid #3a3a3a; color: #e5e5e5;
-            padding: 8px 12px; border-radius: 4px; font-size: 13px;
-        }}
-        .playoff-toolbar button {{
-            background: #3b82f6; color: #fff; border: none; padding: 8px 16px;
-            border-radius: 4px; font-weight: 600; cursor: pointer;
-        }}
-        .playoff-toolbar button:hover {{ background: #2563eb; }}
-        .field-list {{ background: #1a1a1a; border-radius: 8px; overflow: hidden; }}
-        .field-header {{
-            padding: 12px 16px; background: #2a2a2a; font-weight: 600;
-            display: flex; justify-content: space-between;
-        }}
-        .field-team {{
-            display: flex; align-items: center; padding: 10px 16px;
-            border-bottom: 1px solid #2a2a2a; gap: 12px;
-        }}
+        .playoff-toolbar {{ background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        .playoff-toolbar .form-group {{ display: inline-block; margin-right: 16px; }}
+        .playoff-toolbar label {{ font-size: 12px; font-weight: 600; color: #6c757d; display: block; margin-bottom: 4px; }}
+        .field-list {{ background: #fff; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        .field-header {{ padding: 12px 16px; background: #f8f9fa; border-bottom: 1px solid #dee2e6; font-weight: 600; }}
+        .field-team {{ display: flex; align-items: center; padding: 10px 16px; border-bottom: 1px solid #f0f0f0; gap: 12px; }}
         .field-team:last-child {{ border-bottom: none; }}
-        .field-seed {{ width: 24px; font-weight: 700; color: #3b82f6; }}
+        .field-seed {{ width: 30px; font-weight: 700; color: #198754; }}
         .field-name {{ flex: 1; font-weight: 500; }}
-        .field-apr {{ width: 60px; font-variant-numeric: tabular-nums; color: #22c55e; }}
-        .field-league {{ font-size: 11px; color: #888; }}
-        .field-badge {{
-            font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 3px;
-        }}
-        .badge-autobid {{ background: #22c55e; color: #fff; }}
-        .badge-atlarge {{ background: #8b5cf6; color: #fff; }}
-        .badge-bye {{ background: #fbbf24; color: #000; margin-left: 8px; }}
-        .section-title {{ color: #888; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 16px 0 8px; }}
-        /* League Analysis */
+        .field-apr {{ width: 70px; color: #198754; font-weight: 600; }}
+        .field-league {{ font-size: 12px; color: #6c757d; width: 150px; }}
+        .badge-autobid {{ background: #198754; }}
+        .badge-atlarge {{ background: #6f42c1; }}
+        .badge-bye {{ background: #ffc107; color: #000; }}
+        .section-title {{ color: #6c757d; font-size: 12px; font-weight: 600; text-transform: uppercase; margin: 16px 0 8px; }}
         .analysis-container {{ padding: 20px; }}
-        .analysis-toolbar {{
-            background: #1a1a1a; border-radius: 8px; padding: 16px;
-            margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap;
-        }}
-        .analysis-table {{ width: 100%; }}
-        .analysis-table th {{ text-align: left; }}
-        footer {{
-            margin-top: 40px; padding: 16px; background: #0a0a0a;
-            border-top: 1px solid #1a1a1a; text-align: center;
-        }}
-        footer a {{ color: #444; font-size: 11px; text-decoration: none; }}
-        footer a:hover {{ color: #666; }}
+        .analysis-toolbar {{ background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
+        footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
+        footer a {{ color: #6c757d; font-size: 12px; }}
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <span class="navbar-brand">Oregon HS Tennis Rankings</span>
-        <ul class="nav nav-tabs ms-4" id="mainTabs">
-            <li class="nav-item">
-                <a class="nav-link active" href="#" data-tab="rankings">Rankings</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-tab="playoffs">Playoff Simulator</a>
-            </li>
-            <li class="nav-item" id="analysisNavItem" style="display:none;">
-                <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
-            </li>
-        </ul>
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <span class="navbar-brand">Oregon HS Tennis Rankings</span>
+            <ul class="nav nav-tabs border-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-tab="rankings">Rankings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-tab="playoffs">Playoff Simulator</a>
+                </li>
+                <li class="nav-item" id="analysisNavItem" style="display:none;">
+                    <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
+                </li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Rankings Tab -->
@@ -604,43 +516,43 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         <div class="toolbar">
             <div class="filter-group">
                 <label>Year</label>
-                <select id="yearFilter">
+                <select id="yearFilter" class="form-select form-select-sm">
                     {chr(10).join(f'<option value="{y}">{y}</option>' for y in years)}
                 </select>
             </div>
             <div class="filter-group">
                 <label>Gender</label>
-                <select id="genderFilter">
+                <select id="genderFilter" class="form-select form-select-sm">
                     {chr(10).join(f'<option value="{g}">{g}</option>' for g in genders)}
                 </select>
             </div>
             <div class="filter-group">
                 <label>Class</label>
-                <select id="classFilter">
+                <select id="classFilter" class="form-select form-select-sm">
                     <option value="">All</option>
                     {chr(10).join(f'<option value="{c}">{c}</option>' for c in classifications)}
                 </select>
             </div>
             <div class="filter-group">
                 <label>League</label>
-                <select id="leagueFilter">
+                <select id="leagueFilter" class="form-select form-select-sm">
                     <option value="">All</option>
                     {chr(10).join(f'<option value="{l}">{l}</option>' for l in leagues)}
                 </select>
             </div>
-            <div class="filter-group" style="flex:1; max-width: 200px;">
+            <div class="filter-group">
                 <label>Search</label>
-                <input type="text" id="searchBox" placeholder="School name...">
+                <input type="text" id="searchBox" class="form-control form-control-sm" placeholder="School..." style="width:140px;">
             </div>
             <div class="filter-group">
                 <label>Min Matches</label>
-                <input type="number" id="minMatchesFilter" value="3" min="0" max="20" style="width:60px;">
+                <input type="number" id="minMatchesFilter" class="form-control form-control-sm" value="3" min="0" max="20" style="width:70px;">
             </div>
         </div>
 
-        <div class="table-container">
-            <table id="rankingsTable" class="table" style="width:100%">
-                <thead>
+        <div class="table-responsive">
+            <table id="rankingsTable" class="table table-striped table-hover mb-0">
+                <thead class="table-light">
                     <tr>
                         <th>#</th>
                         <th>School</th>
@@ -664,25 +576,25 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
             <div class="playoff-toolbar">
                 <div class="form-group">
                     <label>Year</label>
-                    <select id="playoffYear">
+                    <select id="playoffYear" class="form-select form-select-sm">
                         {chr(10).join(f'<option value="{y}">{y}</option>' for y in years)}
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Gender</label>
-                    <select id="playoffGender">
+                    <select id="playoffGender" class="form-select form-select-sm">
                         {chr(10).join(f'<option value="{g}">{g}</option>' for g in genders)}
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Classification</label>
-                    <select id="playoffClass">
+                    <select id="playoffClass" class="form-select form-select-sm">
                         {chr(10).join(f'<option value="{c}">{c}</option>' for c in classifications)}
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Bracket Size</label>
-                    <select id="bracketSize">
+                    <select id="bracketSize" class="form-select form-select-sm">
                         <option value="8">8 Teams</option>
                         <option value="12" selected>12 Teams</option>
                         <option value="16">16 Teams</option>
@@ -690,13 +602,19 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 </div>
                 <div class="form-group">
                     <label>Auto-Bids/League</label>
-                    <input type="number" id="autoBids" value="1" min="0" max="4" style="width:70px;">
+                    <select id="autoBids" class="form-select form-select-sm">
+                        <option value="1">1 per league</option>
+                        <option value="2">2 per league</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label>Min Matches</label>
-                    <input type="number" id="playoffMinMatches" value="3" min="0" max="20" style="width:70px;">
+                    <input type="number" id="playoffMinMatches" class="form-control form-control-sm" value="3" min="0" max="20" style="width:70px;">
                 </div>
-                <button id="simulateBtn">Generate Field</button>
+                <div class="form-group">
+                    <label>&nbsp;</label>
+                    <button id="simulateBtn" class="btn btn-success btn-sm">Generate Field</button>
+                </div>
             </div>
 
             <div id="playoffResults"></div>
@@ -707,23 +625,26 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
     <div id="analysis-tab" class="tab-content">
         <div class="analysis-container">
             <div class="analysis-toolbar">
-                <div class="form-group">
-                    <label>Year</label>
-                    <select id="analysisYear">
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Year</label>
+                    <select id="analysisYear" class="form-select form-select-sm">
                         {chr(10).join(f'<option value="{y}">{y}</option>' for y in years)}
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Gender</label>
-                    <select id="analysisGender">
+                <div class="form-group" style="display:inline-block; margin-right:16px;">
+                    <label style="display:block; font-size:12px; font-weight:600; color:#6c757d; margin-bottom:4px;">Gender</label>
+                    <select id="analysisGender" class="form-select form-select-sm">
                         {chr(10).join(f'<option value="{g}">{g}</option>' for g in genders)}
                     </select>
                 </div>
-                <button id="refreshAnalysis">Refresh</button>
+                <div class="form-group" style="display:inline-block;">
+                    <label style="display:block;">&nbsp;</label>
+                    <button id="refreshAnalysis" class="btn btn-success btn-sm">Refresh</button>
+                </div>
             </div>
-            <div class="table-container">
-                <table id="analysisTable" class="table analysis-table" style="width:100%">
-                    <thead>
+            <div class="table-responsive">
+                <table id="analysisTable" class="table table-striped">
+                    <thead class="table-light">
                         <tr>
                             <th>#</th>
                             <th>League</th>
@@ -753,14 +674,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         const rankings = {rankings_json};
         const leagueScores = {league_scores_json};
         let table;
-        let analysisTable;
-
-        // Build league score lookup for tooltips
-        const leagueScoreLookup = {{}};
-        leagueScores.forEach(ls => {{
-            const key = `${{ls.year}}-${{ls.gender}}-${{ls.league}}`;
-            leagueScoreLookup[key] = ls;
-        }});
 
         // Check for analysis view URL param
         const urlParams = new URLSearchParams(window.location.search);
@@ -776,13 +689,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab + '-tab').classList.add('active');
-                if (tab.dataset.tab === 'analysis') {{
-                    refreshAnalysisTable();
-                }}
+                if (tab.dataset.tab === 'analysis') refreshAnalysisTable();
             }});
         }});
 
-        // Admin link behavior
+        // Admin link
         document.getElementById('adminLink').addEventListener('click', (e) => {{
             e.preventDefault();
             document.getElementById('analysisNavItem').style.display = 'block';
@@ -799,66 +710,42 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 columns: [
                     {{
                         data: 'rank',
-                        render: (d, t, r) => {{
+                        render: (d, t) => {{
                             if (t !== 'display') return d;
-                            let cls = 'rank-cell';
-                            if (d === 1) cls += ' rank-1';
-                            else if (d === 2) cls += ' rank-2';
-                            else if (d === 3) cls += ' rank-3';
+                            let cls = '';
+                            if (d === 1) cls = 'rank-1';
+                            else if (d === 2) cls = 'rank-2';
+                            else if (d === 3) cls = 'rank-3';
                             return `<span class="${{cls}}">${{d}}</span>`;
                         }}
                     }},
-                    {{
-                        data: 'school_name',
-                        render: (d) => `<span class="school-name">${{d}}</span>`
-                    }},
+                    {{ data: 'school_name', render: d => `<span class="school-name">${{d}}</span>` }},
                     {{
                         data: 'classification',
                         render: (d, t) => {{
                             if (t !== 'display' || !d) return d || '-';
-                            let cls = 'badge-class ';
+                            let cls = 'badge ';
                             if (d === '6A') cls += 'badge-6a';
                             else if (d === '5A') cls += 'badge-5a';
                             else cls += 'badge-4a';
                             return `<span class="${{cls}}">${{d}}</span>`;
                         }}
                     }},
-                    {{
-                        data: 'league',
-                        render: (d, t, row) => {{
-                            if (t !== 'display') return d || '';
-                            if (!d) return '-';
-                            const key = `${{row.year}}-${{row.gender}}-${{d}}`;
-                            const ls = leagueScoreLookup[key];
-                            const tooltip = ls ?
-                                `<span class="league-tooltip">
-                                    <span class="tooltip-label">Power Score:</span> <span class="tooltip-value">${{ls.avg_apr.toFixed(4)}}</span><br>
-                                    <span class="tooltip-label">Top 4 Depth:</span> <span class="tooltip-value">${{ls.depth_score.toFixed(4)}}</span>
-                                </span>` : '';
-                            return `<span class="badge-league">${{d}}${{tooltip}}</span>`;
-                        }}
-                    }},
-                    {{ data: 'record', className: 'record' }},
-                    {{ data: 'league_record', className: 'record' }},
+                    {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
+                    {{ data: 'record' }},
+                    {{ data: 'league_record' }},
                     {{
                         data: 'apr',
                         render: (d, t) => {{
                             if (t !== 'display') return d;
-                            let cls = 'apr-value ';
-                            if (d >= 0.55) cls += 'apr-high';
-                            else if (d < 0.40) cls += 'apr-low';
-                            else cls += 'apr-mid';
+                            let cls = 'apr-mid';
+                            if (d >= 0.55) cls = 'apr-high';
+                            else if (d < 0.40) cls = 'apr-low';
                             return `<span class="${{cls}}">${{d.toFixed(4)}}</span>`;
                         }}
                     }},
-                    {{
-                        data: 'wwp',
-                        render: (d, t) => t === 'display' ? `<span class="pct-value">${{d >= 1 ? '1.000' : d.toFixed(3).substring(1)}}</span>` : d
-                    }},
-                    {{
-                        data: 'owp',
-                        render: (d, t) => t === 'display' ? `<span class="pct-value">${{d >= 1 ? '1.000' : d.toFixed(3).substring(1)}}</span>` : d
-                    }}
+                    {{ data: 'wwp', render: (d, t) => t === 'display' ? (d >= 1 ? '1.000' : d.toFixed(3).substring(1)) : d }},
+                    {{ data: 'owp', render: (d, t) => t === 'display' ? (d >= 1 ? '1.000' : d.toFixed(3).substring(1)) : d }}
                 ],
                 order: [[6, 'desc']],
                 pageLength: 50,
@@ -866,7 +753,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 dom: 'lrtip'
             }});
 
-            // Custom filtering
+            // Filtering
             $.fn.dataTable.ext.search.push((settings, data, idx) => {{
                 const row = table.row(idx).data();
                 const year = $('#yearFilter').val();
@@ -879,22 +766,17 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 if (gender && row.gender !== gender) return false;
                 if (cls && row.classification !== cls) return false;
                 if (league && row.league !== league) return false;
-
-                // Minimum matches filter (wins + losses + ties)
                 const totalMatches = row.wins + row.losses + row.ties;
                 if (totalMatches < minMatches) return false;
-
                 return true;
             }});
 
             $('#yearFilter, #genderFilter, #classFilter, #leagueFilter, #minMatchesFilter').on('change', () => table.draw());
             $('#searchBox').on('keyup', function() {{ table.search(this.value).draw(); }});
 
-            // Set defaults
             $('#yearFilter').val('{years[0]}');
             table.draw();
 
-            // Playoff Simulator
             $('#simulateBtn').on('click', generatePlayoffField);
         }});
 
@@ -906,7 +788,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
             const autoBidsPerLeague = parseInt($('#autoBids').val());
             const minMatches = parseInt($('#playoffMinMatches').val()) || 0;
 
-            // Filter teams for this year/gender/classification with minimum matches
             let teams = rankings.filter(r =>
                 r.year === year &&
                 r.gender === gender &&
@@ -915,7 +796,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
             );
 
             if (teams.length === 0) {{
-                $('#playoffResults').html('<p style="padding:20px;color:#888;">No teams found for selected criteria (check min matches setting).</p>');
+                $('#playoffResults').html('<p class="text-muted p-3">No teams found for selected criteria.</p>');
                 return;
             }}
 
@@ -928,22 +809,19 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 }}
             }});
 
-            // Sort each league by: league_wins desc, then tiebreakers
+            // Sort each league by league win % then APR
             Object.keys(leagueTeams).forEach(league => {{
                 leagueTeams[league].sort((a, b) => {{
-                    // Primary: League wins (desc)
-                    const aLeagueWinPct = a.league_wins / Math.max(1, a.league_wins + a.league_losses + a.league_ties);
-                    const bLeagueWinPct = b.league_wins / Math.max(1, b.league_wins + b.league_losses + b.league_ties);
-                    if (bLeagueWinPct !== aLeagueWinPct) return bLeagueWinPct - aLeagueWinPct;
-                    // Tiebreaker: APR
+                    const aWinPct = a.league_wins / Math.max(1, a.league_wins + a.league_losses + a.league_ties);
+                    const bWinPct = b.league_wins / Math.max(1, b.league_wins + b.league_losses + b.league_ties);
+                    if (bWinPct !== aWinPct) return bWinPct - aWinPct;
                     return b.apr - a.apr;
                 }});
             }});
 
-            // Select auto-bids from each league
+            // Select auto-bids
             const autoBidTeams = [];
             const autoBidIds = new Set();
-
             Object.keys(leagueTeams).forEach(league => {{
                 const leagueList = leagueTeams[league];
                 for (let i = 0; i < Math.min(autoBidsPerLeague, leagueList.length); i++) {{
@@ -952,7 +830,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 }}
             }});
 
-            // Fill remaining spots with at-large (highest APR not already in)
+            // Fill remaining with at-large by APR
             const remainingSpots = bracketSize - autoBidTeams.length;
             const atLargeTeams = teams
                 .filter(t => !autoBidIds.has(t.school_id))
@@ -960,14 +838,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 .slice(0, Math.max(0, remainingSpots))
                 .map(t => ({{ ...t, qualifyType: 'atlarge' }}));
 
-            // Combine and sort by APR for seeding
             const field = [...autoBidTeams, ...atLargeTeams].sort((a, b) => b.apr - a.apr);
 
-            // Render
             let html = `
                 <div class="section-title">Qualifying Field (${{field.length}} Teams)</div>
                 <div class="field-list">
-                    <div class="field-header">
+                    <div class="field-header d-flex justify-content-between">
                         <span>Seed / Team</span>
                         <span>APR</span>
                     </div>
@@ -980,10 +856,10 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                     <div class="field-team">
                         <span class="field-seed">${{seed}}</span>
                         <span class="field-name">${{team.school_name}}</span>
-                        <span class="field-badge ${{team.qualifyType === 'auto' ? 'badge-autobid' : 'badge-atlarge'}}">
+                        <span class="badge ${{team.qualifyType === 'auto' ? 'badge-autobid' : 'badge-atlarge'}}">
                             ${{team.qualifyType === 'auto' ? 'AUTO' : 'AT-LARGE'}}
                         </span>
-                        ${{hasBye ? '<span class="field-badge badge-bye">FIRST ROUND BYE</span>' : ''}}
+                        ${{hasBye ? '<span class="badge badge-bye ms-1">BYE</span>' : ''}}
                         <span class="field-league">${{team.league || '-'}}</span>
                         <span class="field-apr">${{team.apr.toFixed(4)}}</span>
                     </div>
@@ -992,15 +868,14 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
 
             html += '</div>';
 
-            // Summary
             const autoCount = field.filter(t => t.qualifyType === 'auto').length;
             const atLargeCount = field.filter(t => t.qualifyType === 'atlarge').length;
             html += `
-                <div class="section-title" style="margin-top:20px;">Summary</div>
-                <div style="background:#1a1a1a;padding:12px 16px;border-radius:8px;color:#888;">
-                    <strong style="color:#fff;">${{field.length}}</strong> teams qualify &bull;
-                    <strong style="color:#22c55e;">${{autoCount}}</strong> auto-bids &bull;
-                    <strong style="color:#8b5cf6;">${{atLargeCount}}</strong> at-large
+                <div class="section-title mt-3">Summary</div>
+                <div class="bg-white p-3 rounded shadow-sm">
+                    <strong>${{field.length}}</strong> teams qualify &bull;
+                    <span class="text-success"><strong>${{autoCount}}</strong> auto-bids</span> &bull;
+                    <span style="color:#6f42c1;"><strong>${{atLargeCount}}</strong> at-large</span>
                     ${{bracketSize === 12 ? ' &bull; Top 4 seeds receive first-round byes' : ''}}
                 </div>
             `;
@@ -1011,27 +886,24 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         function refreshAnalysisTable() {{
             const year = parseInt($('#analysisYear').val());
             const gender = $('#analysisGender').val();
-
             const filtered = leagueScores
                 .filter(ls => ls.year === year && ls.gender === gender)
                 .sort((a, b) => b.avg_apr - a.avg_apr);
 
             const tbody = $('#analysisTable tbody');
             tbody.empty();
-
             filtered.forEach((ls, idx) => {{
-                const row = `
+                tbody.append(`
                     <tr>
-                        <td class="rank-cell">${{idx + 1}}</td>
-                        <td><span class="badge-league">${{ls.league}}</span></td>
+                        <td>${{idx + 1}}</td>
+                        <td><span class="badge badge-league">${{ls.league}}</span></td>
                         <td>${{ls.classification || '-'}}</td>
-                        <td class="apr-value apr-high">${{ls.avg_apr.toFixed(4)}}</td>
-                        <td class="apr-value">${{ls.depth_score.toFixed(4)}}</td>
+                        <td class="apr-high">${{ls.avg_apr.toFixed(4)}}</td>
+                        <td>${{ls.depth_score.toFixed(4)}}</td>
                         <td>${{ls.num_schools}}</td>
                         <td class="school-name">${{ls.top_team}}</td>
                     </tr>
-                `;
-                tbody.append(row);
+                `);
             }});
         }}
 
