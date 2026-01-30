@@ -332,8 +332,11 @@ def build_rankings(data_dir, master_school_list):
                 for opp_id in opponents:
                     if opp_id in school_data[year][gender]:
                         opponent_wwps.append(school_data[year][gender][opp_id]['wwp'])
+                    else:
+                        # Unknown opponents (e.g., Idaho schools) rated as neutral average
+                        opponent_wwps.append(0.5)
 
-                owp = sum(opponent_wwps) / len(opponent_wwps) if opponent_wwps else 0.0
+                owp = sum(opponent_wwps) / len(opponent_wwps) if opponent_wwps else 0.5
                 school['owp'] = owp
                 school['apr'] = (school['wwp'] * WWP_WEIGHT) + (owp * OWP_WEIGHT)
 
@@ -477,7 +480,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         }}
         table.dataTable tbody td {{
             padding: 8px 12px; border-bottom: 1px solid #1f1f1f !important;
-            vertical-align: middle;
+            vertical-align: middle; color: #e5e5e5;
         }}
         table.dataTable tbody tr {{ background: #0f0f0f; }}
         table.dataTable tbody tr:hover {{ background: #1a1a1a; }}
