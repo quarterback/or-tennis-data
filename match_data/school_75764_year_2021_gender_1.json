@@ -1,0 +1,3009 @@
+{
+  "school": {
+    "id": 75764,
+    "name": "Sisters",
+    "address": "1700 W MCKINNEY BUTTE RD",
+    "zipCode": "97759",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75764.png",
+    "createdAt": "2020-02-11T06:38:50.000Z",
+    "updatedAt": "2026-01-15T15:56:26.000Z",
+    "deletedAt": null,
+    "cityId": 16824,
+    "city": {
+      "id": 16824,
+      "name": "Sisters",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2709,
+      "firstName": "Vince",
+      "lastName": "Grace",
+      "address": "1700 McKinney Butte Rd.  Sisters, OR 97759",
+      "phone": "(541) 706-1392",
+      "email": "gvince2135@gmail.com",
+      "division": "4A",
+      "schoolId": 75764,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 2,
+    "loss": 6,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 104064,
+      "title": "Sisters at Woodburn",
+      "meetDateTime": "2021-04-30T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75764,
+        "firstName": "Vince",
+        "lastName": "Grace",
+        "genderId": 1,
+        "email": "gvince2135@gmail.com",
+        "phone": "(541) 706-1392",
+        "school": {
+          "name": "Sisters",
+          "logo": "school_75764.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75906,
+            "name": "Woodburn",
+            "logo": "school_75906.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1057123": 6,
+                "1057124": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1057123": 6,
+                "1057124": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 528563,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1057123,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1057123,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1057124,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81830,
+                    "firstName": "Jonathon",
+                    "lastName": "Swenson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75906,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T22:08:58.000Z",
+                    "school": {
+                      "name": "Woodburn",
+                      "logo": "school_75906.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1057125": 0,
+                "1057126": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 528564,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1057126,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1057125,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77482,
+                    "firstName": "Matthew",
+                    "lastName": "Riehle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:05:28.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1057126,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1057127": 9,
+                "1057128": 7,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 528565,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1057127,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1057127,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1057128,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101542,
+      "title": "Stayton at Sisters",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75764,
+        "firstName": "Vince",
+        "lastName": "Grace",
+        "genderId": 1,
+        "email": "gvince2135@gmail.com",
+        "phone": "(541) 706-1392",
+        "school": {
+          "name": "Sisters",
+          "logo": "school_75764.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74614,
+            "name": "Stayton",
+            "logo": "school_74614.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1045731": 6,
+                "1045732": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045731": 6,
+                "1045732": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522867,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045731,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045731,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045732,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78193,
+                    "firstName": "Hayden",
+                    "lastName": "Holm",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:31.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 522869,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045736,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045735,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045736,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74702,
+                    "firstName": "Daniel ",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:24.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 522872,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1045742,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045741,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045742,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74704,
+                    "firstName": "Ethan ",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:26.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1045765": 6,
+                "1045766": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045765": 5,
+                "1045766": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1045765": 10,
+                "1045766": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 522884,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1045765,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045765,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045766,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74705,
+                    "firstName": "Jason",
+                    "lastName": "Ritchie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T21:36:20.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 74707,
+                    "firstName": "Garrett ",
+                    "lastName": "Buechner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:29.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1045791": 0,
+                "1045792": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1045791": 6,
+                "1045792": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1045791": 10,
+                "1045792": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 522897,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1045791,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1045791,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77482,
+                    "firstName": "Matthew",
+                    "lastName": "Riehle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:05:28.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1045792,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74708,
+                    "firstName": "Joseph",
+                    "lastName": "Stufflebeam",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78195,
+                    "firstName": "Aiden",
+                    "lastName": "Larimer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1047861": 0,
+                "1047862": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1047861": 0,
+                "1047862": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 523932,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1047861,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1047861,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74703,
+                    "firstName": "Liam",
+                    "lastName": "Rutherford",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-05T03:51:33.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74709,
+                    "firstName": "Jake ",
+                    "lastName": "Andersen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1047862,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101541,
+      "title": "North Marion at Sisters",
+      "meetDateTime": "2021-04-23T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75764,
+        "firstName": "Vince",
+        "lastName": "Grace",
+        "genderId": 1,
+        "email": "gvince2135@gmail.com",
+        "phone": "(541) 706-1392",
+        "school": {
+          "name": "Sisters",
+          "logo": "school_75764.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75406,
+            "name": "North Marion",
+            "logo": "school_75406.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1035761": 7,
+                "1035762": 6,
+                "number": 1,
+                "tie": 4
+              },
+              {
+                "1035761": 6,
+                "1035762": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517882,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1035761,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035761,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035762,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1035765": 6,
+                "1035766": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035765": 4,
+                "1035766": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517884,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1035765,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035765,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035766,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1035767": 6,
+                "1035768": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035767": 6,
+                "1035768": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1035767": 10,
+                "1035768": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517885,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1035767,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035767,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035768,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1035769": 0,
+                "1035770": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035769": 1,
+                "1035770": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517886,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1035770,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035769,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77482,
+                    "firstName": "Matthew",
+                    "lastName": "Riehle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:05:28.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035770,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101682,
+      "title": "Sisiters",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75463,
+        "firstName": "Gary",
+        "lastName": "Quandt",
+        "genderId": 1,
+        "email": "quandtgary@gmail.com",
+        "phone": "(541) 360-1372",
+        "school": {
+          "name": "Philomath",
+          "logo": "school_75463.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75463,
+            "name": "Philomath",
+            "logo": "school_75463.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1030079": 7,
+                "1030080": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1030079": 6,
+                "1030080": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515041,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030079,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030079,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030080,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79512,
+                    "firstName": "Dawson",
+                    "lastName": "Beckstead",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:17:11.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 515170,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030337,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030337,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79510,
+                    "firstName": "Andrew",
+                    "lastName": "Leonard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:16:05.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030338,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 515171,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030339,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030339,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79505,
+                    "firstName": "Theodore",
+                    "lastName": "Benbow",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:14:17.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030340,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [],
+            "id": 515172,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1030341,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030341,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79504,
+                    "firstName": "Dylan",
+                    "lastName": "Bell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:42.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79511,
+                    "firstName": "Nicholas",
+                    "lastName": "Stucki",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:16:30.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030342,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1030343": null,
+                "1030345": null,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515173,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1030343,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030343,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79502,
+                    "firstName": "Judah",
+                    "lastName": "Bacho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:05.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79508,
+                    "firstName": "Mark",
+                    "lastName": "Grimmer Jr.",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:15:27.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030345,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83853,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T02:31:04.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1030349": 8,
+                "1030350": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515176,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1030349,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030349,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79503,
+                    "firstName": "Jace",
+                    "lastName": "Barrett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:23.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79506,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:14:38.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030350,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101348,
+      "title": "Madras vs. Sisters at Sisters - Special District #2 - 1A, 2A, 3A, 4A Classification",
+      "meetDateTime": "2021-04-20T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75153,
+        "firstName": "Margaret",
+        "lastName": "Kincaid",
+        "genderId": 1,
+        "email": "mkincaid@509j.net",
+        "phone": "(541) 480-1287",
+        "school": {
+          "name": "Madras",
+          "logo": "school_75153.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75153,
+            "name": "Madras",
+            "logo": "school_75153.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024281": 3,
+                "1024282": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024281": null,
+                "1024282": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1024281": 4,
+                "1024282": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512142,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024282,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024281,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79781,
+                    "firstName": "Elmer",
+                    "lastName": "Egoavil",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024282,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024289": 6,
+                "1024290": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024289": null,
+                "1024290": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1024289": 6,
+                "1024290": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512146,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79780,
+                    "firstName": "Riley",
+                    "lastName": "Adair",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:17:18.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79783,
+                    "firstName": "Jesus",
+                    "lastName": "Cruz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:18:29.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024290,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024291": null,
+                "1024292": null,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024291": 8,
+                "1024292": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 512147,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024291,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024291,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79784,
+                    "firstName": "Juan",
+                    "lastName": "Mata",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:24:17.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79785,
+                    "firstName": "Gustavo",
+                    "lastName": "Rico",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:24:46.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024292,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77482,
+                    "firstName": "Matthew",
+                    "lastName": "Riehle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:05:28.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101543,
+      "title": "Sisters at Molalla",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75764,
+        "firstName": "Vince",
+        "lastName": "Grace",
+        "genderId": 1,
+        "email": "gvince2135@gmail.com",
+        "phone": "(541) 706-1392",
+        "school": {
+          "name": "Sisters",
+          "logo": "school_75764.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75330,
+            "name": "Molalla",
+            "logo": "school_75330.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1013291": 6,
+                "1013292": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013291": null,
+                "1013292": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013291": 6,
+                "1013292": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506647,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013291,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013291,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013292,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83314,
+                    "firstName": "Anthony ",
+                    "lastName": "Ehleringer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:24:41.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1017145": 1,
+                "1017146": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1017145": 1,
+                "1017146": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 508574,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1017146,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1017145,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1017146,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83320,
+                    "firstName": "Joshua",
+                    "lastName": "Lam",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:32:10.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013295": null,
+                "1013296": null,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013295": 2,
+                "1013296": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 506649,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013296,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013295,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013296,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83317,
+                    "firstName": "Caden",
+                    "lastName": "Cox",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-07T03:09:38.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83323,
+                    "firstName": "Shad",
+                    "lastName": "Stephens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101893,
+      "title": "cascade @ Sisters (B)",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74861,
+        "firstName": "Bryan",
+        "lastName": "Rozo",
+        "genderId": 1,
+        "email": "brozo@cascade.k12.or.us",
+        "phone": "(503) 409-7365",
+        "school": {
+          "name": "Cascade",
+          "logo": "school_74861.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74861,
+            "name": "Cascade",
+            "logo": "school_74861.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1013347": 2,
+                "1013348": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013347": 1,
+                "1013348": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506675,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013348,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013347,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013348,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82366,
+                    "firstName": "Zach",
+                    "lastName": "Moore",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-05-17T21:58:01.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013349": 1,
+                "1013350": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013349": null,
+                "1013350": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013349": 0,
+                "1013350": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506676,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013350,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013349,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013350,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82373,
+                    "firstName": "Jacob",
+                    "lastName": "Farr",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:13:50.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82374,
+                    "firstName": "Colton",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:13:58.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013351": 2,
+                "1013352": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013351": null,
+                "1013352": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013351": 0,
+                "1013352": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506677,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013352,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013351,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77480,
+                    "firstName": "Jaxon",
+                    "lastName": "Barry",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:04:39.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77481,
+                    "firstName": "Zenas",
+                    "lastName": "Ortega",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T13:39:27.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013352,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82375,
+                    "firstName": "Jaxon",
+                    "lastName": "Haverland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82376,
+                    "firstName": "Blake",
+                    "lastName": "Perlicheck",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:14:56.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101238,
+      "title": "Estacada vs Sisters",
+      "meetDateTime": "2021-04-13T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [],
+            "id": 502685,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1005367,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1005367,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1005368,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 502686,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1005369,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1005369,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1005370,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1008839": 6,
+                "1008840": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1008839": 6,
+                "1008840": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504421,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1008839,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008839,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008840,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1008945": null,
+                "1008946": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1008945": 2,
+                "1008946": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1008945": 0,
+                "1008946": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504474,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008946,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008945,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008946,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 504477,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008951,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008951,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008952,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1008953": null,
+                "1008954": null,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 504478,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008953,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008953,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77271,
+                    "firstName": "Kyle",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:10.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008954,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

@@ -1,0 +1,4860 @@
+{
+  "school": {
+    "id": 75702,
+    "name": "West Salem",
+    "address": "1776 TITAN WAY",
+    "zipCode": "97304",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75702.png",
+    "createdAt": "2020-02-11T06:38:50.000Z",
+    "updatedAt": "2026-01-15T16:12:20.000Z",
+    "deletedAt": null,
+    "cityId": 16057,
+    "city": {
+      "id": 16057,
+      "name": "Salem",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2748,
+      "firstName": "Rob",
+      "lastName": "Fraser",
+      "address": "1776 Titan Drive NW, Salem, OR 97304",
+      "phone": "(503) 385-5141",
+      "email": "fraser_robert@salkeiz.k12.or.us",
+      "division": "6A",
+      "schoolId": 75702,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 4,
+    "loss": 5,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107747,
+      "title": "South Salem vs. West Salem",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75686,
+        "firstName": "James",
+        "lastName": "Heyen",
+        "genderId": 1,
+        "email": "coach.heyen@gmail.com",
+        "phone": "(503) 931-5454",
+        "school": {
+          "name": "South Salem",
+          "logo": "school_75686.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75686,
+            "name": "South Salem",
+            "logo": "school_75686.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1102735": 6,
+                "1102736": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102735": 6,
+                "1102736": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551369,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102735,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102735,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80025,
+                    "firstName": "Adam",
+                    "lastName": "Son",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:38:53.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102736,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1105203": 6,
+                "1105204": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1105203": 6,
+                "1105204": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 552603,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1105203,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1105203,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80048,
+                    "firstName": "Noah",
+                    "lastName": "Leichty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:49:47.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1105204,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1105207": 6,
+                "1105208": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1105207": 6,
+                "1105208": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 552605,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1105207,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1105207,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80035,
+                    "firstName": "Ethan",
+                    "lastName": "Hadden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:42:24.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1105208,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1105221": 6,
+                "1105222": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1105221": null,
+                "1105222": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1105221": 6,
+                "1105222": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 552612,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1105221,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1105221,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80045,
+                    "firstName": "Max",
+                    "lastName": "Molyneux",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:49:00.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80047,
+                    "firstName": "Nathan",
+                    "lastName": "Kindred",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1105222,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1105223": 6,
+                "1105224": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1105223": 6,
+                "1105224": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 552613,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1105223,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1105223,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80051,
+                    "firstName": "Quinn",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:03.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80054,
+                    "firstName": "Toby",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:39.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1105224,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1105225": 6,
+                "1105226": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1105225": null,
+                "1105226": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1105225": 6,
+                "1105226": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 552614,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1105225,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1105225,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80041,
+                    "firstName": "Marc",
+                    "lastName": "Nickel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:01.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80044,
+                    "firstName": "Max",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:42.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1105226,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106900,
+      "title": "South Albany HS at West Salem HS",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75702,
+        "firstName": "Rob",
+        "lastName": "Fraser",
+        "genderId": 1,
+        "email": "fraser_robert@salkeiz.k12.or.us",
+        "phone": "(503) 385-5141",
+        "school": {
+          "name": "West Salem",
+          "logo": "school_75702.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74695,
+            "name": "South Albany",
+            "logo": "school_74695.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1089179": 6,
+                "1089180": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1089179": 6,
+                "1089180": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544591,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089180,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089179,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089180,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80465,
+                    "firstName": "Blaine ",
+                    "lastName": "Leichty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:19.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089181": 6,
+                "1089182": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1089181": 6,
+                "1089182": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544592,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089181,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089181,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089182,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80471,
+                    "firstName": "Yonnie",
+                    "lastName": "Dejillas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 544594,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1089185,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089185,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089186,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1089189": 6,
+                "1089190": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1089189": 6,
+                "1089190": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544596,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089190,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089189,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089190,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80466,
+                    "firstName": "Vova ",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80467,
+                    "firstName": "Vadim",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089191": 7,
+                "1089192": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1089191": 6,
+                "1089192": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544597,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089191,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089191,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089192,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80468,
+                    "firstName": "Jayden ",
+                    "lastName": "Benitez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:03.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80469,
+                    "firstName": "Landon",
+                    "lastName": "Simons",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1089193": 6,
+                "1089194": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1089193": 6,
+                "1089194": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 544598,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1089193,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1089193,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1089194,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80470,
+                    "firstName": "Jordan",
+                    "lastName": "Toews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:37.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80472,
+                    "firstName": "Michael ",
+                    "lastName": "Franzwa",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:28:06.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105944,
+      "title": "Central HS at West Salem HS",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75702,
+        "firstName": "Rob",
+        "lastName": "Fraser",
+        "genderId": 1,
+        "email": "fraser_robert@salkeiz.k12.or.us",
+        "phone": "(503) 385-5141",
+        "school": {
+          "name": "West Salem",
+          "logo": "school_75702.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74876,
+            "name": "Central (Independence)",
+            "logo": "school_74876.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1075007": 6,
+                "1075008": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075007": 6,
+                "1075008": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537505,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075008,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075007,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075008,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79466,
+                    "firstName": "Ethan",
+                    "lastName": "Love",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T23:42:04.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1075013": 7,
+                "1075014": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075013": 6,
+                "1075014": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537508,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075014,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075013,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075014,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79467,
+                    "firstName": "Nathaniel ",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T23:42:25.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 537513,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1075023,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075023,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84216,
+                    "firstName": "Alex",
+                    "lastName": "Ochoa",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:03.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075024,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1075041": 6,
+                "1075042": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1075041": 6,
+                "1075042": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 537522,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075041,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075041,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075042,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79463,
+                    "firstName": "Dawson",
+                    "lastName": "Dye",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-21T16:57:28.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79469,
+                    "firstName": "Riley",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-09T22:45:57.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 537526,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075049,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075049,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84214,
+                    "firstName": "Ethan",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84880,
+                    "firstName": "Nicholas",
+                    "lastName": "Peterson-Hunt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075050,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 537531,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1075059,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1075059,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1075060,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105638,
+      "title": "WSHS vs McNary HS",
+      "meetDateTime": "2021-05-03T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75702,
+        "firstName": "Rob",
+        "lastName": "Fraser",
+        "genderId": 1,
+        "email": "fraser_robert@salkeiz.k12.or.us",
+        "phone": "(503) 385-5141",
+        "school": {
+          "name": "West Salem",
+          "logo": "school_75702.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75683,
+            "name": "McNary",
+            "logo": "school_75683.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1070785": 6,
+                "1070786": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070785": 6,
+                "1070786": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535394,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070786,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070785,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070786,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81684,
+                    "firstName": "Tyler",
+                    "lastName": "Guptill",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:13:40.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070787": 6,
+                "1070788": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070787": 6,
+                "1070788": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535395,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070788,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070787,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070788,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81685,
+                    "firstName": "Caleb",
+                    "lastName": "Skipper",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070789": 7,
+                "1070790": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070789": 3,
+                "1070790": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1070789": 6,
+                "1070790": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 535396,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1070790,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070789,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070790,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80574,
+                    "firstName": "Spencer ",
+                    "lastName": "Holland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T19:53:14.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1070793": 4,
+                "1070794": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070793": 6,
+                "1070794": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1070793": 6,
+                "1070794": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 535398,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070793,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070793,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070794,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80582,
+                    "firstName": "Grant",
+                    "lastName": "Goesch",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80584,
+                    "firstName": "Jaden",
+                    "lastName": "Rhines",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070799": 4,
+                "1070800": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070799": 7,
+                "1070800": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1070799": 7,
+                "1070800": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 535401,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070799,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070799,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84214,
+                    "firstName": "Ethan",
+                    "lastName": "Jones",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84880,
+                    "firstName": "Nicholas",
+                    "lastName": "Peterson-Hunt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070800,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80580,
+                    "firstName": "Max ",
+                    "lastName": "Zaganov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:14:36.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80588,
+                    "firstName": "Eli",
+                    "lastName": "Staley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T17:14:59.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1070803": 6,
+                "1070804": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1070803": 6,
+                "1070804": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 535403,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1070804,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1070803,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1070804,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80585,
+                    "firstName": "Carson",
+                    "lastName": "Long",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80586,
+                    "firstName": "Evan",
+                    "lastName": "Cornell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75683,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "McNary",
+                      "logo": "school_75683.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104552,
+      "title": "Boys Tennis #6",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75251,
+        "firstName": "Jacob",
+        "lastName": "Butler",
+        "genderId": 1,
+        "email": "Jacob.butler@lebanon.k12.or.us",
+        "phone": "(541) 905-3371",
+        "school": {
+          "name": "Lebanon",
+          "logo": "school_75251.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75251,
+            "name": "Lebanon",
+            "logo": "school_75251.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053575": 6,
+                "1053576": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053575": 6,
+                "1053576": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526789,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053575,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053575,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79858,
+                    "firstName": "Mark",
+                    "lastName": "Workman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T04:38:55.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053576,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053595": 6,
+                "1053596": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053595": 6,
+                "1053596": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053595": 6,
+                "1053596": 0,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526799,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053595,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053595,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85259,
+                    "firstName": "Elijah ",
+                    "lastName": "Zderadz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T03:25:52.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053596,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053605": 6,
+                "1053606": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053605": 6,
+                "1053606": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526804,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053606,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053605,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79847,
+                    "firstName": "Brodee",
+                    "lastName": "Olson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053606,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053627": 6,
+                "1053628": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053627": 6,
+                "1053628": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526815,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053627,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053627,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79852,
+                    "firstName": "Benjamin",
+                    "lastName": "Witherspoon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79854,
+                    "firstName": "Brandon",
+                    "lastName": "Witherspoon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T04:36:15.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053628,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053645": 7,
+                "1053646": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053645": 6,
+                "1053646": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526824,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053645,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053645,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79845,
+                    "firstName": "Thomas",
+                    "lastName": "Mitchell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79849,
+                    "firstName": "Ethan",
+                    "lastName": "Parrish",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053646,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053655": 5,
+                "1053656": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053655": 7,
+                "1053656": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053655": 11,
+                "1053656": 9,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526829,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053656,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053655,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79840,
+                    "firstName": "Zachary",
+                    "lastName": "Campbell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T04:23:56.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79842,
+                    "firstName": "Dustin",
+                    "lastName": "Howland",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75251,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T04:25:30.000Z",
+                    "school": {
+                      "name": "Lebanon",
+                      "logo": "school_75251.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053656,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104820,
+      "title": "North Salem High School at West Salem High School",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75702,
+        "firstName": "Rob",
+        "lastName": "Fraser",
+        "genderId": 1,
+        "email": "fraser_robert@salkeiz.k12.or.us",
+        "phone": "(503) 385-5141",
+        "school": {
+          "name": "West Salem",
+          "logo": "school_75702.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": []
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1058289": 6,
+                "1058290": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058289": 6,
+                "1058290": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 529146,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1058289,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058289,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058290,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1058307": 6,
+                "1058308": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058307": 6,
+                "1058308": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 529155,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1058307,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058307,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058308,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1058315": 2,
+                "1058316": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058315": 6,
+                "1058316": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1058315": 11,
+                "1058316": 9,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 529159,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1058315,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058315,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84219,
+                    "firstName": "Brennan",
+                    "lastName": "Stevenson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-21T21:28:50.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058316,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1058361": 2,
+                "1058362": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058361": 2,
+                "1058362": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 529182,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1058361,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058361,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058362,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1058363": 2,
+                "1058364": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058363": 2,
+                "1058364": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 529183,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1058363,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058363,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058364,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1058365": 2,
+                "1058366": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1058365": 2,
+                "1058366": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 529184,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": "Default",
+            "winnerTeamId": 1058365,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1058365,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1058366,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103218,
+      "title": "McKay v. West Salem",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75688,
+        "firstName": "Leif",
+        "lastName": "McElliott",
+        "genderId": 1,
+        "email": "mcelliott_leif@salkeiz.k12.or.us",
+        "phone": "(503) 399-3080",
+        "school": {
+          "name": "McKay",
+          "logo": "school_75688.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75688,
+            "name": "McKay",
+            "logo": "school_75688.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1031923": 6,
+                "1031924": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1031923": 6,
+                "1031924": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515963,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1031923,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031923,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79763,
+                    "firstName": "Alberto",
+                    "lastName": "Ortega",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:07.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031924,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1031935": 6,
+                "1031936": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1031935": 6,
+                "1031936": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515969,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1031935,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031935,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79756,
+                    "firstName": "Vladislav",
+                    "lastName": "Gulakov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:35:47.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031936,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1031951": 6,
+                "1031952": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1031951": 6,
+                "1031952": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515977,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1031951,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1031951,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79759,
+                    "firstName": "Kevin",
+                    "lastName": "Ly",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:39:39.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1031952,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1032003": 6,
+                "1032004": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032003": 6,
+                "1032004": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516003,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032003,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032003,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79754,
+                    "firstName": "Alexis",
+                    "lastName": "Bazan Ayala",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:34:00.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79758,
+                    "firstName": "Jim ",
+                    "lastName": "Huang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:39:21.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032004,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032013": 6,
+                "1032014": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032013": 6,
+                "1032014": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516008,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032013,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032013,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79753,
+                    "firstName": "Jose",
+                    "lastName": "Alfaro",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:33:36.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79755,
+                    "firstName": "Cesar",
+                    "lastName": "Franco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:34:18.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032014,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1032029": 6,
+                "1032030": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1032029": 6,
+                "1032030": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 516016,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1032029,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1032029,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79760,
+                    "firstName": "Miguel",
+                    "lastName": "Moreno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:16.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79764,
+                    "firstName": "Brandon",
+                    "lastName": "Tran",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:43.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1032030,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102695,
+      "title": "West Salem vs South Albany",
+      "meetDateTime": "2021-04-19T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74695,
+        "firstName": "Phil",
+        "lastName": "Leichty",
+        "genderId": 1,
+        "email": "pwleichty@aol.com",
+        "phone": "(541) 979-9557",
+        "school": {
+          "name": "South Albany",
+          "logo": "school_74695.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74695,
+            "name": "South Albany",
+            "logo": "school_74695.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024083": 6,
+                "1024084": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024083": 6,
+                "1024084": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512043,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024083,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024083,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80465,
+                    "firstName": "Blaine ",
+                    "lastName": "Leichty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:19.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024084,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024091": 6,
+                "1024092": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024091": 6,
+                "1024092": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512047,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024091,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024091,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80466,
+                    "firstName": "Vova ",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024092,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84220,
+                    "firstName": "Vaughan",
+                    "lastName": "Tippets",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-12T05:53:06.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024093": 6,
+                "1024094": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024093": 6,
+                "1024094": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512048,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024093,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024093,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80467,
+                    "firstName": "Vadim",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024094,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84217,
+                    "firstName": "Colin ",
+                    "lastName": "Paine",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:36.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024113": 4,
+                "1024114": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024113": 0,
+                "1024114": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512058,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024114,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024113,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80468,
+                    "firstName": "Jayden ",
+                    "lastName": "Benitez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:03.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80469,
+                    "firstName": "Landon",
+                    "lastName": "Simons",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024114,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84213,
+                    "firstName": "Cooper",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:20:52.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024121": 3,
+                "1024122": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024121": 2,
+                "1024122": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512062,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024122,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024121,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80472,
+                    "firstName": "Michael ",
+                    "lastName": "Franzwa",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:28:06.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80473,
+                    "firstName": "Dalton ",
+                    "lastName": "Oleman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024122,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84215,
+                    "firstName": "Ricardo",
+                    "lastName": "Navas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:21:34.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84221,
+                    "firstName": "Kaden",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:25:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024137": 6,
+                "1024138": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024137": 5,
+                "1024138": 7,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024137": 7,
+                "1024138": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512070,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024138,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024137,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80470,
+                    "firstName": "Jordan",
+                    "lastName": "Toews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:37.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80471,
+                    "firstName": "Yonnie",
+                    "lastName": "Dejillas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024138,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84212,
+                    "firstName": "Erik",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84218,
+                    "firstName": "Noah",
+                    "lastName": "Schaffner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T20:22:54.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102429,
+      "title": "Corvallis @ West Salem",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74917,
+        "firstName": "Quincy ",
+        "lastName": "Johnson",
+        "genderId": 1,
+        "email": "quincy.johnson@corvallis.k12.or.us",
+        "phone": "(541) 760-7294",
+        "school": {
+          "name": "Corvallis",
+          "logo": "school_74917.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75702,
+            "name": "West Salem",
+            "logo": "school_75702.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1021175": 6,
+                "1021176": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021175": 6,
+                "1021176": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510589,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021175,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021175,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75100,
+                    "firstName": "Chad ",
+                    "lastName": "Romrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021176,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83776,
+                    "firstName": "Andrew",
+                    "lastName": "Bulgin",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:58:02.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021181": 6,
+                "1021182": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021181": 6,
+                "1021182": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510592,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021181,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021181,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75103,
+                    "firstName": "Ian",
+                    "lastName": "Cann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:34:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021182,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83777,
+                    "firstName": "Koen",
+                    "lastName": "Eckert",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021183": 6,
+                "1021184": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021183": 6,
+                "1021184": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510593,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1021183,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021183,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75116,
+                    "firstName": "Jasper",
+                    "lastName": "Baumgartner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021184,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83778,
+                    "firstName": "Samuel",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75702,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T19:59:19.000Z",
+                    "school": {
+                      "name": "West Salem",
+                      "logo": "school_75702.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1021187": 6,
+                "1021188": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021187": 6,
+                "1021188": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 510595,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021187,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021187,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75098,
+                    "firstName": "Julian",
+                    "lastName": "Katz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T01:57:48.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75099,
+                    "firstName": "Rowan ",
+                    "lastName": "Mosher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:28:45.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021188,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021189": 6,
+                "1021190": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021189": 7,
+                "1021190": 6,
+                "number": 2,
+                "tie": 2
+              }
+            ],
+            "id": 510596,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021189,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021189,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75118,
+                    "firstName": "Hayden",
+                    "lastName": "Bence",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:36:49.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79739,
+                    "firstName": "Baker",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021190,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1021191": 6,
+                "1021192": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1021191": 4,
+                "1021192": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1021191": 6,
+                "1021192": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 510597,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1021191,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1021191,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75108,
+                    "firstName": "Andrew",
+                    "lastName": "Fernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 75121,
+                    "firstName": "Adrian ",
+                    "lastName": "Zymonas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:40:57.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1021192,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

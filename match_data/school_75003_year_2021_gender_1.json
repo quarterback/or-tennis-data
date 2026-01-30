@@ -1,0 +1,4418 @@
+{
+  "school": {
+    "id": 75003,
+    "name": "Estacada",
+    "address": "355 NE 6TH AVE",
+    "zipCode": "97023",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75003.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T15:09:48.000Z",
+    "deletedAt": null,
+    "cityId": 5765,
+    "city": {
+      "id": 5765,
+      "name": "Estacada",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2754,
+      "firstName": "Nathan",
+      "lastName": "Allen",
+      "address": "355 ne 6th ave",
+      "phone": "(503) 758-6400",
+      "email": "allenn@estacada.k12.or.us",
+      "division": "4a",
+      "schoolId": 75003,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 4,
+    "loss": 3,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 105316,
+      "title": "Molalla at Estacada",
+      "meetDateTime": "2021-05-04T07:00:00.000Z",
+      "postSeason": true,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75330,
+            "name": "Molalla",
+            "logo": "school_75330.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1067759": 5,
+                "1067760": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067759": 3,
+                "1067760": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533881,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1067760,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067759,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067760,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83314,
+                    "firstName": "Anthony ",
+                    "lastName": "Ehleringer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:24:41.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83317,
+                    "firstName": "Caden",
+                    "lastName": "Cox",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-07T03:09:38.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1067761": 6,
+                "1067762": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067761": 6,
+                "1067762": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533882,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1067761,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067761,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067762,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83318,
+                    "firstName": "Sennett",
+                    "lastName": "Grassl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:30:40.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83323,
+                    "firstName": "Shad",
+                    "lastName": "Stephens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1067763": 6,
+                "1067764": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067763": 6,
+                "1067764": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 533883,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1067763,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067763,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067764,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83321,
+                    "firstName": "Adam",
+                    "lastName": "Mendoza-Reynaga",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-07T03:01:24.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83322,
+                    "firstName": "Allen",
+                    "lastName": "Simental",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:34:17.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1067771": 0,
+                "1067772": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067771": 0,
+                "1067772": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1067771": null,
+                "1067772": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 533887,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1067772,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067771,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80858,
+                    "firstName": "Ben",
+                    "lastName": "Haefs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-26T16:36:37.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067772,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83320,
+                    "firstName": "Joshua",
+                    "lastName": "Lam",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:32:10.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1067773": 6,
+                "1067774": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067773": 3,
+                "1067774": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1067773": 5,
+                "1067774": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 533888,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1067774,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067773,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067774,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83315,
+                    "firstName": "Lucas ",
+                    "lastName": "Berreth",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:26:16.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1067775": 6,
+                "1067776": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1067775": 2,
+                "1067776": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1067775": 6,
+                "1067776": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 533889,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1067775,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1067775,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77262,
+                    "firstName": "Abe",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:44.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1067776,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83319,
+                    "firstName": "Tag",
+                    "lastName": "Grossnickle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104669,
+      "title": "Estacada vs North Marion",
+      "meetDateTime": "2021-04-30T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75406,
+            "name": "North Marion",
+            "logo": "school_75406.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1055207": 6,
+                "1055208": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1055207": 6,
+                "1055208": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527605,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1055207,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055207,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055208,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1055213": 6,
+                "1055214": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1055213": null,
+                "1055214": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1055213": 6,
+                "1055214": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527608,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1055213,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055213,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055214,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 527609,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1055215,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055215,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055216,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1055493": 6,
+                "1055494": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1055493": null,
+                "1055494": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1055493": 6,
+                "1055494": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527748,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1055493,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055493,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80858,
+                    "firstName": "Ben",
+                    "lastName": "Haefs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-26T16:36:37.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055494,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 527749,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1055495,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055495,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055496,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 527750,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1055497,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1055497,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77262,
+                    "firstName": "Abe",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:44.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1055498,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101351,
+      "title": "Madras vs. Estacada at Estacada - Special District #2 - 1A, 2A, 3A, 4A Classification",
+      "meetDateTime": "2021-04-29T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75153,
+        "firstName": "Margaret",
+        "lastName": "Kincaid",
+        "genderId": 1,
+        "email": "mkincaid@509j.net",
+        "phone": "(541) 480-1287",
+        "school": {
+          "name": "Madras",
+          "logo": "school_75153.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75153,
+            "name": "Madras",
+            "logo": "school_75153.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036963": 6,
+                "1036964": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036963": 6,
+                "1036964": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1036963": null,
+                "1036964": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 518483,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036963,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036963,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79781,
+                    "firstName": "Elmer",
+                    "lastName": "Egoavil",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036964,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036965": 3,
+                "1036966": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036965": 2,
+                "1036966": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518484,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036966,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036965,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79777,
+                    "firstName": "Dereck ",
+                    "lastName": "Salgado",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-25T04:35:33.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036966,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80858,
+                    "firstName": "Ben",
+                    "lastName": "Haefs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-26T16:36:37.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 518485,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036968,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036967,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79821,
+                    "firstName": "Default",
+                    "lastName": "Default",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T01:11:58.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036968,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1036971": 1,
+                "1036972": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036971": 1,
+                "1036972": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1036971": null,
+                "1036972": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 518487,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036972,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036971,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79780,
+                    "firstName": "Riley",
+                    "lastName": "Adair",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:17:18.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79783,
+                    "firstName": "Jesus",
+                    "lastName": "Cruz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:18:29.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036972,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036975": 2,
+                "1036976": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036975": 2,
+                "1036976": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518489,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036976,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036975,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79784,
+                    "firstName": "Juan",
+                    "lastName": "Mata",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:24:17.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79785,
+                    "firstName": "Gustavo",
+                    "lastName": "Rico",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:24:46.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036976,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036977": 1,
+                "1036978": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036977": null,
+                "1036978": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1036977": 3,
+                "1036978": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518490,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036978,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036977,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79782,
+                    "firstName": "Antonio \"Toni\"",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:18:11.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79786,
+                    "firstName": "Jarette",
+                    "lastName": "Santacruz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75153,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T23:25:04.000Z",
+                    "school": {
+                      "name": "Madras",
+                      "logo": "school_75153.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036978,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101420,
+      "title": "Molalla vs Estacada",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75330,
+        "firstName": "Michael",
+        "lastName": "Lewis",
+        "genderId": 1,
+        "email": "Michael.lewis@molallariv.k12.or.us",
+        "phone": "(503) 910-1687",
+        "school": {
+          "name": "Molalla",
+          "logo": "school_75330.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75330,
+            "name": "Molalla",
+            "logo": "school_75330.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1040017": 6,
+                "1040018": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040017": null,
+                "1040018": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1040017": 6,
+                "1040018": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520010,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040017,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040017,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83314,
+                    "firstName": "Anthony ",
+                    "lastName": "Ehleringer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:24:41.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040018,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040019": 6,
+                "1040020": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040019": null,
+                "1040020": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1040019": 6,
+                "1040020": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520011,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040019,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040019,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83320,
+                    "firstName": "Joshua",
+                    "lastName": "Lam",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:32:10.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040020,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040023": 4,
+                "1040024": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040023": 6,
+                "1040024": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1040023": 5,
+                "1040024": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 520013,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1040024,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040023,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83315,
+                    "firstName": "Lucas ",
+                    "lastName": "Berreth",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:26:16.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040024,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80858,
+                    "firstName": "Ben",
+                    "lastName": "Haefs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-26T16:36:37.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1040027": 6,
+                "1040028": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040027": 3,
+                "1040028": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1040027": 6,
+                "1040028": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 520015,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040027,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040027,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83317,
+                    "firstName": "Caden",
+                    "lastName": "Cox",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-07T03:09:38.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83323,
+                    "firstName": "Shad",
+                    "lastName": "Stephens",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040028,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040029": 2,
+                "1040030": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040029": null,
+                "1040030": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1040029": 3,
+                "1040030": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520016,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040030,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040029,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83316,
+                    "firstName": "Dakota",
+                    "lastName": "Burke",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-28T04:16:12.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83318,
+                    "firstName": "Sennett",
+                    "lastName": "Grassl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:30:40.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040030,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1040031": 0,
+                "1040032": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1040031": null,
+                "1040032": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1040031": 1,
+                "1040032": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 520017,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1040032,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1040031,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83319,
+                    "firstName": "Tag",
+                    "lastName": "Grossnickle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83322,
+                    "firstName": "Allen",
+                    "lastName": "Simental",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-17T04:34:17.000Z",
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1040032,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102764,
+      "title": "EHS vs Cascade",
+      "meetDateTime": "2021-04-23T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74861,
+            "name": "Cascade",
+            "logo": "school_74861.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1036073": 6,
+                "1036074": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036073": 6,
+                "1036074": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518038,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036073,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036073,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82366,
+                    "firstName": "Zach",
+                    "lastName": "Moore",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-05-17T21:58:01.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036074,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036075": 6,
+                "1036076": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036075": 6,
+                "1036076": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518039,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036075,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036075,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82369,
+                    "firstName": "Luke",
+                    "lastName": "Stone",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:12:46.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036076,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036077": 6,
+                "1036078": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036077": 6,
+                "1036078": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518040,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1036077,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036077,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82371,
+                    "firstName": "Austin",
+                    "lastName": "Thatcher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:13:33.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036078,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77262,
+                    "firstName": "Abe",
+                    "lastName": "Luna",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:44.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1036081": 6,
+                "1036082": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036081": 6,
+                "1036082": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518042,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036081,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036081,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82373,
+                    "firstName": "Jacob",
+                    "lastName": "Farr",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:13:50.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82374,
+                    "firstName": "Colton",
+                    "lastName": "Lee",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:13:58.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036082,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036085": 6,
+                "1036086": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036085": 6,
+                "1036086": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518044,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036085,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036085,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82379,
+                    "firstName": "Kellen",
+                    "lastName": "Sande",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:15:34.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82380,
+                    "firstName": "Jacob",
+                    "lastName": "Hage",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:15:49.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036086,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1036087": 6,
+                "1036088": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1036087": 6,
+                "1036088": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 518045,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1036087,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1036087,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82377,
+                    "firstName": "David",
+                    "lastName": "Kanoff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:15:12.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82378,
+                    "firstName": "Issac",
+                    "lastName": "Schnepp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74861,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T15:15:24.000Z",
+                    "school": {
+                      "name": "Cascade",
+                      "logo": "school_74861.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1036088,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78455,
+                    "firstName": "Anthony",
+                    "lastName": "Savedra",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-07T15:50:33.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78802,
+                    "firstName": "Joshua",
+                    "lastName": "Pallesen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T15:58:33.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101558,
+      "title": "Estacada @ Stayton",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74614,
+        "firstName": "Aaron ",
+        "lastName": "Muhic",
+        "genderId": 1,
+        "email": "aaron.muhic@nsantiam.k12.or.us",
+        "phone": "(253) 409-3532",
+        "school": {
+          "name": "Stayton",
+          "logo": "school_74614.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74614,
+            "name": "Stayton",
+            "logo": "school_74614.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1025503": 6,
+                "1025504": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025503": 6,
+                "1025504": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1025503": null,
+                "1025504": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 512753,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025504,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025503,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025504,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78193,
+                    "firstName": "Hayden",
+                    "lastName": "Holm",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:31.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025507": 6,
+                "1025508": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025507": 6,
+                "1025508": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512755,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025508,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025507,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025508,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74704,
+                    "firstName": "Ethan ",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:26.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025509": 4,
+                "1025510": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025509": 4,
+                "1025510": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512756,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1025510,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025509,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77271,
+                    "firstName": "Kyle",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:10.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025510,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78197,
+                    "firstName": "Tim ",
+                    "lastName": "Christiansen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:35.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1025517": 6,
+                "1025518": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025517": 6,
+                "1025518": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512760,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025517,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025517,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025518,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74702,
+                    "firstName": "Daniel ",
+                    "lastName": "Johnson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:24.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74703,
+                    "firstName": "Liam",
+                    "lastName": "Rutherford",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-05T03:51:33.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025519": 6,
+                "1025520": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025519": 6,
+                "1025520": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512761,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025520,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025519,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025520,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84223,
+                    "firstName": "Colby",
+                    "lastName": "Fredricks",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T21:35:52.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84224,
+                    "firstName": "Erick",
+                    "lastName": "Gomez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T21:36:01.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1025521": 6,
+                "1025522": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1025521": 6,
+                "1025522": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512762,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1025521,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1025521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1025522,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74705,
+                    "firstName": "Jason",
+                    "lastName": "Ritchie",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T21:36:20.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74707,
+                    "firstName": "Garrett ",
+                    "lastName": "Buechner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74614,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-06T17:51:29.000Z",
+                    "school": {
+                      "name": "Stayton",
+                      "logo": "school_74614.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101545,
+      "title": "Estacada Vs Philomath",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75463,
+            "name": "Philomath",
+            "logo": "school_75463.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1013585": 6,
+                "1013586": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013585": 6,
+                "1013586": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506794,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013585,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013585,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79504,
+                    "firstName": "Dylan",
+                    "lastName": "Bell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:42.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79511,
+                    "firstName": "Nicholas",
+                    "lastName": "Stucki",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:16:30.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013586,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013587": 6,
+                "1013588": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013587": null,
+                "1013588": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013587": 6,
+                "1013588": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506795,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013587,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013587,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79502,
+                    "firstName": "Judah",
+                    "lastName": "Bacho",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:05.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79508,
+                    "firstName": "Mark",
+                    "lastName": "Grimmer Jr.",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:15:27.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013588,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013591": 6,
+                "1013592": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013591": 4,
+                "1013592": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1013591": 6,
+                "1013592": 3,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 506797,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1013591,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013591,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79503,
+                    "firstName": "Jace",
+                    "lastName": "Barrett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:13:23.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79506,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:14:38.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013592,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1013907": 0,
+                "1013908": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013907": null,
+                "1013908": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013907": 0,
+                "1013908": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506955,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013908,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013907,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013908,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79512,
+                    "firstName": "Dawson",
+                    "lastName": "Beckstead",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:17:11.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013909": 0,
+                "1013910": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013909": null,
+                "1013910": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013909": 0,
+                "1013910": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506956,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013910,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013909,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013910,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79510,
+                    "firstName": "Andrew",
+                    "lastName": "Leonard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:16:05.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1013911": 1,
+                "1013912": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1013911": null,
+                "1013912": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1013911": 0,
+                "1013912": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 506957,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1013912,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1013911,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77271,
+                    "firstName": "Kyle",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:10.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1013912,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79505,
+                    "firstName": "Theodore",
+                    "lastName": "Benbow",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75463,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T00:14:17.000Z",
+                    "school": {
+                      "name": "Philomath",
+                      "logo": "school_75463.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101238,
+      "title": "Estacada vs Sisters",
+      "meetDateTime": "2021-04-13T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75003,
+        "firstName": "Nathan",
+        "lastName": "Allen",
+        "genderId": 1,
+        "email": "allenn@estacada.k12.or.us",
+        "phone": "(503) 758-6400",
+        "school": {
+          "name": "Estacada",
+          "logo": "school_75003.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75003,
+            "name": "Estacada",
+            "logo": "school_75003.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75764,
+            "name": "Sisters",
+            "logo": "school_75764.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [],
+            "id": 502685,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1005367,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1005367,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77256,
+                    "firstName": "Carson ",
+                    "lastName": "Eaton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:47.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77260,
+                    "firstName": "Tai",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:20:08.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1005368,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 502686,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1005369,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1005369,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77257,
+                    "firstName": "Raymond",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-31T16:23:57.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77259,
+                    "firstName": "Jon",
+                    "lastName": "Juker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:19:41.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1005370,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1008839": 6,
+                "1008840": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1008839": 6,
+                "1008840": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504421,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1008839,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008839,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77265,
+                    "firstName": "James",
+                    "lastName": "Settje",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:21:24.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78804,
+                    "firstName": "Cristian",
+                    "lastName": "Munoz-Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-08T16:00:25.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008840,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77479,
+                    "firstName": "KJ",
+                    "lastName": "Sweet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:59.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79113,
+                    "firstName": "Dexter",
+                    "lastName": "Payne",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1008945": null,
+                "1008946": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1008945": 2,
+                "1008946": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1008945": 0,
+                "1008946": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 504474,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008946,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008945,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77255,
+                    "firstName": "Avery",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T19:18:52.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008946,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77478,
+                    "firstName": "Nate",
+                    "lastName": "Weber",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75764,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-01T04:03:45.000Z",
+                    "school": {
+                      "name": "Sisters",
+                      "logo": "school_75764.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [],
+            "id": 504477,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008951,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008951,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77272,
+                    "firstName": "Trey",
+                    "lastName": "Shibahara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:20.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008952,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1008953": null,
+                "1008954": null,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 504478,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1008953,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1008953,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77271,
+                    "firstName": "Kyle",
+                    "lastName": "Richards",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75003,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T20:12:10.000Z",
+                    "school": {
+                      "name": "Estacada",
+                      "logo": "school_75003.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1008954,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

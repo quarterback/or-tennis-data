@@ -1,0 +1,1761 @@
+{
+  "school": {
+    "id": 74901,
+    "name": "Condon",
+    "address": "PO BOX 575",
+    "zipCode": "97823",
+    "lowestGrade": "8",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74901.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T14:02:06.000Z",
+    "deletedAt": null,
+    "cityId": 3895,
+    "city": {
+      "id": 3895,
+      "name": "Condon",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2728,
+      "firstName": "Sam",
+      "lastName": "Bates",
+      "address": "210 E Bayard",
+      "phone": "(541) 571-0342",
+      "email": "flyspbates@gmail.com",
+      "division": "1A",
+      "schoolId": 74901,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 105329,
+      "title": "Umatilla & Condon @ Arlington",
+      "meetDateTime": "2021-05-14T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 75865,
+            "name": "Umatilla",
+            "logo": "school_75865.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1116561": 8,
+                "1116562": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 558282,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1116561,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1116561,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1116562,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75772,
+                    "firstName": "Killian",
+                    "lastName": "Clement",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75865,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Umatilla",
+                      "logo": "school_75865.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1116565": 8,
+                "1116566": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 558284,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1116565,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1116565,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1116566,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78028,
+                    "firstName": "Cash",
+                    "lastName": "Helms",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:25.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105574,
+      "title": "Arlington & Condon vs Sherman @ Arlington",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 0,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 75740,
+            "name": "Sherman",
+            "logo": "school_75740.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1116557": 3,
+                "1116558": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 558280,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1116558,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1116557,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1116558,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105328,
+      "title": "Ione & Condon @ Arlington",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 0,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1084533": 4,
+                "1084534": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 542268,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1084534,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1084533,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1084534,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84987,
+                    "firstName": "Gary",
+                    "lastName": "Walls",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T04:09:46.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105327,
+      "title": "Weston-McEwen & Condon @ Arlington",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74723,
+            "name": "Weston-McEwen",
+            "logo": "school_74723.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066749": 8,
+                "1066750": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533376,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066749,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066749,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066750,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80550,
+                    "firstName": "Wyatt",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:45:52.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1066751": 2,
+                "1066752": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533377,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1066752,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066751,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80492,
+                    "firstName": "Ethan ",
+                    "lastName": "Barahona",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:02:46.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80496,
+                    "firstName": "Harry ",
+                    "lastName": "Shaul",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74723,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T02:05:22.000Z",
+                    "school": {
+                      "name": "Weston-McEwen",
+                      "logo": "school_74723.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066752,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105326,
+      "title": "Arlington & Condon @ Sherman",
+      "meetDateTime": "2021-04-27T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74707,
+        "firstName": "Haylie",
+        "lastName": "Walker",
+        "genderId": 1,
+        "email": "hwalker@arlington.k12.or.us",
+        "phone": "(971) 227-1856",
+        "school": {
+          "name": "Arlington",
+          "logo": "school_74707.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1066747": 8,
+                "1066748": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 533375,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1066747,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1066747,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1066748,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 100967,
+      "title": "Condon vs. Sherman",
+      "meetDateTime": "2021-04-22T23:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74901,
+        "firstName": "Sam",
+        "lastName": "Bates",
+        "genderId": 1,
+        "email": "flyspbates@gmail.com",
+        "phone": "(541) 571-0342",
+        "school": {
+          "name": "Condon",
+          "logo": "school_74901.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75740,
+            "name": "Sherman",
+            "logo": "school_75740.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [],
+            "id": 521275,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": "Retired",
+            "winnerTeamId": 1042547,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042547,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042548,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79191,
+                    "firstName": "Joey",
+                    "lastName": "Ramos",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75740,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1042561": 2,
+                "1042562": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 521282,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1042562,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042561,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78027,
+                    "firstName": "Bayley ",
+                    "lastName": "Gilmore",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:10.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042562,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79193,
+                    "firstName": "Aedan ",
+                    "lastName": "Phelps",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75740,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:43:07.000Z",
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1042553": 8,
+                "1042554": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 521278,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1042553,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1042553,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78028,
+                    "firstName": "Cash",
+                    "lastName": "Helms",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:25.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1042554,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79190,
+                    "firstName": "Logan",
+                    "lastName": "Barrett",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75740,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79191,
+                    "firstName": "Joey",
+                    "lastName": "Ramos",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75740,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103040,
+      "title": "Ione vs. Condon",
+      "meetDateTime": "2021-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74665,
+        "firstName": "Maureen",
+        "lastName": "McElligott",
+        "genderId": 1,
+        "email": "maureenm@dcjllc.com",
+        "phone": "(541) 422-7131",
+        "school": {
+          "name": "Ione-Heppner",
+          "logo": "school_74665.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74665,
+            "name": "Ione-Heppner",
+            "logo": "school_74665.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1030271": 8,
+                "1030272": 5,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515137,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030271,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030271,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84987,
+                    "firstName": "Gary",
+                    "lastName": "Walls",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T04:09:46.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030272,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1030273": 8,
+                "1030274": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515138,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030273,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030273,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81008,
+                    "firstName": "Josh",
+                    "lastName": "Bleth",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030274,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1030275": 8,
+                "1030276": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 515139,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1030275,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030275,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81015,
+                    "firstName": "Kalvin",
+                    "lastName": "Rietmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-16T16:59:14.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81017,
+                    "firstName": "Sam",
+                    "lastName": "Valle",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74665,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T18:32:10.000Z",
+                    "school": {
+                      "name": "Ione-Heppner",
+                      "logo": "school_74665.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030276,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78028,
+                    "firstName": "Cash",
+                    "lastName": "Helms",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:25.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101938,
+      "title": "Condon & Arlington @ Stanfield",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75825,
+        "firstName": "Rylie",
+        "lastName": "Smith",
+        "genderId": 1,
+        "email": "rylie.smith@stanfieldsd.org",
+        "phone": "(541) 720-8449",
+        "school": {
+          "name": "Stanfield",
+          "logo": "school_75825.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75825,
+            "name": "Stanfield",
+            "logo": "school_75825.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 1,
+            "winnerSchoolId": null
+          },
+          {
+            "id": 74707,
+            "name": "Arlington",
+            "logo": "school_74707.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015449": 8,
+                "1015450": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507726,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015449,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015449,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015450,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015475": 8,
+                "1015476": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507739,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015475,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015475,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81738,
+                    "firstName": "Dysen",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T05:28:42.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015476,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1015477": 8,
+                "1015478": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507740,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015477,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015477,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81734,
+                    "firstName": "Josue ",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:13.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81735,
+                    "firstName": "Enrique ",
+                    "lastName": "Arellano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T19:21:54.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015478,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 78030,
+                    "firstName": "Eduardo",
+                    "lastName": "Barrera",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:47.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82129,
+                    "firstName": "Korbin",
+                    "lastName": "Jaramillo",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74707,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T03:35:29.000Z",
+                    "school": {
+                      "name": "Arlington",
+                      "logo": "school_74707.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015479": 5,
+                "1015480": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 507741,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015480,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015479,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81737,
+                    "firstName": "Jay ",
+                    "lastName": "Chavez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81739,
+                    "firstName": "Creed ",
+                    "lastName": "Russell ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Stanfield",
+                      "logo": "school_75825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015480,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 78028,
+                    "firstName": "Cash",
+                    "lastName": "Helms",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:25.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 78029,
+                    "firstName": "Rylan ",
+                    "lastName": "Isley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-05T19:14:33.000Z",
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

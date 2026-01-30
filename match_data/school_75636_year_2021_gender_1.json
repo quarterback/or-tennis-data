@@ -1,0 +1,4036 @@
+{
+  "school": {
+    "id": 75636,
+    "name": "Roseburg",
+    "address": "400 HARVARD AVE",
+    "zipCode": "97470",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75636.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:52:23.000Z",
+    "deletedAt": null,
+    "cityId": 15724,
+    "city": {
+      "id": 15724,
+      "name": "Roseburg",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2902,
+      "firstName": "Caelan",
+      "lastName": "Ball",
+      "address": "400 W Harvard Ave.",
+      "phone": "(541) 580-0540",
+      "email": "1ballcj@gmail.com",
+      "division": "6A",
+      "schoolId": 75636,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 3,
+    "loss": 4,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 107733,
+      "title": "match vs Roseburd",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75097,
+        "firstName": "Todd",
+        "lastName": "Neville",
+        "genderId": 1,
+        "email": "tluvneville@gmail.com",
+        "phone": "(541) 647-7506",
+        "school": {
+          "name": "Grants Pass",
+          "logo": "school_75097.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1102411": 6,
+                "1102412": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102411": 1,
+                "1102412": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551207,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": "Retired",
+            "winnerTeamId": 1102412,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102411,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102412,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102415": 6,
+                "1102416": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102415": 6,
+                "1102416": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551209,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102415,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102415,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102416,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102417": 6,
+                "1102418": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102417": 6,
+                "1102418": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551210,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1102417,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102417,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80869,
+                    "firstName": "Brock",
+                    "lastName": "Huffaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:05.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102418,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81162,
+                    "firstName": "Nicholas",
+                    "lastName": "Brown",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:28.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1102429": 6,
+                "1102430": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102429": 6,
+                "1102430": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551216,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102429,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102429,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102430,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102433": 6,
+                "1102434": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102433": 6,
+                "1102434": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 551218,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102433,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102433,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102434,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1102435": 6,
+                "1102436": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1102435": 4,
+                "1102436": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1102435": 10,
+                "1102436": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 551219,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1102435,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1102435,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1102436,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106695,
+      "title": "Roseburg High Vs. Ashland High",
+      "meetDateTime": "2021-05-08T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1085657": 6,
+                "1085658": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085657": 6,
+                "1085658": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542830,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085657,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085657,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085658,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85664,
+                    "firstName": "Charlie ",
+                    "lastName": "Dyson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085659": 6,
+                "1085660": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085659": 6,
+                "1085660": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542831,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085659,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085659,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085660,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84696,
+                    "firstName": "Liam",
+                    "lastName": "Hokama",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1085661": 6,
+                "1085662": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085661": 7,
+                "1085662": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 542832,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1085661,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085661,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085662,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84697,
+                    "firstName": "Wyatt",
+                    "lastName": "Roscher",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1085663": 3,
+                "1085664": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1085663": 6,
+                "1085664": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1085663": 5,
+                "1085664": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 542833,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1085664,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1085663,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1085664,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 84694,
+                    "firstName": "Mina",
+                    "lastName": "Schepmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-12T23:11:52.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84695,
+                    "firstName": "Ian ",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T20:05:53.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 106077,
+      "title": "Roseburg High School Vs North Medford High School",
+      "meetDateTime": "2021-05-06T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75310,
+            "name": "North Medford",
+            "logo": "school_75310.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1076847": 8,
+                "1076848": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538425,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076847,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076847,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076848,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076851": 8,
+                "1076852": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538427,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076851,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076851,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076852,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86600,
+                    "firstName": "Robert",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-03T23:23:21.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076853": 8,
+                "1076854": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538428,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1076853,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076853,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076854,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1076859": 8,
+                "1076860": 3,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538431,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076860,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076859,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076860,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 86599,
+                    "firstName": "Casey",
+                    "lastName": "Haggins",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1076861": 8,
+                "1076862": 2,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 538432,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1076861,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1076861,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1076862,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86601,
+                    "firstName": "Nick",
+                    "lastName": "Snodea",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86602,
+                    "firstName": "Nick",
+                    "lastName": "Doshier",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75310,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-13T04:29:52.000Z",
+                    "school": {
+                      "name": "North Medford",
+                      "logo": "school_75310.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105224,
+      "title": "Roseburg High School vs. Marist",
+      "meetDateTime": "2021-05-03T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 124728,
+            "name": "Marist Catholic",
+            "logo": "school_124728.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1065035": 6,
+                "1065036": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065035": 6,
+                "1065036": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532519,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1065036,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065035,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065036,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82504,
+                    "firstName": "Jackson ",
+                    "lastName": "Whittaker",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:08.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1065037": 6,
+                "1065038": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065037": 6,
+                "1065038": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532520,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1065038,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065037,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065038,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82506,
+                    "firstName": "Luke ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:53.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1065039": 6,
+                "1065040": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065039": 6,
+                "1065040": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532521,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1065040,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065039,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065040,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82513,
+                    "firstName": "Kai",
+                    "lastName": "Villano",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:01.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1065043": 6,
+                "1065044": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065043": 6,
+                "1065044": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532523,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1065044,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065043,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065044,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82505,
+                    "firstName": "Sam ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82506,
+                    "firstName": "Luke ",
+                    "lastName": "Eagen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:33:53.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1065045": 6,
+                "1065046": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065045": 6,
+                "1065046": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532524,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1065046,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065045,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065046,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74865,
+                    "firstName": "Joseph",
+                    "lastName": "Laing",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-12T22:48:31.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82507,
+                    "firstName": "Ethan",
+                    "lastName": "Cross",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:00.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1065047": 6,
+                "1065048": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1065047": 6,
+                "1065048": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 532525,
+            "flight": "4",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1065048,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1065047,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1065048,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82511,
+                    "firstName": "Ethan",
+                    "lastName": "Hakala",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:34:42.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82515,
+                    "firstName": "Sam ",
+                    "lastName": "Thornton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 124728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T17:35:20.000Z",
+                    "school": {
+                      "name": "Marist Catholic",
+                      "logo": "school_124728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104942,
+      "title": "Roseburg Vs S Medford",
+      "meetDateTime": "2021-05-01T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1060533": 6,
+                "1060534": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060533": 6,
+                "1060534": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530268,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060534,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060533,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060534,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82094,
+                    "firstName": "Andrean",
+                    "lastName": "Gurov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:27:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060537": 6,
+                "1060538": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060537": 6,
+                "1060538": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530270,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060537,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060537,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060538,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85328,
+                    "firstName": "Jaden",
+                    "lastName": "Krupp",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T04:31:56.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060541": 6,
+                "1060542": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060541": 6,
+                "1060542": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530272,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1060542,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060541,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060542,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82103,
+                    "firstName": "Tobias",
+                    "lastName": "Whitley",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1060547": 7,
+                "1060548": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060547": 6,
+                "1060548": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 530275,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1060548,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060547,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060548,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 82097,
+                    "firstName": "Elijah",
+                    "lastName": "Spencer",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:28:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 82102,
+                    "firstName": "Samuel",
+                    "lastName": "Sykes",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-15T02:31:39.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1060549": 6,
+                "1060550": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1060549": 3,
+                "1060550": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1060549": 11,
+                "1060550": 9,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 530276,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1060549,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1060549,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1060550,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 82090,
+                    "firstName": "Hayden",
+                    "lastName": "Allen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-28T02:00:26.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 82093,
+                    "firstName": "Simon",
+                    "lastName": "DeVries",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104548,
+      "title": "Roseburg Vs Grants Pass 4/29",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053517": 6,
+                "1053518": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053517": 6,
+                "1053518": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526760,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053517,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053517,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053518,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053519": 2,
+                "1053520": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053519": 4,
+                "1053520": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526761,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053520,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053519,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053520,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053521": 10,
+                "1053522": 8,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1053521": 6,
+                "1053522": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053521": 6,
+                "1053522": 7,
+                "number": 2,
+                "tie": 5
+              }
+            ],
+            "id": 526762,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053521,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053521,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053522,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80871,
+                    "firstName": "Brady",
+                    "lastName": "Miller",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053529": 2,
+                "1053530": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053529": 4,
+                "1053530": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526766,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053530,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053529,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053530,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053531": 2,
+                "1053532": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053531": 3,
+                "1053532": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526767,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053532,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053531,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053532,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80875,
+                    "firstName": "Jacob",
+                    "lastName": "Pirosco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:47.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80879,
+                    "firstName": "Preston",
+                    "lastName": "Smith",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:26:06.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053535": 3,
+                "1053536": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053535": 6,
+                "1053536": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053535": 12,
+                "1053536": 14,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526769,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053536,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053535,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053536,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103584,
+      "title": "Roseburg High School Vs Ashland High School",
+      "meetDateTime": "2021-04-24T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74713,
+            "name": "Ashland",
+            "logo": "school_74713.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1038653": 6,
+                "1038654": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1038653": 6,
+                "1038654": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519328,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1038653,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1038653,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1038654,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84696,
+                    "firstName": "Liam",
+                    "lastName": "Hokama",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1038657": 6,
+                "1038658": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1038657": 6,
+                "1038658": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519330,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1038657,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1038657,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1038658,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84697,
+                    "firstName": "Wyatt",
+                    "lastName": "Roscher",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1038667": 3,
+                "1038668": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1038667": 4,
+                "1038668": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519335,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1038668,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1038667,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81162,
+                    "firstName": "Nicholas",
+                    "lastName": "Brown",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:28.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1038668,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 85664,
+                    "firstName": "Charlie ",
+                    "lastName": "Dyson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1038661": 5,
+                "1038662": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1038661": 6,
+                "1038662": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1038661": 10,
+                "1038662": 8,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 519332,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1038661,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1038661,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81161,
+                    "firstName": "Logan",
+                    "lastName": "Bishop",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:15:03.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1038662,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 84694,
+                    "firstName": "Mina",
+                    "lastName": "Schepmann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-05-12T23:11:52.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 84695,
+                    "firstName": "Ian ",
+                    "lastName": "Bower",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74713,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-04T20:05:53.000Z",
+                    "school": {
+                      "name": "Ashland",
+                      "logo": "school_74713.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101630,
+      "title": "Roseburg High School Vs Grants Pass High Boys Tennis",
+      "meetDateTime": "2021-04-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75636,
+        "firstName": "Caelan",
+        "lastName": "Ball",
+        "genderId": 1,
+        "email": "1ballcj@gmail.com",
+        "phone": "(541) 580-0540",
+        "school": {
+          "name": "Roseburg",
+          "logo": "school_75636.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75097,
+            "name": "Grants Pass",
+            "logo": "school_75097.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75636,
+            "name": "Roseburg",
+            "logo": "school_75636.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1010259": 2,
+                "1010260": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010259": 0,
+                "1010260": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505131,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010260,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010259,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81149,
+                    "firstName": "Brian",
+                    "lastName": "Powell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:13:04.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010260,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80878,
+                    "firstName": "Nicolas",
+                    "lastName": "Rist",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:49.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010261": 2,
+                "1010262": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010261": 3,
+                "1010262": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505132,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010262,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010261,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81159,
+                    "firstName": "Peyton ",
+                    "lastName": "Seal",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010262,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80870,
+                    "firstName": "Mateo",
+                    "lastName": "McCoy",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010265": 6,
+                "1010266": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010265": 5,
+                "1010266": 7,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505134,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1010266,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010265,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81160,
+                    "firstName": "Massimo",
+                    "lastName": "Falleni ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T21:14:41.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010266,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80873,
+                    "firstName": "Tucker",
+                    "lastName": "Neville",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:12.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1010283": 1,
+                "1010284": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010283": 3,
+                "1010284": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505143,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010284,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010283,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81177,
+                    "firstName": "Gian ",
+                    "lastName": "Ambrosini ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:52.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81179,
+                    "firstName": "Chase",
+                    "lastName": "Forsloff",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:13:07.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010284,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80867,
+                    "firstName": "Christian",
+                    "lastName": "Dara",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:24.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80868,
+                    "firstName": "Noah",
+                    "lastName": "Horban",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:22:44.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010293": 1,
+                "1010294": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010293": 2,
+                "1010294": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 505148,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010294,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010293,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81175,
+                    "firstName": "Carter ",
+                    "lastName": "Dryden",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:11:02.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81178,
+                    "firstName": "William",
+                    "lastName": "Young Seidemann",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T23:12:45.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010294,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80874,
+                    "firstName": "Parker",
+                    "lastName": "Pastrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:24:30.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80877,
+                    "firstName": "Evan",
+                    "lastName": "Riggs",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:35.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1010307": 6,
+                "1010308": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1010307": 7,
+                "1010308": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1010307": 10,
+                "1010308": 2,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 505155,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1010307,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1010307,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81176,
+                    "firstName": "Gavin",
+                    "lastName": "Loosli ",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81180,
+                    "firstName": "Sam",
+                    "lastName": "Cordon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75636,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Roseburg",
+                      "logo": "school_75636.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1010308,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80872,
+                    "firstName": "Ethan",
+                    "lastName": "Nelson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:23:58.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80876,
+                    "firstName": "McKay",
+                    "lastName": "Pratt",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75097,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T15:25:13.000Z",
+                    "school": {
+                      "name": "Grants Pass",
+                      "logo": "school_75097.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

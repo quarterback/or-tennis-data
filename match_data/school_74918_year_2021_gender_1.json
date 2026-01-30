@@ -1,0 +1,4997 @@
+{
+  "school": {
+    "id": 74918,
+    "name": "Crescent Valley",
+    "address": "4444 NW HIGHLAND DR",
+    "zipCode": "97330",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74918.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T14:04:28.000Z",
+    "deletedAt": null,
+    "cityId": 4055,
+    "city": {
+      "id": 4055,
+      "name": "Corvallis",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2849,
+      "firstName": "Peter",
+      "lastName": "Tsai",
+      "address": "1200 nw Overlook drive",
+      "phone": "(541) 224-2545",
+      "email": "peterctsai@gmail.com",
+      "division": "5-A",
+      "schoolId": 74918,
+      "genderId": 1
+    }
+  ],
+  "overallRecord": {
+    "win": 7,
+    "loss": 2,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 107666,
+      "title": "Crescent Valley at South Albany",
+      "meetDateTime": "2021-05-13T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74695,
+        "firstName": "Phil",
+        "lastName": "Leichty",
+        "genderId": 1,
+        "email": "pwleichty@aol.com",
+        "phone": "(541) 979-9557",
+        "school": {
+          "name": "South Albany",
+          "logo": "school_74695.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74695,
+            "name": "South Albany",
+            "logo": "school_74695.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1101131": 6,
+                "1101132": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1101131": 6,
+                "1101132": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550567,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1101131,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101131,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80465,
+                    "firstName": "Blaine ",
+                    "lastName": "Leichty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:19.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101132,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1101137": 6,
+                "1101138": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1101137": 6,
+                "1101138": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550570,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1101138,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101137,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80468,
+                    "firstName": "Jayden ",
+                    "lastName": "Benitez",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:03.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101138,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1101163": 6,
+                "1101164": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1101163": 6,
+                "1101164": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550583,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1101164,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101163,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 85257,
+                    "firstName": "Chase ",
+                    "lastName": "Burton",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-23T00:13:23.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101164,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79612,
+                    "firstName": "Ethan",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1101143": 7,
+                "1101144": 5,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1101143": 6,
+                "1101144": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 550573,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1101143,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101143,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80466,
+                    "firstName": "Vova ",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:30.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80467,
+                    "firstName": "Vadim",
+                    "lastName": "Hubenya",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:25:48.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101144,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85110,
+                    "firstName": "Henry",
+                    "lastName": "Pappas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:55:58.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1101151": 6,
+                "1101152": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1101151": 6,
+                "1101152": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550577,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1101152,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101151,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80472,
+                    "firstName": "Michael ",
+                    "lastName": "Franzwa",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:28:06.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80473,
+                    "firstName": "Dalton ",
+                    "lastName": "Oleman",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101152,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1101157": 6,
+                "1101158": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1101157": 6,
+                "1101158": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 550580,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1101158,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1101157,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80470,
+                    "firstName": "Jordan",
+                    "lastName": "Toews",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T00:26:37.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80471,
+                    "firstName": "Yonnie",
+                    "lastName": "Dejillas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74695,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Albany",
+                      "logo": "school_74695.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1101158,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79620,
+                    "firstName": "Jemin",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:36:52.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79622,
+                    "firstName": "Dylan",
+                    "lastName": "Paterson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:37:42.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 107295,
+      "title": "Crescent Valley vs. South Salem",
+      "meetDateTime": "2021-05-10T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Peter",
+        "lastName": "Tsai",
+        "genderId": 1,
+        "email": "peterctsai@gmail.com",
+        "phone": "(541) 224-2545",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75686,
+            "name": "South Salem",
+            "logo": "school_75686.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1095665": 3,
+                "1095666": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095665": 3,
+                "1095666": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547834,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095666,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095665,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095666,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80050,
+                    "firstName": "Pranav",
+                    "lastName": "Ramesh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:52:43.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095667": 0,
+                "1095668": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095667": 1,
+                "1095668": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547835,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095668,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095667,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79612,
+                    "firstName": "Ethan",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095668,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80032,
+                    "firstName": "Chris",
+                    "lastName": "Bedard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:41:22.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095669": 5,
+                "1095670": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095669": 4,
+                "1095670": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547836,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1095670,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095669,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095670,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80025,
+                    "firstName": "Adam",
+                    "lastName": "Son",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:38:53.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1095673": 1,
+                "1095674": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095673": 1,
+                "1095674": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547838,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095674,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095673,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095674,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80045,
+                    "firstName": "Max",
+                    "lastName": "Molyneux",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:49:00.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80047,
+                    "firstName": "Nathan",
+                    "lastName": "Kindred",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095675": 4,
+                "1095676": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095675": 2,
+                "1095676": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547839,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095676,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095675,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85110,
+                    "firstName": "Henry",
+                    "lastName": "Pappas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:55:58.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095676,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80051,
+                    "firstName": "Quinn",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:03.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80054,
+                    "firstName": "Toby",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:39.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1095677": 5,
+                "1095678": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1095677": 4,
+                "1095678": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 547840,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1095678,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1095677,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1095678,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80041,
+                    "firstName": "Marc",
+                    "lastName": "Nickel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:01.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80044,
+                    "firstName": "Max",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:42.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 105502,
+      "title": "Crescent Valley vs. Silverton",
+      "meetDateTime": "2021-05-03T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Peter",
+        "lastName": "Tsai",
+        "genderId": 1,
+        "email": "peterctsai@gmail.com",
+        "phone": "(541) 224-2545",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75762,
+            "name": "Silverton",
+            "logo": "school_75762.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1068987": 6,
+                "1068988": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1068987": 6,
+                "1068988": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534495,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1068987,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1068987,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1068988,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77160,
+                    "firstName": "Spencer",
+                    "lastName": "Chase",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T14:19:56.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1068997": 6,
+                "1068998": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1068997": 6,
+                "1068998": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534500,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1068997,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1068997,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79624,
+                    "firstName": "Michael",
+                    "lastName": "Gu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:39.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1068998,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77161,
+                    "firstName": "Alexander",
+                    "lastName": "Gardner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:21:57.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069005": 6,
+                "1069006": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069005": 7,
+                "1069006": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534504,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1069005,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069005,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069006,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81828,
+                    "firstName": "Lucas",
+                    "lastName": "Briet",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1069015": 6,
+                "1069016": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069015": 4,
+                "1069016": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1069015": 7,
+                "1069016": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 534509,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069016,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069015,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069016,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77164,
+                    "firstName": "Isaac",
+                    "lastName": "Looney",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:23:34.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77168,
+                    "firstName": "Blake",
+                    "lastName": "Robinson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T14:26:46.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069023": 6,
+                "1069024": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069023": 6,
+                "1069024": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534513,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069023,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069023,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85110,
+                    "firstName": "Henry",
+                    "lastName": "Pappas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:55:58.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069024,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77167,
+                    "firstName": "Brandon",
+                    "lastName": "Metzger",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:25:11.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77170,
+                    "firstName": "Barrett",
+                    "lastName": "Teeney",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:26:36.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1069029": 6,
+                "1069030": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1069029": 6,
+                "1069030": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 534516,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1069029,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1069029,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1069030,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77162,
+                    "firstName": "Logan",
+                    "lastName": "Houts",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:22:31.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 77867,
+                    "firstName": "Nathan ",
+                    "lastName": "Williams",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 104525,
+      "title": "Dual Meet with Crescent Valley at Central",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74876,
+        "firstName": "Ryan",
+        "lastName": "Bibler",
+        "genderId": 1,
+        "email": "rbibler@central.k12.or.us",
+        "phone": "(503) 580-8800",
+        "school": {
+          "name": "Central (Independence)",
+          "logo": "school_74876.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74876,
+            "name": "Central (Independence)",
+            "logo": "school_74876.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1053079": 0,
+                "1053080": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053079": 0,
+                "1053080": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526541,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053080,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053079,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79466,
+                    "firstName": "Ethan",
+                    "lastName": "Love",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T23:42:04.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053080,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1053087": 1,
+                "1053088": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053087": 0,
+                "1053088": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 526545,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1053088,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053087,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79467,
+                    "firstName": "Nathaniel ",
+                    "lastName": "Thompson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T23:42:25.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053088,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79612,
+                    "firstName": "Ethan",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1053097": 2,
+                "1053098": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1053097": 6,
+                "1053098": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1053097": 2,
+                "1053098": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 526550,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1053098,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1053097,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79463,
+                    "firstName": "Dawson",
+                    "lastName": "Dye",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-04-21T16:57:28.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79469,
+                    "firstName": "Riley",
+                    "lastName": "Young",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74876,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-09T22:45:57.000Z",
+                    "school": {
+                      "name": "Central (Independence)",
+                      "logo": "school_74876.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1053098,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79617,
+                    "firstName": "Liam",
+                    "lastName": "Gurung",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-03-14T20:40:44.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79621,
+                    "firstName": "Kevin",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:37:14.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103958,
+      "title": "Crescent Valley vs. McKay",
+      "meetDateTime": "2021-04-26T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Peter",
+        "lastName": "Tsai",
+        "genderId": 1,
+        "email": "peterctsai@gmail.com",
+        "phone": "(541) 224-2545",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75688,
+            "name": "McKay",
+            "logo": "school_75688.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1044147": 6,
+                "1044148": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044147": 6,
+                "1044148": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522075,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044147,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044147,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044148,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79763,
+                    "firstName": "Alberto",
+                    "lastName": "Ortega",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:07.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044151": 6,
+                "1044152": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044151": 6,
+                "1044152": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522077,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044151,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044151,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79624,
+                    "firstName": "Michael",
+                    "lastName": "Gu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:39.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044152,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79756,
+                    "firstName": "Vladislav",
+                    "lastName": "Gulakov",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:35:47.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044155": 6,
+                "1044156": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044155": 6,
+                "1044156": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522079,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1044155,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044155,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044156,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79759,
+                    "firstName": "Kevin",
+                    "lastName": "Ly",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:39:39.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1044165": 6,
+                "1044166": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044165": 6,
+                "1044166": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522084,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044165,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044165,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044166,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79754,
+                    "firstName": "Alexis",
+                    "lastName": "Bazan Ayala",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:34:00.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79758,
+                    "firstName": "Jim ",
+                    "lastName": "Huang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:39:21.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044167": 6,
+                "1044168": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044167": 6,
+                "1044168": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522085,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044167,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044167,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 85110,
+                    "firstName": "Henry",
+                    "lastName": "Pappas",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-22T17:55:58.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044168,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79753,
+                    "firstName": "Jose",
+                    "lastName": "Alfaro",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:33:36.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79755,
+                    "firstName": "Cesar",
+                    "lastName": "Franco",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T22:34:18.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1044169": 6,
+                "1044170": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1044169": 6,
+                "1044170": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 522086,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1044169,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1044169,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1044170,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79760,
+                    "firstName": "Miguel",
+                    "lastName": "Moreno",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:16.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79764,
+                    "firstName": "Brandon",
+                    "lastName": "Tran",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75688,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-16T00:20:43.000Z",
+                    "school": {
+                      "name": "McKay",
+                      "logo": "school_75688.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103122,
+      "title": "Crescent Valley vs. Corvallis",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Peter",
+        "lastName": "Tsai",
+        "genderId": 1,
+        "email": "peterctsai@gmail.com",
+        "phone": "(541) 224-2545",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74917,
+            "name": "Corvallis",
+            "logo": "school_74917.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1034463": 6,
+                "1034464": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034463": 6,
+                "1034464": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517233,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034463,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034463,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034464,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75100,
+                    "firstName": "Chad ",
+                    "lastName": "Romrell",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034471": 6,
+                "1034472": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034471": 6,
+                "1034472": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517237,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034471,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034471,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79624,
+                    "firstName": "Michael",
+                    "lastName": "Gu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:39.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034472,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75117,
+                    "firstName": "Mateo",
+                    "lastName": "Muro-Daugherty",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034477": 6,
+                "1034478": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034477": 6,
+                "1034478": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517240,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1034477,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034477,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034478,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75116,
+                    "firstName": "Jasper",
+                    "lastName": "Baumgartner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1034489": 6,
+                "1034490": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034489": 1,
+                "1034490": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1034489": 5,
+                "1034490": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517246,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034490,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034489,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034490,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75098,
+                    "firstName": "Julian",
+                    "lastName": "Katz",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-02T01:57:48.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75099,
+                    "firstName": "Rowan ",
+                    "lastName": "Mosher",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:28:45.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034491": 1,
+                "1034492": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034491": 2,
+                "1034492": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517247,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034492,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034491,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79612,
+                    "firstName": "Ethan",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034492,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 75097,
+                    "firstName": "Eddie ",
+                    "lastName": "Hu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:18:55.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 75101,
+                    "firstName": "Karl ",
+                    "lastName": "Mellinger",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-02T06:36:10.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1034495": 6,
+                "1034496": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1034495": 6,
+                "1034496": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517249,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1034495,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1034495,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1034496,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79736,
+                    "firstName": "Pablo ",
+                    "lastName": "Garcia",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-02-21T22:54:32.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79739,
+                    "firstName": "Baker",
+                    "lastName": "Celis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74917,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Corvallis",
+                      "logo": "school_74917.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102746,
+      "title": "South Salem vs. Crescent Valley",
+      "meetDateTime": "2021-04-19T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75686,
+        "firstName": "James",
+        "lastName": "Heyen",
+        "genderId": 1,
+        "email": "coach.heyen@gmail.com",
+        "phone": "(503) 931-5454",
+        "school": {
+          "name": "South Salem",
+          "logo": "school_75686.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75686,
+            "name": "South Salem",
+            "logo": "school_75686.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1024789": 6,
+                "1024790": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024789": 6,
+                "1024790": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512396,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024789,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024789,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80050,
+                    "firstName": "Pranav",
+                    "lastName": "Ramesh",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:52:43.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024790,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024791": 6,
+                "1024792": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024791": 6,
+                "1024792": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512397,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024791,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024791,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80032,
+                    "firstName": "Chris",
+                    "lastName": "Bedard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:41:22.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024792,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79624,
+                    "firstName": "Michael",
+                    "lastName": "Gu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:39.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024793": 6,
+                "1024794": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024793": 6,
+                "1024794": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512398,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1024793,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024793,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80025,
+                    "firstName": "Adam",
+                    "lastName": "Son",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:38:53.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024794,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1024797": 4,
+                "1024798": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1024797": 6,
+                "1024798": 7,
+                "number": 1,
+                "tie": 5
+              }
+            ],
+            "id": 512400,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024798,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024797,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 80045,
+                    "firstName": "Max",
+                    "lastName": "Molyneux",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:49:00.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 80047,
+                    "firstName": "Nathan",
+                    "lastName": "Kindred",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024798,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024799": 6,
+                "1024800": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1024799": 6,
+                "1024800": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512401,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024799,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024799,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80051,
+                    "firstName": "Quinn",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:03.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80054,
+                    "firstName": "Toby",
+                    "lastName": "Otto",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:53:39.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024800,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79622,
+                    "firstName": "Dylan",
+                    "lastName": "Paterson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:37:42.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1024801": 7,
+                "1024802": 6,
+                "number": 1,
+                "tie": 3
+              },
+              {
+                "1024801": 7,
+                "1024802": 5,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 512402,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1024801,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1024801,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 80041,
+                    "firstName": "Marc",
+                    "lastName": "Nickel",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:01.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 80044,
+                    "firstName": "Max",
+                    "lastName": "Howard",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T15:48:42.000Z",
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1024802,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79620,
+                    "firstName": "Jemin",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:36:52.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102027,
+      "title": "Crescent Valley",
+      "meetDateTime": "2021-04-15T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74918,
+        "firstName": "Peter",
+        "lastName": "Tsai",
+        "genderId": 1,
+        "email": "peterctsai@gmail.com",
+        "phone": "(541) 224-2545",
+        "school": {
+          "name": "Crescent Valley",
+          "logo": "school_74918.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75685,
+            "name": "Sprague",
+            "logo": "school_75685.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1015329": 2,
+                "1015330": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015329": 4,
+                "1015330": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507666,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015330,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015329,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79611,
+                    "firstName": "Max",
+                    "lastName": "Solensky",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:33:33.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015330,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81069,
+                    "firstName": "Joshua",
+                    "lastName": "Bradshaw",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:43:55.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015331": 6,
+                "1015332": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015331": 2,
+                "1015332": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1015331": 12,
+                "1015332": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 507667,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015331,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015331,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79624,
+                    "firstName": "Michael",
+                    "lastName": "Gu",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:39.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015332,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81071,
+                    "firstName": "Jeffrey",
+                    "lastName": "Huang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:44:45.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015335": 2,
+                "1015336": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015335": 6,
+                "1015336": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1015335": 10,
+                "1015336": 7,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 507669,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1015335,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015335,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79625,
+                    "firstName": "Noah",
+                    "lastName": "Curtis",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:39:31.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015336,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81073,
+                    "firstName": "Lincoln",
+                    "lastName": "Basl",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:45:12.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1015343": 6,
+                "1015344": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015343": 6,
+                "1015344": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507673,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015343,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015343,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015344,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81082,
+                    "firstName": "Andrew",
+                    "lastName": "Patterson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:47:48.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81089,
+                    "firstName": "Chuxiao (Hanson)",
+                    "lastName": "Wang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:53:53.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015347": 5,
+                "1015348": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015347": 3,
+                "1015348": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507675,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015348,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015347,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015348,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81077,
+                    "firstName": "Jacob",
+                    "lastName": "Horn",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2023-05-03T03:11:58.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81087,
+                    "firstName": "Jacob",
+                    "lastName": "Sturgeon",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-04-14T02:15:21.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1015353": 6,
+                "1015354": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1015353": 7,
+                "1015354": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 507678,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1015353,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1015353,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79618,
+                    "firstName": "Christopher",
+                    "lastName": "Choi",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79622,
+                    "firstName": "Dylan",
+                    "lastName": "Paterson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:37:42.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1015354,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 81084,
+                    "firstName": "Kieran",
+                    "lastName": "Roebuck",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-13T19:48:26.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 81090,
+                    "firstName": "Nicholas (Cole)",
+                    "lastName": "Youso",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75685,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Sprague",
+                      "logo": "school_75685.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 101314,
+      "title": "Crescent Valley vs. Silverton Dual BTN Meet",
+      "meetDateTime": "2021-04-12T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75762,
+        "firstName": "Van",
+        "lastName": "Khieu",
+        "genderId": 1,
+        "email": "van4khieus@gmail.com",
+        "phone": "(503) 899-2514",
+        "school": {
+          "name": "Silverton",
+          "logo": "school_75762.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74918,
+            "name": "Crescent Valley",
+            "logo": "school_74918.png",
+            "score": 8,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75762,
+            "name": "Silverton",
+            "logo": "school_75762.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1007089": 5,
+                "1007090": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007089": 0,
+                "1007090": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503546,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007090,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007089,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77168,
+                    "firstName": "Blake",
+                    "lastName": "Robinson",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T14:26:46.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007090,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79613,
+                    "firstName": "Luke",
+                    "lastName": "Forester",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007091": 1,
+                "1007092": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007091": 7,
+                "1007092": 6,
+                "number": 2,
+                "tie": 4
+              },
+              {
+                "1007091": 4,
+                "1007092": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 503547,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007092,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007091,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77164,
+                    "firstName": "Isaac",
+                    "lastName": "Looney",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:23:34.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007092,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79611,
+                    "firstName": "Max",
+                    "lastName": "Solensky",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:33:33.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007093": 2,
+                "1007094": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007093": 0,
+                "1007094": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503548,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1007094,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007093,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77163,
+                    "firstName": "Michael",
+                    "lastName": "Ilisoi",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:23:08.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007094,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79612,
+                    "firstName": "Ethan",
+                    "lastName": "Chang",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1007097": 1,
+                "1007098": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007097": 6,
+                "1007098": 3,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1007097": 7,
+                "1007098": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 503550,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007098,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007097,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77160,
+                    "firstName": "Spencer",
+                    "lastName": "Chase",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-10T14:19:56.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77161,
+                    "firstName": "Alexander",
+                    "lastName": "Gardner",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:21:57.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007098,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79616,
+                    "firstName": "Kevin",
+                    "lastName": "Dai",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:35:21.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79620,
+                    "firstName": "Jemin",
+                    "lastName": "Kim",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:36:52.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007099": 0,
+                "1007100": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007099": 3,
+                "1007100": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503551,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007100,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007099,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77167,
+                    "firstName": "Brandon",
+                    "lastName": "Metzger",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:25:11.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 77170,
+                    "firstName": "Barrett",
+                    "lastName": "Teeney",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:26:36.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007100,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79614,
+                    "firstName": "Bryan",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79615,
+                    "firstName": "Richard ",
+                    "lastName": "Chen",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2025-06-18T18:44:19.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1007101": 0,
+                "1007102": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1007101": null,
+                "1007102": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1007101": 1,
+                "1007102": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 503552,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1007102,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1007101,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77169,
+                    "firstName": "Owen",
+                    "lastName": "Rogers",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T02:26:10.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 79322,
+                    "firstName": "Ryan",
+                    "lastName": "Gilkison",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 75762,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Silverton",
+                      "logo": "school_75762.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1007102,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79619,
+                    "firstName": "Canon",
+                    "lastName": "Clark",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79623,
+                    "firstName": "Auggie",
+                    "lastName": "Tokarczyk",
+                    "grade": "Graduated",
+                    "genderId": 1,
+                    "schoolId": 74918,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-11T19:38:20.000Z",
+                    "school": {
+                      "name": "Crescent Valley",
+                      "logo": "school_74918.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
