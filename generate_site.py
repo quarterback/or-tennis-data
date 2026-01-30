@@ -632,6 +632,10 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 <label>Search</label>
                 <input type="text" id="searchBox" placeholder="School name...">
             </div>
+            <div class="filter-group">
+                <label>Min Matches</label>
+                <input type="number" id="minMatchesFilter" value="3" min="0" max="20" style="width:60px;">
+            </div>
         </div>
 
         <div class="table-container">
@@ -687,6 +691,10 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 <div class="form-group">
                     <label>Auto-Bids/League</label>
                     <input type="number" id="autoBids" value="1" min="0" max="4" style="width:70px;">
+                </div>
+                <div class="form-group">
+                    <label>Min Matches</label>
+                    <input type="number" id="playoffMinMatches" value="3" min="0" max="20" style="width:70px;">
                 </div>
                 <button id="simulateBtn">Generate Field</button>
             </div>
@@ -865,15 +873,21 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 const gender = $('#genderFilter').val();
                 const cls = $('#classFilter').val();
                 const league = $('#leagueFilter').val();
+                const minMatches = parseInt($('#minMatchesFilter').val()) || 0;
 
                 if (year && row.year != year) return false;
                 if (gender && row.gender !== gender) return false;
                 if (cls && row.classification !== cls) return false;
                 if (league && row.league !== league) return false;
+
+                // Minimum matches filter (wins + losses + ties)
+                const totalMatches = row.wins + row.losses + row.ties;
+                if (totalMatches < minMatches) return false;
+
                 return true;
             }});
 
-            $('#yearFilter, #genderFilter, #classFilter, #leagueFilter').on('change', () => table.draw());
+            $('#yearFilter, #genderFilter, #classFilter, #leagueFilter, #minMatchesFilter').on('change', () => table.draw());
             $('#searchBox').on('keyup', function() {{ table.search(this.value).draw(); }});
 
             // Set defaults
@@ -890,16 +904,18 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
             const classification = $('#playoffClass').val();
             const bracketSize = parseInt($('#bracketSize').val());
             const autoBidsPerLeague = parseInt($('#autoBids').val());
+            const minMatches = parseInt($('#playoffMinMatches').val()) || 0;
 
-            // Filter teams for this year/gender/classification
+            // Filter teams for this year/gender/classification with minimum matches
             let teams = rankings.filter(r =>
                 r.year === year &&
                 r.gender === gender &&
-                r.classification === classification
+                r.classification === classification &&
+                (r.wins + r.losses + r.ties) >= minMatches
             );
 
             if (teams.length === 0) {{
-                $('#playoffResults').html('<p style="padding:20px;color:#888;">No teams found for selected criteria.</p>');
+                $('#playoffResults').html('<p style="padding:20px;color:#888;">No teams found for selected criteria (check min matches setting).</p>');
                 return;
             }}
 
