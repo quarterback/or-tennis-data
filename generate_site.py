@@ -375,6 +375,51 @@ def build_rankings(data_dir, master_school_list):
     return output, school_data, raw_data_cache, school_info
 
 
+def calculate_league_power_scores(rankings):
+    """Calculate Conference Power Score and Depth Score for each league."""
+    from collections import defaultdict
+
+    # Group by year, gender, league
+    league_data = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+
+    for r in rankings:
+        if r['league']:
+            league_data[r['year']][r['gender']][r['league']].append(r)
+
+    league_scores = []
+    for year in league_data:
+        for gender in league_data[year]:
+            for league, teams in league_data[year][gender].items():
+                if not teams:
+                    continue
+
+                # Sort by APR descending
+                sorted_teams = sorted(teams, key=lambda x: x['apr'], reverse=True)
+
+                # Avg APR of all teams
+                avg_apr = sum(t['apr'] for t in sorted_teams) / len(sorted_teams)
+
+                # Top 4 depth score
+                top_4 = sorted_teams[:4]
+                depth_score = sum(t['apr'] for t in top_4) / len(top_4) if top_4 else 0
+
+                # Get classification from first team
+                classification = sorted_teams[0]['classification'] if sorted_teams else ''
+
+                league_scores.append({
+                    'year': year,
+                    'gender': gender,
+                    'league': league,
+                    'classification': classification,
+                    'avg_apr': round(avg_apr, 4),
+                    'depth_score': round(depth_score, 4),
+                    'num_schools': len(sorted_teams),
+                    'top_team': sorted_teams[0]['school_name'] if sorted_teams else '',
+                })
+
+    return league_scores
+
+
 def generate_html(rankings, school_data, raw_data_cache, school_info):
     """Generate the HTML dashboard with modern UI and playoff simulator."""
 
@@ -383,7 +428,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
     classifications = sorted(set(r['classification'] for r in rankings if r['classification']))
     leagues = sorted(set(r['league'] for r in rankings if r['league']))
 
+    # Calculate league power scores
+    league_scores = calculate_league_power_scores(rankings)
+
     rankings_json = json.dumps(rankings)
+    league_scores_json = json.dumps(league_scores)
 
     html = f'''<!DOCTYPE html>
 <html lang="en">
@@ -451,8 +500,18 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         .badge-4a {{ background: #22c55e; color: #fff; }}
         .badge-league {{
             font-size: 10px; font-weight: 500; padding: 2px 6px; border-radius: 3px;
-            background: #2a2a2a; color: #888;
+            background: #2a2a2a; color: #888; cursor: help; position: relative;
         }}
+        .badge-league:hover {{ background: #3a3a3a; }}
+        .league-tooltip {{
+            position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+            background: #1a1a1a; border: 1px solid #3a3a3a; border-radius: 4px;
+            padding: 8px 12px; white-space: nowrap; z-index: 1000;
+            font-size: 11px; color: #e5e5e5; display: none; margin-bottom: 4px;
+        }}
+        .badge-league:hover .league-tooltip {{ display: block; }}
+        .tooltip-label {{ color: #666; }}
+        .tooltip-value {{ color: #22c55e; font-weight: 600; }}
         .dataTables_wrapper .dataTables_length select {{ width: auto; }}
         .dataTables_wrapper .dataTables_filter {{ display: none; }}
         .dataTables_wrapper .dataTables_info {{ color: #666; font-size: 11px; }}
@@ -505,6 +564,20 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         .badge-atlarge {{ background: #8b5cf6; color: #fff; }}
         .badge-bye {{ background: #fbbf24; color: #000; margin-left: 8px; }}
         .section-title {{ color: #888; font-size: 11px; font-weight: 600; text-transform: uppercase; margin: 16px 0 8px; }}
+        /* League Analysis */
+        .analysis-container {{ padding: 20px; }}
+        .analysis-toolbar {{
+            background: #1a1a1a; border-radius: 8px; padding: 16px;
+            margin-bottom: 16px; display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap;
+        }}
+        .analysis-table {{ width: 100%; }}
+        .analysis-table th {{ text-align: left; }}
+        footer {{
+            margin-top: 40px; padding: 16px; background: #0a0a0a;
+            border-top: 1px solid #1a1a1a; text-align: center;
+        }}
+        footer a {{ color: #444; font-size: 11px; text-decoration: none; }}
+        footer a:hover {{ color: #666; }}
     </style>
 </head>
 <body>
@@ -516,6 +589,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" data-tab="playoffs">Playoff Simulator</a>
+            </li>
+            <li class="nav-item" id="analysisNavItem" style="display:none;">
+                <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
             </li>
         </ul>
     </nav>
@@ -616,6 +692,47 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
         </div>
     </div>
 
+    <!-- League Analysis Tab (Hidden) -->
+    <div id="analysis-tab" class="tab-content">
+        <div class="analysis-container">
+            <div class="analysis-toolbar">
+                <div class="form-group">
+                    <label>Year</label>
+                    <select id="analysisYear">
+                        {chr(10).join(f'<option value="{y}">{y}</option>' for y in years)}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Gender</label>
+                    <select id="analysisGender">
+                        {chr(10).join(f'<option value="{g}">{g}</option>' for g in genders)}
+                    </select>
+                </div>
+                <button id="refreshAnalysis">Refresh</button>
+            </div>
+            <div class="table-container">
+                <table id="analysisTable" class="table analysis-table" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>League</th>
+                            <th>Classification</th>
+                            <th>Avg APR</th>
+                            <th>Top 4 APR</th>
+                            <th>Schools</th>
+                            <th>Top Team</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <a href="?view=analysis" id="adminLink">Admin Analysis</a>
+    </footer>
+
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
@@ -623,7 +740,22 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
 
     <script>
         const rankings = {rankings_json};
+        const leagueScores = {league_scores_json};
         let table;
+        let analysisTable;
+
+        // Build league score lookup for tooltips
+        const leagueScoreLookup = {{}};
+        leagueScores.forEach(ls => {{
+            const key = `${{ls.year}}-${{ls.gender}}-${{ls.league}}`;
+            leagueScoreLookup[key] = ls;
+        }});
+
+        // Check for analysis view URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('view') === 'analysis') {{
+            document.getElementById('analysisNavItem').style.display = 'block';
+        }}
 
         // Tab switching
         document.querySelectorAll('[data-tab]').forEach(tab => {{
@@ -633,7 +765,21 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 tab.classList.add('active');
                 document.getElementById(tab.dataset.tab + '-tab').classList.add('active');
+                if (tab.dataset.tab === 'analysis') {{
+                    refreshAnalysisTable();
+                }}
             }});
+        }});
+
+        // Admin link behavior
+        document.getElementById('adminLink').addEventListener('click', (e) => {{
+            e.preventDefault();
+            document.getElementById('analysisNavItem').style.display = 'block';
+            document.querySelectorAll('[data-tab]').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelector('[data-tab="analysis"]').classList.add('active');
+            document.getElementById('analysis-tab').classList.add('active');
+            refreshAnalysisTable();
         }});
 
         $(document).ready(function() {{
@@ -668,9 +814,17 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
                     }},
                     {{
                         data: 'league',
-                        render: (d, t) => {{
+                        render: (d, t, row) => {{
                             if (t !== 'display') return d || '';
-                            return d ? `<span class="badge-league">${{d}}</span>` : '-';
+                            if (!d) return '-';
+                            const key = `${{row.year}}-${{row.gender}}-${{d}}`;
+                            const ls = leagueScoreLookup[key];
+                            const tooltip = ls ?
+                                `<span class="league-tooltip">
+                                    <span class="tooltip-label">Power Score:</span> <span class="tooltip-value">${{ls.avg_apr.toFixed(4)}}</span><br>
+                                    <span class="tooltip-label">Top 4 Depth:</span> <span class="tooltip-value">${{ls.depth_score.toFixed(4)}}</span>
+                                </span>` : '';
+                            return `<span class="badge-league">${{d}}${{tooltip}}</span>`;
                         }}
                     }},
                     {{ data: 'record', className: 'record' }},
@@ -834,6 +988,36 @@ def generate_html(rankings, school_data, raw_data_cache, school_info):
 
             $('#playoffResults').html(html);
         }}
+
+        function refreshAnalysisTable() {{
+            const year = parseInt($('#analysisYear').val());
+            const gender = $('#analysisGender').val();
+
+            const filtered = leagueScores
+                .filter(ls => ls.year === year && ls.gender === gender)
+                .sort((a, b) => b.avg_apr - a.avg_apr);
+
+            const tbody = $('#analysisTable tbody');
+            tbody.empty();
+
+            filtered.forEach((ls, idx) => {{
+                const row = `
+                    <tr>
+                        <td class="rank-cell">${{idx + 1}}</td>
+                        <td><span class="badge-league">${{ls.league}}</span></td>
+                        <td>${{ls.classification || '-'}}</td>
+                        <td class="apr-value apr-high">${{ls.avg_apr.toFixed(4)}}</td>
+                        <td class="apr-value">${{ls.depth_score.toFixed(4)}}</td>
+                        <td>${{ls.num_schools}}</td>
+                        <td class="school-name">${{ls.top_team}}</td>
+                    </tr>
+                `;
+                tbody.append(row);
+            }});
+        }}
+
+        $('#refreshAnalysis').on('click', refreshAnalysisTable);
+        $('#analysisYear, #analysisGender').on('change', refreshAnalysisTable);
     </script>
 </body>
 </html>'''
