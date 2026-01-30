@@ -1,0 +1,1549 @@
+{
+  "school": {
+    "id": 75388,
+    "name": "Putnam",
+    "address": "4950 SE ROETHE RD",
+    "zipCode": "97267",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75388.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:46:35.000Z",
+    "deletedAt": null,
+    "cityId": 11852,
+    "city": {
+      "id": 11852,
+      "name": "Milwaukie",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2959,
+      "firstName": "Josh",
+      "lastName": "Alper",
+      "address": "4950 Roethe Rd",
+      "phone": "(971) 901-8082",
+      "email": "alperj@nclack.k12.or.us",
+      "division": "5A",
+      "schoolId": 75388,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 4,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 104606,
+      "title": "Wilsonville at Putnam",
+      "meetDateTime": "2021-04-29T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75881,
+        "firstName": "Chase",
+        "lastName": "Eisenbrandt",
+        "genderId": 2,
+        "email": "eisenbrc@wlwv.k12.or.us",
+        "phone": "(503) 789-1751",
+        "school": {
+          "name": "Wilsonville",
+          "logo": "school_75881.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75881,
+            "name": "Wilsonville",
+            "logo": "school_75881.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75388,
+            "name": "Putnam",
+            "logo": "school_75388.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1054503": 6,
+                "1054504": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1054503": 6,
+                "1054504": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527253,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1054503,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054503,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81545,
+                    "firstName": "Ellie",
+                    "lastName": "Wettstein",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:41:14.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054504,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86152,
+                    "firstName": "Ellie",
+                    "lastName": "Switzer",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T21:17:50.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1054507": 6,
+                "1054508": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1054507": 6,
+                "1054508": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527255,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054507,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054507,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81534,
+                    "firstName": "Mikayla",
+                    "lastName": "Brehm",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:03.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81538,
+                    "firstName": "DuQuette",
+                    "lastName": "Maddy",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:16.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054508,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86143,
+                    "firstName": "Valeria",
+                    "lastName": "Espadas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T21:15:10.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86147,
+                    "firstName": "Chadae",
+                    "lastName": "McDonald",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T21:16:26.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054509": 6,
+                "1054510": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1054509": 6,
+                "1054510": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527256,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054509,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054509,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81536,
+                    "firstName": "Syndey",
+                    "lastName": "Burns",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-14T14:08:05.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81555,
+                    "firstName": "Rachel",
+                    "lastName": "Westing",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:42:59.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054510,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86141,
+                    "firstName": "Julie",
+                    "lastName": "Arreguin",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 86145,
+                    "firstName": "Cassandra",
+                    "lastName": "Lopez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1054515": 6,
+                "1054516": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1054515": null,
+                "1054516": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1054515": 6,
+                "1054516": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 527259,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1054515,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1054515,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 81546,
+                    "firstName": "Katie",
+                    "lastName": "Scoggins",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:41:17.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 81549,
+                    "firstName": "Macy",
+                    "lastName": "Moore",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75881,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2022-03-05T19:41:31.000Z",
+                    "school": {
+                      "name": "Wilsonville",
+                      "logo": "school_75881.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1054516,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 86146,
+                    "firstName": "Claire",
+                    "lastName": "Loudermilk",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T21:16:04.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 86150,
+                    "firstName": "Payton ",
+                    "lastName": "Stanley",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75388,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Putnam",
+                      "logo": "school_75388.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103633,
+      "title": "Hillsboro @ Rex Putnam",
+      "meetDateTime": "2021-04-23T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 74634,
+        "firstName": "Bianca",
+        "lastName": "Nava",
+        "genderId": 2,
+        "email": "bnava0925@gmail.com",
+        "phone": "(408) 401-6919",
+        "school": {
+          "name": "Hillsboro",
+          "logo": "school_74634.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 74634,
+            "name": "Hillsboro",
+            "logo": "school_74634.png",
+            "score": 7,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75388,
+            "name": "Putnam",
+            "logo": "school_75388.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1039607": 6,
+                "1039608": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039607": 6,
+                "1039608": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519805,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1039607,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039607,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83897,
+                    "firstName": "Margaret",
+                    "lastName": "Shively",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:54:53.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039608,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1039609": 6,
+                "1039610": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039609": 6,
+                "1039610": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519806,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1039609,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039609,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83892,
+                    "firstName": "Lyllian",
+                    "lastName": "Her",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:53:33.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039610,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1039611": 6,
+                "1039612": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039611": 6,
+                "1039612": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519807,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1039611,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039611,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83887,
+                    "firstName": "Audrey",
+                    "lastName": "Allida",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:51:41.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039612,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1039615": 2,
+                "1039616": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039615": 2,
+                "1039616": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519809,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1039616,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039615,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83886,
+                    "firstName": "Tatiana",
+                    "lastName": "Aguilar",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:51:29.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83890,
+                    "firstName": "Diana",
+                    "lastName": "Garcia Balderrama",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:52:34.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039616,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1039621": 6,
+                "1039622": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039621": 6,
+                "1039622": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519812,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1039621,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039621,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83889,
+                    "firstName": "Yeili",
+                    "lastName": "Figueroa",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83893,
+                    "firstName": "Cassidy",
+                    "lastName": "Mecham",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:53:45.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039622,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1039625": 5,
+                "1039626": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1039625": 2,
+                "1039626": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 519814,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1039626,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1039625,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 83896,
+                    "firstName": "Helen",
+                    "lastName": "Riedweg",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T04:54:33.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 83898,
+                    "firstName": "Natalie",
+                    "lastName": "Thomas",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74634,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Hillsboro",
+                      "logo": "school_74634.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1039626,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 103138,
+      "title": "Milwaukie v. Rex Putnam",
+      "meetDateTime": "2021-04-22T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75387,
+        "firstName": "Katie",
+        "lastName": "Tkachenkok",
+        "genderId": 2,
+        "email": "tkachenkok@nclack.k12.or.us",
+        "phone": "(541) 771-3001",
+        "school": {
+          "name": "Milwaukie / Milwaukie Acad. of the Arts",
+          "logo": "school_75387.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75387,
+            "name": "Milwaukie / Milwaukie Acad. of the Arts",
+            "logo": "school_75387.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75388,
+            "name": "Putnam",
+            "logo": "school_75388.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1030459": 0,
+                "1030460": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1030459": 0,
+                "1030460": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515231,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030459,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030459,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77097,
+                    "firstName": "Tiara",
+                    "lastName": "Yeung",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75387,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Milwaukie / Milwaukie Acad. of the Arts",
+                      "logo": "school_75387.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030460,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1030461": null,
+                "1030462": null,
+                "number": 3,
+                "tie": null
+              },
+              {
+                "1030461": 6,
+                "1030462": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1030461": 6,
+                "1030462": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515232,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030462,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030461,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 77092,
+                    "firstName": "Esmy",
+                    "lastName": "Reyes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75387,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:45:19.000Z",
+                    "school": {
+                      "name": "Milwaukie / Milwaukie Acad. of the Arts",
+                      "logo": "school_75387.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030462,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1030463": 4,
+                "1030464": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1030463": 2,
+                "1030464": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 515233,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1030463,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1030463,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 77090,
+                    "firstName": "Ellie",
+                    "lastName": "Oakes",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75387,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-03-30T00:44:48.000Z",
+                    "school": {
+                      "name": "Milwaukie / Milwaukie Acad. of the Arts",
+                      "logo": "school_75387.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1030464,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 102550,
+      "title": "Gresham at Rx Putnam",
+      "meetDateTime": "2021-04-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75112,
+        "firstName": "Alan",
+        "lastName": "Simpson",
+        "genderId": 2,
+        "email": "simpson@gresham.k12.or.us",
+        "phone": "(971) 263-9380",
+        "school": {
+          "name": "Gresham",
+          "logo": "school_75112.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75112,
+            "name": "Gresham",
+            "logo": "school_75112.png",
+            "score": 5,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75388,
+            "name": "Putnam",
+            "logo": "school_75388.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1022589": 6,
+                "1022590": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022589": 6,
+                "1022590": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 511296,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1022589,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022589,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74683,
+                    "firstName": "Bailey",
+                    "lastName": "Hernandez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T16:08:22.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022590,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1022593": 6,
+                "1022594": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022593": 6,
+                "1022594": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 511298,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1022593,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022593,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74681,
+                    "firstName": "Satine",
+                    "lastName": "Simpson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T14:15:30.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022594,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1022595": 6,
+                "1022596": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022595": 6,
+                "1022596": 3,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 511299,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1022595,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022595,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 74686,
+                    "firstName": "Sofia",
+                    "lastName": "Mal",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T20:46:48.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022596,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1022603": 6,
+                "1022604": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022603": 2,
+                "1022604": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1022603": 2,
+                "1022604": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 511303,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1022604,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022603,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74688,
+                    "firstName": "Aleena",
+                    "lastName": "Baisden",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T20:47:12.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74689,
+                    "firstName": "Nadia",
+                    "lastName": "Mosley",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-12T18:12:20.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022604,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1022605": 1,
+                "1022606": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022605": 6,
+                "1022606": 2,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1022605": 1,
+                "1022606": 6,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 511304,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1022606,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022605,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 74685,
+                    "firstName": "Hannah",
+                    "lastName": "Wilson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T20:46:32.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 74690,
+                    "firstName": "Le",
+                    "lastName": "Duong",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-02-10T20:47:37.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022606,
+                "isWinner": true,
+                "players": []
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1022611": 6,
+                "1022612": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1022611": 6,
+                "1022612": 1,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1022611": null,
+                "1022612": null,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 511307,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1022611,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1022611,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 79213,
+                    "firstName": "Rory",
+                    "lastName": "Wood",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 79214,
+                    "firstName": "Hanna",
+                    "lastName": "Israelsson",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 75112,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-27T02:34:44.000Z",
+                    "school": {
+                      "name": "Gresham",
+                      "logo": "school_75112.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1022612,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}

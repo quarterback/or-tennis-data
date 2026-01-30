@@ -1,0 +1,347 @@
+{
+  "school": {
+    "id": 74728,
+    "name": "Baker",
+    "address": "2500 E ST",
+    "zipCode": "97814",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_74728.png",
+    "createdAt": "2020-02-11T06:38:48.000Z",
+    "updatedAt": "2026-01-15T13:41:22.000Z",
+    "deletedAt": null,
+    "cityId": 951,
+    "city": {
+      "id": 951,
+      "name": "Baker city",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2774,
+      "firstName": "Amy",
+      "lastName": "Younger",
+      "address": "2500 E Sreet Baker City, OR 97814",
+      "phone": "(541) 403-0674",
+      "email": "Amy.Younger@bakersd.org",
+      "division": "4A",
+      "schoolId": 74728,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 0,
+    "loss": 1,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 103401,
+      "title": "Baker vs Four River",
+      "meetDateTime": "2021-04-12T05:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 7070534,
+        "firstName": "Patricia",
+        "lastName": "Alvarez",
+        "genderId": 2,
+        "email": "Trishtank@gmail.com",
+        "phone": "(541) 212-9115",
+        "school": {
+          "name": "Four Rivers Charter",
+          "logo": "school_7070534.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 7070534,
+            "name": "Four Rivers Charter",
+            "logo": "school_7070534.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74728,
+            "name": "Baker",
+            "logo": "school_74728.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "1035089": 6,
+                "1035090": 4,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035089": 6,
+                "1035090": 4,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517546,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1035089,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035089,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 55860,
+                    "firstName": "Erin",
+                    "lastName": "Hawker",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070534,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T03:42:29.000Z",
+                    "school": {
+                      "name": "Four Rivers Charter",
+                      "logo": "school_7070534.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035090,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75017,
+                    "firstName": "Pheobe",
+                    "lastName": "Wise",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Baker",
+                      "logo": "school_74728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "1035091": 7,
+                "1035092": 5,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035091": 4,
+                "1035092": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "1035091": 6,
+                "1035092": 4,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 517547,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 1035091,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035091,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83870,
+                    "firstName": "Alicia ",
+                    "lastName": "Clayton",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070534,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Four Rivers Charter",
+                      "logo": "school_7070534.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035092,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75017,
+                    "firstName": "Pheobe",
+                    "lastName": "Wise",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:45:08.000Z",
+                    "school": {
+                      "name": "Baker",
+                      "logo": "school_74728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "1035093": 6,
+                "1035094": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "1035093": 6,
+                "1035094": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 517548,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 1035093,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 1035093,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 83823,
+                    "firstName": "Alex",
+                    "lastName": "Palomo",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070534,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T00:25:24.000Z",
+                    "school": {
+                      "name": "Four Rivers Charter",
+                      "logo": "school_7070534.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 83871,
+                    "firstName": "Nicole",
+                    "lastName": "Alvarez",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 7070534,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2021-04-19T03:29:40.000Z",
+                    "school": {
+                      "name": "Four Rivers Charter",
+                      "logo": "school_7070534.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 1035094,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 75014,
+                    "firstName": "Riley",
+                    "lastName": "Shaw",
+                    "grade": "Graduated",
+                    "genderId": 2,
+                    "schoolId": 74728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": "2024-06-19T06:44:01.000Z",
+                    "school": {
+                      "name": "Baker",
+                      "logo": "school_74728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 84185,
+                    "firstName": "Tristen",
+                    "lastName": "?",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 74728,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Baker",
+                      "logo": "school_74728.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
