@@ -42,6 +42,9 @@ OOWP_WEIGHT = 0.25  # Opponent's opponent win percentage
 APR_WEIGHT = 0.50   # Dual match outcomes (winning)
 FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
+# H2H Tiebreaker threshold - swap if PI difference is less than this
+H2H_THRESHOLD = 0.02  # Teams within 2% PI difference eligible for H2H swap
+
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
 
@@ -429,13 +432,65 @@ def build_rankings(data_dir, master_school_list):
     output = []
     for year in sorted(school_data.keys()):
         for gender in sorted(school_data[year].keys()):
-            # Rank by Power Index (primary ranking metric)
+            # Initial sort by Power Index
             ranked = sorted(
                 school_data[year][gender].items(),
                 key=lambda x: x[1]['power_index'],
                 reverse=True
             )
 
+            # H2H Tiebreaker Pass: Scan adjacent teams and swap if H2H favors lower-ranked
+            h2h_swaps = []
+            i = 0
+            while i < len(ranked) - 1:
+                school1_id, stats1 = ranked[i]
+                school2_id, stats2 = ranked[i + 1]
+
+                pi_diff = abs(stats1['power_index'] - stats2['power_index'])
+
+                if pi_diff < H2H_THRESHOLD:
+                    # Check H2H - does lower-ranked team (school2) beat higher-ranked (school1)?
+                    if school1_id in raw_data_cache[year][gender] and school2_id in raw_data_cache[year][gender]:
+                        school2_meets = raw_data_cache[year][gender][school2_id].get('meets', [])
+                        h2h_wins, h2h_losses, h2h_ties = get_head_to_head(school2_meets, school2_id, school1_id)
+
+                        if h2h_wins > h2h_losses:
+                            # Swap: school2 beat school1 H2H and they're close in PI
+                            ranked[i], ranked[i + 1] = ranked[i + 1], ranked[i]
+                            h2h_swaps.append((school2_id, school1_id, h2h_wins, h2h_losses))
+                i += 1
+
+            if h2h_swaps:
+                print(f"  H2H swaps in {year} {gender}: {len(h2h_swaps)}")
+
+            # Build H2H lookup for nearby teams (for UI display)
+            h2h_nearby = {}
+            for i, (school_id, stats) in enumerate(ranked):
+                nearby_h2h = []
+                # Check teams within ±3 ranks
+                for j in range(max(0, i - 3), min(len(ranked), i + 4)):
+                    if i == j:
+                        continue
+                    other_id, other_stats = ranked[j]
+
+                    if school_id in raw_data_cache[year][gender]:
+                        school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
+                        wins, losses, ties = get_head_to_head(school_meets, school_id, other_id)
+
+                        if wins + losses + ties > 0:
+                            other_info = school_info.get(other_id, {})
+                            nearby_h2h.append({
+                                'opponent_id': other_id,
+                                'opponent_name': other_info.get('name', f'School {other_id}'),
+                                'opponent_rank': j + 1,
+                                'wins': wins,
+                                'losses': losses,
+                                'ties': ties
+                            })
+
+                h2h_nearby[school_id] = nearby_h2h
+
+            # Generate output with final ranks
             for rank, (school_id, stats) in enumerate(ranked, 1):
                 info = school_info.get(school_id, {})
 
@@ -445,6 +500,9 @@ def build_rankings(data_dir, master_school_list):
 
                 # Yaw = FWS normalized - win_rate (positive = depth exceeds record)
                 yaw = stats['normalized_fws'] - win_rate
+
+                # Check if this team was boosted by H2H
+                h2h_boosted = any(swap[0] == school_id for swap in h2h_swaps)
 
                 output.append({
                     'year': int(year),
@@ -472,6 +530,8 @@ def build_rankings(data_dir, master_school_list):
                     'league_wins': stats['league_wins'],
                     'league_losses': stats['league_losses'],
                     'league_ties': stats['league_ties'],
+                    'h2h_boosted': h2h_boosted,       # True if rank improved via H2H tiebreaker
+                    'h2h_nearby': h2h_nearby.get(school_id, []),  # H2H records vs nearby teams
                 })
 
     return output, school_data, raw_data_cache, school_info
@@ -588,6 +648,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .fws-positive {{ background: linear-gradient(90deg, rgba(25,135,84,0.2), rgba(25,135,84,0.1)); }}
         .fws-negative {{ background: linear-gradient(90deg, rgba(220,53,69,0.2), rgba(220,53,69,0.1)); }}
         .power-index {{ color: #0d6efd; font-weight: 700; }}
+        .h2h-boosted {{ background: rgba(13,110,253,0.1); }}
+        .h2h-badge {{ font-size: 10px; padding: 2px 6px; border-radius: 3px; cursor: help; }}
+        .h2h-badge.h2h-win {{ background: #d1e7dd; color: #0f5132; }}
+        .h2h-badge.h2h-loss {{ background: #f8d7da; color: #842029; }}
+        .h2h-badge.h2h-split {{ background: #fff3cd; color: #664d03; }}
+        .h2h-boosted-badge {{ background: #0d6efd; color: #fff; font-size: 9px; padding: 1px 4px; border-radius: 3px; margin-left: 4px; }}
+        .h2h-tooltip {{ position: relative; display: inline-block; }}
+        .h2h-tooltip .h2h-content {{ visibility: hidden; background: #333; color: #fff; padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; }}
+        .h2h-tooltip:hover .h2h-content {{ visibility: visible; }}
         .sort-toggle {{ display: inline-flex; gap: 4px; }}
         .sort-toggle .btn {{ padding: 2px 8px; font-size: 11px; }}
         .sort-toggle .btn.active {{ background: #198754; color: #fff; border-color: #198754; }}
@@ -720,6 +789,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>Class</th>
                         <th>League</th>
                         <th>Record</th>
+                        <th>H2H</th>
                         <th>League Rec</th>
                         <th>Power Index</th>
                         <th>APR</th>
@@ -906,7 +976,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             refreshAnalysisTable();
         }});
 
-        let currentSortColumn = 6; // Power Index by default
+        let currentSortColumn = 7; // Power Index by default (after adding H2H column)
 
         $(document).ready(function() {{
             table = $('#rankingsTable').DataTable({{
@@ -937,6 +1007,40 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     }},
                     {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
                     {{ data: 'record' }},
+                    {{
+                        data: 'h2h_nearby',
+                        render: (d, t, row) => {{
+                            if (t !== 'display') return d ? d.length : 0;
+                            if (!d || d.length === 0) return '-';
+
+                            // Calculate overall H2H record vs nearby teams
+                            let wins = 0, losses = 0;
+                            d.forEach(h => {{
+                                wins += h.wins;
+                                losses += h.losses;
+                            }});
+
+                            if (wins + losses === 0) return '-';
+
+                            let cls = 'h2h-badge ';
+                            if (wins > losses) cls += 'h2h-win';
+                            else if (losses > wins) cls += 'h2h-loss';
+                            else cls += 'h2h-split';
+
+                            // Build tooltip content
+                            const tooltipLines = d.map(h => {{
+                                const result = h.wins > h.losses ? 'W' : (h.losses > h.wins ? 'L' : 'T');
+                                return `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}`;
+                            }}).join('<br>');
+
+                            let boostBadge = row.h2h_boosted ? '<span class="h2h-boosted-badge" title="Rank boosted by H2H tiebreaker">H2H</span>' : '';
+
+                            return `<div class="h2h-tooltip">
+                                <span class="${{cls}}">${{wins}}-${{losses}}</span>${{boostBadge}}
+                                <div class="h2h-content">${{tooltipLines}}</div>
+                            </div>`;
+                        }}
+                    }},
                     {{ data: 'league_record' }},
                     {{
                         data: 'power_index',
@@ -979,7 +1083,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }}
                 ],
-                order: [[6, 'desc']],
+                order: [[7, 'desc']],  // Power Index column (after adding H2H)
                 pageLength: 50,
                 lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 dom: 'lrtip'
@@ -989,13 +1093,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             $('#sortPowerIndex').on('click', function() {{
                 $(this).addClass('active');
                 $('#sortAPR').removeClass('active');
-                table.order([[6, 'desc']]).draw();
+                table.order([[7, 'desc']]).draw();  // Power Index is column 7
             }});
 
             $('#sortAPR').on('click', function() {{
                 $(this).addClass('active');
                 $('#sortPowerIndex').removeClass('active');
-                table.order([[7, 'desc']]).draw();
+                table.order([[8, 'desc']]).draw();  // APR is column 8
             }});
 
             // Filtering
