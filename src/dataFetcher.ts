@@ -1,6 +1,6 @@
 import { SchoolData, School } from './types';
 
-const GITHUB_OWNER = 'YOUR_GITHUB_USERNAME';
+const GITHUB_OWNER = 'quarterback';
 const GITHUB_REPO = 'or-tennis-data';
 const GITHUB_API_BASE = 'https://api.github.com/repos';
 const GITHUB_FULL_REPO = `${GITHUB_OWNER}/${GITHUB_REPO}`;
