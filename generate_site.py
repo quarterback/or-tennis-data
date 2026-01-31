@@ -19,14 +19,14 @@ from pathlib import Path
 
 # Flight weights for ranking calculation
 FLIGHT_WEIGHTS = {
-    ('Singles', '1'): 1.0,
+    ('Singles', '1'): 1.00,
     ('Singles', '2'): 0.75,
-    ('Singles', '3'): 0.25,
-    ('Singles', '4'): 0.10,
-    ('Doubles', '1'): 1.0,
+    ('Singles', '3'): 0.50,
+    ('Singles', '4'): 0.25,
+    ('Doubles', '1'): 1.00,
     ('Doubles', '2'): 0.50,
     ('Doubles', '3'): 0.25,
-    ('Doubles', '4'): 0.10,
+    ('Doubles', '4'): 0.20,
 }
 
 # Max possible FWS per match (sum of all flight weights)
