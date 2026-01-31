@@ -1176,14 +1176,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     }},
                     {{
                         data: 'fws',
-                        render: (d, t, row) => {{
+                        render: (d, t) => {{
                             if (t !== 'display') return d;
-                            // Color based on yaw (depth vs record)
-                            const yaw = row.yaw || 0;
-                            let cls = '';
-                            if (yaw > 0.05) cls = 'fws-positive';
-                            else if (yaw < -0.05) cls = 'fws-negative';
-                            return `<span class="${{cls}}" style="padding:2px 6px;border-radius:3px;">${{d.toFixed(2)}}</span>`;
+                            return d.toFixed(2);
                         }}
                     }},
                     {{
