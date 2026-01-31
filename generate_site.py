@@ -285,9 +285,17 @@ def calculate_wwp(results):
 
 def calculate_fws_per_match(data, school_id):
     """
-    Calculate Flight Weighted Score (FWS) per dual match.
-    FWS = average of weighted flight wins across all dual matches.
-    Returns (fws, match_count) tuple.
+    Calculate Flight Weighted Score (FWS) per dual match using Proportional Weighting.
+
+    Instead of dividing by MAX_FWS (3.95) every time, we divide by the total
+    potential weight of flights actually contested in each match. This handles
+    forfeits and shorthanded matches fairly.
+
+    Example:
+    - Full match (8 flights): Denominator = 3.95
+    - Short match (1S, 2S, 1D, 2D only): Denominator = 3.0 (1.0+0.75+1.0+0.5)
+
+    Returns (normalized_fws, match_count) tuple where normalized_fws is 0-1 range.
     """
     dual_match_fws_scores = []
 
@@ -295,8 +303,9 @@ def calculate_fws_per_match(data, school_id):
         if not is_dual_match(meet):
             continue
 
-        # Calculate weighted points won in this match
-        match_points = 0.0
+        # Track points earned and available weight for this match
+        points_earned = 0.0
+        available_weight = 0.0
         matches = meet.get('matches', {})
 
         for match_type in ['Singles', 'Doubles']:
@@ -307,19 +316,30 @@ def calculate_fws_per_match(data, school_id):
                     weight = get_flight_weight(match_type, flight)
                     match_teams = match.get('matchTeams', [])
 
-                    for team in match_teams:
-                        players = team.get('players', [])
-                        for player in players:
-                            if player.get('schoolId') == school_id:
-                                if team.get('isWinner', False):
-                                    match_points += weight
-                                break
+                    # Check if this flight was actually contested (has teams/result)
+                    flight_contested = len(match_teams) >= 2
 
-        dual_match_fws_scores.append(match_points)
+                    if flight_contested:
+                        available_weight += weight
+
+                        # Check if our school won this flight
+                        for team in match_teams:
+                            players = team.get('players', [])
+                            for player in players:
+                                if player.get('schoolId') == school_id:
+                                    if team.get('isWinner', False):
+                                        points_earned += weight
+                                    break
+
+        # Calculate proportionally-weighted FWS for this match
+        if available_weight > 0:
+            match_fws = points_earned / available_weight
+            dual_match_fws_scores.append(match_fws)
 
     if not dual_match_fws_scores:
         return 0.0, 0
 
+    # Average of normalized match FWS scores (already in 0-1 range)
     avg_fws = sum(dual_match_fws_scores) / len(dual_match_fws_scores)
     return avg_fws, len(dual_match_fws_scores)
 
@@ -362,8 +382,8 @@ def build_rankings(data_dir, master_school_list):
             )
 
             if results:
-                fws, fws_match_count = calculate_fws_per_match(data, school_id)
-                normalized_fws = fws / MAX_FWS  # Normalize to 0-1 range
+                # FWS is now proportionally weighted (already 0-1 range)
+                normalized_fws, fws_match_count = calculate_fws_per_match(data, school_id)
 
                 # Calculate simple Win Percentage (WP) - ties count as 0.5 wins
                 total_duals = wins + losses + ties
@@ -380,8 +400,9 @@ def build_rankings(data_dir, master_school_list):
                     'league_wins': league_wins,
                     'league_losses': league_losses,
                     'league_ties': league_ties,
-                    'fws': fws,
-                    'normalized_fws': normalized_fws,
+                    # FWS now uses proportional weighting per match
+                    'fws': normalized_fws * MAX_FWS,  # Scale to 0-3.95 for display
+                    'normalized_fws': normalized_fws,  # 0-1 range for Power Index
                     'fws_match_count': fws_match_count,
                 }
 
@@ -517,9 +538,9 @@ def build_rankings(data_dir, master_school_list):
                     'owp': round(stats['owp'], 4),    # Opponent Win Percentage
                     'oowp': round(stats['oowp'], 4),  # Opponent's Opponent Win Percentage
                     'apr': round(stats['apr'], 4),    # RPI: (WP*0.25)+(OWP*0.50)+(OOWP*0.25)
-                    'fws': round(stats['fws'], 4),    # Raw Flight Weighted Score
-                    'normalized_fws': round(stats['normalized_fws'], 4),  # FWS / 3.95
-                    'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(FWS*0.50)
+                    'fws': round(stats['fws'], 4),    # Proportional FWS (0-3.95 scale)
+                    'normalized_fws': round(stats['normalized_fws'], 4),  # FWS normalized (0-1)
+                    'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(Normalized_FWS*0.50)
                     'yaw': round(yaw, 4),             # Depth vs Record indicator
                     'matches_played': stats['matches_played'],
                     'opponents_count': len(stats['opponents']),
@@ -691,6 +712,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .h2h-tooltip {{ position: relative; display: inline-block; }}
         .h2h-tooltip .h2h-content {{ visibility: hidden; background: #333; color: #fff; padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; }}
         .h2h-tooltip:hover .h2h-content {{ visibility: visible; }}
+        .formula-footer {{ margin-top: 12px; padding: 10px 15px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #198754; }}
         .sort-toggle {{ display: inline-flex; gap: 4px; }}
         .sort-toggle .btn {{ padding: 2px 8px; font-size: 11px; }}
         .sort-toggle .btn.active {{ background: #198754; color: #fff; border-color: #198754; }}
@@ -903,6 +925,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 </thead>
                 <tbody></tbody>
             </table>
+            <div class="formula-footer">
+                <small class="text-muted">
+                    <strong>Power Index</strong> is a 50/50 blend of APR and Flight-Weighted Score (normalized to a common scale).
+                    FWS uses proportional weighting based on flights actually contested.
+                </small>
+            </div>
         </div>
     </div>
 
