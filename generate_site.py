@@ -1383,14 +1383,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             if (t !== 'display') return d ? d.length : 0;
                             if (!d || d.length === 0) return '-';
 
-                            // Calculate overall H2H record vs nearby teams
-                            let wins = 0, losses = 0;
+                            // Calculate overall H2H record vs nearby teams (including ties)
+                            let wins = 0, losses = 0, ties = 0;
                             d.forEach(h => {{
                                 wins += h.wins;
                                 losses += h.losses;
+                                ties += h.ties || 0;
                             }});
 
-                            if (wins + losses === 0) return '-';
+                            if (wins + losses + ties === 0) return '-';
 
                             let cls = 'h2h-badge ';
                             if (wins > losses) cls += 'h2h-win';
@@ -1399,7 +1400,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
                             // Build tooltip content with swap reasons and dates
                             const tooltipLines = d.map(h => {{
-                                let line = `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}`;
+                                const tieStr = (h.ties || 0) > 0 ? `-${{h.ties}}` : '';
+                                let line = `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}${{tieStr}}`;
 
                                 // Add match dates if available
                                 if (h.match_dates && h.match_dates.length > 0) {{
@@ -1428,8 +1430,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                                 boostBadge = `<span class="h2h-boosted-badge" title="Rank boosted: ${{reasonText}}">🪢</span>`;
                             }}
 
+                            // Format record with ties if present
+                            const tieDisplay = ties > 0 ? `-${{ties}}` : '';
+
                             return `<div class="h2h-tooltip">
-                                <span class="${{cls}}">${{wins}}-${{losses}}</span>${{boostBadge}}
+                                <span class="${{cls}}">${{wins}}-${{losses}}${{tieDisplay}}</span>${{boostBadge}}
                                 <div class="h2h-content">${{tooltipLines}}</div>
                             </div>`;
                         }}
