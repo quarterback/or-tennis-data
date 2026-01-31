@@ -50,11 +50,11 @@ FWS measures how well a team performs **across all flight positions** in dual ma
 |--------|--------|-----------|
 | Singles 1 | 1.00 | Top position, highest competition |
 | Singles 2 | 0.75 | Strong competition |
-| Singles 3 | 0.50 | Mid-level |
-| Singles 4 | 0.15 | Development position |
+| Singles 3 | 0.25 | Mid-level |
+| Singles 4 | 0.10 | Development position |
 | Doubles 1 | 1.00 | Top doubles, equal to #1 singles |
 | Doubles 2 | 0.50 | Strong competition |
-| Doubles 3 | 0.30 | Mid-level |
+| Doubles 3 | 0.25 | Mid-level |
 | Doubles 4 | 0.10 | Development position |
 
 **Maximum possible FWS per match: 3.95 points**
