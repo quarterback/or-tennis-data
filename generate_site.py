@@ -44,6 +44,7 @@ FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
 # H2H Tiebreaker threshold - swap if PI difference is less than this
 H2H_THRESHOLD = 0.02  # Teams within 2% PI difference eligible for H2H swap
+H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for league-based H2H
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
@@ -460,25 +461,95 @@ def build_rankings(data_dir, master_school_list):
                 reverse=True
             )
 
-            # H2H Tiebreaker Pass: Scan adjacent teams and swap if H2H favors lower-ranked
-            h2h_swaps = []
+            # Calculate league rankings for H2H league position condition
+            league_rankings = {}  # {league: [(school_id, league_rank), ...]}
+            league_groups = defaultdict(list)
+            for i, (school_id, stats) in enumerate(ranked):
+                info = school_info.get(school_id, {})
+                league = info.get('league', '')
+                if league:
+                    league_groups[league].append((school_id, i + 1, stats))  # (id, state_rank, stats)
+
+            # Assign league ranks based on state rank order within each league
+            school_league_rank = {}  # {school_id: league_rank}
+            for league, teams in league_groups.items():
+                # Teams already sorted by state rank (from ranked list order)
+                for league_rank, (school_id, state_rank, stats) in enumerate(teams, 1):
+                    school_league_rank[school_id] = league_rank
+
+            # H2H Tiebreaker Pass with two conditions:
+            # A: Statewide PI Gap (within 2%)
+            # B: League Context (same league, within 2 league rank spots)
+            h2h_swaps = []  # [(winner_id, loser_id, wins, losses, reason)]
+            swapped_pairs = set()  # Track swapped pairs to detect circles
+
+            def would_create_circle(new_winner, new_loser, existing_swaps):
+                """Check if adding this swap would create a circular dependency."""
+                # Build graph of who beat whom via swaps
+                beat_graph = defaultdict(set)
+                for winner, loser, _, _, _ in existing_swaps:
+                    beat_graph[winner].add(loser)
+
+                # Add the proposed swap
+                beat_graph[new_winner].add(new_loser)
+
+                # Check if there's a path from new_loser back to new_winner (would be circular)
+                visited = set()
+                stack = [new_loser]
+                while stack:
+                    current = stack.pop()
+                    if current == new_winner:
+                        return True  # Circle detected
+                    if current in visited:
+                        continue
+                    visited.add(current)
+                    stack.extend(beat_graph.get(current, []))
+                return False
+
             i = 0
             while i < len(ranked) - 1:
                 school1_id, stats1 = ranked[i]
                 school2_id, stats2 = ranked[i + 1]
 
+                info1 = school_info.get(school1_id, {})
+                info2 = school_info.get(school2_id, {})
+                league1 = info1.get('league', '')
+                league2 = info2.get('league', '')
+
                 pi_diff = abs(stats1['power_index'] - stats2['power_index'])
 
-                if pi_diff < H2H_THRESHOLD:
+                # Condition A: Statewide PI Gap (within 2%)
+                condition_a = pi_diff < H2H_THRESHOLD
+
+                # Condition B: League Context (same league, within 2 league rank spots)
+                condition_b = False
+                if league1 and league1 == league2:
+                    lr1 = school_league_rank.get(school1_id, 0)
+                    lr2 = school_league_rank.get(school2_id, 0)
+                    if abs(lr1 - lr2) <= H2H_LEAGUE_RANK_THRESHOLD:
+                        condition_b = True
+
+                if condition_a or condition_b:
                     # Check H2H - does lower-ranked team (school2) beat higher-ranked (school1)?
                     if school1_id in raw_data_cache[year][gender] and school2_id in raw_data_cache[year][gender]:
                         school2_meets = raw_data_cache[year][gender][school2_id].get('meets', [])
                         h2h_wins, h2h_losses, h2h_ties = get_head_to_head(school2_meets, school2_id, school1_id)
 
                         if h2h_wins > h2h_losses:
-                            # Swap: school2 beat school1 H2H and they're close in PI
-                            ranked[i], ranked[i + 1] = ranked[i + 1], ranked[i]
-                            h2h_swaps.append((school2_id, school1_id, h2h_wins, h2h_losses))
+                            # Determine reason
+                            if condition_a and condition_b:
+                                reason = 'Both'
+                            elif condition_a:
+                                reason = 'Statewide'
+                            else:
+                                reason = 'League'
+
+                            # Check for circular swap before applying
+                            if not would_create_circle(school2_id, school1_id, h2h_swaps):
+                                # Swap: school2 beat school1 H2H
+                                ranked[i], ranked[i + 1] = ranked[i + 1], ranked[i]
+                                h2h_swaps.append((school2_id, school1_id, h2h_wins, h2h_losses, reason))
+                                swapped_pairs.add((school2_id, school1_id))
                 i += 1
 
             if h2h_swaps:
@@ -488,26 +559,52 @@ def build_rankings(data_dir, master_school_list):
             h2h_nearby = {}
             for i, (school_id, stats) in enumerate(ranked):
                 nearby_h2h = []
-                # Check teams within ±3 ranks
-                for j in range(max(0, i - 3), min(len(ranked), i + 4)):
+                info = school_info.get(school_id, {})
+                my_league = info.get('league', '')
+
+                # Check teams within ±3 state ranks OR same league within ±5 league ranks
+                for j in range(len(ranked)):
                     if i == j:
                         continue
                     other_id, other_stats = ranked[j]
+                    other_info = school_info.get(other_id, {})
+                    other_league = other_info.get('league', '')
 
-                    if school_id in raw_data_cache[year][gender]:
-                        school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
-                        wins, losses, ties = get_head_to_head(school_meets, school_id, other_id)
+                    # Include if within ±3 state ranks
+                    state_rank_close = abs(i - j) <= 3
 
-                        if wins + losses + ties > 0:
-                            other_info = school_info.get(other_id, {})
-                            nearby_h2h.append({
-                                'opponent_id': other_id,
-                                'opponent_name': other_info.get('name', f'School {other_id}'),
-                                'opponent_rank': j + 1,
-                                'wins': wins,
-                                'losses': losses,
-                                'ties': ties
-                            })
+                    # Include if same league and within ±5 league ranks
+                    league_close = False
+                    if my_league and my_league == other_league:
+                        my_lr = school_league_rank.get(school_id, 0)
+                        other_lr = school_league_rank.get(other_id, 0)
+                        if abs(my_lr - other_lr) <= 5:
+                            league_close = True
+
+                    if state_rank_close or league_close:
+                        if school_id in raw_data_cache[year][gender]:
+                            school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
+                            wins, losses, ties = get_head_to_head(school_meets, school_id, other_id)
+
+                            if wins + losses + ties > 0:
+                                # Determine if this matchup triggered H2H
+                                swap_reason = None
+                                for swap in h2h_swaps:
+                                    if (swap[0] == school_id and swap[1] == other_id) or \
+                                       (swap[0] == other_id and swap[1] == school_id):
+                                        swap_reason = swap[4]
+                                        break
+
+                                nearby_h2h.append({
+                                    'opponent_id': other_id,
+                                    'opponent_name': other_info.get('name', f'School {other_id}'),
+                                    'opponent_rank': j + 1,
+                                    'opponent_league_rank': school_league_rank.get(other_id, 0),
+                                    'wins': wins,
+                                    'losses': losses,
+                                    'ties': ties,
+                                    'swap_reason': swap_reason  # 'Statewide', 'League', 'Both', or None
+                                })
 
                 h2h_nearby[school_id] = nearby_h2h
 
@@ -522,8 +619,14 @@ def build_rankings(data_dir, master_school_list):
                 # Yaw = FWS normalized - win_rate (positive = depth exceeds record)
                 yaw = stats['normalized_fws'] - win_rate
 
-                # Check if this team was boosted by H2H
-                h2h_boosted = any(swap[0] == school_id for swap in h2h_swaps)
+                # Check if this team was boosted by H2H and get the reason
+                h2h_boosted = False
+                h2h_boost_reason = None
+                for swap in h2h_swaps:
+                    if swap[0] == school_id:
+                        h2h_boosted = True
+                        h2h_boost_reason = swap[4]  # 'Statewide', 'League', or 'Both'
+                        break
 
                 output.append({
                     'year': int(year),
@@ -534,6 +637,7 @@ def build_rankings(data_dir, master_school_list):
                     'school_name': info.get('name', f'School {school_id}'),
                     'classification': info.get('classification', ''),
                     'league': info.get('league', ''),
+                    'league_rank': school_league_rank.get(school_id, 0),  # Rank within league
                     'wp': round(stats['wp'], 4),      # Win Percentage (simple)
                     'owp': round(stats['owp'], 4),    # Opponent Win Percentage
                     'oowp': round(stats['oowp'], 4),  # Opponent's Opponent Win Percentage
@@ -553,6 +657,7 @@ def build_rankings(data_dir, master_school_list):
                     'league_losses': stats['league_losses'],
                     'league_ties': stats['league_ties'],
                     'h2h_boosted': h2h_boosted,       # True if rank improved via H2H tiebreaker
+                    'h2h_boost_reason': h2h_boost_reason,  # 'Statewide', 'League', 'Both', or None
                     'h2h_nearby': h2h_nearby.get(school_id, []),  # H2H records vs nearby teams
                 })
 
@@ -708,7 +813,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .h2h-badge.h2h-win {{ background: #d1e7dd; color: #0f5132; }}
         .h2h-badge.h2h-loss {{ background: #f8d7da; color: #842029; }}
         .h2h-badge.h2h-split {{ background: #fff3cd; color: #664d03; }}
-        .h2h-boosted-badge {{ background: #0d6efd; color: #fff; font-size: 9px; padding: 1px 4px; border-radius: 3px; margin-left: 4px; }}
+        .h2h-boosted-badge {{ font-size: 14px; margin-left: 4px; cursor: help; }}
         .h2h-tooltip {{ position: relative; display: inline-block; }}
         .h2h-tooltip .h2h-content {{ visibility: hidden; background: #333; color: #fff; padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; }}
         .h2h-tooltip:hover .h2h-content {{ visibility: visible; }}
@@ -1170,13 +1275,25 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (losses > wins) cls += 'h2h-loss';
                             else cls += 'h2h-split';
 
-                            // Build tooltip content
+                            // Build tooltip content with swap reasons
                             const tooltipLines = d.map(h => {{
-                                const result = h.wins > h.losses ? 'W' : (h.losses > h.wins ? 'L' : 'T');
-                                return `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}`;
+                                let line = `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}`;
+                                if (h.swap_reason) {{
+                                    const reasonLabel = h.swap_reason === 'Statewide' ? 'PI Proximity' :
+                                                       h.swap_reason === 'League' ? 'League Position' : 'Both';
+                                    line += ` <span style="color:#ffc107">(${{reasonLabel}})</span>`;
+                                }}
+                                return line;
                             }}).join('<br>');
 
-                            let boostBadge = row.h2h_boosted ? '<span class="h2h-boosted-badge" title="Rank boosted by H2H tiebreaker">H2H</span>' : '';
+                            // Show 🤝 emoji with reason if boosted
+                            let boostBadge = '';
+                            if (row.h2h_boosted) {{
+                                const reasonText = row.h2h_boost_reason === 'Statewide' ? 'PI Proximity' :
+                                                  row.h2h_boost_reason === 'League' ? 'League Position' :
+                                                  row.h2h_boost_reason === 'Both' ? 'PI + League' : 'H2H';
+                                boostBadge = `<span class="h2h-boosted-badge" title="Rank boosted: ${{reasonText}}">🤝</span>`;
+                            }}
 
                             return `<div class="h2h-tooltip">
                                 <span class="${{cls}}">${{wins}}-${{losses}}</span>${{boostBadge}}
