@@ -33,6 +33,45 @@
         .criteria-box h5 { color: #198754; font-weight: 600; }
         .back-link { color: #fff; text-decoration: none; }
         .back-link:hover { color: #dee2e6; }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .navbar .container { flex-direction: column; gap: 8px; }
+            .navbar-brand { font-size: 0.9rem; }
+            
+            .hero { padding: 25px 0; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero .lead { font-size: 1rem; }
+            
+            .container { padding: 0 15px; }
+            
+            .notice-box { padding: 12px 15px; font-size: 0.9rem; }
+            
+            .criteria-box { padding: 15px; }
+            .criteria-box h5 { font-size: 1rem; }
+            .criteria-box ul { padding-left: 20px; }
+            .criteria-box li { font-size: 0.9rem; margin-bottom: 8px; }
+            
+            .year-header { padding: 12px 15px; font-size: 1.25rem; }
+            .class-header { padding: 10px 15px; font-size: 0.95rem; }
+            .gender-section { padding: 12px 15px; }
+            .gender-title { font-size: 1rem; }
+            
+            .team-level-title { font-size: 0.85rem; }
+            .player { padding: 6px 0; }
+            .player-name { font-size: 0.9rem; }
+            .player-school { font-size: 0.85rem; }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero .lead { font-size: 0.9rem; }
+            
+            .year-header { font-size: 1.1rem; }
+            .class-header { font-size: 0.9rem; }
+            .criteria-box h5 { font-size: 0.95rem; }
+        }
     </style>
 </head>
 <body>
