@@ -260,6 +260,91 @@ def get_head_to_head(school1_meets, school1_id, school2_id):
     return wins, losses, ties
 
 
+def get_head_to_head_detailed(school1_meets, school1_id, school2_id):
+    """
+    Get detailed head-to-head record between two schools.
+    Returns dict with wins, losses, ties, and match details including dates and FWS.
+    """
+    results = {
+        'wins': 0,
+        'losses': 0,
+        'ties': 0,
+        'matches': []  # List of {date, score1, score2, result, fws1, fws2}
+    }
+
+    for meet in school1_meets:
+        if not is_dual_match(meet):
+            continue
+
+        schools = meet.get('schools', {})
+        winners = schools.get('winners', [])
+        losers = schools.get('losers', [])
+
+        is_vs_school2 = False
+        school1_score = None
+        school2_score = None
+
+        for w in winners:
+            if w['id'] == school1_id:
+                school1_score = w.get('score', 0)
+            elif w['id'] == school2_id:
+                school2_score = w.get('score', 0)
+                is_vs_school2 = True
+        for l in losers:
+            if l['id'] == school1_id:
+                school1_score = l.get('score', 0)
+            elif l['id'] == school2_id:
+                school2_score = l.get('score', 0)
+                is_vs_school2 = True
+
+        if is_vs_school2 and school1_score is not None and school2_score is not None:
+            # Get match date (try multiple possible field names)
+            match_date = meet.get('meetDateTime', meet.get('startDate', meet.get('date', '')))
+            if match_date and 'T' in match_date:
+                match_date = match_date.split('T')[0]
+
+            # Calculate FWS for each school in this match
+            fws1 = 0.0
+            fws2 = 0.0
+            matches_data = meet.get('matches', {})
+            for match_type in ['Singles', 'Doubles']:
+                type_matches = matches_data.get(match_type, [])
+                if isinstance(type_matches, list):
+                    for match in type_matches:
+                        flight = match.get('flight', '1')
+                        weight = get_flight_weight(match_type, flight)
+                        match_teams = match.get('matchTeams', [])
+                        for team in match_teams:
+                            if team.get('isWinner', False):
+                                players = team.get('players', [])
+                                for player in players:
+                                    if player.get('schoolId') == school1_id:
+                                        fws1 += weight
+                                    elif player.get('schoolId') == school2_id:
+                                        fws2 += weight
+                                    break
+
+            result = 'win' if school1_score > school2_score else ('loss' if school1_score < school2_score else 'tie')
+
+            if result == 'win':
+                results['wins'] += 1
+            elif result == 'loss':
+                results['losses'] += 1
+            else:
+                results['ties'] += 1
+
+            results['matches'].append({
+                'date': match_date,
+                'score1': school1_score,
+                'score2': school2_score,
+                'result': result,
+                'fws1': fws1,
+                'fws2': fws2
+            })
+
+    return results
+
+
 def process_school_data(data, school_id):
     """Process all meets for a school and extract match results."""
     all_results = []
@@ -487,7 +572,8 @@ def build_rankings(data_dir, master_school_list):
                 """Check if adding this swap would create a circular dependency."""
                 # Build graph of who beat whom via swaps
                 beat_graph = defaultdict(set)
-                for winner, loser, _, _, _ in existing_swaps:
+                for swap in existing_swaps:
+                    winner, loser = swap[0], swap[1]
                     beat_graph[winner].add(loser)
 
                 # Add the proposed swap
@@ -533,9 +619,31 @@ def build_rankings(data_dir, master_school_list):
                     # Check H2H - does lower-ranked team (school2) beat higher-ranked (school1)?
                     if school1_id in raw_data_cache[year][gender] and school2_id in raw_data_cache[year][gender]:
                         school2_meets = raw_data_cache[year][gender][school2_id].get('meets', [])
-                        h2h_wins, h2h_losses, h2h_ties = get_head_to_head(school2_meets, school2_id, school1_id)
+                        h2h_detail = get_head_to_head_detailed(school2_meets, school2_id, school1_id)
+                        h2h_wins = h2h_detail['wins']
+                        h2h_losses = h2h_detail['losses']
+
+                        # Determine if swap should occur
+                        should_swap = False
+                        swap_date = None
 
                         if h2h_wins > h2h_losses:
+                            # Clear winner - swap
+                            should_swap = True
+                            # Get the most recent win date
+                            win_matches = [m for m in h2h_detail['matches'] if m['result'] == 'win']
+                            if win_matches:
+                                swap_date = win_matches[-1]['date']
+                        elif h2h_wins == h2h_losses and h2h_wins > 0:
+                            # Split series (1-1, 2-2, etc.) - use FWS as tiebreaker
+                            total_fws_school2 = sum(m['fws1'] for m in h2h_detail['matches'])
+                            total_fws_school1 = sum(m['fws2'] for m in h2h_detail['matches'])
+                            if total_fws_school2 > total_fws_school1:
+                                should_swap = True
+                                swap_date = h2h_detail['matches'][-1]['date'] if h2h_detail['matches'] else None
+                            # If FWS also tied or school1 has higher FWS, no swap (default to PI)
+
+                        if should_swap:
                             # Determine reason
                             if condition_a and condition_b:
                                 reason = 'Both'
@@ -548,7 +656,7 @@ def build_rankings(data_dir, master_school_list):
                             if not would_create_circle(school2_id, school1_id, h2h_swaps):
                                 # Swap: school2 beat school1 H2H
                                 ranked[i], ranked[i + 1] = ranked[i + 1], ranked[i]
-                                h2h_swaps.append((school2_id, school1_id, h2h_wins, h2h_losses, reason))
+                                h2h_swaps.append((school2_id, school1_id, h2h_wins, h2h_losses, reason, swap_date))
                                 swapped_pairs.add((school2_id, school1_id))
                 i += 1
 
@@ -584,16 +692,27 @@ def build_rankings(data_dir, master_school_list):
                     if state_rank_close or league_close:
                         if school_id in raw_data_cache[year][gender]:
                             school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
-                            wins, losses, ties = get_head_to_head(school_meets, school_id, other_id)
+                            h2h_detail = get_head_to_head_detailed(school_meets, school_id, other_id)
+                            wins = h2h_detail['wins']
+                            losses = h2h_detail['losses']
+                            ties = h2h_detail['ties']
 
                             if wins + losses + ties > 0:
+                                # Get match dates
+                                match_dates = [m['date'] for m in h2h_detail['matches'] if m['date']]
+
                                 # Determine if this matchup triggered H2H
                                 swap_reason = None
+                                swap_date = None
                                 for swap in h2h_swaps:
                                     if (swap[0] == school_id and swap[1] == other_id) or \
                                        (swap[0] == other_id and swap[1] == school_id):
                                         swap_reason = swap[4]
+                                        swap_date = swap[5] if len(swap) > 5 else None
                                         break
+
+                                # Check if same league for league-specific tooltip
+                                is_league_match = my_league and my_league == other_league
 
                                 nearby_h2h.append({
                                     'opponent_id': other_id,
@@ -603,7 +722,10 @@ def build_rankings(data_dir, master_school_list):
                                     'wins': wins,
                                     'losses': losses,
                                     'ties': ties,
-                                    'swap_reason': swap_reason  # 'Statewide', 'League', 'Both', or None
+                                    'match_dates': match_dates,
+                                    'swap_reason': swap_reason,  # 'Statewide', 'League', 'Both', or None
+                                    'swap_date': swap_date,
+                                    'is_league_match': is_league_match
                                 })
 
                 h2h_nearby[school_id] = nearby_h2h
@@ -1275,13 +1397,24 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (losses > wins) cls += 'h2h-loss';
                             else cls += 'h2h-split';
 
-                            // Build tooltip content with swap reasons
+                            // Build tooltip content with swap reasons and dates
                             const tooltipLines = d.map(h => {{
                                 let line = `#${{h.opponent_rank}} ${{h.opponent_name}}: ${{h.wins}}-${{h.losses}}`;
+
+                                // Add match dates if available
+                                if (h.match_dates && h.match_dates.length > 0) {{
+                                    line += ` <span style="color:#aaa">(${{h.match_dates.join(', ')}})</span>`;
+                                }}
+
+                                // Add swap reason indicator
                                 if (h.swap_reason) {{
-                                    const reasonLabel = h.swap_reason === 'Statewide' ? 'PI Proximity' :
-                                                       h.swap_reason === 'League' ? 'League Position' : 'Both';
-                                    line += ` <span style="color:#ffc107">(${{reasonLabel}})</span>`;
+                                    if (h.swap_reason === 'League' && h.is_league_match) {{
+                                        line += `<br><span style="color:#17a2b8">  ↳ League H2H: Result recognized for league standings</span>`;
+                                    }} else if (h.swap_reason === 'Statewide') {{
+                                        line += ` <span style="color:#ffc107">(PI Proximity)</span>`;
+                                    }} else if (h.swap_reason === 'Both') {{
+                                        line += ` <span style="color:#ffc107">(PI + League)</span>`;
+                                    }}
                                 }}
                                 return line;
                             }}).join('<br>');
@@ -1416,14 +1549,42 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 }}
             }});
 
-            // Sort each league by league win % then Power Index
+            // Sort each league by league win %, then apply H2H tiebreaker, then Power Index
             Object.keys(currentLeagueTeams).forEach(league => {{
+                // First sort by league win % and Power Index
                 currentLeagueTeams[league].sort((a, b) => {{
                     const aWinPct = a.league_wins / Math.max(1, a.league_wins + a.league_losses + a.league_ties);
                     const bWinPct = b.league_wins / Math.max(1, b.league_wins + b.league_losses + b.league_ties);
                     if (bWinPct !== aWinPct) return bWinPct - aWinPct;
                     return b.power_index - a.power_index;
                 }});
+
+                // Apply H2H swaps for adjacent teams with same league win %
+                let swapped = true;
+                while (swapped) {{
+                    swapped = false;
+                    for (let i = 0; i < currentLeagueTeams[league].length - 1; i++) {{
+                        const a = currentLeagueTeams[league][i];
+                        const b = currentLeagueTeams[league][i + 1];
+
+                        const aWinPct = a.league_wins / Math.max(1, a.league_wins + a.league_losses + a.league_ties);
+                        const bWinPct = b.league_wins / Math.max(1, b.league_wins + b.league_losses + b.league_ties);
+
+                        // Only apply H2H if league win % is close (within 0.1)
+                        if (Math.abs(aWinPct - bWinPct) <= 0.1) {{
+                            // Check if b beat a in H2H
+                            const h2hMatch = (b.h2h_nearby || []).find(h =>
+                                h.opponent_id === a.school_id && h.is_league_match
+                            );
+                            if (h2hMatch && h2hMatch.wins > h2hMatch.losses) {{
+                                // Swap: b beat a in H2H
+                                currentLeagueTeams[league][i] = b;
+                                currentLeagueTeams[league][i + 1] = a;
+                                swapped = true;
+                            }}
+                        }}
+                    }}
+                }}
             }});
 
             // Build selection UI
@@ -1435,14 +1596,36 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
                 teams.forEach((team, idx) => {{
                     const isTopTeam = idx === 0;
+
+                    // Check for H2H tiebreaker indicator
+                    let h2hIndicator = '';
+                    let h2hTitle = '';
+                    if (team.h2h_boosted && (team.h2h_boost_reason === 'League' || team.h2h_boost_reason === 'Both')) {{
+                        h2hIndicator = ' 🤝';
+                        h2hTitle = 'H2H tiebreaker applied (League Position)';
+                    }}
+
+                    // Find league H2H matchups with adjacent teams
+                    let leagueH2H = '';
+                    const leagueH2HMatches = (team.h2h_nearby || []).filter(h =>
+                        h.is_league_match && (h.wins > 0 || h.losses > 0)
+                    );
+                    if (leagueH2HMatches.length > 0) {{
+                        const h2hSummary = leagueH2HMatches.map(h => {{
+                            const result = h.wins > h.losses ? 'W' : (h.losses > h.wins ? 'L' : 'T');
+                            return `${{result}} vs ${{h.opponent_name}}`;
+                        }}).slice(0, 2).join(', ');
+                        leagueH2H = ` <span class="text-muted small">[H2H: ${{h2hSummary}}]</span>`;
+                    }}
+
                     html += `
                         <div class="team-checkbox ${{isTopTeam ? 'selected' : ''}}">
                             <input type="checkbox" id="team_${{team.school_id}}" value="${{team.school_id}}"
                                 ${{isTopTeam ? 'checked' : ''}} onchange="updateTeamSelection(this)">
-                            <label for="team_${{team.school_id}}">
-                                ${{team.school_name}}
+                            <label for="team_${{team.school_id}}" ${{h2hTitle ? `title="${{h2hTitle}}"` : ''}}>
+                                ${{team.school_name}}${{h2hIndicator}}
                                 <span class="team-stats">
-                                    League: ${{team.league_record}} | Overall: ${{team.record}} | PI: ${{team.power_index.toFixed(4)}}
+                                    League: ${{team.league_record}} | Overall: ${{team.record}} | PI: ${{team.power_index.toFixed(4)}}${{leagueH2H}}
                                 </span>
                             </label>
                         </div>
