@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oregon HS Tennis All-State Teams Archive (2022-2025)</title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="Archive of Oregon High School Tennis All-State Teams from 2022-2025. The first and only media outlet to honor Oregon high school tennis players with All-State recognition.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oregontennis.org/all-state.html">
+    <meta property="og:title" content="Oregon HS Tennis All-State Teams Archive">
+    <meta property="og:description" content="Archive of Oregon High School Tennis All-State Teams from 2022-2025. The first and only media outlet to honor Oregon high school tennis players with All-State recognition.">
+    <meta property="og:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://oregontennis.org/all-state.html">
+    <meta name="twitter:title" content="Oregon HS Tennis All-State Teams Archive">
+    <meta name="twitter:description" content="Archive of Oregon High School Tennis All-State Teams from 2022-2025. The first and only media outlet to honor Oregon high school tennis players with All-State recognition.">
+    <meta name="twitter:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; font-family: system-ui, -apple-system, sans-serif; }
+        .navbar { background: #198754; }
+        .navbar-brand { color: #fff !important; font-weight: 600; }
+        .hero { background: linear-gradient(135deg, #198754, #0d503a); color: #fff; padding: 40px 0; margin-bottom: 30px; }
+        .hero h1 { font-weight: 700; }
+        .notice-box { background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px 20px; margin-bottom: 30px; border-radius: 4px; }
+        .year-section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px; overflow: hidden; }
+        .year-header { background: #198754; color: #fff; padding: 15px 20px; font-size: 1.5rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+        .year-header:hover { background: #157347; }
+        .year-header .toggle { font-size: 1.2rem; }
+        .year-note { background: #e9ecef; padding: 10px 20px; font-size: 0.9rem; color: #495057; font-style: italic; }
+        .year-content { display: block; }
+        .year-content.collapsed { display: none; }
+        .class-section { border-bottom: 1px solid #dee2e6; }
+        .class-section:last-child { border-bottom: none; }
+        .class-header { background: #e9ecef; padding: 12px 20px; font-weight: 600; color: #495057; cursor: pointer; }
+        .class-header:hover { background: #dee2e6; }
+        .category-section { padding: 15px 20px; border-bottom: 1px solid #f0f0f0; }
+        .category-section:last-child { border-bottom: none; }
+        .category-title { font-weight: 600; color: #198754; margin-bottom: 12px; font-size: 1.1rem; }
+        .team-level { margin-bottom: 15px; }
+        .team-level-title { font-weight: 600; font-size: 0.85rem; text-transform: uppercase; margin-bottom: 8px; padding: 4px 8px; border-radius: 4px; display: inline-block; }
+        .team-level-title.first { background: #ffc107; color: #000; }
+        .team-level-title.second { background: #6c757d; color: #fff; }
+        .team-level-title.third { background: #cd7f32; color: #fff; }
+        .team-level-title.honorable { background: #17a2b8; color: #fff; }
+        .player-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px; }
+        .player { padding: 6px 10px; background: #f8f9fa; border-radius: 4px; font-size: 0.9rem; }
+        .player-name { font-weight: 500; }
+        .player-school { color: #6c757d; font-size: 0.85rem; }
+        .player-note { color: #198754; font-size: 0.8rem; font-style: italic; }
+        .player.doubles { background: #e3f2fd; }
+        .criteria-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .criteria-box h5 { color: #198754; font-weight: 600; }
+        .back-link { color: #fff; text-decoration: none; }
+        .back-link:hover { color: #dee2e6; }
+        .year-nav { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .year-nav .btn { min-width: 80px; }
+        .year-nav .btn.active { background: #198754; border-color: #198754; color: #fff; }
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .navbar .container { flex-direction: column; gap: 8px; }
+            .navbar-brand { font-size: 0.9rem; }
+
+            .hero { padding: 25px 0; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero .lead { font-size: 1rem; }
+
+            .container { padding: 0 15px; }
+
+            .notice-box { padding: 12px 15px; font-size: 0.9rem; }
+
+            .criteria-box { padding: 15px; }
+            .criteria-box h5 { font-size: 1rem; }
+            .criteria-box ul { padding-left: 20px; }
+            .criteria-box li { font-size: 0.9rem; margin-bottom: 8px; }
+
+            .year-header { padding: 12px 15px; font-size: 1.25rem; }
+            .class-header { padding: 10px 15px; font-size: 0.95rem; }
+            .gender-section { padding: 12px 15px; }
+            .gender-title { font-size: 1rem; }
+
+            .team-level-title { font-size: 0.85rem; }
+            .player { padding: 6px 0; }
+            .player-name { font-size: 0.9rem; }
+            .player-school { font-size: 0.85rem; }
+
+            .year-nav { gap: 6px; }
+            .year-nav .btn { min-width: 60px; font-size: 0.85rem; padding: 6px 10px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero .lead { font-size: 0.9rem; }
+
+            .year-header { font-size: 1.1rem; }
+            .class-header { font-size: 0.9rem; }
+            .criteria-box h5 { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="back-link">&larr; Back to Rankings</span></a>
+            <span class="navbar-brand">Oregon HS Tennis All-State Archive</span>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Oregon High School Tennis All-State Teams</h1>
+            <p class="lead mb-0">Archive of All-State selections from 2022-2025</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="notice-box">
+            <strong>Note:</strong> Beginning in 2026, the OSAA will officially produce All-State Tennis Teams.
+            This archive preserves the independent All-State selections made by OregonTennis.org from 2022-2025,
+            the first and only media outlet to honor Oregon high school tennis players with All-State recognition.
+        </div>
+
+        <div class="criteria-box">
+            <h5>Selection Criteria</h5>
+            <p>All-State selections are based entirely on state tournament results:</p>
+            <ul>
+                <li><strong>First Team:</strong> State finalists (champion, runner-up) and third-place winner</li>
+                <li><strong>Second Team:</strong> Fourth place, consolation winner, and quarterfinalists</li>
+                <li><strong>Third Team:</strong> Consolation finalist, Round of 16, and seeded players who lost first match</li>
+                <li><strong>Honorable Mention:</strong> Other notable tournament participants (select years)</li>
+            </ul>
+        </div>
+
+        <div class="year-nav" id="yearNav"></div>
+
+        <div id="allStateContent"></div>
+    </div>
+
+    <script>
+        let allStateData = null;
+
+        async function loadData() {
+            try {
+                const response = await fetch('all-state-data.json');
+                allStateData = await response.json();
+                renderYearNav();
+                renderAllYears();
+            } catch (error) {
+                document.getElementById('allStateContent').innerHTML =
+                    '<div class="alert alert-danger">Error loading All-State data: ' + error.message + '</div>';
+            }
+        }
+
+        function renderYearNav() {
+            const nav = document.getElementById('yearNav');
+            let html = '<button class="btn btn-outline-secondary active" onclick="showAllYears()">All Years</button>';
+            allStateData.years.forEach(year => {
+                html += `<button class="btn btn-outline-secondary" onclick="scrollToYear(${year.year})">${year.year}</button>`;
+            });
+            nav.innerHTML = html;
+        }
+
+        function showAllYears() {
+            document.querySelectorAll('.year-content').forEach(el => el.classList.remove('collapsed'));
+            document.querySelectorAll('.year-nav .btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector('.year-nav .btn').classList.add('active');
+        }
+
+        function scrollToYear(year) {
+            document.querySelectorAll('.year-nav .btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('year-' + year).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function toggleYear(year) {
+            const content = document.getElementById('content-' + year);
+            const toggle = document.getElementById('toggle-' + year);
+            if (content.classList.contains('collapsed')) {
+                content.classList.remove('collapsed');
+                toggle.textContent = '−';
+            } else {
+                content.classList.add('collapsed');
+                toggle.textContent = '+';
+            }
+        }
+
+        function renderAllYears() {
+            const container = document.getElementById('allStateContent');
+            let html = '';
+
+            allStateData.years.forEach(yearData => {
+                html += `
+                    <div class="year-section" id="year-${yearData.year}">
+                        <div class="year-header" onclick="toggleYear(${yearData.year})">
+                            <span>${yearData.year} All-State Teams</span>
+                            <span class="toggle" id="toggle-${yearData.year}">−</span>
+                        </div>
+                        ${yearData.note ? `<div class="year-note">${yearData.note}</div>` : ''}
+                        <div class="year-content" id="content-${yearData.year}">
+                            ${renderClassifications(yearData.classifications)}
+                        </div>
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderClassifications(classifications) {
+            return classifications.map(cls => `
+                <div class="class-section">
+                    <div class="class-header">${cls.name}</div>
+                    ${cls.categories.map(cat => renderCategory(cat)).join('')}
+                </div>
+            `).join('');
+        }
+
+        function renderCategory(category) {
+            const title = category.discipline === 'Combined'
+                ? `${category.gender}`
+                : `${category.gender} ${category.discipline}`;
+
+            return `
+                <div class="category-section">
+                    <div class="category-title">${title}</div>
+                    ${renderTeams(category.teams)}
+                </div>
+            `;
+        }
+
+        function renderTeams(teams) {
+            let html = '';
+
+            if (teams.first && teams.first.length > 0) {
+                html += renderTeamLevel('First Team', 'first', teams.first);
+            }
+            if (teams.second && teams.second.length > 0) {
+                html += renderTeamLevel('Second Team', 'second', teams.second);
+            }
+            if (teams.third && teams.third.length > 0) {
+                html += renderTeamLevel('Third Team', 'third', teams.third);
+            }
+            if (teams.honorable && teams.honorable.length > 0) {
+                html += renderTeamLevel('Honorable Mention', 'honorable', teams.honorable);
+            }
+
+            return html;
+        }
+
+        function renderTeamLevel(title, levelClass, players) {
+            return `
+                <div class="team-level">
+                    <div class="team-level-title ${levelClass}">${title}</div>
+                    <div class="player-list">
+                        ${players.map(p => renderPlayer(p)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderPlayer(player) {
+            const isDoubles = player.doubles || player.name.includes('/');
+            const note = player.note ? `<span class="player-note"> - ${player.note}</span>` : '';
+            return `
+                <div class="player ${isDoubles ? 'doubles' : ''}">
+                    <span class="player-name">${player.name}</span>,
+                    <span class="player-school">${player.school}</span>${note}
+                </div>
+            `;
+        }
+
+        // Load data on page load
+        loadData();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
