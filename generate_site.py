@@ -636,6 +636,27 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oregon HS Tennis Rankings</title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oregontennis.org/">
+    <meta property="og:title" content="Oregon HS Tennis Rankings">
+    <meta property="og:description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    <meta property="og:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://oregontennis.org/">
+    <meta name="twitter:title" content="Oregon HS Tennis Rankings">
+    <meta name="twitter:description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    <meta name="twitter:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
