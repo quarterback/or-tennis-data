@@ -712,6 +712,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .h2h-tooltip {{ position: relative; display: inline-block; }}
         .h2h-tooltip .h2h-content {{ visibility: hidden; background: #333; color: #fff; padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; }}
         .h2h-tooltip:hover .h2h-content {{ visibility: visible; }}
+        .formula-footer {{ margin-top: 12px; padding: 10px 15px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #198754; }}
         .sort-toggle {{ display: inline-flex; gap: 4px; }}
         .sort-toggle .btn {{ padding: 2px 8px; font-size: 11px; }}
         .sort-toggle .btn.active {{ background: #198754; color: #fff; border-color: #198754; }}
@@ -924,6 +925,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 </thead>
                 <tbody></tbody>
             </table>
+            <div class="formula-footer">
+                <small class="text-muted">
+                    <strong>Power Index</strong> is a 50/50 blend of APR and Flight-Weighted Score (normalized to a common scale).
+                    FWS uses proportional weighting based on flights actually contested.
+                </small>
+            </div>
         </div>
     </div>
 
