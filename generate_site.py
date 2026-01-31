@@ -14,8 +14,11 @@ Features:
 import os
 import json
 import csv
+import time
 from collections import defaultdict
 from pathlib import Path
+from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderTimedOut, GeocoderServiceError
 
 # Flight weights for ranking calculation
 FLIGHT_WEIGHTS = {
@@ -136,18 +139,91 @@ def haversine_distance(lat1, lon1, lat2, lon2):
     return R * c
 
 
+# Geocoding cache file path
+GEOCODE_CACHE_FILE = Path(__file__).parent / 'geocode_cache.json'
+
+# Global geocoder instance (lazy initialized)
+_geocoder = None
+_geocode_cache = None
+
+def _get_geocoder():
+    """Get or create the geocoder instance."""
+    global _geocoder
+    if _geocoder is None:
+        _geocoder = Nominatim(user_agent="or-tennis-rankings", timeout=10)
+    return _geocoder
+
+def _load_geocode_cache():
+    """Load geocoding cache from file."""
+    global _geocode_cache
+    if _geocode_cache is None:
+        if GEOCODE_CACHE_FILE.exists():
+            try:
+                with open(GEOCODE_CACHE_FILE, 'r') as f:
+                    _geocode_cache = json.load(f)
+            except (json.JSONDecodeError, IOError):
+                _geocode_cache = {}
+        else:
+            _geocode_cache = {}
+    return _geocode_cache
+
+def _save_geocode_cache():
+    """Save geocoding cache to file."""
+    global _geocode_cache
+    if _geocode_cache:
+        with open(GEOCODE_CACHE_FILE, 'w') as f:
+            json.dump(_geocode_cache, f, indent=2)
+
+def geocode_city(city, state='Oregon'):
+    """Geocode a city using OpenStreetMap Nominatim API with caching."""
+    if not city:
+        return None
+
+    cache = _load_geocode_cache()
+    cache_key = f"{city.lower().strip()}, {state}"
+
+    # Check cache first
+    if cache_key in cache:
+        cached = cache[cache_key]
+        if cached is None:
+            return None
+        return tuple(cached)
+
+    # Try geocoding
+    try:
+        geocoder = _get_geocoder()
+        location = geocoder.geocode(f"{city}, {state}, USA")
+        if location:
+            coords = (location.latitude, location.longitude)
+            cache[cache_key] = list(coords)
+            _save_geocode_cache()
+            time.sleep(1)  # Rate limiting for Nominatim
+            return coords
+        else:
+            cache[cache_key] = None
+            _save_geocode_cache()
+            return None
+    except (GeocoderTimedOut, GeocoderServiceError) as e:
+        print(f"  Geocoding error for {city}: {e}")
+        return None
+
 def get_city_coords(city):
-    """Get coordinates for a city, with fuzzy matching."""
+    """Get coordinates for a city, using cache then geocoding API."""
     if not city:
         return None
     city_lower = city.lower().strip()
+
+    # Check hardcoded cache first (fast)
     if city_lower in OREGON_CITY_COORDS:
         return OREGON_CITY_COORDS[city_lower]
-    # Try partial match
+
+    # Try partial match in hardcoded cache
     for known_city, coords in OREGON_CITY_COORDS.items():
         if known_city in city_lower or city_lower in known_city:
             return coords
-    return None
+
+    # Fall back to geocoding API
+    return geocode_city(city)
 
 
 def load_master_school_list(filepath):
