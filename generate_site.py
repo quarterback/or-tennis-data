@@ -48,6 +48,107 @@ H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for l
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
+# Oregon city coordinates for distance calculations (lat, lng)
+# Used for playoff bracket regionalization
+OREGON_CITY_COORDS = {
+    'albany': (44.6365, -123.1059),
+    'arlington': (45.7226, -120.1990),
+    'ashland': (42.1946, -122.7095),
+    'astoria': (46.1879, -123.8313),
+    'baker city': (44.7749, -117.8344),
+    'bandon': (43.1190, -124.4084),
+    'beaverton': (45.4871, -122.8037),
+    'bend': (44.0582, -121.3153),
+    'brookings': (42.0526, -124.2839),
+    'burns': (43.5863, -119.0541),
+    'canby': (45.2629, -122.6926),
+    'coos bay': (43.3665, -124.2179),
+    'corvallis': (44.5646, -123.2620),
+    'cottage grove': (43.7973, -123.0595),
+    'dallas': (44.9193, -123.3170),
+    'enterprise': (45.4268, -117.2787),
+    'eugene': (44.0521, -123.0868),
+    'florence': (43.9826, -124.0999),
+    'forest grove': (45.5198, -123.1107),
+    'grants pass': (42.4390, -123.3284),
+    'gresham': (45.4983, -122.4310),
+    'hermiston': (45.8404, -119.2895),
+    'hillsboro': (45.5229, -122.9898),
+    'hood river': (45.7054, -121.5215),
+    'junction city': (44.2193, -123.2054),
+    'klamath falls': (42.2249, -121.7817),
+    'la grande': (45.3246, -118.0877),
+    'lake oswego': (45.4207, -122.6706),
+    'lakeview': (42.1888, -120.3458),
+    'lebanon': (44.5368, -122.9070),
+    'lincoln city': (44.9582, -124.0178),
+    'madras': (44.6332, -121.1295),
+    'mcminnville': (45.2101, -123.1987),
+    'medford': (42.3265, -122.8756),
+    'milwaukie': (45.4462, -122.6393),
+    'newberg': (45.3007, -122.9729),
+    'newport': (44.6368, -124.0535),
+    'north bend': (43.4065, -124.2243),
+    'nyssa': (43.8776, -116.9938),
+    'ontario': (44.0266, -116.9629),
+    'oregon city': (45.3573, -122.6068),
+    'pendleton': (45.6721, -118.7886),
+    'phoenix': (42.2751, -122.8181),
+    'pleasant hill': (43.9443, -122.9562),
+    'portland': (45.5152, -122.6784),
+    'prineville': (44.2999, -120.8345),
+    'redmond': (44.2726, -121.1739),
+    'reedsport': (43.7023, -124.0968),
+    'roseburg': (43.2165, -123.3417),
+    'salem': (44.9429, -123.0351),
+    'sandy': (45.3973, -122.2612),
+    'seaside': (45.9932, -123.9226),
+    'silverton': (45.0054, -122.7831),
+    'springfield': (44.0462, -123.0220),
+    'st helens': (45.8640, -122.8065),
+    'stayton': (44.8007, -122.7937),
+    'sublimity': (44.8296, -122.7934),
+    'sweet home': (44.3973, -122.7359),
+    'the dalles': (45.5946, -121.1787),
+    'tigard': (45.4312, -122.7715),
+    'tillamook': (45.4562, -123.8426),
+    'toledo': (44.6215, -123.9384),
+    'tualatin': (45.3840, -122.7640),
+    'turner': (44.8443, -122.9526),
+    'west linn': (45.3657, -122.6120),
+    'wilsonville': (45.2998, -122.7735),
+    'woodburn': (45.1437, -122.8554),
+}
+
+
+def haversine_distance(lat1, lon1, lat2, lon2):
+    """Calculate distance in miles between two points using Haversine formula."""
+    from math import radians, sin, cos, sqrt, atan2
+    R = 3959  # Earth's radius in miles
+
+    lat1, lon1, lat2, lon2 = map(radians, [lat1, lon1, lat2, lon2])
+    dlat = lat2 - lat1
+    dlon = lon2 - lon1
+
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * atan2(sqrt(a), sqrt(1-a))
+
+    return R * c
+
+
+def get_city_coords(city):
+    """Get coordinates for a city, with fuzzy matching."""
+    if not city:
+        return None
+    city_lower = city.lower().strip()
+    if city_lower in OREGON_CITY_COORDS:
+        return OREGON_CITY_COORDS[city_lower]
+    # Try partial match
+    for known_city, coords in OREGON_CITY_COORDS.items():
+        if known_city in city_lower or city_lower in known_city:
+            return coords
+    return None
+
 
 def load_master_school_list(filepath):
     """Load master school list with classification and league data."""
@@ -757,6 +858,8 @@ def build_rankings(data_dir, master_school_list):
                     'class_rank': 0,  # Will be calculated below
                     'school_id': school_id,
                     'school_name': info.get('name', f'School {school_id}'),
+                    'city': info.get('city', ''),
+                    'coords': get_city_coords(info.get('city', '')),
                     'classification': info.get('classification', ''),
                     'league': info.get('league', ''),
                     'league_rank': school_league_rank.get(school_id, 0),  # Rank within league
@@ -1201,6 +1304,21 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 </div>
             </div>
 
+            <div class="playoff-toolbar" style="margin-top:10px; padding-top:10px; border-top:1px solid #dee2e6;">
+                <div class="form-group">
+                    <label>Bracket Mode</label>
+                    <select id="bracketMode" class="form-select form-select-sm">
+                        <option value="pure">Pure Seeding (1v16, 2v15...)</option>
+                        <option value="regional">OSAA Regional (Travel Optimized)</option>
+                    </select>
+                </div>
+                <div id="regionalInfo" class="form-group" style="display:none;">
+                    <small class="text-muted">
+                        <strong>Regional Mode:</strong> Seeds 1-4 protected. Seeds 5-12 optimized for proximity (no same-district matchups).
+                    </small>
+                </div>
+            </div>
+
             <div id="autobidSelection" style="display:none;">
                 <div class="section-title">Step 1: Select Auto-Bid Teams (League Champions)</div>
                 <p class="text-muted small mb-2">Check the boxes for confirmed league champions. Remaining spots will be filled by Power Index.</p>
@@ -1521,6 +1639,19 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
             $('#loadTeamsBtn').on('click', loadTeamsForSelection);
             $('#generateFieldBtn').on('click', generatePlayoffFieldFromSelection);
+
+            // Bracket mode toggle handler
+            $('#bracketMode').on('change', function() {{
+                if ($(this).val() === 'regional') {{
+                    $('#regionalInfo').show();
+                }} else {{
+                    $('#regionalInfo').hide();
+                }}
+                // Regenerate if field already exists
+                if (currentPlayoffTeams.length > 0) {{
+                    generatePlayoffFieldFromSelection();
+                }}
+            }});
         }});
 
         let currentPlayoffTeams = [];
@@ -1653,8 +1784,197 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             }}
         }}
 
+        // Distance calculation for regionalization
+        function calcDistance(coords1, coords2) {{
+            if (!coords1 || !coords2) return 999;
+            const R = 3959; // Earth's radius in miles
+            const lat1 = coords1[0] * Math.PI / 180;
+            const lat2 = coords2[0] * Math.PI / 180;
+            const dLat = (coords2[0] - coords1[0]) * Math.PI / 180;
+            const dLon = (coords2[1] - coords1[1]) * Math.PI / 180;
+            const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+                      Math.cos(lat1) * Math.cos(lat2) * Math.sin(dLon/2) * Math.sin(dLon/2);
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+            return Math.round(R * c);
+        }}
+
+        // Check if two teams are in the same district/league
+        function sameDistrict(team1, team2) {{
+            if (!team1.league || !team2.league) return false;
+            // Extract district from league (e.g., "Special District 1" -> "1", "6A-2 Metro" -> "6A-2")
+            const getDistrict = (league) => {{
+                const sdMatch = league.match(/Special District (\\d+)/);
+                if (sdMatch) return 'SD' + sdMatch[1];
+                const classMatch = league.match(/^(\\d+A-\\d+)/);
+                if (classMatch) return classMatch[1];
+                return league;
+            }};
+            return getDistrict(team1.league) === getDistrict(team2.league);
+        }}
+
+        // Generate regionalized matchups for seeds 5-12
+        function generateRegionalMatchups(field) {{
+            // Seeds 1-4: Protected (play seeds 13-16 by proximity)
+            // Seeds 5-12: Flex tier - optimize for proximity, no same-district
+            // Seeds 13-16: Anchor tier - placed by proximity to top 4
+
+            const matchups = [];
+            const bracketSize = field.length;
+
+            if (bracketSize === 16) {{
+                // Protected tier: 1-4 vs 13-16 (optimized by proximity)
+                const top4 = field.slice(0, 4);
+                const bottom4 = field.slice(12, 16);
+
+                // Match top seeds with closest bottom seeds
+                const usedBottom = new Set();
+                top4.forEach((topTeam, i) => {{
+                    let bestMatch = null;
+                    let bestDist = Infinity;
+                    bottom4.forEach((botTeam, j) => {{
+                        if (usedBottom.has(j)) return;
+                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+                        if (dist < bestDist) {{
+                            bestDist = dist;
+                            bestMatch = {{ index: j, team: botTeam, dist }};
+                        }}
+                    }});
+                    if (bestMatch) {{
+                        usedBottom.add(bestMatch.index);
+                        matchups.push({{
+                            seed1: i + 1, team1: topTeam,
+                            seed2: 12 + bestMatch.index + 1, team2: bestMatch.team,
+                            distance: bestMatch.dist,
+                            tier: 'protected'
+                        }});
+                    }}
+                }});
+
+                // Flex tier: 5-12 (8 teams -> 4 matchups)
+                const flexTeams = field.slice(4, 12);
+                const topFlex = flexTeams.slice(0, 4); // Seeds 5-8
+                const botFlex = flexTeams.slice(4, 8); // Seeds 9-12
+
+                const usedBotFlex = new Set();
+                topFlex.forEach((topTeam, i) => {{
+                    let bestMatch = null;
+                    let bestDist = Infinity;
+                    botFlex.forEach((botTeam, j) => {{
+                        if (usedBotFlex.has(j)) return;
+                        // Check same-district constraint
+                        if (sameDistrict(topTeam, botTeam)) return;
+                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+                        if (dist < bestDist) {{
+                            bestDist = dist;
+                            bestMatch = {{ index: j, team: botTeam, dist }};
+                        }}
+                    }});
+                    if (bestMatch) {{
+                        usedBotFlex.add(bestMatch.index);
+                        matchups.push({{
+                            seed1: i + 5, team1: topTeam,
+                            seed2: 8 + bestMatch.index + 1, team2: bestMatch.team,
+                            distance: bestMatch.dist,
+                            tier: 'flex',
+                            optimized: true
+                        }});
+                    }} else {{
+                        // Fallback: use standard matchup if no valid option
+                        const fallbackTeam = botFlex[i];
+                        matchups.push({{
+                            seed1: i + 5, team1: topTeam,
+                            seed2: 8 + i + 1, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            tier: 'flex',
+                            conflict: sameDistrict(topTeam, fallbackTeam)
+                        }});
+                    }}
+                }});
+            }} else if (bracketSize === 12) {{
+                // 12-team bracket: 1-4 have byes, matchups are 5v12, 6v11, 7v10, 8v9
+                const flexTeams = field.slice(4, 12);
+                const topFlex = flexTeams.slice(0, 4); // Seeds 5-8
+                const botFlex = flexTeams.slice(4, 8); // Seeds 9-12
+
+                const usedBotFlex = new Set();
+                topFlex.forEach((topTeam, i) => {{
+                    let bestMatch = null;
+                    let bestDist = Infinity;
+                    botFlex.forEach((botTeam, j) => {{
+                        if (usedBotFlex.has(j)) return;
+                        if (sameDistrict(topTeam, botTeam)) return;
+                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+                        if (dist < bestDist) {{
+                            bestDist = dist;
+                            bestMatch = {{ index: j, team: botTeam, dist }};
+                        }}
+                    }});
+                    if (bestMatch) {{
+                        usedBotFlex.add(bestMatch.index);
+                        matchups.push({{
+                            seed1: i + 5, team1: topTeam,
+                            seed2: 8 + bestMatch.index + 1, team2: bestMatch.team,
+                            distance: bestMatch.dist,
+                            tier: 'flex',
+                            optimized: true
+                        }});
+                    }} else {{
+                        const fallbackTeam = botFlex[3 - i]; // Standard: 5v12, 6v11, etc.
+                        matchups.push({{
+                            seed1: i + 5, team1: topTeam,
+                            seed2: 12 - i, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            tier: 'flex',
+                            conflict: sameDistrict(topTeam, fallbackTeam)
+                        }});
+                    }}
+                }});
+            }}
+
+            return matchups;
+        }}
+
+        // Generate pure seeding matchups
+        function generatePureMatchups(field) {{
+            const matchups = [];
+            const bracketSize = field.length;
+
+            if (bracketSize === 16) {{
+                for (let i = 0; i < 8; i++) {{
+                    matchups.push({{
+                        seed1: i + 1, team1: field[i],
+                        seed2: 16 - i, team2: field[15 - i],
+                        distance: calcDistance(field[i].coords, field[15 - i].coords),
+                        tier: i < 4 ? 'protected' : 'standard'
+                    }});
+                }}
+            }} else if (bracketSize === 12) {{
+                // 5v12, 6v11, 7v10, 8v9 (1-4 have byes)
+                for (let i = 0; i < 4; i++) {{
+                    matchups.push({{
+                        seed1: i + 5, team1: field[i + 4],
+                        seed2: 12 - i, team2: field[11 - i],
+                        distance: calcDistance(field[i + 4].coords, field[11 - i].coords),
+                        tier: 'standard'
+                    }});
+                }}
+            }} else if (bracketSize === 8) {{
+                for (let i = 0; i < 4; i++) {{
+                    matchups.push({{
+                        seed1: i + 1, team1: field[i],
+                        seed2: 8 - i, team2: field[7 - i],
+                        distance: calcDistance(field[i].coords, field[7 - i].coords),
+                        tier: 'standard'
+                    }});
+                }}
+            }}
+
+            return matchups;
+        }}
+
         function generatePlayoffFieldFromSelection() {{
             const bracketSize = parseInt($('#bracketSize').val());
+            const bracketMode = $('#bracketMode').val();
 
             // Get manually selected auto-bids
             const selectedAutoBids = [];
@@ -1719,6 +2039,53 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     ${{bracketSize === 12 ? ' &bull; Top 4 seeds receive first-round byes' : ''}}
                 </div>
             `;
+
+            // Generate matchups based on bracket mode
+            const pureMatchups = generatePureMatchups(field);
+            const regionalMatchups = bracketMode === 'regional' ? generateRegionalMatchups(field) : pureMatchups;
+
+            const pureMileage = pureMatchups.reduce((sum, m) => sum + (m.distance || 0), 0);
+            const regionalMileage = regionalMatchups.reduce((sum, m) => sum + (m.distance || 0), 0);
+            const mileageSaved = pureMileage - regionalMileage;
+
+            html += `
+                <div class="section-title mt-3">First Round Matchups</div>
+                <div class="bg-white p-3 rounded shadow-sm">
+            `;
+
+            if (bracketMode === 'regional' && mileageSaved > 0) {{
+                html += `
+                    <div class="alert alert-success mb-3">
+                        <strong>🚗 Mileage Savings:</strong> ${{mileageSaved}} miles saved vs pure seeding
+                        <br><small>Pure seeding: ${{pureMileage}} mi | Regional: ${{regionalMileage}} mi</small>
+                    </div>
+                `;
+            }}
+
+            if (bracketSize === 12) {{
+                html += `<div class="mb-2"><em>Seeds 1-4 receive first-round byes</em></div>`;
+            }}
+
+            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+            displayMatchups.forEach(m => {{
+                const conflictBadge = m.conflict ? '<span class="badge bg-warning text-dark ms-1">⚠️ Same District</span>' : '';
+                const optimizedBadge = m.optimized ? '<span class="badge bg-info text-white ms-1">📍 Optimized</span>' : '';
+                const tierClass = m.tier === 'flex' ? 'border-start border-info border-3 ps-2' : '';
+
+                html += `
+                    <div class="matchup-row ${{tierClass}}" style="padding:8px 0; border-bottom:1px solid #eee;">
+                        <span class="matchup-seed">#${{m.seed1}}</span>
+                        <strong>${{m.team1?.school_name || 'TBD'}}</strong>
+                        <span class="text-muted mx-2">vs</span>
+                        <span class="matchup-seed">#${{m.seed2}}</span>
+                        <strong>${{m.team2?.school_name || 'TBD'}}</strong>
+                        <span class="text-muted ms-2">(${{m.distance || '?'}} mi)</span>
+                        ${{conflictBadge}}${{optimizedBadge}}
+                    </div>
+                `;
+            }});
+
+            html += '</div>';
 
             $('#playoffResults').html(html);
         }}
