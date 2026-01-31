@@ -1419,13 +1419,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                                 return line;
                             }}).join('<br>');
 
-                            // Show 🤝 emoji with reason if boosted
+                            // Show 🪢 emoji with reason if boosted
                             let boostBadge = '';
                             if (row.h2h_boosted) {{
                                 const reasonText = row.h2h_boost_reason === 'Statewide' ? 'PI Proximity' :
                                                   row.h2h_boost_reason === 'League' ? 'League Position' :
                                                   row.h2h_boost_reason === 'Both' ? 'PI + League' : 'H2H';
-                                boostBadge = `<span class="h2h-boosted-badge" title="Rank boosted: ${{reasonText}}">🤝</span>`;
+                                boostBadge = `<span class="h2h-boosted-badge" title="Rank boosted: ${{reasonText}}">🪢</span>`;
                             }}
 
                             return `<div class="h2h-tooltip">
@@ -1601,7 +1601,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     let h2hIndicator = '';
                     let h2hTitle = '';
                     if (team.h2h_boosted && (team.h2h_boost_reason === 'League' || team.h2h_boost_reason === 'Both')) {{
-                        h2hIndicator = ' 🤝';
+                        h2hIndicator = ' 🪢';
                         h2hTitle = 'H2H tiebreaker applied (League Position)';
                     }}
 
