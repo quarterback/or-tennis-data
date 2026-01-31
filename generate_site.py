@@ -798,9 +798,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 <thead class="table-light">
                     <tr>
                         <th>State</th>
-                        <th>Class Rank</th>
                         <th>School</th>
                         <th>Class</th>
+                        <th>Class Rank</th>
                         <th>League</th>
                         <th>Record</th>
                         <th>H2H</th>
@@ -1007,24 +1007,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             return `<span class="${{cls}}">${{d}}</span>`;
                         }}
                     }},
-                    {{
-                        data: 'class_rank',
-                        render: (d, t, row) => {{
-                            if (t !== 'display') return d;
-                            const cls = row.classification || '';
-                            let badgeCls = 'badge ';
-                            if (cls === '6A') badgeCls += 'badge-6a';
-                            else if (cls === '5A') badgeCls += 'badge-5a';
-                            else badgeCls += 'badge-4a';
-
-                            let rankCls = '';
-                            if (d === 1) rankCls = 'rank-1';
-                            else if (d === 2) rankCls = 'rank-2';
-                            else if (d === 3) rankCls = 'rank-3';
-
-                            return `<span class="${{badgeCls}}" style="font-size:10px;">${{cls}}</span> <span class="${{rankCls}}">#${{d}}</span>`;
-                        }}
-                    }},
                     {{ data: 'school_name', render: d => `<span class="school-name">${{d}}</span>` }},
                     {{
                         data: 'classification',
@@ -1035,6 +1017,17 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (d === '5A') cls += 'badge-5a';
                             else cls += 'badge-4a';
                             return `<span class="${{cls}}">${{d}}</span>`;
+                        }}
+                    }},
+                    {{
+                        data: 'class_rank',
+                        render: (d, t) => {{
+                            if (t !== 'display') return d;
+                            let rankCls = '';
+                            if (d === 1) rankCls = 'rank-1';
+                            else if (d === 2) rankCls = 'rank-2';
+                            else if (d === 3) rankCls = 'rank-3';
+                            return `<span class="${{rankCls}}">${{d}}</span>`;
                         }}
                     }},
                     {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
