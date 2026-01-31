@@ -636,6 +636,27 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oregon HS Tennis Rankings</title>
+    
+    <!-- Meta Description -->
+    <meta name="description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oregontennis.org/">
+    <meta property="og:title" content="Oregon HS Tennis Rankings">
+    <meta property="og:description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    <meta property="og:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://oregontennis.org/">
+    <meta name="twitter:title" content="Oregon HS Tennis Rankings">
+    <meta name="twitter:description" content="Oregon High School Tennis Rankings - Power Index rankings for OSAA 6A, 5A, and 4A-1A tennis teams. Featuring APR, FWS, and comprehensive team statistics.">
+    <meta name="twitter:image" content="https://oregontennis.org/tennis-ball-social.png">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css" rel="stylesheet">
     <style>
@@ -724,6 +745,72 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .analysis-toolbar {{ background: #fff; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }}
         footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
         footer a {{ color: #6c757d; font-size: 12px; }}
+
+        /* Responsive design for mobile devices */
+        @media (max-width: 768px) {{
+            .navbar {{ padding: 10px 0; }}
+            .navbar .container-fluid {{ flex-direction: column; gap: 10px; }}
+            .navbar-brand {{ font-size: 1rem; }}
+            
+            .nav-tabs {{ flex-wrap: wrap; justify-content: center; gap: 5px; }}
+            .nav-tabs .nav-link {{ padding: 6px 12px; font-size: 0.85rem; }}
+            
+            .toolbar {{ padding: 10px 12px; }}
+            .toolbar .filter-group {{ display: block; width: 100%; margin-right: 0; margin-bottom: 10px; }}
+            .toolbar .filter-group:last-child {{ margin-bottom: 0; }}
+            .toolbar .filter-group label {{ display: block; margin-bottom: 4px; }}
+            .toolbar .filter-group select,
+            .toolbar .filter-group input {{ width: 100%; }}
+            
+            .table {{ font-size: 11px; }}
+            .table th {{ font-size: 10px; padding: 8px 4px; }}
+            .table td {{ padding: 8px 4px; }}
+            .table-responsive {{ overflow-x: auto; -webkit-overflow-scrolling: touch; }}
+            
+            .school-name {{ font-size: 0.9rem; }}
+            
+            .playoff-container {{ padding: 10px; }}
+            .playoff-toolbar {{ padding: 12px; }}
+            .playoff-toolbar .form-group {{ display: block; width: 100%; margin-right: 0; margin-bottom: 12px; }}
+            .playoff-toolbar .form-group:last-child {{ margin-bottom: 0; }}
+            
+            .field-team {{ padding: 8px 12px; font-size: 0.9rem; }}
+            .field-seed {{ width: 25px; font-size: 0.9rem; }}
+            .field-record {{ font-size: 11px; }}
+            .field-league {{ font-size: 11px; width: 120px; }}
+            
+            .comparison-container {{ padding: 10px; }}
+            .comparison-toolbar {{ padding: 12px; }}
+            .comparison-card {{ padding: 12px; }}
+            
+            .team-comparison {{ flex-wrap: wrap; gap: 8px; }}
+            .tc-rank {{ width: 30px; font-size: 0.9rem; }}
+            .tc-name {{ font-size: 0.9rem; }}
+            .tc-apr {{ font-size: 0.85rem; }}
+            .tc-record {{ font-size: 0.85rem; }}
+            .tc-state {{ font-size: 0.85rem; width: 80px; }}
+            
+            .stat-highlight {{ font-size: 20px; }}
+            .stat-label {{ font-size: 10px; }}
+            
+            .analysis-container {{ padding: 10px; }}
+            .analysis-toolbar {{ padding: 12px; }}
+            
+            .badge {{ font-size: 0.7rem; }}
+            
+            footer {{ margin-top: 20px; padding: 12px; }}
+        }}
+        
+        @media (max-width: 480px) {{
+            .navbar-brand {{ font-size: 0.9rem; }}
+            .nav-tabs .nav-link {{ padding: 5px 10px; font-size: 0.75rem; }}
+            
+            .table {{ font-size: 10px; }}
+            .table th {{ font-size: 9px; padding: 6px 2px; }}
+            .table td {{ padding: 6px 2px; }}
+            
+            .stat-highlight {{ font-size: 18px; }}
+        }}
     </style>
 </head>
 <body>
@@ -742,6 +829,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 </li>
                 <li class="nav-item" id="analysisNavItem" style="display:none;">
                     <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="all-state.html">All-State Teams</a>
                 </li>
             </ul>
         </div>
