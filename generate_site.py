@@ -507,7 +507,8 @@ def build_rankings(data_dir, master_school_list):
                 output.append({
                     'year': int(year),
                     'gender': gender,
-                    'rank': rank,
+                    'rank': rank,  # State rank (all schools)
+                    'class_rank': 0,  # Will be calculated below
                     'school_id': school_id,
                     'school_name': info.get('name', f'School {school_id}'),
                     'classification': info.get('classification', ''),
@@ -533,6 +534,18 @@ def build_rankings(data_dir, master_school_list):
                     'h2h_boosted': h2h_boosted,       # True if rank improved via H2H tiebreaker
                     'h2h_nearby': h2h_nearby.get(school_id, []),  # H2H records vs nearby teams
                 })
+
+    # Calculate class_rank (rank within classification) for each year/gender
+    class_groups = defaultdict(list)
+    for entry in output:
+        key = (entry['year'], entry['gender'], entry['classification'])
+        class_groups[key].append(entry)
+
+    for key, entries in class_groups.items():
+        # Sort by state rank (already sorted by Power Index)
+        entries.sort(key=lambda x: x['rank'])
+        for class_rank, entry in enumerate(entries, 1):
+            entry['class_rank'] = class_rank
 
     return output, school_data, raw_data_cache, school_info
 
@@ -784,9 +797,10 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             <table id="rankingsTable" class="table table-striped table-hover mb-0">
                 <thead class="table-light">
                     <tr>
-                        <th>#</th>
+                        <th>State</th>
                         <th>School</th>
                         <th>Class</th>
+                        <th>Class Rank</th>
                         <th>League</th>
                         <th>Record</th>
                         <th>H2H</th>
@@ -976,7 +990,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             refreshAnalysisTable();
         }});
 
-        let currentSortColumn = 7; // Power Index by default (after adding H2H column)
+        let currentSortColumn = 8; // Power Index by default (after adding Class Rank column)
 
         $(document).ready(function() {{
             table = $('#rankingsTable').DataTable({{
@@ -1003,6 +1017,17 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (d === '5A') cls += 'badge-5a';
                             else cls += 'badge-4a';
                             return `<span class="${{cls}}">${{d}}</span>`;
+                        }}
+                    }},
+                    {{
+                        data: 'class_rank',
+                        render: (d, t) => {{
+                            if (t !== 'display') return d;
+                            let rankCls = '';
+                            if (d === 1) rankCls = 'rank-1';
+                            else if (d === 2) rankCls = 'rank-2';
+                            else if (d === 3) rankCls = 'rank-3';
+                            return `<span class="${{rankCls}}">${{d}}</span>`;
                         }}
                     }},
                     {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
@@ -1083,7 +1108,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }}
                 ],
-                order: [[7, 'desc']],  // Power Index column (after adding H2H)
+                order: [[8, 'desc']],  // Power Index column (after adding Class Rank)
                 pageLength: 50,
                 lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 dom: 'lrtip'
@@ -1093,13 +1118,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             $('#sortPowerIndex').on('click', function() {{
                 $(this).addClass('active');
                 $('#sortAPR').removeClass('active');
-                table.order([[7, 'desc']]).draw();  // Power Index is column 7
+                table.order([[8, 'desc']]).draw();  // Power Index is column 8
             }});
 
             $('#sortAPR').on('click', function() {{
                 $(this).addClass('active');
                 $('#sortPowerIndex').removeClass('active');
-                table.order([[8, 'desc']]).draw();  // APR is column 8
+                table.order([[9, 'desc']]).draw();  // APR is column 9
             }});
 
             // Filtering
