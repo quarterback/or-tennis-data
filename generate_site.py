@@ -1955,12 +1955,23 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             optimized: true
                         }});
                     }} else {{
-                        // Fallback: use standard matchup if no valid option
-                        const fallbackTeam = botFlex[i];
+                        // Fallback: find any unused opponent, preferring standard matchup (5v12, 6v11, etc.)
+                        let fallbackIdx = 3 - i; // Standard partner index
+                        if (usedBotFlex.has(fallbackIdx)) {{
+                            // Find any unused team
+                            for (let k = 0; k < botFlex.length; k++) {{
+                                if (!usedBotFlex.has(k)) {{
+                                    fallbackIdx = k;
+                                    break;
+                                }}
+                            }}
+                        }}
+                        usedBotFlex.add(fallbackIdx);
+                        const fallbackTeam = botFlex[fallbackIdx];
                         matchups.push({{
                             seed1: i + 5, team1: topTeam,
-                            seed2: 8 + i + 1, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            seed2: 9 + fallbackIdx, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
                             tier: 'flex',
                             conflict: sameDistrict(topTeam, fallbackTeam)
                         }});
@@ -1995,11 +2006,23 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             optimized: true
                         }});
                     }} else {{
-                        const fallbackTeam = botFlex[3 - i]; // Standard: 5v12, 6v11, etc.
+                        // Fallback: find any unused opponent, preferring standard matchup (5v12, 6v11, etc.)
+                        let fallbackIdx = 3 - i; // Standard partner index
+                        if (usedBotFlex.has(fallbackIdx)) {{
+                            // Find any unused team
+                            for (let k = 0; k < botFlex.length; k++) {{
+                                if (!usedBotFlex.has(k)) {{
+                                    fallbackIdx = k;
+                                    break;
+                                }}
+                            }}
+                        }}
+                        usedBotFlex.add(fallbackIdx);
+                        const fallbackTeam = botFlex[fallbackIdx];
                         matchups.push({{
                             seed1: i + 5, team1: topTeam,
-                            seed2: 12 - i, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            seed2: 9 + fallbackIdx, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
                             tier: 'flex',
                             conflict: sameDistrict(topTeam, fallbackTeam)
                         }});
@@ -2033,11 +2056,22 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             optimized: true
                         }});
                     }} else {{
-                        const fallbackTeam = botHalf[3 - i]; // Standard: 1v8, 2v7, etc.
+                        // Fallback: find any unused opponent, preferring standard matchup
+                        let fallbackIdx = 3 - i; // Standard partner index
+                        if (usedBot.has(fallbackIdx)) {{
+                            for (let k = 0; k < botHalf.length; k++) {{
+                                if (!usedBot.has(k)) {{
+                                    fallbackIdx = k;
+                                    break;
+                                }}
+                            }}
+                        }}
+                        usedBot.add(fallbackIdx);
+                        const fallbackTeam = botHalf[fallbackIdx];
                         matchups.push({{
                             seed1: i + 1, team1: topTeam,
-                            seed2: 8 - i, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            seed2: 5 + fallbackIdx, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
                             tier: 'flex',
                             conflict: sameDistrict(topTeam, fallbackTeam)
                         }});
@@ -2210,7 +2244,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <span class="text-muted mx-2">vs</span>
                         <span class="matchup-seed">#${{m.seed2}}</span>
                         <strong>${{m.team2?.school_name || 'TBD'}}</strong>
-                        <span class="text-muted ms-2">(${{m.distance || '?'}} mi)</span>
+                        <span class="text-muted ms-2">(${{m.distance === 999 ? '~far' : (m.distance !== undefined ? m.distance : '?')}} mi)</span>
                         ${{conflictBadge}}${{optimizedBadge}}
                     </div>
                 `;
