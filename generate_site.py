@@ -2227,11 +2227,55 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 }}
             }}
 
+            // Define displayMatchups early so we can use it in the bye team section
+            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+
             if (bracketSize === 12) {{
-                html += `<div class="mb-2"><em>Seeds 1-4 receive first-round byes</em></div>`;
+                // Show bye teams and their potential QF opponents
+                html += `<div class="section-title mt-3">Quarterfinal Preview (Seeds 1-4 have byes)</div>`;
+                html += `<div class="bg-white p-3 rounded shadow-sm mb-3">`;
+                html += `<p class="text-muted small mb-2"><em>After first round, winners are reseeded: #1 plays lowest remaining seed, #4 plays highest.</em></p>`;
+
+                const byeTeams = field.slice(0, 4);
+
+                // Get all first round seeds (both high and low from each matchup)
+                const firstRoundSeeds = [];
+                displayMatchups.forEach(m => {{
+                    firstRoundSeeds.push({{ seed: m.seed1, team: m.team1 }});
+                    firstRoundSeeds.push({{ seed: m.seed2, team: m.team2 }});
+                }});
+                // Sort by seed number (ascending = highest seed first like #5, then #6...)
+                firstRoundSeeds.sort((a, b) => a.seed - b.seed);
+
+                // Show bye teams with their QF opponents if chalk holds (higher seeds win)
+                // If chalk: #5,#6,#7,#8 advance → #1 plays #8, #2 plays #7, #3 plays #6, #4 plays #5
+                const chalkWinners = firstRoundSeeds.filter(s => s.seed <= 8).sort((a, b) => b.seed - a.seed);
+
+                byeTeams.forEach((byeTeam, i) => {{
+                    const chalkOpponent = chalkWinners[i];
+                    const worstCaseOpponent = firstRoundSeeds.filter(s => s.seed > 8).sort((a, b) => b.seed - a.seed)[i];
+
+                    html += `
+                        <div style="padding:8px 0; border-bottom:1px solid #eee;">
+                            <span class="matchup-seed">#${{i + 1}}</span>
+                            <strong>${{byeTeam.school_name}}</strong>
+                            <span class="badge bg-secondary ms-1">BYE</span>
+                            <span class="text-muted mx-2">→ QF vs</span>
+                            <span class="text-muted">
+                                ${{chalkOpponent ? `#${{chalkOpponent.seed}} ${{chalkOpponent.team?.school_name}}` : '?'}}
+                                <small>(if chalk)</small>
+                            </span>
+                        </div>
+                    `;
+                }});
+                html += `</div>`;
             }}
 
-            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+            html += `
+                <div class="section-title mt-3">First Round Matchups</div>
+                <div class="bg-white p-3 rounded shadow-sm">
+            `;
+
             displayMatchups.forEach(m => {{
                 const conflictBadge = m.conflict ? '<span class="badge bg-warning text-dark ms-1">⚠️ Same District</span>' : '';
                 const optimizedBadge = m.optimized ? '<span class="badge bg-info text-white ms-1">📍 Optimized</span>' : '';
