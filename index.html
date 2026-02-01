@@ -1209,11 +1209,64 @@
                 }
             }
 
+            // Define displayMatchups early so we can use it in the bye team section
+            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+
             if (bracketSize === 12) {
-                html += `<div class="mb-2"><em>Seeds 1-4 receive first-round byes</em></div>`;
+                // Show bye teams and their QF opponents
+                html += `<div class="section-title mt-3">Quarterfinal Matchups (Seeds 1-4 have byes)</div>`;
+                html += `<div class="bg-white p-3 rounded shadow-sm mb-3">`;
+
+                // Map first round winners to bye teams
+                // Standard bracket: #1 vs winner(8v9), #2 vs winner(7v10), #3 vs winner(6v11), #4 vs winner(5v12)
+                const byeTeams = field.slice(0, 4);
+                const firstRoundMatchups = displayMatchups;
+
+                // For each bye team, find the corresponding first round matchup
+                // In standard: bye team i plays the winner of seeds (8-i) vs (9+i)
+                // But in regional mode, matchups may differ, so we match by the lower seed
+                byeTeams.forEach((byeTeam, i) => {
+                    // Standard opponent seeds for this bye team
+                    const standardLowSeed = 5 + i;  // 5,6,7,8
+                    const standardHighSeed = 12 - i; // 12,11,10,9
+
+                    // Find the actual matchup that contains the expected seeds
+                    const matchup = firstRoundMatchups.find(m =>
+                        m.seed1 === standardLowSeed || m.seed2 === standardLowSeed
+                    );
+
+                    if (matchup) {
+                        html += `
+                            <div style="padding:8px 0; border-bottom:1px solid #eee;">
+                                <span class="matchup-seed">#${i + 1}</span>
+                                <strong>${byeTeam.school_name}</strong>
+                                <span class="badge bg-secondary ms-1">BYE</span>
+                                <span class="text-muted mx-2">→ QF vs winner of</span>
+                                <span class="matchup-seed">#${matchup.seed1}</span>
+                                <strong>${matchup.team1?.school_name}</strong>
+                                <span class="text-muted mx-1">vs</span>
+                                <span class="matchup-seed">#${matchup.seed2}</span>
+                                <strong>${matchup.team2?.school_name}</strong>
+                            </div>
+                        `;
+                    } else {
+                        html += `
+                            <div style="padding:8px 0; border-bottom:1px solid #eee;">
+                                <span class="matchup-seed">#${i + 1}</span>
+                                <strong>${byeTeam.school_name}</strong>
+                                <span class="badge bg-secondary ms-1">BYE</span>
+                            </div>
+                        `;
+                    }
+                });
+                html += `</div>`;
             }
 
-            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+            html += `
+                <div class="section-title mt-3">First Round Matchups</div>
+                <div class="bg-white p-3 rounded shadow-sm">
+            `;
+
             displayMatchups.forEach(m => {
                 const conflictBadge = m.conflict ? '<span class="badge bg-warning text-dark ms-1">⚠️ Same District</span>' : '';
                 const optimizedBadge = m.optimized ? '<span class="badge bg-info text-white ms-1">📍 Optimized</span>' : '';
