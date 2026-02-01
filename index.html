@@ -987,6 +987,44 @@
                         });
                     }
                 });
+            } else if (bracketSize === 8) {
+                // 8-team bracket: 1v8, 2v7, 3v6, 4v5
+                const topHalf = field.slice(0, 4); // Seeds 1-4
+                const botHalf = field.slice(4, 8); // Seeds 5-8
+
+                const usedBot = new Set();
+                topHalf.forEach((topTeam, i) => {
+                    let bestMatch = null;
+                    let bestDist = Infinity;
+                    botHalf.forEach((botTeam, j) => {
+                        if (usedBot.has(j)) return;
+                        if (sameDistrict(topTeam, botTeam)) return;
+                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+                        if (dist < bestDist) {
+                            bestDist = dist;
+                            bestMatch = { index: j, team: botTeam, dist };
+                        }
+                    });
+                    if (bestMatch) {
+                        usedBot.add(bestMatch.index);
+                        matchups.push({
+                            seed1: i + 1, team1: topTeam,
+                            seed2: 4 + bestMatch.index + 1, team2: bestMatch.team,
+                            distance: bestMatch.dist,
+                            tier: 'flex',
+                            optimized: true
+                        });
+                    } else {
+                        const fallbackTeam = botHalf[3 - i]; // Standard: 1v8, 2v7, etc.
+                        matchups.push({
+                            seed1: i + 1, team1: topTeam,
+                            seed2: 8 - i, team2: fallbackTeam,
+                            distance: calcDistance(topTeam.coords, fallbackTeam.coords),
+                            tier: 'flex',
+                            conflict: sameDistrict(topTeam, fallbackTeam)
+                        });
+                    }
+                });
             }
 
             return matchups;
@@ -1111,13 +1149,30 @@
                 <div class="bg-white p-3 rounded shadow-sm">
             `;
 
-            if (bracketMode === 'regional' && mileageSaved > 0) {
-                html += `
-                    <div class="alert alert-success mb-3">
-                        <strong>🚗 Mileage Savings:</strong> ${mileageSaved} miles saved vs pure seeding
-                        <br><small>Pure seeding: ${pureMileage} mi | Regional: ${regionalMileage} mi</small>
-                    </div>
-                `;
+            if (bracketMode === 'regional') {
+                const validMileage = !isNaN(pureMileage) && !isNaN(regionalMileage);
+                if (validMileage && mileageSaved > 0) {
+                    html += `
+                        <div class="alert alert-success mb-3">
+                            <strong>🚗 Mileage Savings:</strong> ${Math.round(mileageSaved)} miles saved vs pure seeding
+                            <br><small>Pure seeding: ${Math.round(pureMileage)} mi | Regional: ${Math.round(regionalMileage)} mi</small>
+                        </div>
+                    `;
+                } else if (validMileage) {
+                    html += `
+                        <div class="alert alert-info mb-3">
+                            <strong>🚗 Mileage Comparison:</strong> No savings with regional matching
+                            <br><small>Pure seeding: ${Math.round(pureMileage)} mi | Regional: ${Math.round(regionalMileage)} mi</small>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="alert alert-warning mb-3">
+                            <strong>⚠️ Mileage:</strong> Unable to calculate distances (missing coordinates)
+                            <br><small>Pure: ${pureMileage} | Regional: ${regionalMileage} | Matchups: ${pureMatchups.length} pure, ${regionalMatchups.length} regional</small>
+                        </div>
+                    `;
+                }
             }
 
             if (bracketSize === 12) {
