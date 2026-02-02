@@ -856,207 +856,152 @@
             return Math.round(R * c);
         }
 
-        // Check if two teams are in the same district/league
-        function sameDistrict(team1, team2) {
-            if (!team1.league || !team2.league) return false;
-            // Extract district from league (e.g., "Special District 1" -> "1", "6A-2 Metro" -> "6A-2")
-            const getDistrict = (league) => {
-                const sdMatch = league.match(/Special District (\d+)/);
-                if (sdMatch) return 'SD' + sdMatch[1];
-                const classMatch = league.match(/^(\d+A-\d+)/);
-                if (classMatch) return classMatch[1];
-                return league;
-            };
-            return getDistrict(team1.league) === getDistrict(team2.league);
+        // Check if two teams are in the same league (OSAA rule: no same-league first round matchups)
+        function sameLeague(team1, team2) {
+            if (!team1?.league || !team2?.league) return false;
+            return team1.league === team2.league;
         }
 
-        // Generate regionalized matchups for seeds 5-12
+        // Generate regionalized matchups using greedy nearest-neighbor (baseball/softball methodology)
+        // Hosts (1-8) can match with any Visitor (9-16) based on proximity
+        // Constraint: No same-league first-round matchups (OSAA rule)
+        // Treats seeds 9-16 as interchangeable "peer group"
         function generateRegionalMatchups(field) {
-            // Seeds 1-4: Protected (play seeds 13-16 by proximity)
-            // Seeds 5-12: Flex tier - optimize for proximity, no same-district
-            // Seeds 13-16: Anchor tier - placed by proximity to top 4
-
             const matchups = [];
             const bracketSize = field.length;
 
             if (bracketSize === 16) {
-                // Protected tier: 1-4 vs 13-16 (optimized by proximity)
-                const top4 = field.slice(0, 4);
-                const bottom4 = field.slice(12, 16);
+                // Hosts: seeds 1-8, Visitors: seeds 9-16 (peer group)
+                const hosts = field.slice(0, 8);
+                const visitors = field.slice(8, 16);
+                const usedVisitors = new Set();
 
-                // Match top seeds with closest bottom seeds
-                const usedBottom = new Set();
-                top4.forEach((topTeam, i) => {
+                // Greedy nearest-neighbor: for each host, find closest available visitor
+                hosts.forEach((host, i) => {
                     let bestMatch = null;
                     let bestDist = Infinity;
-                    bottom4.forEach((botTeam, j) => {
-                        if (usedBottom.has(j)) return;
-                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+
+                    visitors.forEach((visitor, j) => {
+                        if (usedVisitors.has(j)) return;
+                        if (sameLeague(host, visitor)) return; // OSAA rule
+                        const dist = calcDistance(host.coords, visitor.coords);
                         if (dist < bestDist) {
                             bestDist = dist;
-                            bestMatch = { index: j, team: botTeam, dist };
+                            bestMatch = { index: j, team: visitor, dist };
                         }
                     });
-                    if (bestMatch) {
-                        usedBottom.add(bestMatch.index);
-                        matchups.push({
-                            seed1: i + 1, team1: topTeam,
-                            seed2: 12 + bestMatch.index + 1, team2: bestMatch.team,
-                            distance: bestMatch.dist,
-                            tier: 'protected'
-                        });
-                    }
-                });
 
-                // Flex tier: 5-12 (8 teams -> 4 matchups)
-                const flexTeams = field.slice(4, 12);
-                const topFlex = flexTeams.slice(0, 4); // Seeds 5-8
-                const botFlex = flexTeams.slice(4, 8); // Seeds 9-12
-
-                const usedBotFlex = new Set();
-                topFlex.forEach((topTeam, i) => {
-                    let bestMatch = null;
-                    let bestDist = Infinity;
-                    botFlex.forEach((botTeam, j) => {
-                        if (usedBotFlex.has(j)) return;
-                        // Check same-district constraint
-                        if (sameDistrict(topTeam, botTeam)) return;
-                        const dist = calcDistance(topTeam.coords, botTeam.coords);
-                        if (dist < bestDist) {
-                            bestDist = dist;
-                            bestMatch = { index: j, team: botTeam, dist };
-                        }
-                    });
                     if (bestMatch) {
-                        usedBotFlex.add(bestMatch.index);
+                        usedVisitors.add(bestMatch.index);
                         matchups.push({
-                            seed1: i + 5, team1: topTeam,
-                            seed2: 8 + bestMatch.index + 1, team2: bestMatch.team,
+                            seed1: i + 1, team1: host,
+                            seed2: 9 + bestMatch.index, team2: bestMatch.team,
                             distance: bestMatch.dist,
-                            tier: 'flex',
                             optimized: true
                         });
                     } else {
-                        // Fallback: find any unused opponent, preferring standard matchup (5v12, 6v11, etc.)
-                        let fallbackIdx = 3 - i; // Standard partner index
-                        if (usedBotFlex.has(fallbackIdx)) {
-                            // Find any unused team
-                            for (let k = 0; k < botFlex.length; k++) {
-                                if (!usedBotFlex.has(k)) {
-                                    fallbackIdx = k;
-                                    break;
-                                }
+                        // Fallback: find any unused visitor (same-league if unavoidable)
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                usedVisitors.add(j);
+                                const visitor = visitors[j];
+                                matchups.push({
+                                    seed1: i + 1, team1: host,
+                                    seed2: 9 + j, team2: visitor,
+                                    distance: calcDistance(host.coords, visitor?.coords),
+                                    conflict: sameLeague(host, visitor)
+                                });
+                                break;
                             }
                         }
-                        usedBotFlex.add(fallbackIdx);
-                        const fallbackTeam = botFlex[fallbackIdx];
-                        matchups.push({
-                            seed1: i + 5, team1: topTeam,
-                            seed2: 9 + fallbackIdx, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
-                            tier: 'flex',
-                            conflict: sameDistrict(topTeam, fallbackTeam)
-                        });
                     }
                 });
             } else if (bracketSize === 12) {
-                // 12-team bracket: 1-4 have byes, matchups are 5v12, 6v11, 7v10, 8v9
-                const flexTeams = field.slice(4, 12);
-                const topFlex = flexTeams.slice(0, 4); // Seeds 5-8
-                const botFlex = flexTeams.slice(4, 8); // Seeds 9-12
+                // 12-team: seeds 1-4 have byes, Hosts: 5-8, Visitors: 9-12
+                const hosts = field.slice(4, 8);
+                const visitors = field.slice(8, 12);
+                const usedVisitors = new Set();
 
-                const usedBotFlex = new Set();
-                topFlex.forEach((topTeam, i) => {
+                hosts.forEach((host, i) => {
                     let bestMatch = null;
                     let bestDist = Infinity;
-                    botFlex.forEach((botTeam, j) => {
-                        if (usedBotFlex.has(j)) return;
-                        if (sameDistrict(topTeam, botTeam)) return;
-                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+
+                    visitors.forEach((visitor, j) => {
+                        if (usedVisitors.has(j)) return;
+                        if (sameLeague(host, visitor)) return;
+                        const dist = calcDistance(host.coords, visitor.coords);
                         if (dist < bestDist) {
                             bestDist = dist;
-                            bestMatch = { index: j, team: botTeam, dist };
+                            bestMatch = { index: j, team: visitor, dist };
                         }
                     });
+
                     if (bestMatch) {
-                        usedBotFlex.add(bestMatch.index);
+                        usedVisitors.add(bestMatch.index);
                         matchups.push({
-                            seed1: i + 5, team1: topTeam,
-                            seed2: 8 + bestMatch.index + 1, team2: bestMatch.team,
+                            seed1: i + 5, team1: host,
+                            seed2: 9 + bestMatch.index, team2: bestMatch.team,
                             distance: bestMatch.dist,
-                            tier: 'flex',
                             optimized: true
                         });
                     } else {
-                        // Fallback: find any unused opponent, preferring standard matchup (5v12, 6v11, etc.)
-                        let fallbackIdx = 3 - i; // Standard partner index
-                        if (usedBotFlex.has(fallbackIdx)) {
-                            // Find any unused team
-                            for (let k = 0; k < botFlex.length; k++) {
-                                if (!usedBotFlex.has(k)) {
-                                    fallbackIdx = k;
-                                    break;
-                                }
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                usedVisitors.add(j);
+                                const visitor = visitors[j];
+                                matchups.push({
+                                    seed1: i + 5, team1: host,
+                                    seed2: 9 + j, team2: visitor,
+                                    distance: calcDistance(host.coords, visitor?.coords),
+                                    conflict: sameLeague(host, visitor)
+                                });
+                                break;
                             }
                         }
-                        usedBotFlex.add(fallbackIdx);
-                        const fallbackTeam = botFlex[fallbackIdx];
-                        matchups.push({
-                            seed1: i + 5, team1: topTeam,
-                            seed2: 9 + fallbackIdx, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
-                            tier: 'flex',
-                            conflict: sameDistrict(topTeam, fallbackTeam)
-                        });
                     }
                 });
             } else if (bracketSize === 8) {
-                // 8-team bracket: 1v8, 2v7, 3v6, 4v5
-                const topHalf = field.slice(0, 4); // Seeds 1-4
-                const botHalf = field.slice(4, 8); // Seeds 5-8
+                // 8-team: Hosts: 1-4, Visitors: 5-8
+                const hosts = field.slice(0, 4);
+                const visitors = field.slice(4, 8);
+                const usedVisitors = new Set();
 
-                const usedBot = new Set();
-                topHalf.forEach((topTeam, i) => {
+                hosts.forEach((host, i) => {
                     let bestMatch = null;
                     let bestDist = Infinity;
-                    botHalf.forEach((botTeam, j) => {
-                        if (usedBot.has(j)) return;
-                        if (sameDistrict(topTeam, botTeam)) return;
-                        const dist = calcDistance(topTeam.coords, botTeam.coords);
+
+                    visitors.forEach((visitor, j) => {
+                        if (usedVisitors.has(j)) return;
+                        if (sameLeague(host, visitor)) return;
+                        const dist = calcDistance(host.coords, visitor.coords);
                         if (dist < bestDist) {
                             bestDist = dist;
-                            bestMatch = { index: j, team: botTeam, dist };
+                            bestMatch = { index: j, team: visitor, dist };
                         }
                     });
+
                     if (bestMatch) {
-                        usedBot.add(bestMatch.index);
+                        usedVisitors.add(bestMatch.index);
                         matchups.push({
-                            seed1: i + 1, team1: topTeam,
-                            seed2: 4 + bestMatch.index + 1, team2: bestMatch.team,
+                            seed1: i + 1, team1: host,
+                            seed2: 5 + bestMatch.index, team2: bestMatch.team,
                             distance: bestMatch.dist,
-                            tier: 'flex',
                             optimized: true
                         });
                     } else {
-                        // Fallback: find any unused opponent, preferring standard matchup
-                        let fallbackIdx = 3 - i; // Standard partner index
-                        if (usedBot.has(fallbackIdx)) {
-                            for (let k = 0; k < botHalf.length; k++) {
-                                if (!usedBot.has(k)) {
-                                    fallbackIdx = k;
-                                    break;
-                                }
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                usedVisitors.add(j);
+                                const visitor = visitors[j];
+                                matchups.push({
+                                    seed1: i + 1, team1: host,
+                                    seed2: 5 + j, team2: visitor,
+                                    distance: calcDistance(host.coords, visitor?.coords),
+                                    conflict: sameLeague(host, visitor)
+                                });
+                                break;
                             }
                         }
-                        usedBot.add(fallbackIdx);
-                        const fallbackTeam = botHalf[fallbackIdx];
-                        matchups.push({
-                            seed1: i + 1, team1: topTeam,
-                            seed2: 5 + fallbackIdx, team2: fallbackTeam,
-                            distance: calcDistance(topTeam.coords, fallbackTeam?.coords),
-                            tier: 'flex',
-                            conflict: sameDistrict(topTeam, fallbackTeam)
-                        });
                     }
                 });
             }
@@ -1082,12 +1027,12 @@
                     let isConflict = false;
 
                     // Check if standard matchup is same-district
-                    if (sameDistrict(host, visitors[standardIdx])) {
+                    if (sameLeague(host, visitors[standardIdx])) {
                         // Try to find a non-same-district swap
                         let found = false;
                         for (let j = 0; j < visitors.length; j++) {
                             if (usedVisitors.has(j)) continue;
-                            if (!sameDistrict(host, visitors[j])) {
+                            if (!sameLeague(host, visitors[j])) {
                                 assignedIdx = j;
                                 found = true;
                                 break;
@@ -1105,7 +1050,7 @@
                         for (let j = 0; j < visitors.length; j++) {
                             if (!usedVisitors.has(j)) {
                                 assignedIdx = j;
-                                isConflict = sameDistrict(host, visitors[j]);
+                                isConflict = sameLeague(host, visitors[j]);
                                 break;
                             }
                         }
@@ -1133,11 +1078,11 @@
                     let assignedIdx = standardIdx;
                     let isConflict = false;
 
-                    if (sameDistrict(host, visitors[standardIdx])) {
+                    if (sameLeague(host, visitors[standardIdx])) {
                         let found = false;
                         for (let j = 0; j < visitors.length; j++) {
                             if (usedVisitors.has(j)) continue;
-                            if (!sameDistrict(host, visitors[j])) {
+                            if (!sameLeague(host, visitors[j])) {
                                 assignedIdx = j;
                                 found = true;
                                 break;
@@ -1153,7 +1098,7 @@
                         for (let j = 0; j < visitors.length; j++) {
                             if (!usedVisitors.has(j)) {
                                 assignedIdx = j;
-                                isConflict = sameDistrict(host, visitors[j]);
+                                isConflict = sameLeague(host, visitors[j]);
                                 break;
                             }
                         }
@@ -1179,11 +1124,11 @@
                     let assignedIdx = standardIdx;
                     let isConflict = false;
 
-                    if (sameDistrict(host, visitors[standardIdx])) {
+                    if (sameLeague(host, visitors[standardIdx])) {
                         let found = false;
                         for (let j = 0; j < visitors.length; j++) {
                             if (usedVisitors.has(j)) continue;
-                            if (!sameDistrict(host, visitors[j])) {
+                            if (!sameLeague(host, visitors[j])) {
                                 assignedIdx = j;
                                 found = true;
                                 break;
@@ -1199,7 +1144,7 @@
                         for (let j = 0; j < visitors.length; j++) {
                             if (!usedVisitors.has(j)) {
                                 assignedIdx = j;
-                                isConflict = sameDistrict(host, visitors[j]);
+                                isConflict = sameLeague(host, visitors[j]);
                                 break;
                             }
                         }
