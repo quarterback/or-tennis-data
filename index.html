@@ -1064,39 +1064,157 @@
             return matchups;
         }
 
-        // Generate pure seeding matchups
+        // Generate pure seeding matchups with same-district avoidance
         function generatePureMatchups(field) {
             const matchups = [];
             const bracketSize = field.length;
 
             if (bracketSize === 16) {
-                for (let i = 0; i < 8; i++) {
+                // Hosts: seeds 1-8, Visitors: seeds 9-16
+                const hosts = field.slice(0, 8);
+                const visitors = field.slice(8, 16);
+                const usedVisitors = new Set();
+
+                hosts.forEach((host, i) => {
+                    // Standard opponent index (1v16=index 7, 2v15=index 6, etc.)
+                    const standardIdx = 7 - i;
+                    let assignedIdx = standardIdx;
+                    let isConflict = false;
+
+                    // Check if standard matchup is same-district
+                    if (sameDistrict(host, visitors[standardIdx])) {
+                        // Try to find a non-same-district swap
+                        let found = false;
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (usedVisitors.has(j)) continue;
+                            if (!sameDistrict(host, visitors[j])) {
+                                assignedIdx = j;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            // No swap available, use standard but mark as conflict
+                            assignedIdx = standardIdx;
+                            isConflict = true;
+                        }
+                    }
+
+                    // If standard opponent already used, find next available
+                    if (usedVisitors.has(assignedIdx)) {
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                assignedIdx = j;
+                                isConflict = sameDistrict(host, visitors[j]);
+                                break;
+                            }
+                        }
+                    }
+
+                    usedVisitors.add(assignedIdx);
+                    const visitor = visitors[assignedIdx];
                     matchups.push({
-                        seed1: i + 1, team1: field[i],
-                        seed2: 16 - i, team2: field[15 - i],
-                        distance: calcDistance(field[i].coords, field[15 - i].coords),
-                        tier: i < 4 ? 'protected' : 'standard'
+                        seed1: i + 1, team1: host,
+                        seed2: 9 + assignedIdx, team2: visitor,
+                        distance: calcDistance(host.coords, visitor?.coords),
+                        tier: i < 4 ? 'protected' : 'standard',
+                        conflict: isConflict
                     });
-                }
+                });
             } else if (bracketSize === 12) {
                 // 5v12, 6v11, 7v10, 8v9 (1-4 have byes)
-                for (let i = 0; i < 4; i++) {
+                const hosts = field.slice(4, 8);  // Seeds 5-8
+                const visitors = field.slice(8, 12);  // Seeds 9-12
+                const usedVisitors = new Set();
+
+                hosts.forEach((host, i) => {
+                    // Standard opponent index (5v12=index 3, 6v11=index 2, etc.)
+                    const standardIdx = 3 - i;
+                    let assignedIdx = standardIdx;
+                    let isConflict = false;
+
+                    if (sameDistrict(host, visitors[standardIdx])) {
+                        let found = false;
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (usedVisitors.has(j)) continue;
+                            if (!sameDistrict(host, visitors[j])) {
+                                assignedIdx = j;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            assignedIdx = standardIdx;
+                            isConflict = true;
+                        }
+                    }
+
+                    if (usedVisitors.has(assignedIdx)) {
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                assignedIdx = j;
+                                isConflict = sameDistrict(host, visitors[j]);
+                                break;
+                            }
+                        }
+                    }
+
+                    usedVisitors.add(assignedIdx);
+                    const visitor = visitors[assignedIdx];
                     matchups.push({
-                        seed1: i + 5, team1: field[i + 4],
-                        seed2: 12 - i, team2: field[11 - i],
-                        distance: calcDistance(field[i + 4].coords, field[11 - i].coords),
-                        tier: 'standard'
+                        seed1: i + 5, team1: host,
+                        seed2: 9 + assignedIdx, team2: visitor,
+                        distance: calcDistance(host.coords, visitor?.coords),
+                        tier: 'standard',
+                        conflict: isConflict
                     });
-                }
+                });
             } else if (bracketSize === 8) {
-                for (let i = 0; i < 4; i++) {
+                const hosts = field.slice(0, 4);  // Seeds 1-4
+                const visitors = field.slice(4, 8);  // Seeds 5-8
+                const usedVisitors = new Set();
+
+                hosts.forEach((host, i) => {
+                    const standardIdx = 3 - i;  // 1v8=index 3, 2v7=index 2, etc.
+                    let assignedIdx = standardIdx;
+                    let isConflict = false;
+
+                    if (sameDistrict(host, visitors[standardIdx])) {
+                        let found = false;
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (usedVisitors.has(j)) continue;
+                            if (!sameDistrict(host, visitors[j])) {
+                                assignedIdx = j;
+                                found = true;
+                                break;
+                            }
+                        }
+                        if (!found) {
+                            assignedIdx = standardIdx;
+                            isConflict = true;
+                        }
+                    }
+
+                    if (usedVisitors.has(assignedIdx)) {
+                        for (let j = 0; j < visitors.length; j++) {
+                            if (!usedVisitors.has(j)) {
+                                assignedIdx = j;
+                                isConflict = sameDistrict(host, visitors[j]);
+                                break;
+                            }
+                        }
+                    }
+
+                    usedVisitors.add(assignedIdx);
+                    const visitor = visitors[assignedIdx];
                     matchups.push({
-                        seed1: i + 1, team1: field[i],
-                        seed2: 8 - i, team2: field[7 - i],
-                        distance: calcDistance(field[i].coords, field[7 - i].coords),
-                        tier: 'standard'
+                        seed1: i + 1, team1: host,
+                        seed2: 5 + assignedIdx, team2: visitor,
+                        distance: calcDistance(host.coords, visitor?.coords),
+                        tier: 'standard',
+                        conflict: isConflict
                     });
-                }
+                });
             }
 
             return matchups;
