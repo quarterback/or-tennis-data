@@ -32,11 +32,11 @@ Each team carries ~12 varsity players, but only a fraction ever compete at state
 
 | Classification | Total Players | Individual State Draw | Current Rate |
 |----------------|---------------|----------------------|--------------|
-| 6A | ~564 (47 × 12) | 84 (28 singles + 28 doubles) | **15%** |
-| 5A | ~360 (30 × 12) | 48 (16 singles + 16 doubles) | **13%** |
-| 4A-1A | ~576 (48 × 12) | 60 (20 singles + 20 doubles) | **10%** |
+| 6A | ~564 (47 × 12) | 84 (28 singles + 28 doubles teams) | **15%** |
+| 5A | ~360 (30 × 12) | 48 (16 singles + 16 doubles teams) | **13%** |
+| 4A-1A | ~576 (48 × 12) | 60 (20 singles + 20 doubles teams) | **10%** |
 
-*Per gender. Doubles = 2 players per team. State qualifiers often come from the same few schools.*
+*Per gender. Each doubles team = 2 players. State qualifiers often come from the same few schools.*
 
 **With Team Championship Added:**
 
@@ -106,6 +106,36 @@ Wrestling and golf don't have consolation brackets. Exchange tennis consolation 
 ## Power Rankings
 
 OSAA's existing volleyball tournament power ranking handles set-based competition. Tennis team tournament could utilize this infrastructure with minor modifications for tennis scoring to determine at-large bids.
+
+---
+
+## The Current System Doesn't Identify the Best Teams
+
+Analysis of 4 years of OSAA data (2022-2025) reveals a fundamental disconnect between dual match performance and state tournament results. The individual format rewards 1-2 elite players while ignoring team depth.
+
+**Teams with LOSING dual records placing top 8 at state:**
+
+| Year | Team | Dual Record | State Finish |
+|------|------|-------------|--------------|
+| 2024 | Vale (4A Boys) | **0-15-0** | 5th place |
+| 2024 | Sisters (4A Boys) | **0-8-2** | 5th place |
+| 2024 | Southridge (6A Boys) | **5-10-0** | 6th place |
+| 2023 | Caldera (5A Boys) | **0-14-3** | 7th place |
+| 2023 | Milwaukie (5A Boys) | **0-6-1** | 4th place |
+| 2022 | Vale (4A Boys) | **1-11-0** | 6th place |
+
+**Undefeated/dominant teams NOT in state top 8:**
+
+| Year | Team | Dual Record | PI Rank | State Finish |
+|------|------|-------------|---------|--------------|
+| 2024 | South Eugene (6A Boys) | **16-0-1** | #1 | Not top 8 |
+| 2022 | Summit (5A Boys) | **14-0-0** | #1 | Not top 8 |
+| 2022 | Silverton (5A Girls) | **11-0-1** | #1 | Not top 8 |
+| 2023 | Grant (6A Girls) | **13-0-1** | #5 | Not top 8 |
+
+**What this means:** A team can go winless in dual matches all season, but if they have one elite singles player, they "place" at state. Meanwhile, a team that dominates every dual match 7-0 may not appear in state results at all because their depth doesn't translate to individual tournament brackets.
+
+**The team championship fixes this.** It identifies and rewards the programs that field the best *teams*—not just the schools lucky enough to have one exceptional individual.
 
 ---
 
