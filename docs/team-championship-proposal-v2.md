@@ -30,23 +30,25 @@ Based on OSAA Championship Thresholds Task Force guidelines, proposed bracket si
 
 Each team carries ~12 varsity players, but only a fraction ever compete at state:
 
-| Classification | Total Players | At State (Ind.) | Current Rate |
-|----------------|---------------|-----------------|--------------|
-| 6A | ~564 (47 × 12) | ~96 | **17%** |
-| 5A | ~360 (30 × 12) | ~64 | **18%** |
-| 4A-1A | ~576 (48 × 12) | ~64 | **11%** |
+| Classification | Total Players | Individual State Draw | Current Rate |
+|----------------|---------------|----------------------|--------------|
+| 6A | ~564 (47 × 12) | 84 (28 singles + 28 doubles) | **15%** |
+| 5A | ~360 (30 × 12) | 48 (16 singles + 16 doubles) | **13%** |
+| 4A-1A | ~576 (48 × 12) | 60 (20 singles + 20 doubles) | **10%** |
 
-*Individual state = 32 singles + 32 doubles teams (64 players) per classification, often from the same few schools.*
+*Per gender. Doubles = 2 players per team. State qualifiers often come from the same few schools.*
 
 **With Team Championship Added:**
 
-| Classification | Team Tournament | Individual (unchanged) | Combined |
+| Classification | Team Tournament | Individual (unchanged) | New Rate |
 |----------------|-----------------|------------------------|----------|
-| 6A | 192 players (16 × 12) | ~96 | **~288 players** |
-| 5A | 192 players (16 × 12) | ~64 | **~256 players** |
-| 4A-1A | 192 players (16 × 12) | ~64 | **~256 players** |
+| 6A | 192 (16 teams × 12) | 84 | **~45%+** |
+| 5A | 192 (16 teams × 12) | 48 | **~60%+** |
+| 4A-1A | 192 (16 teams × 12) | 60 | **~40%+** |
 
-**The team tournament doesn't replace anything—it ADDS state-level competition for entire rosters.** A 12-player roster where only the top 4 reached state individually now ALL get to compete for a team championship.
+*Some overlap between team qualifiers and individual qualifiers, but participation roughly triples.*
+
+**The team tournament doesn't replace anything—it ADDS state-level competition for entire rosters.** A 12-player roster where only 2-3 reached state individually now ALL get to compete for a team championship.
 
 ---
 
@@ -112,10 +114,9 @@ OSAA's existing volleyball tournament power ranking handles set-based competitio
 | Metric | Status Quo | With Team Championship |
 |--------|------------|------------------------|
 | Team state tournament | None | 16-team brackets (all classes) |
-| Individual tournament | ~96 players/class | Unchanged |
-| **6A players at state** | ~96 (17%) | ~288 (51%) |
-| **5A players at state** | ~64 (18%) | ~256 (71%) |
-| **4A-1A players at state** | ~64 (11%) | ~256 (44%) |
+| **6A at state (per gender)** | 84 players (15%) | ~250+ players (45%+) |
+| **5A at state (per gender)** | 48 players (13%) | ~220+ players (60%+) |
+| **4A-1A at state (per gender)** | 60 players (10%) | ~230+ players (40%+) |
 | 4A-1A first-round travel | 300+ mile trips | 44.8% reduction via regional matching |
 | Revenue model | Free event | Team matches generate gate |
 
