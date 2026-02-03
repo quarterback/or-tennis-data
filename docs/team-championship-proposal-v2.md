@@ -12,44 +12,57 @@ Add a dual-match team championship to Oregon high school tennis, joining 27 othe
 
 ## Format
 
-| Classification | Bracket Size | Auto-Bids | At-Large | Teams Qualifying |
-|----------------|--------------|-----------|----------|------------------|
-| **6A** | 16 teams | 7 league champions | 9 | 34% of teams |
-| **5A** | 12 teams | 4 league champions | 8 | 40% of teams |
-| **4A/3A/2A/1A** | 12 teams | 5 district champions | 7 | 25% of teams |
+Based on OSAA Championship Thresholds Task Force guidelines, proposed bracket sizes:
 
-**Qualification rates by gender (2025 data):**
-- 6A Boys: 16 of 47 teams (34.0%)
-- 6A Girls: 16 of 48 teams (33.3%)
-- 5A Boys: 12 of 30 teams (40.0%)
-- 5A Girls: 12 of 30 teams (40.0%)
-- 4A-1A Boys: 12 of 46 teams (26.1%)
-- 4A-1A Girls: 12 of 50 teams (24.0%)
+| Classification | Bracket Size | Auto-Bids | At-Large | Within OSAA Threshold |
+|----------------|--------------|-----------|----------|----------------------|
+| **6A** | 16 teams | 7 league champions | 9 | Yes (max 21 = 45%) |
+| **5A** | 16 teams | 4 league champions | 12 | Yes (max 16 = 44%) |
+| **4A-1A** | 16 teams | 5 district champions | 11 | Yes (see note) |
+
+*Note: 4A-1A tennis is a combined classification. Individual sport thresholds allow 16-18 teams at 4A/3A levels.*
+
+---
+
+## Player Participation: The Real Numbers
+
+**Status quo (Individual Tournament Only):**
+
+Each team carries ~12 varsity players, but only a fraction ever compete at state:
+
+| Classification | Total Players | Individual State Draw | Current Rate |
+|----------------|---------------|----------------------|--------------|
+| 6A | ~564 (47 × 12) | 84 (28 singles + 28 doubles teams) | **15%** |
+| 5A | ~360 (30 × 12) | 48 (16 singles + 16 doubles teams) | **13%** |
+| 4A-1A | ~576 (48 × 12) | 60 (20 singles + 20 doubles teams) | **10%** |
+
+*Per gender. Each doubles team = 2 players. State qualifiers often come from the same few schools.*
+
+**With Team Championship Added:**
+
+| Classification | Team Tournament | Individual (unchanged) | New Rate |
+|----------------|-----------------|------------------------|----------|
+| 6A | 192 (16 teams × 12) | 84 | **~45%+** |
+| 5A | 192 (16 teams × 12) | 48 | **~60%+** |
+| 4A-1A | 192 (16 teams × 12) | 60 | **~40%+** |
+
+*Some overlap between team qualifiers and individual qualifiers, but participation roughly triples.*
+
+**The team tournament doesn't replace anything—it ADDS state-level competition for entire rosters.** A 12-player roster where only 2-3 reached state individually now ALL get to compete for a team championship.
 
 ---
 
 ## Roster Viability
 
-**Minimum roster to win a match: 7 players**
+**Minimum roster to win a dual match: 7 players** (3 singles + 2 doubles)
 
-Analysis of 2025 teams shows nearly all programs field competitive rosters:
+Analysis of 2025 teams shows nearly all programs can field competitive rosters:
 
 | Classification | Boys | Girls |
 |----------------|------|-------|
 | 6A | 47 of 47 (100%) | 48 of 48 (100%) |
 | 5A | 30 of 30 (100%) | 30 of 30 (100%) |
 | 4A-1A | 45 of 46 (98%) | 48 of 50 (96%) |
-
----
-
-## Expanded Access: Two Paths to State
-
-The dual format creates **more opportunities**, not fewer:
-
-1. **Team Tournament Path**: Top players from qualifying teams compete together
-2. **Individual Tournament Path**: Top singles/doubles players qualify regardless of team strength
-
-**A player whose team doesn't make the team bracket can still qualify for state individually.** This is more access than the current format, not less. In no other sport can you win a "team" state title with fewer than half a roster—tennis would now reward both individual excellence AND team depth.
 
 ---
 
@@ -111,12 +124,45 @@ This creates an innovative statewide measurement that combines match outcomes (A
 
 ---
 
+## The Current System Doesn't Identify the Best Teams
+
+Analysis of 4 years of OSAA data (2022-2025) reveals a fundamental disconnect between dual match performance and state tournament results. The individual format rewards 1-2 elite players while ignoring team depth.
+
+**Teams with LOSING dual records placing top 8 at state:**
+
+| Year | Team | Dual Record | State Finish |
+|------|------|-------------|--------------|
+| 2024 | Vale (4A Boys) | **0-15-0** | 5th place |
+| 2024 | Sisters (4A Boys) | **0-8-2** | 5th place |
+| 2024 | Southridge (6A Boys) | **5-10-0** | 6th place |
+| 2023 | Caldera (5A Boys) | **0-14-3** | 7th place |
+| 2023 | Milwaukie (5A Boys) | **0-6-1** | 4th place |
+| 2022 | Vale (4A Boys) | **1-11-0** | 6th place |
+
+**Undefeated/dominant teams NOT in state top 8:**
+
+| Year | Team | Dual Record | PI Rank | State Finish |
+|------|------|-------------|---------|--------------|
+| 2024 | South Eugene (6A Boys) | **16-0-1** | #1 | Not top 8 |
+| 2022 | Summit (5A Boys) | **14-0-0** | #1 | Not top 8 |
+| 2022 | Silverton (5A Girls) | **11-0-1** | #1 | Not top 8 |
+| 2023 | Grant (6A Girls) | **13-0-1** | #5 | Not top 8 |
+
+**What this means:** A team can go winless in dual matches all season, but if they have one elite singles player, they "place" at state. Meanwhile, a team that dominates every dual match 7-0 may not appear in state results at all because their depth doesn't translate to individual tournament brackets.
+
+**The team championship fixes this.** It identifies and rewards the programs that field the best *teams*—not just the schools lucky enough to have one exceptional individual.
+
+---
+
 ## Summary
 
-| Metric | Current | Proposed |
-|--------|---------|----------|
-| Team state tournament | None | 16/12/12 team brackets |
-| Individual tournament | Unchanged | Unchanged |
-| Players at state | ~10.7% | ~21%+ |
-| 4A-1A first-round travel | 300+ mile trips common | 44.8% reduction |
+| Metric | Status Quo | With Team Championship |
+|--------|------------|------------------------|
+| Team state tournament | None | 16-team brackets (all classes) |
+| **6A at state (per gender)** | 84 players (15%) | ~250+ players (45%+) |
+| **5A at state (per gender)** | 48 players (13%) | ~220+ players (60%+) |
+| **4A-1A at state (per gender)** | 60 players (10%) | ~230+ players (40%+) |
+| 4A-1A first-round travel | 300+ mile trips | 44.8% reduction via regional matching |
 | Revenue model | Free event | Team matches generate gate |
+
+**Bottom line:** The team tournament triples state-level participation without changing the individual tournament at all.
