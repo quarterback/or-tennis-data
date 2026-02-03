@@ -92,7 +92,22 @@ Wrestling and golf don't have consolation brackets. Exchange tennis consolation 
 
 ## Power Rankings
 
-OSAA's existing volleyball tournament power ranking handles set-based competition. Tennis team tournament could utilize this infrastructure with minor modifications for tennis scoring to determine at-large bids.
+At-large bids would be determined using a **tennis-focused power rating system** that builds on OSAA's existing Adjusted Performance Rating (APR) infrastructure:
+
+**Power Index = (APR × 0.50) + (FWS × 0.50)**
+
+- **APR (Adjusted Performance Rating)**: OSAA's existing playoff rating system already used across sports
+- **FWS (Flight-Weighted Score)**: Tennis-specific innovation that weights flight positions by competitive significance
+
+**Why FWS matters for tennis:**
+
+In tennis, all wins aren't created equal. FWS prevents teams from "stacking" their top positions by rewarding roster depth across all flights:
+- #1 Singles/Doubles: 1.0 weight
+- #2 Singles: 0.75, #2 Doubles: 0.50  
+- #3 positions: 0.25 each
+- #4 positions: 0.10 each
+
+This creates an innovative statewide measurement that combines match outcomes (APR) with roster depth (FWS), ensuring teams can't game the system by concentrating talent while ignoring player development at lower positions.
 
 ---
 
