@@ -821,6 +821,59 @@ def build_rankings(data_dir, master_school_list):
                     stack.extend(beat_graph.get(current, []))
                 return False
 
+            # PHASE 1: In-League H2H enforcement
+            # For same-league teams, if Team A beat Team B H2H, Team A should rank above Team B
+            # This can move teams multiple positions across the entire ranking
+            for league, teams in league_groups.items():
+                if len(teams) < 2:
+                    continue
+
+                # Get all H2H results within this league
+                league_h2h = {}  # {(winner_id, loser_id): (wins, losses)}
+                for school_id, state_rank, stats in teams:
+                    if school_id not in raw_data_cache[year][gender]:
+                        continue
+                    school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
+
+                    for other_id, other_rank, other_stats in teams:
+                        if school_id == other_id:
+                            continue
+                        if other_id not in raw_data_cache[year][gender]:
+                            continue
+
+                        h2h_detail = get_head_to_head_detailed(school_meets, school_id, other_id)
+                        if h2h_detail['wins'] > 0 or h2h_detail['losses'] > 0:
+                            league_h2h[(school_id, other_id)] = (h2h_detail['wins'], h2h_detail['losses'])
+
+                # Find pairs where lower-ranked team beat higher-ranked team H2H
+                # Then bubble them up through the overall ranking
+                for (winner_id, loser_id), (wins, losses) in league_h2h.items():
+                    if wins <= losses:  # Not a clear winner
+                        continue
+
+                    # Find positions of both teams in overall ranking
+                    winner_pos = None
+                    loser_pos = None
+                    for i, (sid, _) in enumerate(ranked):
+                        if sid == winner_id:
+                            winner_pos = i
+                        if sid == loser_id:
+                            loser_pos = i
+
+                    # If winner is ranked lower than loser, bubble them up
+                    if winner_pos is not None and loser_pos is not None and winner_pos > loser_pos:
+                        if not would_create_circle(winner_id, loser_id, h2h_swaps):
+                            # Bubble winner up to just above loser
+                            current_pos = winner_pos
+                            while current_pos > loser_pos:
+                                ranked[current_pos], ranked[current_pos - 1] = ranked[current_pos - 1], ranked[current_pos]
+                                current_pos -= 1
+
+                            if (winner_id, loser_id) not in swapped_pairs:
+                                h2h_swaps.append((winner_id, loser_id, wins, losses, 'League', None))
+                                swapped_pairs.add((winner_id, loser_id))
+
+            # PHASE 2: Standard adjacent-pair swap for statewide PI threshold
             i = 0
             while i < len(ranked) - 1:
                 school1_id, stats1 = ranked[i]
