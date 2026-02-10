@@ -558,9 +558,30 @@ def calculate_fws_per_match(data, school_id):
     - Full match (8 flights): Denominator = 3.95
     - Short match (1S, 2S, 1D, 2D only): Denominator = 3.0 (1.0+0.75+1.0+0.5)
 
-    Returns (normalized_fws, match_count) tuple where normalized_fws is 0-1 range.
+    Returns dict with:
+    - normalized_fws: 0-1 range average
+    - match_count: number of dual matches
+    - fws_pct: percentage of flights won (simple ratio)
+    - flight_breakdown: win rate per flight position
+    - total_flights_won: raw count of flights won
+    - total_flights_played: raw count of flights contested
     """
     dual_match_fws_scores = []
+
+    # Track flight-by-flight stats
+    flight_stats = {
+        'S1': {'wins': 0, 'played': 0},
+        'S2': {'wins': 0, 'played': 0},
+        'S3': {'wins': 0, 'played': 0},
+        'S4': {'wins': 0, 'played': 0},
+        'D1': {'wins': 0, 'played': 0},
+        'D2': {'wins': 0, 'played': 0},
+        'D3': {'wins': 0, 'played': 0},
+        'D4': {'wins': 0, 'played': 0},
+    }
+
+    total_flights_won = 0
+    total_flights_played = 0
 
     for meet in data.get('meets', []):
         if not is_dual_match(meet):
@@ -579,11 +600,17 @@ def calculate_fws_per_match(data, school_id):
                     weight = get_flight_weight(match_type, flight)
                     match_teams = match.get('matchTeams', [])
 
+                    # Flight key for breakdown (S1, S2, D1, D2, etc.)
+                    flight_key = f"{'S' if match_type == 'Singles' else 'D'}{flight}"
+
                     # Check if this flight was actually contested (has teams/result)
                     flight_contested = len(match_teams) >= 2
 
                     if flight_contested:
                         available_weight += weight
+                        total_flights_played += 1
+                        if flight_key in flight_stats:
+                            flight_stats[flight_key]['played'] += 1
 
                         # Check if our school won this flight
                         for team in match_teams:
@@ -592,6 +619,9 @@ def calculate_fws_per_match(data, school_id):
                                 if player.get('schoolId') == school_id:
                                     if team.get('isWinner', False):
                                         points_earned += weight
+                                        total_flights_won += 1
+                                        if flight_key in flight_stats:
+                                            flight_stats[flight_key]['wins'] += 1
                                     break
 
         # Calculate proportionally-weighted FWS for this match
@@ -600,11 +630,29 @@ def calculate_fws_per_match(data, school_id):
             dual_match_fws_scores.append(match_fws)
 
     if not dual_match_fws_scores:
-        return 0.0, 0
+        return {
+            'normalized_fws': 0.0,
+            'match_count': 0,
+            'fws_pct': 0.0,
+            'flight_breakdown': flight_stats,
+            'total_flights_won': 0,
+            'total_flights_played': 0
+        }
 
     # Average of normalized match FWS scores (already in 0-1 range)
     avg_fws = sum(dual_match_fws_scores) / len(dual_match_fws_scores)
-    return avg_fws, len(dual_match_fws_scores)
+
+    # Simple FWS percentage (flights won / flights played)
+    fws_pct = (total_flights_won / total_flights_played * 100) if total_flights_played > 0 else 0.0
+
+    return {
+        'normalized_fws': avg_fws,
+        'match_count': len(dual_match_fws_scores),
+        'fws_pct': fws_pct,
+        'flight_breakdown': flight_stats,
+        'total_flights_won': total_flights_won,
+        'total_flights_played': total_flights_played
+    }
 
 
 def build_rankings(data_dir, master_school_list):
@@ -645,8 +693,8 @@ def build_rankings(data_dir, master_school_list):
             )
 
             if results:
-                # FWS is now proportionally weighted (already 0-1 range)
-                normalized_fws, fws_match_count = calculate_fws_per_match(data, school_id)
+                # FWS calculation returns dict with breakdown data
+                fws_data = calculate_fws_per_match(data, school_id)
 
                 # Calculate simple Win Percentage (WP) - ties count as 0.5 wins
                 total_duals = wins + losses + ties
@@ -663,10 +711,14 @@ def build_rankings(data_dir, master_school_list):
                     'league_wins': league_wins,
                     'league_losses': league_losses,
                     'league_ties': league_ties,
-                    # FWS now uses proportional weighting per match
-                    'fws': normalized_fws * MAX_FWS,  # Scale to 0-3.95 for display
-                    'normalized_fws': normalized_fws,  # 0-1 range for Power Index
-                    'fws_match_count': fws_match_count,
+                    # FWS data
+                    'fws': fws_data['normalized_fws'] * MAX_FWS,  # Scale to 0-3.95 for display
+                    'normalized_fws': fws_data['normalized_fws'],  # 0-1 range for Power Index
+                    'fws_pct': fws_data['fws_pct'],  # Simple percentage (flights won / played)
+                    'fws_match_count': fws_data['match_count'],
+                    'flight_breakdown': fws_data['flight_breakdown'],
+                    'total_flights_won': fws_data['total_flights_won'],
+                    'total_flights_played': fws_data['total_flights_played'],
                 }
 
     # Calculate OWP (Opponent Win Percentage) - based on simple WP
@@ -769,6 +821,71 @@ def build_rankings(data_dir, master_school_list):
                     stack.extend(beat_graph.get(current, []))
                 return False
 
+            # PHASE 1: In-League H2H enforcement
+            # For same-league teams, if Team A beat Team B H2H, Team A should rank above Team B
+            # Only applies when teams are close in league standings (within threshold)
+            # This prevents a last-place team with a fluke win from vaulting up
+            for league, teams in league_groups.items():
+                if len(teams) < 2:
+                    continue
+
+                # Build league rank lookup for this league
+                league_rank_lookup = {}
+                for league_rank, (school_id, state_rank, stats) in enumerate(teams, 1):
+                    league_rank_lookup[school_id] = league_rank
+
+                # Get all H2H results within this league
+                league_h2h = {}  # {(winner_id, loser_id): (wins, losses)}
+                for school_id, state_rank, stats in teams:
+                    if school_id not in raw_data_cache[year][gender]:
+                        continue
+                    school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
+
+                    for other_id, other_rank, other_stats in teams:
+                        if school_id == other_id:
+                            continue
+                        if other_id not in raw_data_cache[year][gender]:
+                            continue
+
+                        h2h_detail = get_head_to_head_detailed(school_meets, school_id, other_id)
+                        if h2h_detail['wins'] > 0 or h2h_detail['losses'] > 0:
+                            league_h2h[(school_id, other_id)] = (h2h_detail['wins'], h2h_detail['losses'])
+
+                # Find pairs where lower-ranked team beat higher-ranked team H2H
+                # Only apply if teams are within threshold league rank spots
+                for (winner_id, loser_id), (wins, losses) in league_h2h.items():
+                    if wins <= losses:  # Not a clear winner
+                        continue
+
+                    # Check league rank proximity - don't let a 9th place team vault over 1st
+                    winner_league_rank = league_rank_lookup.get(winner_id, 0)
+                    loser_league_rank = league_rank_lookup.get(loser_id, 0)
+                    if abs(winner_league_rank - loser_league_rank) > H2H_LEAGUE_RANK_THRESHOLD:
+                        continue  # Too far apart in league standings
+
+                    # Find positions of both teams in overall ranking
+                    winner_pos = None
+                    loser_pos = None
+                    for i, (sid, _) in enumerate(ranked):
+                        if sid == winner_id:
+                            winner_pos = i
+                        if sid == loser_id:
+                            loser_pos = i
+
+                    # If winner is ranked lower than loser, bubble them up
+                    if winner_pos is not None and loser_pos is not None and winner_pos > loser_pos:
+                        if not would_create_circle(winner_id, loser_id, h2h_swaps):
+                            # Bubble winner up to just above loser
+                            current_pos = winner_pos
+                            while current_pos > loser_pos:
+                                ranked[current_pos], ranked[current_pos - 1] = ranked[current_pos - 1], ranked[current_pos]
+                                current_pos -= 1
+
+                            if (winner_id, loser_id) not in swapped_pairs:
+                                h2h_swaps.append((winner_id, loser_id, wins, losses, 'League', None))
+                                swapped_pairs.add((winner_id, loser_id))
+
+            # PHASE 2: Standard adjacent-pair swap for statewide PI threshold
             i = 0
             while i < len(ranked) - 1:
                 school1_id, stats1 = ranked[i]
@@ -911,13 +1028,6 @@ def build_rankings(data_dir, master_school_list):
             for rank, (school_id, stats) in enumerate(ranked, 1):
                 info = school_info.get(school_id, {})
 
-                # Calculate win rate for yaw comparison
-                total_matches = stats['dual_wins'] + stats['dual_losses'] + stats['dual_ties']
-                win_rate = (stats['dual_wins'] + stats['dual_ties'] * 0.5) / max(1, total_matches)
-
-                # Yaw = FWS normalized - win_rate (positive = depth exceeds record)
-                yaw = stats['normalized_fws'] - win_rate
-
                 # Check if this team was boosted by H2H and get the reason
                 h2h_boosted = False
                 h2h_boost_reason = None
@@ -926,6 +1036,15 @@ def build_rankings(data_dir, master_school_list):
                         h2h_boosted = True
                         h2h_boost_reason = swap[4]  # 'Statewide', 'League', or 'Both'
                         break
+
+                # Calculate flight breakdown percentages
+                flight_breakdown = stats.get('flight_breakdown', {})
+                flight_pcts = {}
+                for flight, data in flight_breakdown.items():
+                    if data['played'] > 0:
+                        flight_pcts[flight] = round(data['wins'] / data['played'] * 100, 1)
+                    else:
+                        flight_pcts[flight] = None
 
                 output.append({
                     'year': int(year),
@@ -945,8 +1064,9 @@ def build_rankings(data_dir, master_school_list):
                     'apr': round(stats['apr'], 4),    # RPI: (WP*0.25)+(OWP*0.50)+(OOWP*0.25)
                     'fws': round(stats['fws'], 4),    # Proportional FWS (0-3.95 scale)
                     'normalized_fws': round(stats['normalized_fws'], 4),  # FWS normalized (0-1)
+                    'fws_pct': round(stats.get('fws_pct', 0), 1),  # Simple percentage (flights won / played)
+                    'fws_plus': 100,  # Will be calculated below (league-adjusted, 100 = average)
                     'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(Normalized_FWS*0.50)
-                    'yaw': round(yaw, 4),             # Depth vs Record indicator
                     'matches_played': stats['matches_played'],
                     'opponents_count': len(stats['opponents']),
                     'record': f"{stats['dual_wins']}-{stats['dual_losses']}-{stats['dual_ties']}",
@@ -960,9 +1080,12 @@ def build_rankings(data_dir, master_school_list):
                     'h2h_boosted': h2h_boosted,       # True if rank improved via H2H tiebreaker
                     'h2h_boost_reason': h2h_boost_reason,  # 'Statewide', 'League', 'Both', or None
                     'h2h_nearby': h2h_nearby.get(school_id, []),  # H2H records vs nearby teams
+                    'flight_breakdown': flight_pcts,  # Win % per flight position
+                    'total_flights_won': stats.get('total_flights_won', 0),
+                    'total_flights_played': stats.get('total_flights_played', 0),
                 })
 
-    # Calculate class_rank (rank within classification) for each year/gender
+    # Calculate class_rank and FWS+ (league-adjusted) for each year/gender/classification
     class_groups = defaultdict(list)
     for entry in output:
         key = (entry['year'], entry['gender'], entry['classification'])
@@ -971,8 +1094,19 @@ def build_rankings(data_dir, master_school_list):
     for key, entries in class_groups.items():
         # Sort by state rank (already sorted by Power Index)
         entries.sort(key=lambda x: x['rank'])
+
+        # Calculate classification average FWS%
+        fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
+        class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
+
         for class_rank, entry in enumerate(entries, 1):
             entry['class_rank'] = class_rank
+            # FWS+ = (team FWS% / class avg FWS%) * 100
+            # 100 = average, >100 = better than average, <100 = worse
+            if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
+                entry['fws_plus'] = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
+            else:
+                entry['fws_plus'] = 100
 
     return output, school_data, raw_data_cache, school_info
 
@@ -1119,6 +1253,21 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .h2h-tooltip .h2h-content {{ visibility: hidden; background: #333; color: #fff; padding: 8px 12px; border-radius: 6px; position: absolute; z-index: 1000; bottom: 125%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 11px; }}
         .h2h-tooltip:hover .h2h-content {{ visibility: visible; }}
         .formula-footer {{ margin-top: 12px; padding: 10px 15px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #198754; }}
+        /* Flight breakdown expandable row */
+        .flight-detail-row {{ background: #f8f9fa; }}
+        .flight-detail-row td {{ padding: 12px 16px !important; }}
+        .flight-breakdown {{ display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }}
+        .flight-stat {{ display: inline-flex; flex-direction: column; align-items: center; padding: 6px 10px; background: #fff; border-radius: 4px; border: 1px solid #dee2e6; min-width: 50px; }}
+        .flight-stat-label {{ font-size: 10px; font-weight: 600; color: #6c757d; text-transform: uppercase; }}
+        .flight-stat-value {{ font-size: 14px; font-weight: 700; }}
+        .flight-stat-value.high {{ color: #198754; }}
+        .flight-stat-value.mid {{ color: #6c757d; }}
+        .flight-stat-value.low {{ color: #dc3545; }}
+        .flight-divider {{ width: 1px; height: 30px; background: #dee2e6; margin: 0 4px; }}
+        .expand-icon {{ cursor: pointer; color: #6c757d; margin-right: 4px; transition: transform 0.2s; }}
+        .expand-icon.open {{ transform: rotate(90deg); }}
+        #rankingsTable tbody tr {{ cursor: pointer; }}
+        #rankingsTable tbody tr:hover {{ background: rgba(13,110,253,0.05); }}
         .sort-toggle {{ display: inline-flex; gap: 4px; }}
         .sort-toggle .btn {{ padding: 2px 8px; font-size: 11px; }}
         .sort-toggle .btn.active {{ background: #198754; color: #fff; border-color: #198754; }}
@@ -1325,7 +1474,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>League Rec</th>
                         <th>Power Index</th>
                         <th>APR</th>
-                        <th>FWS</th>
+                        <th>FWS%</th>
                         <th>SOS</th>
                     </tr>
                 </thead>
@@ -1333,8 +1482,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             </table>
             <div class="formula-footer">
                 <small class="text-muted">
-                    <strong>Power Index</strong> is a 50/50 blend of APR and Flight-Weighted Score (normalized to a common scale).
-                    FWS uses proportional weighting based on flights actually contested.
+                    <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score.
+                    <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
                 </small>
             </div>
         </div>
@@ -1652,10 +1801,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }},
                     {{
-                        data: 'fws',
-                        render: (d, t) => {{
+                        data: 'fws_pct',
+                        render: (d, t, row) => {{
                             if (t !== 'display') return d;
-                            return d.toFixed(2);
+                            const fwsPlus = row.fws_plus || 100;
+                            let cls = '';
+                            if (fwsPlus >= 115) cls = 'apr-high';
+                            else if (fwsPlus < 85) cls = 'apr-low';
+                            const tooltip = `FWS+ ${{fwsPlus}} (100 = avg)`;
+                            return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(1)}}%</span>`;
                         }}
                     }},
                     {{
@@ -1712,6 +1866,71 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
             $('#yearFilter').val('{years[0]}');
             table.draw();
+
+            // Expandable row for flight breakdown
+            function formatFlightBreakdown(d) {{
+                const fb = d.flight_breakdown || {{}};
+                const flights = ['S1', 'S2', 'S3', 'S4', 'D1', 'D2', 'D3', 'D4'];
+
+                let html = '<div class="flight-breakdown">';
+                html += '<span style="font-weight:600;color:#6c757d;margin-right:8px;">Flight Win %:</span>';
+
+                // Singles
+                html += '<div class="flight-breakdown">';
+                ['S1', 'S2', 'S3', 'S4'].forEach(f => {{
+                    const val = fb[f];
+                    let cls = 'mid';
+                    if (val !== null && val !== undefined) {{
+                        if (val >= 70) cls = 'high';
+                        else if (val < 40) cls = 'low';
+                        html += `<div class="flight-stat"><span class="flight-stat-label">${{f}}</span><span class="flight-stat-value ${{cls}}">${{val.toFixed(0)}}%</span></div>`;
+                    }} else {{
+                        html += `<div class="flight-stat"><span class="flight-stat-label">${{f}}</span><span class="flight-stat-value mid">—</span></div>`;
+                    }}
+                }});
+                html += '</div>';
+
+                html += '<div class="flight-divider"></div>';
+
+                // Doubles
+                html += '<div class="flight-breakdown">';
+                ['D1', 'D2', 'D3', 'D4'].forEach(f => {{
+                    const val = fb[f];
+                    let cls = 'mid';
+                    if (val !== null && val !== undefined) {{
+                        if (val >= 70) cls = 'high';
+                        else if (val < 40) cls = 'low';
+                        html += `<div class="flight-stat"><span class="flight-stat-label">${{f}}</span><span class="flight-stat-value ${{cls}}">${{val.toFixed(0)}}%</span></div>`;
+                    }} else {{
+                        html += `<div class="flight-stat"><span class="flight-stat-label">${{f}}</span><span class="flight-stat-value mid">—</span></div>`;
+                    }}
+                }});
+                html += '</div>';
+
+                // Add totals
+                html += '<div class="flight-divider"></div>';
+                html += `<div class="flight-stat"><span class="flight-stat-label">Total</span><span class="flight-stat-value">${{d.total_flights_won || 0}}/${{d.total_flights_played || 0}}</span></div>`;
+                html += `<div class="flight-stat"><span class="flight-stat-label">FWS+</span><span class="flight-stat-value ${{d.fws_plus >= 115 ? 'high' : d.fws_plus < 85 ? 'low' : 'mid'}}">${{d.fws_plus || 100}}</span></div>`;
+
+                html += '</div>';
+                return html;
+            }}
+
+            $('#rankingsTable tbody').on('click', 'tr', function() {{
+                const tr = $(this);
+                const row = table.row(tr);
+
+                if (tr.hasClass('flight-detail-row')) return;
+
+                if (row.child.isShown()) {{
+                    row.child.hide();
+                    tr.removeClass('shown');
+                }} else {{
+                    row.child(formatFlightBreakdown(row.data())).show();
+                    row.child().addClass('flight-detail-row');
+                    tr.addClass('shown');
+                }}
+            }});
 
             $('#loadTeamsBtn').on('click', loadTeamsForSelection);
             $('#generateFieldBtn').on('click', generatePlayoffFieldFromSelection);
