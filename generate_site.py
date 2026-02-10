@@ -823,10 +823,16 @@ def build_rankings(data_dir, master_school_list):
 
             # PHASE 1: In-League H2H enforcement
             # For same-league teams, if Team A beat Team B H2H, Team A should rank above Team B
-            # This can move teams multiple positions across the entire ranking
+            # Only applies when teams are close in league standings (within threshold)
+            # This prevents a last-place team with a fluke win from vaulting up
             for league, teams in league_groups.items():
                 if len(teams) < 2:
                     continue
+
+                # Build league rank lookup for this league
+                league_rank_lookup = {}
+                for league_rank, (school_id, state_rank, stats) in enumerate(teams, 1):
+                    league_rank_lookup[school_id] = league_rank
 
                 # Get all H2H results within this league
                 league_h2h = {}  # {(winner_id, loser_id): (wins, losses)}
@@ -846,10 +852,16 @@ def build_rankings(data_dir, master_school_list):
                             league_h2h[(school_id, other_id)] = (h2h_detail['wins'], h2h_detail['losses'])
 
                 # Find pairs where lower-ranked team beat higher-ranked team H2H
-                # Then bubble them up through the overall ranking
+                # Only apply if teams are within threshold league rank spots
                 for (winner_id, loser_id), (wins, losses) in league_h2h.items():
                     if wins <= losses:  # Not a clear winner
                         continue
+
+                    # Check league rank proximity - don't let a 9th place team vault over 1st
+                    winner_league_rank = league_rank_lookup.get(winner_id, 0)
+                    loser_league_rank = league_rank_lookup.get(loser_id, 0)
+                    if abs(winner_league_rank - loser_league_rank) > H2H_LEAGUE_RANK_THRESHOLD:
+                        continue  # Too far apart in league standings
 
                     # Find positions of both teams in overall ranking
                     winner_pos = None
