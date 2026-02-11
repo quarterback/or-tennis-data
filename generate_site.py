@@ -2510,6 +2510,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         targetMatchup.team2 = temp;
                         targetMatchup.distance = calcDistance(targetMatchup.team1.coords, targetMatchup.team2?.coords);
                         targetMatchup.swapped = true;
+                        targetMatchup.swapMove = move;
+                        targetMatchup.swapDirection = 'up';  // Opposite direction
 
                         resolved = true;
                         matchup.conflict = false;
@@ -2544,6 +2546,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             targetMatchup.team2 = temp;
                             targetMatchup.distance = calcDistance(targetMatchup.team1.coords, targetMatchup.team2?.coords);
                             targetMatchup.swapped = true;
+                            targetMatchup.swapMove = move;
+                            targetMatchup.swapDirection = 'down';  // Opposite direction
 
                             resolved = true;
                             matchup.conflict = false;
