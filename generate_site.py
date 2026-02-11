@@ -2704,6 +2704,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
             html += '</div>';
 
+            html += `
+                <button id="copyFieldBtn" class="btn btn-sm btn-outline-primary mt-2 mb-2">
+                    📋 Copy Qualifying Field
+                </button>
+            `;
+
             const autoCount = field.filter(t => t.qualifyType === 'auto').length;
             const atLargeCount = field.filter(t => t.qualifyType === 'atlarge').length;
             const movedCount = adjustedSeeds.length;
@@ -2871,7 +2877,173 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
             html += '</div>';
 
+            html += `
+                <button id="copyMatchupsBtn" class="btn btn-sm btn-outline-primary mt-2 mb-2">
+                    📋 Copy First Round Matchups
+                </button>
+            `;
+
+            // Add "First 4 Out" section - teams that just missed the playoff field
+            const fieldSchoolIds = new Set(field.map(t => t.school_id));
+            const firstFourOut = currentPlayoffTeams
+                .filter(t => !fieldSchoolIds.has(t.school_id))
+                .sort((a, b) => b.power_index - a.power_index)
+                .slice(0, 4);
+
+            if (firstFourOut.length > 0) {{
+                html += `
+                    <div class="section-title mt-4">First 4 Out</div>
+                    <div class="bg-light p-3 rounded shadow-sm">
+                        <small class="text-muted d-block mb-2">These teams just missed the playoff field:</small>
+                        <div class="field-list">
+                `;
+
+                firstFourOut.forEach((team, idx) => {{
+                    html += `
+                        <div class="field-team" style="opacity: 0.75;">
+                            <span class="field-seed text-muted">-</span>
+                            <span class="field-name">${{team.school_name}}</span>
+                            <span class="badge badge-secondary" style="background-color: #6c757d;">MISSED</span>
+                            <span class="field-league">${{team.league || '-'}}</span>
+                            <span class="field-record">${{team.record}}</span>
+                            <span class="field-apr">${{team.power_index.toFixed(4)}}</span>
+                        </div>
+                    `;
+                }});
+
+                html += `
+                        </div>
+                        <button id="copyFirstFourOutBtn" class="btn btn-sm btn-outline-secondary mt-2">
+                            📋 Copy First 4 Out
+                        </button>
+                    </div>
+                `;
+            }}
+
             $('#playoffResults').html(html);
+
+            // Attach copy button event handlers (using event delegation since buttons are dynamically created)
+            setTimeout(() => {{
+                $('#copyFieldBtn').off('click').on('click', copyPlayoffField);
+                $('#copyMatchupsBtn').off('click').on('click', copyMatchups);
+                $('#copyFirstFourOutBtn').off('click').on('click', copyFirstFourOut);
+            }}, 100);
+        }}
+
+        // Helper function to copy text to clipboard and show feedback
+        function copyToClipboard(text, buttonId) {{
+            navigator.clipboard.writeText(text).then(() => {{
+                const btn = $(`#${{buttonId}}`);
+                const originalText = btn.html();
+                btn.html('✅ Copied!');
+                setTimeout(() => {{
+                    btn.html(originalText);
+                }}, 2000);
+            }}).catch(err => {{
+                console.error('Failed to copy:', err);
+                alert('Failed to copy to clipboard');
+            }});
+        }}
+
+        // Copy playoff field to clipboard
+        function copyPlayoffField() {{
+            const lines = [];
+            lines.push('PLAYOFF QUALIFYING FIELD');
+            lines.push('='.repeat(80));
+            lines.push('');
+            lines.push(padRight('Seed', 6) + padRight('Team', 30) + padRight('Type', 12) + padRight('League', 20) + padRight('Record', 10) + 'Power Index');
+            lines.push('-'.repeat(80));
+
+            $('.field-list .field-team').each(function() {{
+                const seed = $(this).find('.field-seed').text().trim();
+                const name = $(this).find('.field-name').text().trim();
+                const badges = $(this).find('.badge').first().text().trim();
+                const league = $(this).find('.field-league').text().trim();
+                const record = $(this).find('.field-record').text().trim();
+                const apr = $(this).find('.field-apr').text().trim();
+
+                // Only include teams in the qualifying field (not First 4 Out)
+                if (seed !== '-') {{
+                    lines.push(
+                        padRight(seed, 6) +
+                        padRight(name, 30) +
+                        padRight(badges, 12) +
+                        padRight(league, 20) +
+                        padRight(record, 10) +
+                        apr
+                    );
+                }}
+            }});
+
+            lines.push('');
+            copyToClipboard(lines.join('\\n'), 'copyFieldBtn');
+        }}
+
+        // Copy first round matchups to clipboard
+        function copyMatchups() {{
+            const lines = [];
+            lines.push('FIRST ROUND MATCHUPS');
+            lines.push('='.repeat(80));
+            lines.push('');
+
+            $('.matchup-row').each(function() {{
+                const seeds = $(this).find('.matchup-seed');
+                const teams = $(this).find('strong');
+                const seed1 = seeds.eq(0).text().trim();
+                const seed2 = seeds.eq(1).text().trim();
+                const team1 = teams.eq(0).text().trim();
+                const team2 = teams.eq(1).text().trim();
+
+                // Extract distance from the text
+                const distanceMatch = $(this).text().match(/\\((\\d+|~far|\\?) mi\\)/);
+                const distance = distanceMatch ? distanceMatch[1] + ' mi' : '? mi';
+
+                // Check for badges/warnings
+                const warnings = [];
+                if ($(this).find('.bg-warning').length > 0) warnings.push('⚠️ Same League');
+                if ($(this).find('.bg-danger').length > 0) warnings.push('⚠️ Unresolved');
+
+                const warningText = warnings.length > 0 ? ' [' + warnings.join(', ') + ']' : '';
+
+                lines.push(`${{seed1}} ${{team1}} vs ${{seed2}} ${{team2}} (${{distance}})${{warningText}}`);
+            }});
+
+            lines.push('');
+            copyToClipboard(lines.join('\\n'), 'copyMatchupsBtn');
+        }}
+
+        // Copy First 4 Out to clipboard
+        function copyFirstFourOut() {{
+            const lines = [];
+            lines.push('FIRST 4 OUT (Teams That Just Missed Playoffs)');
+            lines.push('='.repeat(80));
+            lines.push('');
+            lines.push(padRight('Team', 30) + padRight('League', 20) + padRight('Record', 10) + 'Power Index');
+            lines.push('-'.repeat(80));
+
+            // Find the First 4 Out section specifically
+            const firstFourSection = $('.section-title:contains("First 4 Out")').next('.bg-light');
+            firstFourSection.find('.field-team').each(function() {{
+                const name = $(this).find('.field-name').text().trim();
+                const league = $(this).find('.field-league').text().trim();
+                const record = $(this).find('.field-record').text().trim();
+                const apr = $(this).find('.field-apr').text().trim();
+
+                lines.push(
+                    padRight(name, 30) +
+                    padRight(league, 20) +
+                    padRight(record, 10) +
+                    apr
+                );
+            }});
+
+            lines.push('');
+            copyToClipboard(lines.join('\\n'), 'copyFirstFourOutBtn');
+        }}
+
+        // Helper function to pad strings for alignment
+        function padRight(str, length) {{
+            return (str + ' '.repeat(length)).substring(0, length);
         }}
 
         function refreshAnalysisTable() {{
