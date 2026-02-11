@@ -371,11 +371,17 @@
                     <select id="bracketMode" class="form-select form-select-sm">
                         <option value="pure">Pure Seeding (1v16, 2v15...)</option>
                         <option value="regional">OSAA Regional (Travel Optimized)</option>
+                        <option value="osaa">OSAA Bracketing (3-Move Same-League Avoidance)</option>
                     </select>
                 </div>
                 <div id="regionalInfo" class="form-group" style="display:none;">
                     <small class="text-muted">
                         <strong>Regional Mode:</strong> Seeds 1-4 protected. Seeds 5-12 optimized for proximity (no same-district matchups).
+                    </small>
+                </div>
+                <div id="osaaInfo" class="form-group" style="display:none;">
+                    <small class="text-muted">
+                        <strong>OSAA Bracketing:</strong> Follows official OSAA rules. Attempts up to 3 visitor swaps (downward preferred) to avoid same-league first-round matchups. Never removes home games.
                     </small>
                 </div>
             </div>
@@ -785,10 +791,16 @@
 
             // Bracket mode toggle handler
             $('#bracketMode').on('change', function() {
-                if ($(this).val() === 'regional') {
+                const mode = $(this).val();
+                if (mode === 'regional') {
                     $('#regionalInfo').show();
+                    $('#osaaInfo').hide();
+                } else if (mode === 'osaa') {
+                    $('#regionalInfo').hide();
+                    $('#osaaInfo').show();
                 } else {
                     $('#regionalInfo').hide();
+                    $('#osaaInfo').hide();
                 }
                 // Regenerate if field already exists
                 if (currentPlayoffTeams.length > 0) {
@@ -1250,6 +1262,153 @@
             return matchups;
         }
 
+        // Generate OSAA bracketing matchups with 3-move same-league avoidance
+        // Implements official OSAA rules for avoiding same-league first-round matchups
+        function generateOSAAMatchups(field) {
+            const bracketSize = field.length;
+            let matchups = [];
+
+            // Start with pure seeding matchups
+            if (bracketSize === 16) {
+                // Initial matchups: 1v16, 2v15, 3v14, ..., 8v9
+                const hosts = field.slice(0, 8);
+                const visitors = field.slice(8, 16);
+
+                for (let i = 0; i < hosts.length; i++) {
+                    matchups.push({
+                        seed1: i + 1,
+                        team1: hosts[i],
+                        seed2: 16 - i,
+                        team2: visitors[7 - i],
+                        distance: calcDistance(hosts[i].coords, visitors[7 - i]?.coords)
+                    });
+                }
+            } else if (bracketSize === 12) {
+                // 12-team: seeds 1-4 have byes, 5v12, 6v11, 7v10, 8v9
+                const hosts = field.slice(4, 8);  // Seeds 5-8
+                const visitors = field.slice(8, 12);  // Seeds 9-12
+
+                for (let i = 0; i < hosts.length; i++) {
+                    matchups.push({
+                        seed1: i + 5,
+                        team1: hosts[i],
+                        seed2: 12 - i,
+                        team2: visitors[3 - i],
+                        distance: calcDistance(hosts[i].coords, visitors[3 - i]?.coords)
+                    });
+                }
+            } else if (bracketSize === 8) {
+                // 8-team: 1v8, 2v7, 3v6, 4v5
+                const hosts = field.slice(0, 4);  // Seeds 1-4
+                const visitors = field.slice(4, 8);  // Seeds 5-8
+
+                for (let i = 0; i < hosts.length; i++) {
+                    matchups.push({
+                        seed1: i + 1,
+                        team1: hosts[i],
+                        seed2: 8 - i,
+                        team2: visitors[3 - i],
+                        distance: calcDistance(hosts[i].coords, visitors[3 - i]?.coords)
+                    });
+                }
+            }
+
+            // Apply OSAA 3-move rule to resolve same-league conflicts
+            // Rule: Always move the lower ranked team (visitor), never take away home games
+            const visitorStartSeed = bracketSize === 12 ? 9 : (bracketSize === 16 ? 9 : 5);
+            const visitorEndSeed = bracketSize;
+
+            for (let i = 0; i < matchups.length; i++) {
+                const matchup = matchups[i];
+
+                // Check if there's a same-league conflict
+                if (!sameLeague(matchup.team1, matchup.team2)) {
+                    matchup.conflict = false;
+                    continue;
+                }
+
+                // Try to resolve conflict with up to 3 moves
+                let resolved = false;
+                const originalVisitorSeed = matchup.seed2;
+
+                // Try moving downward first (to lower seeds)
+                for (let move = 1; move <= 3 && !resolved; move++) {
+                    const targetSeed = originalVisitorSeed + move;
+
+                    // Check if target seed is within visitor range
+                    if (targetSeed > visitorEndSeed) break;
+
+                    // Find the matchup that has this target seed as visitor
+                    const targetMatchupIdx = matchups.findIndex(m => m.seed2 === targetSeed);
+                    if (targetMatchupIdx === -1) continue;
+
+                    const targetMatchup = matchups[targetMatchupIdx];
+
+                    // Check if swapping would resolve current conflict without creating new one
+                    if (!sameLeague(matchup.team1, targetMatchup.team2) &&
+                        !sameLeague(targetMatchup.team1, matchup.team2)) {
+                        // Perform the swap
+                        const temp = matchup.team2;
+                        matchup.team2 = targetMatchup.team2;
+                        matchup.distance = calcDistance(matchup.team1.coords, matchup.team2?.coords);
+                        matchup.swapped = true;
+                        matchup.swapMove = move;
+                        matchup.swapDirection = 'down';
+
+                        targetMatchup.team2 = temp;
+                        targetMatchup.distance = calcDistance(targetMatchup.team1.coords, targetMatchup.team2?.coords);
+                        targetMatchup.swapped = true;
+
+                        resolved = true;
+                        matchup.conflict = false;
+                    }
+                }
+
+                // If not resolved by moving down, try moving up
+                if (!resolved) {
+                    for (let move = 1; move <= 3 && !resolved; move++) {
+                        const targetSeed = originalVisitorSeed - move;
+
+                        // Check if target seed is within visitor range
+                        if (targetSeed < visitorStartSeed) break;
+
+                        // Find the matchup that has this target seed as visitor
+                        const targetMatchupIdx = matchups.findIndex(m => m.seed2 === targetSeed);
+                        if (targetMatchupIdx === -1) continue;
+
+                        const targetMatchup = matchups[targetMatchupIdx];
+
+                        // Check if swapping would resolve current conflict without creating new one
+                        if (!sameLeague(matchup.team1, targetMatchup.team2) &&
+                            !sameLeague(targetMatchup.team1, matchup.team2)) {
+                            // Perform the swap
+                            const temp = matchup.team2;
+                            matchup.team2 = targetMatchup.team2;
+                            matchup.distance = calcDistance(matchup.team1.coords, matchup.team2?.coords);
+                            matchup.swapped = true;
+                            matchup.swapMove = move;
+                            matchup.swapDirection = 'up';
+
+                            targetMatchup.team2 = temp;
+                            targetMatchup.distance = calcDistance(targetMatchup.team1.coords, targetMatchup.team2?.coords);
+                            targetMatchup.swapped = true;
+
+                            resolved = true;
+                            matchup.conflict = false;
+                        }
+                    }
+                }
+
+                // If still not resolved after 3 moves, mark as conflict but leave as is
+                if (!resolved) {
+                    matchup.conflict = true;
+                    matchup.unresolvable = true;
+                }
+            }
+
+            return matchups;
+        }
+
         function generatePlayoffFieldFromSelection() {
             const bracketSize = parseInt($('#bracketSize').val());
             const bracketMode = $('#bracketMode').val();
@@ -1321,9 +1480,11 @@
             // Generate matchups based on bracket mode
             const pureMatchups = generatePureMatchups(field);
             const regionalMatchups = bracketMode === 'regional' ? generateRegionalMatchups(field) : pureMatchups;
+            const osaaMatchups = bracketMode === 'osaa' ? generateOSAAMatchups(field) : pureMatchups;
 
             const pureMileage = pureMatchups.reduce((sum, m) => sum + (m.distance || 0), 0);
             const regionalMileage = regionalMatchups.reduce((sum, m) => sum + (m.distance || 0), 0);
+            const osaaMileage = osaaMatchups.reduce((sum, m) => sum + (m.distance || 0), 0);
             const mileageSaved = pureMileage - regionalMileage;
 
             html += `
@@ -1357,8 +1518,40 @@
                 }
             }
 
+            if (bracketMode === 'osaa') {
+                // Show OSAA bracketing statistics
+                const swappedCount = osaaMatchups.filter(m => m.swapped).length;
+                const unresolvedCount = osaaMatchups.filter(m => m.unresolvable).length;
+                const downMoves = osaaMatchups.filter(m => m.swapDirection === 'down').length;
+                const upMoves = osaaMatchups.filter(m => m.swapDirection === 'up').length;
+
+                if (unresolvedCount > 0) {
+                    html += `
+                        <div class="alert alert-warning mb-3">
+                            <strong>⚠️ OSAA Bracketing:</strong> ${unresolvedCount} same-league matchup(s) could not be resolved after 3 swap attempts
+                            <br><small>Resolved: ${swappedCount} conflicts | Down moves: ${downMoves} | Up moves: ${upMoves}</small>
+                        </div>
+                    `;
+                } else if (swappedCount > 0) {
+                    html += `
+                        <div class="alert alert-success mb-3">
+                            <strong>✓ OSAA Bracketing:</strong> All same-league conflicts resolved
+                            <br><small>Swaps made: ${swappedCount} | Down moves: ${downMoves} | Up moves: ${upMoves}</small>
+                        </div>
+                    `;
+                } else {
+                    html += `
+                        <div class="alert alert-info mb-3">
+                            <strong>✓ OSAA Bracketing:</strong> No same-league conflicts detected
+                            <br><small>Pure seeding maintained</small>
+                        </div>
+                    `;
+                }
+            }
+
             // Define displayMatchups early so we can use it in the bye team section
-            const displayMatchups = bracketMode === 'regional' ? regionalMatchups : pureMatchups;
+            const displayMatchups = bracketMode === 'regional' ? regionalMatchups :
+                                   (bracketMode === 'osaa' ? osaaMatchups : pureMatchups);
 
             if (bracketSize === 12) {
                 // Show bye teams and their potential QF opponents
@@ -1407,8 +1600,10 @@
             `;
 
             displayMatchups.forEach(m => {
-                const conflictBadge = m.conflict ? '<span class="badge bg-warning text-dark ms-1">⚠️ Same District</span>' : '';
+                const conflictBadge = m.conflict ? '<span class="badge bg-warning text-dark ms-1">⚠️ Same League</span>' : '';
                 const optimizedBadge = m.optimized ? '<span class="badge bg-info text-white ms-1">📍 Optimized</span>' : '';
+                const swappedBadge = m.swapped && !m.unresolvable ? `<span class="badge bg-success text-white ms-1">🔄 Swapped (${m.swapDirection})</span>` : '';
+                const unresolvedBadge = m.unresolvable ? '<span class="badge bg-danger text-white ms-1">⚠️ Unresolved</span>' : '';
                 const tierClass = m.tier === 'flex' ? 'border-start border-info border-3 ps-2' : '';
 
                 html += `
@@ -1419,7 +1614,7 @@
                         <span class="matchup-seed">#${m.seed2}</span>
                         <strong>${m.team2?.school_name || 'TBD'}</strong>
                         <span class="text-muted ms-2">(${m.distance === 999 ? '~far' : (m.distance !== undefined ? m.distance : '?')} mi)</span>
-                        ${conflictBadge}${optimizedBadge}
+                        ${conflictBadge}${optimizedBadge}${swappedBadge}${unresolvedBadge}
                     </div>
                 `;
             });
