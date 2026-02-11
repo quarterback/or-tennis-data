@@ -2585,8 +2585,77 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 .slice(0, Math.max(0, remainingSpots))
                 .map(t => ({{ ...t, qualifyType: 'atlarge' }}));
 
-            // Combine and sort by Power Index for seeding
-            const field = [...selectedAutoBids, ...atLargeTeams].sort((a, b) => b.power_index - a.power_index);
+            // Combine and sort by Power Index for initial seeding
+            let field = [...selectedAutoBids, ...atLargeTeams].sort((a, b) => b.power_index - a.power_index);
+
+            // OSAA Rule: At-large teams cannot be seeded higher than their league champion
+            // Find all leagues with champions and ensure at-large teams from those leagues are ranked below their champion
+            const leagueChampions = new Map(); // league -> champion's index in field
+            field.forEach((team, idx) => {{
+                if (team.qualifyType === 'auto' && team.league) {{
+                    if (!leagueChampions.has(team.league) || idx < leagueChampions.get(team.league)) {{
+                        leagueChampions.set(team.league, idx);
+                    }}
+                }}
+            }});
+
+            // Move at-large teams below their league champion if needed
+            let adjustmentsMade = true;
+            while (adjustmentsMade) {{
+                adjustmentsMade = false;
+                for (let i = 0; i < field.length; i++) {{
+                    const team = field[i];
+                    if (team.qualifyType === 'atlarge' && team.league && leagueChampions.has(team.league)) {{
+                        const champIdx = leagueChampions.get(team.league);
+                        if (i < champIdx) {{
+                            // At-large is ranked higher than their league champion - swap them
+                            const temp = field[i];
+                            field[i] = field[champIdx];
+                            field[champIdx] = temp;
+                            leagueChampions.set(team.league, i); // Update champion's new position
+                            adjustmentsMade = true;
+                            break; // Restart the loop to check again
+                        }}
+                    }}
+                }}
+            }}
+
+            // OSAA Rule: League champions get guaranteed home games
+            // Home game positions: 16-team (1-8), 12-team (5-8 host, 1-4 bye), 8-team (1-4)
+            const lastHomeGameSeed = bracketSize === 16 ? 8 : (bracketSize === 12 ? 8 : 4);
+
+            // Find league champions in visitor positions and move them up
+            const adjustedSeeds = [];
+            for (let i = 0; i < field.length; i++) {{
+                const team = field[i];
+                const currentSeed = i + 1;
+
+                if (team.qualifyType === 'auto' && currentSeed > lastHomeGameSeed) {{
+                    // League champion is in a visitor position, needs to be moved up
+                    // Move them to the last home game position
+                    const targetIdx = lastHomeGameSeed - 1;
+
+                    // Remove from current position
+                    field.splice(i, 1);
+                    // Insert at target position
+                    field.splice(targetIdx, 0, team);
+
+                    adjustedSeeds.push({{
+                        team: team.school_name,
+                        from: currentSeed,
+                        to: targetIdx + 1
+                    }});
+
+                    // Restart loop to handle cascading adjustments
+                    i = -1;
+                }}
+            }}
+
+            // Add APR (Adjusted Playoff Ranking) to each team after all adjustments
+            field.forEach((team, idx) => {{
+                team.apr_seed = idx + 1;
+                team.moved_for_home = adjustedSeeds.find(a => a.team === team.school_name) !== undefined;
+            }});
 
             let html = `
                 <div class="section-title">Qualifying Field (${{field.length}} Teams)</div>
@@ -2600,6 +2669,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             field.forEach((team, idx) => {{
                 const seed = idx + 1;
                 const hasBye = bracketSize === 12 && seed <= 4;
+                const movedForHome = team.moved_for_home ? '<span class="badge bg-primary text-white ms-1">🏠 Home Guarantee</span>' : '';
                 html += `
                     <div class="field-team">
                         <span class="field-seed">${{seed}}</span>
@@ -2608,6 +2678,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             ${{team.qualifyType === 'auto' ? 'AUTO' : 'AT-LARGE'}}
                         </span>
                         ${{hasBye ? '<span class="badge badge-bye ms-1">BYE</span>' : ''}}
+                        ${{movedForHome}}
                         <span class="field-league">${{team.league || '-'}}</span>
                         <span class="field-record">${{team.record}}</span>
                         <span class="field-apr">${{team.power_index.toFixed(4)}}</span>
@@ -2619,6 +2690,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
 
             const autoCount = field.filter(t => t.qualifyType === 'auto').length;
             const atLargeCount = field.filter(t => t.qualifyType === 'atlarge').length;
+            const movedCount = adjustedSeeds.length;
             html += `
                 <div class="section-title mt-3">Summary</div>
                 <div class="bg-white p-3 rounded shadow-sm">
@@ -2626,8 +2698,18 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <span class="text-success"><strong>${{autoCount}}</strong> auto-bids (selected)</span> &bull;
                     <span style="color:#6f42c1;"><strong>${{atLargeCount}}</strong> at-large (by Power Index)</span>
                     ${{bracketSize === 12 ? ' &bull; Top 4 seeds receive first-round byes' : ''}}
+                    ${{movedCount > 0 ? ` &bull; <span class="text-primary"><strong>${{movedCount}}</strong> league champion(s) moved up for home game guarantee</span>` : ''}}
                 </div>
             `;
+
+            if (adjustedSeeds.length > 0) {{
+                html += `
+                    <div class="alert alert-info mt-2">
+                        <strong>🏠 OSAA Home Game Adjustments:</strong><br>
+                        ${{adjustedSeeds.map(a => `#${{a.from}} → #${{a.to}}: ${{a.team}}`).join('<br>')}}
+                    </div>
+                `;
+            }}
 
             // Generate matchups based on bracket mode
             const pureMatchups = generatePureMatchups(field);
