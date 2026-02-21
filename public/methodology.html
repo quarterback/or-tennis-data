@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Power Index Methodology - Oregon HS Tennis Rankings</title>
+
+    <!-- Meta Description -->
+    <meta name="description" content="How the Oregon HS Tennis Power Index works. Methodology, formulas, and frequently asked questions about the independent ranking system for Oregon high school tennis teams.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://oregontennis.org/methodology.html">
+    <meta property="og:title" content="Power Index Methodology - Oregon HS Tennis Rankings">
+    <meta property="og:description" content="How the Oregon HS Tennis Power Index works. Methodology, formulas, and FAQ.">
+    <meta property="og:image" content="https://oregontennis.org/tennis-ball-social.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://oregontennis.org/methodology.html">
+    <meta name="twitter:title" content="Power Index Methodology - Oregon HS Tennis Rankings">
+    <meta name="twitter:description" content="How the Oregon HS Tennis Power Index works. Methodology, formulas, and FAQ.">
+    <meta name="twitter:image" content="https://oregontennis.org/tennis-ball-social.png">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body { background: #f8f9fa; font-family: system-ui, -apple-system, sans-serif; }
+        .navbar { background: #198754; }
+        .navbar-brand { color: #fff !important; font-weight: 600; }
+        .back-link { color: #fff; text-decoration: none; }
+        .back-link:hover { color: #dee2e6; }
+        .hero { background: linear-gradient(135deg, #198754, #0d503a); color: #fff; padding: 40px 0; margin-bottom: 30px; }
+        .hero h1 { font-weight: 700; }
+
+        .faq-section { background: #fff; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 24px; overflow: hidden; }
+        .faq-section-header { background: #198754; color: #fff; padding: 14px 20px; font-size: 1.15rem; font-weight: 600; }
+        .faq-item { border-bottom: 1px solid #dee2e6; padding: 20px; }
+        .faq-item:last-child { border-bottom: none; }
+        .faq-question { font-weight: 600; color: #212529; margin-bottom: 10px; font-size: 1.05rem; }
+        .faq-answer { color: #495057; line-height: 1.7; }
+        .faq-answer p { margin-bottom: 10px; }
+        .faq-answer p:last-child { margin-bottom: 0; }
+
+        .formula-box { background: #f8f9fa; border-left: 3px solid #198754; padding: 14px 18px; margin: 12px 0; border-radius: 0 4px 4px 0; font-family: 'Courier New', monospace; font-size: 0.95rem; }
+        .formula-box .label { font-weight: 600; color: #198754; }
+        .weight-table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 0.9rem; }
+        .weight-table th { background: #e9ecef; padding: 8px 12px; text-align: left; font-size: 0.8rem; text-transform: uppercase; color: #6c757d; }
+        .weight-table td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
+        .weight-table tr:last-child td { border-bottom: none; }
+        .weight-table .flight-name { font-weight: 500; }
+        .weight-table .weight-value { font-weight: 600; color: #198754; }
+
+        .intro-box { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border-left: 4px solid #198754; }
+        .intro-box p { margin-bottom: 10px; color: #495057; line-height: 1.7; }
+        .intro-box p:last-child { margin-bottom: 0; }
+
+        .toc { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .toc h5 { font-weight: 600; color: #198754; margin-bottom: 12px; }
+        .toc ul { list-style: none; padding: 0; margin: 0; }
+        .toc li { padding: 6px 0; }
+        .toc a { color: #495057; text-decoration: none; font-weight: 500; }
+        .toc a:hover { color: #198754; }
+
+        footer { margin-top: 40px; padding: 20px; text-align: center; }
+        footer a { color: #6c757d; font-size: 12px; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 10px 0; }
+            .navbar .container { flex-direction: column; gap: 8px; }
+            .navbar-brand { font-size: 0.9rem; }
+            .hero { padding: 25px 0; }
+            .hero h1 { font-size: 1.75rem; }
+            .hero .lead { font-size: 1rem; }
+            .faq-section-header { font-size: 1rem; padding: 12px 15px; }
+            .faq-item { padding: 15px; }
+            .faq-question { font-size: 1rem; }
+            .faq-answer { font-size: 0.95rem; }
+            .weight-table { font-size: 0.85rem; }
+            .formula-box { font-size: 0.85rem; padding: 12px 14px; }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero .lead { font-size: 0.9rem; }
+            .faq-question { font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><span class="back-link">&larr; Back to Rankings</span></a>
+            <span class="navbar-brand">Methodology</span>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <div class="container">
+            <h1>Power Index Methodology</h1>
+            <p class="lead mb-0">How the Oregon HS Tennis rankings work</p>
+        </div>
+    </div>
+
+    <div class="container" style="max-width: 840px;">
+
+        <!-- Intro -->
+        <div class="intro-box">
+            <p><strong>OregonTennis.org</strong> publishes the first and only statewide rankings and standings for Oregon high school tennis, organized by conference and district. These are independent rankings &mdash; they are not produced by or affiliated with the OSAA.</p>
+            <p>The Power Index is designed to model what a team rating system could look like if Oregon were to adopt a team playoff format, similar to the 27 other states that already have one. It measures both <em>winning</em> (through APR) and <em>depth</em> (through Flight-Weighted Score), because in tennis, not all wins are created equal.</p>
+        </div>
+
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h5>On This Page</h5>
+            <ul>
+                <li><a href="#overview">Overview &amp; Formula</a></li>
+                <li><a href="#apr">APR (Adjusted Power Rating)</a></li>
+                <li><a href="#fws">Flight-Weighted Score (FWS)</a></li>
+                <li><a href="#h2h">Head-to-Head Tiebreakers</a></li>
+                <li><a href="#faq">Frequently Asked Questions</a></li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Overview -->
+        <div id="overview" class="faq-section">
+            <div class="faq-section-header">Overview &amp; Formula</div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is the Power Index?</div>
+                <div class="faq-answer">
+                    <p>The Power Index is a composite rating that combines two equally weighted components: a team's Adjusted Power Rating (APR) and its Flight-Weighted Score (FWS). Together, they capture both <em>how often a team wins</em> and <em>how deep the roster is</em>.</p>
+                    <div class="formula-box">
+                        <span class="label">Power Index</span> = (APR &times; 50%) + (Normalized FWS &times; 50%)
+                    </div>
+                    <p>APR measures team-level win/loss performance against a strength-of-schedule backdrop. FWS measures how many individual flights (singles and doubles positions) a team wins, weighted by competitive significance.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: APR -->
+        <div id="apr" class="faq-section">
+            <div class="faq-section-header">APR (Adjusted Power Rating)</div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is APR?</div>
+                <div class="faq-answer">
+                    <p>APR uses the same RPI formula that the OSAA uses for sports like volleyball and basketball. It combines a team's own winning percentage with its strength of schedule.</p>
+                    <div class="formula-box">
+                        <span class="label">APR</span> = (Win% &times; 25%) + (Opp Win% &times; 50%) + (Opp's Opp Win% &times; 25%)
+                    </div>
+                    <p>The three components are:</p>
+                    <p><strong>Win Percentage (25%):</strong> The team's own dual-match winning percentage. Ties count as half a win and half a loss.</p>
+                    <p><strong>Opponent Win Percentage (50%):</strong> The average winning percentage of every team on the schedule. This is the largest component because strength of schedule matters most &mdash; beating a 14-1 team means more than beating a 1-14 team.</p>
+                    <p><strong>Opponent's Opponent Win Percentage (25%):</strong> The average winning percentage of every opponent's opponents. This smooths out schedule quirks and validates the strength-of-schedule number.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">If it's the same as the OSAA RPI, why call it APR?</div>
+                <div class="faq-answer">
+                    <p>These rankings are independent and not produced by the OSAA. APR (Adjusted Power Rating) is just a different name for the same underlying formula. We want to be clear that while the math is identical, the output and application are our own.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why is APR only half the Power Index?</div>
+                <div class="faq-answer">
+                    <p>APR tells you how often a team wins dual matches, but a dual match result in tennis is just "Win/Loss/Tie." It doesn't tell you <em>how</em> a team won. A team that wins 5-3 with depth across all flights looks identical in APR to a team that wins 5-3 because it stacks its top flights and forfeits the rest. The Flight-Weighted Score fills that gap.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: FWS -->
+        <div id="fws" class="faq-section">
+            <div class="faq-section-header">Flight-Weighted Score (FWS)</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why do tennis wins need weighting?</div>
+                <div class="faq-answer">
+                    <p>In a dual match, teams play up to 8 flights: 4 singles and 4 doubles. But not all flights carry the same competitive weight. The #1 singles and #1 doubles positions are where teams put their best players and are contested most seriously. Lower flights (3rd and 4th positions) are often less competitive, sometimes featuring newer or developing players.</p>
+                    <p>Without weighting, a team could game the system by loading its 3rd and 4th flights with strong players to rack up easy wins at positions where opponents field their weakest. Weighting the flights reflects the reality of how competitive tennis lineups actually work.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What are the flight weights?</div>
+                <div class="faq-answer">
+                    <table class="weight-table">
+                        <thead>
+                            <tr><th>Flight</th><th>Weight</th><th>Rationale</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="flight-name">1st Singles</td><td class="weight-value">1.00</td><td>Full weight &mdash; top competitive position</td></tr>
+                            <tr><td class="flight-name">2nd Singles</td><td class="weight-value">0.75</td><td>High competition, strong players</td></tr>
+                            <tr><td class="flight-name">3rd Singles</td><td class="weight-value">0.25</td><td>Developing position</td></tr>
+                            <tr><td class="flight-name">4th Singles</td><td class="weight-value">0.10</td><td>Often newest varsity player</td></tr>
+                            <tr><td class="flight-name">1st Doubles</td><td class="weight-value">1.00</td><td>Full weight &mdash; top competitive position</td></tr>
+                            <tr><td class="flight-name">2nd Doubles</td><td class="weight-value">0.50</td><td>Solid competitive position</td></tr>
+                            <tr><td class="flight-name">3rd Doubles</td><td class="weight-value">0.25</td><td>Developing position</td></tr>
+                            <tr><td class="flight-name">4th Doubles</td><td class="weight-value">0.10</td><td>Often newest varsity pair</td></tr>
+                        </tbody>
+                    </table>
+                    <p>The maximum possible FWS per match is 3.95 (winning all 8 flights). This raw score is normalized to a 0&ndash;1 scale so it can be combined equally with APR.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How does this prevent stacking?</div>
+                <div class="faq-answer">
+                    <p>Stacking means arranging your lineup so that strong players compete at lower flights to guarantee easy wins. With equal weighting, a coach who moves a varsity-quality player to 4th singles would get full credit for that win. With flight weighting, that 4th singles win is only worth 0.10 &mdash; compared to 1.00 for a 1st singles win. The incentive flips: you get rewarded more for winning the flights that matter most competitively.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What are FWS% and FWS+?</div>
+                <div class="faq-answer">
+                    <p><strong>FWS%</strong> is the simple percentage of individual flights won out of total flights played. It's the most intuitive number: "this team wins 72% of its flights."</p>
+                    <p><strong>FWS+</strong> is a league-adjusted metric where 100 equals the classification average. A team with FWS+ of 115 wins flights at 15% above the average for its classification. FWS+ appears as a hover tooltip on the rankings table. It helps contextualize FWS% across different classifications where the level of competition varies.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: H2H -->
+        <div id="h2h" class="faq-section">
+            <div class="faq-section-header">Head-to-Head Tiebreakers</div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do head-to-head results factor in?</div>
+                <div class="faq-answer">
+                    <p>After Power Index scores are calculated, head-to-head results are used as a tiebreaker in two phases:</p>
+                    <p><strong>Phase 1 &mdash; In-League:</strong> Teams in the same league/conference that are close in their league standings (within 2 league rank positions) are compared. If Team A beat Team B head-to-head, Team A is moved above Team B in the overall ranking. This ensures that league rivals who played each other are ranked in an order consistent with their on-court results.</p>
+                    <p><strong>Phase 2 &mdash; Statewide:</strong> Adjacent teams in the overall ranking whose Power Index scores are within 2% of each other are compared. If the lower-ranked team beat the higher-ranked team, they swap positions. For split series (1-1), the team with the higher FWS is used as a secondary tiebreaker.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why is there a threshold for head-to-head swaps?</div>
+                <div class="faq-answer">
+                    <p>Without a threshold, a single upset result could override large differences in overall performance. The league rank threshold (within 2 positions) prevents a last-place team with a single fluke win from leapfrogging through the standings. The 2% PI threshold for statewide comparisons ensures H2H only breaks ties between teams that are genuinely close in overall rating.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: FAQ -->
+        <div id="faq" class="faq-section">
+            <div class="faq-section-header">Frequently Asked Questions</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Are these official OSAA rankings?</div>
+                <div class="faq-answer">
+                    <p>No. These are independent rankings published by OregonTennis.org. They are not produced by, endorsed by, or affiliated with the OSAA. The APR component uses the same RPI formula the OSAA uses for other sports, but the Power Index as a whole and its application to tennis are entirely our own work.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why create independent tennis rankings?</div>
+                <div class="faq-answer">
+                    <p>Oregon has never had a statewide list of team rankings and standings for high school tennis by conference or district. Every other major team sport has power rankings or RPI used for playoff seeding. Tennis has been the outlier. These rankings are modeled to show what a team rating system could look like if tennis adopted a team playoff, and to give coaches, players, and fans a way to see where their team stands statewide.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why not just use RPI like other OSAA sports?</div>
+                <div class="faq-answer">
+                    <p>RPI alone works well for sports where the final score reflects team quality &mdash; basketball, volleyball, soccer. In tennis, the dual match result is a simple win/loss/tie that hides what happened underneath. A team can win a dual match 5-3 while losing badly at the competitive top of the lineup and sweeping the bottom. RPI treats that the same as a dominant 8-0 win. The Flight-Weighted Score addresses this by looking at the individual flight results and weighting them by competitive significance.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Where does the data come from?</div>
+                <div class="faq-answer">
+                    <p>All match data comes from publicly available OSAA results. Dual match outcomes, individual flight scores, and state tournament results are all sourced from OSAA records for each season.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How are ties handled?</div>
+                <div class="faq-answer">
+                    <p>Dual match ties (e.g., 4-4) count as half a win and half a loss for both teams in the APR calculation. This is consistent with standard RPI handling across all sports.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What years are covered?</div>
+                <div class="faq-answer">
+                    <p>The rankings currently cover 2021 through 2025. Each season is calculated independently using that year's match data.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="index.html">&larr; Back to Rankings</a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

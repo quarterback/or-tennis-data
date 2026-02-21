@@ -1410,6 +1410,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 <li class="nav-item">
                     <a class="nav-link" href="all-state.html">All-State Teams</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="methodology.html">Methodology</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -1484,6 +1487,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 <small class="text-muted">
                     <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score.
                     <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
+                    <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
             </div>
         </div>
