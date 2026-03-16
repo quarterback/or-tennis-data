@@ -75,7 +75,7 @@ def fetch_school_data(school_id: str, year: int, gender_id: int = 1, is_not_vars
 def save_school_data(school_id: str, data: dict, output_dir: str, year: int, gender_id: int):
     """Save school data to a JSON file."""
     os.makedirs(output_dir, exist_ok=True)
-    filename = f"school_{school_id}_year_{year}_gender_{gender_id}.json"
+    filename = f"school_{school_id}_gender_{gender_id}.json"
     filepath = os.path.join(output_dir, filename)
 
     with open(filepath, "w", encoding="utf-8") as f:
