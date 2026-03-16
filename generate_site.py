@@ -667,7 +667,7 @@ def build_rankings(data_dir, master_school_list):
         if not year_dir.is_dir():
             continue
         year = year_dir.name
-        if not year.isdigit() or int(year) < 2021 or int(year) > 2025:
+        if not year.isdigit() or int(year) < 2021 or int(year) > 2026:
             continue
 
         print(f"Processing year {year}...")

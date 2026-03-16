@@ -1,0 +1,41 @@
+name: Fetch Tennis Data
+
+on:
+  schedule:
+    # Run every 4 hours during tennis season (March-June)
+    - cron: '0 */4 * * *'
+  workflow_dispatch: # Allow manual triggers
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Fetch boys data
+        run: python fetch_data.py --year 2026 --gender 1 --output data/2026
+
+      - name: Fetch girls data
+        run: python fetch_data.py --year 2026 --gender 2 --output data/2026
+
+      - name: Regenerate site
+        run: python generate_site.py
+
+      - name: Commit and push if data changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/2026/ index.html public/
+          git diff --staged --quiet || (git commit -m "Update 2026 tennis data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push)
