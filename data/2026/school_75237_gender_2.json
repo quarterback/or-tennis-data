@@ -1,0 +1,145 @@
+{
+  "school": {
+    "id": 75237,
+    "name": "Lakeridge",
+    "address": "PO BOX 739",
+    "zipCode": "97034",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75237.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:24:20.000Z",
+    "deletedAt": null,
+    "cityId": 9742,
+    "city": {
+      "id": 9742,
+      "name": "Lake oswego",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2783,
+      "firstName": "John",
+      "lastName": "Bass",
+      "address": "1235 Overlook Drive, Lake Oswego, OR 97034",
+      "phone": "(503) 841-1782",
+      "email": "bassj@loswego.k12.or.us",
+      "division": "6A",
+      "schoolId": 75237,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 1,
+    "loss": 0,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 212000,
+      "title": "3/16 vs Central Catholic",
+      "meetDateTime": "2026-03-16T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75237,
+        "firstName": "John",
+        "lastName": "Bass",
+        "genderId": 2,
+        "email": "bassj@loswego.k12.or.us",
+        "phone": "(503) 841-1782",
+        "school": {
+          "name": "Lakeridge",
+          "logo": "school_75237.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75237,
+            "name": "Lakeridge",
+            "logo": "school_75237.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124868,
+            "name": "Portland Central Catholic ",
+            "logo": "school_124868.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2925635": 2,
+                "2925636": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2925635": 2,
+                "2925636": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1462853,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 2925635,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2925635,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 187316,
+                    "firstName": "Zoe",
+                    "lastName": "Chen",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75237,
+                    "updatedAt": "2026-03-04T19:44:45.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Lakeridge",
+                      "logo": "school_75237.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2925636,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
