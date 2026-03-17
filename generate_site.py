@@ -532,6 +532,17 @@ def process_school_data(data, school_id):
             all_results.extend(results)
             for r in results:
                 opponents.add(r[0])
+            # Even if all individual flights are forfeited/defaulted (empty players),
+            # still record the opponent from the meet's school structure so that
+            # RPI calculations include this school's opponents.
+            if not results:
+                schools = meet.get('schools', {})
+                for w in schools.get('winners', []):
+                    if w['id'] != school_id:
+                        opponents.add(w['id'])
+                for l in schools.get('losers', []):
+                    if l['id'] != school_id:
+                        opponents.add(l['id'])
     return all_results, opponents
 
 
@@ -692,7 +703,7 @@ def build_rankings(data_dir, master_school_list):
                 data.get('meets', []), school_id, school_league, school_info
             )
 
-            if results:
+            if results or (wins + losses + ties > 0):
                 # FWS calculation returns dict with breakdown data
                 fws_data = calculate_fws_per_match(data, school_id)
 
