@@ -36,5 +36,128 @@
       "genderId": 1
     }
   ],
-  "meets": []
+  "overallRecord": {
+    "win": 1,
+    "loss": 0,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 212109,
+      "title": "Redmond at HRV",
+      "meetDateTime": "2026-03-17T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75142,
+        "firstName": "Jon",
+        "lastName": "Hiatt",
+        "genderId": 1,
+        "email": "hrvtennis@gmail.com",
+        "phone": "(503) 351-4422",
+        "school": {
+          "name": "Hood River Valley",
+          "logo": "school_75142.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75585,
+            "name": "Redmond",
+            "logo": "school_75585.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75142,
+            "name": "Hood River Valley",
+            "logo": "school_75142.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2926979": 6,
+                "2926980": 7,
+                "number": 1,
+                "tie": 5
+              },
+              {
+                "2926979": 4,
+                "2926980": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1463525,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2926980,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2926979,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 143988,
+                    "firstName": "Carson",
+                    "lastName": "Abel",
+                    "grade": "12",
+                    "genderId": 1,
+                    "schoolId": 75142,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hood River Valley",
+                      "logo": "school_75142.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2926980,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 173143,
+                    "firstName": "Jensen",
+                    "lastName": "Burke",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75585,
+                    "updatedAt": "2026-03-16T20:54:18.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Redmond",
+                      "logo": "school_75585.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
 }
