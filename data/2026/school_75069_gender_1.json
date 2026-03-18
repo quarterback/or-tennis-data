@@ -36,5 +36,128 @@
       "genderId": 1
     }
   ],
-  "meets": []
+  "overallRecord": {
+    "win": 0,
+    "loss": 1,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 212241,
+      "title": "South Salem vs Forest Grove",
+      "meetDateTime": "2026-03-17T11:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75686,
+        "firstName": "James",
+        "lastName": "Heyen",
+        "genderId": 1,
+        "email": "coach.heyen@gmail.com",
+        "phone": "(503) 931-5454",
+        "school": {
+          "name": "South Salem",
+          "logo": "school_75686.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75686,
+            "name": "South Salem",
+            "logo": "school_75686.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75069,
+            "name": "Forest Grove",
+            "logo": "school_75069.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2928699": 6,
+                "2928700": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2928699": 6,
+                "2928700": 1,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1464385,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2928699,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2928699,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 121659,
+                    "firstName": "Josiah",
+                    "lastName": "Smith",
+                    "grade": "12",
+                    "genderId": 1,
+                    "schoolId": 75686,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "South Salem",
+                      "logo": "school_75686.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2928700,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 167377,
+                    "firstName": "Salvador",
+                    "lastName": "Paz-Rickard",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75069,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Forest Grove",
+                      "logo": "school_75069.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
 }
