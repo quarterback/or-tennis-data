@@ -36,5 +36,156 @@
       "genderId": 2
     }
   ],
-  "meets": []
+  "overallRecord": {
+    "win": 0,
+    "loss": 1,
+    "tie": 0
+  },
+  "meets": [
+    {
+      "id": 213234,
+      "title": "Sherman vs Condon",
+      "meetDateTime": "2026-03-30T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75740,
+        "firstName": "Kalie",
+        "lastName": "Rolfe",
+        "genderId": 2,
+        "email": "krolfe@sherman.k12.or.us",
+        "phone": "(541) 565-3500",
+        "school": {
+          "name": "Sherman",
+          "logo": "school_75740.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75740,
+            "name": "Sherman",
+            "logo": "school_75740.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 74901,
+            "name": "Condon",
+            "logo": "school_74901.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "2944397": 8,
+                "2944398": 0,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1472234,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2944397,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2944397,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 165856,
+                    "firstName": "Leah",
+                    "lastName": "Goodenough",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75740,
+                    "updatedAt": "2026-03-28T18:50:22.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 193403,
+                    "firstName": "Vivian",
+                    "lastName": "Rolfe",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75740,
+                    "updatedAt": "2026-03-28T18:52:57.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Sherman",
+                      "logo": "school_75740.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2944398,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 163984,
+                    "firstName": "Taylor",
+                    "lastName": "Anderson",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 186912,
+                    "firstName": "Saphire",
+                    "lastName": "Miller",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 74901,
+                    "updatedAt": "2026-02-28T21:34:39.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Condon",
+                      "logo": "school_74901.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
 }
