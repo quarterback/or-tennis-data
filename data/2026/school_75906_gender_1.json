@@ -37,9 +37,9 @@
     }
   ],
   "overallRecord": {
-    "win": 1,
+    "win": 2,
     "loss": 1,
-    "tie": 2
+    "tie": 1
   },
   "meets": [
     {
@@ -47,7 +47,7 @@
       "title": "Molalla vs. Woodburn",
       "meetDateTime": "2026-04-06T23:00:00.000Z",
       "postSeason": false,
-      "approveMeet": false,
+      "approveMeet": true,
       "eventId": null,
       "winnerSchoolId": null,
       "coach": {
@@ -65,18 +65,18 @@
       "schools": {
         "winners": [
           {
-            "id": 75330,
-            "name": "Molalla",
-            "logo": "school_75330.png",
-            "score": 2,
+            "id": 75906,
+            "name": "Woodburn",
+            "logo": "school_75906.png",
+            "score": 4,
             "winnerSchoolId": null
           }
         ],
         "losers": [
           {
-            "id": 75906,
-            "name": "Woodburn",
-            "logo": "school_75906.png",
+            "id": 75330,
+            "name": "Molalla",
+            "logo": "school_75330.png",
             "score": 2,
             "winnerSchoolId": null
           }
@@ -210,6 +210,77 @@
                     "firstName": "Eleazar ",
                     "lastName": "Zamora",
                     "grade": "10",
+                    "genderId": 1,
+                    "schoolId": 75906,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Woodburn",
+                      "logo": "school_75906.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2961499": 0,
+                "2961500": 2,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2961499": 0,
+                "2961500": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1480785,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": "Default",
+            "winnerTeamId": 2961500,
+            "genderId": 1,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2961499,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 150020,
+                    "firstName": "Default ",
+                    "lastName": "NA",
+                    "grade": "11",
+                    "genderId": 1,
+                    "schoolId": 75330,
+                    "updatedAt": "2026-04-07T15:10:54.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Molalla",
+                      "logo": "school_75330.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2961500,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 165025,
+                    "firstName": "Cesar ",
+                    "lastName": "Nava ",
+                    "grade": "11",
                     "genderId": 1,
                     "schoolId": 75906,
                     "updatedAt": "2025-06-18T18:37:50.000Z",
