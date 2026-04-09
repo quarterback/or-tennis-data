@@ -1,0 +1,2020 @@
+{
+  "school": {
+    "id": 75468,
+    "name": "Phoenix",
+    "address": "PO BOX 697",
+    "zipCode": "97535",
+    "lowestGrade": "9",
+    "highestGrade": "12",
+    "encryptedUri": null,
+    "expireDate": null,
+    "logo": "school_75468.png",
+    "createdAt": "2020-02-11T06:38:49.000Z",
+    "updatedAt": "2026-01-15T15:45:16.000Z",
+    "deletedAt": null,
+    "cityId": 14325,
+    "city": {
+      "id": 14325,
+      "name": "Phoenix",
+      "stateId": 46,
+      "state": {
+        "name": "Oregon",
+        "abbr": "OR"
+      }
+    }
+  },
+  "coaches": [
+    {
+      "id": 2751,
+      "firstName": "Guy",
+      "lastName": "Tauer",
+      "address": "1008 MIRA MAR AVE",
+      "phone": "(541) 778-4427",
+      "email": "guy.tauer@phoenix.k12.or.us",
+      "division": "4A/3A/",
+      "schoolId": 75468,
+      "genderId": 2
+    }
+  ],
+  "overallRecord": {
+    "win": 3,
+    "loss": 0,
+    "tie": 1
+  },
+  "meets": [
+    {
+      "id": 214516,
+      "title": "North Valley vs Phoenix",
+      "meetDateTime": "2026-04-07T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75184,
+        "firstName": "Becky",
+        "lastName": "Janasik",
+        "genderId": 2,
+        "email": "beckyjanasik@gmail.com",
+        "phone": "(503) 929-6841",
+        "school": {
+          "name": "North Valley",
+          "logo": "school_75184.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75468,
+            "name": "Phoenix",
+            "logo": "school_75468.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75184,
+            "name": "North Valley",
+            "logo": "school_75184.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2968019": 8,
+                "2968020": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1484045,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2968019,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2968019,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 147187,
+                    "firstName": "Gracelyn",
+                    "lastName": "Prulhiere ",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2968020,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144762,
+                    "firstName": "Adrianna",
+                    "lastName": "Flores",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2968029": 0,
+                "2968030": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1484050,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2968030,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2968029,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 189988,
+                    "firstName": "Emily",
+                    "lastName": "Morris",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2026-03-17T01:42:48.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2968030,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 121318,
+                    "firstName": "Jocelyn",
+                    "lastName": "Nunez",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "2968039": 1,
+                "2968040": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1484055,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2968040,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2968039,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 167115,
+                    "firstName": "Avery",
+                    "lastName": "Jamison",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 167116,
+                    "firstName": "Kendall",
+                    "lastName": "Ellis",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2968040,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190042,
+                    "firstName": "Shaelen",
+                    "lastName": "Walker",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:46:33.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190045,
+                    "firstName": "Hailey",
+                    "lastName": "Correa",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:51:08.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2968061": 5,
+                "2968062": 8,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1484066,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2968062,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2968061,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 167114,
+                    "firstName": "Braelyn",
+                    "lastName": "Stumbo",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 189989,
+                    "firstName": "Hailey ",
+                    "lastName": "Ullman",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75184,
+                    "updatedAt": "2026-03-17T01:44:03.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "North Valley",
+                      "logo": "school_75184.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2968062,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 164098,
+                    "firstName": "Lilliana",
+                    "lastName": "Stenberg",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190051,
+                    "firstName": "Layla",
+                    "lastName": "Maizonet",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:01:17.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 213710,
+      "title": "Phoenix vs. Klamath Union",
+      "meetDateTime": "2026-04-02T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75468,
+        "firstName": "Guy",
+        "lastName": "Tauer",
+        "genderId": 2,
+        "email": "guy.tauer@phoenix.k12.or.us",
+        "phone": "(541) 778-4427",
+        "school": {
+          "name": "Phoenix",
+          "logo": "school_75468.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75468,
+            "name": "Phoenix",
+            "logo": "school_75468.png",
+            "score": 6,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75219,
+            "name": "Klamath Union",
+            "logo": "school_75219.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2952851": 2,
+                "2952852": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2952851": 0,
+                "2952852": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1476461,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2952852,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952851,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 121318,
+                    "firstName": "Jocelyn",
+                    "lastName": "Nunez",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952852,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 191538,
+                    "firstName": "Hellen",
+                    "lastName": "Yang",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:21:56.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2952857": 6,
+                "2952858": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2952857": 6,
+                "2952858": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1476464,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2952857,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952857,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190042,
+                    "firstName": "Shaelen",
+                    "lastName": "Walker",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:46:33.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952858,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 191528,
+                    "firstName": "Maeve",
+                    "lastName": "Ranger-Burcher",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:18:13.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2952861": 8,
+                "2952862": 4,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1476466,
+            "flight": "3",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2952861,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952861,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190045,
+                    "firstName": "Hailey",
+                    "lastName": "Correa",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:51:08.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952862,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 191531,
+                    "firstName": "Ila",
+                    "lastName": "Lehman",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:18:41.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "2952881": 6,
+                "2952882": 7,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2952881": 6,
+                "2952882": 0,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "2952881": 10,
+                "2952882": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 1476476,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2952881,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952881,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 144762,
+                    "firstName": "Adrianna",
+                    "lastName": "Flores",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 194186,
+                    "firstName": "Nicoletta",
+                    "lastName": "Fields",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-04-01T05:43:48.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952882,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 121514,
+                    "firstName": "Veronica",
+                    "lastName": "Lav",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:10:53.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 121519,
+                    "firstName": "Evelyn",
+                    "lastName": "Didios",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:10:37.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2952889": 1,
+                "2952890": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2952889": 7,
+                "2952890": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "2952889": 5,
+                "2952890": 10,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 1476480,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2952890,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952889,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 190052,
+                    "firstName": "Amelia",
+                    "lastName": "McDaniel",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:02:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 190056,
+                    "firstName": "Zepherya",
+                    "lastName": "Noxon",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:04:34.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952890,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 143446,
+                    "firstName": "Hope",
+                    "lastName": "Hartley",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:11:00.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 167052,
+                    "firstName": "Caylen",
+                    "lastName": "Vannarath",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:17:43.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2952909": 8,
+                "2952910": 1,
+                "number": 1,
+                "tie": null
+              }
+            ],
+            "id": 1476490,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2952909,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2952909,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 164093,
+                    "firstName": "Ruby",
+                    "lastName": "Escobedo",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 164097,
+                    "firstName": "Elly",
+                    "lastName": "Rocha Bulux",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2952910,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 191533,
+                    "firstName": "Audrina",
+                    "lastName": "Cedillo",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:19:26.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 191534,
+                    "firstName": "Malayah",
+                    "lastName": "Abril",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75219,
+                    "updatedAt": "2026-03-20T18:19:36.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Klamath Union",
+                      "logo": "school_75219.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 213388,
+      "title": "Phoenix vs Cascade Christian",
+      "meetDateTime": "2026-04-01T02:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75468,
+        "firstName": "Guy",
+        "lastName": "Tauer",
+        "genderId": 2,
+        "email": "guy.tauer@phoenix.k12.or.us",
+        "phone": "(541) 778-4427",
+        "school": {
+          "name": "Phoenix",
+          "logo": "school_75468.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75468,
+            "name": "Phoenix",
+            "logo": "school_75468.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124825,
+            "name": "Cascade Christian ",
+            "logo": "school_124825.png",
+            "score": 3,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2946949": 1,
+                "2946950": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2946949": 1,
+                "2946950": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1473510,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2946950,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2946949,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144762,
+                    "firstName": "Adrianna",
+                    "lastName": "Flores",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2946950,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 144436,
+                    "firstName": "Lauren",
+                    "lastName": "Todd",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2946951": 4,
+                "2946952": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2946951": 6,
+                "2946952": 4,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "2946951": 11,
+                "2946952": 9,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 1473511,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2946951,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2946951,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 194186,
+                    "firstName": "Nicoletta",
+                    "lastName": "Fields",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-04-01T05:43:48.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2946952,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 166042,
+                    "firstName": "Leirus",
+                    "lastName": "Cuellar",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "2946953": 0,
+                "2946954": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2946953": 0,
+                "2946954": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1473512,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2946954,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2946953,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 190042,
+                    "firstName": "Shaelen",
+                    "lastName": "Walker",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:46:33.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 190045,
+                    "firstName": "Hailey",
+                    "lastName": "Correa",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:51:08.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2946954,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 123624,
+                    "firstName": "Paige",
+                    "lastName": "Cohee",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 166044,
+                    "firstName": "Tanaya",
+                    "lastName": "Mahar",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2946955": 4,
+                "2946956": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2946955": 3,
+                "2946956": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1473513,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2946956,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2946955,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144773,
+                    "firstName": "Elia",
+                    "lastName": "Santos",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 144775,
+                    "firstName": "Sophia",
+                    "lastName": "Ugalde Esparza",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2946956,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 166040,
+                    "firstName": "Madisyn",
+                    "lastName": "Byers",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 166046,
+                    "firstName": "Addison",
+                    "lastName": "Shipman",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2946957": 6,
+                "2946958": 1,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2946957": 6,
+                "2946958": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1473514,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2946957,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2946957,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190052,
+                    "firstName": "Amelia",
+                    "lastName": "McDaniel",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:02:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 190056,
+                    "firstName": "Zepherya",
+                    "lastName": "Noxon",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:04:34.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2946958,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 166038,
+                    "firstName": "Evelyn",
+                    "lastName": "Billingsley",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 166039,
+                    "firstName": "Grace",
+                    "lastName": "Buck",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 124825,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Cascade Christian ",
+                      "logo": "school_124825.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 212176,
+      "title": "Phoenix vs Hidden valley ",
+      "meetDateTime": "2026-03-17T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": true,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75468,
+        "firstName": "Guy",
+        "lastName": "Tauer",
+        "genderId": 2,
+        "email": "guy.tauer@phoenix.k12.or.us",
+        "phone": "(541) 778-4427",
+        "school": {
+          "name": "Phoenix",
+          "logo": "school_75468.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75468,
+            "name": "Phoenix",
+            "logo": "school_75468.png",
+            "score": 4,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75182,
+            "name": "Hidden Valley",
+            "logo": "school_75182.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "2927471": 0,
+                "2927472": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2927471": 1,
+                "2927472": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1463771,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2927472,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2927471,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144762,
+                    "firstName": "Adrianna",
+                    "lastName": "Flores",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2927472,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 131087,
+                    "firstName": "Salvaje",
+                    "lastName": "Terranova",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2927473": 6,
+                "2927474": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2927473": 3,
+                "2927474": 6,
+                "number": 2,
+                "tie": null
+              },
+              {
+                "2927473": 10,
+                "2927474": 5,
+                "number": 3,
+                "tie": null
+              }
+            ],
+            "id": 1463772,
+            "flight": "2",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 2927473,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2927473,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 121318,
+                    "firstName": "Jocelyn",
+                    "lastName": "Nunez",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2927474,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144040,
+                    "firstName": "Lillian",
+                    "lastName": "Wieberg",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "2927475": 6,
+                "2927476": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2927475": 6,
+                "2927476": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1463773,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2927475,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2927475,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190042,
+                    "firstName": "Shaelen",
+                    "lastName": "Walker",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:46:33.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190045,
+                    "firstName": "Hailey",
+                    "lastName": "Correa",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:51:08.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2927476,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 161991,
+                    "firstName": "Peyton",
+                    "lastName": "Jones",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 162374,
+                    "firstName": "Maisie",
+                    "lastName": "Crocker",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2927477": 6,
+                "2927478": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2927477": 6,
+                "2927478": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1463774,
+            "flight": "2",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2927477,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2927477,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 164093,
+                    "firstName": "Ruby",
+                    "lastName": "Escobedo",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 164097,
+                    "firstName": "Elly",
+                    "lastName": "Rocha Bulux",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2927478,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 190535,
+                    "firstName": "Layla",
+                    "lastName": "Holt",
+                    "grade": "12",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2026-03-17T21:48:57.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190539,
+                    "firstName": "AnaBellah",
+                    "lastName": "Grabarz ",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2026-03-17T21:53:48.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sets": [
+              {
+                "2927487": 6,
+                "2927488": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "2927487": 6,
+                "2927488": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1463779,
+            "flight": "3",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 2927487,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 2927487,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 190049,
+                    "firstName": "Genesis",
+                    "lastName": "Hernandez",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T04:58:06.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190058,
+                    "firstName": "Jocelynn",
+                    "lastName": "Pacheco",
+                    "grade": "9",
+                    "genderId": 2,
+                    "schoolId": 75468,
+                    "updatedAt": "2026-03-17T05:07:13.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Phoenix",
+                      "logo": "school_75468.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 2927488,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 190533,
+                    "firstName": "Avah",
+                    "lastName": "Lewis",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2026-03-17T21:47:26.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  },
+                  {
+                    "id": 190536,
+                    "firstName": "Zoey",
+                    "lastName": "Kringbaum ",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75182,
+                    "updatedAt": "2026-03-17T21:50:41.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Hidden Valley",
+                      "logo": "school_75182.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    }
+  ]
+}
