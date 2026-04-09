@@ -193,8 +193,8 @@ def build_rankings(data_dir, master_school_list):
         if not year.isdigit():
             continue
 
-        # Only process 2022-2025
-        if int(year) < 2022 or int(year) > 2025:
+        # Only process 2022-2026
+        if int(year) < 2022 or int(year) > 2026:
             continue
 
         print(f"Processing year {year}...")
