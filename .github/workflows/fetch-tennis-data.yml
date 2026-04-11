@@ -37,7 +37,7 @@ jobs:
         run: python generate_site.py
 
       - name: Generate weekly rankings
-        run: python scripts/generate_weekly_rankings.py
+        run: python scripts/generate_weekly_rankings.py --all
 
       - name: Commit and push if data changed
         run: |
