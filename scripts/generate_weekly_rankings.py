@@ -101,14 +101,41 @@ def load_2026_data(project_root):
     return data
 
 
+def extract_flight_results(meet, school_id):
+    """Extract S1 and D1 win/loss from a meet for top-flight strength."""
+    s1_won = s1_played = d1_won = d1_played = 0
+    matches = meet.get('matches', {})
+    for match_type in ['Singles', 'Doubles']:
+        for match in (matches.get(match_type, []) or []):
+            flight = match.get('flight', '1')
+            if flight != '1':
+                continue
+            for team in match.get('matchTeams', []):
+                for player in team.get('players', []):
+                    if player.get('schoolId') == school_id:
+                        if match_type == 'Singles':
+                            s1_played += 1
+                            if team.get('isWinner', False):
+                                s1_won += 1
+                        else:
+                            d1_played += 1
+                            if team.get('isWinner', False):
+                                d1_won += 1
+                        break
+    return s1_won, s1_played, d1_won, d1_played
+
+
 def extract_matches(raw_data, gender_id, cutoff_date=None):
     """
     Extract dual match results, optionally filtering by date.
     cutoff_date: datetime - only include matches on or before this date.
+    Also extracts per-team top-flight (S1+D1) stats and per-match opponent+date for Top-25 tracking.
     """
     match_graph = defaultdict(list)
     match_list = []
     team_records = {}
+    team_top_flight = defaultdict(lambda: {'won': 0, 'played': 0})
+    team_match_log = defaultdict(list)  # {team_id: [(date_str, opp_id, won), ...]}
     seen = set()
 
     cutoff_str = cutoff_date.strftime('%Y-%m-%d') if cutoff_date else None
@@ -155,6 +182,15 @@ def extract_matches(raw_data, gender_id, cutoff_date=None):
             won = my_score > opp_score
             match_graph[school_id].append((opp_id, won, margin))
 
+            # Top-flight stats
+            s1w, s1p, d1w, d1p = extract_flight_results(meet, school_id)
+            tf = team_top_flight[school_id]
+            tf['won'] += s1w + d1w
+            tf['played'] += s1p + d1p
+
+            # Match log for Top-25 tracking
+            team_match_log[school_id].append((date_str, opp_id, won))
+
             key = (date_str, min(school_id, opp_id), max(school_id, opp_id))
             if key not in seen:
                 seen.add(key)
@@ -168,11 +204,31 @@ def extract_matches(raw_data, gender_id, cutoff_date=None):
         team_records[tid] = rec
 
     match_list.sort(key=lambda x: x[0])
-    return match_graph, match_list, team_records
+    return match_graph, match_list, team_records, team_top_flight, team_match_log
 
 
-def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date=None):
-    match_graph, match_list, team_records = extract_matches(raw_data, gender_id, cutoff_date)
+def compute_top25_wins(team_match_log, prev_week_rankings):
+    """
+    Count wins against opponents ranked top-25 at the time the match was played.
+    prev_week_rankings: {team_id: rank} from the previous week's composite.
+    For Week 1, use the current week's rankings as baseline.
+    """
+    top25_wins = defaultdict(int)
+    if not prev_week_rankings:
+        return top25_wins
+    for tid, matches in team_match_log.items():
+        for date_str, opp_id, won in matches:
+            if won and prev_week_rankings.get(opp_id, 999) <= 25:
+                top25_wins[tid] += 1
+    return top25_wins
+
+
+def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date=None, prev_rankings=None):
+    """
+    Build weekly rankings for one gender.
+    prev_rankings: {team_id: rank} from previous week, used for Top-25 wins calculation.
+    """
+    match_graph, match_list, team_records, team_top_flight, team_match_log = extract_matches(raw_data, gender_id, cutoff_date)
 
     eligible = {tid for tid, matches in match_graph.items() if len(matches) >= MIN_MATCHES}
     if not eligible:
@@ -181,6 +237,15 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
     all_ratings = run_all(match_graph, match_list)
     all_ranks = {name: ratings_to_ranks(ratings) for name, ratings in all_ratings.items()}
     comp = composite_ranks(all_ranks, eligible)
+
+    # For Top-25 wins: use previous week's rankings, or this week's if Week 1
+    rank_lookup = prev_rankings or {}
+    if not rank_lookup:
+        # Week 1: use this week's composite as baseline
+        for tid in eligible:
+            c = comp.get(tid, {})
+            rank_lookup[tid] = int(round(c.get('composite', 999)))
+    top25 = compute_top25_wins(team_match_log, rank_lookup)
 
     gender_label = 'Boys' if gender_id == 1 else 'Girls'
     pi_lookup = {}
@@ -195,6 +260,8 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
         rec = team_records.get(tid, {})
         c = comp.get(tid, {})
         w, l, t = rec.get('wins', 0), rec.get('losses', 0), rec.get('ties', 0)
+        tf = team_top_flight.get(tid, {'won': 0, 'played': 0})
+        tf_pct = (tf['won'] / tf['played'] * 100) if tf['played'] > 0 else 0
 
         results.append({
             'school_id': tid,
@@ -210,6 +277,8 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
             'median_rank': c.get('median', 999),
             'std_dev': c.get('std', 0),
             'system_ranks': c.get('ranks', {}),
+            'top_flight_pct': round(tf_pct, 1),
+            'top25_wins': top25.get(tid, 0),
         })
 
     results.sort(key=lambda x: x['composite_rank'])
@@ -229,14 +298,18 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
             rc = f' class="rank-{rank}"' if rank <= 3 else ''
             bc = 'badge-6a' if '6A' in t['classification'] else ('badge-5a' if '5A' in t['classification'] else 'badge-4a')
             sys_cells = ''.join(f'<td class="sys-rank">{t["system_ranks"].get(s, "-")}</td>' for s in systems)
+            tf = f'{t["top_flight_pct"]:.0f}%'
+            t25 = t['top25_wins'] if t['top25_wins'] > 0 else '-'
             rows.append(f'<tr><td{rc}>{rank}</td>'
                         f'<td><span class="school-name">{t["school_name"]}</span> <span class="badge {bc}">{t["classification"]}</span></td>'
                         f'<td>{t["record"]}</td><td class="power-index">{t["power_index"]:.4f}</td>'
                         f'<td>{t["composite_rank"]:.1f}</td><td>{t["median_rank"]:.0f}</td><td>{t["std_dev"]:.1f}</td>'
+                        f'<td class="sys-rank">{tf}</td><td class="sys-rank">{t25}</td>'
                         f'{sys_cells}<td>{t["league"]}</td></tr>')
         return '\n'.join(rows)
 
     sys_headers = ''.join(f'<th title="{s} rank">{s}</th>' for s in systems)
+    extra_headers = '<th title="S1+D1 win rate">Top Flight</th><th title="Wins vs opponents ranked Top 25 at time played">Top 25 W</th>'
     boys_rows = team_rows(boys)
     girls_rows = team_rows(girls)
 
@@ -345,6 +418,7 @@ body {{ background: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Se
     <th title="Average rank across all systems (lower=better)">Composite</th>
     <th title="Median rank across systems">Median</th>
     <th title="Standard deviation - how much systems disagree">Spread</th>
+    {extra_headers}
     {sys_headers}
     <th>League</th>
 </tr></thead>
@@ -367,6 +441,7 @@ body {{ background: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Se
     <th title="Average rank across all systems (lower=better)">Composite</th>
     <th title="Median rank across systems">Median</th>
     <th title="Standard deviation - how much systems disagree">Spread</th>
+    {extra_headers}
     {sys_headers}
     <th>League</th>
 </tr></thead>
@@ -384,6 +459,8 @@ low spread means consensus, high spread means the team is controversial.<br><br>
 <strong>Massey</strong> &mdash; least-squares on flight margins, capped at &plusmn;6.
 <strong>PageRank</strong> &mdash; authority in the win/loss graph.
 <strong>Win-Score</strong> &mdash; each win earns the opponent's win percentage.<br><br>
+<strong>Top Flight</strong> &mdash; win rate at #1 Singles + #1 Doubles (best players).
+<strong>Top 25 W</strong> &mdash; wins against opponents ranked in the top 25 at the time the match was played, not their current rank.<br><br>
 <strong>PI</strong> (Power Index) = 50% APR + 50% FWS, from the main rankings page. Shown for reference.
 </div>
 
@@ -469,12 +546,18 @@ def main():
     os.makedirs(snap_dir, exist_ok=True)
 
     latest_html = None
+    prev_boys_ranks = None  # {team_id: rank} from previous week
+    prev_girls_ranks = None
     for week_date in weeks:
         week_num = get_week_num(week_date)
         print(f"\nWeek {week_num}: {week_date.strftime('%Y-%m-%d')}")
 
-        boys = build_weekly_rankings(raw_data, 1, school_info, pi_data, cutoff_date=week_date)
-        girls = build_weekly_rankings(raw_data, 2, school_info, pi_data, cutoff_date=week_date)
+        boys = build_weekly_rankings(raw_data, 1, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_boys_ranks)
+        girls = build_weekly_rankings(raw_data, 2, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_girls_ranks)
+
+        # Save this week's ranks for next week's Top-25 calculation
+        prev_boys_ranks = {t['school_id']: t['rank'] for t in boys}
+        prev_girls_ranks = {t['school_id']: t['rank'] for t in girls}
         print(f"  Boys: {len(boys)} teams | Girls: {len(girls)} teams")
 
         # Generate archive page (relative paths go up one level)
