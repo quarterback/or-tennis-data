@@ -24,7 +24,7 @@ from computer_rankings import run_all, ratings_to_ranks, composite_ranks
 
 MIN_MATCHES = 3
 YEAR = 2026
-SEASON_START = datetime(2026, 4, 6)  # First rankings week starts April 11 (Saturday)
+SEASON_START = datetime(2026, 3, 30)  # First rankings Saturday = April 4
 SEASON_END = datetime(2026, 5, 16)
 
 
