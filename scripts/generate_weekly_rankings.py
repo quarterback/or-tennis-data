@@ -295,6 +295,9 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
         overrides = {'Ida B. Wells-Barnett High School': 'Wells'}
         if name in overrides:
             return overrides[name]
+        # Fix all-caps names from API
+        if name == name.upper() and len(name) > 2:
+            name = name.title()
         for suffix in [' High School', ' School']:
             if name.endswith(suffix):
                 return name[:-len(suffix)]
