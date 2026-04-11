@@ -317,11 +317,12 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
     week_nav = ''
     if all_weeks:
         links = []
+        link_prefix = 'weekly/' if is_latest else ''
         for wn, wdate in all_weeks:
             if wn == week_num:
                 links.append(f'<span class="week-link active">Week {wn}</span>')
             else:
-                links.append(f'<a class="week-link" href="weekly/week-{wn}.html">Week {wn}</a>')
+                links.append(f'<a class="week-link" href="{link_prefix}week-{wn}.html">Week {wn}</a>')
         week_nav = '<div class="week-nav">' + ' '.join(links) + '</div>'
 
     # For archive pages, the relative path to root is ../
