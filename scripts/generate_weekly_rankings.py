@@ -291,6 +291,12 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
     """Generate HTML for a single week. all_weeks is list of (week_num, date_str) for archive nav."""
     week_label = week_date.strftime('%B %d, %Y')
 
+    def clean_name(name):
+        for suffix in [' High School', ' School']:
+            if name.endswith(suffix):
+                return name[:-len(suffix)]
+        return name
+
     def team_rows(teams):
         rows = []
         for t in teams:
@@ -300,8 +306,9 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
             sys_cells = ''.join(f'<td class="sys-rank">{t["system_ranks"].get(s, "-")}</td>' for s in systems)
             tf = f'{t["top_flight_pct"]:.0f}%'
             t25 = t['top25_wins'] if t['top25_wins'] > 0 else '-'
+            display_name = clean_name(t['school_name'])
             rows.append(f'<tr><td{rc}>{rank}</td>'
-                        f'<td><span class="school-name">{t["school_name"]}</span> <span class="badge {bc}">{t["classification"]}</span></td>'
+                        f'<td><span class="school-name">{display_name}</span> <span class="badge {bc}">{t["classification"]}</span></td>'
                         f'<td>{t["record"]}</td><td class="power-index">{t["power_index"]:.4f}</td>'
                         f'<td>{t["composite_rank"]:.1f}</td><td>{t["median_rank"]:.0f}</td><td>{t["std_dev"]:.1f}</td>'
                         f'<td class="sys-rank">{tf}</td><td class="sys-rank">{t25}</td>'
