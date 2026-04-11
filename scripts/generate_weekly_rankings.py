@@ -292,6 +292,9 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
     week_label = week_date.strftime('%B %d, %Y')
 
     def clean_name(name):
+        overrides = {'Ida B. Wells-Barnett High School': 'Wells'}
+        if name in overrides:
+            return overrides[name]
         for suffix in [' High School', ' School']:
             if name.endswith(suffix):
                 return name[:-len(suffix)]
