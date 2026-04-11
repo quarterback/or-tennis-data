@@ -459,7 +459,7 @@ def main():
     systems = ['Elo', 'Colley', 'Massey', 'PageRank', 'Win-Score']
     html = generate_html(boys, girls, week_date, week_num, systems)
 
-    out = os.path.join(project_root, 'weekly-rankings.html')
+    out = os.path.join(project_root, 'public', 'weekly-rankings.html')
     with open(out, 'w') as f:
         f.write(html)
     print(f"Written: {out}")
