@@ -287,7 +287,8 @@
             <div class="filter-group">
                 <label>Sort By</label>
                 <div class="sort-toggle">
-                    <button class="btn btn-outline-secondary btn-sm active" id="sortPowerIndex">Power Index</button>
+                    <button class="btn btn-outline-secondary btn-sm active" id="sortRank">Rank</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="sortPowerIndex">Power Index</button>
                     <button class="btn btn-outline-secondary btn-sm" id="sortAPR">APR</button>
                 </div>
             </div>
@@ -540,7 +541,7 @@
             refreshAnalysisTable();
         });
 
-        let currentSortColumn = 8; // Power Index by default (after adding Class Rank column)
+        let currentSortColumn = 0; // State Rank by default
 
         $(document).ready(function() {
             table = $('#rankingsTable').DataTable({
@@ -686,22 +687,28 @@
                         }
                     }
                 ],
-                order: [[8, 'desc']],  // Power Index column (after adding Class Rank)
+                order: [[0, 'asc']],  // State Rank column (ascending, reflects H2H boosts)
                 pageLength: 50,
                 lengthMenu: [[25, 50, 100, -1], [25, 50, 100, "All"]],
                 dom: 'lrtip'
             });
 
             // Sort toggle buttons
+            $('#sortRank').on('click', function() {
+                $(this).addClass('active');
+                $('#sortPowerIndex, #sortAPR').removeClass('active');
+                table.order([[0, 'asc']]).draw();  // State Rank is column 0
+            });
+
             $('#sortPowerIndex').on('click', function() {
                 $(this).addClass('active');
-                $('#sortAPR').removeClass('active');
+                $('#sortRank, #sortAPR').removeClass('active');
                 table.order([[8, 'desc']]).draw();  // Power Index is column 8
             });
 
             $('#sortAPR').on('click', function() {
                 $(this).addClass('active');
-                $('#sortPowerIndex').removeClass('active');
+                $('#sortRank, #sortPowerIndex').removeClass('active');
                 table.order([[9, 'desc']]).draw();  // APR is column 9
             });
 
