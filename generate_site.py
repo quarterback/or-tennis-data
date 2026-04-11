@@ -1588,7 +1588,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>Power Index</th>
                         <th>APR</th>
                         <th>FWS%</th>
-                        <th>SOS</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -1930,17 +1929,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (fwsPlus < 85) cls = 'apr-low';
                             const tooltip = `FWS+ ${{fwsPlus}} (100 = avg)`;
                             return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(1)}}%</span>`;
-                        }}
-                    }},
-                    {{
-                        data: 'owp',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
-                            // SOS (Strength of Schedule) = OWP
-                            let cls = 'apr-mid';
-                            if (d >= 0.55) cls = 'apr-high';
-                            else if (d < 0.45) cls = 'apr-low';
-                            return `<span class="${{cls}}">${{d.toFixed(3)}}</span>`;
                         }}
                     }}
                 ],

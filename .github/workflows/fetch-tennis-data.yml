@@ -22,7 +22,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests geopy
+        run: pip install requests geopy numpy
 
       - name: Discover active schools (most wins)
         run: python fetch_most_wins.py --year 2026
