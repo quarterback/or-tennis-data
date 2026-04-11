@@ -287,21 +287,136 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
     return results
 
 
-def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None, is_latest=False):
-    """Generate HTML for a single week. all_weeks is list of (week_num, date_str) for archive nav."""
+def _clean_name_standalone(name):
+    """Standalone version of name cleaner for use outside HTML generation."""
+    overrides = {'Ida B. Wells-Barnett High School': 'Wells'}
+    name = name.strip()
+    if name in overrides:
+        return overrides[name]
+    if name == name.upper() and len(name) > 2:
+        name = name.title()
+    for suffix in [' High School', ' School']:
+        if name.endswith(suffix):
+            return name[:-len(suffix)]
+    return name
+
+
+def generate_narrative(teams, prev_teams, gender_label, week_num):
+    """Generate press-release style narrative for one gender's rankings."""
+    if not teams:
+        return ''
+
+    cn = _clean_name_standalone
+    prev_lookup = {t['school_id']: t for t in prev_teams} if prev_teams else {}
+    lines = []
+
+    # --- Lead: #1 team ---
+    top = teams[0]
+    top_name = cn(top['school_name'])
+    if week_num == 1 or not prev_teams:
+        lines.append(f"<strong>{top_name}</strong> ({top['record']}) opens the season at No. 1 in the "
+                     f"inaugural {gender_label} computer composite, a {top['classification']} program "
+                     f"out of {top['league']}.")
+    else:
+        prev = prev_lookup.get(top['school_id'])
+        if prev and prev['rank'] == 1:
+            lines.append(f"<strong>{top_name}</strong> ({top['record']}) holds firm at No. 1 in the "
+                         f"{gender_label} composite with all five systems ranking them inside the top "
+                         f"{max(r for r in top['system_ranks'].values())}.")
+        else:
+            old_rank = prev['rank'] if prev else 'NR'
+            lines.append(f"<strong>{top_name}</strong> ({top['record']}) rises to No. 1 in the "
+                         f"{gender_label} composite after entering the week ranked No. {old_rank}.")
+
+    # --- Undefeated teams ---
+    undefeated = [t for t in teams if t['losses'] == 0 and t['ties'] == 0 and t['wins'] >= MIN_MATCHES]
+    if len(undefeated) > 1:
+        others = [f"{cn(t['school_name'])} ({t['record']})" for t in undefeated[1:6]]
+        lines.append(f"{len(undefeated)} teams remain unbeaten: No. 1 {top_name} "
+                     f"is joined by {', '.join(others)}"
+                     + (f" and {len(undefeated) - 6} more." if len(undefeated) > 6 else "."))
+
+    # --- Biggest movers (only if we have previous week) ---
+    if prev_lookup:
+        movers = []
+        for t in teams:
+            prev = prev_lookup.get(t['school_id'])
+            if prev:
+                delta = prev['rank'] - t['rank']
+                if delta >= 5:
+                    movers.append((t, delta, prev['rank']))
+        movers.sort(key=lambda x: -x[1])
+        if movers:
+            top_movers = movers[:3]
+            parts = []
+            for t, delta, old_rank in top_movers:
+                parts.append(f"{cn(t['school_name'])} (No. {old_rank} to No. {t['rank']}, +{delta})")
+            lines.append(f"<strong>Biggest movers:</strong> {'; '.join(parts)}.")
+
+        # --- Biggest drops ---
+        drops = []
+        for t in teams:
+            prev = prev_lookup.get(t['school_id'])
+            if prev:
+                delta = t['rank'] - prev['rank']
+                if delta >= 5:
+                    drops.append((t, delta, prev['rank']))
+        drops.sort(key=lambda x: -x[1])
+        if drops:
+            top_drops = drops[:2]
+            parts = []
+            for t, delta, old_rank in top_drops:
+                parts.append(f"{cn(t['school_name'])} (No. {old_rank} to No. {t['rank']})")
+            lines.append(f"<strong>Falling:</strong> {'; '.join(parts)}.")
+
+        # --- New entries ---
+        new_entries = [t for t in teams if t['school_id'] not in prev_lookup and t['rank'] <= 50]
+        if new_entries:
+            parts = [f"No. {t['rank']} {cn(t['school_name'])} ({t['record']})" for t in new_entries[:4]]
+            lines.append(f"<strong>New to the rankings:</strong> {', '.join(parts)}.")
+
+    # --- Classification leaders ---
+    class_leaders = {}
+    for t in teams:
+        c = t['classification']
+        if c not in class_leaders:
+            class_leaders[c] = t
+    if len(class_leaders) > 1:
+        parts = []
+        for cls in ['6A', '5A', '4A/3A/2A/1A']:
+            leader = class_leaders.get(cls)
+            if leader:
+                parts.append(f"{cls} {cn(leader['school_name'])} (No. {leader['rank']})")
+        lines.append(f"<strong>Classification leaders:</strong> {', '.join(parts)}.")
+
+    # --- Consensus and controversy ---
+    ranked_top25 = [t for t in teams if t['rank'] <= 25]
+    if ranked_top25:
+        consensus = sorted(ranked_top25, key=lambda t: t['std_dev'])[:2]
+        controversial = sorted(ranked_top25, key=lambda t: -t['std_dev'])[:2]
+
+        con_parts = [f"No. {t['rank']} {cn(t['school_name'])} (spread: {t['std_dev']:.1f})" for t in consensus]
+        cont_parts = [f"No. {t['rank']} {cn(t['school_name'])} (spread: {t['std_dev']:.1f})" for t in controversial]
+        lines.append(f"<strong>Consensus picks:</strong> {', '.join(con_parts)}. "
+                     f"<strong>Most debated:</strong> {', '.join(cont_parts)}.")
+
+    # --- Top-25 quality wins ---
+    t25_leaders = sorted([t for t in teams if t['top25_wins'] > 0], key=lambda t: -t['top25_wins'])[:3]
+    if t25_leaders:
+        parts = [f"{cn(t['school_name'])} ({t['top25_wins']})" for t in t25_leaders]
+        lines.append(f"<strong>Most top-25 wins:</strong> {', '.join(parts)}.")
+
+    return ' '.join(lines)
+
+
+def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None, is_latest=False,
+                       prev_boys=None, prev_girls=None):
+    """Generate HTML for a single week. all_weeks is list of (week_num, date_str) for archive nav.
+    prev_boys/prev_girls: previous week's results lists for week-over-week narrative."""
     week_label = week_date.strftime('%B %d, %Y')
 
     def clean_name(name):
-        overrides = {'Ida B. Wells-Barnett High School': 'Wells'}
-        if name in overrides:
-            return overrides[name]
-        # Fix all-caps names from API
-        if name == name.upper() and len(name) > 2:
-            name = name.title()
-        for suffix in [' High School', ' School']:
-            if name.endswith(suffix):
-                return name[:-len(suffix)]
-        return name
+        return _clean_name_standalone(name)
 
     def team_rows(teams):
         rows = []
@@ -325,6 +440,10 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
     extra_headers = '<th title="S1+D1 win rate">Top Flight</th><th title="Wins vs opponents ranked Top 25 at time played">Top 25 W</th>'
     boys_rows = team_rows(boys)
     girls_rows = team_rows(girls)
+
+    # Generate narrative intros
+    boys_narrative = generate_narrative(boys, prev_boys, 'boys', week_num)
+    girls_narrative = generate_narrative(girls, prev_girls, 'girls', week_num)
 
     # Week navigation links
     week_nav = ''
@@ -387,6 +506,8 @@ body {{ background: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Se
 .gender-tab {{ display: none; }}
 .gender-tab.active {{ display: block; }}
 .info {{ margin-top: 12px; padding: 10px 15px; background: #f8f9fa; border-radius: 4px; border-left: 3px solid #198754; font-size: 12px; color: #6c757d; }}
+.narrative {{ background: #fff; border: 1px solid #dee2e6; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; font-size: 14px; line-height: 1.7; color: #343a40; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }}
+.narrative-label {{ font-size: 11px; text-transform: uppercase; font-weight: 700; color: #198754; letter-spacing: 0.5px; margin-bottom: 6px; }}
 </style>
 </head>
 <body>
@@ -419,6 +540,7 @@ body {{ background: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Se
 </div>
 
 <div id="boys-tab" class="gender-tab active">
+{f'<div class="narrative"><div class="narrative-label">Boys Week {week_num} Report</div>{boys_narrative}</div>' if boys_narrative else ''}
 <div class="filter-bar">
     <label>Classification:</label>
     <select id="boys-cf" onchange="filterRows('boys')">
@@ -442,6 +564,7 @@ body {{ background: #f8f9fa; font-family: -apple-system, BlinkMacSystemFont, 'Se
 </div>
 
 <div id="girls-tab" class="gender-tab">
+{f'<div class="narrative"><div class="narrative-label">Girls Week {week_num} Report</div>{girls_narrative}</div>' if girls_narrative else ''}
 <div class="filter-bar">
     <label>Classification:</label>
     <select id="girls-cf" onchange="filterRows('girls')">
@@ -562,6 +685,8 @@ def main():
     latest_html = None
     prev_boys_ranks = None  # {team_id: rank} from previous week
     prev_girls_ranks = None
+    prev_boys_results = None  # Full results list from previous week (for narrative)
+    prev_girls_results = None
     for week_date in weeks:
         week_num = get_week_num(week_date)
         print(f"\nWeek {week_num}: {week_date.strftime('%Y-%m-%d')}")
@@ -569,13 +694,11 @@ def main():
         boys = build_weekly_rankings(raw_data, 1, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_boys_ranks)
         girls = build_weekly_rankings(raw_data, 2, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_girls_ranks)
 
-        # Save this week's ranks for next week's Top-25 calculation
-        prev_boys_ranks = {t['school_id']: t['rank'] for t in boys}
-        prev_girls_ranks = {t['school_id']: t['rank'] for t in girls}
         print(f"  Boys: {len(boys)} teams | Girls: {len(girls)} teams")
 
         # Generate archive page (relative paths go up one level)
-        archive_html = generate_week_html(boys, girls, week_date, week_num, systems, all_weeks_nav, is_latest=False)
+        archive_html = generate_week_html(boys, girls, week_date, week_num, systems, all_weeks_nav,
+                                          is_latest=False, prev_boys=prev_boys_results, prev_girls=prev_girls_results)
         archive_path = os.path.join(weekly_dir, f'week-{week_num}.html')
         with open(archive_path, 'w') as f:
             f.write(archive_html)
@@ -595,7 +718,14 @@ def main():
             json.dump(snap, f)
 
         # Track latest for main page
-        latest_html = generate_week_html(boys, girls, week_date, week_num, systems, all_weeks_nav, is_latest=True)
+        latest_html = generate_week_html(boys, girls, week_date, week_num, systems, all_weeks_nav,
+                                         is_latest=True, prev_boys=prev_boys_results, prev_girls=prev_girls_results)
+
+        # Save this week's data for next week's narrative and Top-25 calculation
+        prev_boys_ranks = {t['school_id']: t['rank'] for t in boys}
+        prev_girls_ranks = {t['school_id']: t['rank'] for t in girls}
+        prev_boys_results = boys
+        prev_girls_results = girls
 
     # Write latest week as main weekly-rankings.html
     if latest_html:
