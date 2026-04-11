@@ -22,7 +22,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests geopy
+        run: pip install requests geopy numpy
 
       - name: Discover active schools (most wins)
         run: python fetch_most_wins.py --year 2026
@@ -36,9 +36,12 @@ jobs:
       - name: Regenerate site
         run: python generate_site.py
 
+      - name: Generate weekly rankings
+        run: python scripts/generate_weekly_rankings.py
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/2026/ index.html public/ oregon_schools.csv
+          git add data/2026/ index.html public/ oregon_schools.csv weekly-rankings.html
           git diff --staged --quiet || (git commit -m "Update 2026 tennis data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push)
