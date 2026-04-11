@@ -965,6 +965,102 @@ def build_rankings(data_dir, master_school_list):
                                 swapped_pairs.add((school2_id, school1_id))
                 i += 1
 
+            # PHASE 3: Classification-level H2H enforcement
+            # Similar to Phase 1 (league) but for classification groupings.
+            # This catches H2H boosts for same-classification teams that aren't
+            # adjacent in overall state rankings (because teams from other
+            # classifications are interspersed between them).
+            class_groups_h2h = defaultdict(list)
+            for i, (school_id, stats) in enumerate(ranked):
+                info = school_info.get(school_id, {})
+                classification = info.get('classification', '')
+                if classification:
+                    class_groups_h2h[classification].append((school_id, i, stats))
+
+            for classification, teams in class_groups_h2h.items():
+                if len(teams) < 2:
+                    continue
+
+                # Build class rank lookup for this classification
+                class_rank_lookup = {}
+                for cr, (school_id, state_pos, stats) in enumerate(teams, 1):
+                    class_rank_lookup[school_id] = cr
+
+                # Check H2H for teams within class rank or PI proximity
+                for school_id, state_pos, stats in teams:
+                    if school_id not in raw_data_cache[year][gender]:
+                        continue
+                    school_meets = raw_data_cache[year][gender][school_id].get('meets', [])
+
+                    for other_id, other_pos, other_stats in teams:
+                        if school_id == other_id:
+                            continue
+                        if other_id not in raw_data_cache[year][gender]:
+                            continue
+
+                        # Skip if already swapped by Phase 1 or 2
+                        if (school_id, other_id) in swapped_pairs:
+                            continue
+
+                        winner_cr = class_rank_lookup.get(school_id, 0)
+                        loser_cr = class_rank_lookup.get(other_id, 0)
+
+                        # Only consider if this school is ranked lower (worse)
+                        # than the other school in classification
+                        if winner_cr <= loser_cr:
+                            continue
+
+                        # Check proximity: class rank threshold OR PI threshold
+                        pi_diff = abs(stats['power_index'] - other_stats['power_index'])
+                        within_class_threshold = abs(winner_cr - loser_cr) <= H2H_LEAGUE_RANK_THRESHOLD
+                        within_pi_threshold = pi_diff < H2H_THRESHOLD
+
+                        if not (within_class_threshold or within_pi_threshold):
+                            continue
+
+                        h2h_detail = get_head_to_head_detailed(school_meets, school_id, other_id)
+                        h2h_wins = h2h_detail['wins']
+                        h2h_losses = h2h_detail['losses']
+
+                        should_swap = False
+                        swap_date = None
+
+                        if h2h_wins > h2h_losses:
+                            should_swap = True
+                            win_matches = [m for m in h2h_detail['matches'] if m['result'] == 'win']
+                            if win_matches:
+                                swap_date = win_matches[-1]['date']
+                        elif h2h_wins == h2h_losses and h2h_wins > 0:
+                            # Split series - use FWS tiebreaker
+                            total_fws_school = sum(m['fws1'] for m in h2h_detail['matches'])
+                            total_fws_other = sum(m['fws2'] for m in h2h_detail['matches'])
+                            if total_fws_school > total_fws_other:
+                                should_swap = True
+                                swap_date = h2h_detail['matches'][-1]['date'] if h2h_detail['matches'] else None
+
+                        if not should_swap:
+                            continue
+
+                        # Find current positions in overall ranking
+                        winner_pos = None
+                        loser_pos = None
+                        for idx, (sid, _) in enumerate(ranked):
+                            if sid == school_id:
+                                winner_pos = idx
+                            if sid == other_id:
+                                loser_pos = idx
+
+                        if winner_pos is not None and loser_pos is not None and winner_pos > loser_pos:
+                            if not would_create_circle(school_id, other_id, h2h_swaps):
+                                # Bubble winner up to just above loser
+                                current_pos = winner_pos
+                                while current_pos > loser_pos:
+                                    ranked[current_pos], ranked[current_pos - 1] = ranked[current_pos - 1], ranked[current_pos]
+                                    current_pos -= 1
+
+                                h2h_swaps.append((school_id, other_id, h2h_wins, h2h_losses, 'Statewide', swap_date))
+                                swapped_pairs.add((school_id, other_id))
+
             if h2h_swaps:
                 print(f"  H2H swaps in {year} {gender}: {len(h2h_swaps)}")
 
