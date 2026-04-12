@@ -610,21 +610,22 @@ function filterRows(g) {{
         if (match) {{ n++; r.querySelectorAll('td')[0].textContent = n; }}
     }});
 }}
-document.querySelectorAll('table thead th').forEach((th, ci) => {{
-    th.addEventListener('click', function() {{
-        const table = this.closest('table');
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr'));
-        const dir = this.dataset.sd === 'd' ? 'a' : 'd';
-        rows.sort((a, b) => {{
-            let av = a.querySelectorAll('td')[ci].textContent.trim();
-            let bv = b.querySelectorAll('td')[ci].textContent.trim();
-            const an = parseFloat(av), bn = parseFloat(bv);
-            if (!isNaN(an) && !isNaN(bn)) return dir === 'a' ? an - bn : bn - an;
-            return dir === 'a' ? av.localeCompare(bv) : bv.localeCompare(av);
+document.querySelectorAll('table').forEach(table => {{
+    table.querySelectorAll('thead th').forEach((th, ci) => {{
+        th.addEventListener('click', function() {{
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const dir = this.dataset.sd === 'd' ? 'a' : 'd';
+            rows.sort((a, b) => {{
+                let av = a.querySelectorAll('td')[ci].textContent.trim();
+                let bv = b.querySelectorAll('td')[ci].textContent.trim();
+                const an = parseFloat(av), bn = parseFloat(bv);
+                if (!isNaN(an) && !isNaN(bn)) return dir === 'a' ? an - bn : bn - an;
+                return dir === 'a' ? av.localeCompare(bv) : bv.localeCompare(av);
+            }});
+            rows.forEach((r, i) => {{ tbody.appendChild(r); r.querySelectorAll('td')[0].textContent = i + 1; }});
+            this.dataset.sd = dir;
         }});
-        rows.forEach((r, i) => {{ tbody.appendChild(r); r.querySelectorAll('td')[0].textContent = i + 1; }});
-        this.dataset.sd = dir;
     }});
 }});
 </script>
