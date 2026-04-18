@@ -37,7 +37,7 @@
     }
   ],
   "overallRecord": {
-    "win": 5,
+    "win": 6,
     "loss": 0,
     "tie": 1
   },
@@ -47,7 +47,7 @@
       "title": "South vs Willamette",
       "meetDateTime": "2026-04-17T07:00:00.000Z",
       "postSeason": false,
-      "approveMeet": false,
+      "approveMeet": true,
       "eventId": null,
       "winnerSchoolId": null,
       "coach": {
@@ -608,6 +608,123 @@
                     },
                     "matchTeamPlayer": {
                       "position": 2
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 216945,
+      "title": "South Vs. Le Salle Prep",
+      "meetDateTime": "2026-04-17T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75309,
+        "firstName": "Jay",
+        "lastName": "Rapp",
+        "genderId": 2,
+        "email": "jayrapptennis@gmail.com",
+        "phone": "(541) 690-4282",
+        "school": {
+          "name": "South Medford",
+          "logo": "school_75309.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75309,
+            "name": "South Medford",
+            "logo": "school_75309.png",
+            "score": 1,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 124831,
+            "name": "La Salle Prep",
+            "logo": "school_124831.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "3014763": 6,
+                "3014764": 3,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "3014763": 6,
+                "3014764": 2,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1507417,
+            "flight": "4",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 3014763,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 3014763,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 163071,
+                    "firstName": "Valentina",
+                    "lastName": "Soto",
+                    "grade": "10",
+                    "genderId": 2,
+                    "schoolId": 75309,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "South Medford",
+                      "logo": "school_75309.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 3014764,
+                "isWinner": false,
+                "players": [
+                  {
+                    "id": 144236,
+                    "firstName": "Quinlynn",
+                    "lastName": "Tran",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 124831,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "La Salle Prep",
+                      "logo": "school_124831.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
                     }
                   }
                 ]
