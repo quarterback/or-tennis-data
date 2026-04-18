@@ -412,19 +412,18 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
             rc = f' class="rank-{rank}"' if rank <= 3 else ''
             bc = 'badge-6a' if '6A' in t['classification'] else ('badge-5a' if '5A' in t['classification'] else 'badge-4a')
             sys_cells = ''.join(f'<td class="sys-rank">{t["system_ranks"].get(s, "-")}</td>' for s in systems)
-            tf = f'{t["top_flight_pct"]:.0f}%'
             t25 = t['top25_wins'] if t['top25_wins'] > 0 else '-'
             display_name = clean_name(t['school_name'])
             rows.append(f'<tr><td{rc}>{rank}</td>'
                         f'<td><span class="school-name">{display_name}</span> <span class="badge {bc}">{t["classification"]}</span></td>'
                         f'<td>{t["record"]}</td><td class="power-index">{t["power_index"]:.4f}</td>'
                         f'<td>{t["composite_rank"]:.1f}</td><td>{t["median_rank"]:.0f}</td><td>{t["std_dev"]:.1f}</td>'
-                        f'<td class="sys-rank">{tf}</td><td class="sys-rank">{t25}</td>'
+                        f'<td class="sys-rank">{t25}</td>'
                         f'{sys_cells}<td>{t["league"]}</td></tr>')
         return '\n'.join(rows)
 
     sys_headers = ''.join(f'<th title="{s} rank">{s}</th>' for s in systems)
-    extra_headers = '<th title="S1+D1 win rate">Top Flight</th><th title="Wins vs opponents ranked Top 25 at time played">Top 25 W</th>'
+    extra_headers = '<th title="Wins vs opponents ranked Top 25 at time played">Top 25 W</th>'
     boys_rows = team_rows(boys)
     girls_rows = team_rows(girls)
 
@@ -583,7 +582,6 @@ low spread means consensus, high spread means the team is controversial.<br><br>
 <strong>Massey</strong> &mdash; least-squares on flight margins, capped at &plusmn;6.
 <strong>PageRank</strong> &mdash; authority in the win/loss graph.
 <strong>Win-Score</strong> &mdash; each win earns the opponent's win percentage.<br><br>
-<strong>Top Flight</strong> &mdash; win rate at #1 Singles + #1 Doubles (best players).
 <strong>Top 25 W</strong> &mdash; wins against opponents ranked in the top 25 at the time the match was played, not their current rank.<br><br>
 <strong>PI</strong> (Power Index) = 50% APR + 50% FWS, from the main rankings page. Shown for reference.
 </div>
