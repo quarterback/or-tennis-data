@@ -10,22 +10,21 @@
 |---|---|---|
 | Total teams | 50 | 51 (+ Sweet Home) |
 | Avg teams/district | 10.0 | 7.3 |
-| Largest district | 13 (SD4) | 9 (Portland Metro) |
-| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon, S Valley) |
-| Min boys in any district | 5 (SD5) | 5 (North Valley, SE Oregon) |
-| Min girls in any district | 6 (SD5) | 5 (S Valley, SE Oregon) |
+| Largest district | 13 (SD4) | 9 (North Valley, NE Oregon) |
+| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon) |
+| Min boys in any district | 5 (SD5) | 5 (SE Oregon) |
+| Min girls in any district | 6 (SD5) | 5 (SE Oregon) |
 | Max travel (worst district) | 183 mi (SD4) | 119 mi (Central & Gorge) |
 
 For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood), with max travel well under 100 miles in most leagues.
 
 ---
 
-## SD-1 Portland Metro (8 teams, max 17 mi) — 7 boys, 8 girls
+## SD-1 Portland Metro (7 teams, max 17 mi) — 6 boys, 7 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Catlin Gabel | Portland | B/G | Special District 1 |
-| North Marion | Aurora | B/G | Special District 2 |
 | Oregon Episcopal | Portland | B/G | Special District 1 |
 | Riverdale | Portland | B/G | Special District 1 |
 | Riverside (West Linn - Wilsonville) | West Linn | B/G | Special District 1 |
@@ -33,7 +32,7 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Valley Catholic | Beaverton | B/G | Special District 1 |
 | Westside Christian | Tigard | G | Special District 1 |
 
-**Notes:** Keeps the Portland-area core of current SD1 intact. Adds North Marion from SD2 — on I-5 between Portland and Salem.
+**Notes:** Portland-area core of current SD1. Compact geography — all teams within 17 miles.
 
 ---
 
@@ -42,30 +41,31 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Blanchet | Salem | B/G | Special District 1 |
-| Cascade | Turner | B/G | Special District 2 |
 | Estacada | Estacada | B/G | Special District 2 |
 | Molalla | Molalla | B/G | Special District 2 |
+| North Marion | Aurora | B/G | Special District 2 |
 | Scappoose | Scappoose | G | Special District 1 |
 | St Helens | St Helens | G | Special District 1 |
 | Stayton | Stayton | B/G | Special District 2 |
 | Sweet Home | Sweet Home | B/G | Independent (new) |
 | Tillamook | Tillamook | G | Special District 1 |
 
-**Notes:** Mid-valley corridor from Salem to Stayton, plus the northern coast/Columbia County schools. Estacada and Molalla move here from SD-1 — they're geographically between Portland and the valley, and their presence gives the district 6 boys teams (Scappoose, St Helens, and Tillamook are girls-only). Sweet Home is a natural geographic fit near Stayton. Blanchet moves from SD1 since it's in Salem, not Portland.
+**Notes:** Mid-valley corridor from Aurora to Stayton, plus the northern coast/Columbia County schools. Estacada, Molalla, and North Marion are geographically between Portland and the valley. Sweet Home is a natural geographic fit near Stayton. Blanchet moves from SD1 since it's in Salem, not Portland.
 
 ---
 
-## SD-3 South Valley & Coast (5 teams, max 91 mi) — 5 boys, 5 girls
+## SD-3 South Valley & Coast (6 teams, max 91 mi) — 6 boys, 6 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
+| Cascade | Turner | B/G | Special District 2 |
 | Junction City | Junction City | B/G | Special District 2 |
 | Marist Catholic | Eugene | B/G | Special District 2 |
 | Marshfield | Coos Bay | B/G | Special District 3 |
 | North Bend | North Bend | B/G | Special District 3 |
 | Philomath | Philomath | B/G | Special District 2 |
 
-**Notes:** Eugene-area schools plus the south coast. Pulls the Eugene/Philomath schools from SD2 and the coast schools from SD3, grouping them by geography rather than arbitrary district lines. The Coos Bay-to-Eugene drive (~110 mi) is long but still shorter than SD4's current 183-mile span.
+**Notes:** Eugene-area schools plus the south coast. Cascade (Turner) fits here — it's between Salem and Eugene on I-5, and closer to the Eugene schools than the Portland metro. Pulls the coast schools from SD3, grouping them by geography rather than arbitrary district lines.
 
 ---
 
@@ -140,7 +140,8 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 |---|---|---|---|
 | Estacada | SD2 | SD-2 North Valley | Geographically between Portland and mid-valley, balances boys count |
 | Molalla | SD2 | SD-2 North Valley | Geographically between Portland and mid-valley, balances boys count |
-| North Marion | SD2 | SD-1 Portland Metro | Between Portland and Salem, on I-5 corridor |
+| North Marion | SD2 | SD-2 North Valley | Between Portland and Salem, on I-5 corridor |
+| Cascade | SD2 | SD-3 South Valley & Coast | Turner is between Salem and Eugene on I-5, closer to Eugene-area schools |
 | Blanchet | SD1 | SD-2 North Valley | In Salem, not Portland |
 | Sweet Home | Independent | SD-2 North Valley | New team, geographic fit near Stayton |
 | Marist Catholic | SD2 | SD-3 South Valley & Coast | Eugene area groups with coast |
