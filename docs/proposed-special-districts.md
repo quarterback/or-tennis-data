@@ -1,22 +1,73 @@
 # Proposed Special Districts for 4A/3A/2A/1A Tennis
 
-**Problem:** The current 5 Special Districts are unevenly sized and geographically sprawling compared to 6A leagues. 6A has 7 leagues averaging 6.9 teams with compact geography. 4A has 5 districts averaging 10 teams, with SD4 spanning 183 miles across eastern Oregon with 13 teams.
+## The Problem
 
-**Proposal:** Reorganize into 7 Special Districts that better mirror the balance of 6A conferences.
+4A/3A/2A/1A has nearly as many tennis programs as 6A (52 vs 48) but is organized into just 5 Special Districts — compared to 6A's 7 conferences. The result is significantly larger districts with far more travel burden, particularly in eastern Oregon.
 
-## Comparison
+The current structure asks 4A/3A/2A/1A schools to travel an average of 129 miles for their farthest district match — nearly 5x what 6A teams face (28 mi). Special District 4 alone spans 183 miles with 13 teams, from Sisters to Athena. With the addition of a dual team state tournament in 2026-27, this travel disparity becomes an even more pressing concern for eastern Oregon schools.
 
-| | Current (5 SDs) | Proposed (7 SDs) |
-|---|---|---|
-| Total teams | 50 | 51 (+ Sweet Home) |
-| Avg teams/district | 10.0 | 7.3 |
-| Largest district | 13 (SD4) | 9 (North Valley, NE Oregon) |
-| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon) |
-| Min boys in any district | 5 (SD5) | 5 (SE Oregon) |
-| Min girls in any district | 6 (SD5) | 5 (SE Oregon) |
-| Max travel (worst district) | 183 mi (SD4) | 119 mi (Central & Gorge) |
+This isn't a novel structural change. OSAA already right-sizes special districts in other spring sports at the same classification levels. Tennis simply hasn't been adjusted to match.
 
-For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood), with max travel well under 100 miles in most leagues.
+## Precedent: How OSAA Already Structures Other Sports
+
+| Sport / Classification | Programs | Districts | Avg Teams/District |
+|---|---|---|---|
+| 2A/1A Baseball | ~46 | 7 | 6.6 |
+| 2A/1A Softball | ~42 | 7 | 6.0 |
+| 3A Baseball | ~42 | 6 | 7.0 |
+| 3A Softball | ~35 | 6 | 5.8 |
+| **4A/3A/2A/1A Tennis (current)** | **52** | **5** | **10.4** |
+| **4A/3A/2A/1A Tennis (proposed)** | **52** | **7** | **7.4** |
+
+Tennis has more programs than any of the sports listed above, yet gets fewer districts. The proposed 7 districts would bring tennis in line with how OSAA already structures baseball and softball at these classification levels.
+
+## Cross-Classification Comparison
+
+| | 6A | 5A | 4A/3A/2A/1A Current | **4A/3A/2A/1A Proposed** |
+|---|---|---|---|---|
+| Total programs | 48 | 30 | 52 | **52** |
+| Number of leagues | 7 | 5 | 5 | **7** |
+| Avg teams/league | 6.9 | 6.0 | 10.4 | **7.4** |
+| Smallest league | 5 | 5 | 8 | **6** |
+| Largest league | 8 | 10 | 13 | **9** |
+| Avg max travel | 28 mi | 66 mi | 129 mi | **82 mi** |
+| Worst max travel | 120 mi | 130 mi | 183 mi | **119 mi** |
+
+**Proposal:** Reorganize the current 5 Special Districts into 7, bringing district sizes and travel in line with 6A, 5A, and how OSAA already handles baseball and softball.
+
+## Current 6A Conferences (for reference)
+
+| Conference | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| 6A-1 PIL | 8 | 8 | 8 | 0 mi |
+| 6A-2 Metro | 7 | 7 | 7 | 6 mi |
+| 6A-3 Pacific | 7 | 7 | 7 | 24 mi |
+| 6A-4 Mt. Hood | 8 | 8 | 8 | 33 mi |
+| 6A-5 Three Rivers | 6 | 5 | 6 | 11 mi |
+| 6A-6 Central Valley | 5 | 5 | 5 | 4 mi |
+| 6A-7 Southwest | 7 | 7 | 7 | 120 mi |
+
+## Current 4A/3A/2A/1A Special Districts
+
+| District | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| Special District 1 | 11 | 7 | 11 | 65 mi |
+| Special District 2 | 8 | 8 | 8 | 93 mi |
+| Special District 3 | 10 | 9 | 10 | 148 mi |
+| Special District 4 | 13 | 12 | 12 | 183 mi |
+| Special District 5 | 8 | 8 | 8 | 158 mi |
+
+## Proposed 7 Special Districts
+
+| District | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| SD-1 Portland Metro | 7 | 6 | 7 | 17 mi |
+| SD-2 North Valley | 9 | 6 | 9 | 75 mi |
+| SD-3 South Valley & Coast | 6 | 6 | 6 | 91 mi |
+| SD-4 Southern Oregon | 8 | 7 | 8 | 80 mi |
+| SD-5 Central & Gorge | 7 | 7 | 6 | 119 mi |
+| SD-6 NE Oregon | 8 | 7 | 8 | 86 mi |
+| SD-7 SE Oregon | 6 | 6 | 6 | 105 mi |
 
 ---
 
@@ -102,13 +153,12 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-6 Northeast Oregon (9 teams, max 86 mi) — 8 boys, 9 girls
+## SD-6 Northeast Oregon (8 teams, max 86 mi) — 7 boys, 8 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Ione-Heppner | Ione | B/G | Special District 4 |
 | Irrigon | Irrigon | B/G | Special District 4 |
-| La Grande | La Grande | B/G | Special District 5 |
 | McLoughlin | Milton-Freewater | B/G | Special District 5 |
 | Pendleton | Pendleton | B/G | Special District 5 |
 | Riverside | Boardman | B/G | Special District 4 |
@@ -116,21 +166,37 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Umatilla | Umatilla | B/G | Special District 4 |
 | Weston-McEwen | Athena | G | Special District 4 |
 
-**Notes:** The eastern half of current SD4 plus the three northern SD5 teams (La Grande, Pendleton, McLoughlin). These schools are geographically clustered along the I-84/I-82 corridor and already play each other frequently. Moving them together eliminates the 183-mile Sisters-to-Athena drive that existed in SD4.
+**Notes:** The eastern half of current SD4 plus McLoughlin and Pendleton from SD5. Schools are clustered along the I-84/I-82 corridor. La Grande moves to SD-7 where it's geographically closer to Baker City (40 mi) than to Pendleton (42 mi).
 
 ---
 
-## SD-7 Southeast Oregon (5 teams, max 75 mi) — 5 boys, 5 girls
+## SD-7 Southeast Oregon (6 teams, max 105 mi) — 6 boys, 6 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Baker | Baker City | B/G | Special District 5 |
 | Four Rivers Charter | Ontario | B/G | Special District 5 |
+| La Grande | La Grande | B/G | Special District 5 |
 | Nyssa | Nyssa | B/G | Special District 5 |
 | Ontario | Ontario | B/G | Special District 5 |
 | Vale | Vale | B/G | Special District 5 |
 
-**Notes:** The southern half of current SD5. Small but geographically isolated — these towns are closer to Boise than to any other Oregon tennis school. Similar to 6A-6 Central Valley (5 teams) where small district size is unavoidable due to geography.
+**Notes:** Current SD5 minus Pendleton and McLoughlin (who move to SD-6). La Grande joins from SD-6 — it's only 40 miles from Baker City, making it a natural fit. Max travel increases from 75 to 105 mi (La Grande to Ontario) but still well under SD4's current 183 mi.
+
+---
+
+## Additional Context: 4A Tennis Participation
+
+4A independently meets the 75% championship threshold being discussed by the State Championship Committee:
+
+| Classification | Total Schools | Boys Tennis | Girls Tennis | Boys % | Girls % |
+|---|---|---|---|---|---|
+| 4A | 30 | 23 | 25 | 77% | 83% |
+| 3A | 49 | 17 | 18 | 35% | 37% |
+| 2A | 40 | 3 | 3 | 8% | 8% |
+| 1A | 98 | 6 | 6 | 6% | 6% |
+
+Only 5 of 30 4A schools don't offer tennis: Astoria, Cottage Grove, Gladstone, Newport, and Seaside. This level of participation is comparable to 5A (30 of 33 schools, 91%). The combined 4A/3A/2A/1A classification masks the fact that 4A programs are operating at a fundamentally different scale than 1A and 2A programs — yet they share districts. The proposed realignment addresses this without requiring any classification changes.
 
 ---
 
@@ -152,6 +218,6 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Henley | SD3 | SD-4 Southern Oregon | Klamath joins Medford/GP (was isolated as 3-team cluster) |
 | Klamath Union | SD3 | SD-4 Southern Oregon | Same |
 | Mazama | SD3 | SD-4 Southern Oregon | Same |
-| La Grande | SD5 | SD-6 NE Oregon | Closer to Pendleton corridor than to Ontario |
-| Pendleton | SD5 | SD-6 NE Oregon | Same |
+| La Grande | SD5 | SD-7 SE Oregon | 40 mi from Baker City, balances SD-6/SD-7 sizes |
+| Pendleton | SD5 | SD-6 NE Oregon | Closer to I-84/I-82 corridor teams |
 | McLoughlin | SD5 | SD-6 NE Oregon | Same |
