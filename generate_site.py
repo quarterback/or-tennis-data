@@ -271,8 +271,6 @@ def is_dual_match(meet):
         return False
     if 'District' in title:
         return False
-    if 'Tournament' in title:
-        return False
     schools = meet.get('schools', {})
     winners = schools.get('winners', [])
     losers = schools.get('losers', [])
