@@ -45,6 +45,12 @@ OOWP_WEIGHT = 0.25  # Opponent's opponent win percentage
 APR_WEIGHT = 0.50   # Dual match outcomes (winning)
 FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
+# League-depth adjustment for OWP (two-pass APR)
+# Each opponent's effective strength = opp_wp * (loo_league_depth / median_league_depth).
+# LOO depth excludes both the opponent and the team being evaluated, so a team
+# can't prop up its own strength-of-schedule by being in its own league.
+LEAGUE_DEPTH_TOP_N = 4  # Top-N APR average used as league depth
+
 # H2H Tiebreaker threshold - swap if PI difference is less than this
 H2H_THRESHOLD = 0.02  # Teams within 2% PI difference eligible for H2H swap
 H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for league-based H2H
@@ -792,6 +798,71 @@ def build_rankings(data_dir, master_school_list):
                 school['apr'] = (school['wp'] * WP_WEIGHT) + (school['owp'] * OWP_WEIGHT) + (oowp * OOWP_WEIGHT)
 
                 # Power Index = 50/50 split between Results (APR) and Depth (FWS)
+                school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
+
+    # --- Pass 2: league-depth-weighted OWP ---
+    # Reweight each opponent's contribution to OWP by the depth of their league.
+    # Keeps raw record as the primary signal but dampens the "undefeated vs weak
+    # league" effect so comparable records in stronger leagues rank higher.
+    # Uses pass-1 APRs to compute league depth, with leave-one-out exclusion of
+    # both the opponent and the team being evaluated (so a team can't inflate
+    # its own strength-of-schedule by being in its own league).
+    league_aprs = defaultdict(list)  # (year, gender, league) -> [(apr, school_id), ...]
+    for year in school_data:
+        for gender in school_data[year]:
+            for sid, school in school_data[year][gender].items():
+                league = school_info.get(sid, {}).get('league', '')
+                if league:
+                    league_aprs[(year, gender, league)].append((school['apr'], sid))
+
+    # Median league depth per (year, gender) as normalizer (uses non-LOO top-N).
+    median_depth = {}
+    gender_depths = defaultdict(list)
+    for (year, gender, _league), pairs in league_aprs.items():
+        top = sorted([a for a, _ in pairs], reverse=True)[:LEAGUE_DEPTH_TOP_N]
+        if top:
+            gender_depths[(year, gender)].append(sum(top) / len(top))
+    for key, depths in gender_depths.items():
+        depths.sort()
+        median_depth[key] = depths[len(depths) // 2] if depths else 0.5
+
+    def loo_depth(year, gender, league, exclude_ids):
+        pairs = league_aprs.get((year, gender, league), [])
+        filtered = sorted([a for a, s in pairs if s not in exclude_ids], reverse=True)
+        top = filtered[:LEAGUE_DEPTH_TOP_N]
+        return sum(top) / len(top) if top else median_depth.get((year, gender), 0.5)
+
+    # Recompute OWP with league-depth-weighted opponent strengths
+    for year in school_data:
+        for gender in school_data[year]:
+            med = median_depth.get((year, gender), 0.5) or 0.5
+            for school_id, school in school_data[year][gender].items():
+                eff_strengths = []
+                for opp_id in school['opponents']:
+                    if opp_id in school_data[year][gender]:
+                        opp = school_data[year][gender][opp_id]
+                        opp_league = school_info.get(opp_id, {}).get('league', '')
+                        if opp_league:
+                            d = loo_depth(year, gender, opp_league, {opp_id, school_id})
+                            eff_strengths.append(opp['wp'] * (d / med))
+                        else:
+                            eff_strengths.append(opp['wp'])
+                    else:
+                        eff_strengths.append(0.5)
+                school['owp'] = sum(eff_strengths) / len(eff_strengths) if eff_strengths else 0.5
+
+    # Recompute OOWP, APR, PI from pass-2 OWPs
+    for year in school_data:
+        for gender in school_data[year]:
+            for school_id, school in school_data[year][gender].items():
+                opponent_owps = []
+                for opp_id in school['opponents']:
+                    if opp_id in school_data[year][gender]:
+                        opponent_owps.append(school_data[year][gender][opp_id]['owp'])
+                    else:
+                        opponent_owps.append(0.5)
+                school['oowp'] = sum(opponent_owps) / len(opponent_owps) if opponent_owps else 0.5
+                school['apr'] = (school['wp'] * WP_WEIGHT) + (school['owp'] * OWP_WEIGHT) + (school['oowp'] * OOWP_WEIGHT)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
 
     # Build output
@@ -1774,6 +1845,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     </div>
 
     <footer>
+        <a href="changelog.html">Changelog</a>
+        &middot;
         <a href="?view=analysis" id="adminLink">Admin Analysis</a>
     </footer>
 
@@ -3472,6 +3545,87 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     return html
 
 
+def render_changelog_page(md_path, out_path):
+    """Render CHANGELOG.md to a simple styled HTML page."""
+    import re, html
+
+    if not md_path.exists():
+        return
+
+    with open(md_path) as f:
+        lines = f.read().splitlines()
+
+    body_parts = []
+    para = []
+
+    def flush_para():
+        if para:
+            text = ' '.join(para).strip()
+            if text:
+                body_parts.append(f'<p>{text}</p>')
+            para.clear()
+
+    def fmt_inline(s):
+        s = html.escape(s)
+        s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
+        s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
+        return s
+
+    for raw in lines:
+        line = raw.rstrip()
+        if not line:
+            flush_para()
+            continue
+        if line.startswith('### '):
+            flush_para()
+            body_parts.append(f'<h3>{fmt_inline(line[4:])}</h3>')
+        elif line.startswith('## '):
+            flush_para()
+            body_parts.append(f'<h2>{fmt_inline(line[3:])}</h2>')
+        elif line.startswith('# '):
+            flush_para()
+            body_parts.append(f'<h1>{fmt_inline(line[2:])}</h1>')
+        elif line.startswith('- '):
+            # Simple list item — gather contiguous items into a <ul>
+            flush_para()
+            if body_parts and body_parts[-1].startswith('<ul>') and body_parts[-1].endswith('</ul>'):
+                body_parts[-1] = body_parts[-1][:-5] + f'<li>{fmt_inline(line[2:])}</li></ul>'
+            else:
+                body_parts.append(f'<ul><li>{fmt_inline(line[2:])}</li></ul>')
+        else:
+            para.append(fmt_inline(line))
+    flush_para()
+
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog - Oregon HS Tennis</title>
+<style>
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.55; }}
+  h1 {{ font-size: 1.6rem; margin: 0 0 8px; }}
+  h2 {{ font-size: 1.2rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
+  h3 {{ font-size: 1rem; margin: 20px 0 6px; color: #212529; }}
+  p  {{ margin: 8px 0; }}
+  code {{ background: #f1f3f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }}
+  ul {{ margin: 6px 0 10px 24px; }}
+  footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
+  footer a {{ color: #6c757d; font-size: 12px; }}
+</style>
+</head>
+<body>
+{chr(10).join(body_parts)}
+<footer>
+  <a href="index.html">&larr; Back to Rankings</a>
+</footer>
+</body>
+</html>
+"""
+    with open(out_path, 'w') as f:
+        f.write(page)
+
+
 def main():
     script_dir = Path(__file__).parent
     repo_root = script_dir
@@ -3504,6 +3658,11 @@ def main():
 
     print(f"Dashboard saved to {output_file}")
     print(f"Total rankings: {len(rankings)}")
+
+    changelog_md = repo_root / 'CHANGELOG.md'
+    changelog_html = repo_root / 'public' / 'changelog.html'
+    render_changelog_page(changelog_md, changelog_html)
+    print(f"Changelog saved to {changelog_html}")
 
 
 if __name__ == '__main__':
