@@ -2847,30 +2847,45 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             // Find all league champions that need to be moved up for home games
             const adjustedSeeds = [];
             const championsToMove = [];
+            const championIdsToMove = new Set();
 
             for (let i = 0; i < field.length; i++) {{
                 const team = field[i];
                 const currentSeed = i + 1;
 
                 if (team.qualifyType === 'auto' && currentSeed > lastHomeGameSeed) {{
-                    championsToMove.push({{ team, fromIdx: i, fromSeed: currentSeed }});
+                    championsToMove.push({{ team, fromSeed: currentSeed }});
+                    championIdsToMove.add(team.school_id);
                 }}
             }}
 
-            // Move champions up in a single pass (reverse order to avoid index issues)
-            championsToMove.reverse().forEach(champ => {{
-                // Remove from current position
-                field.splice(champ.fromIdx, 1);
-                // Insert at last home game position
-                const targetIdx = lastHomeGameSeed - 1;
-                field.splice(targetIdx, 0, champ.team);
+            // Rebuild the field by pulling champions out and reinserting them as a
+            // contiguous block starting at the last home-game seed. Avoids the
+            // stale-index bug: the previous splice(champ.fromIdx, 1) loop used
+            // indices captured before any mutation, so after the first insert,
+            // later splices removed the wrong team and re-inserted a champion
+            // that was still in the array — ending with the same school twice.
+            if (championsToMove.length > 0) {{
+                const remaining = field.filter(t => !championIdsToMove.has(t.school_id));
+                const insertAt = Math.min(remaining.length, Math.max(0, lastHomeGameSeed - 1));
+                const movedTeams = championsToMove.map(c => c.team);
+                field = [
+                    ...remaining.slice(0, insertAt),
+                    ...movedTeams,
+                    ...remaining.slice(insertAt),
+                ];
 
-                adjustedSeeds.push({{
-                    team: champ.team.school_name,
-                    from: champ.fromSeed,
-                    to: targetIdx + 1
+                championsToMove.forEach((champ, idx) => {{
+                    const toSeed = insertAt + 1 + idx;
+                    if (toSeed !== champ.fromSeed) {{
+                        adjustedSeeds.push({{
+                            team: champ.team.school_name,
+                            from: champ.fromSeed,
+                            to: toSeed
+                        }});
+                    }}
                 }});
-            }});
+            }}
 
             // Add APR (Adjusted Playoff Ranking) to each team after all adjustments
             field.forEach((team, idx) => {{
