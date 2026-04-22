@@ -51,6 +51,23 @@ def get_week_num(sat_date):
     return max(1, ((sat_date - first_saturday()).days // 7) + 1)
 
 
+def load_published_week(project_root, week_date):
+    """Load a previously published weekly snapshot from disk.
+
+    Returns (boys_list, girls_list) or (None, None) if no snapshot exists.
+    Published weekly rankings are the canonical source of prior-week ranks
+    for quality-win calculations — using them keeps historical quality-win
+    totals stable even as raw match data evolves.
+    """
+    path = os.path.join(project_root, 'public', 'data', 'weekly',
+                        f"{week_date.strftime('%Y-%m-%d')}.json")
+    if not os.path.exists(path):
+        return None, None
+    with open(path) as f:
+        data = json.load(f)
+    return data.get('boys', []), data.get('girls', [])
+
+
 def all_week_saturdays():
     """Return list of all Saturday dates from season start through today."""
     sats = []
@@ -702,6 +719,21 @@ def main():
     for week_date in weeks:
         week_num = get_week_num(week_date)
         print(f"\nWeek {week_num}: {week_date.strftime('%Y-%m-%d')}")
+
+        # If we don't already have prior-week ranks in memory (first iteration
+        # or a partial run like --week), load them from the canonical published
+        # snapshot on disk rather than recomputing.
+        if prev_boys_ranks is None and prev_girls_ranks is None:
+            prior_date = week_date - timedelta(days=7)
+            prior_boys, prior_girls = load_published_week(project_root, prior_date)
+            if prior_boys:
+                prev_boys_ranks = {t['school_id']: t['rank'] for t in prior_boys}
+                prev_boys_results = prior_boys
+                print(f"  Loaded prior boys ranks from {prior_date.strftime('%Y-%m-%d')}.json")
+            if prior_girls:
+                prev_girls_ranks = {t['school_id']: t['rank'] for t in prior_girls}
+                prev_girls_results = prior_girls
+                print(f"  Loaded prior girls ranks from {prior_date.strftime('%Y-%m-%d')}.json")
 
         boys = build_weekly_rankings(raw_data, 1, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_boys_ranks)
         girls = build_weekly_rankings(raw_data, 2, school_info, pi_data, cutoff_date=week_date, prev_rankings=prev_girls_ranks)
