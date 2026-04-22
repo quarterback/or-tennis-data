@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Changelog - Oregon HS Tennis</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.55; }
+  h1 { font-size: 1.6rem; margin: 0 0 8px; }
+  h2 { font-size: 1.2rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }
+  h3 { font-size: 1rem; margin: 20px 0 6px; color: #212529; }
+  p  { margin: 8px 0; }
+  code { background: #f1f3f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  ul { margin: 6px 0 10px 24px; }
+  footer { margin-top: 40px; padding: 16px; text-align: center; }
+  footer a { color: #6c757d; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>Changelog</h1>
+<h2>2026-04-22</h2>
+<h3>Changed: Power Index now weights opponent strength by league depth (two-pass APR)</h3>
+<p><strong>Problem:</strong> APR&#x27;s OWP term (strength of schedule) averaged opponents&#x27; raw win percentages with no league context. That let teams dominating weaker leagues carry OWP scores indistinguishable from teams beating comparably-ranked opponents in deeper leagues — so Power Index rewarded weak-schedule wins and penalized top-bracket teams forced to play each other.</p>
+<p><strong>Fix:</strong> APR is now computed in two passes. Pass 1 uses the existing RPI formula to produce a first-cut APR, and those APRs feed a per-league depth score (top-4 APR average, already computed for the existing league-quality display). Pass 2 recomputes OWP using a league-depth-weighted opponent strength — each opponent&#x27;s contribution is scaled by <code>opp_league_depth / median_league_depth</code> for that year+gender. The depth calculation uses leave-one-out: both the opponent and the team being evaluated are excluded, so a team can&#x27;t inflate its own strength-of-schedule by being in its own league. OOWP, APR, and Power Index are then recomputed from the pass-2 OWPs. FWS is untouched, so the anti-stacking half of PI is unchanged.</p>
+<p><strong>Impact on 2026:</strong> Biggest Boys movement is Cascade (SD-2) #26→#32 and Marist Catholic (SD-2) #27→#33 dropping, with PIL teams (Wells, Franklin) and Three Rivers teams (Lakeridge) rising. Girls top-10 barely reshuffles — Wells moves up one, McMinnville down one — consistent with the top already being dominated by teams playing strong slates. Vale is unchanged at Girls #5 and rises to Boys #46 (from #42), which reflects their actual non-league slate rather than SD-5 alone.</p>
+<h3>Fixed: Quality Wins calculation used drifting in-memory ranks instead of published weekly ranks</h3>
+<p><strong>Problem:</strong> <code>generate_weekly_rankings.py</code> recomputed every prior week&#x27;s rankings from scratch on each run and chained them through memory as the <code>prev_rankings</code> input for quality-win calculations. Because the underlying match data keeps evolving (new match ingests, tiebreaker corrections, schema updates), the retroactive &quot;previous week&quot; rankings drifted from what was actually published. The result was quality-win totals that didn&#x27;t match the visible prior-week rankings — Marist Catholic&#x27;s 6-2 win over Catlin Gabel (4A-1A #2 at the time) showed 0 quality wins instead of 1, and 20+ girls teams and 30+ boys teams had similar mismatches in the Week 3 snapshot. Earlier-week snapshots also still carried the pre-rename <code>top25_wins</code> field.</p>
+<p><strong>Fix:</strong> Weekly generation now treats the published <code>public/data/weekly/&lt;date&gt;.json</code> snapshots as the canonical source of prior-week ranks. When the loop starts a week and no prior ranks are held in memory (single-week runs, partial reruns), it loads them from disk via the new <code>load_published_week</code> helper. Full <code>--all</code> runs still chain in memory because each freshly-written snapshot matches what would be read back from disk. Regenerated all three 2026 weeks end-to-end to bring existing snapshots into agreement with the canonical rule; Marist Catholic now correctly shows 1 quality win in Week 3.</p>
+<h3>Changed: Unified &quot;Quality Wins&quot; column on weekly rankings</h3>
+<p><strong>Problem:</strong> The &quot;Top 25 W&quot; column on the weekly rankings page only counted wins against opponents ranked top-25 overall. Since the overall rankings skew toward 6A teams (who play each other more), teams in smaller classifications had no way to get credit for beating strong opponents within their own classification.</p>
+<p><strong>Fix:</strong> Replaced &quot;Top 25 W&quot; with a unified &quot;Quality Wins&quot; column that counts wins against opponents who were either top-25 overall *or* top-10 within their own classification at the time the match was played. A single win against an opponent who qualifies for both still counts as one quality win (no double-counting).</p>
+<h3>Fixed: Tiebreaker wins/losses incorrectly reported as ties</h3>
+<p><strong>Problem:</strong> When a dual match ended with equal flight scores (e.g., 4-4), Oregon uses a tiebreaker system (sets won, then games won) to determine a winner. TennisReporting.com records these tiebreaker outcomes in a <code>winnerSchoolId</code> field, but oregontennis.org was ignoring it and only comparing flight scores — so every 4-4 match was reported as a tie, even when one team officially won the tiebreaker.</p>
+<p><strong>Impact:</strong> 126 team records corrected across 2024-2026 seasons. Examples from 2026:</p>
+<ul><li>Westview Girls: 4-1-1 → 5-1-0</li><li>Crescent Valley Girls: 4-0-1 → 5-0-0</li><li>Ridgeview Boys: 3-0-3 → 5-1-0</li><li>Nelson Boys: 5-1-1 → 6-1-0</li><li>Valley Catholic Girls: 4-1-1 → 5-1-0</li></ul>
+<p>Some teams moved significantly in rankings as a result (e.g., Ridgeview Boys +21 spots, Sam Barlow Boys +15).</p>
+<p><strong>Fix:</strong> All four match-result functions (<code>get_dual_match_record</code>, <code>get_league_record</code>, <code>get_head_to_head</code>, <code>get_head_to_head_detailed</code>) now fall back to <code>winnerSchoolId</code> when flight scores are tied, matching the official tiebreaker result from TennisReporting.</p>
+<h3>Fixed: H2H boost not applying in overall state rankings</h3>
+<p><strong>Problem:</strong> The head-to-head tiebreaker system had two phases: Phase 1 handled same-league teams (bubble swaps), Phase 2 checked adjacent pairs in the overall ranking. But when two same-classification teams had teams from other classifications ranked between them, they were never adjacent, so the H2H boost was never evaluated for the overall state ranking.</p>
+<p><strong>Fix:</strong> Added Phase 3 — classification-level H2H enforcement. Groups teams by classification and checks H2H for pairs within class rank or PI proximity, using bubble swaps. This catches 3-6 additional swaps per year/gender that were previously missed.</p>
+<h3>Changed: Default table sort order</h3>
+<p>Rankings table now defaults to sorting by <strong>Rank</strong> (ascending) instead of Power Index (descending). This ensures the display order reflects H2H tiebreaker adjustments. A &quot;Rank&quot; button was added to the sort toggle alongside Power Index and APR.</p>
+<footer>
+  <a href="index.html">&larr; Back to Rankings</a>
+</footer>
+</body>
+</html>
