@@ -2,6 +2,16 @@
 
 ## 2026-04-22
 
+### Fixed: Tournament-format dual matches dropped from team records
+
+**Problem:** Lincoln (Portland, OR) boys showed **4-0** on the site while tennisreporting.com reported **8-0-0**. The four "missing" wins were all titled *Caldera Tournament*. Follow-up audit found nine other schools similarly under-counted, including Bend boys (displayed 4-3-1 vs. API 8-3-1), Roseburg boys (displayed 6-3-2 vs. API 10-3-2), and South Medford boys (displayed 4-4 vs. API 8-4).
+
+**Root cause:** `is_dual_match()` in `generate_site.py` dropped any meet whose title contained the word "Tournament". In the 2026 data, every "Tournament" meet is actually a single head-to-head dual match (one winner, one loser, full per-flight scores) — events like the Caldera Tournament, Roseburg Invitational Tournament, and RHS Tournament are scheduled as clusters of dual matches played in one location, and tennisreporting.com's own `overallRecord` counts each one. The blanket title filter was a blunt instrument that excluded them from record totals, league standings, head-to-head tables, RPI opponent sets, and FWS.
+
+**Fix:** Removed the `'Tournament' in title` check. The existing structural guard at the bottom of `is_dual_match()` (one winner, one loser) still filters out genuinely multi-team events — e.g., the `OES Invitational` (1 winner, 3 losers) remains correctly excluded as a points-based event.
+
+**Impact:** Ten 2026 boys teams and their opponents now reconcile exactly with tennisreporting.com's `overallRecord`. A full pass across all 264 schools × 2 genders shows **0 remaining record mismatches**, ties included. Lincoln boys moved from rank uncertain to rank #1 at 8-0-0. Upcoming events the season will see — Jesuit Tournament, Central Oregon Invite, Roseburg Tournament, Bigfoot Invitational — are all handled by this same change, because each appears in the feed as a set of 1v1 dual matches.
+
 ### Fixed: Massey column silently ranked teams by school_id when match graph was disconnected
 
 **Problem:** The Massey column on the weekly rankings was nonsense whenever the match graph had more than one connected component, which has been the case for every 2026 girls week published so far. On the 2026-04-18 snapshot, Jesuit girls (9-0, consensus #1 everywhere else) appeared at Massey #117 out of 127, while Vale, Stayton, Century, Hillsboro, and Glencoe occupied Massey #1-5. The ordering was not tennis at all — it was school_id ascending.
