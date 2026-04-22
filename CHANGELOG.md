@@ -2,6 +2,14 @@
 
 ## 2026-04-22
 
+### Fixed: Massey column silently ranked teams by school_id when match graph was disconnected
+
+**Problem:** The Massey column on the weekly rankings was nonsense whenever the match graph had more than one connected component, which has been the case for every 2026 girls week published so far. On the 2026-04-18 snapshot, Jesuit girls (9-0, consensus #1 everywhere else) appeared at Massey #117 out of 127, while Vale, Stayton, Century, Hillsboro, and Glencoe occupied Massey #1-5. The ordering was not tennis at all — it was school_id ascending.
+
+**Root cause:** `massey_rankings` in `scripts/computer_rankings.py` builds an n×n Laplacian-style matrix `M` whose row sums are zero, then replaces the last row with a sum-to-zero constraint to pin the solution. That constraint lifts the rank by one — fine for a connected graph, but the 2026 girls graph has two components (one small-school cluster never played outside itself), so post-constraint `M` is still rank n-1, not n. `np.linalg.solve` raised `LinAlgError`, the `except` branch set every rating to 0.0, and then `ratings_to_ranks` did a stable descending sort. Stable sort on all-equal keys preserves insertion order, which comes from `teams = sorted(match_graph.keys())` — i.e., school_id. Jesuit's school_id 124879 happens to sit 117th in that order. The same failure mode will have silently hit any prior gender/year whose match graph ever fragmented.
+
+**Fix:** Swapped `np.linalg.solve(M, p)` for `np.linalg.lstsq(M, p, rcond=None)`, which returns the minimum-norm least-squares solution even when `M` is singular. Each connected component gets its own self-consistent Massey ratings (centered near zero by the sum-to-zero row) rather than collapsing everything to 0. Regenerated all three 2026 weekly snapshots; Jesuit girls is now Massey #1 in weeks 2 and 3 (matching Elo/Colley/PageRank/Win-Score) and Massey #1 in week 1 before other systems had enough match history to converge. Tradeoff: ratings across disconnected components are not strictly comparable, but that is already true of Massey on disconnected data in theory, and the new behavior is vastly closer to truth than "sort by school_id."
+
 ### Fixed: Playoff simulator could seed the same school twice
 
 **Problem:** On the Playoff Simulator page, the home-game-guarantee step could place the same league champion at two different seeds. Example from 4A/3A/2A/1A Girls 2026 with an 8-team bracket: Marist Catholic appeared as AUTO at both seed 4 and seed 6, while another team was silently dropped from the field. The "First 4 Out" list and first-round matchups both reflected the corrupted field.
