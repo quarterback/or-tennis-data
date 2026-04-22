@@ -105,10 +105,9 @@ def massey_rankings(match_graph, cap=6):
     M[-1] = np.ones(n)
     p[-1] = 0
 
-    try:
-        r = np.linalg.solve(M, p)
-    except np.linalg.LinAlgError:
-        r = np.zeros(n)
+    # Use lstsq so a disconnected match graph (singular M) still yields a
+    # minimum-norm solution instead of collapsing to all-zero ratings.
+    r, *_ = np.linalg.lstsq(M, p, rcond=None)
 
     return {teams[i]: float(r[i]) for i in range(n)}
 
