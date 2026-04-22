@@ -1071,7 +1071,7 @@ def build_rankings(data_dir, master_school_list):
                 info = school_info.get(school_id, {})
                 my_league = info.get('league', '')
 
-                # Check teams within ±3 state ranks OR same league (any distance)
+                # Check teams within ±3 state ranks OR same league within ±5 league ranks
                 for j in range(len(ranked)):
                     if i == j:
                         continue
@@ -1082,8 +1082,13 @@ def build_rankings(data_dir, master_school_list):
                     # Include if within ±3 state ranks
                     state_rank_close = abs(i - j) <= 3
 
-                    # Include if same league (show all league opponents)
-                    league_close = my_league and my_league == other_league
+                    # Include if same league and within ±5 league ranks
+                    league_close = False
+                    if my_league and my_league == other_league:
+                        my_lr = school_league_rank.get(school_id, 0)
+                        other_lr = school_league_rank.get(other_id, 0)
+                        if abs(my_lr - other_lr) <= 5:
+                            league_close = True
 
                     if state_rank_close or league_close:
                         if school_id in raw_data_cache[year][gender]:
