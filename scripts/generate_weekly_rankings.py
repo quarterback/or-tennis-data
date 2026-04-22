@@ -207,20 +207,46 @@ def extract_matches(raw_data, gender_id, cutoff_date=None):
     return match_graph, match_list, team_records, team_top_flight, team_match_log
 
 
-def compute_top25_wins(team_match_log, prev_week_rankings):
+def compute_class_ranks(prev_week_rankings, school_info):
     """
-    Count wins against opponents ranked top-25 at the time the match was played.
-    prev_week_rankings: {team_id: rank} from the previous week's composite.
-    For Week 1, use the current week's rankings as baseline.
+    Derive each team's classification rank from overall composite rankings.
+    Returns {team_id: class_rank} where class_rank is the team's position
+    within its own classification.
     """
-    top25_wins = defaultdict(int)
+    by_class = defaultdict(list)
+    for tid, overall_rank in prev_week_rankings.items():
+        cls = school_info.get(tid, {}).get('classification', '')
+        if cls:
+            by_class[cls].append((tid, overall_rank))
+
+    class_ranks = {}
+    for cls, teams in by_class.items():
+        teams.sort(key=lambda x: x[1])
+        for i, (tid, _) in enumerate(teams, 1):
+            class_ranks[tid] = i
+    return class_ranks
+
+
+def compute_quality_wins(team_match_log, prev_week_rankings, school_info):
+    """
+    Count wins against "quality" opponents — opponents who were either
+    top-25 overall OR top-10 in their own classification at the time
+    the match was played. A single match against an opponent meeting
+    both criteria still counts as one quality win.
+    """
+    quality_wins = defaultdict(int)
     if not prev_week_rankings:
-        return top25_wins
+        return quality_wins
+    class_ranks = compute_class_ranks(prev_week_rankings, school_info)
     for tid, matches in team_match_log.items():
         for date_str, opp_id, won in matches:
-            if won and prev_week_rankings.get(opp_id, 999) <= 25:
-                top25_wins[tid] += 1
-    return top25_wins
+            if not won:
+                continue
+            overall_rank = prev_week_rankings.get(opp_id, 999)
+            class_rank = class_ranks.get(opp_id, 999)
+            if overall_rank <= 25 or class_rank <= 10:
+                quality_wins[tid] += 1
+    return quality_wins
 
 
 def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date=None, prev_rankings=None):
@@ -245,7 +271,7 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
         for tid in eligible:
             c = comp.get(tid, {})
             rank_lookup[tid] = int(round(c.get('composite', 999)))
-    top25 = compute_top25_wins(team_match_log, rank_lookup)
+    quality = compute_quality_wins(team_match_log, rank_lookup, school_info)
 
     gender_label = 'Boys' if gender_id == 1 else 'Girls'
     pi_lookup = {}
@@ -278,7 +304,7 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
             'std_dev': c.get('std', 0),
             'system_ranks': c.get('ranks', {}),
             'top_flight_pct': round(tf_pct, 1),
-            'top25_wins': top25.get(tid, 0),
+            'quality_wins': quality.get(tid, 0),
         })
 
     results.sort(key=lambda x: x['composite_rank'])
@@ -388,10 +414,10 @@ def generate_narrative(teams, prev_teams, gender_label, week_num):
         lines.append(f"<strong>Classification leaders:</strong> {', '.join(parts)}.")
 
     # --- Top-25 quality wins ---
-    t25_leaders = sorted([t for t in teams if t['top25_wins'] > 0], key=lambda t: -t['top25_wins'])[:4]
-    if t25_leaders:
-        parts = [f"{cn(t['school_name'])} ({t['top25_wins']})" for t in t25_leaders]
-        lines.append(f"<strong>Quality-win leaders (vs top-25 opponents):</strong> {', '.join(parts)}.")
+    qw_leaders = sorted([t for t in teams if t['quality_wins'] > 0], key=lambda t: -t['quality_wins'])[:4]
+    if qw_leaders:
+        parts = [f"{cn(t['school_name'])} ({t['quality_wins']})" for t in qw_leaders]
+        lines.append(f"<strong>Quality-win leaders:</strong> {', '.join(parts)}.")
 
     return ' '.join(lines)
 
@@ -412,18 +438,18 @@ def generate_week_html(boys, girls, week_date, week_num, systems, all_weeks=None
             rc = f' class="rank-{rank}"' if rank <= 3 else ''
             bc = 'badge-6a' if '6A' in t['classification'] else ('badge-5a' if '5A' in t['classification'] else 'badge-4a')
             sys_cells = ''.join(f'<td class="sys-rank">{t["system_ranks"].get(s, "-")}</td>' for s in systems)
-            t25 = t['top25_wins'] if t['top25_wins'] > 0 else '-'
+            qw = t['quality_wins'] if t['quality_wins'] > 0 else '-'
             display_name = clean_name(t['school_name'])
             rows.append(f'<tr><td{rc}>{rank}</td>'
                         f'<td><span class="school-name">{display_name}</span> <span class="badge {bc}">{t["classification"]}</span></td>'
                         f'<td>{t["record"]}</td><td class="power-index">{t["power_index"]:.4f}</td>'
                         f'<td>{t["composite_rank"]:.1f}</td><td>{t["median_rank"]:.0f}</td><td>{t["std_dev"]:.1f}</td>'
-                        f'<td class="sys-rank">{t25}</td>'
+                        f'<td class="sys-rank">{qw}</td>'
                         f'{sys_cells}<td>{t["league"]}</td></tr>')
         return '\n'.join(rows)
 
     sys_headers = ''.join(f'<th title="{s} rank">{s}</th>' for s in systems)
-    extra_headers = '<th title="Wins vs opponents ranked Top 25 at time played">Top 25 W</th>'
+    extra_headers = '<th title="Wins vs top-25 overall or top-10 in classification at time played">Quality Wins</th>'
     boys_rows = team_rows(boys)
     girls_rows = team_rows(girls)
 
@@ -582,7 +608,7 @@ low spread means consensus, high spread means the team is controversial.<br><br>
 <strong>Massey</strong> &mdash; least-squares on flight margins, capped at &plusmn;6.
 <strong>PageRank</strong> &mdash; authority in the win/loss graph.
 <strong>Win-Score</strong> &mdash; each win earns the opponent's win percentage.<br><br>
-<strong>Top 25 W</strong> &mdash; wins against opponents ranked in the top 25 at the time the match was played, not their current rank.<br><br>
+<strong>Quality Wins</strong> &mdash; wins against opponents who were either ranked top-25 overall <em>or</em> top-10 within their own classification at the time the match was played (not their current rank). A single win counts once even if the opponent met both criteria.<br><br>
 <strong>PI</strong> (Power Index) = 50% APR + 50% FWS, from the main rankings page. Shown for reference.
 </div>
 

@@ -273,6 +273,52 @@ def is_dual_match(meet):
     return len(winners) == 1 and len(losers) == 1
 
 
+def get_meet_result(meet, school_id):
+    """Determine if a school won, lost, or tied a meet.
+
+    Uses flight scores first. When scores are equal, falls back to
+    winnerSchoolId which tennisreporting.com sets based on the Oregon
+    tiebreaker (sets won, then games won).
+
+    Returns 'win', 'loss', or 'tie'.
+    """
+    schools = meet.get('schools', {})
+    winners = schools.get('winners', [])
+    losers = schools.get('losers', [])
+
+    school_score = None
+    opponent_score = None
+
+    for w in winners:
+        if w['id'] == school_id:
+            school_score = w.get('score', 0)
+        else:
+            opponent_score = w.get('score', 0)
+    for l in losers:
+        if l['id'] == school_id:
+            school_score = l.get('score', 0)
+        else:
+            opponent_score = l.get('score', 0)
+
+    if school_score is None or opponent_score is None:
+        return None
+
+    if school_score > opponent_score:
+        return 'win'
+    elif school_score < opponent_score:
+        return 'loss'
+
+    # Scores tied — check winnerSchoolId (tiebreaker: sets, then games)
+    winner_school_id = meet.get('winnerSchoolId')
+    if winner_school_id is not None:
+        if winner_school_id == school_id:
+            return 'win'
+        else:
+            return 'loss'
+
+    return 'tie'
+
+
 def get_flight_weight(match_type, flight):
     """Get the weight for a given match type and flight."""
     return FLIGHT_WEIGHTS.get((match_type, str(flight)), 0.10)
@@ -330,31 +376,13 @@ def get_dual_match_record(meets, school_id):
         if not is_dual_match(meet):
             continue
 
-        schools = meet.get('schools', {})
-        winners = schools.get('winners', [])
-        losers = schools.get('losers', [])
-
-        school_score = None
-        opponent_score = None
-
-        for w in winners:
-            if w['id'] == school_id:
-                school_score = w.get('score', 0)
-            else:
-                opponent_score = w.get('score', 0)
-        for l in losers:
-            if l['id'] == school_id:
-                school_score = l.get('score', 0)
-            else:
-                opponent_score = l.get('score', 0)
-
-        if school_score is not None and opponent_score is not None:
-            if school_score > opponent_score:
-                wins += 1
-            elif school_score < opponent_score:
-                losses += 1
-            else:
-                ties += 1
+        result = get_meet_result(meet, school_id)
+        if result == 'win':
+            wins += 1
+        elif result == 'loss':
+            losses += 1
+        elif result == 'tie':
+            ties += 1
 
     return wins, losses, ties
 
@@ -377,33 +405,24 @@ def get_league_record(meets, school_id, school_league, school_info):
         losers = schools.get('losers', [])
 
         opponent_id = None
-        school_score = None
-        opponent_score = None
-
         for w in winners:
-            if w['id'] == school_id:
-                school_score = w.get('score', 0)
-            else:
+            if w['id'] != school_id:
                 opponent_id = w['id']
-                opponent_score = w.get('score', 0)
         for l in losers:
-            if l['id'] == school_id:
-                school_score = l.get('score', 0)
-            else:
+            if l['id'] != school_id:
                 opponent_id = l['id']
-                opponent_score = l.get('score', 0)
 
         # Check if opponent is in same league
         if opponent_id and opponent_id in school_info:
             opponent_league = school_info[opponent_id].get('league', '')
             if opponent_league == school_league:
-                if school_score is not None and opponent_score is not None:
-                    if school_score > opponent_score:
-                        wins += 1
-                    elif school_score < opponent_score:
-                        losses += 1
-                    else:
-                        ties += 1
+                result = get_meet_result(meet, school_id)
+                if result == 'win':
+                    wins += 1
+                elif result == 'loss':
+                    losses += 1
+                elif result == 'tie':
+                    ties += 1
 
     return wins, losses, ties
 
@@ -419,33 +438,18 @@ def get_head_to_head(school1_meets, school1_id, school2_id):
             continue
 
         schools = meet.get('schools', {})
-        winners = schools.get('winners', [])
-        losers = schools.get('losers', [])
+        all_ids = [w['id'] for w in schools.get('winners', [])] + \
+                  [l['id'] for l in schools.get('losers', [])]
+        if school2_id not in all_ids:
+            continue
 
-        is_vs_school2 = False
-        school1_score = None
-        school2_score = None
-
-        for w in winners:
-            if w['id'] == school1_id:
-                school1_score = w.get('score', 0)
-            elif w['id'] == school2_id:
-                school2_score = w.get('score', 0)
-                is_vs_school2 = True
-        for l in losers:
-            if l['id'] == school1_id:
-                school1_score = l.get('score', 0)
-            elif l['id'] == school2_id:
-                school2_score = l.get('score', 0)
-                is_vs_school2 = True
-
-        if is_vs_school2 and school1_score is not None and school2_score is not None:
-            if school1_score > school2_score:
-                wins += 1
-            elif school1_score < school2_score:
-                losses += 1
-            else:
-                ties += 1
+        result = get_meet_result(meet, school1_id)
+        if result == 'win':
+            wins += 1
+        elif result == 'loss':
+            losses += 1
+        elif result == 'tie':
+            ties += 1
 
     return wins, losses, ties
 
@@ -514,7 +518,9 @@ def get_head_to_head_detailed(school1_meets, school1_id, school2_id):
                                         fws2 += weight
                                     break
 
-            result = 'win' if school1_score > school2_score else ('loss' if school1_score < school2_score else 'tie')
+            result = get_meet_result(meet, school1_id)
+            if result is None:
+                result = 'tie'
 
             if result == 'win':
                 results['wins'] += 1
