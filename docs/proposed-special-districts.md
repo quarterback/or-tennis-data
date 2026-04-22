@@ -10,10 +10,10 @@
 |---|---|---|
 | Total teams | 50 | 51 (+ Sweet Home) |
 | Avg teams/district | 10.0 | 7.3 |
-| Largest district | 13 (SD4) | 9 (North Valley, NE Oregon) |
-| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon) |
-| Min boys in any district | 5 (SD5) | 5 (SE Oregon) |
-| Min girls in any district | 6 (SD5) | 5 (SE Oregon) |
+| Largest district | 13 (SD4) | 9 (North Valley) |
+| Smallest district | 8 (SD2/SD5) | 6 (S Valley, SE Oregon) |
+| Min boys in any district | 5 (SD5) | 6 (SD-1, SD-2, SD-3, SD-7) |
+| Min girls in any district | 6 (SD5) | 6 (SD-3, SD-5, SD-7) |
 | Max travel (worst district) | 183 mi (SD4) | 119 mi (Central & Gorge) |
 
 For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood), with max travel well under 100 miles in most leagues.
@@ -102,13 +102,12 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-6 Northeast Oregon (9 teams, max 86 mi) — 8 boys, 9 girls
+## SD-6 Northeast Oregon (8 teams, max 86 mi) — 7 boys, 8 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Ione-Heppner | Ione | B/G | Special District 4 |
 | Irrigon | Irrigon | B/G | Special District 4 |
-| La Grande | La Grande | B/G | Special District 5 |
 | McLoughlin | Milton-Freewater | B/G | Special District 5 |
 | Pendleton | Pendleton | B/G | Special District 5 |
 | Riverside | Boardman | B/G | Special District 4 |
@@ -116,21 +115,22 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Umatilla | Umatilla | B/G | Special District 4 |
 | Weston-McEwen | Athena | G | Special District 4 |
 
-**Notes:** The eastern half of current SD4 plus the three northern SD5 teams (La Grande, Pendleton, McLoughlin). These schools are geographically clustered along the I-84/I-82 corridor and already play each other frequently. Moving them together eliminates the 183-mile Sisters-to-Athena drive that existed in SD4.
+**Notes:** The eastern half of current SD4 plus McLoughlin and Pendleton from SD5. Schools are clustered along the I-84/I-82 corridor. La Grande moves to SD-7 where it's geographically closer to Baker City (40 mi) than to Pendleton (42 mi).
 
 ---
 
-## SD-7 Southeast Oregon (5 teams, max 75 mi) — 5 boys, 5 girls
+## SD-7 Southeast Oregon (6 teams, max 105 mi) — 6 boys, 6 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Baker | Baker City | B/G | Special District 5 |
 | Four Rivers Charter | Ontario | B/G | Special District 5 |
+| La Grande | La Grande | B/G | Special District 5 |
 | Nyssa | Nyssa | B/G | Special District 5 |
 | Ontario | Ontario | B/G | Special District 5 |
 | Vale | Vale | B/G | Special District 5 |
 
-**Notes:** The southern half of current SD5. Small but geographically isolated — these towns are closer to Boise than to any other Oregon tennis school. Similar to 6A-6 Central Valley (5 teams) where small district size is unavoidable due to geography.
+**Notes:** Current SD5 minus Pendleton and McLoughlin (who move to SD-6). La Grande joins from SD-6 — it's only 40 miles from Baker City, making it a natural fit. Max travel increases from 75 to 105 mi (La Grande to Ontario) but still well under SD4's current 183 mi.
 
 ---
 
@@ -152,6 +152,6 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Henley | SD3 | SD-4 Southern Oregon | Klamath joins Medford/GP (was isolated as 3-team cluster) |
 | Klamath Union | SD3 | SD-4 Southern Oregon | Same |
 | Mazama | SD3 | SD-4 Southern Oregon | Same |
-| La Grande | SD5 | SD-6 NE Oregon | Closer to Pendleton corridor than to Ontario |
-| Pendleton | SD5 | SD-6 NE Oregon | Same |
+| La Grande | SD5 | SD-7 SE Oregon | 40 mi from Baker City, balances SD-6/SD-7 sizes |
+| Pendleton | SD5 | SD-6 NE Oregon | Closer to I-84/I-82 corridor teams |
 | McLoughlin | SD5 | SD-6 NE Oregon | Same |
