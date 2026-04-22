@@ -1,22 +1,56 @@
 # Proposed Special Districts for 4A/3A/2A/1A Tennis
 
-**Problem:** The current 5 Special Districts are unevenly sized and geographically sprawling compared to 6A leagues. 6A has 7 leagues averaging 6.9 teams with compact geography. 4A has 5 districts averaging 10 teams, with SD4 spanning 183 miles across eastern Oregon with 13 teams.
+## The Problem
 
-**Proposal:** Reorganize into 7 Special Districts that better mirror the balance of 6A conferences.
+4A/3A/2A/1A has nearly as many tennis programs as 6A (50 vs 48) but is organized into just 5 Special Districts — compared to 6A's 7 conferences. The result is significantly larger districts with far more travel burden, particularly in eastern Oregon.
 
-## Comparison
+| | 6A | 5A | 4A Current | **4A Proposed** |
+|---|---|---|---|---|
+| Total teams | 48 | 30 | 50 | **51** |
+| Number of leagues | 7 | 4 | 5 | **7** |
+| Avg teams/league | 6.9 | 7.5 | 10.0 | **7.3** |
+| Smallest league | 5 | 5 | 8 | **6** |
+| Largest league | 8 | 10 | 13 | **9** |
+| Avg max travel | 28 mi | 66 mi | 129 mi | **82 mi** |
+| Worst max travel | 120 mi | 130 mi | 183 mi | **119 mi** |
 
-| | Current (5 SDs) | Proposed (7 SDs) |
-|---|---|---|
-| Total teams | 50 | 51 (+ Sweet Home) |
-| Avg teams/district | 10.0 | 7.3 |
-| Largest district | 13 (SD4) | 9 (North Valley) |
-| Smallest district | 8 (SD2/SD5) | 6 (S Valley, SE Oregon) |
-| Min boys in any district | 5 (SD5) | 6 (SD-1, SD-2, SD-3, SD-7) |
-| Min girls in any district | 6 (SD5) | 6 (SD-3, SD-5, SD-7) |
-| Max travel (worst district) | 183 mi (SD4) | 119 mi (Central & Gorge) |
+The current structure asks 4A schools to travel an average of 129 miles for their farthest league match — nearly 5x what 6A teams face (28 mi). Special District 4 alone spans 183 miles with 13 teams, from Sisters to Athena. With the addition of a dual team state tournament in 2027, this travel disparity becomes an even more pressing concern for eastern Oregon schools.
 
-For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood), with max travel well under 100 miles in most leagues.
+**Proposal:** Reorganize the current 5 Special Districts into 7, bringing league sizes and travel in line with 6A and 5A.
+
+## Current 6A Conferences (for reference)
+
+| Conference | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| 6A-1 PIL | 8 | 8 | 8 | 0 mi |
+| 6A-2 Metro | 7 | 7 | 7 | 6 mi |
+| 6A-3 Pacific | 7 | 7 | 7 | 24 mi |
+| 6A-4 Mt. Hood | 8 | 8 | 8 | 33 mi |
+| 6A-5 Three Rivers | 6 | 5 | 6 | 11 mi |
+| 6A-6 Central Valley | 5 | 5 | 5 | 4 mi |
+| 6A-7 Southwest | 7 | 7 | 7 | 120 mi |
+
+## Current 4A/3A/2A/1A Special Districts
+
+| District | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| Special District 1 | 11 | 7 | 11 | 65 mi |
+| Special District 2 | 8 | 8 | 8 | 93 mi |
+| Special District 3 | 10 | 9 | 10 | 148 mi |
+| Special District 4 | 13 | 12 | 12 | 183 mi |
+| Special District 5 | 8 | 8 | 8 | 158 mi |
+
+## Proposed 7 Special Districts
+
+| District | Teams | Boys | Girls | Max Travel |
+|---|---|---|---|---|
+| SD-1 Portland Metro | 7 | 6 | 7 | 17 mi |
+| SD-2 North Valley | 9 | 6 | 9 | 75 mi |
+| SD-3 South Valley & Coast | 6 | 6 | 6 | 91 mi |
+| SD-4 Southern Oregon | 8 | 7 | 8 | 80 mi |
+| SD-5 Central & Gorge | 7 | 7 | 6 | 119 mi |
+| SD-6 NE Oregon | 8 | 7 | 8 | 86 mi |
+| SD-7 SE Oregon | 6 | 6 | 6 | 105 mi |
 
 ---
 
