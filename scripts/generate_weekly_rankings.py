@@ -81,7 +81,7 @@ def all_week_saturdays():
 
 def is_dual_match(meet):
     title = meet.get('title', '')
-    if any(x in title for x in ['State Championship', 'District', 'Tournament']):
+    if any(x in title for x in ['State Championship', 'District']):
         return False
     if 'Event' in title and '.' in title:
         return False
