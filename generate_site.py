@@ -51,6 +51,19 @@ H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for l
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
+_SCHOOL_NAME_OVERRIDES = {'Ida B. Wells-Barnett High School': 'Wells'}
+
+def clean_school_name(name):
+    """Strip 'High School'/'School' suffixes and fix all-caps names."""
+    if name in _SCHOOL_NAME_OVERRIDES:
+        return _SCHOOL_NAME_OVERRIDES[name]
+    if name == name.upper() and len(name) > 2:
+        name = name.title()
+    for suffix in [' High School', ' School']:
+        if name.endswith(suffix):
+            return name[:-len(suffix)]
+    return name
+
 # Oregon city coordinates for distance calculations (lat, lng)
 # Used for playoff bracket regionalization
 OREGON_CITY_COORDS = {
@@ -1165,7 +1178,7 @@ def build_rankings(data_dir, master_school_list):
                     'rank': rank,  # State rank (all schools)
                     'class_rank': 0,  # Will be calculated below
                     'school_id': school_id,
-                    'school_name': info.get('name', f'School {school_id}'),
+                    'school_name': clean_school_name(info.get('name', f'School {school_id}')),
                     'city': info.get('city', ''),
                     'coords': get_city_coords(info.get('city', '')),
                     'classification': info.get('classification', ''),
@@ -1521,6 +1534,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="weekly-rankings.html">Weekly Rankings</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="all-state.html">All-State Teams</a>
                 </li>
                 <li class="nav-item">
@@ -1592,7 +1608,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>Power Index</th>
                         <th>APR</th>
                         <th>FWS%</th>
-                        <th>SOS</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -1934,17 +1949,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                             else if (fwsPlus < 85) cls = 'apr-low';
                             const tooltip = `FWS+ ${{fwsPlus}} (100 = avg)`;
                             return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(1)}}%</span>`;
-                        }}
-                    }},
-                    {{
-                        data: 'owp',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
-                            // SOS (Strength of Schedule) = OWP
-                            let cls = 'apr-mid';
-                            if (d >= 0.55) cls = 'apr-high';
-                            else if (d < 0.45) cls = 'apr-low';
-                            return `<span class="${{cls}}">${{d.toFixed(3)}}</span>`;
                         }}
                     }}
                 ],
