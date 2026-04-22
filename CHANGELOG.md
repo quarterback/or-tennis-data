@@ -2,6 +2,12 @@
 
 ## 2026-04-22
 
+### Fixed: Playoff simulator could seed the same school twice
+
+**Problem:** On the Playoff Simulator page, the home-game-guarantee step could place the same league champion at two different seeds. Example from 4A/3A/2A/1A Girls 2026 with an 8-team bracket: Marist Catholic appeared as AUTO at both seed 4 and seed 6, while another team was silently dropped from the field. The "First 4 Out" list and first-round matchups both reflected the corrupted field.
+
+**Fix:** The loop that moves league champions up into home-game seeds (`generate_site.py` inside `generatePlayoffFieldFromSelection`) captured each mover's array index before any mutations, then used those stale indices to `splice(fromIdx, 1)`. After the first insertion at `lastHomeGameSeed - 1` shifted every element to the right of it, the next splice removed the wrong team — and re-inserted a champion that was still in the array, producing the duplicate. Movers are now pulled out of the field by `school_id` and reinserted as a contiguous block at the last home-game seed, and each champion's reported "moved from X to Y" uses its actual final seed instead of a fixed target. No duplicates can appear in the qualifying field, and no unrelated team is dropped.
+
 ### Changed: Power Index now weights opponent strength by league depth (two-pass APR)
 
 **Problem:** APR's OWP term (strength of schedule) averaged opponents' raw win percentages with no league context. That let teams dominating weaker leagues carry OWP scores indistinguishable from teams beating comparably-ranked opponents in deeper leagues — so Power Index rewarded weak-schedule wins and penalized top-bracket teams forced to play each other.
