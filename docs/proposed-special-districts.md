@@ -10,21 +10,21 @@
 |---|---|---|
 | Total teams | 50 | 51 (+ Sweet Home) |
 | Avg teams/district | 10.0 | 7.3 |
-| Largest district | 13 (SD4) | 10 (Portland Metro) |
-| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon) |
+| Largest district | 13 (SD4) | 9 (Portland Metro) |
+| Smallest district | 8 (SD2/SD5) | 5 (SE Oregon, S Valley) |
+| Min boys in any district | 5 (SD5) | 5 (North Valley, SE Oregon) |
+| Min girls in any district | 6 (SD5) | 5 (S Valley, SE Oregon) |
 | Max travel (worst district) | 183 mi (SD4) | 119 mi (Central & Gorge) |
 
 For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood), with max travel well under 100 miles in most leagues.
 
 ---
 
-## SD-1 Portland Metro (10 teams, max 27 mi)
+## SD-1 Portland Metro (8 teams, max 17 mi) — 7 boys, 8 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Catlin Gabel | Portland | B/G | Special District 1 |
-| Estacada | Estacada | B/G | Special District 2 |
-| Molalla | Molalla | B/G | Special District 2 |
 | North Marion | Aurora | B/G | Special District 2 |
 | Oregon Episcopal | Portland | B/G | Special District 1 |
 | Riverdale | Portland | B/G | Special District 1 |
@@ -33,27 +33,29 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 | Valley Catholic | Beaverton | B/G | Special District 1 |
 | Westside Christian | Tigard | G | Special District 1 |
 
-**Notes:** Keeps the Portland-area core of current SD1 intact. Adds Estacada, Molalla, and North Marion from SD2 — all within 30 minutes of Portland and closer to Portland than to Salem.
+**Notes:** Keeps the Portland-area core of current SD1 intact. Adds North Marion from SD2 — on I-5 between Portland and Salem.
 
 ---
 
-## SD-2 North Valley (7 teams, max ~75 mi)
+## SD-2 North Valley (9 teams, max ~75 mi) — 6 boys, 9 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
 | Blanchet | Salem | B/G | Special District 1 |
 | Cascade | Turner | B/G | Special District 2 |
+| Estacada | Estacada | B/G | Special District 2 |
+| Molalla | Molalla | B/G | Special District 2 |
 | Scappoose | Scappoose | G | Special District 1 |
 | St Helens | St Helens | G | Special District 1 |
 | Stayton | Stayton | B/G | Special District 2 |
 | Sweet Home | Sweet Home | B/G | Independent (new) |
 | Tillamook | Tillamook | G | Special District 1 |
 
-**Notes:** Mid-valley corridor from Salem to Stayton, plus the northern coast/Columbia County schools. Sweet Home is a natural geographic fit here — close to Stayton and Lebanon. Blanchet moves from SD1 since it's in Salem, not Portland.
+**Notes:** Mid-valley corridor from Salem to Stayton, plus the northern coast/Columbia County schools. Estacada and Molalla move here from SD-1 — they're geographically between Portland and the valley, and their presence gives the district 6 boys teams (Scappoose, St Helens, and Tillamook are girls-only). Sweet Home is a natural geographic fit near Stayton. Blanchet moves from SD1 since it's in Salem, not Portland.
 
 ---
 
-## SD-3 South Valley & Coast (5 teams, max 91 mi)
+## SD-3 South Valley & Coast (5 teams, max 91 mi) — 5 boys, 5 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
@@ -67,7 +69,7 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-4 Southern Oregon (8 teams, max 80 mi)
+## SD-4 Southern Oregon (8 teams, max 80 mi) — 7 boys, 8 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
@@ -84,7 +86,7 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-5 Central Oregon & Gorge (7 teams, max 119 mi)
+## SD-5 Central Oregon & Gorge (7 teams, max 119 mi) — 7 boys, 6 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
@@ -100,7 +102,7 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-6 Northeast Oregon (9 teams, max 86 mi)
+## SD-6 Northeast Oregon (9 teams, max 86 mi) — 8 boys, 9 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
@@ -118,7 +120,7 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 ---
 
-## SD-7 Southeast Oregon (5 teams, max 75 mi)
+## SD-7 Southeast Oregon (5 teams, max 75 mi) — 5 boys, 5 girls
 
 | School | City | Gender | Currently |
 |---|---|---|---|
@@ -136,9 +138,9 @@ For reference, 6A ranges from 5 teams (Central Valley) to 8 teams (PIL, Mt. Hood
 
 | School | Moves From | Moves To | Why |
 |---|---|---|---|
-| Estacada | SD2 | SD-1 Portland Metro | 25 mi from Portland, not mid-valley |
-| Molalla | SD2 | SD-1 Portland Metro | 30 mi from Portland, not mid-valley |
-| North Marion | SD2 | SD-1 Portland Metro | Between Portland and Salem, closer to Portland |
+| Estacada | SD2 | SD-2 North Valley | Geographically between Portland and mid-valley, balances boys count |
+| Molalla | SD2 | SD-2 North Valley | Geographically between Portland and mid-valley, balances boys count |
+| North Marion | SD2 | SD-1 Portland Metro | Between Portland and Salem, on I-5 corridor |
 | Blanchet | SD1 | SD-2 North Valley | In Salem, not Portland |
 | Sweet Home | Independent | SD-2 North Valley | New team, geographic fit near Stayton |
 | Marist Catholic | SD2 | SD-3 South Valley & Coast | Eugene area groups with coast |
