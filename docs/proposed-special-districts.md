@@ -2,21 +2,38 @@
 
 ## The Problem
 
-4A/3A/2A/1A has nearly as many tennis programs as 6A (50 vs 48) but is organized into just 5 Special Districts — compared to 6A's 7 conferences. The result is significantly larger districts with far more travel burden, particularly in eastern Oregon.
+4A/3A/2A/1A has nearly as many tennis programs as 6A (52 vs 48) but is organized into just 5 Special Districts — compared to 6A's 7 conferences. The result is significantly larger districts with far more travel burden, particularly in eastern Oregon.
 
-| | 6A | 5A | 4A Current | **4A Proposed** |
+The current structure asks 4A/3A/2A/1A schools to travel an average of 129 miles for their farthest district match — nearly 5x what 6A teams face (28 mi). Special District 4 alone spans 183 miles with 13 teams, from Sisters to Athena. With the addition of a dual team state tournament in 2026-27, this travel disparity becomes an even more pressing concern for eastern Oregon schools.
+
+This isn't a novel structural change. OSAA already right-sizes special districts in other spring sports at the same classification levels. Tennis simply hasn't been adjusted to match.
+
+## Precedent: How OSAA Already Structures Other Sports
+
+| Sport / Classification | Programs | Districts | Avg Teams/District |
+|---|---|---|---|
+| 2A/1A Baseball | ~46 | 7 | 6.6 |
+| 2A/1A Softball | ~42 | 7 | 6.0 |
+| 3A Baseball | ~42 | 6 | 7.0 |
+| 3A Softball | ~35 | 6 | 5.8 |
+| **4A/3A/2A/1A Tennis (current)** | **52** | **5** | **10.4** |
+| **4A/3A/2A/1A Tennis (proposed)** | **52** | **7** | **7.4** |
+
+Tennis has more programs than any of the sports listed above, yet gets fewer districts. The proposed 7 districts would bring tennis in line with how OSAA already structures baseball and softball at these classification levels.
+
+## Cross-Classification Comparison
+
+| | 6A | 5A | 4A/3A/2A/1A Current | **4A/3A/2A/1A Proposed** |
 |---|---|---|---|---|
-| Total teams | 48 | 30 | 50 | **51** |
-| Number of leagues | 7 | 4 | 5 | **7** |
-| Avg teams/league | 6.9 | 7.5 | 10.0 | **7.3** |
+| Total programs | 48 | 30 | 52 | **52** |
+| Number of leagues | 7 | 5 | 5 | **7** |
+| Avg teams/league | 6.9 | 6.0 | 10.4 | **7.4** |
 | Smallest league | 5 | 5 | 8 | **6** |
 | Largest league | 8 | 10 | 13 | **9** |
 | Avg max travel | 28 mi | 66 mi | 129 mi | **82 mi** |
 | Worst max travel | 120 mi | 130 mi | 183 mi | **119 mi** |
 
-The current structure asks 4A schools to travel an average of 129 miles for their farthest league match — nearly 5x what 6A teams face (28 mi). Special District 4 alone spans 183 miles with 13 teams, from Sisters to Athena. With the addition of a dual team state tournament in 2027, this travel disparity becomes an even more pressing concern for eastern Oregon schools.
-
-**Proposal:** Reorganize the current 5 Special Districts into 7, bringing league sizes and travel in line with 6A and 5A.
+**Proposal:** Reorganize the current 5 Special Districts into 7, bringing district sizes and travel in line with 6A, 5A, and how OSAA already handles baseball and softball.
 
 ## Current 6A Conferences (for reference)
 
@@ -165,6 +182,21 @@ The current structure asks 4A schools to travel an average of 129 miles for thei
 | Vale | Vale | B/G | Special District 5 |
 
 **Notes:** Current SD5 minus Pendleton and McLoughlin (who move to SD-6). La Grande joins from SD-6 — it's only 40 miles from Baker City, making it a natural fit. Max travel increases from 75 to 105 mi (La Grande to Ontario) but still well under SD4's current 183 mi.
+
+---
+
+## Additional Context: 4A Tennis Participation
+
+4A independently meets the 75% championship threshold being discussed by the State Championship Committee:
+
+| Classification | Total Schools | Boys Tennis | Girls Tennis | Boys % | Girls % |
+|---|---|---|---|---|---|
+| 4A | 30 | 23 | 25 | 77% | 83% |
+| 3A | 49 | 17 | 18 | 35% | 37% |
+| 2A | 40 | 3 | 3 | 8% | 8% |
+| 1A | 98 | 6 | 6 | 6% | 6% |
+
+Only 5 of 30 4A schools don't offer tennis: Astoria, Cottage Grove, Gladstone, Newport, and Seaside. This level of participation is comparable to 5A (30 of 33 schools, 91%). The combined 4A/3A/2A/1A classification masks the fact that 4A programs are operating at a fundamentally different scale than 1A and 2A programs — yet they share districts. The proposed realignment addresses this without requiring any classification changes.
 
 ---
 
