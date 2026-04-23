@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-04-23
+
+### Fixed: Weekly rankings counted tiebreaker losses as ties
+
+**Problem:** La Salle Prep girls' record on the weekly rankings page read **3-2-5** while OSAA and the main site both reported **4-5-2**. Three of the five "ties" were 4-4 meets the Oregon tiebreaker awarded to the opponent — Summit, Hood River Valley, and Crescent Valley — and one missing win was simply a later-dated match. Every team's weekly record that included a tiebreaker outcome was off by the same pattern.
+
+**Root cause:** `scripts/generate_weekly_rankings.py::extract_matches` inferred a team's result purely from flight scores (`won = my_score > opp_score`) and treated any 4-4 as a tie, ignoring the `winnerSchoolId` field that tennisreporting.com sets based on the Oregon tiebreaker (sets won, then games won). The canonical `get_meet_result` in `generate_site.py` already handled this correctly — the weekly pipeline had a divergent copy.
+
+**Fix:** Added a tiebreaker-aware `get_meet_result` helper to the weekly script mirroring the site version, switched `extract_matches` to tri-state `won` (True/False/None, where None marks a true tie with no `winnerSchoolId`), and updated `scripts/computer_rankings.py` so Elo, Colley, PageRank, and Win-Score handle ties explicitly (0.5 credit each way) instead of implicitly via the `margin==0` sentinel that could no longer distinguish a tiebreaker loss from a true draw. Regenerated all three 2026 weekly snapshots; a full cross-check confirms every team's weekly W-L-T now matches `processed_rankings.json` exactly.
+
 ## 2026-04-22
 
 ### Fixed: Tournament-format dual matches dropped from team records

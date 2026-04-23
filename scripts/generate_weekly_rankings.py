@@ -89,6 +89,41 @@ def is_dual_match(meet):
     return len(schools.get('winners', [])) == 1 and len(schools.get('losers', [])) == 1
 
 
+def get_meet_result(meet, school_id):
+    """Return ('win'|'loss'|'tie', margin) for a dual match from school_id's view.
+
+    Mirrors generate_site.py's get_meet_result: when flight scores are equal,
+    falls back to winnerSchoolId, which tennisreporting.com sets based on the
+    Oregon tiebreaker (sets won, then games won). Only when scores are equal
+    and no winnerSchoolId is present is the meet a true tie.
+    """
+    schools = meet.get('schools', {})
+    my_score = opp_score = None
+    for w in schools.get('winners', []):
+        if w['id'] == school_id:
+            my_score = w.get('score', 0)
+        else:
+            opp_score = w.get('score', 0)
+    for l in schools.get('losers', []):
+        if l['id'] == school_id:
+            my_score = l.get('score', 0)
+        else:
+            opp_score = l.get('score', 0)
+    if my_score is None or opp_score is None:
+        return None, None
+    margin = my_score - opp_score
+    if margin > 0:
+        return 'win', margin
+    if margin < 0:
+        return 'loss', margin
+    winner_school_id = meet.get('winnerSchoolId')
+    if winner_school_id == school_id:
+        return 'win', 0
+    if winner_school_id is not None:
+        return 'loss', 0
+    return 'tie', 0
+
+
 def load_school_info(project_root):
     info = {}
     path = os.path.join(project_root, 'master_school_list.csv')
@@ -174,29 +209,20 @@ def extract_matches(raw_data, gender_id, cutoff_date=None):
                 continue
 
             schools = meet.get('schools', {})
-            winners = schools.get('winners', [])
-            losers = schools.get('losers', [])
-
-            my_score = opp_score = None
             opp_id = None
-            for w in winners:
-                if w['id'] == school_id:
-                    my_score = w.get('score', 0)
-                else:
+            for w in schools.get('winners', []):
+                if w['id'] != school_id:
                     opp_id = w['id']
-                    opp_score = w.get('score', 0)
-            for l in losers:
-                if l['id'] == school_id:
-                    my_score = l.get('score', 0)
-                else:
+            for l in schools.get('losers', []):
+                if l['id'] != school_id:
                     opp_id = l['id']
-                    opp_score = l.get('score', 0)
 
-            if opp_id is None or my_score is None or opp_score is None:
+            result, margin = get_meet_result(meet, school_id)
+            if opp_id is None or result is None:
                 continue
 
-            margin = my_score - opp_score
-            won = my_score > opp_score
+            # Tri-state won: True=win, False=loss, None=true tie (no tiebreaker).
+            won = {'win': True, 'loss': False, 'tie': None}[result]
             match_graph[school_id].append((opp_id, won, margin))
 
             # Top-flight stats
@@ -215,9 +241,9 @@ def extract_matches(raw_data, gender_id, cutoff_date=None):
 
     for tid, matches in match_graph.items():
         rec = team_records.get(tid, {'wins': 0, 'losses': 0, 'ties': 0, 'name': ''})
-        rec['wins'] = sum(1 for _, w, m in matches if w)
-        rec['losses'] = sum(1 for _, w, m in matches if not w and m != 0)
-        rec['ties'] = sum(1 for _, w, m in matches if m == 0 and not w)
+        rec['wins'] = sum(1 for _, w, _ in matches if w is True)
+        rec['losses'] = sum(1 for _, w, _ in matches if w is False)
+        rec['ties'] = sum(1 for _, w, _ in matches if w is None)
         team_records[tid] = rec
 
     match_list.sort(key=lambda x: x[0])
