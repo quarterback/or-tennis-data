@@ -2,7 +2,10 @@
 Computer ranking algorithms for Oregon HS tennis.
 
 Each function takes a match graph and returns {team_id: rating}.
-Match graph: {team_id: [(opponent_id, won_bool, flight_margin), ...]}
+Match graph: {team_id: [(opponent_id, won, flight_margin), ...]}
+    won is tri-state: True (win), False (loss), None (true tie). A 4-4 meet
+    decided by the Oregon tiebreaker is recorded as True/False with margin 0;
+    only drawn meets with no winnerSchoolId use None.
 """
 
 import numpy as np
@@ -33,7 +36,10 @@ def elo_rankings(match_graph, match_list):
         mult = np.log1p(abs(margin)) if margin != 0 else 1.0
         mult = max(mult, 1.0)
 
-        sa = 1.0 if a_won else (0.5 if margin == 0 else 0.0)
+        if a_won is None:
+            sa = 0.5
+        else:
+            sa = 1.0 if a_won else 0.0
         sb = 1.0 - sa
 
         ratings[team_a] += K * mult * (sa - ea)
@@ -57,11 +63,12 @@ def colley_rankings(match_graph):
 
     for team_id, matches in match_graph.items():
         i = idx[team_id]
-        wins = sum(1 for _, won, _ in matches if won)
-        losses = sum(1 for _, won, _ in matches if not won)
+        wins = sum(1 for _, won, _ in matches if won is True)
+        losses = sum(1 for _, won, _ in matches if won is False)
         total = len(matches)
 
         C[i][i] = 2 + total
+        # Ties (won is None) contribute 0.5 to both sides, netting to zero here.
         b[i] = 1 + 0.5 * (wins - losses)
 
         for opp_id, _, _ in matches:
@@ -130,10 +137,15 @@ def pagerank_rankings(match_graph, damping=0.85, iterations=100):
             if opp_id not in idx:
                 continue
             j = idx[opp_id]
-            if won:
+            if won is True:
                 adj[i][j] += 1  # winner (i) receives from loser (j)
-            else:
+            elif won is False:
                 adj[j][i] += 1  # winner (j) receives from loser (i)
+            else:
+                # True tie: split authority evenly. Each meet is walked from
+                # both teams' perspectives, so 0.5 from each side sums to 1.
+                adj[i][j] += 0.5
+                adj[j][i] += 0.5
 
     # Normalize columns
     col_sums = adj.sum(axis=0)
@@ -155,20 +167,25 @@ def win_score_rankings(match_graph):
     """
     Win-Score: each win earns the opponent's win percentage. Simple, no iteration.
     """
-    # First compute win percentages
+    # First compute win percentages (ties count as half-wins).
     wp = {}
     for team_id, matches in match_graph.items():
-        wins = sum(1 for _, won, _ in matches if won)
+        wins = sum(1 for _, won, _ in matches if won is True)
+        ties = sum(1 for _, won, _ in matches if won is None)
         total = len(matches)
-        wp[team_id] = wins / total if total > 0 else 0.0
+        wp[team_id] = (wins + 0.5 * ties) / total if total > 0 else 0.0
 
-    # Score = sum of beaten opponents' win%
+    # Score = sum of beaten opponents' win% (half credit for ties).
     scores = {}
     for team_id, matches in match_graph.items():
         score = 0.0
         for opp_id, won, _ in matches:
-            if won and opp_id in wp:
+            if opp_id not in wp:
+                continue
+            if won is True:
                 score += wp[opp_id]
+            elif won is None:
+                score += 0.5 * wp[opp_id]
         scores[team_id] = score
 
     return scores
