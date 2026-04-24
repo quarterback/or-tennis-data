@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-04-24
+
+### Fixed: Duplicate dual matches inflated team records and rankings
+
+**Problem:** Some teams showed inflated win or loss totals because both coaches posted the same dual match to tennisreporting.com, producing two distinct meet entries. The reported trigger case was Valley Catholic girls at **7-2-0** vs. Molalla girls at **6-4-0** on 2026-04-07; both teams had the April 7 VC-vs-Molalla match counted twice. An audit across 2021-2026 found 51 duplicate match pairs affecting 92 school files.
+
+**Root cause:** Every meet-iteration site (`get_dual_match_record`, `get_league_record`, `get_head_to_head`, `get_head_to_head_detailed`, `process_school_data`, FWS calculation, and the weekly match graph) consumed the raw `data['meets']` array without checking for duplicate `(date, team_a, team_b)` entries. `scripts/generate_weekly_rankings.py::extract_matches` had a partial guard, but it only gated `match_list`; `match_graph`, `team_records`, `team_top_flight`, and `team_match_log` were all written before the dedup check.
+
+**Fix:** Added a `dedupe_meets()` helper to `generate_site.py`, `scripts/build_rankings.py`, and `scripts/generate_weekly_rankings.py` that collapses any pair of dual meets with the same date and same two school IDs, keeping the entry with the most completed flight match data (ties broken by lowest meet id). The dedup runs once at load time, so every downstream consumer sees the cleaned `meets` list. Non-dual meets (tournaments, state championships) are untouched.
+
+**Impact:** Valley Catholic girls 2026: 7-2-0 -> 6-2-0. Molalla girls 2026: 6-4-0 -> 6-3-0. 106 duplicate meet entries removed across the 2021-2026 history, correcting records, league standings, head-to-head tables, FWS, OWP, and weekly composite rankings.
+
 ## 2026-04-23
 
 ### Fixed: Weekly rankings counted tiebreaker losses as ties
