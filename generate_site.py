@@ -16,6 +16,7 @@ import json
 import csv
 import time
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError
@@ -54,6 +55,33 @@ LEAGUE_DEPTH_TOP_N = 4  # Top-N APR average used as league depth
 # H2H Tiebreaker threshold - swap if PI difference is less than this
 H2H_THRESHOLD = 0.02  # Teams within 2% PI difference eligible for H2H swap
 H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for league-based H2H
+
+# --- Alternative-model A/B test (TOSS + QWS) ---
+# On/after ADJUSTED_FWS_EFFECTIVE_DATE, build_rankings() computes two additional
+# Power Index variants alongside the baseline for live comparison through end of
+# 2026 season. Override with env var ADJ_MODELS_ENABLED=1|0 for testing.
+ADJUSTED_FWS_EFFECTIVE_DATE = date(2026, 4, 20)
+
+# TOSS: per-match FWS multiplier = clamp(opp_apr / median_apr, LOW, HIGH)
+TOSS_CLAMP_LOW = 0.75
+TOSS_CLAMP_HIGH = 1.25
+
+# QWS: ITA-style quality-weighted APR. APR_qws = (sum(opp_PI * 100) for wins
+# - 50 * losses) / total_matches, iterated until opponent PI converges.
+QWS_WIN_SCALE = 100
+QWS_LOSS_PENALTY = 50
+QWS_MAX_ITER = 5
+QWS_CONVERGE_EPS = 0.01
+QWS_NORM_OFFSET = 50   # linear normalization: (x + OFFSET) / RANGE
+QWS_NORM_RANGE = 150   # raw range ~[-50, +100]
+
+
+def _adjusted_models_enabled(today=None):
+    """True when TOSS/QWS models should be computed and emitted."""
+    override = os.environ.get('ADJ_MODELS_ENABLED')
+    if override in ('0', '1'):
+        return override == '1'
+    return (today or date.today()) >= ADJUSTED_FWS_EFFECTIVE_DATE
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
@@ -441,6 +469,33 @@ def get_dual_match_record(meets, school_id):
     return wins, losses, ties
 
 
+def get_dual_match_results(meets, school_id):
+    """Return per-dual-match (opponent_id, 'W'|'L'|'T') records for QWS."""
+    records = []
+    for meet in meets:
+        if not is_dual_match(meet):
+            continue
+
+        result = get_meet_result(meet, school_id)
+        if result is None:
+            continue
+
+        opp_id = None
+        for side in ('winners', 'losers'):
+            for s in meet.get('schools', {}).get(side, []) or []:
+                sid = s.get('id')
+                if sid is not None and sid != school_id:
+                    opp_id = sid
+                    break
+            if opp_id is not None:
+                break
+
+        outcome = {'win': 'W', 'loss': 'L', 'tie': 'T'}.get(result)
+        if outcome is not None:
+            records.append((opp_id, outcome))
+    return records
+
+
 def get_league_record(meets, school_id, school_league, school_info):
     """Get the league-only win-loss-tie record."""
     wins = 0
@@ -649,8 +704,10 @@ def calculate_fws_per_match(data, school_id):
     - flight_breakdown: win rate per flight position
     - total_flights_won: raw count of flights won
     - total_flights_played: raw count of flights contested
+    - per_match_records: list of (opponent_id, match_fws) for TOSS reweighting
     """
     dual_match_fws_scores = []
+    per_match_records = []  # [(opp_id, match_fws), ...]
 
     # Track flight-by-flight stats
     flight_stats = {
@@ -670,6 +727,17 @@ def calculate_fws_per_match(data, school_id):
     for meet in data.get('meets', []):
         if not is_dual_match(meet):
             continue
+
+        # Identify the opponent for this dual (needed for TOSS per-match records)
+        opp_id = None
+        for side in ('winners', 'losers'):
+            for s in meet.get('schools', {}).get(side, []) or []:
+                sid = s.get('id')
+                if sid is not None and sid != school_id:
+                    opp_id = sid
+                    break
+            if opp_id is not None:
+                break
 
         # Track points earned and available weight for this match
         points_earned = 0.0
@@ -712,6 +780,7 @@ def calculate_fws_per_match(data, school_id):
         if available_weight > 0:
             match_fws = points_earned / available_weight
             dual_match_fws_scores.append(match_fws)
+            per_match_records.append((opp_id, match_fws))
 
     if not dual_match_fws_scores:
         return {
@@ -720,7 +789,8 @@ def calculate_fws_per_match(data, school_id):
             'fws_pct': 0.0,
             'flight_breakdown': flight_stats,
             'total_flights_won': 0,
-            'total_flights_played': 0
+            'total_flights_played': 0,
+            'per_match_records': []
         }
 
     # Average of normalized match FWS scores (already in 0-1 range)
@@ -735,7 +805,8 @@ def calculate_fws_per_match(data, school_id):
         'fws_pct': fws_pct,
         'flight_breakdown': flight_stats,
         'total_flights_won': total_flights_won,
-        'total_flights_played': total_flights_played
+        'total_flights_played': total_flights_played,
+        'per_match_records': per_match_records
     }
 
 
@@ -781,6 +852,9 @@ def build_rankings(data_dir, master_school_list):
                 # FWS calculation returns dict with breakdown data
                 fws_data = calculate_fws_per_match(data, school_id)
 
+                # Per-dual (opp_id, W|L|T) records for QWS
+                dual_results = get_dual_match_results(data.get('meets', []), school_id)
+
                 # Calculate simple Win Percentage (WP) - ties count as 0.5 wins
                 total_duals = wins + losses + ties
                 wp = (wins + ties * 0.5) / total_duals if total_duals > 0 else 0.0
@@ -804,6 +878,9 @@ def build_rankings(data_dir, master_school_list):
                     'flight_breakdown': fws_data['flight_breakdown'],
                     'total_flights_won': fws_data['total_flights_won'],
                     'total_flights_played': fws_data['total_flights_played'],
+                    # Alt-model inputs (TOSS + QWS)
+                    'fws_match_records': fws_data.get('per_match_records', []),
+                    'dual_match_results': dual_results,
                 }
 
     # Calculate OWP (Opponent Win Percentage) - based on simple WP
@@ -914,7 +991,96 @@ def build_rankings(data_dir, master_school_list):
                 school['apr'] = (school['wp'] * WP_WEIGHT) + (school['owp'] * OWP_WEIGHT) + (school['oowp'] * OOWP_WEIGHT)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
 
+    # --- Alt-model A/B test: TOSS + QWS ---
+    # Only compute on/after ADJUSTED_FWS_EFFECTIVE_DATE (or when overridden by
+    # ADJ_MODELS_ENABLED env var). Baseline 'power_index' is never modified so
+    # the primary display, playoff simulator, and H2H logic keep using the
+    # unchanged signal.
+    if _adjusted_models_enabled():
+        # Alt models are forward-only: 2026 season and beyond. Historical
+        # seasons (2021-2025) keep only the baseline power_index.
+        for year in school_data:
+            if int(year) < 2026:
+                continue
+            for gender in school_data[year]:
+                teams = school_data[year][gender]
+                if not teams:
+                    continue
+
+                # --- Pass 3: TOSS (opponent-APR-weighted FWS) ---
+                apr_values = sorted(s['apr'] for s in teams.values())
+                median_apr = apr_values[len(apr_values) // 2] if apr_values else 0.5
+                if median_apr <= 0:
+                    median_apr = 0.5
+
+                for sid, school in teams.items():
+                    records = school.get('fws_match_records') or []
+                    if not records:
+                        school['adjusted_fws'] = school['normalized_fws']
+                        school['schedule_multiplier'] = 1.0
+                        school['power_index_toss'] = school['power_index']
+                        continue
+
+                    weighted_sum = 0.0
+                    weight_sum = 0.0
+                    for opp_id, match_fws in records:
+                        opp_apr = teams[opp_id]['apr'] if opp_id in teams else 0.5
+                        m = max(TOSS_CLAMP_LOW, min(TOSS_CLAMP_HIGH, opp_apr / median_apr))
+                        weighted_sum += match_fws * m
+                        weight_sum += m
+
+                    adjusted_fws = (weighted_sum / weight_sum) if weight_sum > 0 else school['normalized_fws']
+                    raw_fws = school['normalized_fws']
+                    school['adjusted_fws'] = adjusted_fws
+                    school['schedule_multiplier'] = (adjusted_fws / raw_fws) if raw_fws > 0 else 1.0
+                    school['power_index_toss'] = (school['apr'] * APR_WEIGHT) + (adjusted_fws * FWS_WEIGHT)
+
+                # --- Pass 4: QWS (iterative quality-weighted APR) ---
+                # Seed opponent PI with WP (iter 0), then iterate using the
+                # previous iteration's power_index_qws until convergence.
+                pi_prev = {sid: s['wp'] for sid, s in teams.items()}
+                iterations = 0
+                for it in range(1, QWS_MAX_ITER + 1):
+                    iterations = it
+                    pi_next = {}
+                    apr_qws_next = {}
+                    for sid, school in teams.items():
+                        dr = school.get('dual_match_results') or []
+                        total_matches = len(dr)
+                        if total_matches == 0:
+                            apr_qws_next[sid] = 0.5
+                            pi_next[sid] = school['power_index']
+                            continue
+
+                        quality_points = 0.0
+                        loss_penalty = 0.0
+                        for opp_id, outcome in dr:
+                            opp_pi = pi_prev.get(opp_id, 0.5) if opp_id in teams else 0.5
+                            if outcome == 'W':
+                                quality_points += opp_pi * QWS_WIN_SCALE
+                            elif outcome == 'L':
+                                loss_penalty += QWS_LOSS_PENALTY
+                            else:  # Tie counts as 0.5W + 0.5L
+                                quality_points += 0.5 * opp_pi * QWS_WIN_SCALE
+                                loss_penalty += 0.5 * QWS_LOSS_PENALTY
+
+                        raw = (quality_points - loss_penalty) / total_matches
+                        apr_qws = max(0.0, min(1.0, (raw + QWS_NORM_OFFSET) / QWS_NORM_RANGE))
+                        apr_qws_next[sid] = apr_qws
+                        pi_next[sid] = (apr_qws * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
+
+                    max_delta = max(abs(pi_next[sid] - pi_prev.get(sid, 0.0)) for sid in pi_next) if pi_next else 0.0
+                    pi_prev = pi_next
+                    if max_delta < QWS_CONVERGE_EPS:
+                        break
+
+                for sid, school in teams.items():
+                    school['apr_qws'] = apr_qws_next.get(sid, 0.5)
+                    school['power_index_qws'] = pi_prev.get(sid, school['power_index'])
+                    school['qws_iterations'] = iterations
+
     # Build output
+    alt_models = _adjusted_models_enabled()
     output = []
     for year in sorted(school_data.keys()):
         for gender in sorted(school_data[year].keys()):
@@ -924,6 +1090,25 @@ def build_rankings(data_dir, master_school_list):
                 key=lambda x: x[1]['power_index'],
                 reverse=True
             )
+
+            # Independent ranks for alt models (pure PI sort, no H2H tiebreak)
+            rank_toss_map = {}
+            rank_qws_map = {}
+            if alt_models:
+                toss_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_toss', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(toss_sorted, 1):
+                    rank_toss_map[sid] = i
+                qws_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_qws', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(qws_sorted, 1):
+                    rank_qws_map[sid] = i
 
             # Calculate league rankings for H2H league position condition
             league_rankings = {}  # {league: [(school_id, league_rank), ...]}
@@ -1292,7 +1477,7 @@ def build_rankings(data_dir, master_school_list):
                     else:
                         flight_pcts[flight] = None
 
-                output.append({
+                entry = {
                     'year': int(year),
                     'gender': gender,
                     'rank': rank,  # State rank (all schools)
@@ -1329,7 +1514,19 @@ def build_rankings(data_dir, master_school_list):
                     'flight_breakdown': flight_pcts,  # Win % per flight position
                     'total_flights_won': stats.get('total_flights_won', 0),
                     'total_flights_played': stats.get('total_flights_played', 0),
-                })
+                }
+                if alt_models and int(year) >= 2026 and 'power_index_toss' in stats:
+                    entry.update({
+                        'power_index_toss': round(stats['power_index_toss'], 4),
+                        'adjusted_fws': round(stats.get('adjusted_fws', stats['normalized_fws']), 4),
+                        'schedule_multiplier': round(stats.get('schedule_multiplier', 1.0), 4),
+                        'rank_toss': rank_toss_map.get(school_id, rank),
+                        'power_index_qws': round(stats.get('power_index_qws', stats['power_index']), 4),
+                        'apr_qws': round(stats.get('apr_qws', stats['apr']), 4),
+                        'qws_iterations': stats.get('qws_iterations', 0),
+                        'rank_qws': rank_qws_map.get(school_id, rank),
+                    })
+                output.append(entry)
 
     # Calculate class_rank and FWS+ (league-adjusted) for each year/gender/classification
     class_groups = defaultdict(list)
@@ -1429,6 +1626,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     genders = sorted(set(r['gender'] for r in rankings))
     classifications = sorted(set(r['classification'] for r in rankings if r['classification']))
     leagues = sorted(set(r['league'] for r in rankings if r['league']))
+    alt_models_live = any('power_index_toss' in r for r in rankings)
 
     # Calculate league power scores
     league_scores = calculate_league_power_scores(rankings)
@@ -1738,6 +1936,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
                     <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
+                {("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #6f42c1; background:#f5f3ff; font-size:12px; color:#4b3e7a;'>"
+                  "<strong>A/B test active (from " + ADJUSTED_FWS_EFFECTIVE_DATE.isoformat() + "):</strong> "
+                  "two alternative Power Index variants are being computed alongside the Current model for live comparison through end of season. "
+                  "The table below continues to use the Current model (unchanged). Each team's JSON payload includes <code>power_index_toss</code> (opponent-APR-weighted FWS) and "
+                  "<code>power_index_qws</code> (ITA-style quality-weighted APR, iterated to convergence), plus the corresponding ranks. "
+                  "<a href='methodology.html#ab-test'>Compare models &rarr;</a>"
+                  "</div>") if alt_models_live else ""}
             </div>
         </div>
     </div>
