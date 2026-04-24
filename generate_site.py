@@ -16,6 +16,7 @@ import json
 import csv
 import time
 from collections import defaultdict
+from datetime import date
 from pathlib import Path
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderTimedOut, GeocoderServiceError
@@ -54,6 +55,53 @@ LEAGUE_DEPTH_TOP_N = 4  # Top-N APR average used as league depth
 # H2H Tiebreaker threshold - swap if PI difference is less than this
 H2H_THRESHOLD = 0.02  # Teams within 2% PI difference eligible for H2H swap
 H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for league-based H2H
+
+# --- Alternative-model A/B test (TOSS + QWS) ---
+# On/after ADJUSTED_FWS_EFFECTIVE_DATE, build_rankings() computes two additional
+# Power Index variants alongside the baseline for live comparison. On/after
+# TOSS_PRIMARY_DATE, TOSS is promoted to the primary power_index used for
+# ranking, H2H tiebreakers, league ranks, and the playoff simulator — the
+# baseline RPI formula is retained as "power_index_legacy" for reference.
+# QWS remains the experimental B of the A/B test throughout.
+# Override with env var ADJ_MODELS_ENABLED=1|0 for testing the computation;
+# override TOSS_PRIMARY=1|0 to force the primacy gate independent of date.
+ADJUSTED_FWS_EFFECTIVE_DATE = date(2026, 4, 20)
+TOSS_PRIMARY_DATE = date(2026, 4, 26)
+
+# TOSS flight-quality component = FQI (Flight Quality Index).
+# Per-match multiplier = opp_apr / median_apr, unclamped. Unknown opponents
+# default to median (multiplier 1.0). See docs/oFWS-PRD.md for the portable
+# spec and design rationale for the uncapped normalization.
+
+# QWS: ITA-style quality-weighted APR. APR_qws = (sum(opp_PI * 100) for wins
+# - 50 * losses) / total_matches, iterated until opponent PI converges.
+QWS_WIN_SCALE = 100
+QWS_LOSS_PENALTY = 50
+QWS_MAX_ITER = 5
+QWS_CONVERGE_EPS = 0.01
+QWS_NORM_OFFSET = 50   # linear normalization: (x + OFFSET) / RANGE
+QWS_NORM_RANGE = 150   # raw range ~[-50, +100]
+
+
+def _adjusted_models_enabled(today=None):
+    """True when TOSS/QWS models should be computed and emitted."""
+    override = os.environ.get('ADJ_MODELS_ENABLED')
+    if override in ('0', '1'):
+        return override == '1'
+    return (today or date.today()) >= ADJUSTED_FWS_EFFECTIVE_DATE
+
+
+def _toss_is_primary(today=None):
+    """True when TOSS is the primary power_index (drives ranks, H2H, playoffs).
+
+    Requires alt models to be enabled; on/after TOSS_PRIMARY_DATE by default.
+    """
+    if not _adjusted_models_enabled(today):
+        return False
+    override = os.environ.get('TOSS_PRIMARY')
+    if override in ('0', '1'):
+        return override == '1'
+    return (today or date.today()) >= TOSS_PRIMARY_DATE
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
@@ -277,6 +325,56 @@ def is_dual_match(meet):
     return len(winners) == 1 and len(losers) == 1
 
 
+def dedupe_meets(meets):
+    """Drop duplicate dual-match entries created when both coaches post the same match.
+
+    Two dual meets with the same date and same pair of school IDs are treated as
+    duplicates even if the meet-level scores differ slightly (coaches sometimes
+    record different flights). Keeps the entry with the most completed flight
+    match data; ties broken by lowest meet id.
+    """
+    if not meets:
+        return meets
+
+    def flight_count(meet):
+        n = 0
+        matches = meet.get('matches', {}) or {}
+        for mt in ('Singles', 'Doubles'):
+            for m in (matches.get(mt, []) or []):
+                if m.get('matchTeams'):
+                    n += 1
+        return n
+
+    seen = {}
+    result = []
+    for meet in meets:
+        schools = meet.get('schools', {}) or {}
+        winners = schools.get('winners', []) or []
+        losers = schools.get('losers', []) or []
+        if len(winners) != 1 or len(losers) != 1:
+            result.append(meet)
+            continue
+
+        date = (meet.get('meetDateTime') or '')[:10]
+        a, b = winners[0].get('id'), losers[0].get('id')
+        if a is None or b is None:
+            result.append(meet)
+            continue
+        key = (date, min(a, b), max(a, b))
+
+        if key in seen:
+            idx = seen[key]
+            kept = result[idx]
+            new_score = (flight_count(meet), -(meet.get('id') or 0))
+            old_score = (flight_count(kept), -(kept.get('id') or 0))
+            if new_score > old_score:
+                result[idx] = meet
+        else:
+            seen[key] = len(result)
+            result.append(meet)
+    return result
+
+
 def get_meet_result(meet, school_id):
     """Determine if a school won, lost, or tied a meet.
 
@@ -389,6 +487,33 @@ def get_dual_match_record(meets, school_id):
             ties += 1
 
     return wins, losses, ties
+
+
+def get_dual_match_results(meets, school_id):
+    """Return per-dual-match (opponent_id, 'W'|'L'|'T') records for QWS."""
+    records = []
+    for meet in meets:
+        if not is_dual_match(meet):
+            continue
+
+        result = get_meet_result(meet, school_id)
+        if result is None:
+            continue
+
+        opp_id = None
+        for side in ('winners', 'losers'):
+            for s in meet.get('schools', {}).get(side, []) or []:
+                sid = s.get('id')
+                if sid is not None and sid != school_id:
+                    opp_id = sid
+                    break
+            if opp_id is not None:
+                break
+
+        outcome = {'win': 'W', 'loss': 'L', 'tie': 'T'}.get(result)
+        if outcome is not None:
+            records.append((opp_id, outcome))
+    return records
 
 
 def get_league_record(meets, school_id, school_league, school_info):
@@ -593,16 +718,16 @@ def calculate_fws_per_match(data, school_id):
     - Short match (1S, 2S, 1D, 2D only): Denominator = 3.0 (1.0+0.75+1.0+0.5)
 
     Returns dict with:
-    - normalized_fws: 0-1 range average (opponent-blind — used as raw baseline)
-    - per_match_with_opp: [(opp_id, match_fws), ...] used for opponent-weighted FWS
+    - normalized_fws: 0-1 range average
     - match_count: number of dual matches
     - fws_pct: percentage of flights won (simple ratio)
     - flight_breakdown: win rate per flight position
     - total_flights_won: raw count of flights won
     - total_flights_played: raw count of flights contested
+    - per_match_records: list of (opponent_id, match_fws) for TOSS reweighting
     """
     dual_match_fws_scores = []
-    per_match_with_opp = []
+    per_match_records = []  # [(opp_id, match_fws), ...]
 
     # Track flight-by-flight stats
     flight_stats = {
@@ -623,11 +748,16 @@ def calculate_fws_per_match(data, school_id):
         if not is_dual_match(meet):
             continue
 
-        schools = meet.get('schools', {})
+        # Identify the opponent for this dual (needed for TOSS per-match records)
         opp_id = None
-        for s in schools.get('winners', []) + schools.get('losers', []):
-            if s['id'] != school_id:
-                opp_id = s['id']
+        for side in ('winners', 'losers'):
+            for s in meet.get('schools', {}).get(side, []) or []:
+                sid = s.get('id')
+                if sid is not None and sid != school_id:
+                    opp_id = sid
+                    break
+            if opp_id is not None:
+                break
 
         # Track points earned and available weight for this match
         points_earned = 0.0
@@ -670,18 +800,17 @@ def calculate_fws_per_match(data, school_id):
         if available_weight > 0:
             match_fws = points_earned / available_weight
             dual_match_fws_scores.append(match_fws)
-            if opp_id is not None:
-                per_match_with_opp.append((opp_id, match_fws))
+            per_match_records.append((opp_id, match_fws))
 
     if not dual_match_fws_scores:
         return {
             'normalized_fws': 0.0,
-            'per_match_with_opp': [],
             'match_count': 0,
             'fws_pct': 0.0,
             'flight_breakdown': flight_stats,
             'total_flights_won': 0,
-            'total_flights_played': 0
+            'total_flights_played': 0,
+            'per_match_records': []
         }
 
     # Average of normalized match FWS scores (already in 0-1 range)
@@ -692,12 +821,12 @@ def calculate_fws_per_match(data, school_id):
 
     return {
         'normalized_fws': avg_fws,
-        'per_match_with_opp': per_match_with_opp,
         'match_count': len(dual_match_fws_scores),
         'fws_pct': fws_pct,
         'flight_breakdown': flight_stats,
         'total_flights_won': total_flights_won,
-        'total_flights_played': total_flights_played
+        'total_flights_played': total_flights_played,
+        'per_match_records': per_match_records
     }
 
 
@@ -727,6 +856,7 @@ def build_rankings(data_dir, master_school_list):
             with open(json_file, 'r') as f:
                 data = json.load(f)
 
+            data['meets'] = dedupe_meets(data.get('meets', []))
             raw_data_cache[year][gender][school_id] = data
             results, opponents = process_school_data(data, school_id)
             wins, losses, ties = get_dual_match_record(data.get('meets', []), school_id)
@@ -741,6 +871,9 @@ def build_rankings(data_dir, master_school_list):
             if results or (wins + losses + ties > 0):
                 # FWS calculation returns dict with breakdown data
                 fws_data = calculate_fws_per_match(data, school_id)
+
+                # Per-dual (opp_id, W|L|T) records for QWS
+                dual_results = get_dual_match_results(data.get('meets', []), school_id)
 
                 # Calculate simple Win Percentage (WP) - ties count as 0.5 wins
                 total_duals = wins + losses + ties
@@ -759,14 +892,15 @@ def build_rankings(data_dir, master_school_list):
                     'league_ties': league_ties,
                     # FWS data
                     'fws': fws_data['normalized_fws'] * MAX_FWS,  # Scale to 0-3.95 for display
-                    'normalized_fws_raw': fws_data['normalized_fws'],  # opponent-blind baseline
-                    'normalized_fws': fws_data['normalized_fws'],  # will be overwritten with opp-weighted value below
-                    'per_match_fws': fws_data['per_match_with_opp'],  # [(opp_id, match_fws), ...]
+                    'normalized_fws': fws_data['normalized_fws'],  # 0-1 range for Power Index
                     'fws_pct': fws_data['fws_pct'],  # Simple percentage (flights won / played)
                     'fws_match_count': fws_data['match_count'],
                     'flight_breakdown': fws_data['flight_breakdown'],
                     'total_flights_won': fws_data['total_flights_won'],
                     'total_flights_played': fws_data['total_flights_played'],
+                    # Alt-model inputs (TOSS + QWS)
+                    'fws_match_records': fws_data.get('per_match_records', []),
+                    'dual_match_results': dual_results,
                 }
 
     # Calculate OWP (Opponent Win Percentage) - based on simple WP
@@ -811,37 +945,6 @@ def build_rankings(data_dir, master_school_list):
 
                 # Power Index = 50/50 split between Results (APR) and Depth (FWS)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
-
-    # --- Opponent-weighted FWS ---
-    # FWS's original job — measure roster depth via flight-level wins — was
-    # opponent-blind: a 5-0 sweep of a bottom-quartile team and a 5-0 sweep of
-    # Jesuit contributed identically to a team's FWS. That over-rewarded
-    # cupcake scheduling and under-credited teams that competed in flights
-    # against strong opponents. Each match's flight-result contribution is now
-    # scaled by the opponent's pass-1 APR, normalized against the median APR
-    # in that year/gender so the weight has mean ~1.0. Unknown opponents
-    # (cross-state) default to the median, i.e. neutral weight.
-    for year in school_data:
-        for gender in school_data[year]:
-            aprs = [s['apr'] for s in school_data[year][gender].values()]
-            if not aprs:
-                continue
-            sorted_aprs = sorted(aprs)
-            median_apr = sorted_aprs[len(sorted_aprs) // 2]
-            if median_apr <= 0:
-                continue
-            for school_id, school in school_data[year][gender].items():
-                per_match = school.get('per_match_fws', [])
-                if not per_match:
-                    continue
-                weighted = []
-                for opp_id, match_fws in per_match:
-                    if opp_id in school_data[year][gender]:
-                        opp_apr = school_data[year][gender][opp_id]['apr']
-                    else:
-                        opp_apr = median_apr
-                    weighted.append(match_fws * (opp_apr / median_apr))
-                school['normalized_fws'] = sum(weighted) / len(weighted)
 
     # --- Pass 2: league-depth-weighted OWP ---
     # Reweight each opponent's contribution to OWP by the depth of their league.
@@ -908,16 +1011,153 @@ def build_rankings(data_dir, master_school_list):
                 school['apr'] = (school['wp'] * WP_WEIGHT) + (school['owp'] * OWP_WEIGHT) + (school['oowp'] * OOWP_WEIGHT)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
 
+    # --- Alt-model A/B test: TOSS + QWS ---
+    # Only compute on/after ADJUSTED_FWS_EFFECTIVE_DATE (or when overridden by
+    # ADJ_MODELS_ENABLED env var). Baseline 'power_index' is never modified so
+    # the primary display, playoff simulator, and H2H logic keep using the
+    # unchanged signal.
+    toss_primary = _toss_is_primary()
+    if _adjusted_models_enabled():
+        # Alt models are forward-only: 2026 season and beyond. Historical
+        # seasons (2021-2025) keep only the baseline power_index.
+        for year in school_data:
+            if int(year) < 2026:
+                continue
+            for gender in school_data[year]:
+                teams = school_data[year][gender]
+                if not teams:
+                    continue
+
+                # --- Pass 3: TOSS (opponent-APR-weighted FWS) ---
+                apr_values = sorted(s['apr'] for s in teams.values())
+                median_apr = apr_values[len(apr_values) // 2] if apr_values else 0.5
+                if median_apr <= 0:
+                    median_apr = 0.5
+
+                for sid, school in teams.items():
+                    records = school.get('fws_match_records') or []
+                    if not records:
+                        school['fqi'] = school['normalized_fws']
+                        school['adjusted_fws'] = school['normalized_fws']  # Backcompat alias
+                        school['schedule_multiplier'] = 1.0
+                        school['power_index_toss'] = school['power_index']
+                        continue
+
+                    # FQI = simple arithmetic mean of (flight_score * multiplier),
+                    # per docs/oFWS-PRD.md §4.4. Using a weighted mean (dividing
+                    # by sum(weights)) mostly cancels the opponent effect — a
+                    # team with all below-median opponents would see its FQI
+                    # equal its raw FWS. The arithmetic mean preserves the
+                    # intended scaling: a team that plays all below-median
+                    # opponents gets its flight contributions discounted in
+                    # aggregate, and a team that plays above-median opponents
+                    # gets them amplified.
+                    total = 0.0
+                    for opp_id, match_fws in records:
+                        m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
+                        total += match_fws * m
+                    fqi = total / len(records)
+                    raw_fws = school['normalized_fws']
+                    school['fqi'] = fqi
+                    school['adjusted_fws'] = fqi  # Backcompat alias
+                    school['schedule_multiplier'] = (fqi / raw_fws) if raw_fws > 0 else 1.0
+                    school['power_index_toss'] = (school['apr'] * APR_WEIGHT) + (fqi * FWS_WEIGHT)
+
+                # --- Pass 4: QWS (iterative quality-weighted APR) ---
+                # Seed opponent PI with WP (iter 0), then iterate using the
+                # previous iteration's power_index_qws until convergence.
+                pi_prev = {sid: s['wp'] for sid, s in teams.items()}
+                iterations = 0
+                for it in range(1, QWS_MAX_ITER + 1):
+                    iterations = it
+                    pi_next = {}
+                    apr_qws_next = {}
+                    for sid, school in teams.items():
+                        dr = school.get('dual_match_results') or []
+                        total_matches = len(dr)
+                        if total_matches == 0:
+                            apr_qws_next[sid] = 0.5
+                            pi_next[sid] = school['power_index']
+                            continue
+
+                        quality_points = 0.0
+                        loss_penalty = 0.0
+                        for opp_id, outcome in dr:
+                            opp_pi = pi_prev.get(opp_id, 0.5) if opp_id in teams else 0.5
+                            if outcome == 'W':
+                                quality_points += opp_pi * QWS_WIN_SCALE
+                            elif outcome == 'L':
+                                loss_penalty += QWS_LOSS_PENALTY
+                            else:  # Tie counts as 0.5W + 0.5L
+                                quality_points += 0.5 * opp_pi * QWS_WIN_SCALE
+                                loss_penalty += 0.5 * QWS_LOSS_PENALTY
+
+                        raw = (quality_points - loss_penalty) / total_matches
+                        apr_qws = max(0.0, min(1.0, (raw + QWS_NORM_OFFSET) / QWS_NORM_RANGE))
+                        apr_qws_next[sid] = apr_qws
+                        pi_next[sid] = (apr_qws * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
+
+                    max_delta = max(abs(pi_next[sid] - pi_prev.get(sid, 0.0)) for sid in pi_next) if pi_next else 0.0
+                    pi_prev = pi_next
+                    if max_delta < QWS_CONVERGE_EPS:
+                        break
+
+                for sid, school in teams.items():
+                    school['apr_qws'] = apr_qws_next.get(sid, 0.5)
+                    school['power_index_qws'] = pi_prev.get(sid, school['power_index'])
+                    school['qws_iterations'] = iterations
+
+                # Promote TOSS to primary for 2026+: everything downstream
+                # (sort, league ranks, H2H, playoff sim, class_rank) reads
+                # school['power_index'], so overwriting it swaps the whole
+                # system onto TOSS in one place. The original RPI value is
+                # preserved as power_index_legacy for the reference column.
+                if toss_primary:
+                    for sid, school in teams.items():
+                        school['power_index_legacy'] = school['power_index']
+                        school['power_index'] = school.get('power_index_toss', school['power_index'])
+
     # Build output
+    alt_models = _adjusted_models_enabled()
     output = []
     for year in sorted(school_data.keys()):
         for gender in sorted(school_data[year].keys()):
-            # Initial sort by Power Index
+            # Initial sort by Power Index (TOSS when primary, otherwise RPI)
             ranked = sorted(
                 school_data[year][gender].items(),
                 key=lambda x: x[1]['power_index'],
                 reverse=True
             )
+
+            # Independent ranks for alt models (pure PI sort, no H2H tiebreak)
+            rank_toss_map = {}
+            rank_qws_map = {}
+            rank_legacy_map = {}
+            if alt_models:
+                toss_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_toss', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(toss_sorted, 1):
+                    rank_toss_map[sid] = i
+                qws_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_qws', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(qws_sorted, 1):
+                    rank_qws_map[sid] = i
+                # Legacy ranks use the RPI power_index (stored as
+                # power_index_legacy once TOSS is promoted). Falls back to the
+                # primary power_index in the pre-primary window.
+                legacy_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_legacy', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(legacy_sorted, 1):
+                    rank_legacy_map[sid] = i
 
             # Calculate league rankings for H2H league position condition
             league_rankings = {}  # {league: [(school_id, league_rank), ...]}
@@ -1286,7 +1526,7 @@ def build_rankings(data_dir, master_school_list):
                     else:
                         flight_pcts[flight] = None
 
-                output.append({
+                entry = {
                     'year': int(year),
                     'gender': gender,
                     'rank': rank,  # State rank (all schools)
@@ -1302,12 +1542,10 @@ def build_rankings(data_dir, master_school_list):
                     'owp': round(stats['owp'], 4),    # Opponent Win Percentage
                     'oowp': round(stats['oowp'], 4),  # Opponent's Opponent Win Percentage
                     'apr': round(stats['apr'], 4),    # RPI: (WP*0.25)+(OWP*0.50)+(OOWP*0.25)
-                    'fws': round(stats['fws'], 4),    # Proportional raw FWS (0-3.95 scale) — diagnostic only
-                    'normalized_fws': round(stats['normalized_fws'], 4),  # opponent-weighted FWS (0-1) — backcompat alias
-                    'fqi': round(stats['normalized_fws'], 4),  # Flight Quality Index (oFWS); 0-1 range
-                    'fws_pct': round(stats.get('fws_pct', 0), 1),  # Raw flights-won/played — diagnostic only
-                    'fqi_plus': 100,  # Will be calculated below (classification-relative FQI, 100 = average)
-                    'fws_plus': 100,  # Backcompat alias for fqi_plus
+                    'fws': round(stats['fws'], 4),    # Proportional FWS (0-3.95 scale)
+                    'normalized_fws': round(stats['normalized_fws'], 4),  # FWS normalized (0-1)
+                    'fws_pct': round(stats.get('fws_pct', 0), 1),  # Simple percentage (flights won / played)
+                    'fws_plus': 100,  # Will be calculated below (league-adjusted, 100 = average)
                     'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(Normalized_FWS*0.50)
                     'matches_played': stats['matches_played'],
                     'opponents_count': len(stats['opponents']),
@@ -1325,11 +1563,28 @@ def build_rankings(data_dir, master_school_list):
                     'flight_breakdown': flight_pcts,  # Win % per flight position
                     'total_flights_won': stats.get('total_flights_won', 0),
                     'total_flights_played': stats.get('total_flights_played', 0),
-                })
+                }
+                if alt_models and int(year) >= 2026 and 'power_index_toss' in stats:
+                    fqi_val = round(stats.get('fqi', stats.get('adjusted_fws', stats['normalized_fws'])), 4)
+                    entry.update({
+                        'power_index_toss': round(stats['power_index_toss'], 4),
+                        'fqi': fqi_val,
+                        'adjusted_fws': fqi_val,  # Backcompat alias
+                        'schedule_multiplier': round(stats.get('schedule_multiplier', 1.0), 4),
+                        'rank_toss': rank_toss_map.get(school_id, rank),
+                        'power_index_qws': round(stats.get('power_index_qws', stats['power_index']), 4),
+                        'apr_qws': round(stats.get('apr_qws', stats['apr']), 4),
+                        'qws_iterations': stats.get('qws_iterations', 0),
+                        'rank_qws': rank_qws_map.get(school_id, rank),
+                        # Legacy (pre-2026-04-26 primary) RPI formula retained for reference.
+                        'power_index_legacy': round(stats.get('power_index_legacy', stats['power_index']), 4),
+                        'rank_legacy': rank_legacy_map.get(school_id, rank),
+                    })
+                output.append(entry)
 
-    # Classification-relative FQI (100 = classification average). Computed per
-    # (year, gender, classification) so a team's index number communicates "how
-    # does this team's flight quality compare to peers at the same level."
+    # Classification-relative FQI index (100 = classification average).
+    # On 2026+ entries uses the opponent-weighted `fqi`; falls back to raw
+    # flight-win percentage for seasons that predate FQI.
     class_groups = defaultdict(list)
     for entry in output:
         key = (entry['year'], entry['gender'], entry['classification'])
@@ -1338,17 +1593,35 @@ def build_rankings(data_dir, master_school_list):
     for key, entries in class_groups.items():
         entries.sort(key=lambda x: x['rank'])
 
-        fqis = [e['fqi'] for e in entries if e['fqi'] > 0]
-        class_avg_fqi = sum(fqis) / len(fqis) if fqis else 0.5
+        fqi_vals = [e['fqi'] for e in entries if 'fqi' in e and e['fqi'] > 0]
+        if fqi_vals:
+            class_avg = sum(fqi_vals) / len(fqi_vals)
+            for class_rank, entry in enumerate(entries, 1):
+                entry['class_rank'] = class_rank
+                val = entry.get('fqi', 0)
+                plus = round(val / class_avg * 100, 0) if class_avg > 0 and val > 0 else 100
+                entry['fqi_plus'] = plus
+                entry['fws_plus'] = plus  # Backcompat alias
+        else:
+            fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
+            class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
+            for class_rank, entry in enumerate(entries, 1):
+                entry['class_rank'] = class_rank
+                if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
+                    plus = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
+                else:
+                    plus = 100
+                entry['fqi_plus'] = plus
+                entry['fws_plus'] = plus  # Backcompat alias
 
-        for class_rank, entry in enumerate(entries, 1):
-            entry['class_rank'] = class_rank
-            if class_avg_fqi > 0 and entry['fqi'] > 0:
-                plus = round(entry['fqi'] / class_avg_fqi * 100, 0)
-            else:
-                plus = 100
-            entry['fqi_plus'] = plus
-            entry['fws_plus'] = plus  # Backcompat alias
+        # Alt-model class ranks (only present on 2026+ entries)
+        if entries and 'rank_toss' in entries[0]:
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_toss']), 1):
+                e['class_rank_toss'] = cr
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_qws']), 1):
+                e['class_rank_qws'] = cr
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_legacy']), 1):
+                e['class_rank_legacy'] = cr
 
     return output, school_data, raw_data_cache, school_info
 
@@ -1425,6 +1698,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     genders = sorted(set(r['gender'] for r in rankings))
     classifications = sorted(set(r['classification'] for r in rankings if r['classification']))
     leagues = sorted(set(r['league'] for r in rankings if r['league']))
+    alt_models_live = any('power_index_toss' in r for r in rankings)
+    toss_primary_live = _toss_is_primary()
 
     # Calculate league power scores
     league_scores = calculate_league_power_scores(rankings)
@@ -1707,6 +1982,19 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <button class="btn btn-outline-secondary btn-sm" id="sortAPR">APR</button>
                 </div>
             </div>
+            {("<div class='filter-group' id='modelFilterGroup'>"
+              "<label>Model "
+              "<span style='color:#6f42c1; font-size:10px; vertical-align:super;'>A/B</span></label>"
+              "<select id='modelFilter' class='form-select form-select-sm' style='width:130px;'>"
+              + ("<option value='toss' selected>TOSS (primary)</option>"
+                 "<option value='qws'>QWS (experimental)</option>"
+                 "<option value='legacy'>Legacy (RPI)</option>"
+                 if toss_primary_live else
+                 "<option value='current' selected>Current</option>"
+                 "<option value='toss'>TOSS</option>"
+                 "<option value='qws'>QWS</option>")
+              + "</select>"
+              "</div>") if alt_models_live else ""}
         </div>
 
         <div class="table-responsive">
@@ -1730,10 +2018,23 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             </table>
             <div class="formula-footer">
                 <small class="text-muted">
-                    <strong>Power Index</strong> = 50% APR + 50% FQI.
+                    <strong>Power Index</strong> (TOSS model) = 50% APR + 50% FQI.
                     <strong>FQI</strong> (Flight Quality Index) = per-match flight performance scaled by opponent strength, averaged across dual matches. Hover for FQI+ (100 = classification average).
                     <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
+                {("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #198754; background:#e8f5ee; font-size:12px; color:#0d503a;'>"
+                  "<strong>New from " + TOSS_PRIMARY_DATE.isoformat() + ":</strong> "
+                  "the primary Power Index is <strong>TOSS</strong> &mdash; APR is unchanged, and the flight component is <strong>FQI</strong> (each match's flight performance scaled by the opponent's APR, unclamped, median-normalized). "
+                  "The previous RPI-based formula is retained as <strong>Legacy</strong>, and <strong>QWS</strong> (ITA-style quality-weighted wins) continues as the experimental comparison model. Use the Model selector above to switch views. "
+                  "<a href='methodology.html#ab-test'>Methodology &rarr;</a> &middot; "
+                  "<a href='aar-power-index-ab-test.html'>Full AAR &rarr;</a>"
+                  "</div>") if toss_primary_live else
+                 ("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #6f42c1; background:#f5f3ff; font-size:12px; color:#4b3e7a;'>"
+                  "<strong>A/B test active (from " + ADJUSTED_FWS_EFFECTIVE_DATE.isoformat() + "):</strong> "
+                  "two alternative Power Index variants are being computed alongside the Current model for live comparison. "
+                  "The table below continues to use the Current model (unchanged). Starting " + TOSS_PRIMARY_DATE.isoformat() + " TOSS becomes the primary model. "
+                  "<a href='methodology.html#ab-test'>Compare models &rarr;</a>"
+                  "</div>") if alt_models_live else ""}
             </div>
         </div>
     </div>
@@ -1938,18 +2239,49 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         let currentSortColumn = 0; // State Rank by default
 
         $(document).ready(function() {{
+            // Model selector. When TOSS is primary (post 2026-04-26), the
+            // baseline 'rank'/'power_index'/'class_rank' fields already carry
+            // the TOSS values for 2026+; Legacy references the pre-shift RPI
+            // formula via '*_legacy' fields. Pre-primary the selector lets
+            // users compare Current (baseline) against the alt models.
+            const TOSS_IS_PRIMARY = {'true' if toss_primary_live else 'false'};
+            let currentModel = TOSS_IS_PRIMARY ? 'toss' : 'current';
+            const MODEL_RANK_FIELD = {{
+                current: 'rank', toss: 'rank_toss', qws: 'rank_qws', legacy: 'rank_legacy'
+            }};
+            const MODEL_PI_FIELD = {{
+                current: 'power_index', toss: 'power_index_toss', qws: 'power_index_qws', legacy: 'power_index_legacy'
+            }};
+            const MODEL_CLASS_RANK_FIELD = {{
+                current: 'class_rank', toss: 'class_rank_toss', qws: 'class_rank_qws', legacy: 'class_rank_legacy'
+            }};
+            const MODEL_LABEL = {{
+                current: 'Current', toss: 'TOSS', qws: 'QWS', legacy: 'Legacy'
+            }};
+            // Tag the PI cell when a non-primary model is selected so it's
+            // obvious you're looking at a comparison view.
+            function isPrimaryModel(m) {{
+                return TOSS_IS_PRIMARY ? (m === 'toss') : (m === 'current');
+            }}
+            function modelVal(row, fieldMap, fallback) {{
+                const f = fieldMap[currentModel];
+                const v = row[f];
+                return (v !== undefined && v !== null) ? v : row[fallback];
+            }}
+
             table = $('#rankingsTable').DataTable({{
                 data: rankings,
                 columns: [
                     {{
                         data: 'rank',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
+                        render: (d, t, row) => {{
+                            const r = modelVal(row, MODEL_RANK_FIELD, 'rank');
+                            if (t !== 'display') return r;
                             let cls = '';
-                            if (d === 1) cls = 'rank-1';
-                            else if (d === 2) cls = 'rank-2';
-                            else if (d === 3) cls = 'rank-3';
-                            return `<span class="${{cls}}">${{d}}</span>`;
+                            if (r === 1) cls = 'rank-1';
+                            else if (r === 2) cls = 'rank-2';
+                            else if (r === 3) cls = 'rank-3';
+                            return `<span class="${{cls}}">${{r}}</span>`;
                         }}
                     }},
                     {{ data: 'school_name', render: d => `<span class="school-name">${{d}}</span>` }},
@@ -1966,13 +2298,14 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     }},
                     {{
                         data: 'class_rank',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
+                        render: (d, t, row) => {{
+                            const r = modelVal(row, MODEL_CLASS_RANK_FIELD, 'class_rank');
+                            if (t !== 'display') return r;
                             let rankCls = '';
-                            if (d === 1) rankCls = 'rank-1';
-                            else if (d === 2) rankCls = 'rank-2';
-                            else if (d === 3) rankCls = 'rank-3';
-                            return `<span class="${{rankCls}}">${{d}}</span>`;
+                            if (r === 1) rankCls = 'rank-1';
+                            else if (r === 2) rankCls = 'rank-2';
+                            else if (r === 3) rankCls = 'rank-3';
+                            return `<span class="${{rankCls}}">${{r}}</span>`;
                         }}
                     }},
                     {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
@@ -2042,9 +2375,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     {{ data: 'league_record' }},
                     {{
                         data: 'power_index',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
-                            return `<span class="power-index">${{d.toFixed(4)}}</span>`;
+                        render: (d, t, row) => {{
+                            const v = modelVal(row, MODEL_PI_FIELD, 'power_index');
+                            if (t !== 'display') return v;
+                            const tag = isPrimaryModel(currentModel) ? '' : ` <small style="color:#6f42c1;">[${{MODEL_LABEL[currentModel]}}]</small>`;
+                            return `<span class="power-index">${{v.toFixed(4)}}</span>${{tag}}`;
                         }}
                     }},
                     {{
@@ -2058,10 +2393,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }},
                     {{
-                        data: 'fqi',
+                        // FQI (opponent-weighted flight quality) for 2026+ entries;
+                        // falls back to raw fws_pct/100 for historical seasons.
+                        data: (row) => row.fqi != null ? row.fqi : (row.fws_pct != null ? row.fws_pct / 100 : 0),
                         render: (d, t, row) => {{
                             if (t !== 'display') return d;
-                            const fqiPlus = row.fqi_plus || 100;
+                            const fqiPlus = row.fqi_plus || row.fws_plus || 100;
                             let cls = '';
                             if (fqiPlus >= 115) cls = 'apr-high';
                             else if (fqiPlus < 85) cls = 'apr-low';
@@ -2093,6 +2430,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 $(this).addClass('active');
                 $('#sortRank, #sortPowerIndex').removeClass('active');
                 table.order([[9, 'desc']]).draw();  // APR is column 9
+            }});
+
+            // A/B model selector — re-renders rank/class-rank/PI columns
+            $('#modelFilter').on('change', function() {{
+                currentModel = this.value;
+                // Re-sort by rank to reflect the new model's ordering
+                $('#sortRank').addClass('active');
+                $('#sortPowerIndex, #sortAPR').removeClass('active');
+                table.order([[0, 'asc']]).rows().invalidate('data').draw();
             }});
 
             // Filtering
@@ -2162,7 +2508,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 // Add totals
                 html += '<div class="flight-divider"></div>';
                 html += `<div class="flight-stat"><span class="flight-stat-label">Total</span><span class="flight-stat-value">${{d.total_flights_won || 0}}/${{d.total_flights_played || 0}}</span></div>`;
-                html += `<div class="flight-stat"><span class="flight-stat-label">FQI+</span><span class="flight-stat-value ${{d.fqi_plus >= 115 ? 'high' : d.fqi_plus < 85 ? 'low' : 'mid'}}">${{d.fqi_plus || d.fws_plus || 100}}</span></div>`;
+                html += `<div class="flight-stat"><span class="flight-stat-label">FQI+</span><span class="flight-stat-value ${{(d.fqi_plus ?? d.fws_plus) >= 115 ? 'high' : (d.fqi_plus ?? d.fws_plus) < 85 ? 'low' : 'mid'}}">${{d.fqi_plus ?? d.fws_plus ?? 100}}</span></div>`;
 
                 html += '</div>';
                 return html;
@@ -3605,8 +3951,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     return html
 
 
-def render_changelog_page(md_path, out_path):
-    """Render CHANGELOG.md to a simple styled HTML page."""
+def render_md_page(md_path, out_path, page_title='Changelog - Oregon HS Tennis'):
+    """Render a markdown file to a simple styled HTML page.
+
+    Supports headings (h1/h2/h3), paragraphs, lists, fenced code blocks,
+    inline **bold**, `code`, and [text](url) links. Used for the changelog
+    and the AAR pages.
+    """
     import re, html
 
     if not md_path.exists():
@@ -3617,6 +3968,10 @@ def render_changelog_page(md_path, out_path):
 
     body_parts = []
     para = []
+    in_code = False
+    code_lines = []
+    in_table = False
+    table_rows = []
 
     def flush_para():
         if para:
@@ -3625,14 +3980,59 @@ def render_changelog_page(md_path, out_path):
                 body_parts.append(f'<p>{text}</p>')
             para.clear()
 
+    def flush_table():
+        nonlocal in_table
+        if not in_table:
+            return
+        in_table = False
+        if not table_rows:
+            return
+        # First row = header, second = separator (skip), rest = body
+        header_cells = [c.strip() for c in table_rows[0].strip('|').split('|')]
+        body = []
+        for row in table_rows[2:]:
+            cells = [c.strip() for c in row.strip('|').split('|')]
+            body.append('<tr>' + ''.join(f'<td>{fmt_inline(c)}</td>' for c in cells) + '</tr>')
+        head = '<tr>' + ''.join(f'<th>{fmt_inline(c)}</th>' for c in header_cells) + '</tr>'
+        body_parts.append(f'<table><thead>{head}</thead><tbody>{"".join(body)}</tbody></table>')
+        table_rows.clear()
+
     def fmt_inline(s):
+        # Order matters: protect code spans first so their contents aren't escaped twice.
+        codes = []
+        def stash_code(m):
+            codes.append(m.group(1))
+            return f'\x00CODE{len(codes)-1}\x00'
+        s = re.sub(r'`([^`]+)`', stash_code, s)
         s = html.escape(s)
         s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
-        s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
+        s = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
+        for i, c in enumerate(codes):
+            s = s.replace(f'\x00CODE{i}\x00', f'<code>{html.escape(c)}</code>')
         return s
 
     for raw in lines:
         line = raw.rstrip()
+        if line.startswith('```'):
+            if in_code:
+                body_parts.append('<pre><code>' + html.escape('\n'.join(code_lines)) + '</code></pre>')
+                code_lines.clear()
+                in_code = False
+            else:
+                flush_para()
+                flush_table()
+                in_code = True
+            continue
+        if in_code:
+            code_lines.append(raw)
+            continue
+        if line.startswith('|') and line.endswith('|'):
+            flush_para()
+            in_table = True
+            table_rows.append(line)
+            continue
+        if in_table and not line.startswith('|'):
+            flush_table()
         if not line:
             flush_para()
             continue
@@ -3655,21 +4055,28 @@ def render_changelog_page(md_path, out_path):
         else:
             para.append(fmt_inline(line))
     flush_para()
+    flush_table()
 
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Changelog - Oregon HS Tennis</title>
+<title>{page_title}</title>
 <style>
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.55; }}
-  h1 {{ font-size: 1.6rem; margin: 0 0 8px; }}
-  h2 {{ font-size: 1.2rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
-  h3 {{ font-size: 1rem; margin: 20px 0 6px; color: #212529; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 820px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.6; }}
+  h1 {{ font-size: 1.7rem; margin: 0 0 8px; }}
+  h2 {{ font-size: 1.25rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
+  h3 {{ font-size: 1.05rem; margin: 20px 0 6px; color: #212529; }}
   p  {{ margin: 8px 0; }}
+  a  {{ color: #0d6efd; }}
   code {{ background: #f1f3f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }}
+  pre {{ background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 4px; padding: 10px 14px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }}
+  pre code {{ background: none; padding: 0; }}
   ul {{ margin: 6px 0 10px 24px; }}
+  table {{ border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }}
+  th, td {{ border: 1px solid #dee2e6; padding: 6px 12px; text-align: left; }}
+  th {{ background: #f8f9fa; }}
   footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
   footer a {{ color: #6c757d; font-size: 12px; }}
 </style>
@@ -3678,12 +4085,20 @@ def render_changelog_page(md_path, out_path):
 {chr(10).join(body_parts)}
 <footer>
   <a href="index.html">&larr; Back to Rankings</a>
+  &middot;
+  <a href="changelog.html">Changelog</a>
+  &middot;
+  <a href="methodology.html">Methodology</a>
 </footer>
 </body>
 </html>
 """
     with open(out_path, 'w') as f:
         f.write(page)
+
+
+# Backward-compat alias.
+render_changelog_page = render_md_page
 
 
 def main():
@@ -3721,8 +4136,17 @@ def main():
 
     changelog_md = repo_root / 'CHANGELOG.md'
     changelog_html = repo_root / 'public' / 'changelog.html'
-    render_changelog_page(changelog_md, changelog_html)
+    render_md_page(changelog_md, changelog_html, page_title='Changelog - Oregon HS Tennis')
     print(f"Changelog saved to {changelog_html}")
+
+    # Render AAR pages alongside the changelog. The first H1 line of the
+    # markdown drives the page title.
+    for aar_md in sorted(repo_root.glob('AAR-*.md')):
+        aar_html = repo_root / 'public' / (aar_md.stem.lower() + '.html')
+        with open(aar_md) as f:
+            first_h1 = next((l[2:].strip() for l in f if l.startswith('# ')), aar_md.stem)
+        render_md_page(aar_md, aar_html, page_title=f'{first_h1} - Oregon HS Tennis')
+        print(f"AAR saved to {aar_html}")
 
 
 if __name__ == '__main__':

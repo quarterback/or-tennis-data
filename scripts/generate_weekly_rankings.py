@@ -28,16 +28,11 @@ YEAR = 2026
 SEASON_START = datetime(2026, 3, 30)
 SEASON_END = datetime(2026, 5, 16)
 
-
-def get_week_saturday(date_str=None):
-    if date_str:
-        dt = datetime.strptime(date_str, '%Y-%m-%d')
-    else:
-        dt = datetime.now()
-    days_until_sat = (5 - dt.weekday()) % 7
-    if days_until_sat == 0:
-        return dt
-    return dt - timedelta(days=(dt.weekday() + 2) % 7)
+# Cadence transition: we shipped weeks 1-3 on Saturdays (2026-04-04, 04-11,
+# 04-18). Starting week 4 we publish on Sundays so Saturday match results
+# are included in that week's snapshot.
+SATURDAY_LAST_PUBLISH = datetime(2026, 4, 18)
+SUNDAY_FIRST_PUBLISH = datetime(2026, 4, 26)
 
 
 def first_saturday():
@@ -47,8 +42,60 @@ def first_saturday():
     return d
 
 
-def get_week_num(sat_date):
-    return max(1, ((sat_date - first_saturday()).days // 7) + 1)
+def get_week_publish_date(date_str=None):
+    """Return the publish date for the given calendar date (or today).
+
+    Saturday cadence runs through SATURDAY_LAST_PUBLISH; Sunday cadence
+    starts at SUNDAY_FIRST_PUBLISH. For dates in the cadence transition
+    window (after the last Saturday publish, before the first Sunday
+    publish), the no-arg form rolls *forward* to the upcoming Sunday so
+    a mid-week invocation produces the correct upcoming snapshot rather
+    than overwriting the prior Saturday's file. An explicit date_str is
+    always honored as the snapshot date.
+    """
+    if date_str:
+        return datetime.strptime(date_str, '%Y-%m-%d')
+
+    dt = datetime.now()
+
+    # In-window rollforward: between Apr 19 and Apr 25 inclusive, default
+    # to Apr 26 (the first Sunday cadence publish).
+    if SATURDAY_LAST_PUBLISH < dt < SUNDAY_FIRST_PUBLISH:
+        return SUNDAY_FIRST_PUBLISH
+
+    if dt < SUNDAY_FIRST_PUBLISH:
+        # Saturday cadence: most recent past Saturday (or today if Saturday).
+        days_back = (dt.weekday() + 2) % 7
+        return dt if days_back == 0 else dt - timedelta(days=days_back)
+    # Sunday cadence: most recent past Sunday (or today if Sunday).
+    days_back = (dt.weekday() + 1) % 7
+    return dt - timedelta(days=days_back)
+
+
+# Backward-compat alias — older callers used the Saturday-only helper.
+get_week_saturday = get_week_publish_date
+
+
+def get_week_num(publish_date):
+    """Continuous week numbering across the Saturday→Sunday cadence shift."""
+    pd = publish_date if isinstance(publish_date, datetime) else datetime.combine(publish_date, datetime.min.time())
+    if pd <= SATURDAY_LAST_PUBLISH:
+        return max(1, ((pd - first_saturday()).days // 7) + 1)
+    sat_weeks = ((SATURDAY_LAST_PUBLISH - first_saturday()).days // 7) + 1
+    sunday_offset = (pd - SUNDAY_FIRST_PUBLISH).days // 7
+    return sat_weeks + 1 + sunday_offset
+
+
+def get_prior_publish_date(publish_date):
+    """Date of the published snapshot immediately before the given date.
+
+    Bridges the cadence transition: the Sunday of week 4 (2026-04-26)
+    looks back to the Saturday of week 3 (2026-04-18), not 2026-04-19.
+    """
+    pd = publish_date if isinstance(publish_date, datetime) else datetime.combine(publish_date, datetime.min.time())
+    if pd == SUNDAY_FIRST_PUBLISH:
+        return SATURDAY_LAST_PUBLISH
+    return pd - timedelta(days=7)
 
 
 def load_published_week(project_root, week_date):
@@ -68,15 +115,27 @@ def load_published_week(project_root, week_date):
     return data.get('boys', []), data.get('girls', [])
 
 
-def all_week_saturdays():
-    """Return list of all Saturday dates from season start through today."""
-    sats = []
-    d = first_saturday()
+def all_week_publish_dates():
+    """All published snapshot dates from season start through today.
+
+    Saturdays through SATURDAY_LAST_PUBLISH, then Sundays from
+    SUNDAY_FIRST_PUBLISH onward.
+    """
+    dates = []
     today = datetime.now()
-    while d <= today and d <= SEASON_END:
-        sats.append(d)
+    d = first_saturday()
+    while d <= today and d <= SEASON_END and d <= SATURDAY_LAST_PUBLISH:
+        dates.append(d)
         d += timedelta(days=7)
-    return sats
+    d = SUNDAY_FIRST_PUBLISH
+    while d <= today and d <= SEASON_END:
+        dates.append(d)
+        d += timedelta(days=7)
+    return dates
+
+
+# Backward-compat alias.
+all_week_saturdays = all_week_publish_dates
 
 
 def is_dual_match(meet):
@@ -87,6 +146,52 @@ def is_dual_match(meet):
         return False
     schools = meet.get('schools', {})
     return len(schools.get('winners', [])) == 1 and len(schools.get('losers', [])) == 1
+
+
+def dedupe_meets(meets):
+    """Drop duplicate dual-match entries created when both coaches post the same match.
+
+    Keyed on (date, sorted pair of school ids). Keeps the entry with the most
+    completed flight match data; ties broken by lowest meet id.
+    """
+    if not meets:
+        return meets
+
+    def flight_count(meet):
+        n = 0
+        matches = meet.get('matches', {}) or {}
+        for mt in ('Singles', 'Doubles'):
+            for m in (matches.get(mt, []) or []):
+                if m.get('matchTeams'):
+                    n += 1
+        return n
+
+    seen = {}
+    result = []
+    for meet in meets:
+        schools = meet.get('schools', {}) or {}
+        winners = schools.get('winners', []) or []
+        losers = schools.get('losers', []) or []
+        if len(winners) != 1 or len(losers) != 1:
+            result.append(meet)
+            continue
+        date = (meet.get('meetDateTime') or '')[:10]
+        a, b = winners[0].get('id'), losers[0].get('id')
+        if a is None or b is None:
+            result.append(meet)
+            continue
+        key = (date, min(a, b), max(a, b))
+        if key in seen:
+            idx = seen[key]
+            kept = result[idx]
+            new_score = (flight_count(meet), -(meet.get('id') or 0))
+            old_score = (flight_count(kept), -(kept.get('id') or 0))
+            if new_score > old_score:
+                result[idx] = meet
+        else:
+            seen[key] = len(result)
+            result.append(meet)
+    return result
 
 
 def get_meet_result(meet, school_id):
@@ -149,7 +254,9 @@ def load_2026_data(project_root):
         school_id = int(parts[1])
         gender_id = int(parts[3])
         with open(os.path.join(data_dir, f)) as fh:
-            data[(school_id, gender_id)] = json.load(fh)
+            school_data = json.load(fh)
+        school_data['meets'] = dedupe_meets(school_data.get('meets', []))
+        data[(school_id, gender_id)] = school_data
     return data
 
 
@@ -750,7 +857,7 @@ def main():
         # or a partial run like --week), load them from the canonical published
         # snapshot on disk rather than recomputing.
         if prev_boys_ranks is None and prev_girls_ranks is None:
-            prior_date = week_date - timedelta(days=7)
+            prior_date = get_prior_publish_date(week_date)
             prior_boys, prior_girls = load_published_week(project_root, prior_date)
             if prior_boys:
                 prev_boys_ranks = {t['school_id']: t['rank'] for t in prior_boys}

@@ -74,6 +74,52 @@ def is_dual_match(meet):
     return len(winners) == 1 and len(losers) == 1
 
 
+def dedupe_meets(meets):
+    """Drop duplicate dual-match entries created when both coaches post the same match.
+
+    Keyed on (date, sorted pair of school ids). Keeps the entry with the most
+    completed flight match data; ties broken by lowest meet id.
+    """
+    if not meets:
+        return meets
+
+    def flight_count(meet):
+        n = 0
+        matches = meet.get('matches', {}) or {}
+        for mt in ('Singles', 'Doubles'):
+            for m in (matches.get(mt, []) or []):
+                if m.get('matchTeams'):
+                    n += 1
+        return n
+
+    seen = {}
+    result = []
+    for meet in meets:
+        schools = meet.get('schools', {}) or {}
+        winners = schools.get('winners', []) or []
+        losers = schools.get('losers', []) or []
+        if len(winners) != 1 or len(losers) != 1:
+            result.append(meet)
+            continue
+        date = (meet.get('meetDateTime') or '')[:10]
+        a, b = winners[0].get('id'), losers[0].get('id')
+        if a is None or b is None:
+            result.append(meet)
+            continue
+        key = (date, min(a, b), max(a, b))
+        if key in seen:
+            idx = seen[key]
+            kept = result[idx]
+            new_score = (flight_count(meet), -(meet.get('id') or 0))
+            old_score = (flight_count(kept), -(kept.get('id') or 0))
+            if new_score > old_score:
+                result[idx] = meet
+        else:
+            seen[key] = len(result)
+            result.append(meet)
+    return result
+
+
 def get_flight_weight(match_type, flight):
     """Get the weight for a given match type and flight."""
     return FLIGHT_WEIGHTS.get((match_type, str(flight)), 0.10)
@@ -209,6 +255,7 @@ def build_rankings(data_dir, master_school_list):
             with open(json_file, 'r') as f:
                 data = json.load(f)
 
+            data['meets'] = dedupe_meets(data.get('meets', []))
             results, opponents = process_school_data(data, school_id)
 
             if results:  # Only include schools with actual match data

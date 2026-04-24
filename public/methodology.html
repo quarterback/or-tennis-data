@@ -120,6 +120,7 @@
                 <li><a href="#apr">APR (Adjusted Power Rating)</a></li>
                 <li><a href="#fws">Flight Quality Index (FQI / oFWS)</a></li>
                 <li><a href="#h2h">Head-to-Head Tiebreakers</a></li>
+                <li><a href="#ab-test">Alternative Models (A/B Test)</a></li>
                 <li><a href="#faq">Frequently Asked Questions</a></li>
             </ul>
         </div>
@@ -256,6 +257,66 @@
                 <div class="faq-question">Why is there a threshold for head-to-head swaps?</div>
                 <div class="faq-answer">
                     <p>Without a threshold, a single upset result could override large differences in overall performance. The league rank threshold (within 2 positions) prevents a last-place team with a single fluke win from leapfrogging through the standings. The 2% PI threshold for statewide comparisons ensures H2H only breaks ties between teams that are genuinely close in overall rating.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4.5: A/B Test -->
+        <div id="ab-test" class="faq-section">
+            <div class="faq-section-header">Power Index models (primary, experimental, legacy)</div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why are there multiple Power Indexes?</div>
+                <div class="faq-answer">
+                    <p>Starting <strong>April 26, 2026</strong>, the primary Power Index on this site is <strong>TOSS</strong>. The earlier RPI-based formula &mdash; the one used from season start through the April 4/11/18 weekly snapshots &mdash; is retained as <strong>Legacy</strong> for reference. A third model, <strong>QWS</strong>, continues as an experimental comparison variant while we evaluate it for a possible 2027 adoption.</p>
+                    <p>The reason for the switch: the original formula over-rewarded dominant flight scores against weak-league opponents, because its FWS component had no opponent-strength awareness. 8-0 against a cellar team counted the same as 8-0 against the top of the state, which let teams in thin leagues climb above teams who were demonstrably stronger on stronger schedules. Both TOSS and QWS address this; we ran them in parallel on live data for one week and chose TOSS as the primary for the rest of 2026. Full writeup: <a href="aar-power-index-ab-test.html">AAR &rarr;</a></p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">TOSS &mdash; primary (APR + opponent-weighted FWS)</div>
+                <div class="faq-answer">
+                    <p>APR is unchanged (the OSAA-style RPI above). For each dual match, the FWS contribution is multiplied by the opponent's APR relative to the median APR, clamped to [0.75, 1.25]. Winning 5-3 against a strong team counts for more than 8-0 against a weak team; losing 3-5 to a strong team is softened so teams aren't penalized for playing up.</p>
+                    <div class="formula-box">
+                        <span class="label">m<sub>i</sub></span> = clamp(opp_APR<sub>i</sub> / median_APR, 0.75, 1.25)<br>
+                        <span class="label">Adjusted FWS</span> = &sum;(match_FWS<sub>i</sub> &times; m<sub>i</sub>) / &sum; m<sub>i</sub><br>
+                        <span class="label">Power Index</span> = (APR &times; 50%) + (Adjusted FWS &times; 50%)
+                    </div>
+                    <p>This is the formula driving the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator for 2026+. JSON fields: <code>power_index</code>, <code>rank</code>, <code>class_rank</code>, plus the same-values <code>power_index_toss</code>, <code>adjusted_fws</code>, <code>schedule_multiplier</code>, <code>rank_toss</code>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">QWS &mdash; experimental (quality-weighted APR)</div>
+                <div class="faq-answer">
+                    <p>Replaces RPI-based APR with an ITA college-tennis style quality-weighted wins model. Each win earns points equal to the opponent's Power Index &times; 100; each loss costs a flat 50 points. The formula is iterated (seeded with Win% in iteration 0, then using the previous iteration's Power Index) until the change in values drops below 0.01 or five iterations have run. FWS is unchanged.</p>
+                    <div class="formula-box">
+                        <span class="label">APR<sub>QWS</sub></span> = (&sum; quality_points &minus; &sum; loss_penalty) / total_matches<br>
+                        &nbsp;&nbsp;where quality_points per win = opp_PI &times; 100, loss_penalty per loss = 50<br>
+                        <span class="label">Normalized APR<sub>QWS</sub></span> = clamp((raw + 50) / 150, 0, 1)<br>
+                        <span class="label">Power Index<sub>QWS</sub></span> = (APR<sub>QWS</sub> &times; 50%) + (Normalized FWS &times; 50%)
+                    </div>
+                    <p>Available via the Model selector above the rankings table. Not used for any downstream computation (H2H, playoff sim, etc.) during 2026. JSON fields: <code>power_index_qws</code>, <code>apr_qws</code>, <code>qws_iterations</code>, <code>rank_qws</code>, <code>class_rank_qws</code>.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Legacy &mdash; the pre-2026-04-26 RPI formula</div>
+                <div class="faq-answer">
+                    <p>The formula that drove weekly snapshots through April 18, 2026:</p>
+                    <div class="formula-box">
+                        <span class="label">Power Index<sub>Legacy</sub></span> = (APR &times; 50%) + (Raw FWS &times; 50%)<br>
+                        <span class="label">APR</span> = (Win% &times; 25%) + (Opp Win% &times; 50%) + (Opp's Opp Win% &times; 25%)
+                    </div>
+                    <p>Retained for transparency so you can see how rankings shift under the new primary. JSON fields: <code>power_index_legacy</code>, <code>rank_legacy</code>, <code>class_rank_legacy</code>. The three weekly snapshots published on Saturdays April 4/11/18 use this formula and are preserved unchanged on disk.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How do I compare the models?</div>
+                <div class="faq-answer">
+                    <p>Use the Model selector above the main rankings table (TOSS &middot; QWS &middot; Legacy). The table's State Rank, Class Rank, and Power Index columns re-bind to the selected model; other views (playoff simulator, H2H tooltips, league standings) continue to use the primary TOSS model regardless.</p>
+                    <p>For programmatic comparison, every 2026+ team in <a href="data/processed_rankings.json">processed_rankings.json</a> now carries all three PI values and all three ranks. Historical seasons (2021&ndash;2025) are unchanged.</p>
                 </div>
             </div>
         </div>

@@ -1,18 +1,50 @@
 # Changelog
 
+## 2026-04-26
+
+### Changed: TOSS is now the primary Power Index
+
+**What:** Starting with Week 4 (2026-04-26, the first Sunday-cadence snapshot), the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator all use **TOSS** as the primary Power Index. The pre-2026-04-26 RPI-based formula is retained as **Legacy** in the Model dropdown for comparison, and **QWS** continues as the experimental B of the ongoing A/B test. The Model selector above the rankings table switches the State Rank / Class Rank / Power Index columns between the three models (TOSS primary is the default).
+
+**Why:** One week of live A/B data (weeks 1-3 Saturday snapshots + the 2026-04-20 baseline run) made the problem with the RPI-based model concrete. Teams dominating thin leagues were ranked above teams with comparable records in tougher leagues, because the old FWS component had no opponent-strength awareness. TOSS fixes this with a per-match multiplier keyed to opponent APR while keeping the OSAA-compatible RPI APR unchanged. QWS is a more aggressive structural fix (replaces APR with quality-weighted wins) and stays in parallel for 2027 evaluation; the flat 50-point loss penalty in QWS is the reason it isn't the primary yet.
+
+**Impact:** Historical seasons (2021-2025) are unchanged. The three already-published Saturday weekly snapshots (2026-04-04/11/18) are unchanged. Every 2026 team in `processed_rankings.json` now carries the primary TOSS rank plus `rank_legacy`, `rank_qws`, `class_rank_legacy`, `class_rank_qws`, and the corresponding PI values for side-by-side comparison. Biggest reorderings happen around thin-league undefeated teams (down) and strong-league mid-pack teams (up) — see the AAR for the full list.
+
+**Detail:** [Power Index A/B Test AAR](aar-power-index-ab-test.html) and [methodology page](methodology.html#ab-test).
+
+### Changed: Flight-quality component named FQI, clamping removed
+
+**What:** The opponent-weighted flight metric inside the TOSS formula is now named **FQI (Flight Quality Index)**. The TOSS formula reads as `0.5 × APR + 0.5 × FQI`. On the main rankings table, the prior **FWS%** column is replaced by **FQI**, shown in the same 0–1 range as APR with 4-decimal precision. The prior hover tooltip FWS+ becomes FQI+ (same classification-relative index, 100 = classification average, now computed from FQI instead of raw flight-win percentage).
+
+The 0.75–1.25 per-match multiplier clamp that initially shipped with TOSS has been removed. FQI's opponent-weight multiplier is now `opp_apr / median_apr` uncapped, with unknown opponents defaulting to the median (multiplier 1.0).
+
+**Why rename:** "FWS" described what the metric used to do (flights-weighted by position only). The metric is no longer that — it weights flights by position *and* by opponent strength. A new name makes clear this is a different measurement than the FWS% column it replaces. FQI is the Oregon label; the metric is documented portably under the generic name **oFWS** (opponent-weighted Flight-Weighted Score) in `docs/oFWS-PRD.md` so other states or sports with different flight structures can adopt the same approach.
+
+**Why remove clamping:** The clamp bounded per-match impact to ±25% against the median opponent, which dampens the very signal the metric is designed to produce. A flight-level win against a top-APR opponent is meaningfully more informative than a flight-level win against a bottom-APR opponent; clamping hides that difference rather than exposing it. If APR is trustworthy enough to serve as the multiplier, it's trustworthy enough unclamped; if it isn't, clamping treats a symptom of APR instability instead of the cause. Rollout velocity is managed by the existing TOSS_PRIMARY_DATE gate, not by neutering the math.
+
+**Constraint preserved:** FWS's original role — discouraging singles-heavy stacking by weighting top flights (S1/D1 at 1.00 down to S4/D4 at 0.10) — is untouched. FQI layers opponent-weighting on top of the existing flight-weight structure.
+
+**Backcompat:** Legacy JSON field names (`normalized_fws`, `fws_plus`) remain as aliases in `processed_rankings.json` so existing consumers don't break. `normalized_fws_raw` is preserved as the opponent-blind baseline for debugging. New field names are `fqi` and `fqi_plus`.
+
 ## 2026-04-24
 
-### Changed: Flight-Weighted Score is now opponent-weighted
+### Added: Power Index A/B test (TOSS + QWS) and Sunday publish cadence
 
-**Problem:** FWS was opponent-blind. A flight-level sweep of a bottom-quartile opponent and a flight-level sweep of a top-5 opponent contributed identically to a team's FWS, and a competitive flight-level loss to a state power counted the same as a flight-level loss to the weakest opponent in the field. The site's methodology footer described FWS as "opponent-adjusted," but the code applied no opponent weight to per-match contributions. The practical consequence: flight-win volume against weak schedules could outrank flight performance against strong schedules, which is the opposite of what the Power Index is supposed to reward.
+**What:** The main rankings table now has a Model dropdown (Current / TOSS / QWS) that swaps the displayed Rank, Class Rank, and Power Index between three formulas computed in parallel from 2026-04-20 forward. The Current model is the default and continues to drive the playoff simulator, head-to-head, and league standings. Weekly publishing also shifts from Saturdays to Sundays starting 2026-04-26 so Saturday match results are included in that week's snapshot. Historical seasons (2021-2025) and the three already-published Saturday weekly snapshots are unchanged.
 
-**Fix:** Each dual match's FWS contribution is now scaled by the opponent's pass-1 APR, normalized against the median APR in that year/gender. Multiplier is centered on 1.0 — a median-APR opponent is neutral, above-median amplifies the contribution, below-median discounts it. Unknown opponents (cross-state schools, etc.) default to the median and are therefore neutral. The scaling is applied to per-match FWS before averaging, so a team's weighted FWS depends on *both* how well they played flight-by-flight *and* who they played those matches against. `calculate_fws_per_match` now also returns per-match `(opp_id, match_fws)` tuples, and a new step after pass-1 APR recomputes `normalized_fws` using the opponent-weighted mean. `normalized_fws_raw` is preserved on the data object for debugging. Per-match tuples are internal — the output shape of `processed_rankings.json` is unchanged.
+**Why:** The current Power Index over-rewards dominant flight scores against weak-league opponents because FWS has no opponent-strength awareness. Two design approaches surfaced — TOSS (opponent-APR-weighted FWS) and QWS (ITA-style quality-weighted APR) — and rather than pick one blind, we're running both alongside the unchanged baseline through end of season to compare on live data.
 
-**Design intent:** The goal is not to require teams to play up — geography and classification constraints make this difficult to impossible for many programs. Nor is the goal to penalize teams for performing well against the opponents their schedule actually produces. The goal is that flight-level performance against stronger opponents is worth at least as much as flight-level performance against weaker ones, so that schedule quality is expressed through the FWS axis rather than laundered out of it. Beating teams at your competitive level continues to carry the weight it always has; it's the scaling *between* competitive tiers that's been corrected. This also makes at-large-bid and cross-classification comparisons more faithful — cross-conference scheduling and geographic realities no longer quietly punish teams whose conference forces them into flight-level losses to stronger opponents.
+**Detail:** See the [Power Index A/B Test AAR](aar-power-index-ab-test.html) for the full design, math, validation results, and rollout plan. The [methodology page](methodology.html#ab-test) has user-facing explanations of all three formulas.
 
-**Constraint preserved:** FWS's original role — discouraging singles-heavy stacking by weighting top flights (S1/D1 at 1.0 down to S4/D4 at 0.10) — is untouched. Opponent-weighting is an orthogonal dimension added on top of the existing flight-weight structure, not a replacement for it. A stacked lineup still forfeits flight-win value at lower flights; those lower flights are simply now also evaluated against whom the stacking happened against.
+### Fixed: Duplicate dual matches inflated team records and rankings
 
-**Scope of regeneration:** Applied across all six seasons (2021-2026) and all three 2026 weekly snapshot files. Rankings for prior seasons shifted to reflect the new FWS calculation retroactively so historical comparisons use a single, consistent metric.
+**Problem:** Some teams showed inflated win or loss totals because both coaches posted the same dual match to tennisreporting.com, producing two distinct meet entries. The reported trigger case was Valley Catholic girls at **7-2-0** vs. Molalla girls at **6-4-0** on 2026-04-07; both teams had the April 7 VC-vs-Molalla match counted twice. An audit across 2021-2026 found 51 duplicate match pairs affecting 92 school files.
+
+**Root cause:** Every meet-iteration site (`get_dual_match_record`, `get_league_record`, `get_head_to_head`, `get_head_to_head_detailed`, `process_school_data`, FWS calculation, and the weekly match graph) consumed the raw `data['meets']` array without checking for duplicate `(date, team_a, team_b)` entries. `scripts/generate_weekly_rankings.py::extract_matches` had a partial guard, but it only gated `match_list`; `match_graph`, `team_records`, `team_top_flight`, and `team_match_log` were all written before the dedup check.
+
+**Fix:** Added a `dedupe_meets()` helper to `generate_site.py`, `scripts/build_rankings.py`, and `scripts/generate_weekly_rankings.py` that collapses any pair of dual meets with the same date and same two school IDs, keeping the entry with the most completed flight match data (ties broken by lowest meet id). The dedup runs once at load time, so every downstream consumer sees the cleaned `meets` list. Non-dual meets (tournaments, state championships) are untouched.
+
+**Impact:** Valley Catholic girls 2026: 7-2-0 -> 6-2-0. Molalla girls 2026: 6-4-0 -> 6-3-0. 106 duplicate meet entries removed across the 2021-2026 history, correcting records, league standings, head-to-head tables, FWS, OWP, and weekly composite rankings.
 
 ## 2026-04-23
 
