@@ -109,7 +109,7 @@
         <!-- Intro -->
         <div class="intro-box">
             <p><strong>OregonTennis.org</strong> publishes the first and only statewide rankings and standings for Oregon high school tennis, organized by conference and district. These are independent rankings &mdash; they are not produced by or affiliated with the OSAA.</p>
-            <p>The Power Index is designed to model what a team rating system could look like if Oregon were to adopt a team playoff format, similar to the 27 other states that already have one. It measures both <em>winning</em> (through APR) and <em>depth</em> (through Flight-Weighted Score), because in tennis, not all wins are created equal.</p>
+            <p>The Power Index is designed to model what a team rating system could look like if Oregon were to adopt a team playoff format, similar to the 27 other states that already have one. It measures both <em>winning</em> (through APR) and <em>flight-level play against real competition</em> (through the Flight Quality Index), because in tennis, not all wins are created equal.</p>
         </div>
 
         <!-- Table of Contents -->
@@ -118,7 +118,7 @@
             <ul>
                 <li><a href="#overview">Overview &amp; Formula</a></li>
                 <li><a href="#apr">APR (Adjusted Power Rating)</a></li>
-                <li><a href="#fws">Flight-Weighted Score (FWS)</a></li>
+                <li><a href="#fws">Flight Quality Index (FQI / oFWS)</a></li>
                 <li><a href="#h2h">Head-to-Head Tiebreakers</a></li>
                 <li><a href="#faq">Frequently Asked Questions</a></li>
             </ul>
@@ -131,11 +131,11 @@
             <div class="faq-item">
                 <div class="faq-question">What is the Power Index?</div>
                 <div class="faq-answer">
-                    <p>The Power Index is a composite rating that combines two equally weighted components: a team's Adjusted Power Rating (APR) and its Flight-Weighted Score (FWS). Together, they capture both <em>how often a team wins</em> and <em>how deep the roster is</em>.</p>
+                    <p>The Power Index is a composite rating that combines two equally weighted components: a team's Adjusted Power Rating (APR) and its Flight Quality Index (FQI). Together, they capture both <em>how often a team wins</em> and <em>how a team actually competes at the flight level against the opponents they faced</em>.</p>
                     <div class="formula-box">
-                        <span class="label">Power Index</span> = (APR &times; 50%) + (Normalized FWS &times; 50%)
+                        <span class="label">Power Index</span> = (APR &times; 50%) + (FQI &times; 50%)
                     </div>
-                    <p>APR measures team-level win/loss performance against a strength-of-schedule backdrop. FWS measures how many individual flights (singles and doubles positions) a team wins, weighted by competitive significance.</p>
+                    <p>APR measures team-level win/loss performance against a strength-of-schedule backdrop. FQI measures how many individual flights a team wins, weighted both by the competitive significance of the flight (#1 flights count more than #4 flights) <em>and</em> by the strength of the opponent (flight wins against stronger opponents count more than flight wins against weaker ones).</p>
                 </div>
             </div>
         </div>
@@ -168,20 +168,28 @@
             <div class="faq-item">
                 <div class="faq-question">Why is APR only half the Power Index?</div>
                 <div class="faq-answer">
-                    <p>APR tells you how often a team wins dual matches, but a dual match result in tennis is just "Win/Loss/Tie." It doesn't tell you <em>how</em> a team won. A team that wins 5-3 with depth across all flights looks identical in APR to a team that wins 5-3 because it stacks its top flights and forfeits the rest. The Flight-Weighted Score fills that gap.</p>
+                    <p>APR tells you how often a team wins dual matches, but a dual match result in tennis is just "Win/Loss/Tie." It doesn't tell you <em>how</em> a team won or <em>against whom</em>. A team that wins 5-3 with depth across all flights looks identical in APR to a team that wins 5-3 because it stacks its top flights and forfeits the rest. A team that loses 3-5 to the #1 team in the state looks identical to a team that loses 3-5 to the weakest team in the state. The Flight Quality Index fills both gaps.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: FWS -->
+        <!-- Section 3: FQI -->
         <div id="fws" class="faq-section">
-            <div class="faq-section-header">Flight-Weighted Score (FWS)</div>
+            <div class="faq-section-header">Flight Quality Index (FQI)</div>
 
             <div class="faq-item">
-                <div class="faq-question">Why do tennis wins need weighting?</div>
+                <div class="faq-question">What is FQI?</div>
+                <div class="faq-answer">
+                    <p>The Flight Quality Index measures how well a team plays at the <em>flight level</em>, weighted both by the competitive significance of each flight and by the strength of each opponent. It's a single 0&ndash;1 number that answers the question: "across every dual match this team played, how well did they perform at flight-level given who they were playing?"</p>
+                    <p>Internally, FQI is built in two layers on top of a base Flight-Weighted Score (FWS). The first layer weights flights by position (1st flights count more than 4th flights). The second layer weights each match by the opponent's strength. The team's FQI is the opponent-weighted mean of per-match flight scores. The name <strong>oFWS</strong> (opponent-weighted Flight-Weighted Score) refers to this metric in general; <strong>FQI</strong> is the Oregon-specific label.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why weight flights by position?</div>
                 <div class="faq-answer">
                     <p>In a dual match, teams play up to 8 flights: 4 singles and 4 doubles. But not all flights carry the same competitive weight. The #1 singles and #1 doubles positions are where teams put their best players and are contested most seriously. Lower flights (3rd and 4th positions) are often less competitive, sometimes featuring newer or developing players.</p>
-                    <p>Without weighting, a team could game the system by loading its 3rd and 4th flights with strong players to rack up easy wins at positions where opponents field their weakest. Weighting the flights reflects the reality of how competitive tennis lineups actually work.</p>
+                    <p>Without flight weighting, a team could game the system by loading its 3rd and 4th flights with strong players to rack up easy wins at positions where opponents field their weakest. Weighting the flights reflects the reality of how competitive tennis lineups actually work.</p>
                 </div>
             </div>
 
@@ -203,22 +211,30 @@
                             <tr><td class="flight-name">4th Doubles</td><td class="weight-value">0.10</td><td>Often newest varsity pair</td></tr>
                         </tbody>
                     </table>
-                    <p>The maximum possible FWS per match is 3.95 (winning all 8 flights). This raw score is normalized to a 0&ndash;1 scale so it can be combined equally with APR.</p>
+                    <p>Per dual match, a team's flight-weighted performance is the sum of flight weights earned divided by the sum of flight weights contested, producing a 0&ndash;1 per-match score.</p>
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">How does this prevent stacking?</div>
+                <div class="faq-question">Why weight by opponent?</div>
                 <div class="faq-answer">
-                    <p>Stacking means arranging your lineup so that strong players compete at lower flights to guarantee easy wins. With equal weighting, a coach who moves a varsity-quality player to 4th singles would get full credit for that win. With flight weighting, that 4th singles win is only worth 0.10 &mdash; compared to 1.00 for a 1st singles win. The incentive flips: you get rewarded more for winning the flights that matter most competitively.</p>
+                    <p>An 8&ndash;0 sweep of the weakest team in the state and an 8&ndash;0 sweep of the #1 team in the state are not equivalent achievements, but an opponent-blind metric counts them as the same. Similarly, a competitive 3&ndash;5 flight loss against a state power is a different result than a 3&ndash;5 flight loss against a bottom-quartile team. Weighting per-match flight performance by opponent strength corrects both distortions.</p>
+                    <p>Each match's flight score is multiplied by a factor based on the opponent's APR, normalized so that a median-APR opponent is neutral (multiplier 1.0), above-median opponents amplify the match's contribution (multiplier &gt; 1.0), and below-median opponents discount it (multiplier &lt; 1.0). Unknown opponents (cross-state teams, non-ranked opponents) default to neutral. This preserves credit for beating teams at your competitive level while correcting the schedule-quality blindness that a raw flight-win percentage would have.</p>
                 </div>
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">What are FWS% and FWS+?</div>
+                <div class="faq-question">What does FQI discourage? What does it reward?</div>
                 <div class="faq-answer">
-                    <p><strong>FWS%</strong> is the simple percentage of individual flights won out of total flights played. It's the most intuitive number: "this team wins 72% of its flights."</p>
-                    <p><strong>FWS+</strong> is a league-adjusted metric where 100 equals the classification average. A team with FWS+ of 115 wins flights at 15% above the average for its classification. FWS+ appears as a hover tooltip on the rankings table. It helps contextualize FWS% across different classifications where the level of competition varies.</p>
+                    <p><strong>Discourages:</strong> Stacking weaker players at top flights is still penalized by flight weights (a 4th-singles win is worth 0.10 even if you put a star there). Fattening record against easy opponents is now also discounted, because below-median opponents multiply each flight-win contribution downward.</p>
+                    <p><strong>Rewards:</strong> Flight-level competitiveness against strong opponents. A team that goes 4&ndash;4 in flights against the #1 team in the state scores better on FQI than a team that goes 6&ndash;2 against a bottom-quartile team. Winning flights you're "supposed to" against peer-level opposition is still credited at roughly its baseline value. The metric does not require teams to play up &mdash; it just ensures that scheduling up is at least neutral rather than punishing.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is FQI+?</div>
+                <div class="faq-answer">
+                    <p><strong>FQI+</strong> is a classification-adjusted version where 100 equals the classification average. A team with FQI+ of 115 has flight quality 15% above the average for its classification; an FQI+ of 85 is 15% below. FQI+ appears as a hover tooltip on the rankings table and on team detail views. It contextualizes FQI across classifications where the overall level of competition varies.</p>
                 </div>
             </div>
         </div>
@@ -232,7 +248,7 @@
                 <div class="faq-answer">
                     <p>After Power Index scores are calculated, head-to-head results are used as a tiebreaker in two phases:</p>
                     <p><strong>Phase 1 &mdash; In-League:</strong> Teams in the same league/conference that are close in their league standings (within 2 league rank positions) are compared. If Team A beat Team B head-to-head, Team A is moved above Team B in the overall ranking. This ensures that league rivals who played each other are ranked in an order consistent with their on-court results.</p>
-                    <p><strong>Phase 2 &mdash; Statewide:</strong> Adjacent teams in the overall ranking whose Power Index scores are within 2% of each other are compared. If the lower-ranked team beat the higher-ranked team, they swap positions. For split series (1-1), the team with the higher FWS is used as a secondary tiebreaker.</p>
+                    <p><strong>Phase 2 &mdash; Statewide:</strong> Adjacent teams in the overall ranking whose Power Index scores are within 2% of each other are compared. If the lower-ranked team beat the higher-ranked team, they swap positions. For split series (1-1), the team with the higher FQI is used as a secondary tiebreaker.</p>
                 </div>
             </div>
 
@@ -265,7 +281,7 @@
             <div class="faq-item">
                 <div class="faq-question">Why not just use RPI like other OSAA sports?</div>
                 <div class="faq-answer">
-                    <p>RPI alone works well for sports where the final score reflects team quality &mdash; basketball, volleyball, soccer. In tennis, the dual match result is a simple win/loss/tie that hides what happened underneath. A team can win a dual match 5-3 while losing badly at the competitive top of the lineup and sweeping the bottom. RPI treats that the same as a dominant 8-0 win. The Flight-Weighted Score addresses this by looking at the individual flight results and weighting them by competitive significance.</p>
+                    <p>RPI alone works well for sports where the final score reflects team quality &mdash; basketball, volleyball, soccer. In tennis, the dual match result is a simple win/loss/tie that hides what happened underneath. A team can win a dual match 5-3 while losing badly at the competitive top of the lineup and sweeping the bottom. RPI treats that the same as a dominant 8-0 win. The Flight Quality Index addresses this by looking at the individual flight results, weighting them by competitive significance, and then scaling each match by opponent strength so schedule quality is properly represented.</p>
                 </div>
             </div>
 

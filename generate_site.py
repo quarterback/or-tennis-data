@@ -1302,10 +1302,12 @@ def build_rankings(data_dir, master_school_list):
                     'owp': round(stats['owp'], 4),    # Opponent Win Percentage
                     'oowp': round(stats['oowp'], 4),  # Opponent's Opponent Win Percentage
                     'apr': round(stats['apr'], 4),    # RPI: (WP*0.25)+(OWP*0.50)+(OOWP*0.25)
-                    'fws': round(stats['fws'], 4),    # Proportional FWS (0-3.95 scale)
-                    'normalized_fws': round(stats['normalized_fws'], 4),  # FWS normalized (0-1)
-                    'fws_pct': round(stats.get('fws_pct', 0), 1),  # Simple percentage (flights won / played)
-                    'fws_plus': 100,  # Will be calculated below (league-adjusted, 100 = average)
+                    'fws': round(stats['fws'], 4),    # Proportional raw FWS (0-3.95 scale) — diagnostic only
+                    'normalized_fws': round(stats['normalized_fws'], 4),  # opponent-weighted FWS (0-1) — backcompat alias
+                    'fqi': round(stats['normalized_fws'], 4),  # Flight Quality Index (oFWS); 0-1 range
+                    'fws_pct': round(stats.get('fws_pct', 0), 1),  # Raw flights-won/played — diagnostic only
+                    'fqi_plus': 100,  # Will be calculated below (classification-relative FQI, 100 = average)
+                    'fws_plus': 100,  # Backcompat alias for fqi_plus
                     'power_index': round(stats['power_index'], 4),  # (APR*0.50)+(Normalized_FWS*0.50)
                     'matches_played': stats['matches_played'],
                     'opponents_count': len(stats['opponents']),
@@ -1325,28 +1327,28 @@ def build_rankings(data_dir, master_school_list):
                     'total_flights_played': stats.get('total_flights_played', 0),
                 })
 
-    # Calculate class_rank and FWS+ (league-adjusted) for each year/gender/classification
+    # Classification-relative FQI (100 = classification average). Computed per
+    # (year, gender, classification) so a team's index number communicates "how
+    # does this team's flight quality compare to peers at the same level."
     class_groups = defaultdict(list)
     for entry in output:
         key = (entry['year'], entry['gender'], entry['classification'])
         class_groups[key].append(entry)
 
     for key, entries in class_groups.items():
-        # Sort by state rank (already sorted by Power Index)
         entries.sort(key=lambda x: x['rank'])
 
-        # Calculate classification average FWS%
-        fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
-        class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
+        fqis = [e['fqi'] for e in entries if e['fqi'] > 0]
+        class_avg_fqi = sum(fqis) / len(fqis) if fqis else 0.5
 
         for class_rank, entry in enumerate(entries, 1):
             entry['class_rank'] = class_rank
-            # FWS+ = (team FWS% / class avg FWS%) * 100
-            # 100 = average, >100 = better than average, <100 = worse
-            if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
-                entry['fws_plus'] = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
+            if class_avg_fqi > 0 and entry['fqi'] > 0:
+                plus = round(entry['fqi'] / class_avg_fqi * 100, 0)
             else:
-                entry['fws_plus'] = 100
+                plus = 100
+            entry['fqi_plus'] = plus
+            entry['fws_plus'] = plus  # Backcompat alias
 
     return output, school_data, raw_data_cache, school_info
 
@@ -1721,15 +1723,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>League Rec</th>
                         <th>Power Index</th>
                         <th>APR</th>
-                        <th>FWS%</th>
+                        <th>FQI</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
             <div class="formula-footer">
                 <small class="text-muted">
-                    <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score.
-                    <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
+                    <strong>Power Index</strong> = 50% APR + 50% FQI.
+                    <strong>FQI</strong> (Flight Quality Index) = per-match flight performance scaled by opponent strength, averaged across dual matches. Hover for FQI+ (100 = classification average).
                     <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
             </div>
@@ -2056,15 +2058,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }},
                     {{
-                        data: 'fws_pct',
+                        data: 'fqi',
                         render: (d, t, row) => {{
                             if (t !== 'display') return d;
-                            const fwsPlus = row.fws_plus || 100;
+                            const fqiPlus = row.fqi_plus || 100;
                             let cls = '';
-                            if (fwsPlus >= 115) cls = 'apr-high';
-                            else if (fwsPlus < 85) cls = 'apr-low';
-                            const tooltip = `FWS+ ${{fwsPlus}} (100 = avg)`;
-                            return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(1)}}%</span>`;
+                            if (fqiPlus >= 115) cls = 'apr-high';
+                            else if (fqiPlus < 85) cls = 'apr-low';
+                            const tooltip = `FQI+ ${{fqiPlus}} (100 = classification average)`;
+                            return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(4)}}</span>`;
                         }}
                     }}
                 ],
@@ -2160,7 +2162,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 // Add totals
                 html += '<div class="flight-divider"></div>';
                 html += `<div class="flight-stat"><span class="flight-stat-label">Total</span><span class="flight-stat-value">${{d.total_flights_won || 0}}/${{d.total_flights_played || 0}}</span></div>`;
-                html += `<div class="flight-stat"><span class="flight-stat-label">FWS+</span><span class="flight-stat-value ${{d.fws_plus >= 115 ? 'high' : d.fws_plus < 85 ? 'low' : 'mid'}}">${{d.fws_plus || 100}}</span></div>`;
+                html += `<div class="flight-stat"><span class="flight-stat-label">FQI+</span><span class="flight-stat-value ${{d.fqi_plus >= 115 ? 'high' : d.fqi_plus < 85 ? 'low' : 'mid'}}">${{d.fqi_plus || d.fws_plus || 100}}</span></div>`;
 
                 html += '</div>';
                 return html;
