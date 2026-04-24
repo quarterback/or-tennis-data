@@ -1,13 +1,13 @@
 # After Action Report: Power Index A/B Test
 
-**Date:** 2026-04-24
-**Effective:** 2026-04-20 forward
+**Date:** 2026-04-24 (computed), **2026-04-26** (TOSS promoted to primary)
+**Effective:** 2026-04-20 (models computed in parallel); 2026-04-26 (TOSS becomes primary)
 **Branch:** `claude/fix-ranking-league-balance-HdQrV`
 **Author:** Engineering, after multi-round design review with site owner and a designer-supplied alternative spec.
 
 ## What we did
 
-Starting with the Saturday-2026-04-25 publish window, the rankings system computes **three** Power Index variants in parallel and surfaces all of them on the main rankings page via a Model dropdown (Current / TOSS / QWS). The Current model is the default and continues to drive all downstream UI (playoff simulator, head-to-head, league standings). TOSS and QWS are visible for live A/B comparison through end of the 2026 season.
+Starting with the 2026-04-20 publish window, the rankings system computes **three** Power Index variants in parallel. Starting **2026-04-26** (Week 4, the first Sunday-cadence snapshot), **TOSS is the primary Power Index** — it drives the State Rank, Class Rank, Power Index column, head-to-head tiebreakers, league standings, and the playoff simulator. The pre-2026-04-26 RPI-based formula is retained as **Legacy** for comparison, accessible via the Model dropdown above the rankings table. **QWS** continues as the experimental B of the A/B test, also accessible via the dropdown, and remains under evaluation for possible adoption in 2027.
 
 The weekly publish cadence also shifts from Saturdays to Sundays starting **2026-04-26** so that Saturday match results are included in that week's snapshot.
 
@@ -121,11 +121,21 @@ Both fixes agree on the big picture. Where they diverge — and they do — that
 
 The expected ordering at the top of 2026 Boys (Lincoln, Jesuit, Grant, OES, Catlin Gabel) holds across all three models with only minor reshuffles. The biggest QWS drops are mid-pack 6A/5A teams whose records were padded by weak league bottoms (Sam Barlow -49 spots, Ridgeview -40, Redmond -32). The biggest QWS rises are teams that played tough schedules and earned losses but had quality wins to show for it (Springfield +21, Century +20, Thurston +20). These are exactly the patterns the formula is designed to surface.
 
+## Why TOSS (not QWS) as primary
+
+After one week of parallel data, the decision to promote TOSS and keep QWS experimental came down to three things:
+
+1. **Honors the "don't penalize scheduling up" constraint more cleanly.** TOSS's per-match opponent multiplier rewards partial FWS earned against strong opponents even in losses. QWS's flat 50-point loss penalty doesn't differentiate a 3-5 loss to the state's #1 team from a 0-8 blowout by the cellar — both cost 50. La Salle Prep boys (4-5 in 5A-1 NW Oregon) drop from #22 → #40 under QWS specifically because of this; TOSS barely moves them (#22 → #20). That's a narrative problem we'd rather not own mid-season.
+2. **Smaller, more defensible change.** TOSS keeps the OSAA-compatible RPI APR intact and only adjusts how flight scores count. Explainable in one sentence to coaches. QWS replaces APR entirely with an iterated quality-weighted-wins formula — a structural change that's harder to defend mid-season without more data.
+3. **Fixes the obvious cases either way.** The biggest distortions (Ridgeview boys #16 → 62, Sam Barlow #32 → 66, The Dalles girls #11 → 42) are corrected under both models. We don't need the more aggressive model to surface the clear bugs.
+
+QWS isn't wrong — structurally it's arguably the cleaner long-term answer because it eliminates RPI's cascading-weak-opponent pathologies entirely. But the flat loss penalty needs tuning before it can be primary. A 2027 candidate is a variant where the loss penalty scales inversely with opponent strength (e.g., `100 × (1 - opp_PI)` so losing to the #1 team costs ~20 points and losing to the cellar costs ~100). We'll evaluate that through end of 2026 and decide for next year.
+
 ## What's next
 
-1. **Watch through end of season.** Each week's snapshot will preserve its Current/TOSS/QWS triple. By end of the 2026 season we'll have ~6 weeks of side-by-side data showing how the three models reorder teams as matches accumulate.
-2. **Decide for 2027.** With live evidence in hand we can pick one model as the primary, or keep multiple available, or refine the formulas (e.g. an opponent-scaled QWS loss penalty instead of the flat 50, or a wider TOSS clamp band). No code change happens until we have data to argue from.
-3. **Coach feedback.** With the Model dropdown live on the main page, coaches can compare for themselves. We expect questions; the [methodology page](methodology.html#ab-test) explains all three formulas.
+1. **Watch through end of season.** Each Sunday snapshot will preserve its TOSS-primary ranks plus `power_index_legacy` and `power_index_qws` for comparison. By end of the 2026 season we'll have ~5-6 weeks of side-by-side data.
+2. **Decide for 2027.** With live evidence in hand we can keep TOSS, adopt QWS (possibly with a tuned loss penalty), or refine TOSS's clamp band. No code change happens until we have data to argue from.
+3. **Coach feedback.** With the Model dropdown live on the main page, coaches can verify the switch themselves. We expect questions; the [methodology page](methodology.html#ab-test) explains all three formulas.
 
 ## Files changed
 
@@ -139,10 +149,9 @@ The expected ordering at the top of 2026 Boys (Lincoln, Jesuit, Grant, OES, Catl
 ## Non-goals (worth restating)
 
 - We are **not** changing the APR/FWS 50/50 split in any model.
-- We are **not** removing or modifying any component of the baseline Current model. It stays as the experimental control.
-- We are **not** applying H2H tiebreakers to alt-model ranks. Pure PI sort keeps comparison data clean.
 - We are **not** recomputing 2021-2025. Historical rankings are historical artifacts.
-- We are **not** rewriting the three pre-2026-04-20 weekly JSON snapshots.
+- We are **not** rewriting the three pre-TOSS weekly JSON snapshots (2026-04-04, 04-11, 04-18 — Saturday cadence, Legacy formula). They remain on disk unchanged.
+- We are **not** applying H2H tiebreakers to the Legacy or QWS ranks. H2H runs on the primary (TOSS) PI only.
 
 ## References
 
