@@ -58,9 +58,15 @@ H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for l
 
 # --- Alternative-model A/B test (TOSS + QWS) ---
 # On/after ADJUSTED_FWS_EFFECTIVE_DATE, build_rankings() computes two additional
-# Power Index variants alongside the baseline for live comparison through end of
-# 2026 season. Override with env var ADJ_MODELS_ENABLED=1|0 for testing.
+# Power Index variants alongside the baseline for live comparison. On/after
+# TOSS_PRIMARY_DATE, TOSS is promoted to the primary power_index used for
+# ranking, H2H tiebreakers, league ranks, and the playoff simulator — the
+# baseline RPI formula is retained as "power_index_legacy" for reference.
+# QWS remains the experimental B of the A/B test throughout.
+# Override with env var ADJ_MODELS_ENABLED=1|0 for testing the computation;
+# override TOSS_PRIMARY=1|0 to force the primacy gate independent of date.
 ADJUSTED_FWS_EFFECTIVE_DATE = date(2026, 4, 20)
+TOSS_PRIMARY_DATE = date(2026, 4, 26)
 
 # TOSS: per-match FWS multiplier = clamp(opp_apr / median_apr, LOW, HIGH)
 TOSS_CLAMP_LOW = 0.75
@@ -82,6 +88,19 @@ def _adjusted_models_enabled(today=None):
     if override in ('0', '1'):
         return override == '1'
     return (today or date.today()) >= ADJUSTED_FWS_EFFECTIVE_DATE
+
+
+def _toss_is_primary(today=None):
+    """True when TOSS is the primary power_index (drives ranks, H2H, playoffs).
+
+    Requires alt models to be enabled; on/after TOSS_PRIMARY_DATE by default.
+    """
+    if not _adjusted_models_enabled(today):
+        return False
+    override = os.environ.get('TOSS_PRIMARY')
+    if override in ('0', '1'):
+        return override == '1'
+    return (today or date.today()) >= TOSS_PRIMARY_DATE
 
 GENDER_MAP = {1: 'Boys', 2: 'Girls'}
 
@@ -996,6 +1015,7 @@ def build_rankings(data_dir, master_school_list):
     # ADJ_MODELS_ENABLED env var). Baseline 'power_index' is never modified so
     # the primary display, playoff simulator, and H2H logic keep using the
     # unchanged signal.
+    toss_primary = _toss_is_primary()
     if _adjusted_models_enabled():
         # Alt models are forward-only: 2026 season and beyond. Historical
         # seasons (2021-2025) keep only the baseline power_index.
@@ -1079,12 +1099,22 @@ def build_rankings(data_dir, master_school_list):
                     school['power_index_qws'] = pi_prev.get(sid, school['power_index'])
                     school['qws_iterations'] = iterations
 
+                # Promote TOSS to primary for 2026+: everything downstream
+                # (sort, league ranks, H2H, playoff sim, class_rank) reads
+                # school['power_index'], so overwriting it swaps the whole
+                # system onto TOSS in one place. The original RPI value is
+                # preserved as power_index_legacy for the reference column.
+                if toss_primary:
+                    for sid, school in teams.items():
+                        school['power_index_legacy'] = school['power_index']
+                        school['power_index'] = school.get('power_index_toss', school['power_index'])
+
     # Build output
     alt_models = _adjusted_models_enabled()
     output = []
     for year in sorted(school_data.keys()):
         for gender in sorted(school_data[year].keys()):
-            # Initial sort by Power Index
+            # Initial sort by Power Index (TOSS when primary, otherwise RPI)
             ranked = sorted(
                 school_data[year][gender].items(),
                 key=lambda x: x[1]['power_index'],
@@ -1094,6 +1124,7 @@ def build_rankings(data_dir, master_school_list):
             # Independent ranks for alt models (pure PI sort, no H2H tiebreak)
             rank_toss_map = {}
             rank_qws_map = {}
+            rank_legacy_map = {}
             if alt_models:
                 toss_sorted = sorted(
                     school_data[year][gender].items(),
@@ -1109,6 +1140,16 @@ def build_rankings(data_dir, master_school_list):
                 )
                 for i, (sid, _) in enumerate(qws_sorted, 1):
                     rank_qws_map[sid] = i
+                # Legacy ranks use the RPI power_index (stored as
+                # power_index_legacy once TOSS is promoted). Falls back to the
+                # primary power_index in the pre-primary window.
+                legacy_sorted = sorted(
+                    school_data[year][gender].items(),
+                    key=lambda x: x[1].get('power_index_legacy', x[1]['power_index']),
+                    reverse=True,
+                )
+                for i, (sid, _) in enumerate(legacy_sorted, 1):
+                    rank_legacy_map[sid] = i
 
             # Calculate league rankings for H2H league position condition
             league_rankings = {}  # {league: [(school_id, league_rank), ...]}
@@ -1525,6 +1566,9 @@ def build_rankings(data_dir, master_school_list):
                         'apr_qws': round(stats.get('apr_qws', stats['apr']), 4),
                         'qws_iterations': stats.get('qws_iterations', 0),
                         'rank_qws': rank_qws_map.get(school_id, rank),
+                        # Legacy (pre-2026-04-26 primary) RPI formula retained for reference.
+                        'power_index_legacy': round(stats.get('power_index_legacy', stats['power_index']), 4),
+                        'rank_legacy': rank_legacy_map.get(school_id, rank),
                     })
                 output.append(entry)
 
@@ -1557,6 +1601,8 @@ def build_rankings(data_dir, master_school_list):
                 e['class_rank_toss'] = cr
             for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_qws']), 1):
                 e['class_rank_qws'] = cr
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_legacy']), 1):
+                e['class_rank_legacy'] = cr
 
     return output, school_data, raw_data_cache, school_info
 
@@ -1634,6 +1680,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     classifications = sorted(set(r['classification'] for r in rankings if r['classification']))
     leagues = sorted(set(r['league'] for r in rankings if r['league']))
     alt_models_live = any('power_index_toss' in r for r in rankings)
+    toss_primary_live = _toss_is_primary()
 
     # Calculate league power scores
     league_scores = calculate_league_power_scores(rankings)
@@ -1919,11 +1966,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             {("<div class='filter-group' id='modelFilterGroup'>"
               "<label>Model "
               "<span style='color:#6f42c1; font-size:10px; vertical-align:super;'>A/B</span></label>"
-              "<select id='modelFilter' class='form-select form-select-sm' style='width:120px;'>"
-              "<option value='current' selected>Current</option>"
-              "<option value='toss'>TOSS</option>"
-              "<option value='qws'>QWS</option>"
-              "</select>"
+              "<select id='modelFilter' class='form-select form-select-sm' style='width:130px;'>"
+              + ("<option value='toss' selected>TOSS (primary)</option>"
+                 "<option value='qws'>QWS (experimental)</option>"
+                 "<option value='legacy'>Legacy (RPI)</option>"
+                 if toss_primary_live else
+                 "<option value='current' selected>Current</option>"
+                 "<option value='toss'>TOSS</option>"
+                 "<option value='qws'>QWS</option>")
+              + "</select>"
               "</div>") if alt_models_live else ""}
         </div>
 
@@ -1948,15 +1999,21 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
             </table>
             <div class="formula-footer">
                 <small class="text-muted">
-                    <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score.
+                    <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score (opponent-adjusted, per TOSS).
                     <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
                     <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
-                {("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #6f42c1; background:#f5f3ff; font-size:12px; color:#4b3e7a;'>"
+                {("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #198754; background:#e8f5ee; font-size:12px; color:#0d503a;'>"
+                  "<strong>New from " + TOSS_PRIMARY_DATE.isoformat() + ":</strong> "
+                  "the primary Power Index is <strong>TOSS</strong> &mdash; APR is unchanged, but each match's Flight-Weighted Score is now adjusted for opponent strength (0.75-1.25 clamp). "
+                  "The previous RPI-based formula is retained as <strong>Legacy</strong>, and <strong>QWS</strong> (ITA-style quality-weighted wins) continues as the experimental comparison model. Use the Model selector above to switch views. "
+                  "<a href='methodology.html#ab-test'>Methodology &rarr;</a> &middot; "
+                  "<a href='aar-power-index-ab-test.html'>Full AAR &rarr;</a>"
+                  "</div>") if toss_primary_live else
+                 ("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #6f42c1; background:#f5f3ff; font-size:12px; color:#4b3e7a;'>"
                   "<strong>A/B test active (from " + ADJUSTED_FWS_EFFECTIVE_DATE.isoformat() + "):</strong> "
-                  "two alternative Power Index variants are being computed alongside the Current model for live comparison through end of season. "
-                  "The table below continues to use the Current model (unchanged). Each team's JSON payload includes <code>power_index_toss</code> (opponent-APR-weighted FWS) and "
-                  "<code>power_index_qws</code> (ITA-style quality-weighted APR, iterated to convergence), plus the corresponding ranks. "
+                  "two alternative Power Index variants are being computed alongside the Current model for live comparison. "
+                  "The table below continues to use the Current model (unchanged). Starting " + TOSS_PRIMARY_DATE.isoformat() + " TOSS becomes the primary model. "
                   "<a href='methodology.html#ab-test'>Compare models &rarr;</a>"
                   "</div>") if alt_models_live else ""}
             </div>
@@ -2163,12 +2220,30 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         let currentSortColumn = 0; // State Rank by default
 
         $(document).ready(function() {{
-            // Model selector for A/B test (Current / TOSS / QWS)
-            let currentModel = 'current';
-            const MODEL_RANK_FIELD = {{ current: 'rank', toss: 'rank_toss', qws: 'rank_qws' }};
-            const MODEL_PI_FIELD = {{ current: 'power_index', toss: 'power_index_toss', qws: 'power_index_qws' }};
-            const MODEL_CLASS_RANK_FIELD = {{ current: 'class_rank', toss: 'class_rank_toss', qws: 'class_rank_qws' }};
-            const MODEL_LABEL = {{ current: 'Current', toss: 'TOSS', qws: 'QWS' }};
+            // Model selector. When TOSS is primary (post 2026-04-26), the
+            // baseline 'rank'/'power_index'/'class_rank' fields already carry
+            // the TOSS values for 2026+; Legacy references the pre-shift RPI
+            // formula via '*_legacy' fields. Pre-primary the selector lets
+            // users compare Current (baseline) against the alt models.
+            const TOSS_IS_PRIMARY = {'true' if toss_primary_live else 'false'};
+            let currentModel = TOSS_IS_PRIMARY ? 'toss' : 'current';
+            const MODEL_RANK_FIELD = {{
+                current: 'rank', toss: 'rank_toss', qws: 'rank_qws', legacy: 'rank_legacy'
+            }};
+            const MODEL_PI_FIELD = {{
+                current: 'power_index', toss: 'power_index_toss', qws: 'power_index_qws', legacy: 'power_index_legacy'
+            }};
+            const MODEL_CLASS_RANK_FIELD = {{
+                current: 'class_rank', toss: 'class_rank_toss', qws: 'class_rank_qws', legacy: 'class_rank_legacy'
+            }};
+            const MODEL_LABEL = {{
+                current: 'Current', toss: 'TOSS', qws: 'QWS', legacy: 'Legacy'
+            }};
+            // Tag the PI cell when a non-primary model is selected so it's
+            // obvious you're looking at a comparison view.
+            function isPrimaryModel(m) {{
+                return TOSS_IS_PRIMARY ? (m === 'toss') : (m === 'current');
+            }}
             function modelVal(row, fieldMap, fallback) {{
                 const f = fieldMap[currentModel];
                 const v = row[f];
@@ -2284,7 +2359,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         render: (d, t, row) => {{
                             const v = modelVal(row, MODEL_PI_FIELD, 'power_index');
                             if (t !== 'display') return v;
-                            const tag = currentModel === 'current' ? '' : ` <small style="color:#6f42c1;">[${{MODEL_LABEL[currentModel]}}]</small>`;
+                            const tag = isPrimaryModel(currentModel) ? '' : ` <small style="color:#6f42c1;">[${{MODEL_LABEL[currentModel]}}]</small>`;
                             return `<span class="power-index">${{v.toFixed(4)}}</span>${{tag}}`;
                         }}
                     }},

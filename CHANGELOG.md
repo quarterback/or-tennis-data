@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-04-26
+
+### Changed: TOSS is now the primary Power Index
+
+**What:** Starting with Week 4 (2026-04-26, the first Sunday-cadence snapshot), the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator all use **TOSS** as the primary Power Index. The pre-2026-04-26 RPI-based formula is retained as **Legacy** in the Model dropdown for comparison, and **QWS** continues as the experimental B of the ongoing A/B test. The Model selector above the rankings table switches the State Rank / Class Rank / Power Index columns between the three models (TOSS primary is the default).
+
+**Why:** One week of live A/B data (weeks 1-3 Saturday snapshots + the 2026-04-20 baseline run) made the problem with the RPI-based model concrete. Teams dominating thin leagues were ranked above teams with comparable records in tougher leagues, because the old FWS component had no opponent-strength awareness. TOSS fixes this with a per-match multiplier keyed to opponent APR (clamped 0.75-1.25) while keeping the OSAA-compatible RPI APR unchanged. QWS is a more aggressive structural fix (replaces APR with quality-weighted wins) and stays in parallel for 2027 evaluation; the flat 50-point loss penalty in QWS is the reason it isn't the primary yet.
+
+**Impact:** Historical seasons (2021-2025) are unchanged. The three already-published Saturday weekly snapshots (2026-04-04/11/18) are unchanged. Every 2026 team in `processed_rankings.json` now carries the primary TOSS rank plus `rank_legacy`, `rank_qws`, `class_rank_legacy`, `class_rank_qws`, and the corresponding PI values for side-by-side comparison. Biggest reorderings happen around thin-league undefeated teams (down) and strong-league mid-pack teams (up) — see the AAR for the full list.
+
+**Detail:** [Power Index A/B Test AAR](aar-power-index-ab-test.html) and [methodology page](methodology.html#ab-test).
+
 ## 2026-04-24
 
 ### Added: Power Index A/B test (TOSS + QWS) and Sunday publish cadence
