@@ -2,6 +2,14 @@
 
 ## 2026-04-24
 
+### Added: Power Index A/B test (TOSS + QWS) and Sunday publish cadence
+
+**What:** The main rankings table now has a Model dropdown (Current / TOSS / QWS) that swaps the displayed Rank, Class Rank, and Power Index between three formulas computed in parallel from 2026-04-20 forward. The Current model is the default and continues to drive the playoff simulator, head-to-head, and league standings. Weekly publishing also shifts from Saturdays to Sundays starting 2026-04-26 so Saturday match results are included in that week's snapshot. Historical seasons (2021-2025) and the three already-published Saturday weekly snapshots are unchanged.
+
+**Why:** The current Power Index over-rewards dominant flight scores against weak-league opponents because FWS has no opponent-strength awareness. Two design approaches surfaced — TOSS (opponent-APR-weighted FWS) and QWS (ITA-style quality-weighted APR) — and rather than pick one blind, we're running both alongside the unchanged baseline through end of season to compare on live data.
+
+**Detail:** See the [Power Index A/B Test AAR](aar-power-index-ab-test.html) for the full design, math, validation results, and rollout plan. The [methodology page](methodology.html#ab-test) has user-facing explanations of all three formulas.
+
 ### Fixed: Duplicate dual matches inflated team records and rankings
 
 **Problem:** Some teams showed inflated win or loss totals because both coaches posted the same dual match to tennisreporting.com, producing two distinct meet entries. The reported trigger case was Valley Catholic girls at **7-2-0** vs. Molalla girls at **6-4-0** on 2026-04-07; both teams had the April 7 VC-vs-Molalla match counted twice. An audit across 2021-2026 found 51 duplicate match pairs affecting 92 school files.

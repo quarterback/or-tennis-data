@@ -1551,6 +1551,13 @@ def build_rankings(data_dir, master_school_list):
             else:
                 entry['fws_plus'] = 100
 
+        # Alt-model class ranks (only present on 2026+ entries)
+        if entries and 'rank_toss' in entries[0]:
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_toss']), 1):
+                e['class_rank_toss'] = cr
+            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_qws']), 1):
+                e['class_rank_qws'] = cr
+
     return output, school_data, raw_data_cache, school_info
 
 
@@ -1909,6 +1916,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <button class="btn btn-outline-secondary btn-sm" id="sortAPR">APR</button>
                 </div>
             </div>
+            {("<div class='filter-group' id='modelFilterGroup'>"
+              "<label>Model "
+              "<span style='color:#6f42c1; font-size:10px; vertical-align:super;'>A/B</span></label>"
+              "<select id='modelFilter' class='form-select form-select-sm' style='width:120px;'>"
+              "<option value='current' selected>Current</option>"
+              "<option value='toss'>TOSS</option>"
+              "<option value='qws'>QWS</option>"
+              "</select>"
+              "</div>") if alt_models_live else ""}
         </div>
 
         <div class="table-responsive">
@@ -2147,18 +2163,31 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         let currentSortColumn = 0; // State Rank by default
 
         $(document).ready(function() {{
+            // Model selector for A/B test (Current / TOSS / QWS)
+            let currentModel = 'current';
+            const MODEL_RANK_FIELD = {{ current: 'rank', toss: 'rank_toss', qws: 'rank_qws' }};
+            const MODEL_PI_FIELD = {{ current: 'power_index', toss: 'power_index_toss', qws: 'power_index_qws' }};
+            const MODEL_CLASS_RANK_FIELD = {{ current: 'class_rank', toss: 'class_rank_toss', qws: 'class_rank_qws' }};
+            const MODEL_LABEL = {{ current: 'Current', toss: 'TOSS', qws: 'QWS' }};
+            function modelVal(row, fieldMap, fallback) {{
+                const f = fieldMap[currentModel];
+                const v = row[f];
+                return (v !== undefined && v !== null) ? v : row[fallback];
+            }}
+
             table = $('#rankingsTable').DataTable({{
                 data: rankings,
                 columns: [
                     {{
                         data: 'rank',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
+                        render: (d, t, row) => {{
+                            const r = modelVal(row, MODEL_RANK_FIELD, 'rank');
+                            if (t !== 'display') return r;
                             let cls = '';
-                            if (d === 1) cls = 'rank-1';
-                            else if (d === 2) cls = 'rank-2';
-                            else if (d === 3) cls = 'rank-3';
-                            return `<span class="${{cls}}">${{d}}</span>`;
+                            if (r === 1) cls = 'rank-1';
+                            else if (r === 2) cls = 'rank-2';
+                            else if (r === 3) cls = 'rank-3';
+                            return `<span class="${{cls}}">${{r}}</span>`;
                         }}
                     }},
                     {{ data: 'school_name', render: d => `<span class="school-name">${{d}}</span>` }},
@@ -2175,13 +2204,14 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     }},
                     {{
                         data: 'class_rank',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
+                        render: (d, t, row) => {{
+                            const r = modelVal(row, MODEL_CLASS_RANK_FIELD, 'class_rank');
+                            if (t !== 'display') return r;
                             let rankCls = '';
-                            if (d === 1) rankCls = 'rank-1';
-                            else if (d === 2) rankCls = 'rank-2';
-                            else if (d === 3) rankCls = 'rank-3';
-                            return `<span class="${{rankCls}}">${{d}}</span>`;
+                            if (r === 1) rankCls = 'rank-1';
+                            else if (r === 2) rankCls = 'rank-2';
+                            else if (r === 3) rankCls = 'rank-3';
+                            return `<span class="${{rankCls}}">${{r}}</span>`;
                         }}
                     }},
                     {{ data: 'league', render: (d) => d ? `<span class="badge badge-league">${{d}}</span>` : '-' }},
@@ -2251,9 +2281,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     {{ data: 'league_record' }},
                     {{
                         data: 'power_index',
-                        render: (d, t) => {{
-                            if (t !== 'display') return d;
-                            return `<span class="power-index">${{d.toFixed(4)}}</span>`;
+                        render: (d, t, row) => {{
+                            const v = modelVal(row, MODEL_PI_FIELD, 'power_index');
+                            if (t !== 'display') return v;
+                            const tag = currentModel === 'current' ? '' : ` <small style="color:#6f42c1;">[${{MODEL_LABEL[currentModel]}}]</small>`;
+                            return `<span class="power-index">${{v.toFixed(4)}}</span>${{tag}}`;
                         }}
                     }},
                     {{
@@ -2302,6 +2334,15 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 $(this).addClass('active');
                 $('#sortRank, #sortPowerIndex').removeClass('active');
                 table.order([[9, 'desc']]).draw();  // APR is column 9
+            }});
+
+            // A/B model selector — re-renders rank/class-rank/PI columns
+            $('#modelFilter').on('change', function() {{
+                currentModel = this.value;
+                // Re-sort by rank to reflect the new model's ordering
+                $('#sortRank').addClass('active');
+                $('#sortPowerIndex, #sortAPR').removeClass('active');
+                table.order([[0, 'asc']]).rows().invalidate('data').draw();
             }});
 
             // Filtering
@@ -3814,8 +3855,13 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     return html
 
 
-def render_changelog_page(md_path, out_path):
-    """Render CHANGELOG.md to a simple styled HTML page."""
+def render_md_page(md_path, out_path, page_title='Changelog - Oregon HS Tennis'):
+    """Render a markdown file to a simple styled HTML page.
+
+    Supports headings (h1/h2/h3), paragraphs, lists, fenced code blocks,
+    inline **bold**, `code`, and [text](url) links. Used for the changelog
+    and the AAR pages.
+    """
     import re, html
 
     if not md_path.exists():
@@ -3826,6 +3872,10 @@ def render_changelog_page(md_path, out_path):
 
     body_parts = []
     para = []
+    in_code = False
+    code_lines = []
+    in_table = False
+    table_rows = []
 
     def flush_para():
         if para:
@@ -3834,14 +3884,59 @@ def render_changelog_page(md_path, out_path):
                 body_parts.append(f'<p>{text}</p>')
             para.clear()
 
+    def flush_table():
+        nonlocal in_table
+        if not in_table:
+            return
+        in_table = False
+        if not table_rows:
+            return
+        # First row = header, second = separator (skip), rest = body
+        header_cells = [c.strip() for c in table_rows[0].strip('|').split('|')]
+        body = []
+        for row in table_rows[2:]:
+            cells = [c.strip() for c in row.strip('|').split('|')]
+            body.append('<tr>' + ''.join(f'<td>{fmt_inline(c)}</td>' for c in cells) + '</tr>')
+        head = '<tr>' + ''.join(f'<th>{fmt_inline(c)}</th>' for c in header_cells) + '</tr>'
+        body_parts.append(f'<table><thead>{head}</thead><tbody>{"".join(body)}</tbody></table>')
+        table_rows.clear()
+
     def fmt_inline(s):
+        # Order matters: protect code spans first so their contents aren't escaped twice.
+        codes = []
+        def stash_code(m):
+            codes.append(m.group(1))
+            return f'\x00CODE{len(codes)-1}\x00'
+        s = re.sub(r'`([^`]+)`', stash_code, s)
         s = html.escape(s)
         s = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', s)
-        s = re.sub(r'`([^`]+)`', r'<code>\1</code>', s)
+        s = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2">\1</a>', s)
+        for i, c in enumerate(codes):
+            s = s.replace(f'\x00CODE{i}\x00', f'<code>{html.escape(c)}</code>')
         return s
 
     for raw in lines:
         line = raw.rstrip()
+        if line.startswith('```'):
+            if in_code:
+                body_parts.append('<pre><code>' + html.escape('\n'.join(code_lines)) + '</code></pre>')
+                code_lines.clear()
+                in_code = False
+            else:
+                flush_para()
+                flush_table()
+                in_code = True
+            continue
+        if in_code:
+            code_lines.append(raw)
+            continue
+        if line.startswith('|') and line.endswith('|'):
+            flush_para()
+            in_table = True
+            table_rows.append(line)
+            continue
+        if in_table and not line.startswith('|'):
+            flush_table()
         if not line:
             flush_para()
             continue
@@ -3864,21 +3959,28 @@ def render_changelog_page(md_path, out_path):
         else:
             para.append(fmt_inline(line))
     flush_para()
+    flush_table()
 
     page = f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Changelog - Oregon HS Tennis</title>
+<title>{page_title}</title>
 <style>
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 780px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.55; }}
-  h1 {{ font-size: 1.6rem; margin: 0 0 8px; }}
-  h2 {{ font-size: 1.2rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
-  h3 {{ font-size: 1rem; margin: 20px 0 6px; color: #212529; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 820px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.6; }}
+  h1 {{ font-size: 1.7rem; margin: 0 0 8px; }}
+  h2 {{ font-size: 1.25rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
+  h3 {{ font-size: 1.05rem; margin: 20px 0 6px; color: #212529; }}
   p  {{ margin: 8px 0; }}
+  a  {{ color: #0d6efd; }}
   code {{ background: #f1f3f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }}
+  pre {{ background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 4px; padding: 10px 14px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }}
+  pre code {{ background: none; padding: 0; }}
   ul {{ margin: 6px 0 10px 24px; }}
+  table {{ border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }}
+  th, td {{ border: 1px solid #dee2e6; padding: 6px 12px; text-align: left; }}
+  th {{ background: #f8f9fa; }}
   footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
   footer a {{ color: #6c757d; font-size: 12px; }}
 </style>
@@ -3887,12 +3989,20 @@ def render_changelog_page(md_path, out_path):
 {chr(10).join(body_parts)}
 <footer>
   <a href="index.html">&larr; Back to Rankings</a>
+  &middot;
+  <a href="changelog.html">Changelog</a>
+  &middot;
+  <a href="methodology.html">Methodology</a>
 </footer>
 </body>
 </html>
 """
     with open(out_path, 'w') as f:
         f.write(page)
+
+
+# Backward-compat alias.
+render_changelog_page = render_md_page
 
 
 def main():
@@ -3930,8 +4040,17 @@ def main():
 
     changelog_md = repo_root / 'CHANGELOG.md'
     changelog_html = repo_root / 'public' / 'changelog.html'
-    render_changelog_page(changelog_md, changelog_html)
+    render_md_page(changelog_md, changelog_html, page_title='Changelog - Oregon HS Tennis')
     print(f"Changelog saved to {changelog_html}")
+
+    # Render AAR pages alongside the changelog. The first H1 line of the
+    # markdown drives the page title.
+    for aar_md in sorted(repo_root.glob('AAR-*.md')):
+        aar_html = repo_root / 'public' / (aar_md.stem.lower() + '.html')
+        with open(aar_md) as f:
+            first_h1 = next((l[2:].strip() for l in f if l.startswith('# ')), aar_md.stem)
+        render_md_page(aar_md, aar_html, page_title=f'{first_h1} - Oregon HS Tennis')
+        print(f"AAR saved to {aar_html}")
 
 
 if __name__ == '__main__':
