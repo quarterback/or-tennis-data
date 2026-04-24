@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-04-24
+
+### Changed: Flight-Weighted Score is now opponent-weighted
+
+**Problem:** FWS was opponent-blind — a 5-0 flight sweep of a bottom-quartile team counted the same as a 5-0 flight sweep of Jesuit, and a competitive 3-5 flight loss to a top team counted the same as a 3-5 flight loss to the weakest team in the state. That over-rewarded cupcake scheduling and under-credited teams that competed in flights against strong opponents. The site's methodology footer even described FWS as "opponent-adjusted," which the code didn't actually do. The specific effect: teams like Scappoose (6-0-0 vs opponents averaging rank 94) and Madras (#1, 6-0-0, no top-25 opponents) were outranking teams with genuinely harder schedules (Jesuit, Westview, Sam Barlow) on the strength of flight-win volume against weak competition.
+
+**Fix:** Each dual match's FWS contribution is now scaled by the opponent's pass-1 APR, normalized against the median APR in that year/gender. Multiplier is centered on 1.0 — playing a median-APR opponent is neutral, above-median amplifies the contribution, below-median discounts it. Unknown opponents (Idaho schools, etc.) default to the median and so are neutral. The scaling is applied to per-match FWS before averaging, so a team's weighted FWS depends on *both* how well they played flight-by-flight *and* who they played those matches against. `calculate_fws_per_match` now also returns per-match `(opp_id, match_fws)` tuples, and a new step after pass-1 APR recomputes `normalized_fws` using the opponent-weighted mean. `normalized_fws_raw` is preserved on the data object for debugging. Per-match tuples aren't serialized to processed_rankings.json — the output shape is unchanged.
+
+**Impact on 2026 Girls top-30:** Jesuit #3 → #1 (toughest schedule + near-perfect flights gets proper credit). Westview #4 → #2. Sam Barlow #17 → #9 (6A team with losses to top-tier schedule now correctly valued). Lakeridge #22 → #14. Conversely, Madras #1 → #5 (flight dominance against weak regional schedule gets discounted), Scappoose #21 → #27 (undefeated against the weakest top-25 schedule in the state), Marist Catholic #18 → #23 (5A padded wins against #70-#120 teams no longer over-reward), Hood River Valley #10 → #17 (weak 5A non-league schedule). Catlin Gabel #27 → #25 — modest move because their barbell schedule cancels out (weak-opponent sweeps discounted, Jesuit blowout amplified), but the teams around them that had been over-ranked by weak scheduling now sit behind. Full regeneration applied across all six seasons (2021-2026) and all three weekly snapshot files.
+
+**Design note:** This is structural — the system no longer treats all flight wins as equal. It doesn't require teams to play up (geography and scheduling constraints still matter), but beating appropriate competition at your level now carries similar weight to beating appropriate competition at any level, and flight performance against stronger opponents is credited at more than face value. The original anti-stacking goal of FWS (flight weights favoring top flights) is preserved; this is an orthogonal dimension added on top.
+
 ## 2026-04-23
 
 ### Fixed: Weekly rankings counted tiebreaker losses as ties

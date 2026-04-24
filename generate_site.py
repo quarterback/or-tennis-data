@@ -593,7 +593,8 @@ def calculate_fws_per_match(data, school_id):
     - Short match (1S, 2S, 1D, 2D only): Denominator = 3.0 (1.0+0.75+1.0+0.5)
 
     Returns dict with:
-    - normalized_fws: 0-1 range average
+    - normalized_fws: 0-1 range average (opponent-blind — used as raw baseline)
+    - per_match_with_opp: [(opp_id, match_fws), ...] used for opponent-weighted FWS
     - match_count: number of dual matches
     - fws_pct: percentage of flights won (simple ratio)
     - flight_breakdown: win rate per flight position
@@ -601,6 +602,7 @@ def calculate_fws_per_match(data, school_id):
     - total_flights_played: raw count of flights contested
     """
     dual_match_fws_scores = []
+    per_match_with_opp = []
 
     # Track flight-by-flight stats
     flight_stats = {
@@ -620,6 +622,12 @@ def calculate_fws_per_match(data, school_id):
     for meet in data.get('meets', []):
         if not is_dual_match(meet):
             continue
+
+        schools = meet.get('schools', {})
+        opp_id = None
+        for s in schools.get('winners', []) + schools.get('losers', []):
+            if s['id'] != school_id:
+                opp_id = s['id']
 
         # Track points earned and available weight for this match
         points_earned = 0.0
@@ -662,10 +670,13 @@ def calculate_fws_per_match(data, school_id):
         if available_weight > 0:
             match_fws = points_earned / available_weight
             dual_match_fws_scores.append(match_fws)
+            if opp_id is not None:
+                per_match_with_opp.append((opp_id, match_fws))
 
     if not dual_match_fws_scores:
         return {
             'normalized_fws': 0.0,
+            'per_match_with_opp': [],
             'match_count': 0,
             'fws_pct': 0.0,
             'flight_breakdown': flight_stats,
@@ -681,6 +692,7 @@ def calculate_fws_per_match(data, school_id):
 
     return {
         'normalized_fws': avg_fws,
+        'per_match_with_opp': per_match_with_opp,
         'match_count': len(dual_match_fws_scores),
         'fws_pct': fws_pct,
         'flight_breakdown': flight_stats,
@@ -747,7 +759,9 @@ def build_rankings(data_dir, master_school_list):
                     'league_ties': league_ties,
                     # FWS data
                     'fws': fws_data['normalized_fws'] * MAX_FWS,  # Scale to 0-3.95 for display
-                    'normalized_fws': fws_data['normalized_fws'],  # 0-1 range for Power Index
+                    'normalized_fws_raw': fws_data['normalized_fws'],  # opponent-blind baseline
+                    'normalized_fws': fws_data['normalized_fws'],  # will be overwritten with opp-weighted value below
+                    'per_match_fws': fws_data['per_match_with_opp'],  # [(opp_id, match_fws), ...]
                     'fws_pct': fws_data['fws_pct'],  # Simple percentage (flights won / played)
                     'fws_match_count': fws_data['match_count'],
                     'flight_breakdown': fws_data['flight_breakdown'],
@@ -797,6 +811,37 @@ def build_rankings(data_dir, master_school_list):
 
                 # Power Index = 50/50 split between Results (APR) and Depth (FWS)
                 school['power_index'] = (school['apr'] * APR_WEIGHT) + (school['normalized_fws'] * FWS_WEIGHT)
+
+    # --- Opponent-weighted FWS ---
+    # FWS's original job — measure roster depth via flight-level wins — was
+    # opponent-blind: a 5-0 sweep of a bottom-quartile team and a 5-0 sweep of
+    # Jesuit contributed identically to a team's FWS. That over-rewarded
+    # cupcake scheduling and under-credited teams that competed in flights
+    # against strong opponents. Each match's flight-result contribution is now
+    # scaled by the opponent's pass-1 APR, normalized against the median APR
+    # in that year/gender so the weight has mean ~1.0. Unknown opponents
+    # (cross-state) default to the median, i.e. neutral weight.
+    for year in school_data:
+        for gender in school_data[year]:
+            aprs = [s['apr'] for s in school_data[year][gender].values()]
+            if not aprs:
+                continue
+            sorted_aprs = sorted(aprs)
+            median_apr = sorted_aprs[len(sorted_aprs) // 2]
+            if median_apr <= 0:
+                continue
+            for school_id, school in school_data[year][gender].items():
+                per_match = school.get('per_match_fws', [])
+                if not per_match:
+                    continue
+                weighted = []
+                for opp_id, match_fws in per_match:
+                    if opp_id in school_data[year][gender]:
+                        opp_apr = school_data[year][gender][opp_id]['apr']
+                    else:
+                        opp_apr = median_apr
+                    weighted.append(match_fws * (opp_apr / median_apr))
+                school['normalized_fws'] = sum(weighted) / len(weighted)
 
     # --- Pass 2: league-depth-weighted OWP ---
     # Reweight each opponent's contribution to OWP by the depth of their league.
