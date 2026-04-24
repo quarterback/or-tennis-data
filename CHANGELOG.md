@@ -6,11 +6,25 @@
 
 **What:** Starting with Week 4 (2026-04-26, the first Sunday-cadence snapshot), the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator all use **TOSS** as the primary Power Index. The pre-2026-04-26 RPI-based formula is retained as **Legacy** in the Model dropdown for comparison, and **QWS** continues as the experimental B of the ongoing A/B test. The Model selector above the rankings table switches the State Rank / Class Rank / Power Index columns between the three models (TOSS primary is the default).
 
-**Why:** One week of live A/B data (weeks 1-3 Saturday snapshots + the 2026-04-20 baseline run) made the problem with the RPI-based model concrete. Teams dominating thin leagues were ranked above teams with comparable records in tougher leagues, because the old FWS component had no opponent-strength awareness. TOSS fixes this with a per-match multiplier keyed to opponent APR (clamped 0.75-1.25) while keeping the OSAA-compatible RPI APR unchanged. QWS is a more aggressive structural fix (replaces APR with quality-weighted wins) and stays in parallel for 2027 evaluation; the flat 50-point loss penalty in QWS is the reason it isn't the primary yet.
+**Why:** One week of live A/B data (weeks 1-3 Saturday snapshots + the 2026-04-20 baseline run) made the problem with the RPI-based model concrete. Teams dominating thin leagues were ranked above teams with comparable records in tougher leagues, because the old FWS component had no opponent-strength awareness. TOSS fixes this with a per-match multiplier keyed to opponent APR while keeping the OSAA-compatible RPI APR unchanged. QWS is a more aggressive structural fix (replaces APR with quality-weighted wins) and stays in parallel for 2027 evaluation; the flat 50-point loss penalty in QWS is the reason it isn't the primary yet.
 
 **Impact:** Historical seasons (2021-2025) are unchanged. The three already-published Saturday weekly snapshots (2026-04-04/11/18) are unchanged. Every 2026 team in `processed_rankings.json` now carries the primary TOSS rank plus `rank_legacy`, `rank_qws`, `class_rank_legacy`, `class_rank_qws`, and the corresponding PI values for side-by-side comparison. Biggest reorderings happen around thin-league undefeated teams (down) and strong-league mid-pack teams (up) — see the AAR for the full list.
 
 **Detail:** [Power Index A/B Test AAR](aar-power-index-ab-test.html) and [methodology page](methodology.html#ab-test).
+
+### Changed: Flight-quality component named FQI, clamping removed
+
+**What:** The opponent-weighted flight metric inside the TOSS formula is now named **FQI (Flight Quality Index)**. The TOSS formula reads as `0.5 × APR + 0.5 × FQI`. On the main rankings table, the prior **FWS%** column is replaced by **FQI**, shown in the same 0–1 range as APR with 4-decimal precision. The prior hover tooltip FWS+ becomes FQI+ (same classification-relative index, 100 = classification average, now computed from FQI instead of raw flight-win percentage).
+
+The 0.75–1.25 per-match multiplier clamp that initially shipped with TOSS has been removed. FQI's opponent-weight multiplier is now `opp_apr / median_apr` uncapped, with unknown opponents defaulting to the median (multiplier 1.0).
+
+**Why rename:** "FWS" described what the metric used to do (flights-weighted by position only). The metric is no longer that — it weights flights by position *and* by opponent strength. A new name makes clear this is a different measurement than the FWS% column it replaces. FQI is the Oregon label; the metric is documented portably under the generic name **oFWS** (opponent-weighted Flight-Weighted Score) in `docs/oFWS-PRD.md` so other states or sports with different flight structures can adopt the same approach.
+
+**Why remove clamping:** The clamp bounded per-match impact to ±25% against the median opponent, which dampens the very signal the metric is designed to produce. A flight-level win against a top-APR opponent is meaningfully more informative than a flight-level win against a bottom-APR opponent; clamping hides that difference rather than exposing it. If APR is trustworthy enough to serve as the multiplier, it's trustworthy enough unclamped; if it isn't, clamping treats a symptom of APR instability instead of the cause. Rollout velocity is managed by the existing TOSS_PRIMARY_DATE gate, not by neutering the math.
+
+**Constraint preserved:** FWS's original role — discouraging singles-heavy stacking by weighting top flights (S1/D1 at 1.00 down to S4/D4 at 0.10) — is untouched. FQI layers opponent-weighting on top of the existing flight-weight structure.
+
+**Backcompat:** Legacy JSON field names (`normalized_fws`, `fws_plus`) remain as aliases in `processed_rankings.json` so existing consumers don't break. `normalized_fws_raw` is preserved as the opponent-blind baseline for debugging. New field names are `fqi` and `fqi_plus`.
 
 ## 2026-04-24
 

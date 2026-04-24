@@ -68,9 +68,10 @@ H2H_LEAGUE_RANK_THRESHOLD = 2  # Teams within 2 league rank spots eligible for l
 ADJUSTED_FWS_EFFECTIVE_DATE = date(2026, 4, 20)
 TOSS_PRIMARY_DATE = date(2026, 4, 26)
 
-# TOSS: per-match FWS multiplier = clamp(opp_apr / median_apr, LOW, HIGH)
-TOSS_CLAMP_LOW = 0.75
-TOSS_CLAMP_HIGH = 1.25
+# TOSS flight-quality component = FQI (Flight Quality Index).
+# Per-match multiplier = opp_apr / median_apr, unclamped. Unknown opponents
+# default to median (multiplier 1.0). See docs/oFWS-PRD.md for the portable
+# spec and design rationale for the uncapped normalization.
 
 # QWS: ITA-style quality-weighted APR. APR_qws = (sum(opp_PI * 100) for wins
 # - 50 * losses) / total_matches, iterated until opponent PI converges.
@@ -1036,24 +1037,31 @@ def build_rankings(data_dir, master_school_list):
                 for sid, school in teams.items():
                     records = school.get('fws_match_records') or []
                     if not records:
-                        school['adjusted_fws'] = school['normalized_fws']
+                        school['fqi'] = school['normalized_fws']
+                        school['adjusted_fws'] = school['normalized_fws']  # Backcompat alias
                         school['schedule_multiplier'] = 1.0
                         school['power_index_toss'] = school['power_index']
                         continue
 
-                    weighted_sum = 0.0
-                    weight_sum = 0.0
+                    # FQI = simple arithmetic mean of (flight_score * multiplier),
+                    # per docs/oFWS-PRD.md §4.4. Using a weighted mean (dividing
+                    # by sum(weights)) mostly cancels the opponent effect — a
+                    # team with all below-median opponents would see its FQI
+                    # equal its raw FWS. The arithmetic mean preserves the
+                    # intended scaling: a team that plays all below-median
+                    # opponents gets its flight contributions discounted in
+                    # aggregate, and a team that plays above-median opponents
+                    # gets them amplified.
+                    total = 0.0
                     for opp_id, match_fws in records:
-                        opp_apr = teams[opp_id]['apr'] if opp_id in teams else 0.5
-                        m = max(TOSS_CLAMP_LOW, min(TOSS_CLAMP_HIGH, opp_apr / median_apr))
-                        weighted_sum += match_fws * m
-                        weight_sum += m
-
-                    adjusted_fws = (weighted_sum / weight_sum) if weight_sum > 0 else school['normalized_fws']
+                        m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
+                        total += match_fws * m
+                    fqi = total / len(records)
                     raw_fws = school['normalized_fws']
-                    school['adjusted_fws'] = adjusted_fws
-                    school['schedule_multiplier'] = (adjusted_fws / raw_fws) if raw_fws > 0 else 1.0
-                    school['power_index_toss'] = (school['apr'] * APR_WEIGHT) + (adjusted_fws * FWS_WEIGHT)
+                    school['fqi'] = fqi
+                    school['adjusted_fws'] = fqi  # Backcompat alias
+                    school['schedule_multiplier'] = (fqi / raw_fws) if raw_fws > 0 else 1.0
+                    school['power_index_toss'] = (school['apr'] * APR_WEIGHT) + (fqi * FWS_WEIGHT)
 
                 # --- Pass 4: QWS (iterative quality-weighted APR) ---
                 # Seed opponent PI with WP (iter 0), then iterate using the
@@ -1557,9 +1565,11 @@ def build_rankings(data_dir, master_school_list):
                     'total_flights_played': stats.get('total_flights_played', 0),
                 }
                 if alt_models and int(year) >= 2026 and 'power_index_toss' in stats:
+                    fqi_val = round(stats.get('fqi', stats.get('adjusted_fws', stats['normalized_fws'])), 4)
                     entry.update({
                         'power_index_toss': round(stats['power_index_toss'], 4),
-                        'adjusted_fws': round(stats.get('adjusted_fws', stats['normalized_fws']), 4),
+                        'fqi': fqi_val,
+                        'adjusted_fws': fqi_val,  # Backcompat alias
                         'schedule_multiplier': round(stats.get('schedule_multiplier', 1.0), 4),
                         'rank_toss': rank_toss_map.get(school_id, rank),
                         'power_index_qws': round(stats.get('power_index_qws', stats['power_index']), 4),
@@ -1572,28 +1582,37 @@ def build_rankings(data_dir, master_school_list):
                     })
                 output.append(entry)
 
-    # Calculate class_rank and FWS+ (league-adjusted) for each year/gender/classification
+    # Classification-relative FQI index (100 = classification average).
+    # On 2026+ entries uses the opponent-weighted `fqi`; falls back to raw
+    # flight-win percentage for seasons that predate FQI.
     class_groups = defaultdict(list)
     for entry in output:
         key = (entry['year'], entry['gender'], entry['classification'])
         class_groups[key].append(entry)
 
     for key, entries in class_groups.items():
-        # Sort by state rank (already sorted by Power Index)
         entries.sort(key=lambda x: x['rank'])
 
-        # Calculate classification average FWS%
-        fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
-        class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
-
-        for class_rank, entry in enumerate(entries, 1):
-            entry['class_rank'] = class_rank
-            # FWS+ = (team FWS% / class avg FWS%) * 100
-            # 100 = average, >100 = better than average, <100 = worse
-            if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
-                entry['fws_plus'] = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
-            else:
-                entry['fws_plus'] = 100
+        fqi_vals = [e['fqi'] for e in entries if 'fqi' in e and e['fqi'] > 0]
+        if fqi_vals:
+            class_avg = sum(fqi_vals) / len(fqi_vals)
+            for class_rank, entry in enumerate(entries, 1):
+                entry['class_rank'] = class_rank
+                val = entry.get('fqi', 0)
+                plus = round(val / class_avg * 100, 0) if class_avg > 0 and val > 0 else 100
+                entry['fqi_plus'] = plus
+                entry['fws_plus'] = plus  # Backcompat alias
+        else:
+            fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
+            class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
+            for class_rank, entry in enumerate(entries, 1):
+                entry['class_rank'] = class_rank
+                if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
+                    plus = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
+                else:
+                    plus = 100
+                entry['fqi_plus'] = plus
+                entry['fws_plus'] = plus  # Backcompat alias
 
         # Alt-model class ranks (only present on 2026+ entries)
         if entries and 'rank_toss' in entries[0]:
@@ -1992,20 +2011,20 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         <th>League Rec</th>
                         <th>Power Index</th>
                         <th>APR</th>
-                        <th>FWS%</th>
+                        <th>FQI</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
             <div class="formula-footer">
                 <small class="text-muted">
-                    <strong>Power Index</strong> = 50% APR + 50% Flight-Weighted Score (opponent-adjusted, per TOSS).
-                    <strong>FWS%</strong> = percentage of individual flights won. Hover for FWS+ (100 = classification average).
+                    <strong>Power Index</strong> (TOSS model) = 50% APR + 50% FQI.
+                    <strong>FQI</strong> (Flight Quality Index) = per-match flight performance scaled by opponent strength, averaged across dual matches. Hover for FQI+ (100 = classification average).
                     <a href="methodology.html" style="margin-left: 8px;">How does this work? &rarr;</a>
                 </small>
                 {("<div style='margin-top:8px; padding:8px 10px; border-left:3px solid #198754; background:#e8f5ee; font-size:12px; color:#0d503a;'>"
                   "<strong>New from " + TOSS_PRIMARY_DATE.isoformat() + ":</strong> "
-                  "the primary Power Index is <strong>TOSS</strong> &mdash; APR is unchanged, but each match's Flight-Weighted Score is now adjusted for opponent strength (0.75-1.25 clamp). "
+                  "the primary Power Index is <strong>TOSS</strong> &mdash; APR is unchanged, and the flight component is <strong>FQI</strong> (each match's flight performance scaled by the opponent's APR, unclamped, median-normalized). "
                   "The previous RPI-based formula is retained as <strong>Legacy</strong>, and <strong>QWS</strong> (ITA-style quality-weighted wins) continues as the experimental comparison model. Use the Model selector above to switch views. "
                   "<a href='methodology.html#ab-test'>Methodology &rarr;</a> &middot; "
                   "<a href='aar-power-index-ab-test.html'>Full AAR &rarr;</a>"
@@ -2374,15 +2393,17 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         }}
                     }},
                     {{
-                        data: 'fws_pct',
+                        // FQI (opponent-weighted flight quality) for 2026+ entries;
+                        // falls back to raw fws_pct/100 for historical seasons.
+                        data: (row) => row.fqi != null ? row.fqi : (row.fws_pct != null ? row.fws_pct / 100 : 0),
                         render: (d, t, row) => {{
                             if (t !== 'display') return d;
-                            const fwsPlus = row.fws_plus || 100;
+                            const fqiPlus = row.fqi_plus || row.fws_plus || 100;
                             let cls = '';
-                            if (fwsPlus >= 115) cls = 'apr-high';
-                            else if (fwsPlus < 85) cls = 'apr-low';
-                            const tooltip = `FWS+ ${{fwsPlus}} (100 = avg)`;
-                            return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(1)}}%</span>`;
+                            if (fqiPlus >= 115) cls = 'apr-high';
+                            else if (fqiPlus < 85) cls = 'apr-low';
+                            const tooltip = `FQI+ ${{fqiPlus}} (100 = classification average)`;
+                            return `<span class="${{cls}}" title="${{tooltip}}" style="cursor:help;">${{d.toFixed(4)}}</span>`;
                         }}
                     }}
                 ],
@@ -2487,7 +2508,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 // Add totals
                 html += '<div class="flight-divider"></div>';
                 html += `<div class="flight-stat"><span class="flight-stat-label">Total</span><span class="flight-stat-value">${{d.total_flights_won || 0}}/${{d.total_flights_played || 0}}</span></div>`;
-                html += `<div class="flight-stat"><span class="flight-stat-label">FWS+</span><span class="flight-stat-value ${{d.fws_plus >= 115 ? 'high' : d.fws_plus < 85 ? 'low' : 'mid'}}">${{d.fws_plus || 100}}</span></div>`;
+                html += `<div class="flight-stat"><span class="flight-stat-label">FQI+</span><span class="flight-stat-value ${{(d.fqi_plus ?? d.fws_plus) >= 115 ? 'high' : (d.fqi_plus ?? d.fws_plus) < 85 ? 'low' : 'mid'}}">${{d.fqi_plus ?? d.fws_plus ?? 100}}</span></div>`;
 
                 html += '</div>';
                 return html;
