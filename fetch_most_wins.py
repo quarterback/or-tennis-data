@@ -19,7 +19,14 @@ from datetime import datetime
 
 import requests
 
-API_BASE_URL = "https://api.v2.tennisreporting.com"
+# Try the current host first; api.v2.tennisreporting.com was retired around
+# 2026-04-24 but is left in the list as a fallback in case it returns. If both
+# hosts come back 4xx for every path, this script logs a warning and exits 0
+# so the workflow proceeds with the existing oregon_schools.csv.
+API_HOSTS = [
+    "https://api.tennisreporting.com",
+    "https://api.v2.tennisreporting.com",
+]
 # Candidate endpoint paths in priority order; the first one that returns
 # a non-empty list wins.
 MOST_WINS_PATHS = [
@@ -56,22 +63,23 @@ def fetch_most_wins(gender_id: int, year: int, state_id: int = OREGON_STATE_ID) 
         "year": year,
     }
 
-    for path in MOST_WINS_PATHS:
-        url = f"{API_BASE_URL}{path}"
-        try:
-            response = requests.get(url, headers=HEADERS, params=params, timeout=30)
-            if response.status_code == 404:
+    for host in API_HOSTS:
+        for path in MOST_WINS_PATHS:
+            url = f"{host}{path}"
+            try:
+                response = requests.get(url, headers=HEADERS, params=params, timeout=30)
+                if response.status_code == 404:
+                    continue
+                response.raise_for_status()
+                data = response.json()
+                if isinstance(data, list) and data:
+                    print(f"  Endpoint {host}{path} returned {len(data)} records")
+                    return data
+            except requests.exceptions.HTTPError:
                 continue
-            response.raise_for_status()
-            data = response.json()
-            if isinstance(data, list) and data:
-                print(f"  Endpoint {path} returned {len(data)} records")
-                return data
-        except requests.exceptions.HTTPError:
-            continue
-        except requests.RequestException as e:
-            print(f"  Request error for {path}: {e}")
-            continue
+            except requests.RequestException as e:
+                print(f"  Request error for {host}{path}: {e}")
+                continue
 
     print(f"  Warning: no working endpoint found for genderId={gender_id}")
     return []
