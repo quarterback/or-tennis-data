@@ -17,12 +17,17 @@ import requests
 # Configuration
 INPUT_FILE = "oregon_schools.csv"
 OUTPUT_DIR = "match_data"
-API_BASE_URL = "https://api.v2.tennisreporting.com/report/school"
+API_BASE_URL = "https://api.tennisreporting.com/report/school"
+# api.v2.tennisreporting.com was retired around 2026-04-24; api.tennisreporting.com
+# (no v2) serves the same /report/school endpoint with the same payload shape.
+API_BASE_URL_FALLBACK = "https://api.v2.tennisreporting.com/report/school"
 REQUEST_DELAY = 1  # seconds between requests
 
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
     "Accept": "application/json",
+    "Referer": "https://www.tennisreporting.com/",
+    "Origin": "https://www.tennisreporting.com",
 }
 
 
@@ -44,6 +49,10 @@ def fetch_school_data(school_id: str, year: int, gender_id: int = 1, is_not_vars
     """
     Fetch dual match data for a school from the API.
 
+    Tries the primary host first, falls back to the legacy v2 host on
+    network failure or 5xx. Either host returning a 4xx is treated as a
+    real "no data" answer and not retried.
+
     Args:
         school_id: The school's ID
         year: The year to fetch data for
@@ -51,25 +60,34 @@ def fetch_school_data(school_id: str, year: int, gender_id: int = 1, is_not_vars
         is_not_varsity: 0 for varsity, 1 for JV
 
     Returns:
-        The JSON response data or None if request failed
+        The JSON response data or None if both hosts failed.
     """
-    url = f"{API_BASE_URL}/{school_id}"
     params = {
         "year": year,
         "genderId": gender_id,
         "isNotVarsity": is_not_varsity,
     }
 
-    try:
-        response = requests.get(url, headers=HEADERS, params=params, timeout=30)
-        response.raise_for_status()
-        return response.json()
-    except requests.exceptions.HTTPError as e:
-        print(f"  HTTP error: {e.response.status_code}")
-        return None
-    except requests.RequestException as e:
-        print(f"  Request error: {e}")
-        return None
+    last_err = None
+    for base in (API_BASE_URL, API_BASE_URL_FALLBACK):
+        url = f"{base}/{school_id}"
+        try:
+            response = requests.get(url, headers=HEADERS, params=params, timeout=30)
+            if 500 <= response.status_code < 600:
+                last_err = f"HTTP {response.status_code} at {base}"
+                continue
+            response.raise_for_status()
+            return response.json()
+        except requests.exceptions.HTTPError as e:
+            print(f"  HTTP error: {e.response.status_code}")
+            return None
+        except requests.RequestException as e:
+            last_err = f"Request error at {base}: {e}"
+            continue
+
+    if last_err:
+        print(f"  {last_err}")
+    return None
 
 
 def save_school_data(school_id: str, data: dict, output_dir: str, year: int, gender_id: int):
