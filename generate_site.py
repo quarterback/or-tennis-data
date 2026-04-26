@@ -46,6 +46,12 @@ OOWP_WEIGHT = 0.25  # Opponent's opponent win percentage
 APR_WEIGHT = 0.50   # Dual match outcomes (winning)
 FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
+# TOSS Power Index weights (3-component split since 2026-04-26 oGS fold-in)
+# PI_toss = TOSS_APR_WEIGHT * APR + TOSS_FQI_WEIGHT * FQI + TOSS_OGS_WEIGHT * oGS
+TOSS_APR_WEIGHT = 0.40  # Dual match outcomes (RPI-style)
+TOSS_FQI_WEIGHT = 0.40  # Flight Quality Index (opp-APR-weighted FWS)
+TOSS_OGS_WEIGHT = 0.20  # Opp-weighted game share (set/game-level dominance)
+
 # League-depth adjustment for OWP (two-pass APR)
 # Each opponent's effective strength = opp_wp * (loo_league_depth / median_league_depth).
 # LOO depth excludes both the opponent and the team being evaluated, so a team
@@ -725,9 +731,16 @@ def calculate_fws_per_match(data, school_id):
     - total_flights_won: raw count of flights won
     - total_flights_played: raw count of flights contested
     - per_match_records: list of (opponent_id, match_fws) for TOSS reweighting
+    - games_won: total games won across all flights (informational)
+    - games_played: total games (informational)
+    - game_share: aggregate games_won / games_played
+    - game_share_match_records: list of (opponent_id, match_game_share) for oGS reweighting
     """
     dual_match_fws_scores = []
     per_match_records = []  # [(opp_id, match_fws), ...]
+    game_share_records = []  # [(opp_id, match_game_share), ...]
+    total_games_won = 0
+    total_games_played = 0
 
     # Track flight-by-flight stats
     flight_stats = {
@@ -762,6 +775,8 @@ def calculate_fws_per_match(data, school_id):
         # Track points earned and available weight for this match
         points_earned = 0.0
         available_weight = 0.0
+        match_games_won = 0
+        match_games_played = 0
         matches = meet.get('matches', {})
 
         for match_type in ['Singles', 'Doubles']:
@@ -784,23 +799,64 @@ def calculate_fws_per_match(data, school_id):
                         if flight_key in flight_stats:
                             flight_stats[flight_key]['played'] += 1
 
-                        # Check if our school won this flight
+                        # Identify our team and opponent's team in this flight
+                        my_tid = opp_tid = None
+                        my_won = False
                         for team in match_teams:
                             players = team.get('players', [])
                             for player in players:
                                 if player.get('schoolId') == school_id:
-                                    if team.get('isWinner', False):
-                                        points_earned += weight
-                                        total_flights_won += 1
-                                        if flight_key in flight_stats:
-                                            flight_stats[flight_key]['wins'] += 1
+                                    my_tid = team.get('id')
+                                    my_won = bool(team.get('isWinner', False))
                                     break
+                            if my_tid is None:
+                                opp_tid = team.get('id')
+                        # opp_tid may be set in either order; recover if missed
+                        if opp_tid is None:
+                            for team in match_teams:
+                                if team.get('id') != my_tid:
+                                    opp_tid = team.get('id')
+                                    break
+
+                        if my_won:
+                            points_earned += weight
+                            total_flights_won += 1
+                            if flight_key in flight_stats:
+                                flight_stats[flight_key]['wins'] += 1
+
+                        # Game-share accounting (informational + oGS input).
+                        # Match tiebreakers (super-TB, set 3 with one side ≥10)
+                        # count as 1 game to the winner, not their raw points,
+                        # since 10-7 is a single decision, not 17 games.
+                        if my_tid is not None and opp_tid is not None:
+                            for s in match.get('sets') or []:
+                                n = s.get('number') or 0
+                                mg = s.get(str(my_tid)) if s.get(str(my_tid)) is not None else s.get(my_tid)
+                                og = s.get(str(opp_tid)) if s.get(str(opp_tid)) is not None else s.get(opp_tid)
+                                if not isinstance(mg, int) or not isinstance(og, int):
+                                    continue
+                                vals = [v for k, v in s.items() if isinstance(v, int) and k not in ('number', 'tie')]
+                                is_match_tb = (n >= 3) and len(vals) >= 2 and max(vals) >= 10
+                                if is_match_tb:
+                                    if mg > og:
+                                        match_games_won += 1
+                                        match_games_played += 1
+                                    else:
+                                        match_games_played += 1
+                                else:
+                                    match_games_won += mg
+                                    match_games_played += mg + og
 
         # Calculate proportionally-weighted FWS for this match
         if available_weight > 0:
             match_fws = points_earned / available_weight
             dual_match_fws_scores.append(match_fws)
             per_match_records.append((opp_id, match_fws))
+            if match_games_played > 0:
+                match_game_share = match_games_won / match_games_played
+                game_share_records.append((opp_id, match_game_share))
+                total_games_won += match_games_won
+                total_games_played += match_games_played
 
     if not dual_match_fws_scores:
         return {
@@ -810,7 +866,11 @@ def calculate_fws_per_match(data, school_id):
             'flight_breakdown': flight_stats,
             'total_flights_won': 0,
             'total_flights_played': 0,
-            'per_match_records': []
+            'per_match_records': [],
+            'games_won': 0,
+            'games_played': 0,
+            'game_share': 0.0,
+            'game_share_match_records': [],
         }
 
     # Average of normalized match FWS scores (already in 0-1 range)
@@ -819,6 +879,8 @@ def calculate_fws_per_match(data, school_id):
     # Simple FWS percentage (flights won / flights played)
     fws_pct = (total_flights_won / total_flights_played * 100) if total_flights_played > 0 else 0.0
 
+    game_share = (total_games_won / total_games_played) if total_games_played > 0 else 0.0
+
     return {
         'normalized_fws': avg_fws,
         'match_count': len(dual_match_fws_scores),
@@ -826,7 +888,11 @@ def calculate_fws_per_match(data, school_id):
         'flight_breakdown': flight_stats,
         'total_flights_won': total_flights_won,
         'total_flights_played': total_flights_played,
-        'per_match_records': per_match_records
+        'per_match_records': per_match_records,
+        'games_won': total_games_won,
+        'games_played': total_games_played,
+        'game_share': game_share,
+        'game_share_match_records': game_share_records,
     }
 
 
@@ -898,8 +964,13 @@ def build_rankings(data_dir, master_school_list):
                     'flight_breakdown': fws_data['flight_breakdown'],
                     'total_flights_won': fws_data['total_flights_won'],
                     'total_flights_played': fws_data['total_flights_played'],
+                    # Game-share aggregates (informational + oGS input for TOSS)
+                    'games_won': fws_data.get('games_won', 0),
+                    'games_played': fws_data.get('games_played', 0),
+                    'game_share': fws_data.get('game_share', 0.0),
                     # Alt-model inputs (TOSS + QWS)
                     'fws_match_records': fws_data.get('per_match_records', []),
+                    'game_share_match_records': fws_data.get('game_share_match_records', []),
                     'dual_match_results': dual_results,
                 }
 
@@ -1028,7 +1099,11 @@ def build_rankings(data_dir, master_school_list):
                 if not teams:
                     continue
 
-                # --- Pass 3: TOSS (opponent-APR-weighted FWS) ---
+                # --- Pass 3: TOSS (opponent-APR-weighted FWS + opp-weighted game share) ---
+                # PI_toss = TOSS_APR_WEIGHT * APR + TOSS_FQI_WEIGHT * FQI + TOSS_OGS_WEIGHT * oGS
+                # FQI is the opponent-APR-weighted Flight Quality Index.
+                # oGS is the opponent-APR-weighted Game Share — captures whether
+                # a team's wins/losses were tight or lopsided in actual games.
                 apr_values = sorted(s['apr'] for s in teams.values())
                 median_apr = apr_values[len(apr_values) // 2] if apr_values else 0.5
                 if median_apr <= 0:
@@ -1036,10 +1111,13 @@ def build_rankings(data_dir, master_school_list):
 
                 for sid, school in teams.items():
                     records = school.get('fws_match_records') or []
+                    gs_records = school.get('game_share_match_records') or []
+
                     if not records:
                         school['fqi'] = school['normalized_fws']
                         school['adjusted_fws'] = school['normalized_fws']  # Backcompat alias
                         school['schedule_multiplier'] = 1.0
+                        school['ogs'] = school.get('game_share', 0.0)
                         school['power_index_toss'] = school['power_index']
                         continue
 
@@ -1061,7 +1139,28 @@ def build_rankings(data_dir, master_school_list):
                     school['fqi'] = fqi
                     school['adjusted_fws'] = fqi  # Backcompat alias
                     school['schedule_multiplier'] = (fqi / raw_fws) if raw_fws > 0 else 1.0
-                    school['power_index_toss'] = (school['apr'] * APR_WEIGHT) + (fqi * FWS_WEIGHT)
+
+                    # oGS = same arithmetic mean approach, applied to per-match
+                    # game share. Falls back to raw game_share when set data is
+                    # unavailable. Naturally penalizes teams whose flight wins
+                    # were tight against weak opponents (low game share × low
+                    # multiplier) and rewards competitive losses against strong
+                    # opponents.
+                    if gs_records:
+                        ogs_total = 0.0
+                        for opp_id, match_gs in gs_records:
+                            m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
+                            ogs_total += match_gs * m
+                        ogs = ogs_total / len(gs_records)
+                    else:
+                        ogs = school.get('game_share', 0.0)
+                    school['ogs'] = ogs
+
+                    school['power_index_toss'] = (
+                        (school['apr'] * TOSS_APR_WEIGHT) +
+                        (fqi * TOSS_FQI_WEIGHT) +
+                        (ogs * TOSS_OGS_WEIGHT)
+                    )
 
                 # --- Pass 4: QWS (iterative quality-weighted APR) ---
                 # Seed opponent PI with WP (iter 0), then iterate using the
@@ -1563,6 +1662,9 @@ def build_rankings(data_dir, master_school_list):
                     'flight_breakdown': flight_pcts,  # Win % per flight position
                     'total_flights_won': stats.get('total_flights_won', 0),
                     'total_flights_played': stats.get('total_flights_played', 0),
+                    'games_won': stats.get('games_won', 0),
+                    'games_played': stats.get('games_played', 0),
+                    'game_share': round(stats.get('game_share', 0.0), 4),
                 }
                 if alt_models and int(year) >= 2026 and 'power_index_toss' in stats:
                     fqi_val = round(stats.get('fqi', stats.get('adjusted_fws', stats['normalized_fws'])), 4)
@@ -1571,6 +1673,7 @@ def build_rankings(data_dir, master_school_list):
                         'fqi': fqi_val,
                         'adjusted_fws': fqi_val,  # Backcompat alias
                         'schedule_multiplier': round(stats.get('schedule_multiplier', 1.0), 4),
+                        'ogs': round(stats.get('ogs', stats.get('game_share', 0.0)), 4),
                         'rank_toss': rank_toss_map.get(school_id, rank),
                         'power_index_qws': round(stats.get('power_index_qws', stats['power_index']), 4),
                         'apr_qws': round(stats.get('apr_qws', stats['apr']), 4),

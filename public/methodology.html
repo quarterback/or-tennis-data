@@ -119,6 +119,7 @@
                 <li><a href="#overview">Overview &amp; Formula</a></li>
                 <li><a href="#apr">APR (Adjusted Power Rating)</a></li>
                 <li><a href="#fws">Flight Quality Index (FQI / oFWS)</a></li>
+                <li><a href="#ogs">Opponent-Weighted Game Share (oGS)</a></li>
                 <li><a href="#h2h">Head-to-Head Tiebreakers</a></li>
                 <li><a href="#ab-test">Alternative Models (A/B Test)</a></li>
                 <li><a href="#faq">Frequently Asked Questions</a></li>
@@ -132,11 +133,11 @@
             <div class="faq-item">
                 <div class="faq-question">What is the Power Index?</div>
                 <div class="faq-answer">
-                    <p>The Power Index is a composite rating that combines two equally weighted components: a team's Adjusted Power Rating (APR) and its Flight Quality Index (FQI). Together, they capture both <em>how often a team wins</em> and <em>how a team actually competes at the flight level against the opponents they faced</em>.</p>
+                    <p>The Power Index is a composite rating that combines three weighted components: a team's Adjusted Power Rating (APR), its Flight Quality Index (FQI), and its opponent-weighted Game Share (oGS). Together, they capture <em>how often a team wins</em>, <em>how a team competes at the flight level against the opponents they faced</em>, and <em>how close those flights actually were in games</em>.</p>
                     <div class="formula-box">
-                        <span class="label">Power Index</span> = (APR &times; 50%) + (FQI &times; 50%)
+                        <span class="label">Power Index</span> = (APR &times; 40%) + (FQI &times; 40%) + (oGS &times; 20%)
                     </div>
-                    <p>APR measures team-level win/loss performance against a strength-of-schedule backdrop. FQI measures how many individual flights a team wins, weighted both by the competitive significance of the flight (#1 flights count more than #4 flights) <em>and</em> by the strength of the opponent (flight wins against stronger opponents count more than flight wins against weaker ones).</p>
+                    <p>APR measures team-level win/loss performance against a strength-of-schedule backdrop. FQI measures how many individual flights a team wins, weighted both by the competitive significance of the flight (#1 flights count more than #4 flights) <em>and</em> by the strength of the opponent. oGS measures the share of games (not just flights) the team won across the season, scaled by the same opponent-strength multiplier &mdash; so a 6&ndash;2 flight loss where the games went 49&ndash;30 is read as more competitive than a 6&ndash;2 flight loss where the games went 50&ndash;5.</p>
                 </div>
             </div>
         </div>
@@ -240,6 +241,37 @@
             </div>
         </div>
 
+        <!-- Section 3.5: oGS -->
+        <div id="ogs" class="faq-section">
+            <div class="faq-section-header">Opponent-Weighted Game Share (oGS)</div>
+
+            <div class="faq-item">
+                <div class="faq-question">What is oGS?</div>
+                <div class="faq-answer">
+                    <p><strong>oGS</strong> is the opponent-weighted share of <em>games</em> (not flights) a team won across the season. It's the third component of the Power Index, alongside APR and FQI. Where FQI tracks who won which flights, oGS tracks how lopsided those flights actually were in actual games played.</p>
+                    <div class="formula-box">
+                        <span class="label">oGS</span> = arithmetic mean over all dual matches of <em>(games_won / games_played) &times; (opp APR / median APR)</em>
+                    </div>
+                    <p>The opponent multiplier is the same one FQI uses, so a competitive game-share against a strong opponent counts for more than the same game-share against a weaker opponent. The metric naturally exposes two failure modes that FQI alone can miss: undefeated teams in thin leagues whose flight wins were actually tight in games (low oGS), and teams with losing records on tough schedules whose losses were close in games (higher oGS than their record suggests).</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">How are games counted?</div>
+                <div class="faq-answer">
+                    <p>The set type matters. Best-of-3 sets and 8-game pro sets contribute their raw game totals (e.g., a 6&ndash;4, 6&ndash;2 set count contributes 12 games for the winner and 6 for the loser). When a regular set goes to a tiebreaker (7&ndash;6), the tiebreaker counts as a single deciding game, not its raw point total. <strong>Match tiebreakers</strong> (the 10-point super-tiebreaker that replaces a third set) are treated as one game to the winner and zero to the loser &mdash; a 10&ndash;7 super-TB is a single decision, not 17 games.</p>
+                    <p>Flights without set-level data fall back to a binary outcome (one game to the winner) so coverage stays high without distorting the metric.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">Why combine games with flights instead of replacing flight-based metrics?</div>
+                <div class="faq-answer">
+                    <p>FQI's job is anti-stacking: rewarding teams that win across the lineup and discouraging teams from concentrating talent in a few flights. That mission is unchanged. oGS is additive &mdash; it answers a different question (<em>how dominant were those flight wins?</em>) and is intentionally weighted lower (20% vs. FQI's 40%) so it informs the ranking without overriding the structural signals from APR and FQI.</p>
+                </div>
+            </div>
+        </div>
+
         <!-- Section 4: H2H -->
         <div id="h2h" class="faq-section">
             <div class="faq-section-header">Head-to-Head Tiebreakers</div>
@@ -274,15 +306,17 @@
             </div>
 
             <div class="faq-item">
-                <div class="faq-question">TOSS &mdash; primary (APR + opponent-weighted FWS)</div>
+                <div class="faq-question">TOSS &mdash; primary (APR + FQI + oGS)</div>
                 <div class="faq-answer">
-                    <p>APR is unchanged (the OSAA-style RPI above). For each dual match, the FWS contribution is multiplied by the opponent's APR relative to the median APR, clamped to [0.75, 1.25]. Winning 5-3 against a strong team counts for more than 8-0 against a weak team; losing 3-5 to a strong team is softened so teams aren't penalized for playing up.</p>
+                    <p>APR is unchanged (the OSAA-style RPI above). FQI is the opponent-APR-weighted Flight Quality Index. oGS is the opponent-APR-weighted Game Share. Each opponent multiplier is the opponent's APR relative to the median APR, applied uncapped to both FQI and oGS contributions per match.</p>
                     <div class="formula-box">
-                        <span class="label">m<sub>i</sub></span> = clamp(opp_APR<sub>i</sub> / median_APR, 0.75, 1.25)<br>
-                        <span class="label">Adjusted FWS</span> = &sum;(match_FWS<sub>i</sub> &times; m<sub>i</sub>) / &sum; m<sub>i</sub><br>
-                        <span class="label">Power Index</span> = (APR &times; 50%) + (Adjusted FWS &times; 50%)
+                        <span class="label">m<sub>i</sub></span> = opp_APR<sub>i</sub> / median_APR<br>
+                        <span class="label">FQI</span> = &sum;(match_FWS<sub>i</sub> &times; m<sub>i</sub>) / N<br>
+                        <span class="label">oGS</span> = &sum;(match_game_share<sub>i</sub> &times; m<sub>i</sub>) / N<br>
+                        <span class="label">Power Index</span> = (APR &times; 40%) + (FQI &times; 40%) + (oGS &times; 20%)
                     </div>
-                    <p>This is the formula driving the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator for 2026+. JSON fields: <code>power_index</code>, <code>rank</code>, <code>class_rank</code>, plus the same-values <code>power_index_toss</code>, <code>adjusted_fws</code>, <code>schedule_multiplier</code>, <code>rank_toss</code>.</p>
+                    <p>This is the formula driving the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator for 2026+. JSON fields: <code>power_index</code>, <code>rank</code>, <code>class_rank</code>, plus the same-values <code>power_index_toss</code>, <code>fqi</code>, <code>ogs</code>, <code>schedule_multiplier</code>, <code>rank_toss</code>.</p>
+                    <p><strong>Why three components instead of two?</strong> One week of live data on the 50/50 APR + FQI version surfaced a residual bias: undefeated teams in shallow conferences could carry a maxed-out raw flight score even after the opponent multiplier discounted it, because <code>1.0 &times; 0.7 = 0.7</code> still sits above field median. Folding in oGS &mdash; which natively distinguishes a 6&ndash;2 flight win that came in straight 6&ndash;0 sets from a 6&ndash;2 flight win that went the distance &mdash; pulls those teams into a more honest band without any class-aware logic.</p>
                 </div>
             </div>
 
