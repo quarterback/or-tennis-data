@@ -52,6 +52,16 @@ TOSS_APR_WEIGHT = 0.40  # Dual match outcomes (RPI-style)
 TOSS_FQI_WEIGHT = 0.40  # Flight Quality Index (opp-APR-weighted FWS)
 TOSS_OGS_WEIGHT = 0.20  # Opp-weighted game share (set/game-level dominance)
 
+# Empirical-Bayes shrinkage applied to FQI and oGS so small-sample teams
+# regress toward the league-average baseline. Implemented as K phantom
+# matches at neutral (match_score = 0.5, opp multiplier = 1.0), added to
+# the per-match arithmetic mean. A team with N actual matches sees its
+# raw FQI/oGS pulled (TOSS_PRIOR_MATCHES / (N + TOSS_PRIOR_MATCHES)) of
+# the way toward the 0.5 baseline. APR is already RPI-shrunk via OWP/OOWP
+# and is left alone.
+TOSS_PRIOR_MATCHES = 5
+TOSS_PRIOR_VALUE = 0.5
+
 # League-depth adjustment for OWP (two-pass APR)
 # Each opponent's effective strength = opp_wp * (loo_league_depth / median_league_depth).
 # LOO depth excludes both the opponent and the team being evaluated, so a team
@@ -1121,27 +1131,32 @@ def build_rankings(data_dir, master_school_list):
                         school['power_index_toss'] = school['power_index']
                         continue
 
-                    # FQI = simple arithmetic mean of (flight_score * multiplier),
-                    # per docs/oFWS-PRD.md §4.4. Using a weighted mean (dividing
-                    # by sum(weights)) mostly cancels the opponent effect — a
-                    # team with all below-median opponents would see its FQI
-                    # equal its raw FWS. The arithmetic mean preserves the
-                    # intended scaling: a team that plays all below-median
-                    # opponents gets its flight contributions discounted in
-                    # aggregate, and a team that plays above-median opponents
-                    # gets them amplified.
+                    # FQI = arithmetic mean of (flight_score * multiplier),
+                    # per docs/oFWS-PRD.md §4.4, with K phantom matches at the
+                    # neutral baseline appended to the denominator (and K *
+                    # TOSS_PRIOR_VALUE to the numerator). The arithmetic mean
+                    # preserves opponent-strength scaling — a team that plays
+                    # below-median opponents gets discounted in aggregate, a
+                    # team that plays above-median opponents gets amplified —
+                    # while the prior matches pull small-sample teams toward
+                    # the league baseline so a 5-match dominant run can't out-
+                    # rank a 13-match strong-opposition season on raw average.
                     total = 0.0
                     for opp_id, match_fws in records:
                         m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
                         total += match_fws * m
-                    fqi = total / len(records)
+                    fqi = (
+                        (total + TOSS_PRIOR_MATCHES * TOSS_PRIOR_VALUE)
+                        / (len(records) + TOSS_PRIOR_MATCHES)
+                    )
                     raw_fws = school['normalized_fws']
                     school['fqi'] = fqi
                     school['adjusted_fws'] = fqi  # Backcompat alias
                     school['schedule_multiplier'] = (fqi / raw_fws) if raw_fws > 0 else 1.0
 
-                    # oGS = same arithmetic mean approach, applied to per-match
-                    # game share. Falls back to raw game_share when set data is
+                    # oGS = same arithmetic mean approach with the same
+                    # phantom-match shrinkage, applied to per-match game share.
+                    # Falls back to raw game_share when set data is
                     # unavailable. Naturally penalizes teams whose flight wins
                     # were tight against weak opponents (low game share × low
                     # multiplier) and rewards competitive losses against strong
@@ -1151,7 +1166,10 @@ def build_rankings(data_dir, master_school_list):
                         for opp_id, match_gs in gs_records:
                             m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
                             ogs_total += match_gs * m
-                        ogs = ogs_total / len(gs_records)
+                        ogs = (
+                            (ogs_total + TOSS_PRIOR_MATCHES * TOSS_PRIOR_VALUE)
+                            / (len(gs_records) + TOSS_PRIOR_MATCHES)
+                        )
                     else:
                         ogs = school.get('game_share', 0.0)
                     school['ogs'] = ogs

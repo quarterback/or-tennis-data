@@ -2,6 +2,16 @@
 
 ## 2026-04-26
 
+### Changed: TOSS FQI and oGS now apply empirical-Bayes shrinkage
+
+**Problem:** Both opponent-weighted components in the TOSS Power Index — FQI (flight quality) and oGS (game share) — were a straight per-match arithmetic mean with no sample-size adjustment. A team that played five lopsided wins early in the season could land above a team with twelve matches and a couple of competitive losses, because the small-sample team's per-match average had nothing pulling it back toward a league baseline. The reported case had a 4-1 team ranking just ahead of a 10-3 league rival on raw PI even though the 10-3 team had won the head-to-head; the H2H swap corrected the state rank but the underlying number was the wrong way around.
+
+**Fix:** Added 5 phantom matches at the neutral 0.5 baseline (multiplier 1.0) to both FQI and oGS calculations. A team with N actual matches is now pulled `5 / (N + 5)` of the way toward 0.5: a 5-match team is shrunk 50%, a 13-match team 28%, a 60-flight (~10 dual-match) team 33%, a full season (~15 matches) team 25%. APR is unchanged — the RPI-style OWP/OOWP terms already shrink it via the schedule graph.
+
+**Constants:** `TOSS_PRIOR_MATCHES = 5`, `TOSS_PRIOR_VALUE = 0.5` in `generate_site.py`. Same prior is applied to FQI and oGS so the regression strength is consistent across the two opp-weighted components.
+
+**Impact:** 2026-only (TOSS is the primary on 2026 alone; 2021–2025 retain their RPI-based legacy formula and are unchanged). Biggest movers are tiny-sample season-opener teams sliding back toward the field — the most dramatic was a 1-match team that had been at state rank #2 dropping to #25 — and a few mid-pack teams with deep schedules moving up. Head-to-head among the affected leagues now matches the user's intuition without relying on a swap to rescue it.
+
 ### Fixed: League rank stale after H2H tiebreaker swaps
 
 **Problem:** League standings could show a team at league rank #1 while the same team sat *below* a league-mate in the overall state ranking, because the head-to-head tiebreaker pass had already moved the league-mate ahead in the state list. Affected 466 teams across 139 (year, gender, league) groups going back to 2021, including 88 teams in 2026.
