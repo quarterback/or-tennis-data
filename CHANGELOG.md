@@ -2,6 +2,14 @@
 
 ## 2026-04-26
 
+### Added: Teams with fewer than 3 dual matches now display as "NR"
+
+**What:** A team must have played at least 3 dual matches to receive a numeric state rank, class rank, or league rank. Teams below the threshold are emitted with all rank-style fields (`rank`, `class_rank`, `league_rank`, `rank_toss`, `rank_qws`, `rank_legacy`, and the matching `class_rank_*` variants) set to `null`, and the rankings table renders them as **NR**. They're also excluded from head-to-head swap eligibility, the class-average FQI baseline, and the playoff simulator's eligible field.
+
+**Why:** A 1-match résumé is not enough signal to support a rank. Before the fix, a team with a single early-season win could appear at state rank #2 simply because their per-match average sat above everyone else's. The empirical-Bayes shrinkage on FQI/oGS already softened this for teams with 4–5 matches, but truly tiny samples (1–2 matches) still don't belong on a ranked list at all.
+
+**Impact:** 2026 currently has 0 boys teams and 1 girls team marked NR. Across the 2021–2026 archive 30 historical entries flip from numeric to NR, all with 0–2 dual matches. Numeric metrics (APR, FQI, PI, record, etc.) are still computed and emitted on NR entries so they reappear with a rank as soon as match #3 is played. Threshold is `MIN_RANKED_MATCHES = 3` in `generate_site.py`.
+
 ### Changed: TOSS FQI and oGS now apply empirical-Bayes shrinkage
 
 **Problem:** Both opponent-weighted components in the TOSS Power Index — FQI (flight quality) and oGS (game share) — were a straight per-match arithmetic mean with no sample-size adjustment. A team that played five lopsided wins early in the season could land above a team with twelve matches and a couple of competitive losses, because the small-sample team's per-match average had nothing pulling it back toward a league baseline. The reported case had a 4-1 team ranking just ahead of a 10-3 league rival on raw PI even though the 10-3 team had won the head-to-head; the H2H swap corrected the state rank but the underlying number was the wrong way around.
