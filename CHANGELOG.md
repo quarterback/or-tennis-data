@@ -2,6 +2,16 @@
 
 ## 2026-04-26
 
+### Changed: TOSS Power Index folds in opponent-weighted Game Share (40/40/20 split)
+
+**What:** The primary Power Index formula is now `0.40 × APR + 0.40 × FQI + 0.20 × oGS`. A new third component, **oGS (opponent-weighted Game Share)**, is the season-aggregate share of *games* (not just flights) a team won, scaled by the same `opp_APR / median_APR` multiplier that FQI uses. Set-type-aware: best-of-3 sets and 8-game pro sets contribute raw game totals, regular-set tiebreakers count as one deciding game, and 10-point match tiebreakers count as a single decision (not 17 games). Coverage is 98.1% on 2026 flight matches; flights without set data fall back to a binary one-game outcome.
+
+**Why:** One week of live data on the 50/50 APR + FQI version surfaced a residual distortion: undefeated teams in shallow conferences could carry a maxed-out raw flight score even after the opponent multiplier discounted it, because `1.0 × 0.7` still sits above field median. Folding in oGS — which natively distinguishes a 6–2 flight win that came in straight 6–0 sets from a 6–2 flight win that went the distance — pulls those teams into more honest bands without introducing any class-aware logic. FQI's anti-stacking purpose is preserved (its weight stays equal to APR; the new term is additive, not a replacement).
+
+**Impact:** Historical seasons (2021–2025) and the three already-published Saturday weekly snapshots (2026-04-04, 2026-04-11, 2026-04-18) are unchanged. The 2026 season-long rankings reorder modestly — Pearson correlation between the previous and new primary PI is ~0.96, most teams move zero or one slot. Biggest movement is at the top of the table (undefeated thin-conference teams move down) and in the mid-pack (deeper-conference teams with competitive losses rise). New JSON fields on every 2026 entry: `games_won`, `games_played`, `game_share` (informational aggregates), and `ogs` (the opp-weighted variant that feeds the formula).
+
+**Detail:** [Game-Share Fold-In AAR](aar-toss-ogs-fold-in.html) · [methodology](methodology.html#ogs).
+
 ### Changed: TOSS is now the primary Power Index
 
 **What:** Starting with Week 4 (2026-04-26, the first Sunday-cadence snapshot), the main rankings table, class ranks, head-to-head tiebreakers, league standings, and the playoff simulator all use **TOSS** as the primary Power Index. The pre-2026-04-26 RPI-based formula is retained as **Legacy** in the Model dropdown for comparison, and **QWS** continues as the experimental B of the ongoing A/B test. The Model selector above the rankings table switches the State Rank / Class Rank / Power Index columns between the three models (TOSS primary is the default).
