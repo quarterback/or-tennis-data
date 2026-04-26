@@ -1536,6 +1536,19 @@ def build_rankings(data_dir, master_school_list):
             if h2h_swaps:
                 print(f"  H2H swaps in {year} {gender}: {len(h2h_swaps)}")
 
+            # Resync league rank with the post-H2H state rank order so league
+            # standings match the overall rankings. Pre-swap league_rank was
+            # used as a *condition* for swap eligibility above and is now stale.
+            school_league_rank = {}
+            post_swap_league_groups = defaultdict(list)
+            for school_id, stats in ranked:
+                league = school_info.get(school_id, {}).get('league', '')
+                if league:
+                    post_swap_league_groups[league].append(school_id)
+            for league, ids in post_swap_league_groups.items():
+                for league_rank, sid in enumerate(ids, 1):
+                    school_league_rank[sid] = league_rank
+
             # Build H2H lookup for nearby teams (for UI display)
             h2h_nearby = {}
             for i, (school_id, stats) in enumerate(ranked):

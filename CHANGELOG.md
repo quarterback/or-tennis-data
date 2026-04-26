@@ -2,6 +2,14 @@
 
 ## 2026-04-26
 
+### Fixed: League rank stale after H2H tiebreaker swaps
+
+**Problem:** League standings could show a team at league rank #1 while the same team sat *below* a league-mate in the overall state ranking, because the head-to-head tiebreaker pass had already moved the league-mate ahead in the state list. Affected 466 teams across 139 (year, gender, league) groups going back to 2021, including 88 teams in 2026.
+
+**Root cause:** `school_league_rank` was built once from the initial Power Index sort (used as a *condition* for the H2H swap pass), then never recomputed after the swap pass reordered teams. The output entry's `league_rank` field was reading the stale pre-swap value while `rank` was reading the post-swap order.
+
+**Fix:** After all H2H swap phases finish, rebuild `school_league_rank` from the post-swap `ranked` order. State rank and league rank are now monotonic within every league.
+
 ### Changed: TOSS Power Index folds in opponent-weighted Game Share (40/40/20 split)
 
 **What:** The primary Power Index formula is now `0.40 × APR + 0.40 × FQI + 0.20 × oGS`. A new third component, **oGS (opponent-weighted Game Share)**, is the season-aggregate share of *games* (not just flights) a team won, scaled by the same `opp_APR / median_APR` multiplier that FQI uses. Set-type-aware: best-of-3 sets and 8-game pro sets contribute raw game totals, regular-set tiebreakers count as one deciding game, and 10-point match tiebreakers count as a single decision (not 17 games). Coverage is 98.1% on 2026 flight matches; flights without set data fall back to a binary one-game outcome.
