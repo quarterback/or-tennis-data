@@ -52,6 +52,23 @@ TOSS_APR_WEIGHT = 0.40  # Dual match outcomes (RPI-style)
 TOSS_FQI_WEIGHT = 0.40  # Flight Quality Index (opp-APR-weighted FWS)
 TOSS_OGS_WEIGHT = 0.20  # Opp-weighted game share (set/game-level dominance)
 
+# Empirical-Bayes shrinkage applied to FQI and oGS so small-sample teams
+# regress toward the league-average baseline. Implemented as K phantom
+# matches at neutral (match_score = 0.5, opp multiplier = 1.0), added to
+# the per-match arithmetic mean. A team with N actual matches sees its
+# raw FQI/oGS pulled (TOSS_PRIOR_MATCHES / (N + TOSS_PRIOR_MATCHES)) of
+# the way toward the 0.5 baseline. APR is already RPI-shrunk via OWP/OOWP
+# and is left alone.
+TOSS_PRIOR_MATCHES = 5
+TOSS_PRIOR_VALUE = 0.5
+
+# Minimum dual matches required before a team appears in the ranked list.
+# Teams below this threshold are emitted with rank/class_rank/league_rank set
+# to null and rendered as "NR" by the frontend; their numeric metrics still
+# compute (so the data is there if they later qualify) but they are excluded
+# from H2H swaps, league/class ordering, and the playoff simulator.
+MIN_RANKED_MATCHES = 3
+
 # League-depth adjustment for OWP (two-pass APR)
 # Each opponent's effective strength = opp_wp * (loo_league_depth / median_league_depth).
 # LOO depth excludes both the opponent and the team being evaluated, so a team
@@ -1121,27 +1138,32 @@ def build_rankings(data_dir, master_school_list):
                         school['power_index_toss'] = school['power_index']
                         continue
 
-                    # FQI = simple arithmetic mean of (flight_score * multiplier),
-                    # per docs/oFWS-PRD.md §4.4. Using a weighted mean (dividing
-                    # by sum(weights)) mostly cancels the opponent effect — a
-                    # team with all below-median opponents would see its FQI
-                    # equal its raw FWS. The arithmetic mean preserves the
-                    # intended scaling: a team that plays all below-median
-                    # opponents gets its flight contributions discounted in
-                    # aggregate, and a team that plays above-median opponents
-                    # gets them amplified.
+                    # FQI = arithmetic mean of (flight_score * multiplier),
+                    # per docs/oFWS-PRD.md §4.4, with K phantom matches at the
+                    # neutral baseline appended to the denominator (and K *
+                    # TOSS_PRIOR_VALUE to the numerator). The arithmetic mean
+                    # preserves opponent-strength scaling — a team that plays
+                    # below-median opponents gets discounted in aggregate, a
+                    # team that plays above-median opponents gets amplified —
+                    # while the prior matches pull small-sample teams toward
+                    # the league baseline so a 5-match dominant run can't out-
+                    # rank a 13-match strong-opposition season on raw average.
                     total = 0.0
                     for opp_id, match_fws in records:
                         m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
                         total += match_fws * m
-                    fqi = total / len(records)
+                    fqi = (
+                        (total + TOSS_PRIOR_MATCHES * TOSS_PRIOR_VALUE)
+                        / (len(records) + TOSS_PRIOR_MATCHES)
+                    )
                     raw_fws = school['normalized_fws']
                     school['fqi'] = fqi
                     school['adjusted_fws'] = fqi  # Backcompat alias
                     school['schedule_multiplier'] = (fqi / raw_fws) if raw_fws > 0 else 1.0
 
-                    # oGS = same arithmetic mean approach, applied to per-match
-                    # game share. Falls back to raw game_share when set data is
+                    # oGS = same arithmetic mean approach with the same
+                    # phantom-match shrinkage, applied to per-match game share.
+                    # Falls back to raw game_share when set data is
                     # unavailable. Naturally penalizes teams whose flight wins
                     # were tight against weak opponents (low game share × low
                     # multiplier) and rewards competitive losses against strong
@@ -1151,7 +1173,10 @@ def build_rankings(data_dir, master_school_list):
                         for opp_id, match_gs in gs_records:
                             m = (teams[opp_id]['apr'] / median_apr) if opp_id in teams else 1.0
                             ogs_total += match_gs * m
-                        ogs = ogs_total / len(gs_records)
+                        ogs = (
+                            (ogs_total + TOSS_PRIOR_MATCHES * TOSS_PRIOR_VALUE)
+                            / (len(gs_records) + TOSS_PRIOR_MATCHES)
+                        )
                     else:
                         ogs = school.get('game_share', 0.0)
                     school['ogs'] = ogs
@@ -1221,9 +1246,26 @@ def build_rankings(data_dir, master_school_list):
     output = []
     for year in sorted(school_data.keys()):
         for gender in sorted(school_data[year].keys()):
+            # Partition: teams with < MIN_RANKED_MATCHES dual matches are
+            # excluded from ranking and emitted as NR. Everything below
+            # operates on the qualified subset only.
+            def _dual_match_count(stats):
+                return (stats.get('dual_wins', 0)
+                        + stats.get('dual_losses', 0)
+                        + stats.get('dual_ties', 0))
+
+            qualified_items = [
+                (sid, s) for sid, s in school_data[year][gender].items()
+                if _dual_match_count(s) >= MIN_RANKED_MATCHES
+            ]
+            unranked_items = [
+                (sid, s) for sid, s in school_data[year][gender].items()
+                if _dual_match_count(s) < MIN_RANKED_MATCHES
+            ]
+
             # Initial sort by Power Index (TOSS when primary, otherwise RPI)
             ranked = sorted(
-                school_data[year][gender].items(),
+                qualified_items,
                 key=lambda x: x[1]['power_index'],
                 reverse=True
             )
@@ -1234,14 +1276,14 @@ def build_rankings(data_dir, master_school_list):
             rank_legacy_map = {}
             if alt_models:
                 toss_sorted = sorted(
-                    school_data[year][gender].items(),
+                    qualified_items,
                     key=lambda x: x[1].get('power_index_toss', x[1]['power_index']),
                     reverse=True,
                 )
                 for i, (sid, _) in enumerate(toss_sorted, 1):
                     rank_toss_map[sid] = i
                 qws_sorted = sorted(
-                    school_data[year][gender].items(),
+                    qualified_items,
                     key=lambda x: x[1].get('power_index_qws', x[1]['power_index']),
                     reverse=True,
                 )
@@ -1251,7 +1293,7 @@ def build_rankings(data_dir, master_school_list):
                 # power_index_legacy once TOSS is promoted). Falls back to the
                 # primary power_index in the pre-primary window.
                 legacy_sorted = sorted(
-                    school_data[year][gender].items(),
+                    qualified_items,
                     key=lambda x: x[1].get('power_index_legacy', x[1]['power_index']),
                     reverse=True,
                 )
@@ -1536,6 +1578,19 @@ def build_rankings(data_dir, master_school_list):
             if h2h_swaps:
                 print(f"  H2H swaps in {year} {gender}: {len(h2h_swaps)}")
 
+            # Resync league rank with the post-H2H state rank order so league
+            # standings match the overall rankings. Pre-swap league_rank was
+            # used as a *condition* for swap eligibility above and is now stale.
+            school_league_rank = {}
+            post_swap_league_groups = defaultdict(list)
+            for school_id, stats in ranked:
+                league = school_info.get(school_id, {}).get('league', '')
+                if league:
+                    post_swap_league_groups[league].append(school_id)
+            for league, ids in post_swap_league_groups.items():
+                for league_rank, sid in enumerate(ids, 1):
+                    school_league_rank[sid] = league_rank
+
             # Build H2H lookup for nearby teams (for UI display)
             h2h_nearby = {}
             for i, (school_id, stats) in enumerate(ranked):
@@ -1685,6 +1740,78 @@ def build_rankings(data_dir, master_school_list):
                     })
                 output.append(entry)
 
+            # Emit NR (Not Ranked) teams — fewer than MIN_RANKED_MATCHES dual
+            # matches. Numeric metrics are still computed so the data is present
+            # if the team later qualifies, but rank-style fields are null.
+            for school_id, stats in unranked_items:
+                info = school_info.get(school_id, {})
+                flight_breakdown = stats.get('flight_breakdown', {})
+                flight_pcts = {}
+                for flight, data in flight_breakdown.items():
+                    if data['played'] > 0:
+                        flight_pcts[flight] = round(data['wins'] / data['played'] * 100, 1)
+                    else:
+                        flight_pcts[flight] = None
+
+                entry = {
+                    'year': int(year),
+                    'gender': gender,
+                    'rank': None,
+                    'class_rank': None,
+                    'school_id': school_id,
+                    'school_name': clean_school_name(info.get('name', f'School {school_id}')),
+                    'city': info.get('city', ''),
+                    'coords': get_city_coords(info.get('city', '')),
+                    'classification': info.get('classification', ''),
+                    'league': info.get('league', ''),
+                    'league_rank': None,
+                    'wp': round(stats['wp'], 4),
+                    'owp': round(stats['owp'], 4),
+                    'oowp': round(stats['oowp'], 4),
+                    'apr': round(stats['apr'], 4),
+                    'fws': round(stats['fws'], 4),
+                    'normalized_fws': round(stats['normalized_fws'], 4),
+                    'fws_pct': round(stats.get('fws_pct', 0), 1),
+                    'fws_plus': None,
+                    'power_index': round(stats['power_index'], 4),
+                    'matches_played': stats['matches_played'],
+                    'opponents_count': len(stats['opponents']),
+                    'record': f"{stats['dual_wins']}-{stats['dual_losses']}-{stats['dual_ties']}",
+                    'wins': stats['dual_wins'],
+                    'losses': stats['dual_losses'],
+                    'ties': stats['dual_ties'],
+                    'league_record': f"{stats['league_wins']}-{stats['league_losses']}-{stats['league_ties']}",
+                    'league_wins': stats['league_wins'],
+                    'league_losses': stats['league_losses'],
+                    'league_ties': stats['league_ties'],
+                    'h2h_boosted': False,
+                    'h2h_boost_reason': None,
+                    'h2h_nearby': [],
+                    'flight_breakdown': flight_pcts,
+                    'total_flights_won': stats.get('total_flights_won', 0),
+                    'total_flights_played': stats.get('total_flights_played', 0),
+                    'games_won': stats.get('games_won', 0),
+                    'games_played': stats.get('games_played', 0),
+                    'game_share': round(stats.get('game_share', 0.0), 4),
+                }
+                if alt_models and int(year) >= 2026 and 'power_index_toss' in stats:
+                    fqi_val = round(stats.get('fqi', stats.get('adjusted_fws', stats['normalized_fws'])), 4)
+                    entry.update({
+                        'power_index_toss': round(stats['power_index_toss'], 4),
+                        'fqi': fqi_val,
+                        'adjusted_fws': fqi_val,
+                        'schedule_multiplier': round(stats.get('schedule_multiplier', 1.0), 4),
+                        'ogs': round(stats.get('ogs', stats.get('game_share', 0.0)), 4),
+                        'rank_toss': None,
+                        'power_index_qws': round(stats.get('power_index_qws', stats['power_index']), 4),
+                        'apr_qws': round(stats.get('apr_qws', stats['apr']), 4),
+                        'qws_iterations': stats.get('qws_iterations', 0),
+                        'rank_qws': None,
+                        'power_index_legacy': round(stats.get('power_index_legacy', stats['power_index']), 4),
+                        'rank_legacy': None,
+                    })
+                output.append(entry)
+
     # Classification-relative FQI index (100 = classification average).
     # On 2026+ entries uses the opponent-weighted `fqi`; falls back to raw
     # flight-win percentage for seasons that predate FQI.
@@ -1694,21 +1821,25 @@ def build_rankings(data_dir, master_school_list):
         class_groups[key].append(entry)
 
     for key, entries in class_groups.items():
-        entries.sort(key=lambda x: x['rank'])
+        # NR teams (rank=None) are excluded from class_rank ordering and the
+        # class-average FQI/FWS+ calculation. Their fqi_plus/class_rank stay
+        # null so the frontend can render them as "NR".
+        ranked_entries = [e for e in entries if e.get('rank') is not None]
+        ranked_entries.sort(key=lambda x: x['rank'])
 
-        fqi_vals = [e['fqi'] for e in entries if 'fqi' in e and e['fqi'] > 0]
+        fqi_vals = [e['fqi'] for e in ranked_entries if 'fqi' in e and e['fqi'] > 0]
         if fqi_vals:
             class_avg = sum(fqi_vals) / len(fqi_vals)
-            for class_rank, entry in enumerate(entries, 1):
+            for class_rank, entry in enumerate(ranked_entries, 1):
                 entry['class_rank'] = class_rank
                 val = entry.get('fqi', 0)
                 plus = round(val / class_avg * 100, 0) if class_avg > 0 and val > 0 else 100
                 entry['fqi_plus'] = plus
                 entry['fws_plus'] = plus  # Backcompat alias
         else:
-            fws_pcts = [e['fws_pct'] for e in entries if e['fws_pct'] > 0]
+            fws_pcts = [e['fws_pct'] for e in ranked_entries if e['fws_pct'] > 0]
             class_avg_fws_pct = sum(fws_pcts) / len(fws_pcts) if fws_pcts else 50.0
-            for class_rank, entry in enumerate(entries, 1):
+            for class_rank, entry in enumerate(ranked_entries, 1):
                 entry['class_rank'] = class_rank
                 if class_avg_fws_pct > 0 and entry['fws_pct'] > 0:
                     plus = round(entry['fws_pct'] / class_avg_fws_pct * 100, 0)
@@ -1717,14 +1848,21 @@ def build_rankings(data_dir, master_school_list):
                 entry['fqi_plus'] = plus
                 entry['fws_plus'] = plus  # Backcompat alias
 
-        # Alt-model class ranks (only present on 2026+ entries)
-        if entries and 'rank_toss' in entries[0]:
-            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_toss']), 1):
+        # Alt-model class ranks (only present on 2026+ entries). NR teams
+        # (rank_toss/qws/legacy = None) get null class_rank_* and are not
+        # included in the ordering.
+        if ranked_entries and 'rank_toss' in ranked_entries[0]:
+            for cr, e in enumerate(sorted(ranked_entries, key=lambda x: x['rank_toss']), 1):
                 e['class_rank_toss'] = cr
-            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_qws']), 1):
+            for cr, e in enumerate(sorted(ranked_entries, key=lambda x: x['rank_qws']), 1):
                 e['class_rank_qws'] = cr
-            for cr, e in enumerate(sorted(entries, key=lambda x: x['rank_legacy']), 1):
+            for cr, e in enumerate(sorted(ranked_entries, key=lambda x: x['rank_legacy']), 1):
                 e['class_rank_legacy'] = cr
+            for e in entries:
+                if e.get('rank') is None and 'rank_toss' in e:
+                    e['class_rank_toss'] = None
+                    e['class_rank_qws'] = None
+                    e['class_rank_legacy'] = None
 
     return output, school_data, raw_data_cache, school_info
 
@@ -1856,6 +1994,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         .rank-1 {{ color: #ffc107; font-weight: 700; }}
         .rank-2 {{ color: #6c757d; font-weight: 700; }}
         .rank-3 {{ color: #cd7f32; font-weight: 700; }}
+        .rank-nr {{ color: #adb5bd; font-weight: 600; font-size: 0.85em; letter-spacing: 0.5px; }}
         .school-name {{ font-weight: 600; }}
         .apr-high {{ color: #198754; font-weight: 600; }}
         .apr-mid {{ color: #6c757d; }}
@@ -2379,7 +2518,11 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         data: 'rank',
                         render: (d, t, row) => {{
                             const r = modelVal(row, MODEL_RANK_FIELD, 'rank');
+                            // NR teams (insufficient match count) sort to the
+                            // bottom and render as "NR".
+                            if (t === 'sort' || t === 'type') return r == null ? 99999 : r;
                             if (t !== 'display') return r;
+                            if (r == null) return `<span class="rank-nr" title="Not Ranked — fewer than {MIN_RANKED_MATCHES} dual matches">NR</span>`;
                             let cls = '';
                             if (r === 1) cls = 'rank-1';
                             else if (r === 2) cls = 'rank-2';
@@ -2403,7 +2546,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                         data: 'class_rank',
                         render: (d, t, row) => {{
                             const r = modelVal(row, MODEL_CLASS_RANK_FIELD, 'class_rank');
+                            if (t === 'sort' || t === 'type') return r == null ? 99999 : r;
                             if (t !== 'display') return r;
+                            if (r == null) return `<span class="rank-nr">NR</span>`;
                             let rankCls = '';
                             if (r === 1) rankCls = 'rank-1';
                             else if (r === 2) rankCls = 'rank-2';
@@ -2669,6 +2814,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 r.year === year &&
                 r.gender === gender &&
                 r.classification === classification &&
+                r.rank != null &&
                 (r.wins + r.losses + r.ties) >= minMatches
             );
 
