@@ -457,7 +457,16 @@ def build_weekly_rankings(raw_data, gender_id, school_info, pi_data, cutoff_date
             'quality_wins': quality.get(tid, 0),
         })
 
-    results.sort(key=lambda x: x['composite_rank'])
+    # Composite ties get tiebroken by: median rank (ascending — more
+    # consistent placement wins), then main-site Power Index (descending),
+    # then school_id (deterministic fallback). Without this the order of
+    # tied teams was just dict insertion order.
+    results.sort(key=lambda x: (
+        x['composite_rank'],
+        x['median_rank'],
+        -x['power_index'],
+        x['school_id'],
+    ))
     for i, r in enumerate(results):
         r['rank'] = i + 1
     return results

@@ -2,6 +2,12 @@
 
 ## 2026-04-26
 
+### Fixed: Weekly composite rankings broke ties arbitrarily
+
+**Problem:** When two or more teams had the same composite rank in the weekly computer rankings, their relative order was effectively dict insertion order — there was no defined tiebreaker, so a team with median rank 23 could land above a team at median 18 with the same composite. Affected every week's composite table since launch.
+
+**Fix:** The weekly composite sort now applies tiebreakers in order: composite rank → median rank (ascending — more consistent placement wins) → main-site Power Index (descending) → school_id (deterministic fallback). Re-running Week 4 reorders 12 tied groups; the largest case is the three-way 20.2 tie that now resolves to median 18 → 21 → 23 instead of the previous reverse order.
+
 ### Added: Teams with fewer than 3 dual matches now display as "NR"
 
 **What:** A team must have played at least 3 dual matches to receive a numeric state rank, class rank, or league rank. Teams below the threshold are emitted with all rank-style fields (`rank`, `class_rank`, `league_rank`, `rank_toss`, `rank_qws`, `rank_legacy`, and the matching `class_rank_*` variants) set to `null`, and the rankings table renders them as **NR**. They're also excluded from head-to-head swap eligibility, the class-average FQI baseline, and the playoff simulator's eligible field.
