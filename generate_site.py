@@ -48,9 +48,9 @@ FWS_WEIGHT = 0.50   # Roster depth (flight performance)
 
 # TOSS Power Index weights (3-component split since 2026-04-26 oGS fold-in)
 # PI_toss = TOSS_APR_WEIGHT * APR + TOSS_FQI_WEIGHT * FQI + TOSS_OGS_WEIGHT * oGS
-TOSS_APR_WEIGHT = 0.40  # Dual match outcomes (RPI-style)
-TOSS_FQI_WEIGHT = 0.40  # Flight Quality Index (opp-APR-weighted FWS)
-TOSS_OGS_WEIGHT = 0.20  # Opp-weighted game share (set/game-level dominance)
+TOSS_APR_WEIGHT = 0.65  # Dual match outcomes (RPI-style) — primary signal
+TOSS_FQI_WEIGHT = 0.25  # Flight Quality Index (opp-APR-weighted FWS)
+TOSS_OGS_WEIGHT = 0.10  # Opp-weighted game share (set/game-level dominance)
 
 # Empirical-Bayes shrinkage applied to FQI and oGS so small-sample teams
 # regress toward the league-average baseline. Implemented as K phantom
