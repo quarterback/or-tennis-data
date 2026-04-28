@@ -2,6 +2,14 @@
 
 ## 2026-04-26
 
+### Changed: TOSS Power Index weights rebalanced to 65/25/10
+
+**What:** The TOSS formula is now `0.65 × APR + 0.25 × FQI + 0.10 × oGS` (previously 0.40 / 0.40 / 0.20). Record-based APR is now the primary signal; FQI and oGS are secondary indicators of flight-level and game-level dominance rather than co-equal terms.
+
+**Why:** The 40/40/20 split allowed a strong-flight, weaker-record team to outrank a stronger-record team — a 8-5-2 team with 8-0 / 7-1 wins could land ahead of an 8-2 team that won 5-3 / 6-2. FQI was never meant to be that big a share of the formula; rebalancing keeps its anti-stacking purpose intact while letting head-to-head record do the heavy lifting.
+
+**Impact:** Reorders the 2026 table moderately. Biggest movers: an 8-2-0 6A team rising 17 spots into the top 10, an 11-3-0 team dropping out of the top 5, and several teams with dominant flight scores in shallow leagues sliding back. Historical seasons (2021–2025) use the legacy RPI formula and are unchanged.
+
 ### Fixed: Weekly composite rankings broke ties arbitrarily
 
 **Problem:** When two or more teams had the same composite rank in the weekly computer rankings, their relative order was effectively dict insertion order — there was no defined tiebreaker, so a team with median rank 23 could land above a team at median 18 with the same composite. Affected every week's composite table since launch.
