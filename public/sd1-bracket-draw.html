@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SD1 Girls Bracket Draw — Oregon HS Tennis</title>
+<style>
+  :root {
+    --fg: #212529; --muted: #6c757d; --bg: #fff; --pane: #f8f9fa;
+    --line: #dee2e6; --line-soft: #e9ecef; --primary: #0d6efd;
+    --green: #198754; --green-bg: #d1e7dd; --red: #dc3545;
+    --amber: #ffc107; --amber-bg: #fff3cd; --blue-soft: #cfe2ff;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         max-width: 1200px; margin: 24px auto; padding: 0 16px;
+         color: var(--fg); line-height: 1.4; }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 22px 0 10px; color: var(--primary); }
+  h3 { font-size: 1.0rem; margin: 14px 0 6px; }
+  p.lede { color: var(--muted); margin: 4px 0 14px; font-size: 0.92rem; }
+  .header-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+                background: var(--pane); border: 1px solid var(--line);
+                border-radius: 6px; padding: 10px 14px; margin-bottom: 18px;
+                font-size: 0.88rem; }
+  .header-bar label { display: flex; gap: 6px; align-items: center; }
+  .header-bar input[type="text"] { padding: 4px 8px; border: 1px solid var(--line);
+                                    border-radius: 3px; font-size: 0.88rem; min-width: 220px; }
+  .header-bar .status { color: var(--muted); }
+  .header-bar .status.saved { color: var(--green); }
+  .header-bar .status.error { color: var(--red); }
+  .header-bar .backend.ok { color: var(--green); }
+  .header-bar .backend.fail { color: #b54708; }
+  button, .btn { background: var(--primary); color: #fff; border: 0;
+                 padding: 6px 14px; border-radius: 4px; cursor: pointer;
+                 font-size: 0.88rem; font-weight: 600; }
+  button:hover, .btn:hover { filter: brightness(0.92); }
+  button.ghost { background: #fff; color: var(--fg); border: 1px solid var(--line); }
+  button.danger { background: var(--red); }
+  button:disabled { background: #adb5bd; cursor: not-allowed; }
+  .panel { border: 1px solid var(--line); border-radius: 6px; margin-bottom: 18px;
+           background: #fff; }
+  .panel > summary { padding: 12px 16px; cursor: pointer; font-weight: 600;
+                     font-size: 1.05rem; background: var(--pane);
+                     border-radius: 6px; user-select: none;
+                     list-style: none; display: flex; gap: 10px; align-items: center; }
+  .panel > summary::-webkit-details-marker { display: none; }
+  .panel[open] > summary { border-bottom: 1px solid var(--line);
+                           border-radius: 6px 6px 0 0; }
+  .panel > summary::before { content: '▸'; transition: transform 0.15s; font-size: 0.8rem; }
+  .panel[open] > summary::before { transform: rotate(90deg); }
+  .panel-body { padding: 14px 16px; }
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin-bottom: 14px; }
+  .tabs .tab { padding: 8px 16px; border: 1px solid transparent; border-bottom: 0;
+               cursor: pointer; font-size: 0.9rem; background: transparent; color: var(--fg);
+               border-radius: 4px 4px 0 0; }
+  .tabs .tab.active { background: var(--pane); border-color: var(--line);
+                      color: var(--primary); font-weight: 600; }
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+  .school-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                 gap: 12px; }
+  .school-card { border: 1px solid var(--line); border-radius: 5px; padding: 10px 12px; }
+  .school-card h4 { margin: 0 0 6px; font-size: 0.95rem; }
+  .school-card textarea { width: 100%; min-height: 90px; padding: 6px 8px;
+                          font-family: inherit; font-size: 0.85rem;
+                          border: 1px solid var(--line-soft); border-radius: 3px;
+                          resize: vertical; }
+  .school-card .count { float: right; color: var(--muted); font-size: 0.8rem; font-weight: normal; }
+  .school-card .count.over { color: var(--red); font-weight: 600; }
+  .seed-row { display: flex; gap: 6px; align-items: center; margin: 4px 0;
+              padding: 4px; border-radius: 3px; }
+  .seed-row .seed-num { width: 28px; font-weight: 600; color: var(--primary); text-align: right; }
+  .seed-row input[type="text"] { flex: 1 1 200px; padding: 4px 6px;
+                                  border: 1px solid var(--line); border-radius: 3px;
+                                  font-size: 0.88rem; }
+  .seed-row select { padding: 4px 6px; border: 1px solid var(--line);
+                     border-radius: 3px; font-size: 0.88rem; min-width: 180px; }
+  .seed-row .err { color: var(--red); font-size: 0.78rem; margin-left: 6px; }
+  .quad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+               margin-top: 12px; }
+  @media (max-width: 760px) { .quad-grid { grid-template-columns: 1fr; } }
+  .quadrant { border: 1px solid var(--line); border-radius: 5px; padding: 8px 10px;
+              background: #fff; }
+  .quadrant h4 { margin: 0 0 6px; display: flex; justify-content: space-between;
+                 align-items: center; font-size: 0.95rem; }
+  .quadrant .q-controls { display: flex; gap: 6px; }
+  .quadrant table { border-collapse: collapse; width: 100%; font-size: 0.83rem;
+                    table-layout: fixed; }
+  .quadrant td { padding: 3px 6px; border-bottom: 1px solid var(--line-soft);
+                 vertical-align: middle; }
+  .quadrant td.slot-num { width: 30px; color: var(--muted); text-align: right;
+                          font-variant-numeric: tabular-nums; }
+  .quadrant td.entry { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .quadrant td.entry.bye { color: var(--muted); font-style: italic; }
+  .quadrant td.entry.seeded { background: var(--blue-soft); padding-left: 8px; }
+  .quadrant td.entry.unseeded { padding-left: 8px; }
+  .quadrant td.entry .seed-tag { display: inline-block; background: var(--primary);
+                                  color: #fff; font-size: 0.7rem; padding: 0 4px;
+                                  border-radius: 3px; margin-right: 5px; font-weight: 600; }
+  .quadrant td.entry .school-tag { color: var(--muted); font-size: 0.78rem; margin-left: 4px; }
+  .quadrant td.entry.open { color: #b54708; font-style: italic; }
+  .quadrant.locked { background: var(--green-bg); }
+  .quadrant.spinning td.entry .reel {
+    display: inline-block; min-height: 1em; min-width: 100px;
+    background: linear-gradient(180deg, #fff, #e9ecef);
+    padding: 0 6px; border-radius: 2px;
+  }
+  /* slot-machine reel animation */
+  @keyframes reelSpin {
+    0% { transform: translateY(0); opacity: 0.4; }
+    50% { opacity: 0.7; }
+    100% { transform: translateY(-200px); opacity: 1; }
+  }
+  .reel-spinning {
+    display: inline-block;
+    animation: reelSpin 0.65s cubic-bezier(0.2, 0.7, 0.3, 1);
+    color: var(--muted); font-style: italic;
+  }
+  .modal-bg { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.4);
+              display: flex; align-items: center; justify-content: center; z-index: 100; }
+  .modal { background: #fff; border-radius: 6px; padding: 18px 22px; max-width: 460px;
+           width: 92%; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18); }
+  .modal h3 { margin: 0 0 8px; }
+  .modal .player-list { display: flex; flex-direction: column; gap: 4px; margin: 10px 0; }
+  .modal .player-list button { background: #fff; color: var(--fg);
+                                border: 1px solid var(--line); text-align: left;
+                                padding: 8px 12px; border-radius: 4px; font-weight: normal; }
+  .modal .player-list button:hover { background: var(--blue-soft); border-color: var(--primary); }
+  .modal .modal-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; }
+  .summary-bar { display: flex; gap: 18px; flex-wrap: wrap; padding: 8px 12px;
+                 background: var(--pane); border-radius: 4px; margin: 8px 0;
+                 font-size: 0.85rem; }
+  .summary-bar .badge { font-weight: 600; color: var(--primary); }
+  .warn { background: var(--amber-bg); border-left: 4px solid var(--amber);
+          padding: 8px 12px; margin: 10px 0; font-size: 0.88rem; border-radius: 0 4px 4px 0; }
+  .info { background: #e7f1ff; border-left: 4px solid var(--primary);
+          padding: 8px 12px; margin: 10px 0; font-size: 0.88rem; border-radius: 0 4px 4px 0; }
+  pre.export-preview { background: var(--pane); border: 1px solid var(--line);
+                       padding: 12px; border-radius: 4px; font-size: 0.78rem;
+                       max-height: 480px; overflow: auto; line-height: 1.4;
+                       font-family: 'SF Mono', Menlo, Consolas, monospace; }
+  .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .muted { color: var(--muted); font-size: 0.85rem; }
+  footer { margin-top: 30px; padding: 14px; text-align: center; color: var(--muted);
+           font-size: 0.78rem; }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+
+<h1>SD1 Girls Bracket Draw</h1>
+<p class="lede">
+  Quadrant-by-quadrant random draw with same-school separation. Auto-saves to
+  the server after every change. Open the
+  <a href="sd1-seeding.html">seeding-data page</a> for the underlying records.
+</p>
+
+<div class="header-bar">
+  <label>Draw ID: <input type="text" id="draw-id" value="sd1-girls-2026"></label>
+  <button class="ghost" id="btn-load">Load</button>
+  <button class="ghost" id="btn-new">New draw</button>
+  <span class="status" id="save-status">No changes yet</span>
+  <span class="backend" id="backend-status">Backend: checking…</span>
+</div>
+
+<details class="panel" open id="panel-singles">
+  <summary>Singles bracket <span class="muted" id="singles-summary"></span></summary>
+  <div class="panel-body" data-kind="singles">
+    <div class="tabs">
+      <button class="tab active" data-tab="setup">1. Entries</button>
+      <button class="tab" data-tab="seeds">2. Seeds</button>
+      <button class="tab" data-tab="draw">3. Draw</button>
+      <button class="tab" data-tab="export">4. Export</button>
+    </div>
+    <div class="tab-pane active" data-pane="setup"></div>
+    <div class="tab-pane" data-pane="seeds"></div>
+    <div class="tab-pane" data-pane="draw"></div>
+    <div class="tab-pane" data-pane="export"></div>
+  </div>
+</details>
+
+<details class="panel" id="panel-doubles">
+  <summary>Doubles bracket <span class="muted" id="doubles-summary"></span></summary>
+  <div class="panel-body" data-kind="doubles">
+    <div class="tabs">
+      <button class="tab active" data-tab="setup">1. Entries</button>
+      <button class="tab" data-tab="seeds">2. Seeds</button>
+      <button class="tab" data-tab="draw">3. Draw</button>
+      <button class="tab" data-tab="export">4. Export</button>
+    </div>
+    <div class="tab-pane active" data-pane="setup"></div>
+    <div class="tab-pane" data-pane="seeds"></div>
+    <div class="tab-pane" data-pane="draw"></div>
+    <div class="tab-pane" data-pane="export"></div>
+  </div>
+</details>
+
+<footer>
+  <a href="../index.html">← Back to Rankings</a> &middot;
+  <a href="sd1-seeding.html">SD1 Seeding Data</a>
+</footer>
+
+<script>
+'use strict';
+
+// ----- SD1 schools (girls) -----
+const SD1_SCHOOLS = [
+  'Blanchet School', 'Catlin Gabel School', 'Corbett',
+  'Oregon Episcopal School', 'Riverdale',
+  'Riverside (West Linn - Wilsonville)',
+  'Scappoose', 'St Helens', 'Tillamook', 'Trinity Academy',
+  'Valley Catholic School', 'Westside Christian'
+];
+
+// ----- State -----
+function emptyDraw() {
+  return {
+    entries: Object.fromEntries(SD1_SCHOOLS.map(s => [s, []])),
+    seeds: [],     // [{name, school}]
+    slots: null,   // null until placed; otherwise array of {slot, type, name, school, seed?}
+    quadrants: [   // 4 quadrants
+      { spun: false, picks: [] },
+      { spun: false, picks: [] },
+      { spun: false, picks: [] },
+      { spun: false, picks: [] }
+    ],
+    drawSize: null  // 32 or 64, computed at placement time
+  };
+}
+let state = {
+  drawId: 'sd1-girls-2026',
+  updatedAt: null,
+  singles: emptyDraw(),
+  doubles: emptyDraw()
+};
+
+// ----- Backend -----
+const API_BASE = '/api/draws';
+let backendOk = false;
+
+async function checkBackend() {
+  try {
+    const r = await fetch(`${API_BASE}/__ping`, { method: 'GET' });
+    backendOk = r.ok || r.status === 404;  // 404 = endpoint reachable
+    setBackendStatus(backendOk ? 'ok' : 'fail');
+  } catch (e) {
+    backendOk = false;
+    setBackendStatus('fail');
+  }
+}
+function setBackendStatus(s) {
+  const el = document.getElementById('backend-status');
+  if (s === 'ok') {
+    el.textContent = 'Backend: ✓ syncing';
+    el.className = 'backend ok';
+  } else {
+    el.textContent = 'Backend: ✗ local-only (refresh-safe, not crash-safe)';
+    el.className = 'backend fail';
+  }
+}
+
+let saveTimer = null;
+function scheduleSave() {
+  if (saveTimer) clearTimeout(saveTimer);
+  setSaveStatus('Saving…', '');
+  saveTimer = setTimeout(saveNow, 500);
+}
+async function saveNow() {
+  state.updatedAt = new Date().toISOString();
+  const id = state.drawId.trim() || 'sd1-girls-2026';
+  try {
+    localStorage.setItem('sd1-draw-' + id, JSON.stringify(state));
+  } catch (e) { /* localStorage full or disabled */ }
+  if (backendOk) {
+    try {
+      const r = await fetch(`${API_BASE}/${encodeURIComponent(id)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      });
+      if (!r.ok) throw new Error('http ' + r.status);
+      setSaveStatus('Saved ✓', 'saved');
+    } catch (e) {
+      setSaveStatus('Saved locally (server error)', 'error');
+    }
+  } else {
+    setSaveStatus('Saved locally (no backend)', 'error');
+  }
+}
+function setSaveStatus(text, cls) {
+  const el = document.getElementById('save-status');
+  el.textContent = text;
+  el.className = 'status ' + (cls || '');
+}
+
+async function loadDraw(id) {
+  id = (id || state.drawId).trim();
+  if (!id) return;
+  let loaded = null;
+  if (backendOk) {
+    try {
+      const r = await fetch(`${API_BASE}/${encodeURIComponent(id)}`);
+      if (r.ok) loaded = await r.json();
+    } catch (e) { /* fall back to local */ }
+  }
+  if (!loaded) {
+    const raw = localStorage.getItem('sd1-draw-' + id);
+    if (raw) {
+      try { loaded = JSON.parse(raw); } catch (e) {}
+    }
+  }
+  if (!loaded) {
+    setSaveStatus(`No saved draw "${id}" found — starting fresh`, 'error');
+    state = { drawId: id, updatedAt: null, singles: emptyDraw(), doubles: emptyDraw() };
+  } else {
+    state = loaded;
+    state.drawId = id;
+    setSaveStatus('Loaded ✓', 'saved');
+  }
+  document.getElementById('draw-id').value = state.drawId;
+  renderAll();
+}
+
+// ----- Helpers: bracket geometry -----
+// Standard tennis seed-line for a 64-draw (slots are 1-indexed).
+const SEED_SLOTS_64 = [1, 64, 32, 33, 16, 17, 48, 49];
+const SEED_SLOTS_32 = [1, 32, 16, 17];
+// Bye order: paired slot of each seed-line position. Round-1 pairings are
+// (1,2), (3,4), ..., (63,64). Partner of slot s is s+1 if s odd, else s-1.
+function partnerSlot(s) { return (s % 2 === 1) ? s + 1 : s - 1; }
+
+// Extended seed-line through 32 (used to compute bye-placement order beyond 8 byes)
+// For a 64-draw: positions where seeds 1..32 would go in standard bracketing.
+const SEED_LINE_64 = [
+  1, 64, 32, 33, 16, 17, 48, 49,
+  8, 9, 24, 25, 40, 41, 56, 57,
+  4, 5, 12, 13, 20, 21, 28, 29, 36, 37, 44, 45, 52, 53, 60, 61
+];
+const SEED_LINE_32 = [
+  1, 32, 16, 17, 8, 9, 24, 25,
+  4, 5, 12, 13, 20, 21, 28, 29
+];
+
+function quadrantOfSlot(slot, drawSize) {
+  const qSize = drawSize / 4;
+  return Math.floor((slot - 1) / qSize);  // 0..3
+}
+function slotsInQuadrant(q, drawSize) {
+  const qSize = drawSize / 4;
+  const out = [];
+  for (let i = 0; i < qSize; i++) out.push(q * qSize + i + 1);
+  return out;
+}
+
+// Pick draw size based on entry count.
+function chooseDrawSize(entryCount) {
+  return entryCount > 32 ? 64 : 32;
+}
+function maxSeedsAllowed(drawSize) {
+  return drawSize > 32 ? 8 : 4;
+}
+
+// ----- Helpers: data -----
+function totalEntries(draw) {
+  return Object.values(draw.entries).reduce((s, arr) => s + arr.length, 0);
+}
+function entryNamesBySchool(draw) {
+  return Object.fromEntries(
+    Object.entries(draw.entries).map(([s, list]) => [s, list.slice()])
+  );
+}
+// Players named in seeds, removed from the unseeded pool.
+function unseededPool(draw) {
+  const pool = entryNamesBySchool(draw);
+  for (const seed of draw.seeds) {
+    if (!seed.school || !seed.name) continue;
+    const list = pool[seed.school] || [];
+    const idx = list.findIndex(n => n.trim().toLowerCase() === seed.name.trim().toLowerCase());
+    if (idx >= 0) list.splice(idx, 1);
+  }
+  return pool;
+}
+
+// ----- Bracket placement (seeds + byes) -----
+function placeSeedsAndByes(draw) {
+  const entries = totalEntries(draw);
+  const drawSize = chooseDrawSize(entries);
+  draw.drawSize = drawSize;
+  const slots = Array.from({ length: drawSize }, (_, i) => ({
+    slot: i + 1, type: 'open'
+  }));
+
+  // Place seeds in standard positions
+  const seedSlots = drawSize === 64 ? SEED_SLOTS_64 : SEED_SLOTS_32;
+  draw.seeds.forEach((seed, idx) => {
+    if (idx >= seedSlots.length || !seed.name || !seed.school) return;
+    const sn = seedSlots[idx];
+    slots[sn - 1] = {
+      slot: sn, type: 'seeded', seed: idx + 1,
+      name: seed.name, school: seed.school
+    };
+  });
+
+  // Compute byes needed
+  const byesNeeded = drawSize - entries;
+  if (byesNeeded > 0) {
+    const seedLine = drawSize === 64 ? SEED_LINE_64 : SEED_LINE_32;
+    let placed = 0;
+    for (let i = 0; i < seedLine.length && placed < byesNeeded; i++) {
+      const partner = partnerSlot(seedLine[i]);
+      if (slots[partner - 1].type === 'open') {
+        slots[partner - 1] = { slot: partner, type: 'bye' };
+        placed++;
+      }
+    }
+    // If still need more byes (rare), fill remaining open slots from bottom
+    // of unseeded section (last resort).
+    if (placed < byesNeeded) {
+      for (let i = slots.length - 1; i >= 0 && placed < byesNeeded; i--) {
+        if (slots[i].type === 'open') {
+          slots[i] = { slot: i + 1, type: 'bye' };
+          placed++;
+        }
+      }
+    }
+  }
+
+  draw.slots = slots;
+  // Reset quadrants (any prior spins are invalidated)
+  draw.quadrants = [0,1,2,3].map(() => ({ spun: false, picks: [] }));
+  return slots;
+}
+
+// ----- Spin algorithm: choose schools for one quadrant -----
+function rng() { return Math.random(); }
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// Build a school-pool with remaining-unseeded counts after considering seeds
+// and any quadrants already spun.
+function buildRemainingPool(draw) {
+  const pool = unseededPool(draw);
+  // Subtract any already-placed unseeded picks from earlier quadrants
+  for (const q of draw.quadrants) {
+    for (const p of q.picks || []) {
+      if (p && p.school && p.name) {
+        const list = pool[p.school] || [];
+        const idx = list.findIndex(n => n.trim().toLowerCase() === p.name.trim().toLowerCase());
+        if (idx >= 0) list.splice(idx, 1);
+      }
+    }
+  }
+  // Convert to count map
+  const counts = {};
+  for (const [school, list] of Object.entries(pool)) {
+    if (list.length > 0) counts[school] = list.length;
+  }
+  return { counts, pool };  // pool keeps the actual unplaced player names
+}
+
+// Schools already represented in a quadrant (via seeds OR earlier draws in same Q)
+function schoolsInQuadrant(draw, q) {
+  const drawSize = draw.drawSize;
+  const slotList = slotsInQuadrant(q, drawSize);
+  const out = new Set();
+  for (const s of slotList) {
+    const slot = draw.slots[s - 1];
+    if (slot && slot.school) out.add(slot.school);
+  }
+  return out;
+}
+
+// Open (unseeded, non-bye) slots remaining in a quadrant
+function openSlotsInQuadrant(draw, q) {
+  return slotsInQuadrant(q, draw.drawSize)
+    .filter(s => draw.slots[s - 1].type === 'open');
+}
+
+/**
+ * Run the spin for quadrant q.
+ * Returns the ordered list of school assignments for the open slots in Q.
+ * Enforces: a school cannot appear in Q more than once (counting any seed).
+ * Forced placement: if a school has remaining_count == quadrants_left, it
+ * must be placed in this Q.
+ * Throws if infeasible.
+ */
+function spinQuadrant(draw, q) {
+  const open = openSlotsInQuadrant(draw, q);
+  if (open.length === 0) return [];
+  const taken = schoolsInQuadrant(draw, q);
+  const { counts } = buildRemainingPool(draw);
+  const quadsLeft = 4 - q;  // including this one
+
+  // Filter to schools that could go in this quadrant
+  const candidates = Object.entries(counts)
+    .filter(([s]) => !taken.has(s))
+    .map(([s, c]) => ({ school: s, count: c }));
+
+  // Forced: schools with count >= quadsLeft must be in Q (every remaining quad)
+  const forced = candidates.filter(c => c.count >= quadsLeft).map(c => c.school);
+  if (forced.length > open.length) {
+    throw new Error(
+      `Cannot fit forced schools in Q${q+1}: ${forced.length} forced, ${open.length} slots`
+    );
+  }
+  // Optional schools fill the rest
+  const optional = candidates.filter(c => c.count < quadsLeft).map(c => c.school);
+  if (forced.length + optional.length < open.length) {
+    throw new Error(
+      `Not enough school candidates for Q${q+1}: need ${open.length}, have ${forced.length + optional.length}`
+    );
+  }
+  // Random pick among optional to fill the remaining (open.length - forced.length) slots
+  shuffle(optional);
+  const chosen = forced.concat(optional.slice(0, open.length - forced.length));
+  shuffle(chosen);  // randomize slot assignment within Q
+
+  // Map school -> open-slot
+  return open.map((slot, i) => ({ slot, school: chosen[i] }));
+}
+
+// Attempt the spin with retries on infeasibility (very rare; gives algorithm
+// some slack from random orderings). Up to 50 tries before surfacing error.
+function spinWithRetry(draw, q) {
+  let lastErr = null;
+  for (let i = 0; i < 50; i++) {
+    try { return spinQuadrant(draw, q); }
+    catch (e) { lastErr = e; }
+  }
+  throw lastErr || new Error('Spin failed');
+}
+
+// ----- Rendering: setup tab -----
+function renderSetup(draw, container) {
+  container.innerHTML = '';
+  const total = totalEntries(draw);
+  const drawSize = chooseDrawSize(total);
+  const maxSeeds = maxSeedsAllowed(drawSize);
+
+  const summary = document.createElement('div');
+  summary.className = 'summary-bar';
+  summary.innerHTML = `
+    <div><span class="badge">${total}</span> total entries</div>
+    <div>→ <span class="badge">${drawSize}-draw</span></div>
+    <div>up to <span class="badge">${maxSeeds}</span> seeds allowed</div>
+    <div>${drawSize - total} bye${drawSize - total === 1 ? '' : 's'}</div>
+  `;
+  container.appendChild(summary);
+
+  const help = document.createElement('div');
+  help.className = 'info';
+  help.innerHTML = `
+    Enter one ${draw === state.singles ? 'singles entry' : 'doubles team'} per line for each
+    school (max 4 per school). For doubles, write each team as <code>Player A / Player B</code>.
+    Players cannot appear in both the singles and doubles lists for the same draw.
+  `;
+  container.appendChild(help);
+
+  const grid = document.createElement('div');
+  grid.className = 'school-grid';
+  SD1_SCHOOLS.forEach(school => {
+    const card = document.createElement('div');
+    card.className = 'school-card';
+    const list = draw.entries[school] || [];
+    const overCap = list.length > 4;
+    card.innerHTML = `
+      <h4>${school}
+        <span class="count ${overCap ? 'over' : ''}">${list.length}/4</span>
+      </h4>
+      <textarea data-school="${school}" placeholder="One per line">${list.join('\n')}</textarea>
+    `;
+    const ta = card.querySelector('textarea');
+    ta.addEventListener('input', () => {
+      const lines = ta.value.split('\n').map(s => s.trim()).filter(Boolean);
+      draw.entries[school] = lines;
+      const cap = card.querySelector('.count');
+      cap.textContent = `${lines.length}/4`;
+      cap.classList.toggle('over', lines.length > 4);
+      // Update summary
+      const t = totalEntries(draw);
+      const ds = chooseDrawSize(t);
+      const ms = maxSeedsAllowed(ds);
+      summary.innerHTML = `
+        <div><span class="badge">${t}</span> total entries</div>
+        <div>→ <span class="badge">${ds}-draw</span></div>
+        <div>up to <span class="badge">${ms}</span> seeds allowed</div>
+        <div>${ds - t} bye${ds - t === 1 ? '' : 's'}</div>
+      `;
+      // Invalidate any existing draw if entries changed
+      if (draw.slots) {
+        draw.slots = null;
+        draw.quadrants = [0,1,2,3].map(() => ({ spun: false, picks: [] }));
+      }
+      updateSummaryLabels();
+      scheduleSave();
+    });
+    grid.appendChild(card);
+  });
+  container.appendChild(grid);
+}
+
+// ----- Rendering: seeds tab -----
+function renderSeeds(draw, container) {
+  container.innerHTML = '';
+  const total = totalEntries(draw);
+  const drawSize = chooseDrawSize(total);
+  const maxSeeds = maxSeedsAllowed(drawSize);
+
+  const help = document.createElement('div');
+  help.className = 'info';
+  help.innerHTML = `
+    Add seeds in order (1, 2, 3…). Up to <b>${maxSeeds}</b> for a ${drawSize}-draw —
+    you don't have to use them all. Each seed is a player/pair name and the school.
+    The seeded entry must already appear in the school's entry list (Step&nbsp;1).
+  `;
+  container.appendChild(help);
+
+  const list = document.createElement('div');
+  container.appendChild(list);
+
+  function rerenderRows() {
+    list.innerHTML = '';
+    draw.seeds.forEach((seed, idx) => {
+      const row = document.createElement('div');
+      row.className = 'seed-row';
+      row.innerHTML = `
+        <span class="seed-num">${idx + 1}.</span>
+        <input type="text" placeholder="Player name (or A / B)" value="${esc(seed.name)}">
+        <select>
+          <option value="">— school —</option>
+          ${SD1_SCHOOLS.map(s => `<option value="${esc(s)}" ${s === seed.school ? 'selected' : ''}>${s}</option>`).join('')}
+        </select>
+        <button class="ghost remove" title="Remove">×</button>
+        <span class="err"></span>
+      `;
+      const [nameIn, schoolSel, rmBtn, errEl] = [
+        row.querySelector('input'), row.querySelector('select'),
+        row.querySelector('.remove'), row.querySelector('.err')
+      ];
+      const validate = () => {
+        const n = nameIn.value.trim();
+        const s = schoolSel.value;
+        if (!n || !s) { errEl.textContent = ''; return; }
+        const found = (draw.entries[s] || []).some(
+          e => e.trim().toLowerCase() === n.toLowerCase()
+        );
+        errEl.textContent = found ? '' : 'not in entries';
+      };
+      nameIn.addEventListener('input', () => {
+        seed.name = nameIn.value;
+        validate(); scheduleSave();
+        if (draw.slots) { draw.slots = null;
+          draw.quadrants = [0,1,2,3].map(() => ({ spun: false, picks: [] })); }
+      });
+      schoolSel.addEventListener('change', () => {
+        seed.school = schoolSel.value;
+        validate(); scheduleSave();
+        if (draw.slots) { draw.slots = null;
+          draw.quadrants = [0,1,2,3].map(() => ({ spun: false, picks: [] })); }
+      });
+      rmBtn.addEventListener('click', () => {
+        draw.seeds.splice(idx, 1);
+        rerenderRows();
+        scheduleSave();
+        if (draw.slots) { draw.slots = null;
+          draw.quadrants = [0,1,2,3].map(() => ({ spun: false, picks: [] })); }
+      });
+      validate();
+      list.appendChild(row);
+    });
+    addBtn.disabled = draw.seeds.length >= maxSeeds;
+  }
+
+  const addBtn = document.createElement('button');
+  addBtn.textContent = '+ Add seed';
+  addBtn.addEventListener('click', () => {
+    if (draw.seeds.length >= maxSeeds) return;
+    draw.seeds.push({ name: '', school: '' });
+    rerenderRows();
+    scheduleSave();
+  });
+  container.appendChild(addBtn);
+
+  rerenderRows();
+}
+
+// ----- Rendering: draw tab -----
+function renderDraw(draw, container) {
+  container.innerHTML = '';
+
+  // Validate prerequisites
+  const total = totalEntries(draw);
+  if (total < 2) {
+    container.innerHTML = '<div class="warn">Add some entries (Step 1) before drawing.</div>';
+    return;
+  }
+  for (const seed of draw.seeds) {
+    if (!seed.name || !seed.school) {
+      container.innerHTML = '<div class="warn">All seeds need a name and a school. Fix Step 2 before drawing.</div>';
+      return;
+    }
+  }
+
+  // Place seeds + byes button
+  const ctrl = document.createElement('div');
+  ctrl.className = 'row';
+  ctrl.style.marginBottom = '10px';
+  const placeBtn = document.createElement('button');
+  placeBtn.textContent = draw.slots ? 'Re-place seeds & byes (resets all quadrants)' : 'Place seeds & byes';
+  placeBtn.className = draw.slots ? 'ghost' : '';
+  placeBtn.addEventListener('click', () => {
+    if (draw.slots && !confirm('This wipes any quadrant spins. Continue?')) return;
+    try {
+      placeSeedsAndByes(draw);
+      scheduleSave();
+      renderDraw(draw, container);
+    } catch (e) {
+      alert('Failed to place: ' + e.message);
+    }
+  });
+  ctrl.appendChild(placeBtn);
+  if (draw.slots) {
+    const sumE = totalEntries(draw);
+    ctrl.appendChild(Object.assign(document.createElement('span'), {
+      className: 'muted',
+      textContent: `${draw.drawSize}-draw, ${sumE} entries, ${draw.drawSize - sumE} byes`
+    }));
+  }
+  container.appendChild(ctrl);
+
+  if (!draw.slots) return;
+
+  // Render the 4 quadrants
+  const grid = document.createElement('div');
+  grid.className = 'quad-grid';
+  for (let q = 0; q < 4; q++) {
+    grid.appendChild(renderQuadrant(draw, q, () => renderDraw(draw, container)));
+  }
+  container.appendChild(grid);
+}
+
+function renderQuadrant(draw, q, refresh) {
+  const block = document.createElement('div');
+  block.className = 'quadrant' + (draw.quadrants[q].spun ? ' locked' : '');
+  const open = openSlotsInQuadrant(draw, q);
+  const head = document.createElement('h4');
+  head.innerHTML = `Quadrant ${q + 1} <span class="muted">(slots ${q*draw.drawSize/4+1}–${(q+1)*draw.drawSize/4})</span>`;
+  const ctrls = document.createElement('div');
+  ctrls.className = 'q-controls';
+  if (open.length === 0) {
+    ctrls.innerHTML = '<span class="muted">no open slots</span>';
+  } else if (!draw.quadrants[q].spun) {
+    // Earlier quadrants must be spun first (so forced-placement math is honored)
+    let prevReady = true;
+    for (let i = 0; i < q; i++) {
+      const op = openSlotsInQuadrant(draw, i);
+      if (op.length > 0 && !draw.quadrants[i].spun) { prevReady = false; break; }
+    }
+    const spinBtn = document.createElement('button');
+    spinBtn.textContent = `Spin Q${q+1}`;
+    spinBtn.disabled = !prevReady;
+    if (!prevReady) spinBtn.title = 'Spin earlier quadrants first';
+    spinBtn.addEventListener('click', () => animateSpin(draw, q, block, refresh));
+    ctrls.appendChild(spinBtn);
+  } else {
+    const respinBtn = document.createElement('button');
+    respinBtn.className = 'ghost';
+    respinBtn.textContent = 'Re-spin';
+    respinBtn.addEventListener('click', () => {
+      if (!confirm(`Re-spin Q${q+1}? This unwinds Q${q+1} and any later quadrants.`)) return;
+      // Reset this quadrant and any later ones
+      for (let i = q; i < 4; i++) {
+        // Unplace any unseeded picks in this quadrant from slots
+        for (const p of draw.quadrants[i].picks || []) {
+          if (p && p.slot && draw.slots[p.slot - 1].type === 'unseeded') {
+            draw.slots[p.slot - 1] = { slot: p.slot, type: 'open' };
+          }
+        }
+        draw.quadrants[i] = { spun: false, picks: [] };
+      }
+      scheduleSave();
+      refresh();
+    });
+    ctrls.appendChild(respinBtn);
+  }
+  head.appendChild(ctrls);
+  block.appendChild(head);
+
+  // Quadrant table
+  const tbl = document.createElement('table');
+  const tbody = document.createElement('tbody');
+  for (const slotNum of slotsInQuadrant(q, draw.drawSize)) {
+    const slot = draw.slots[slotNum - 1];
+    const tr = document.createElement('tr');
+    let cell;
+    if (slot.type === 'seeded') {
+      cell = `<td class="entry seeded"><span class="seed-tag">${slot.seed}</span>${esc(slot.name)}<span class="school-tag">${esc(slot.school)}</span></td>`;
+    } else if (slot.type === 'bye') {
+      cell = `<td class="entry bye">— BYE —</td>`;
+    } else if (slot.type === 'unseeded') {
+      cell = `<td class="entry unseeded">${esc(slot.name)}<span class="school-tag">${esc(slot.school)}</span></td>`;
+    } else {
+      cell = `<td class="entry open">(open)</td>`;
+    }
+    tr.innerHTML = `<td class="slot-num">${slotNum}</td>${cell}`;
+    tbody.appendChild(tr);
+  }
+  tbl.appendChild(tbody);
+  block.appendChild(tbl);
+
+  return block;
+}
+
+// ----- Spin animation -----
+function animateSpin(draw, q, block, refresh) {
+  let assignments;
+  try { assignments = spinWithRetry(draw, q); }
+  catch (e) {
+    alert('Spin failed: ' + e.message + '\nCheck same-school constraints and entry counts.');
+    return;
+  }
+
+  // Visually show spinning reels in the open rows
+  const rows = block.querySelectorAll('tbody tr');
+  const slotMap = {};
+  rows.forEach(tr => {
+    const num = parseInt(tr.querySelector('.slot-num').textContent, 10);
+    slotMap[num] = tr;
+  });
+
+  block.classList.add('spinning');
+  const fakeNames = SD1_SCHOOLS.slice();
+
+  assignments.forEach((a, i) => {
+    const tr = slotMap[a.slot];
+    if (!tr) return;
+    const cell = tr.querySelector('.entry');
+    cell.classList.remove('open', 'seeded', 'bye', 'unseeded');
+    cell.innerHTML = `<span class="reel-spinning">${esc(fakeNames[Math.floor(Math.random()*fakeNames.length)])}</span>`;
+    let ticks = 0;
+    const maxTicks = 6 + i;  // staggered length
+    const iv = setInterval(() => {
+      cell.querySelector('.reel-spinning').textContent =
+        fakeNames[Math.floor(Math.random()*fakeNames.length)];
+      ticks++;
+      if (ticks >= maxTicks) {
+        clearInterval(iv);
+        cell.innerHTML = `<span style="color:var(--primary); font-weight:600;">${esc(a.school)}</span>`;
+        // After last reveal, prompt for player picks sequentially
+        if (i === assignments.length - 1) {
+          setTimeout(() => promptPlayerPicks(draw, q, assignments, refresh), 350);
+        }
+      }
+    }, 80);
+  });
+}
+
+function promptPlayerPicks(draw, q, assignments, refresh) {
+  // Walk assignments in order; for each, pop a pick modal listing that
+  // school's remaining unseeded players.
+  const remaining = buildRemainingPool(draw).pool;  // school -> list of unplaced names
+  // We'll mutate locally so picks chain correctly during this prompt sequence.
+  const localPool = JSON.parse(JSON.stringify(remaining));
+
+  function pickNext(i) {
+    if (i >= assignments.length) {
+      // Commit all picks to state
+      draw.quadrants[q].spun = true;
+      draw.quadrants[q].picks = assignments.map(a => ({
+        slot: a.slot, school: a.school, name: a.name
+      }));
+      for (const a of assignments) {
+        draw.slots[a.slot - 1] = {
+          slot: a.slot, type: 'unseeded', name: a.name, school: a.school
+        };
+      }
+      scheduleSave();
+      refresh();
+      return;
+    }
+    const a = assignments[i];
+    const players = localPool[a.school] || [];
+    if (players.length === 0) {
+      // No players left — let coach type one
+      const typed = prompt(`No remaining unseeded entries for ${a.school}. Enter a name for slot ${a.slot}:`);
+      if (typed === null) {
+        // Cancel: undo any in-flight picks
+        refresh();
+        return;
+      }
+      a.name = typed.trim() || `(${a.school} entry)`;
+      pickNext(i + 1);
+      return;
+    }
+    if (players.length === 1) {
+      a.name = players[0];
+      const idx = localPool[a.school].indexOf(players[0]);
+      if (idx >= 0) localPool[a.school].splice(idx, 1);
+      pickNext(i + 1);
+      return;
+    }
+    showPickModal(a, players, (chosen) => {
+      a.name = chosen;
+      const idx = localPool[a.school].indexOf(chosen);
+      if (idx >= 0) localPool[a.school].splice(idx, 1);
+      pickNext(i + 1);
+    }, () => {
+      refresh();  // cancelled
+    });
+  }
+
+  pickNext(0);
+}
+
+function showPickModal(assignment, players, onPick, onCancel) {
+  const bg = document.createElement('div');
+  bg.className = 'modal-bg';
+  const m = document.createElement('div');
+  m.className = 'modal';
+  m.innerHTML = `
+    <h3>Slot ${assignment.slot} — pick from ${esc(assignment.school)}</h3>
+    <p class="muted">Coach assigns which unseeded player from this school goes into the open slot.</p>
+    <div class="player-list"></div>
+    <div class="modal-actions">
+      <button class="ghost cancel">Cancel spin</button>
+    </div>
+  `;
+  const list = m.querySelector('.player-list');
+  players.forEach(p => {
+    const b = document.createElement('button');
+    b.textContent = p;
+    b.addEventListener('click', () => { document.body.removeChild(bg); onPick(p); });
+    list.appendChild(b);
+  });
+  m.querySelector('.cancel').addEventListener('click', () => {
+    document.body.removeChild(bg);
+    onCancel && onCancel();
+  });
+  bg.appendChild(m);
+  document.body.appendChild(bg);
+}
+
+// ----- Export -----
+function buildExportText(draw, kind) {
+  if (!draw.slots) return '(no draw placed yet)';
+  const lines = [];
+  const title = kind === 'singles' ? 'SD1 Girls Singles' : 'SD1 Girls Doubles';
+  lines.push(`${title} — Bracket Draw`);
+  lines.push(`Draw size: ${draw.drawSize}    Entries: ${totalEntries(draw)}    Byes: ${draw.drawSize - totalEntries(draw)}`);
+  lines.push(`Generated: ${new Date().toLocaleString()}`);
+  lines.push('');
+  lines.push('First-round pairings (top vs bottom of each pair, by slot):');
+  lines.push('-'.repeat(72));
+  for (let q = 0; q < 4; q++) {
+    lines.push('');
+    lines.push(`QUADRANT ${q+1}  (slots ${q*draw.drawSize/4+1}–${(q+1)*draw.drawSize/4})`);
+    lines.push('');
+    const slots = slotsInQuadrant(q, draw.drawSize);
+    // Pair adjacent slots
+    for (let i = 0; i < slots.length; i += 2) {
+      const a = draw.slots[slots[i] - 1];
+      const b = draw.slots[slots[i+1] - 1];
+      lines.push(`  ${String(slots[i]).padStart(3)}  ${formatSlot(a).padEnd(46)}`);
+      lines.push(`       vs`);
+      lines.push(`  ${String(slots[i+1]).padStart(3)}  ${formatSlot(b).padEnd(46)}`);
+      lines.push('');
+    }
+  }
+  lines.push('-'.repeat(72));
+  lines.push('Seeds (in order):');
+  draw.seeds.forEach((s, i) => {
+    lines.push(`  ${i+1}.  ${s.name}  [${s.school}]`);
+  });
+  return lines.join('\n');
+}
+function formatSlot(slot) {
+  if (!slot) return '(open)';
+  if (slot.type === 'bye') return 'BYE';
+  if (slot.type === 'open') return '(open)';
+  if (slot.type === 'seeded') return `[${slot.seed}] ${slot.name}  (${slot.school})`;
+  if (slot.type === 'unseeded') return `${slot.name}  (${slot.school})`;
+  return '?';
+}
+
+function renderExport(draw, container, kind) {
+  container.innerHTML = '';
+  if (!draw.slots) {
+    container.innerHTML = '<div class="warn">No draw placed yet — go to Step 3.</div>';
+    return;
+  }
+  const allSpun = draw.quadrants.every((q, i) => {
+    const op = openSlotsInQuadrant(draw, i);
+    return q.spun || op.length === 0;
+  });
+  if (!allSpun) {
+    const w = document.createElement('div');
+    w.className = 'warn';
+    w.textContent = 'Some quadrants haven\'t been spun yet. The export will show "(open)" for unfilled slots.';
+    container.appendChild(w);
+  }
+  const text = buildExportText(draw, kind);
+  const dlBtn = document.createElement('button');
+  dlBtn.textContent = `Download .txt`;
+  dlBtn.addEventListener('click', () => {
+    const blob = new Blob([text], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${state.drawId}-${kind}.txt`;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  });
+  const copyBtn = document.createElement('button');
+  copyBtn.className = 'ghost';
+  copyBtn.textContent = 'Copy to clipboard';
+  copyBtn.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(text); copyBtn.textContent = 'Copied ✓'; }
+    catch (e) { copyBtn.textContent = 'Copy failed'; }
+    setTimeout(() => copyBtn.textContent = 'Copy to clipboard', 1500);
+  });
+  const row = document.createElement('div');
+  row.className = 'row';
+  row.style.margin = '6px 0 12px';
+  row.appendChild(dlBtn);
+  row.appendChild(copyBtn);
+  container.appendChild(row);
+
+  const pre = document.createElement('pre');
+  pre.className = 'export-preview';
+  pre.textContent = text;
+  container.appendChild(pre);
+}
+
+// ----- Tab + render orchestration -----
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+function renderPanel(kind) {
+  const draw = state[kind];
+  const root = document.querySelector(`details#panel-${kind} .panel-body`);
+  const setupPane = root.querySelector('[data-pane="setup"]');
+  const seedsPane = root.querySelector('[data-pane="seeds"]');
+  const drawPane  = root.querySelector('[data-pane="draw"]');
+  const exportPane = root.querySelector('[data-pane="export"]');
+  renderSetup(draw, setupPane);
+  renderSeeds(draw, seedsPane);
+  renderDraw(draw, drawPane);
+  renderExport(draw, exportPane, kind);
+}
+
+function updateSummaryLabels() {
+  document.getElementById('singles-summary').textContent =
+    `(${totalEntries(state.singles)} entries)`;
+  document.getElementById('doubles-summary').textContent =
+    `(${totalEntries(state.doubles)} entries)`;
+}
+
+function renderAll() {
+  renderPanel('singles');
+  renderPanel('doubles');
+  updateSummaryLabels();
+}
+
+// Tab click handlers (delegated)
+document.addEventListener('click', e => {
+  const tab = e.target.closest('.tab');
+  if (!tab) return;
+  const tabs = tab.parentElement.querySelectorAll('.tab');
+  const panes = tab.parentElement.parentElement.querySelectorAll('.tab-pane');
+  tabs.forEach(t => t.classList.remove('active'));
+  panes.forEach(p => p.classList.remove('active'));
+  tab.classList.add('active');
+  const target = tab.parentElement.parentElement.querySelector(`[data-pane="${tab.dataset.tab}"]`);
+  if (target) target.classList.add('active');
+});
+
+// Header bar buttons
+document.getElementById('btn-load').addEventListener('click', async () => {
+  const id = document.getElementById('draw-id').value.trim();
+  await loadDraw(id);
+});
+document.getElementById('btn-new').addEventListener('click', () => {
+  if (!confirm('Start a fresh draw with the current ID? This wipes saved state.')) return;
+  const id = document.getElementById('draw-id').value.trim() || 'sd1-girls-2026';
+  state = { drawId: id, updatedAt: null, singles: emptyDraw(), doubles: emptyDraw() };
+  saveNow();
+  renderAll();
+});
+document.getElementById('draw-id').addEventListener('change', e => {
+  state.drawId = e.target.value.trim();
+});
+
+// ----- Boot -----
+(async () => {
+  await checkBackend();
+  await loadDraw(state.drawId);
+})();
+</script>
+</body>
+</html>

@@ -4350,6 +4350,270 @@ def render_md_page(md_path, out_path, page_title='Changelog - Oregon HS Tennis')
 render_changelog_page = render_md_page
 
 
+def _full_name(player):
+    fn = (player.get('firstName') or '').strip()
+    ln = (player.get('lastName') or '').strip()
+    return (fn + ' ' + ln).strip()
+
+
+def build_sd1_girls_seeding_data(data_dir, school_info, year='2026'):
+    """Per-player singles + doubles records for every SD1 girls program.
+
+    Output shape:
+      { school_id: {'name': str, 'players': { player_name: {
+            'singles': [match...],
+            'doubles': { partner_name: [match...] } } } } }
+    Each match dict carries date, flight, opp_name(/opp_pair), opp_school,
+    opp_school_id, won, sets ([(my_games, opp_games), ...]), in_league.
+    """
+    sd1_ids = {sid for sid, info in school_info.items()
+               if info.get('league') == 'Special District 1'}
+    year_dir = data_dir / year
+    schools = {}
+    for sid in sorted(sd1_ids):
+        path = year_dir / f'school_{sid}_gender_2.json'
+        if not path.exists():
+            continue
+        with open(path) as f:
+            data = json.load(f)
+        meets = dedupe_meets(data.get('meets', []) or [])
+        players = {}
+        for meet in meets:
+            if not is_dual_match(meet):
+                continue
+            mdate = (meet.get('meetDateTime') or '')[:10]
+            for category, key in [('Singles', 'singles'), ('Doubles', 'doubles')]:
+                for match in (meet.get('matches', {}) or {}).get(category, []) or []:
+                    if match.get('isNotVarsity'):
+                        continue
+                    teams = match.get('matchTeams') or []
+                    if len(teams) != 2:
+                        continue
+                    our_team = next((t for t in teams
+                                     if any(p.get('schoolId') == sid for p in t.get('players', []))), None)
+                    if not our_team:
+                        continue
+                    opp_team = teams[0] if teams[1]['id'] == our_team['id'] else teams[1]
+                    our_players = our_team.get('players') or []
+                    opp_players = opp_team.get('players') or []
+                    expected = 1 if category == 'Singles' else 2
+                    if len(our_players) < expected or len(opp_players) < expected:
+                        continue
+                    won = match.get('winnerTeamId') == our_team['id']
+                    our_id_str = str(our_team['id'])
+                    opp_id_str = str(opp_team['id'])
+                    set_scores = []
+                    for s in match.get('sets', []) or []:
+                        a = s.get(our_id_str)
+                        b = s.get(opp_id_str)
+                        if a is not None and b is not None:
+                            set_scores.append((a, b))
+                    opp_school_id = opp_players[0].get('schoolId')
+                    opp_school = (opp_players[0].get('school') or {}).get('name', '')
+                    in_league = opp_school_id in sd1_ids
+                    flight = match.get('flight')
+                    base = {'date': mdate, 'flight': flight, 'opp_school': opp_school,
+                            'opp_school_id': opp_school_id, 'won': won, 'sets': set_scores,
+                            'in_league': in_league}
+                    if category == 'Singles':
+                        me = _full_name(our_players[0])
+                        if not me:
+                            continue
+                        opp_name = _full_name(opp_players[0])
+                        rec = dict(base, opp_name=opp_name)
+                        players.setdefault(me, {'singles': [], 'doubles': {}})['singles'].append(rec)
+                    else:
+                        p1, p2 = _full_name(our_players[0]), _full_name(our_players[1])
+                        opp_pair = ' / '.join(filter(None, [_full_name(opp_players[0]),
+                                                            _full_name(opp_players[1])]))
+                        for me, partner in ((p1, p2), (p2, p1)):
+                            if not me:
+                                continue
+                            rec = dict(base, opp_pair=opp_pair, partner=partner)
+                            slot = players.setdefault(me, {'singles': [], 'doubles': {}})
+                            slot['doubles'].setdefault(partner, []).append(rec)
+        schools[sid] = {'name': school_info[sid]['name'], 'players': players}
+    return schools
+
+
+def render_sd1_seeding_page(schools, out_path):
+    """Render the SD1 girls seeding-data report."""
+    import html as _html
+
+    def _summarize(matches):
+        w = sum(1 for m in matches if m['won'])
+        l = len(matches) - w
+        lw = sum(1 for m in matches if m['won'] and m['in_league'])
+        ll = sum(1 for m in matches if (not m['won']) and m['in_league'])
+        return w, l, lw, ll
+
+    def _set_str(sets):
+        return ', '.join(f'{a}-{b}' for a, b in sets) if sets else '—'
+
+    def _result_badge(won):
+        cls = 'w' if won else 'l'
+        text = 'W' if won else 'L'
+        return f'<span class="res {cls}">{text}</span>'
+
+    sections = []
+    toc_items = []
+    ordered = sorted(schools.items(), key=lambda kv: kv[1]['name'].lower())
+    for sid, sch in ordered:
+        anchor = f'school-{sid}'
+        toc_items.append(f'<li><a href="#{anchor}">{_html.escape(sch["name"])}</a> '
+                         f'<span class="muted">({len(sch["players"])} players)</span></li>')
+        if not sch['players']:
+            sections.append(f'<section id="{anchor}"><h2>{_html.escape(sch["name"])}</h2>'
+                            f'<p class="muted">No 2026 dual-match data found.</p></section>')
+            continue
+
+        # Order players by total matches descending so the most-active are on top.
+        ordered_players = sorted(
+            sch['players'].items(),
+            key=lambda kv: (-(len(kv[1]['singles']) + sum(len(v) for v in kv[1]['doubles'].values())),
+                            kv[0].lower()))
+
+        rows = []
+        for pname, pdata in ordered_players:
+            singles = sorted(pdata['singles'], key=lambda m: (m['date'], m['flight'] or ''))
+            doubles_by_partner = pdata['doubles']
+            sw, sl, slw, sll = _summarize(singles)
+            # Aggregate doubles across partners for the player header.
+            all_d = [m for ms in doubles_by_partner.values() for m in ms]
+            dw, dl, dlw, dll = _summarize(all_d)
+            singles_seedable = '✓' if slw + sll >= 2 else '✗'
+            # A player is doubles-seedable for a *pairing*, not overall, but we
+            # surface a hint at the player level.
+            seedable_partners = [p for p, ms in doubles_by_partner.items()
+                                 if sum(1 for m in ms if m['in_league']) >= 2]
+
+            blocks = []
+            blocks.append(
+                f'<div class="player-head">'
+                f'<h3>{_html.escape(pname)}</h3>'
+                f'<div class="meta">'
+                f'<span>Singles: <b>{sw}-{sl}</b> overall &middot; <b>{slw}-{sll}</b> in SD1 '
+                f'<span class="muted">(seed-eligible: {singles_seedable})</span></span>'
+                f'<span>Doubles: <b>{dw}-{dl}</b> overall &middot; <b>{dlw}-{dll}</b> in SD1</span>'
+                f'</div></div>'
+            )
+
+            if singles:
+                srows = []
+                for m in singles:
+                    score = _set_str(m['sets'])
+                    flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
+                    srows.append(
+                        f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
+                        f'<td>{_html.escape(m["opp_name"])}</td>'
+                        f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
+                        f'<td>{_result_badge(m["won"])}</td>'
+                        f'<td class="score">{score}</td></tr>'
+                    )
+                blocks.append(
+                    '<table class="match-tbl"><caption>Singles matches</caption>'
+                    '<thead><tr><th>Date</th><th>Flt</th><th>Opponent</th>'
+                    '<th>School</th><th>Result</th><th>Sets</th></tr></thead>'
+                    f'<tbody>{"".join(srows)}</tbody></table>'
+                )
+
+            if doubles_by_partner:
+                for partner in sorted(doubles_by_partner.keys(), key=str.lower):
+                    matches = sorted(doubles_by_partner[partner],
+                                     key=lambda m: (m['date'], m['flight'] or ''))
+                    pw, pl, plw, pll = _summarize(matches)
+                    seed_ok = '✓' if plw + pll >= 2 else '✗'
+                    drows = []
+                    for m in matches:
+                        flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
+                        drows.append(
+                            f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
+                            f'<td>{_html.escape(m["opp_pair"])}</td>'
+                            f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
+                            f'<td>{_result_badge(m["won"])}</td>'
+                            f'<td class="score">{_set_str(m["sets"])}</td></tr>'
+                        )
+                    blocks.append(
+                        f'<table class="match-tbl"><caption>w/ {_html.escape(partner) or "(unknown)"}'
+                        f' &middot; <b>{pw}-{pl}</b> overall, <b>{plw}-{pll}</b> in SD1'
+                        f' <span class="muted">(pair seed-eligible: {seed_ok})</span></caption>'
+                        '<thead><tr><th>Date</th><th>Flt</th><th>Opponents</th>'
+                        '<th>School</th><th>Result</th><th>Sets</th></tr></thead>'
+                        f'<tbody>{"".join(drows)}</tbody></table>'
+                    )
+
+            rows.append('<div class="player">' + ''.join(blocks) + '</div>')
+
+        sections.append(
+            f'<section id="{anchor}"><h2>{_html.escape(sch["name"])}</h2>'
+            + ''.join(rows) + '</section>'
+        )
+
+    page = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SD1 Girls Seeding Data — Oregon HS Tennis</title>
+<style>
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 1100px; margin: 32px auto; padding: 0 18px; color: #212529; line-height: 1.45; }}
+  h1 {{ font-size: 1.6rem; margin: 0 0 4px; }}
+  h2 {{ font-size: 1.2rem; margin: 32px 0 10px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
+  h3 {{ font-size: 1.0rem; margin: 18px 0 4px; }}
+  p.lede {{ color: #495057; margin: 4px 0 18px; }}
+  .toc {{ background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 10px 16px; margin: 12px 0 24px; }}
+  .toc ul {{ columns: 2; -webkit-columns: 2; -moz-columns: 2; margin: 6px 0 0 18px; padding: 0; }}
+  .toc li {{ margin: 2px 0; }}
+  .player {{ border-top: 1px dashed #dee2e6; padding: 10px 0 14px; }}
+  .player-head {{ display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }}
+  .player-head .meta {{ font-size: 0.85rem; color: #495057; display: flex; gap: 18px; flex-wrap: wrap; }}
+  table.match-tbl {{ border-collapse: collapse; margin: 6px 0 12px; font-size: 0.85rem; width: 100%; }}
+  table.match-tbl caption {{ text-align: left; font-weight: 600; padding: 4px 0; color: #343a40; }}
+  table.match-tbl th, table.match-tbl td {{ border: 1px solid #e9ecef; padding: 4px 8px; }}
+  table.match-tbl th {{ background: #f8f9fa; text-align: left; }}
+  table.match-tbl td.score {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
+  .res {{ display: inline-block; min-width: 18px; text-align: center; padding: 1px 5px; border-radius: 3px; font-weight: 600; font-size: 0.8rem; }}
+  .res.w {{ background: #d1e7dd; color: #0f5132; }}
+  .res.l {{ background: #f8d7da; color: #842029; }}
+  .lg {{ display: inline-block; background: #cfe2ff; color: #084298; font-size: 0.7rem; padding: 0 4px; border-radius: 3px; margin-left: 4px; }}
+  .muted {{ color: #6c757d; }}
+  .actions {{ margin: 12px 0 24px; }}
+  .actions a {{ display: inline-block; padding: 8px 14px; background: #0d6efd; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; }}
+  footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
+  footer a {{ color: #6c757d; font-size: 12px; }}
+</style>
+</head>
+<body>
+<h1>SD1 Girls — 2026 Seeding Data</h1>
+<p class="lede">
+  Per-school player records for the Special District 1 girls (4A/3A/2A/1A)
+  district seeding meeting. Pulled from posted dual-match results; matches
+  against fellow SD1 schools are tagged <span class="lg">SD1</span>. Seed
+  eligibility per the SOP: 2+ league dual matches at the position (singles
+  or with the same partner). Coaches decide the seeds; this page just lays
+  out the inputs.
+</p>
+<div class="actions">
+  <a href="sd1-bracket-draw.html">Open the bracket-draw tool →</a>
+</div>
+<div class="toc">
+  <b>Schools</b>
+  <ul>{''.join(toc_items)}</ul>
+</div>
+{''.join(sections)}
+<footer>
+  <a href="../index.html">&larr; Back to Rankings</a>
+  &middot;
+  <a href="sd1-bracket-draw.html">Bracket Draw</a>
+</footer>
+</body>
+</html>
+"""
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(out_path, 'w') as f:
+        f.write(page)
+
+
 def main():
     script_dir = Path(__file__).parent
     repo_root = script_dir
@@ -4396,6 +4660,12 @@ def main():
             first_h1 = next((l[2:].strip() for l in f if l.startswith('# ')), aar_md.stem)
         render_md_page(aar_md, aar_html, page_title=f'{first_h1} - Oregon HS Tennis')
         print(f"AAR saved to {aar_html}")
+
+    print("Building SD1 girls seeding data...")
+    sd1_data = build_sd1_girls_seeding_data(data_dir, school_info, year='2026')
+    sd1_out = repo_root / 'public' / 'sd1-seeding.html'
+    render_sd1_seeding_page(sd1_data, sd1_out)
+    print(f"SD1 seeding page saved to {sd1_out}")
 
 
 if __name__ == '__main__':
