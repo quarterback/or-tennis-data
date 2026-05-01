@@ -403,10 +403,7 @@ def get_meet_result(meet, school_id):
 
     Uses flight scores first. When scores are equal, falls back to
     winnerSchoolId which tennisreporting.com sets based on the Oregon
-    tiebreaker (sets won, then games won). When that field is absent
-    (coach posted the dual without flagging the tiebreaker winner) we
-    fall back to the winners/losers structure on the meet itself —
-    the API still encodes which side won the tiebreaker there.
+    tiebreaker (sets won, then games won).
 
     Returns 'win', 'loss', or 'tie'.
     """
@@ -443,16 +440,6 @@ def get_meet_result(meet, school_id):
             return 'win'
         else:
             return 'loss'
-
-    # winnerSchoolId missing — fall back to the winners/losers structure
-    # on the meet. If the API placed this school in `schools.winners` the
-    # tiebreaker went its way; if in `schools.losers`, the other side won.
-    in_winners = any(w.get('id') == school_id for w in winners)
-    in_losers = any(l.get('id') == school_id for l in losers)
-    if in_winners and not in_losers:
-        return 'win'
-    if in_losers and not in_winners:
-        return 'loss'
 
     return 'tie'
 
