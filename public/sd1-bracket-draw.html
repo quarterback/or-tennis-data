@@ -555,10 +555,14 @@ function renderSetup(draw, container) {
 
   const help = document.createElement('div');
   help.className = 'info';
-  help.innerHTML = `
-    Enter one ${draw === state.singles ? 'singles entry' : 'doubles team'} per line for each
-    school (max 4 per school). For doubles, write each team as <code>Player A / Player B</code>.
-    Players cannot appear in both the singles and doubles lists for the same draw.
+  help.innerHTML = draw === state.singles ? `
+    Enter one singles player per line for each school (max 4 per school).
+    A player can be in either singles or doubles, never both.
+  ` : `
+    Enter one doubles entry per line, written as <code>Player A / Player B</code>
+    (max 4 entries per school). Each entry is two individuals paired for the
+    district draw — coaches set these for districts and don't have to match
+    season-long pairings. A player can be in either singles or doubles, never both.
   `;
   container.appendChild(help);
 

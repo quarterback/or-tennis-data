@@ -4482,10 +4482,6 @@ def render_sd1_seeding_page(schools, out_path):
             all_d = [m for ms in doubles_by_partner.values() for m in ms]
             dw, dl, dlw, dll = _summarize(all_d)
             singles_seedable = '✓' if slw + sll >= 2 else '✗'
-            # A player is doubles-seedable for a *pairing*, not overall, but we
-            # surface a hint at the player level.
-            seedable_partners = [p for p, ms in doubles_by_partner.items()
-                                 if sum(1 for m in ms if m['in_league']) >= 2]
 
             blocks = []
             blocks.append(
@@ -4517,30 +4513,28 @@ def render_sd1_seeding_page(schools, out_path):
                     f'<tbody>{"".join(srows)}</tbody></table>'
                 )
 
-            if doubles_by_partner:
-                for partner in sorted(doubles_by_partner.keys(), key=str.lower):
-                    matches = sorted(doubles_by_partner[partner],
-                                     key=lambda m: (m['date'], m['flight'] or ''))
-                    pw, pl, plw, pll = _summarize(matches)
-                    seed_ok = '✓' if plw + pll >= 2 else '✗'
-                    drows = []
-                    for m in matches:
-                        flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
-                        drows.append(
-                            f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
-                            f'<td>{_html.escape(m["opp_pair"])}</td>'
-                            f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
-                            f'<td>{_result_badge(m["won"])}</td>'
-                            f'<td class="score">{_set_str(m["sets"])}</td></tr>'
-                        )
-                    blocks.append(
-                        f'<table class="match-tbl"><caption>w/ {_html.escape(partner) or "(unknown)"}'
-                        f' &middot; <b>{pw}-{pl}</b> overall, <b>{plw}-{pll}</b> in SD1'
-                        f' <span class="muted">(pair seed-eligible: {seed_ok})</span></caption>'
-                        '<thead><tr><th>Date</th><th>Flt</th><th>Opponents</th>'
-                        '<th>School</th><th>Result</th><th>Sets</th></tr></thead>'
-                        f'<tbody>{"".join(drows)}</tbody></table>'
+            if all_d:
+                # One flat doubles table per individual with Partner as a column.
+                # Pairings shift across the season, so we sort by date and let
+                # the seeding committee scan partner columns themselves.
+                all_d_sorted = sorted(all_d, key=lambda m: (m['date'], m['flight'] or ''))
+                drows = []
+                for m in all_d_sorted:
+                    flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
+                    drows.append(
+                        f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
+                        f'<td>{_html.escape(m.get("partner") or "")}</td>'
+                        f'<td>{_html.escape(m["opp_pair"])}</td>'
+                        f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
+                        f'<td>{_result_badge(m["won"])}</td>'
+                        f'<td class="score">{_set_str(m["sets"])}</td></tr>'
                     )
+                blocks.append(
+                    '<table class="match-tbl"><caption>Doubles matches</caption>'
+                    '<thead><tr><th>Date</th><th>Flt</th><th>Partner</th>'
+                    '<th>Opponents</th><th>School</th><th>Result</th><th>Sets</th></tr></thead>'
+                    f'<tbody>{"".join(drows)}</tbody></table>'
+                )
 
             rows.append('<div class="player">' + ''.join(blocks) + '</div>')
 
@@ -4588,10 +4582,12 @@ def render_sd1_seeding_page(schools, out_path):
 <p class="lede">
   Per-school player records for the Special District 1 girls (4A/3A/2A/1A)
   district seeding meeting. Pulled from posted dual-match results; matches
-  against fellow SD1 schools are tagged <span class="lg">SD1</span>. Seed
-  eligibility per the SOP: 2+ league dual matches at the position (singles
-  or with the same partner). Coaches decide the seeds; this page just lays
-  out the inputs.
+  against fellow SD1 schools are tagged <span class="lg">SD1</span>. Doubles
+  rows show the partner per match — pairings shift across the season, so
+  records are kept at the individual level. Coaches decide the seeds; this
+  page just lays out the inputs. (Per the SOP, doubles seed eligibility
+  needs 2+ league matches with the same partner — easy to spot by scanning
+  the Partner column.)
 </p>
 <div class="actions">
   <a href="sd1-bracket-draw.html">Open the bracket-draw tool →</a>
