@@ -1,0 +1,12 @@
+# Netlify config for or-tennis-data.
+# The site is built by `python generate_site.py` (which writes index.html and
+# /public/*.html in-place). Netlify just needs to publish the repo root and
+# pick up the bracket-draw backend function under /netlify/functions/.
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
+  command = "pip install requests geopy numpy && python generate_site.py"
+
+# /api/draws/<id> is wired via config.path inside netlify/functions/draws.mjs
+# (Netlify Functions v2 path-based routing) — no redirect rule needed.
