@@ -226,6 +226,14 @@ def get_meet_result(meet, school_id):
         return 'win', 0
     if winner_school_id is not None:
         return 'loss', 0
+    # winnerSchoolId missing — fall back to the meet's winners/losers
+    # structure. The API still encodes the tiebreaker outcome there.
+    winners_ids = {w.get('id') for w in schools.get('winners', [])}
+    losers_ids = {l.get('id') for l in schools.get('losers', [])}
+    if school_id in winners_ids and school_id not in losers_ids:
+        return 'win', 0
+    if school_id in losers_ids and school_id not in winners_ids:
+        return 'loss', 0
     return 'tie', 0
 
 
