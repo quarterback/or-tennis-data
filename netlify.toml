@@ -10,3 +10,15 @@
 
 # /api/draws/<id> is wired via config.path inside netlify/functions/draws.mjs
 # (Netlify Functions v2 path-based routing) — no redirect rule needed.
+
+# Friendly top-level URLs for the SD1 tools (files live in public/ alongside
+# changelog.html, methodology.html, etc.).
+[[redirects]]
+  from = "/sd1-seeding.html"
+  to = "/public/sd1-seeding.html"
+  status = 200
+
+[[redirects]]
+  from = "/sd1-bracket-draw.html"
+  to = "/public/sd1-bracket-draw.html"
+  status = 200
