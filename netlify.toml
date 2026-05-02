@@ -1,24 +1,12 @@
-# Netlify config for or-tennis-data.
-# The site is built by `python generate_site.py` (which writes index.html and
-# /public/*.html in-place). Netlify just needs to publish the repo root and
-# pick up the bracket-draw backend function under /netlify/functions/.
+# Netlify config additions for the SD1 draw tool.
+# Build settings (publish dir, build command) are intentionally NOT set here
+# so we don't override whatever the Netlify dashboard already has working
+# (publish dir = public/, pretty URLs on).
+# We only declare the functions directory; URL routing for the SD1 pages
+# happens automatically via Netlify's standard publish-dir handling.
 
 [build]
-  publish = "."
   functions = "netlify/functions"
-  command = "pip install requests geopy numpy && python generate_site.py"
 
 # /api/draws/<id> is wired via config.path inside netlify/functions/draws.mjs
 # (Netlify Functions v2 path-based routing) — no redirect rule needed.
-
-# Friendly top-level URLs for the SD1 tools (files live in public/ alongside
-# changelog.html, methodology.html, etc.).
-[[redirects]]
-  from = "/sd1-seeding.html"
-  to = "/public/sd1-seeding.html"
-  status = 200
-
-[[redirects]]
-  from = "/sd1-bracket-draw.html"
-  to = "/public/sd1-bracket-draw.html"
-  status = 200
