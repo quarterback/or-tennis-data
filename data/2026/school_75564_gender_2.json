@@ -38,7 +38,7 @@
   ],
   "overallRecord": {
     "win": 3,
-    "loss": 6,
+    "loss": 7,
     "tie": 0
   },
   "meets": [
@@ -47,7 +47,7 @@
       "title": "Franklin Vs Roosevelt",
       "meetDateTime": "2026-05-04T07:00:00.000Z",
       "postSeason": false,
-      "approveMeet": false,
+      "approveMeet": true,
       "eventId": null,
       "winnerSchoolId": null,
       "coach": {
@@ -2957,6 +2957,177 @@
                     }
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      },
+      "event": null
+    },
+    {
+      "id": 222224,
+      "title": "vs Roosevelt ",
+      "meetDateTime": "2026-04-20T07:00:00.000Z",
+      "postSeason": false,
+      "approveMeet": false,
+      "eventId": null,
+      "winnerSchoolId": null,
+      "coach": {
+        "schoolId": 75547,
+        "firstName": "Anthony",
+        "lastName": "Hoang",
+        "genderId": 2,
+        "email": "ahoang@pps.net",
+        "phone": "(503) 839-2144",
+        "school": {
+          "name": "Benson",
+          "logo": "school_75547.png"
+        }
+      },
+      "schools": {
+        "winners": [
+          {
+            "id": 75547,
+            "name": "Benson",
+            "logo": "school_75547.png",
+            "score": 2,
+            "winnerSchoolId": null
+          }
+        ],
+        "losers": [
+          {
+            "id": 75564,
+            "name": " Roosevelt",
+            "logo": "school_75564.png",
+            "score": 0,
+            "winnerSchoolId": null
+          }
+        ]
+      },
+      "matches": {
+        "Singles": [
+          {
+            "sets": [
+              {
+                "3115061": 6,
+                "3115062": 0,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "3115061": 6,
+                "3115062": 0,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1557566,
+            "flight": "1",
+            "matchType": "Singles",
+            "finish": null,
+            "winnerTeamId": 3115061,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 3115061,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 140879,
+                    "firstName": "Carlyta",
+                    "lastName": "Barfield",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 3115062,
+                "isWinner": false,
+                "players": []
+              }
+            ]
+          }
+        ],
+        "Doubles": [
+          {
+            "sets": [
+              {
+                "3115085": 7,
+                "3115086": 6,
+                "number": 1,
+                "tie": null
+              },
+              {
+                "3115085": 7,
+                "3115086": 6,
+                "number": 2,
+                "tie": null
+              }
+            ],
+            "id": 1557578,
+            "flight": "1",
+            "matchType": "Doubles",
+            "finish": null,
+            "winnerTeamId": 3115085,
+            "genderId": 2,
+            "isNotVarsity": false,
+            "matchTeams": [
+              {
+                "id": 3115085,
+                "isWinner": true,
+                "players": [
+                  {
+                    "id": 140934,
+                    "firstName": "Amelia",
+                    "lastName": "Clowers",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 2
+                    }
+                  },
+                  {
+                    "id": 140937,
+                    "firstName": "Kamiyah",
+                    "lastName": "Hill",
+                    "grade": "11",
+                    "genderId": 2,
+                    "schoolId": 75547,
+                    "updatedAt": "2025-06-18T18:37:50.000Z",
+                    "graduatedDate": null,
+                    "school": {
+                      "name": "Benson",
+                      "logo": "school_75547.png"
+                    },
+                    "matchTeamPlayer": {
+                      "position": 1
+                    }
+                  }
+                ]
+              },
+              {
+                "id": 3115086,
+                "isWinner": false,
+                "players": []
               }
             ]
           }
