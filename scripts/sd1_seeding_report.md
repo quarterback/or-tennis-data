@@ -5,89 +5,82 @@ SD1 schools: Blanchet, Catlin Gabel, Corbett, Oregon Episcopal (OES), Riverdale,
 Riverside, Scappoose, St Helens, Tillamook, Trinity Academy, Valley Catholic,
 Westside Christian.
 
-**Per oregontennis.org/sd1-seeding:** coaches set the final seeds; this is the input
-data. 1st-flight players/teams get preference for the top 8; 2nd-flight players are
-only seeded into the top 8 if they played 1st-flight matches OR were particularly
-stellar in their spot. Doubles eligibility requires 2+ league matches with the same
-partner.
+**Per oregontennis.org/sd1-seeding:** coaches set the final seeds. 1st-flight
+players/teams take precedence for the top 8; 2nd-flight names are surfaced only
+when they played 1st-flight matches OR were particularly stellar in their spot.
+Doubles eligibility requires 2+ league matches with the same partner.
 
 ---
 
-## Top 8 Singles — Recommended Seeds
+## Final Singles Seeds (Top 8)
 
-Sorted by 1st-flight wins (volume of proven play at the top spot), then losses,
-then total record. Head-to-head should be used by coaches to break ties.
-
-| Seed | Player | School | Gr | F1 W-L | F2 W-L | Notes |
+| Seed | Player | School | Gr | F1 W-L | Total | Rationale |
 |---|---|---|---|---|---|---|
-| 1 | **Ria Shah** | Catlin Gabel | 9 | 5-0 | 0-0 | Undefeated; beat #2 Rinard head-to-head (Apr 23) |
-| 2 | **Nina Rinard** | Riverdale | 11 | 8-1 | 0-0 | Lone loss to Shah; beat #3 Thorne and #4 Nicholas |
-| 3 | **Taylor Thorne** | Scappoose | 12 | 8-2 | 0-0 | Losses to Rinard and to #7 Sharan |
-| 4 | **Margo Nicholas** | OES | 9 | 5-2 | 0-0 | Losses to Shah and Rinard |
-| 5 | **Sanaya Sharan** | Catlin Gabel | 10 | 2-0 | 1-1 | Limited F1 sample but **beat Thorne** at F1 (Apr 28) |
-| 6 | **Maria Felez** | Tillamook | 12 | 4-4 | 0-0 | Beat Koss; lost to Shah |
-| 7 | **Kelsey Koss** | Westside Christian | 11 | 3-5 | 0-0 | Beat Felez head-to-head |
-| 8 | **Emma Frias** | Valley Catholic | 9 | 2-2 | 1-0 | Lost to Shah and Thorne |
+| 1 | **Ria Shah** | Catlin Gabel | 9 | 5-0 | 5-0 | Undefeated; H2H win over Rinard |
+| 2 | **Nina Rinard** | Riverdale | 11 | 8-1 | 8-1 | Lone loss to Shah |
+| 3 | **Margo Nicholas** | OES | 9 | 5-2 | 5-2 | H2H win over Thorne |
+| 4 | **Taylor Thorne** | Scappoose | 12 | 8-2 | 8-2 | Losses to Rinard and Nicholas |
+| 5 | **Maria Felez** | Tillamook | 12 | 4-4 | 4-4 | H2H win over Koss |
+| 6 | **Kelsey Koss** | Westside Christian | 11 | 3-5 | 4-5 | |
+| 7 | **Emma Frias** | Valley Catholic | 9 | 2-2 | 3-2 | F1 win over Lazarus |
+| 8 | **Hailey Clayton** | OES | 10 | 1-0 | **7-0** | Stellar 2nd-flight elevation; undefeated season |
 
-### Bubble / strong consideration
+**Notes:**
+- Sanaya Sharan (Catlin Gabel) is competing in doubles, not singles.
+- 2nd-singles seed contingency: if the district allows a 2nd-flight seed,
+  Joyce My Nguyen (Valley Catholic, 1-0 F1 / 5-2 total, F1 win over Felez) is
+  the strongest data-supported alternative.
 
-| Player | School | Record | Why |
-|---|---|---|---|
-| **Hailey Clayton** | OES | 1-0 F1, 5-0 F2, **7-0 total** | Undefeated across the season; only one F1 appearance but stellar at F2. Strongest "particularly stellar 2nd flight" candidate. |
-| **Rachael Yang** | Valley Catholic | 2-2 F1 | Beat Koss at F1 |
-| **Joyce My Nguyen** | Valley Catholic | 1-0 F1, 3-1 F2 | 5-2 overall, beat Felez at F1 |
-
-### Head-to-head (top 8 flight-1 singles)
+### Head-to-head (1st-flight singles, league only)
 
 ```
-                  Nina R.  Taylor T.  Ria S.   Margo N.  Maria F.  Kelsey K.  Sanaya S.  Emma F.
-Nina Rinard       —        W(F1)      L(F1)    W(F1)     .         .          .          .
-Taylor Thorne     L(F1)    —          .        .         .         .          L(F1)      W(F1)
-Ria Shah          W(F1)    .          —        W(F1)     W(F1)     W(F1)      .          W(F1)
-Margo Nicholas    L(F1)    .          L(F1)    —         .         W(F1)      .          .
-Maria Felez       .        .          L(F1)    .         —         L(F1)      .          .
-Kelsey Koss       .        .          L(F1)    L(F1)     W(F1)     —          .          .
-Sanaya Sharan     .        W(F1)      .        .         .         .          —          .
-Emma Frias        .        L(F1)      L(F1)    .         .         .          .          —
+                  Shah     Rinard   Nicholas Thorne   Felez    Koss     Frias    Clayton
+Ria Shah          —        W        W        .        W        W        W        .
+Nina Rinard       L        —        W        W        .        .        .        .
+Margo Nicholas    L        L        —        W        .        W        .        .
+Taylor Thorne     .        L        L        —        .        .        W        .
+Maria Felez       L        .        .        .        —        L        .        .
+Kelsey Koss       L        .        L        .        W        —        .        .
+Emma Frias        L        .        .        L        .        .        —        .
+Hailey Clayton    .        .        .        .        .        .        .        —
 ```
 
 ---
 
-## Top 8 Doubles — Recommended Seeds
+## Final Doubles Seeds (Top 8)
 
-| Seed | Team | School | F1 W-L | F2 W-L | Notes |
+| Seed | Team | School | F1 W-L | Total | Rationale |
 |---|---|---|---|---|---|
-| 1 | **Lucy Bergland / Sadie Young** | OES | 3-0 | 3-0 | **6-0 overall**; F1 wins over #3 Kopetz/Sem, #4 Howard/Nelson, and #5 Raab/Saechao |
-| 2 | **Amanda Perez / Jiya Mehta** | Catlin Gabel | 5-0 | 0-0 | Undefeated at F1; beat Cici Ji/Ella Li and Raab/Saechao |
-| 3 | **Payton Scheidemantel / Maddie Olson** | Blanchet | 7-2 | 0-0 | Most F1 matches; losses to OES (Ji/Li) and CG (Shah/Tyner) |
-| 4 | **Brooke Kopetz / Satya Semenchalam** | Valley Catholic | 4-1 | 0-0 | Lone loss to #1 Bergland/Young |
-| 5 | **Natalie Howard / Violette Nelson** | Scappoose | 4-2 | 0-0 | Losses to #1 OES and #4 Valley Catholic |
-| 6 | **Cici Ji / Ella Li** | OES | 3-1 | 0-0 | Beat Scheidemantel/Olson; lost to Perez/Mehta |
-| 7 | **Addison Raab / Meuy Saechao** | St Helens | 4-5 | 1-0 | Tough F1 schedule; quality wins |
-| 8 | **Sara Bernabe / Appollonia Munoz** | Riverside | 2-0 | 0-0 | Limited sample but undefeated at F1 |
+| 1 | **Amanda Perez / Jiya Mehta** | Catlin Gabel | 5-0 | 5-0 | Defending state champions; undefeated at F1 |
+| 2 | **Cici Ji / Ella Li** | OES | 3-1 | 3-1 | Beat Scheidemantel/Olson; lone loss to Perez/Mehta |
+| 3 | **Payton Scheidemantel / Maddie Olson** | Blanchet | 7-2 | 7-2 | Most F1 reps in the district |
+| 4 | **Lucy Bergland / Sadie Young** | OES | 3-0 | 6-0 | Undefeated; F1 wins over Kopetz/Sem, Howard/Nelson, Raab/Saechao |
+| 5 | **Brooke Kopetz / Satya Semenchalam** | Valley Catholic | 4-1 | 4-1 | Lone loss to Bergland/Young |
+| 6 | **Natalie Howard / Violette Nelson** | Scappoose | 4-2 | 4-2 | Quality F1 schedule |
+| 7 | **Addison Raab / Meuy Saechao** | St Helens | 4-5 | 5-5 | Survived a tough F1 schedule |
+| 8 | **Sara Bernabe / Appollonia Munoz** | Riverside | 2-0 | 2-0 | Limited sample, but undefeated at F1 |
 
-### Bubble / strong consideration
+**Stellar 2nd-flight contingency teams (if district expands the seed list):**
 
-| Team | School | Record | Why |
-|---|---|---|---|
-| **Rachael Yang / Satya Semenchalam** | Valley Catholic | 2-0 F1 | Beat Tillamook and St Helens at F1 (note: Semenchalam already paired w/ Kopetz above) |
-| **Gracen Tummala / Kate Hawkins** | Westside Christian | 2-0 F1, 2-2 F2 | One F1 win over Riverside |
-| **Jia Bhardwaj / Carlie Li** | OES | 3-0 F2, no F1 | Stellar 2nd-flight pair, undefeated |
-| **Kyonna Picard / Vanessa Lao** | Scappoose | 3-0 F2, no F1 | Undefeated at F2 |
+| Team | School | Record |
+|---|---|---|
+| Jia Bhardwaj / Carlie Li | OES | 3-0 F2, 3-0 total |
+| Kyonna Picard / Vanessa Lao | Scappoose | 3-0 F2, 3-0 total |
+| Gracen Tummala / Kate Hawkins | Westside Christian | 2-0 F1, 4-2 total |
 
 ---
 
 ## Method notes
 
-- Data scope: gender_2 (girls) varsity dual matches in `data/2026/` for the 12 SD1
-  schools, filtered to meets where both teams are SD1 members.
+- Data scope: gender_2 (girls) varsity dual matches in `data/2026/` for the 12
+  SD1 schools, filtered to meets where both teams are SD1 members.
 - Singles record by flight is from `matchTeams` in each meet's `matches.Singles`
-  list. A player's flight history is tracked as F1, F2, F3, etc.; only F1 and F2
-  are surfaced in the top-8 view.
-- Doubles records are keyed by the **player pair** (frozenset of two player IDs on
+  list; F1 and F2 are surfaced separately.
+- Doubles records are keyed by the player pair (frozenset of two player IDs on
   the same school), so partner changes generate distinct records.
-- Eligibility: doubles teams need 2+ league matches with the same partner (per
-  SD1 rules); single-match doubles teams are filtered out.
-- Final seeds remain a coach decision per the SD1 page; this report shows inputs.
+- Eligibility: doubles teams need 2+ league matches with the same partner.
+- Final seeds reflect coach decision, including non-data factors (defending
+  state-champion status, challenge-match results, lineup commitments) provided
+  by the head coach.
 
-Generated by `scripts/sd1_seeding_report.py`.
+Generated by `scripts/sd1_seeding_report.py` (data inputs) plus coach overrides.
