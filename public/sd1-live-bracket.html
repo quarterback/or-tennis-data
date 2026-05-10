@@ -500,6 +500,32 @@ const R32_MATCH_FOR_SEED = (() => {
   return m; // {1:8, 2:16, 3:22, 4:12, 5:14, 6:20, 7:18}
 })();
 
+// Match numbers shown to users interleave singles and doubles by round:
+//   Singles pigtails 1-7, Doubles pigtails 8-14,
+//   Singles R32 15-30, Doubles R32 31-46,
+//   Singles R16 47-54, Doubles R16 55-62,
+//   Singles QF 63-66, Doubles QF 67-70,
+//   Singles SF 71-72, Doubles SF 73-74,
+//   Singles Final 75, Doubles Final 76,
+//   Singles 3P 77, Doubles 3P 78.
+const ROUND_BLOCKS = {
+  pigtail:     { internalStart: 1,  count: 7,  globalStart: 1 },
+  r32:         { internalStart: 8,  count: 16, globalStart: 15 },
+  r16:         { internalStart: 24, count: 8,  globalStart: 47 },
+  qf:          { internalStart: 32, count: 4,  globalStart: 63 },
+  sf:          { internalStart: 36, count: 2,  globalStart: 71 },
+  final:       { internalStart: 38, count: 1,  globalStart: 75 },
+  third_place: { internalStart: 39, count: 1,  globalStart: 77 }
+};
+function displayNum(side, internalNum) {
+  const def = BRACKET[internalNum];
+  if (!def) return internalNum;
+  const blk = ROUND_BLOCKS[def.round];
+  const offset = internalNum - blk.internalStart;
+  const sideOffset = side === 'singles' ? 0 : blk.count;
+  return blk.globalStart + sideOffset + offset;
+}
+
 //===================================================================
 // DEFAULT PLAYERS (seeded from the printable bracket)
 //===================================================================
@@ -758,7 +784,8 @@ function renderMatchBox(num, isPigtail = false) {
   const b = resolveSlot(side, num, 'B');
   const aWin = m.winner === 'A';
   const bWin = m.winner === 'B';
-  const labelPrefix = def.round === 'third_place' ? '3P' : (def.round === 'final' ? 'F' : `M${num}`);
+  const dn = displayNum(side, num);
+  const labelPrefix = def.round === 'third_place' ? `3P (M${dn})` : (def.round === 'final' ? `F (M${dn})` : `M${dn}`);
   const pigtailCls = isPigtail || def.round === 'pigtail' ? ' pigtail' : '';
   return `
     <div class="match-box${pigtailCls}" data-match="${num}">
@@ -811,9 +838,10 @@ function renderMatchRow(num) {
   const aFf = m.forfeit === 'A';
   const bFf = m.forfeit === 'B';
   const editBtn = IS_ADMIN ? `<div class="actions"><button data-edit="${num}">Edit</button></div>` : '<div></div>';
+  const dn = displayNum(side, num);
   return `
     <div class="match-row">
-      <div class="mnum">M${num}</div>
+      <div class="mnum">M${dn}</div>
       <div class="players">
         ${playerLine(a, m.scoreA, aWin, aFf)}
         ${playerLine(b, m.scoreB, bWin, bFf)}
@@ -937,7 +965,7 @@ function openMatchModal(num) {
   const m = STATE[side].matches[num] || {};
   const a = resolveSlot(side, num, 'A');
   const b = resolveSlot(side, num, 'B');
-  document.getElementById('matchModalTitle').textContent = `Edit M${num} (${ROUND_LABELS[BRACKET[num].round]})`;
+  document.getElementById('matchModalTitle').textContent = `Edit M${displayNum(side, num)} (${ROUND_LABELS[BRACKET[num].round]})`;
   document.getElementById('matchModalBody').innerHTML = `
     <label>${a ? esc(a.name) + ' (A)' : 'Slot A — TBD'}</label>
     <input type="text" id="emScoreA" value="${esc(m.scoreA || '')}" placeholder="e.g. 6-3, 6-2"
