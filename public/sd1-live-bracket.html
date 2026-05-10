@@ -1,0 +1,1116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>2026 SD-1 Girls District Tournament — Live</title>
+<style>
+  :root {
+    --fg: #1a1a1a;
+    --muted: #6b7280;
+    --bg: #f4f4f5;
+    --card: #fff;
+    --border: #d4d4d8;
+    --accent: #0d6efd;
+    --win: #198754;
+    --win-bg: #d1e7dd;
+    --pending: #999;
+    --school: #555;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    line-height: 1.4;
+  }
+
+  /* ---------- header ---------- */
+  header.top {
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  header.top h1 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 700;
+  }
+  header.top .sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  header.top .status {
+    float: right;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  header.top .status.admin { color: var(--win); font-weight: 600; }
+
+  /* ---------- tabs ---------- */
+  nav.tabs {
+    display: flex;
+    background: #fff;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 50px;
+    z-index: 9;
+  }
+  nav.tabs button {
+    flex: 1;
+    background: none;
+    border: 0;
+    padding: 12px 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+  }
+  nav.tabs button.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  nav.tabs .gender {
+    display: flex;
+    gap: 4px;
+    padding: 6px;
+    border-left: 1px solid var(--border);
+  }
+  nav.tabs .gender button {
+    flex: 0 0 auto;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    font-size: 12px;
+  }
+  nav.tabs .gender button.active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  main { padding: 12px; max-width: 1400px; margin: 0 auto; }
+
+  /* ---------- bracket view ---------- */
+  .bracket {
+    display: flex;
+    align-items: stretch;
+    gap: 1px;
+    overflow-x: auto;
+    padding-bottom: 12px;
+  }
+  .bracket .round {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-shrink: 0;
+    min-width: 130px;
+    padding: 0 2px;
+  }
+  .bracket .round.pigtails { min-width: 150px; }
+  .bracket .round.r32 { min-width: 175px; }
+  .bracket .round.r16 { min-width: 145px; }
+  .bracket .round.qf  { min-width: 130px; }
+  .bracket .round.sf  { min-width: 130px; }
+  .bracket .round.f   { min-width: 145px; justify-content: center; gap: 16px; }
+
+  .match-box {
+    border: 1px solid #333;
+    border-radius: 3px;
+    background: #fff;
+    margin: 2px 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .match-box.empty { border: none; background: transparent; min-height: 30px; }
+  .match-box.pigtail { border-color: #888; background: #fafafa; }
+  .match-box .match-num {
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    font-size: 9px;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .slot {
+    display: flex;
+    align-items: center;
+    padding: 3px 18px 3px 5px;
+    border-bottom: 1px solid #e0e0e0;
+    font-size: 11px;
+    line-height: 1.2;
+    min-height: 22px;
+  }
+  .slot:last-child { border-bottom: none; }
+  .slot.winner { background: var(--win-bg); font-weight: 600; }
+  .slot.unresolved { color: var(--pending); font-style: italic; }
+  .slot .seed {
+    display: inline-block;
+    min-width: 14px;
+    font-weight: 700;
+    color: #555;
+    font-size: 9.5px;
+    margin-right: 3px;
+  }
+  .slot .name {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .slot .school {
+    font-size: 9.5px;
+    color: var(--school);
+    font-style: italic;
+    margin-left: 4px;
+    white-space: nowrap;
+  }
+  .slot .score {
+    font-size: 10px;
+    color: #333;
+    margin-left: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- matches list ---------- */
+  .matches-list {
+    display: grid;
+    gap: 6px;
+  }
+  .matches-list .round-group {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0;
+    overflow: hidden;
+  }
+  .matches-list .round-header {
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border);
+    padding: 8px 12px;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .matches-list .match-row {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+    font-size: 13px;
+  }
+  .matches-list .match-row:last-child { border-bottom: none; }
+  .matches-list .mnum {
+    font-weight: 700;
+    color: var(--muted);
+    font-size: 12px;
+  }
+  .matches-list .players { display: grid; gap: 2px; }
+  .matches-list .player-line {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .matches-list .player-line.winner { font-weight: 600; color: var(--win); }
+  .matches-list .player-line.unresolved { color: var(--pending); font-style: italic; }
+  .matches-list .player-line .seed { font-size: 10px; color: #777; min-width: 14px; }
+  .matches-list .player-line .school { color: var(--school); font-size: 11px; font-style: italic; }
+  .matches-list .player-line .score { margin-left: auto; font-variant-numeric: tabular-nums; }
+  .matches-list .actions { display: flex; gap: 4px; }
+  .matches-list .actions button {
+    padding: 4px 8px;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+  }
+  .matches-list .actions button:hover { background: #f4f4f5; }
+
+  /* ---------- standings ---------- */
+  .standings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .standings .table-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .standings .table-card h3 {
+    margin: 0;
+    padding: 10px 14px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border);
+    font-size: 14px;
+  }
+  .standings table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .standings th, .standings td {
+    padding: 6px 12px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+  }
+  .standings th { background: #fafafa; font-size: 12px; color: var(--muted); }
+  .standings td.points {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 600;
+  }
+  .standings .total-row {
+    background: #f8f9fa;
+    border-top: 2px solid var(--border);
+    font-weight: 700;
+  }
+
+  /* ---------- views ---------- */
+  .view { display: none; }
+  .view.active { display: block; }
+
+  /* ---------- admin modal ---------- */
+  .modal-bg {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .modal-bg.open { display: flex; }
+  .modal {
+    background: #fff;
+    border-radius: 6px;
+    padding: 20px;
+    max-width: 460px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+  .modal h2 { margin-top: 0; font-size: 16px; }
+  .modal label { display: block; margin: 10px 0 4px; font-size: 13px; font-weight: 600; }
+  .modal input, .modal select {
+    width: 100%;
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  .modal .modal-actions {
+    margin-top: 14px;
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+  }
+  .modal button {
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    background: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+  }
+  .modal button.primary {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 720px) {
+    .standings { grid-template-columns: 1fr; }
+    nav.tabs { top: 56px; }
+    header.top h1 { font-size: 15px; }
+    header.top .status { float: none; display: block; margin-top: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <h1>2026 Special District 1 Girls Tennis</h1>
+  <div class="sub">Live tournament bracket · auto-refreshes every 30s</div>
+  <div class="status" id="statusBar">loading…</div>
+</header>
+
+<nav class="tabs">
+  <button data-tab="bracket" class="active">Bracket</button>
+  <button data-tab="matches">Matches</button>
+  <button data-tab="standings">Standings</button>
+  <div class="gender">
+    <button data-gender="singles" class="active">Singles</button>
+    <button data-gender="doubles">Doubles</button>
+  </div>
+</nav>
+
+<main>
+  <div id="adminBar" style="display:none; background:#fff3cd; border:1px solid #ffc107; padding:8px 12px; border-radius:4px; margin-bottom:12px; font-size:13px;">
+    <strong>Admin mode</strong> — score edits will save to the live site.
+    <button id="editPlayersBtn" style="margin-left:12px; padding:4px 10px; border:1px solid #888; background:#fff; border-radius:3px; cursor:pointer;">Edit players</button>
+  </div>
+
+  <section class="view active" id="view-bracket">
+    <div class="bracket" id="bracketView"></div>
+  </section>
+
+  <section class="view" id="view-matches">
+    <div class="matches-list" id="matchesView"></div>
+  </section>
+
+  <section class="view" id="view-standings">
+    <div class="standings" id="standingsView"></div>
+  </section>
+</main>
+
+<!-- Match edit modal -->
+<div class="modal-bg" id="matchModal">
+  <div class="modal">
+    <h2 id="matchModalTitle">Edit match</h2>
+    <div id="matchModalBody"></div>
+    <div class="modal-actions">
+      <button id="matchModalCancel">Cancel</button>
+      <button class="primary" id="matchModalSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Player edit modal -->
+<div class="modal-bg" id="playerModal">
+  <div class="modal">
+    <h2>Edit players</h2>
+    <p style="font-size:12px;color:#666;margin:0 0 10px;">Pick a seed to swap a player. Seeds 1–7 are the only true seeds; the rest were drawn.</p>
+    <label for="pmGender">Side</label>
+    <select id="pmGender">
+      <option value="singles">Singles</option>
+      <option value="doubles">Doubles</option>
+    </select>
+    <label for="pmSeed">Seed (1–39)</label>
+    <select id="pmSeed"></select>
+    <label for="pmName">Name</label>
+    <input type="text" id="pmName" placeholder="Last, First or Doe / Roe">
+    <label for="pmSchool">School</label>
+    <select id="pmSchool">
+      <option>Catlin Gabel</option>
+      <option>Oregon Episcopal</option>
+      <option>Valley Catholic</option>
+      <option>Trinity Academy</option>
+      <option>St. Helens</option>
+      <option>Scappoose</option>
+      <option>Westside Christian</option>
+      <option>Tillamook</option>
+      <option>Blanchet</option>
+      <option>Riverdale</option>
+      <option>Riverside</option>
+    </select>
+    <div class="modal-actions">
+      <button id="playerModalCancel">Cancel</button>
+      <button class="primary" id="playerModalSave">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+//===================================================================
+// CONFIG
+//===================================================================
+const TOURNAMENT_ID = '2026';
+const POLL_MS = 30000;
+
+//===================================================================
+// BRACKET STRUCTURE — match number -> { round, seedA?, seedB?, feedA?, feedB?, feedLoserA?, feedLoserB? }
+//===================================================================
+const BRACKET = {
+  // Pigtails
+  1: { round: 'pigtail', seedA: 32, seedB: 33 },
+  2: { round: 'pigtail', seedA: 29, seedB: 36 },
+  3: { round: 'pigtail', seedA: 28, seedB: 37 },
+  4: { round: 'pigtail', seedA: 31, seedB: 34 },
+  5: { round: 'pigtail', seedA: 26, seedB: 39 },
+  6: { round: 'pigtail', seedA: 27, seedB: 38 },
+  7: { round: 'pigtail', seedA: 30, seedB: 35 },
+  // R32
+  8:  { round: 'r32', seedA: 1,  feedB: 1 },
+  9:  { round: 'r32', seedA: 16, seedB: 17 },
+  10: { round: 'r32', seedA: 8,  seedB: 25 },
+  11: { round: 'r32', seedA: 9,  seedB: 24 },
+  12: { round: 'r32', seedA: 4,  feedB: 2 },
+  13: { round: 'r32', seedA: 13, seedB: 20 },
+  14: { round: 'r32', seedA: 5,  feedB: 3 },
+  15: { round: 'r32', seedA: 12, seedB: 21 },
+  16: { round: 'r32', seedA: 2,  feedB: 4 },
+  17: { round: 'r32', seedA: 15, seedB: 18 },
+  18: { round: 'r32', seedA: 7,  feedB: 5 },
+  19: { round: 'r32', seedA: 10, seedB: 23 },
+  20: { round: 'r32', seedA: 6,  feedB: 6 },
+  21: { round: 'r32', seedA: 11, seedB: 22 },
+  22: { round: 'r32', seedA: 3,  feedB: 7 },
+  23: { round: 'r32', seedA: 14, seedB: 19 },
+  // R16
+  24: { round: 'r16', feedA: 8,  feedB: 9  },
+  25: { round: 'r16', feedA: 10, feedB: 11 },
+  26: { round: 'r16', feedA: 12, feedB: 13 },
+  27: { round: 'r16', feedA: 14, feedB: 15 },
+  28: { round: 'r16', feedA: 16, feedB: 17 },
+  29: { round: 'r16', feedA: 18, feedB: 19 },
+  30: { round: 'r16', feedA: 20, feedB: 21 },
+  31: { round: 'r16', feedA: 22, feedB: 23 },
+  // QF
+  32: { round: 'qf', feedA: 24, feedB: 25 },
+  33: { round: 'qf', feedA: 26, feedB: 27 },
+  34: { round: 'qf', feedA: 28, feedB: 29 },
+  35: { round: 'qf', feedA: 30, feedB: 31 },
+  // SF
+  36: { round: 'sf', feedA: 32, feedB: 33 },
+  37: { round: 'sf', feedA: 34, feedB: 35 },
+  // Final
+  38: { round: 'final', feedA: 36, feedB: 37 },
+  // Third place
+  39: { round: 'third_place', feedLoserA: 36, feedLoserB: 37 }
+};
+
+const ROUNDS = ['pigtail','r32','r16','qf','sf','final','third_place'];
+const ROUND_LABELS = {
+  pigtail: 'Pigtails (Round 1)',
+  r32: 'Round of 32',
+  r16: 'Round of 16',
+  qf: 'Quarterfinals',
+  sf: 'Semifinals',
+  final: 'Final',
+  third_place: 'Third Place'
+};
+
+// Map seed (1-7) -> the R32 match number that seed plays in
+const R32_MATCH_FOR_SEED = (() => {
+  const m = {};
+  for (let n = 8; n <= 23; n++) {
+    const def = BRACKET[n];
+    if (def.seedA && def.seedA <= 7) m[def.seedA] = n;
+    if (def.seedB && def.seedB <= 7) m[def.seedB] = n;
+  }
+  return m; // {1:8, 2:16, 3:22, 4:12, 5:14, 6:20, 7:18}
+})();
+
+//===================================================================
+// DEFAULT PLAYERS (seeded from the printable bracket)
+//===================================================================
+const DEFAULT_SINGLES_PLAYERS = {
+  1:  ['Ria Shah',                     'Catlin Gabel'],
+  2:  ['Nina Rinard',                  'Riverdale'],
+  3:  ['Margo Nicholas',               'Oregon Episcopal'],
+  4:  ['Taylor Thorne',                'Scappoose'],
+  5:  ['Hailey Clayton',               'Oregon Episcopal'],
+  6:  ['Joyce Nguyen',                 'Valley Catholic'],
+  7:  ['Maria Felez',                  'Tillamook'],
+  8:  ['Kelsey Koss',                  'Westside Christian'],
+  9:  ['Camila Barocio',               'Blanchet'],
+  10: ['Hannah Piano',                 'St. Helens'],
+  11: ['Bridget Keane',                'Blanchet'],
+  12: ['Guadalupe Santiago-Hernandez', 'Valley Catholic'],
+  13: ['Cassidy Nino',                 'Trinity Academy'],
+  14: ['Madison Youngren',             'Scappoose'],
+  15: ['Haddie Lattus',                'Westside Christian'],
+  16: ['Crystal Chacon',               'Tillamook'],
+  17: ['Riley Smith',                  'Oregon Episcopal'],
+  18: ['Daisy Smith',                  'Scappoose'],
+  19: ['Sanni Venalainen',             'Tillamook'],
+  20: ['Kasey Neaves',                 'Tillamook'],
+  21: ['Stella Gatziolis',             'Riverdale'],
+  22: ['Charlotte Shreves',            'Trinity Academy'],
+  23: ['Carlie Li',                    'Oregon Episcopal'],
+  24: ['Genevieve Schaal',             'Valley Catholic'],
+  25: ['Shirley Holmes',               'St. Helens'],
+  26: ['Emma Frias',                   'Valley Catholic'],
+  27: ['Eden Cloutier',                'Westside Christian'],
+  28: ['Cinthia Ortiz',                'St. Helens'],
+  29: ['Kinzie Lazarus',               'Blanchet'],
+  30: ['Molli Burton',                 'St. Helens'],
+  31: ['Hannah Fabel',                 'Trinity Academy'],
+  32: ['Julia Tung',                   'Trinity Academy'],
+  33: ['Grace Melville',               'Scappoose'],
+  34: ['Natalie Ledford',              'Blanchet'],
+  35: ['Eda Daim',                     'Riverdale'],
+  36: ['Grace Allori',                 'Westside Christian'],
+  37: ['Adelle Tyner',                 'Catlin Gabel'],
+  38: ['Alana Iglesias',               'Catlin Gabel'],
+  39: ['Hana Kocher',                  'Catlin Gabel']
+};
+
+const DEFAULT_DOUBLES_PLAYERS = {
+  1:  ['Perez / Mehta',                       'Catlin Gabel'],
+  2:  ['Ji / Li',                             'Oregon Episcopal'],
+  3:  ['Kopetz / Semenchalam',                'Valley Catholic'],
+  4:  ['Bergland / Young',                    'Oregon Episcopal'],
+  5:  ['Scheidemantel / Olson',               'Blanchet'],
+  6:  ['Howard / Nelson',                     'Scappoose'],
+  7:  ['Raab / Saechao',                      'St. Helens'],
+  8:  ['F. Sandoval / Edwards',               'Tillamook'],
+  9:  ['Woo / Chen',                          'Oregon Episcopal'],
+  10: ['Marquez / C. Nguyen',                 'Tillamook'],
+  11: ['Folz / Wade',                         'Trinity Academy'],
+  12: ['Peters / E. Garland',                 'Trinity Academy'],
+  13: ['Gearhart / Williams',                 'St. Helens'],
+  14: ['Williams / Levis',                    'Westside Christian'],
+  15: ['R. Nguyen / Wolverton',               'Westside Christian'],
+  16: ['Ramey / Okulitch',                    'Riverdale'],
+  17: ['Simon / Kang',                        'Valley Catholic'],
+  18: ['Avici / Shaw',                        'Catlin Gabel'],
+  19: ['Doshi / Kantak',                      'Oregon Episcopal'],
+  20: ['Yoken / Pajkic',                      'Catlin Gabel'],
+  21: ['Yang / Leong',                        'Valley Catholic'],
+  22: ['Welter / Limont',                     'Blanchet'],
+  23: ['Melendez / Valenzuela',               'Blanchet'],
+  24: ['Rusli / Lenssen',                     'Westside Christian'],
+  25: ['Wallace / Caven',                     'St. Helens'],
+  26: ['Flores-Hernandez / Reyna-Castillo',   'Scappoose'],
+  27: ['Monteleone / Johnson',                'St. Helens'],
+  28: ['Bernabe / Munoz',                     'Riverside'],
+  29: ['Bautista / Ochoa Lopez',              'Tillamook'],
+  30: ['Abel / Fernandez',                    'Riverside'],
+  31: ['Garland / Allen',                     'Trinity Academy'],
+  32: ['Capsey / Vanderhoof',                 'Scappoose'],
+  33: ['Kabore / Tiscornia',                  'Blanchet'],
+  34: ['A. Gatziolis / Pickett',              'Riverdale'],
+  35: ['Morales Cortez / Fraile',             'Tillamook'],
+  36: ['Claussen / Lao',                      'Scappoose'],
+  37: ['Hawkins / Tummala',                   'Westside Christian'],
+  38: ['Sharan / Kelly',                      'Catlin Gabel'],
+  39: ['Thuret / Fein',                       'Valley Catholic']
+};
+
+function emptyMatches() {
+  const out = {};
+  for (const num of Object.keys(BRACKET)) {
+    out[num] = { scoreA: '', scoreB: '', winner: null, forfeit: null };
+  }
+  return out;
+}
+function makePlayers(defaults) {
+  const out = {};
+  for (const [seed, [name, school]] of Object.entries(defaults)) {
+    out[seed] = { name, school };
+  }
+  return out;
+}
+function defaultState() {
+  return {
+    tournamentId: TOURNAMENT_ID,
+    updatedAt: null,
+    singles: { players: makePlayers(DEFAULT_SINGLES_PLAYERS), matches: emptyMatches() },
+    doubles: { players: makePlayers(DEFAULT_DOUBLES_PLAYERS), matches: emptyMatches() }
+  };
+}
+
+//===================================================================
+// STATE
+//===================================================================
+let STATE = defaultState();
+const URL_PARAMS = new URLSearchParams(location.search);
+const ADMIN_TOKEN = URL_PARAMS.get('admin');
+const IS_ADMIN = !!ADMIN_TOKEN;
+let ACTIVE_TAB = 'bracket';
+let ACTIVE_GENDER = 'singles';
+let SAVING = false;
+let LAST_SAVED = null;
+
+//===================================================================
+// MATCH RESOLUTION
+//===================================================================
+function resolveSlot(side, matchNum, slot) {
+  // Returns { seed, name, school } or null if upstream match unresolved
+  const def = BRACKET[matchNum];
+  if (!def) return null;
+  const players = STATE[side].players;
+  const matches = STATE[side].matches;
+
+  const seedField  = slot === 'A' ? 'seedA'      : 'seedB';
+  const feedField  = slot === 'A' ? 'feedA'      : 'feedB';
+  const loserField = slot === 'A' ? 'feedLoserA' : 'feedLoserB';
+
+  if (def[seedField]) {
+    const seed = def[seedField];
+    const p = players[seed];
+    return p ? { seed, name: p.name, school: p.school } : null;
+  }
+  if (def[feedField]) {
+    const parent = matches[def[feedField]];
+    if (!parent || !parent.winner) return null;
+    return resolveSlot(side, def[feedField], parent.winner);
+  }
+  if (def[loserField]) {
+    const parent = matches[def[loserField]];
+    if (!parent || !parent.winner) return null;
+    const loserSlot = parent.winner === 'A' ? 'B' : 'A';
+    return resolveSlot(side, def[loserField], loserSlot);
+  }
+  return null;
+}
+
+function getWinnerSeed(side, matchNum) {
+  const m = STATE[side].matches[matchNum];
+  if (!m || !m.winner) return null;
+  const player = resolveSlot(side, matchNum, m.winner);
+  return player ? player.seed : null;
+}
+
+//===================================================================
+// SCORING
+//===================================================================
+function computeStandings(side) {
+  const points = {};
+  const matches = STATE[side].matches;
+  const players = STATE[side].players;
+
+  for (const num of Object.keys(BRACKET)) {
+    const m = matches[num];
+    if (!m || !m.winner) continue;
+    const player = resolveSlot(side, parseInt(num), m.winner);
+    if (!player) continue;
+    const round = BRACKET[num].round;
+    const pts = round === 'third_place' ? 0.5 : 1;
+    points[player.school] = (points[player.school] || 0) + pts;
+  }
+
+  // Bye points
+  for (let seed = 1; seed <= 7; seed++) {
+    const r32num = R32_MATCH_FOR_SEED[seed];
+    const m = matches[r32num];
+    if (!m || !m.winner) continue;
+    const def = BRACKET[r32num];
+    const seedSlot = def.seedA === seed ? 'A' : 'B';
+    if (m.forfeit === seedSlot) continue; // they forfeited, no point
+    const p = players[seed];
+    if (!p) continue;
+    points[p.school] = (points[p.school] || 0) + 1;
+  }
+
+  return points;
+}
+
+//===================================================================
+// RENDERING — BRACKET
+//===================================================================
+function slotLabel(player, opts = {}) {
+  if (!player) return '<span class="slot unresolved"><span class="name">—</span></span>';
+  const showSeed = opts.showSeed !== false && player.seed >= 1 && player.seed <= 7;
+  const seedHtml = showSeed ? `<span class="seed">${player.seed}</span>` : '';
+  return `${seedHtml}<span class="name">${esc(player.name)}</span><span class="school">${esc(player.school)}</span>`;
+}
+function esc(s) { return String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+
+function renderBracket() {
+  const side = ACTIVE_GENDER;
+  const html = [];
+  // Match numbers organized by display column
+  // Left pigtails (8 slots aligned with R32 matches 8,9,10,11,12,13,14,15)
+  const leftPigtails  = [1, null, null, null, 2, null, 3, null];
+  const rightPigtails = [4, null, 5, null, 6, null, 7, null];
+  const leftR32       = [8, 9, 10, 11, 12, 13, 14, 15];
+  const rightR32      = [16, 17, 18, 19, 20, 21, 22, 23];
+  const leftR16       = [24, 25, 26, 27];
+  const rightR16      = [28, 29, 30, 31];
+  const leftQF        = [32, 33];
+  const rightQF       = [34, 35];
+  const leftSF        = [36];
+  const rightSF       = [37];
+
+  function pigtailCol(arr) {
+    return `<div class="round pigtails">` +
+      arr.map(n => n ? renderMatchBox(n, true) : `<div class="match-box empty"></div>`).join('') +
+      `</div>`;
+  }
+  function matchCol(cls, arr) {
+    return `<div class="round ${cls}">` +
+      arr.map(n => renderMatchBox(n)).join('') +
+      `</div>`;
+  }
+
+  html.push(`<div class="bracket">`);
+  html.push(pigtailCol(leftPigtails));
+  html.push(matchCol('r32', leftR32));
+  html.push(matchCol('r16', leftR16));
+  html.push(matchCol('qf',  leftQF));
+  html.push(matchCol('sf',  leftSF));
+  html.push(`<div class="round f">${renderMatchBox(38)}${renderMatchBox(39)}</div>`);
+  html.push(matchCol('sf',  rightSF));
+  html.push(matchCol('qf',  rightQF));
+  html.push(matchCol('r16', rightR16));
+  html.push(matchCol('r32', rightR32));
+  html.push(pigtailCol(rightPigtails));
+  html.push(`</div>`);
+  document.getElementById('bracketView').innerHTML = html.join('');
+}
+
+function renderMatchBox(num, isPigtail = false) {
+  const side = ACTIVE_GENDER;
+  const m = STATE[side].matches[num] || {};
+  const def = BRACKET[num];
+  const a = resolveSlot(side, num, 'A');
+  const b = resolveSlot(side, num, 'B');
+  const aWin = m.winner === 'A';
+  const bWin = m.winner === 'B';
+  const labelPrefix = def.round === 'third_place' ? '3P' : (def.round === 'final' ? 'F' : `M${num}`);
+  const pigtailCls = isPigtail || def.round === 'pigtail' ? ' pigtail' : '';
+  return `
+    <div class="match-box${pigtailCls}" data-match="${num}">
+      <span class="match-num">${labelPrefix}</span>
+      <div class="slot ${aWin ? 'winner' : ''} ${a ? '' : 'unresolved'}">${slotInner(a, m.scoreA)}</div>
+      <div class="slot ${bWin ? 'winner' : ''} ${b ? '' : 'unresolved'}">${slotInner(b, m.scoreB)}</div>
+    </div>
+  `;
+}
+function slotInner(player, score) {
+  if (!player) return '<span class="name">—</span>';
+  const showSeed = player.seed >= 1 && player.seed <= 7;
+  const seedHtml = showSeed ? `<span class="seed">${player.seed}</span>` : '';
+  const scoreHtml = score ? `<span class="score">${esc(score)}</span>` : '';
+  return `${seedHtml}<span class="name">${esc(player.name)}</span><span class="school">${esc(player.school)}</span>${scoreHtml}`;
+}
+
+//===================================================================
+// RENDERING — MATCHES LIST
+//===================================================================
+function renderMatches() {
+  const side = ACTIVE_GENDER;
+  const html = [];
+  for (const round of ROUNDS) {
+    const nums = Object.keys(BRACKET).filter(n => BRACKET[n].round === round);
+    if (!nums.length) continue;
+    html.push(`<div class="round-group">`);
+    html.push(`<div class="round-header">${ROUND_LABELS[round]}</div>`);
+    for (const num of nums) {
+      html.push(renderMatchRow(parseInt(num)));
+    }
+    html.push(`</div>`);
+  }
+  document.getElementById('matchesView').innerHTML = html.join('');
+  if (IS_ADMIN) {
+    document.querySelectorAll('.match-row [data-edit]').forEach(b => {
+      b.addEventListener('click', () => openMatchModal(parseInt(b.dataset.edit)));
+    });
+  }
+}
+
+function renderMatchRow(num) {
+  const side = ACTIVE_GENDER;
+  const m = STATE[side].matches[num] || {};
+  const def = BRACKET[num];
+  const a = resolveSlot(side, num, 'A');
+  const b = resolveSlot(side, num, 'B');
+  const aWin = m.winner === 'A';
+  const bWin = m.winner === 'B';
+  const aFf = m.forfeit === 'A';
+  const bFf = m.forfeit === 'B';
+  const editBtn = IS_ADMIN ? `<div class="actions"><button data-edit="${num}">Edit</button></div>` : '<div></div>';
+  return `
+    <div class="match-row">
+      <div class="mnum">M${num}</div>
+      <div class="players">
+        ${playerLine(a, m.scoreA, aWin, aFf)}
+        ${playerLine(b, m.scoreB, bWin, bFf)}
+      </div>
+      ${editBtn}
+    </div>
+  `;
+}
+function playerLine(player, score, isWin, isForfeit) {
+  if (!player) return `<div class="player-line unresolved"><span class="name">— TBD —</span></div>`;
+  const showSeed = player.seed >= 1 && player.seed <= 7;
+  const seedHtml = showSeed ? `<span class="seed">${player.seed}</span>` : '<span class="seed"></span>';
+  const cls = isWin ? 'winner' : '';
+  const ffMark = isForfeit ? ' <em>(forfeit)</em>' : '';
+  return `<div class="player-line ${cls}">
+    ${seedHtml}<span class="name">${esc(player.name)}</span>
+    <span class="school">${esc(player.school)}</span>
+    <span class="score">${esc(score || '')}${ffMark}</span>
+  </div>`;
+}
+
+//===================================================================
+// RENDERING — STANDINGS
+//===================================================================
+function renderStandings() {
+  const sPts = computeStandings('singles');
+  const dPts = computeStandings('doubles');
+  const allSchools = new Set([...Object.keys(sPts), ...Object.keys(dPts)]);
+  // Also include any school in players list, even with zero
+  for (const side of ['singles','doubles']) {
+    for (const seed of Object.keys(STATE[side].players)) {
+      allSchools.add(STATE[side].players[seed].school);
+    }
+  }
+  const rows = [...allSchools].map(school => ({
+    school,
+    s: sPts[school] || 0,
+    d: dPts[school] || 0,
+    total: (sPts[school] || 0) + (dPts[school] || 0)
+  })).sort((a, b) => b.total - a.total || a.school.localeCompare(b.school));
+
+  const totalS = rows.reduce((x,r) => x + r.s, 0);
+  const totalD = rows.reduce((x,r) => x + r.d, 0);
+
+  const tableHtml = `
+    <div class="table-card">
+      <h3>District Scoring</h3>
+      <table>
+        <thead>
+          <tr><th>School</th><th class="points">Singles</th><th class="points">Doubles</th><th class="points">Total</th></tr>
+        </thead>
+        <tbody>
+          ${rows.map(r => `
+            <tr><td>${esc(r.school)}</td>
+              <td class="points">${fmtPts(r.s)}</td>
+              <td class="points">${fmtPts(r.d)}</td>
+              <td class="points">${fmtPts(r.total)}</td>
+            </tr>`).join('')}
+          <tr class="total-row">
+            <td>Total awarded</td>
+            <td class="points">${fmtPts(totalS)}</td>
+            <td class="points">${fmtPts(totalD)}</td>
+            <td class="points">${fmtPts(totalS + totalD)}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-card">
+      <h3>Scoring rules</h3>
+      <table>
+        <tbody>
+          <tr><td>Match win (any round)</td><td class="points">+1</td></tr>
+          <tr><td>Third-place match win</td><td class="points">+0.5</td></tr>
+          <tr><td>Bye point (seeds 1–7, once they play R32)</td><td class="points">+1</td></tr>
+          <tr><td>Forfeiting your first match</td><td class="points">no bye point</td></tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+  document.getElementById('standingsView').innerHTML = tableHtml;
+}
+function fmtPts(n) { return n === 0 ? '—' : (n % 1 === 0 ? n.toFixed(0) : n.toFixed(1)); }
+
+//===================================================================
+// RENDER ALL
+//===================================================================
+function renderAll() {
+  renderBracket();
+  renderMatches();
+  renderStandings();
+}
+
+//===================================================================
+// TABS
+//===================================================================
+document.querySelectorAll('nav.tabs button[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('nav.tabs button[data-tab]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ACTIVE_TAB = btn.dataset.tab;
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.getElementById(`view-${ACTIVE_TAB}`).classList.add('active');
+  });
+});
+document.querySelectorAll('nav.tabs button[data-gender]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('nav.tabs button[data-gender]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    ACTIVE_GENDER = btn.dataset.gender;
+    renderAll();
+  });
+});
+
+//===================================================================
+// MATCH EDIT MODAL
+//===================================================================
+let EDITING_MATCH = null;
+function openMatchModal(num) {
+  EDITING_MATCH = num;
+  const side = ACTIVE_GENDER;
+  const m = STATE[side].matches[num] || {};
+  const a = resolveSlot(side, num, 'A');
+  const b = resolveSlot(side, num, 'B');
+  document.getElementById('matchModalTitle').textContent = `Edit M${num} (${ROUND_LABELS[BRACKET[num].round]})`;
+  document.getElementById('matchModalBody').innerHTML = `
+    <label>${a ? esc(a.name) + ' (A)' : 'Slot A — TBD'}</label>
+    <input type="text" id="emScoreA" value="${esc(m.scoreA || '')}" placeholder="e.g. 6-3, 6-2"
+      ${a ? '' : 'disabled'}>
+    <label>${b ? esc(b.name) + ' (B)' : 'Slot B — TBD'}</label>
+    <input type="text" id="emScoreB" value="${esc(m.scoreB || '')}" placeholder="e.g. 3-6, 4-6"
+      ${b ? '' : 'disabled'}>
+    <label>Winner</label>
+    <select id="emWinner">
+      <option value="">— not yet decided —</option>
+      <option value="A" ${m.winner === 'A' ? 'selected' : ''}>${a ? esc(a.name) : 'A'}</option>
+      <option value="B" ${m.winner === 'B' ? 'selected' : ''}>${b ? esc(b.name) : 'B'}</option>
+    </select>
+    <label>Forfeit (if any)</label>
+    <select id="emForfeit">
+      <option value="">— no forfeit —</option>
+      <option value="A" ${m.forfeit === 'A' ? 'selected' : ''}>${a ? esc(a.name) : 'A'} forfeited</option>
+      <option value="B" ${m.forfeit === 'B' ? 'selected' : ''}>${b ? esc(b.name) : 'B'} forfeited</option>
+    </select>
+  `;
+  document.getElementById('matchModal').classList.add('open');
+}
+document.getElementById('matchModalCancel').addEventListener('click', () => {
+  document.getElementById('matchModal').classList.remove('open');
+});
+document.getElementById('matchModalSave').addEventListener('click', async () => {
+  const num = EDITING_MATCH;
+  const side = ACTIVE_GENDER;
+  const m = STATE[side].matches[num] || {};
+  m.scoreA = document.getElementById('emScoreA').value.trim();
+  m.scoreB = document.getElementById('emScoreB').value.trim();
+  m.winner = document.getElementById('emWinner').value || null;
+  m.forfeit = document.getElementById('emForfeit').value || null;
+  STATE[side].matches[num] = m;
+  document.getElementById('matchModal').classList.remove('open');
+  renderAll();
+  await save();
+});
+
+//===================================================================
+// PLAYER EDIT MODAL
+//===================================================================
+const playerSeedSel = document.getElementById('pmSeed');
+for (let i = 1; i <= 39; i++) {
+  const o = document.createElement('option');
+  o.value = i; o.textContent = `Seed ${i}` + (i <= 7 ? ' ★' : '');
+  playerSeedSel.appendChild(o);
+}
+function refreshPlayerModal() {
+  const side = document.getElementById('pmGender').value;
+  const seed = document.getElementById('pmSeed').value;
+  const p = STATE[side].players[seed];
+  if (p) {
+    document.getElementById('pmName').value = p.name;
+    document.getElementById('pmSchool').value = p.school;
+  }
+}
+document.getElementById('pmGender').addEventListener('change', refreshPlayerModal);
+document.getElementById('pmSeed').addEventListener('change', refreshPlayerModal);
+document.getElementById('editPlayersBtn')?.addEventListener('click', () => {
+  document.getElementById('pmGender').value = ACTIVE_GENDER;
+  document.getElementById('pmSeed').value = 1;
+  refreshPlayerModal();
+  document.getElementById('playerModal').classList.add('open');
+});
+document.getElementById('playerModalCancel').addEventListener('click', () => {
+  document.getElementById('playerModal').classList.remove('open');
+});
+document.getElementById('playerModalSave').addEventListener('click', async () => {
+  const side = document.getElementById('pmGender').value;
+  const seed = document.getElementById('pmSeed').value;
+  STATE[side].players[seed] = {
+    name: document.getElementById('pmName').value.trim(),
+    school: document.getElementById('pmSchool').value
+  };
+  document.getElementById('playerModal').classList.remove('open');
+  renderAll();
+  await save();
+});
+
+//===================================================================
+// PERSISTENCE
+//===================================================================
+async function load() {
+  setStatus('loading…');
+  try {
+    const r = await fetch(`/api/scores/${TOURNAMENT_ID}`, { cache: 'no-store' });
+    if (r.ok) {
+      const remote = await r.json();
+      // Merge: keep our defaults but overlay remote players + matches
+      STATE = mergeState(defaultState(), remote);
+      LAST_SAVED = remote.updatedAt;
+      setStatus(`updated ${formatTime(LAST_SAVED)}`);
+    } else if (r.status === 404) {
+      // First run — no remote data yet; keep defaults
+      setStatus('no data yet · using defaults');
+    } else {
+      setStatus('couldn’t load');
+    }
+  } catch (e) {
+    setStatus('offline · showing defaults');
+  }
+  renderAll();
+}
+function mergeState(base, remote) {
+  if (!remote) return base;
+  for (const side of ['singles','doubles']) {
+    if (remote[side]?.players) {
+      for (const seed of Object.keys(remote[side].players)) {
+        base[side].players[seed] = remote[side].players[seed];
+      }
+    }
+    if (remote[side]?.matches) {
+      for (const num of Object.keys(remote[side].matches)) {
+        base[side].matches[num] = { ...base[side].matches[num], ...remote[side].matches[num] };
+      }
+    }
+  }
+  base.updatedAt = remote.updatedAt;
+  return base;
+}
+async function save() {
+  if (!IS_ADMIN) return;
+  SAVING = true;
+  setStatus('saving…');
+  try {
+    const r = await fetch(`/api/scores/${TOURNAMENT_ID}`, {
+      method: 'PUT',
+      headers: { 'content-type': 'application/json', 'x-admin-token': ADMIN_TOKEN },
+      body: JSON.stringify(STATE)
+    });
+    if (r.ok) {
+      const j = await r.json();
+      LAST_SAVED = j.updatedAt;
+      setStatus(`saved ${formatTime(LAST_SAVED)}`);
+    } else {
+      setStatus(`save failed (${r.status})`);
+    }
+  } catch (e) {
+    setStatus('save failed (offline)');
+  }
+  SAVING = false;
+}
+function setStatus(s) {
+  const el = document.getElementById('statusBar');
+  el.textContent = s + (IS_ADMIN ? ' · ADMIN' : '');
+  el.classList.toggle('admin', IS_ADMIN);
+}
+function formatTime(iso) {
+  if (!iso) return '';
+  try {
+    const d = new Date(iso);
+    return d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  } catch { return iso; }
+}
+
+//===================================================================
+// POLLING
+//===================================================================
+async function poll() {
+  if (SAVING) return;
+  if (document.getElementById('matchModal').classList.contains('open')) return;
+  if (document.getElementById('playerModal').classList.contains('open')) return;
+  await load();
+}
+setInterval(poll, POLL_MS);
+
+//===================================================================
+// BOOT
+//===================================================================
+if (IS_ADMIN) document.getElementById('adminBar').style.display = 'block';
+load();
+</script>
+
+</body>
+</html>

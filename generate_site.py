@@ -2435,6 +2435,8 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     <footer>
         <a href="changelog.html">Changelog</a>
         &middot;
+        <a href="sd1-live-bracket.html">SD1 Live Bracket</a>
+        &middot;
         <a href="sd1-printable-bracket.html">SD1 Printable Bracket</a>
         &middot;
         <a href="?view=analysis" id="adminLink">Admin Analysis</a>
