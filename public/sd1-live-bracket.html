@@ -125,7 +125,7 @@
     border: 1px solid #333;
     border-radius: 3px;
     background: #fff;
-    margin: 9px 0 2px;
+    margin: 14px 0 2px;
     overflow: visible;
     position: relative;
   }
@@ -133,16 +133,18 @@
   .match-box.pigtail { border-color: #888; background: #fafafa; }
   .match-box .match-num {
     position: absolute;
-    top: -8px;
+    bottom: 100%;
     left: 6px;
+    margin-bottom: 1px;
     font-size: 9px;
     color: #555;
     font-weight: 700;
     background: #fff;
     border: 1px solid #bbb;
-    padding: 0 4px;
+    padding: 1px 5px;
     border-radius: 2px;
-    line-height: 1.2;
+    line-height: 1.1;
+    white-space: nowrap;
     z-index: 2;
   }
   .slot {
@@ -206,7 +208,7 @@
   }
   .matches-list .match-row {
     display: grid;
-    grid-template-columns: 36px 1fr auto;
+    grid-template-columns: 72px 1fr auto;
     gap: 8px;
     padding: 8px 12px;
     border-bottom: 1px solid #f0f0f0;
@@ -791,7 +793,7 @@ function renderMatchBox(num, isPigtail = false) {
   const aWin = m.winner === 'A';
   const bWin = m.winner === 'B';
   const dn = displayNum(side, num);
-  const labelPrefix = def.round === 'third_place' ? `3P (M${dn})` : (def.round === 'final' ? `F (M${dn})` : `M${dn}`);
+  const labelPrefix = `Match ${dn}`;
   const pigtailCls = isPigtail || def.round === 'pigtail' ? ' pigtail' : '';
   return `
     <div class="match-box${pigtailCls}" data-match="${num}">
@@ -847,7 +849,7 @@ function renderMatchRow(num) {
   const dn = displayNum(side, num);
   return `
     <div class="match-row">
-      <div class="mnum">M${dn}</div>
+      <div class="mnum">Match ${dn}</div>
       <div class="players">
         ${playerLine(a, m.scoreA, aWin, aFf)}
         ${playerLine(b, m.scoreB, bWin, bFf)}
@@ -971,7 +973,7 @@ function openMatchModal(num) {
   const m = STATE[side].matches[num] || {};
   const a = resolveSlot(side, num, 'A');
   const b = resolveSlot(side, num, 'B');
-  document.getElementById('matchModalTitle').textContent = `Edit M${displayNum(side, num)} (${ROUND_LABELS[BRACKET[num].round]})`;
+  document.getElementById('matchModalTitle').textContent = `Edit Match ${displayNum(side, num)} (${ROUND_LABELS[BRACKET[num].round]})`;
   document.getElementById('matchModalBody').innerHTML = `
     <label>${a ? esc(a.name) + ' (A)' : 'Slot A — TBD'}</label>
     <input type="text" id="emScoreA" value="${esc(m.scoreA || '')}" placeholder="e.g. 6-3, 6-2"
