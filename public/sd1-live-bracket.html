@@ -125,19 +125,25 @@
     border: 1px solid #333;
     border-radius: 3px;
     background: #fff;
-    margin: 2px 0;
-    overflow: hidden;
+    margin: 9px 0 2px;
+    overflow: visible;
     position: relative;
   }
-  .match-box.empty { border: none; background: transparent; min-height: 30px; }
+  .match-box.empty { border: none; background: transparent; min-height: 30px; margin: 2px 0; }
   .match-box.pigtail { border-color: #888; background: #fafafa; }
   .match-box .match-num {
     position: absolute;
-    top: 1px;
-    right: 3px;
+    top: -8px;
+    left: 6px;
     font-size: 9px;
-    color: var(--muted);
-    font-weight: 600;
+    color: #555;
+    font-weight: 700;
+    background: #fff;
+    border: 1px solid #bbb;
+    padding: 0 4px;
+    border-radius: 2px;
+    line-height: 1.2;
+    z-index: 2;
   }
   .slot {
     display: flex;
