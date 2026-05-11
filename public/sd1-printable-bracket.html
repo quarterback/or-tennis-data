@@ -59,7 +59,24 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    padding: 0 1px;
+    padding: 18px 1px 0;
+    position: relative;
+  }
+  .round-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 6.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #555;
+    padding: 3px 2px;
+    border-bottom: 1px solid #ccc;
+    background: #f5f5f5;
+    line-height: 1;
   }
   .round.pigtails { flex: 0.95; }
   .round.r32      { flex: 1.45; }
@@ -136,7 +153,7 @@
   <div class="bracket">
 
     <!-- LEFT PIGTAILS -->
-    <div class="round pigtails">
+    <div class="round pigtails"><div class="round-label">First Round</div>
       <div class="match pigtail"><span class="match-num">Match 1</span>
         <div class="seed-line"><span class="name">Julia Tung</span><span class="school">Trinity Academy</span></div>
         <div class="seed-line"><span class="name">Grace Melville</span><span class="school">Scappoose</span></div>
@@ -157,7 +174,7 @@
     </div>
 
     <!-- LEFT R32 -->
-    <div class="round r32">
+    <div class="round r32"><div class="round-label">Round of 32</div>
       <div class="match"><span class="match-num">Match 33</span>
         <div class="seed-line"><span class="seed">1</span><span class="name">Ria Shah</span><span class="school">Catlin Gabel</span></div>
         <div class="seed-line placeholder"><span class="name">Winner of pigtail</span></div>
@@ -193,7 +210,7 @@
     </div>
 
     <!-- LEFT R16 -->
-    <div class="round r16">
+    <div class="round r16"><div class="round-label">Round of 16</div>
       <div class="match"><span class="match-num">Match 47</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 48</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 49</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
@@ -201,35 +218,35 @@
     </div>
 
     <!-- LEFT QF -->
-    <div class="round qf">
+    <div class="round qf"><div class="round-label">Quarterfinals</div>
       <div class="match"><span class="match-num">Match 63</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
       <div class="match"><span class="match-num">Match 64</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
     </div>
 
     <!-- LEFT SF -->
-    <div class="round sf">
+    <div class="round sf"><div class="round-label">Semifinals</div>
       <div class="match"><span class="match-num">Match 71</span><div class="seed-line placeholder"><span class="name">Semifinal</span></div></div>
     </div>
 
     <!-- FINAL -->
-    <div class="round f">
+    <div class="round f"><div class="round-label">Final</div>
       <div class="match" style="min-height:50px"><span class="match-num">Match 75</span><div class="seed-line placeholder"><span class="name">3rd Place</span></div></div>
       <div class="match" style="min-height:60px"><span class="match-num">Match 77</span><div class="seed-line placeholder"><span class="name">Champion</span></div></div>
     </div>
 
     <!-- RIGHT SF -->
-    <div class="round sf">
+    <div class="round sf"><div class="round-label">Semifinals</div>
       <div class="match"><span class="match-num">Match 72</span><div class="seed-line placeholder"><span class="name">Semifinal</span></div></div>
     </div>
 
     <!-- RIGHT QF -->
-    <div class="round qf">
+    <div class="round qf"><div class="round-label">Quarterfinals</div>
       <div class="match"><span class="match-num">Match 65</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
       <div class="match"><span class="match-num">Match 66</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
     </div>
 
     <!-- RIGHT R16 -->
-    <div class="round r16">
+    <div class="round r16"><div class="round-label">Round of 16</div>
       <div class="match"><span class="match-num">Match 51</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 52</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 53</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
@@ -237,7 +254,7 @@
     </div>
 
     <!-- RIGHT R32 -->
-    <div class="round r32">
+    <div class="round r32"><div class="round-label">Round of 32</div>
       <div class="match"><span class="match-num">Match 36</span>
         <div class="seed-line"><span class="seed">2</span><span class="name">Nina Rinard</span><span class="school">Riverdale</span></div>
         <div class="seed-line placeholder"><span class="name">Winner of pigtail</span></div>
@@ -273,7 +290,7 @@
     </div>
 
     <!-- RIGHT PIGTAILS -->
-    <div class="round pigtails">
+    <div class="round pigtails"><div class="round-label">First Round</div>
       <div class="match pigtail"><span class="match-num">Match 4</span>
         <div class="seed-line"><span class="name">Hannah Fabel</span><span class="school">Trinity Academy</span></div>
         <div class="seed-line"><span class="name">Natalie Ledford</span><span class="school">Blanchet</span></div>
@@ -307,7 +324,7 @@
   <div class="bracket">
 
     <!-- LEFT PIGTAILS -->
-    <div class="round pigtails">
+    <div class="round pigtails"><div class="round-label">First Round</div>
       <div class="match pigtail"><span class="match-num">Match 8</span>
         <div class="seed-line"><span class="name">Capsey / Vanderhoof</span><span class="school">Scappoose</span></div>
         <div class="seed-line"><span class="name">Kabore / Tiscornia</span><span class="school">Blanchet</span></div>
@@ -328,7 +345,7 @@
     </div>
 
     <!-- LEFT R32 -->
-    <div class="round r32">
+    <div class="round r32"><div class="round-label">Round of 32</div>
       <div class="match"><span class="match-num">Match 40</span>
         <div class="seed-line"><span class="seed">1</span><span class="name">Perez / Mehta</span><span class="school">Catlin Gabel</span></div>
         <div class="seed-line placeholder"><span class="name">Winner of pigtail</span></div>
@@ -364,7 +381,7 @@
     </div>
 
     <!-- LEFT R16 -->
-    <div class="round r16">
+    <div class="round r16"><div class="round-label">Round of 16</div>
       <div class="match"><span class="match-num">Match 55</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 56</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 57</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
@@ -372,35 +389,35 @@
     </div>
 
     <!-- LEFT QF -->
-    <div class="round qf">
+    <div class="round qf"><div class="round-label">Quarterfinals</div>
       <div class="match"><span class="match-num">Match 67</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
       <div class="match"><span class="match-num">Match 68</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
     </div>
 
     <!-- LEFT SF -->
-    <div class="round sf">
+    <div class="round sf"><div class="round-label">Semifinals</div>
       <div class="match"><span class="match-num">Match 73</span><div class="seed-line placeholder"><span class="name">Semifinal</span></div></div>
     </div>
 
     <!-- FINAL -->
-    <div class="round f">
+    <div class="round f"><div class="round-label">Final</div>
       <div class="match" style="min-height:50px"><span class="match-num">Match 76</span><div class="seed-line placeholder"><span class="name">3rd Place</span></div></div>
       <div class="match" style="min-height:60px"><span class="match-num">Match 78</span><div class="seed-line placeholder"><span class="name">Champion</span></div></div>
     </div>
 
     <!-- RIGHT SF -->
-    <div class="round sf">
+    <div class="round sf"><div class="round-label">Semifinals</div>
       <div class="match"><span class="match-num">Match 74</span><div class="seed-line placeholder"><span class="name">Semifinal</span></div></div>
     </div>
 
     <!-- RIGHT QF -->
-    <div class="round qf">
+    <div class="round qf"><div class="round-label">Quarterfinals</div>
       <div class="match"><span class="match-num">Match 69</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
       <div class="match"><span class="match-num">Match 70</span><div class="seed-line placeholder"><span class="name">Quarterfinal</span></div></div>
     </div>
 
     <!-- RIGHT R16 -->
-    <div class="round r16">
+    <div class="round r16"><div class="round-label">Round of 16</div>
       <div class="match"><span class="match-num">Match 59</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 60</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
       <div class="match"><span class="match-num">Match 61</span><div class="seed-line placeholder"><span class="name">R16</span></div></div>
@@ -408,7 +425,7 @@
     </div>
 
     <!-- RIGHT R32 -->
-    <div class="round r32">
+    <div class="round r32"><div class="round-label">Round of 32</div>
       <div class="match"><span class="match-num">Match 43</span>
         <div class="seed-line"><span class="seed">2</span><span class="name">Ji / Li</span><span class="school">Oregon Episcopal</span></div>
         <div class="seed-line placeholder"><span class="name">Winner of pigtail</span></div>
@@ -444,7 +461,7 @@
     </div>
 
     <!-- RIGHT PIGTAILS -->
-    <div class="round pigtails">
+    <div class="round pigtails"><div class="round-label">First Round</div>
       <div class="match pigtail"><span class="match-num">Match 11</span>
         <div class="seed-line"><span class="name">Garland / Allen</span><span class="school">Trinity Academy</span></div>
         <div class="seed-line"><span class="name">A. Gatziolis / Pickett</span><span class="school">Riverdale</span></div>
