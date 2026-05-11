@@ -132,6 +132,10 @@
   .match-box.empty { border: none; background: transparent; min-height: 30px; margin: 2px 0; }
   .match-box.pigtail { border-color: #888; background: #fafafa; }
   .match-box .match-num {
+    display: none;
+  }
+  /* legacy match-num styling kept commented for easy revert
+  .match-box .match-num {
     position: absolute;
     bottom: 100%;
     left: 6px;
@@ -147,6 +151,7 @@
     white-space: nowrap;
     z-index: 2;
   }
+  */
   .slot {
     display: flex;
     align-items: center;
@@ -208,7 +213,7 @@
   }
   .matches-list .match-row {
     display: grid;
-    grid-template-columns: 72px 1fr auto;
+    grid-template-columns: 1fr auto;
     gap: 8px;
     padding: 8px 12px;
     border-bottom: 1px solid #f0f0f0;
@@ -216,11 +221,7 @@
     font-size: 13px;
   }
   .matches-list .match-row:last-child { border-bottom: none; }
-  .matches-list .mnum {
-    font-weight: 700;
-    color: var(--muted);
-    font-size: 12px;
-  }
+  .matches-list .mnum { display: none; }
   .matches-list .players { display: grid; gap: 2px; }
   .matches-list .player-line {
     display: flex;
