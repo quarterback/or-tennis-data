@@ -508,9 +508,12 @@ const R32_MATCH_FOR_SEED = (() => {
   return m; // {1:8, 2:16, 3:22, 4:12, 5:14, 6:20, 7:18}
 })();
 
-// Match numbers shown to users interleave singles and doubles by round:
+// Match numbers shown to users interleave singles and doubles by round,
+// with R32 split so non-seeded matches (no top-7 seed involved) come
+// before seeded matches:
 //   Singles pigtails 1-7, Doubles pigtails 8-14,
-//   Singles R32 15-30, Doubles R32 31-46,
+//   Singles R32 non-seeded 15-23, Doubles R32 non-seeded 24-32,
+//   Singles R32 seeded 33-39, Doubles R32 seeded 40-46,
 //   Singles R16 47-54, Doubles R16 55-62,
 //   Singles QF 63-66, Doubles QF 67-70,
 //   Singles SF 71-72, Doubles SF 73-74,
@@ -518,16 +521,32 @@ const R32_MATCH_FOR_SEED = (() => {
 //   Singles Final 77, Doubles Final 78.
 const ROUND_BLOCKS = {
   pigtail:     { internalStart: 1,  count: 7,  globalStart: 1 },
-  r32:         { internalStart: 8,  count: 16, globalStart: 15 },
+  // r32 handled specially in displayNum() below
   r16:         { internalStart: 24, count: 8,  globalStart: 47 },
   qf:          { internalStart: 32, count: 4,  globalStart: 63 },
   sf:          { internalStart: 36, count: 2,  globalStart: 71 },
   third_place: { internalStart: 39, count: 1,  globalStart: 75 },
   final:       { internalStart: 38, count: 1,  globalStart: 77 }
 };
+// R32 matches in DOM (display) order, split into non-seeded and seeded:
+//   - non-seeded: both opponents are drawn seeds 8-25 (no pigtail involved)
+//   - seeded: a top-7 seed plays the winner of a pigtail
+const NON_SEEDED_R32 = [9, 10, 11, 13, 15, 17, 19, 21, 23];
+const SEEDED_R32     = [8, 12, 14, 16, 18, 20, 22];
 function displayNum(side, internalNum) {
   const def = BRACKET[internalNum];
   if (!def) return internalNum;
+  if (def.round === 'r32') {
+    let idx, base;
+    if (NON_SEEDED_R32.indexOf(internalNum) >= 0) {
+      idx = NON_SEEDED_R32.indexOf(internalNum);
+      base = side === 'singles' ? 15 : 24;
+    } else {
+      idx = SEEDED_R32.indexOf(internalNum);
+      base = side === 'singles' ? 33 : 40;
+    }
+    return base + idx;
+  }
   const blk = ROUND_BLOCKS[def.round];
   const offset = internalNum - blk.internalStart;
   const sideOffset = side === 'singles' ? 0 : blk.count;
@@ -818,12 +837,15 @@ function renderMatches() {
   const side = ACTIVE_GENDER;
   const html = [];
   for (const round of ROUNDS) {
-    const nums = Object.keys(BRACKET).filter(n => BRACKET[n].round === round);
+    const nums = Object.keys(BRACKET)
+      .filter(n => BRACKET[n].round === round)
+      .map(n => parseInt(n))
+      .sort((a, b) => displayNum(side, a) - displayNum(side, b));
     if (!nums.length) continue;
     html.push(`<div class="round-group">`);
     html.push(`<div class="round-header">${ROUND_LABELS[round]}</div>`);
     for (const num of nums) {
-      html.push(renderMatchRow(parseInt(num)));
+      html.push(renderMatchRow(num));
     }
     html.push(`</div>`);
   }
