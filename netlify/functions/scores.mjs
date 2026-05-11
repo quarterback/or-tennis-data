@@ -37,6 +37,20 @@ function isAuthorized(req) {
   return supplied === expected;
 }
 
+function deepMerge(base, patch) {
+  if (Array.isArray(patch)) return patch.slice();
+  if (patch === null || typeof patch !== 'object') return patch;
+  const out = { ...(base || {}) };
+  for (const [k, v] of Object.entries(patch)) {
+    if (v !== null && typeof v === 'object' && !Array.isArray(v)) {
+      out[k] = deepMerge(out[k] || {}, v);
+    } else {
+      out[k] = v;
+    }
+  }
+  return out;
+}
+
 export default async function handler(req) {
   const id = extractId(req);
   if (id === '__ping') return json({ ok: true });
@@ -55,9 +69,13 @@ export default async function handler(req) {
     let body;
     try { body = await req.json(); }
     catch { return json({ error: 'invalid json' }, 400); }
-    body.updatedAt = new Date().toISOString();
-    await store.setJSON(id, body);
-    return json({ ok: true, updatedAt: body.updatedAt });
+    // Deep-merge body into existing blob so partial PUTs only touch the
+    // keys they carry. Preserves all other matches and player overrides.
+    const existing = (await store.get(id, { type: 'json' })) || {};
+    const merged = deepMerge(existing, body);
+    merged.updatedAt = new Date().toISOString();
+    await store.setJSON(id, merged);
+    return json({ ok: true, updatedAt: merged.updatedAt });
   }
 
   if (req.method === 'DELETE') {

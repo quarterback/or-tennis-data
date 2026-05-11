@@ -95,13 +95,17 @@ export default async function handler(req) {
 
     let changed = 0;
     for (const [num, m] of Object.entries(s.updates)) {
-      if (!shallowMatchesEqual(existing.singles.matches[num], m)) {
+      const cur = existing.singles.matches[num];
+      if (cur?.manualOverride) continue; // operator has corrected this; don't clobber
+      if (!shallowMatchesEqual(cur, m)) {
         existing.singles.matches[num] = m;
         changed++;
       }
     }
     for (const [num, m] of Object.entries(d.updates)) {
-      if (!shallowMatchesEqual(existing.doubles.matches[num], m)) {
+      const cur = existing.doubles.matches[num];
+      if (cur?.manualOverride) continue;
+      if (!shallowMatchesEqual(cur, m)) {
         existing.doubles.matches[num] = m;
         changed++;
       }
