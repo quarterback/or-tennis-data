@@ -112,7 +112,23 @@
     justify-content: space-around;
     flex-shrink: 0;
     min-width: 130px;
-    padding: 0 2px;
+    padding: 22px 2px 0;
+    position: relative;
+  }
+  .bracket .round-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #555;
+    padding: 4px 2px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
   }
   .bracket .round.pigtails { min-width: 150px; }
   .bracket .round.r32 { min-width: 175px; }
@@ -778,27 +794,27 @@ function renderBracket() {
   const rightSF       = [37];
 
   function pigtailCol(arr) {
-    return `<div class="round pigtails">` +
+    return `<div class="round pigtails"><div class="round-label">First Round</div>` +
       arr.map(n => n ? renderMatchBox(n, true) : `<div class="match-box empty"></div>`).join('') +
       `</div>`;
   }
-  function matchCol(cls, arr) {
-    return `<div class="round ${cls}">` +
+  function matchCol(cls, arr, label) {
+    return `<div class="round ${cls}"><div class="round-label">${label}</div>` +
       arr.map(n => renderMatchBox(n)).join('') +
       `</div>`;
   }
 
   html.push(`<div class="bracket">`);
   html.push(pigtailCol(leftPigtails));
-  html.push(matchCol('r32', leftR32));
-  html.push(matchCol('r16', leftR16));
-  html.push(matchCol('qf',  leftQF));
-  html.push(matchCol('sf',  leftSF));
-  html.push(`<div class="round f">${renderMatchBox(38)}${renderMatchBox(39)}</div>`);
-  html.push(matchCol('sf',  rightSF));
-  html.push(matchCol('qf',  rightQF));
-  html.push(matchCol('r16', rightR16));
-  html.push(matchCol('r32', rightR32));
+  html.push(matchCol('r32', leftR32, 'Round of 32'));
+  html.push(matchCol('r16', leftR16, 'Round of 16'));
+  html.push(matchCol('qf',  leftQF,  'Quarterfinals'));
+  html.push(matchCol('sf',  leftSF,  'Semifinals'));
+  html.push(`<div class="round f"><div class="round-label">Final</div>${renderMatchBox(38)}${renderMatchBox(39)}</div>`);
+  html.push(matchCol('sf',  rightSF, 'Semifinals'));
+  html.push(matchCol('qf',  rightQF, 'Quarterfinals'));
+  html.push(matchCol('r16', rightR16, 'Round of 16'));
+  html.push(matchCol('r32', rightR32, 'Round of 32'));
   html.push(pigtailCol(rightPigtails));
   html.push(`</div>`);
   document.getElementById('bracketView').innerHTML = html.join('');
