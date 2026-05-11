@@ -1159,9 +1159,13 @@ async function poll() {
   if (SAVING) return;
   if (document.getElementById('matchModal').classList.contains('open')) return;
   if (document.getElementById('playerModal').classList.contains('open')) return;
+  // Trigger a TR sync (best-effort) before reloading state.
+  try { await fetch('/api/sync-tr', { cache: 'no-store' }); } catch {}
   await load();
 }
 setInterval(poll, POLL_MS);
+// Also run sync once on initial load, after the first load() completes.
+setTimeout(poll, 1500);
 
 //===================================================================
 // BOOT
