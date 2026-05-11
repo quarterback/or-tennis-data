@@ -514,16 +514,16 @@ const R32_MATCH_FOR_SEED = (() => {
 //   Singles R16 47-54, Doubles R16 55-62,
 //   Singles QF 63-66, Doubles QF 67-70,
 //   Singles SF 71-72, Doubles SF 73-74,
-//   Singles Final 75, Doubles Final 76,
-//   Singles 3P 77, Doubles 3P 78.
+//   Singles 3P 75, Doubles 3P 76,
+//   Singles Final 77, Doubles Final 78.
 const ROUND_BLOCKS = {
   pigtail:     { internalStart: 1,  count: 7,  globalStart: 1 },
   r32:         { internalStart: 8,  count: 16, globalStart: 15 },
   r16:         { internalStart: 24, count: 8,  globalStart: 47 },
   qf:          { internalStart: 32, count: 4,  globalStart: 63 },
   sf:          { internalStart: 36, count: 2,  globalStart: 71 },
-  final:       { internalStart: 38, count: 1,  globalStart: 75 },
-  third_place: { internalStart: 39, count: 1,  globalStart: 77 }
+  third_place: { internalStart: 39, count: 1,  globalStart: 75 },
+  final:       { internalStart: 38, count: 1,  globalStart: 77 }
 };
 function displayNum(side, internalNum) {
   const def = BRACKET[internalNum];
