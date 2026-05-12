@@ -142,7 +142,7 @@
   .seed-line.match-loser .name { color: #666; }
   .seed-line .match-score { margin-left: 4px; font-size: 6pt; color: #222; font-variant-numeric: tabular-nums; }
 
-  /* Responsive view: scale + scroll on smaller screens. Print path unaffected. */
+  /* Responsive view: stack name+school within each seed-line so names fit. */
   @media screen and (max-width: 1100px) {
     .page {
       width: auto;
@@ -151,16 +151,57 @@
       padding: 0.15in 0.1in;
       box-shadow: 0 1px 3px rgba(0,0,0,0.1);
     }
-    .bracket { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .bracket > .round { flex-shrink: 0; min-width: 110px; }
-    .round.r32 { min-width: 150px; }
+    .bracket { overflow-x: auto; -webkit-overflow-scrolling: touch; height: auto; min-height: 7.5in; }
+    .bracket > .round { flex-shrink: 0; min-width: 140px; }
+    .round.r32 { min-width: 160px; }
+    .round.r16 { min-width: 145px; }
+    .round.qf  { min-width: 140px; }
+    .round.sf  { min-width: 140px; }
+    .round.f   { min-width: 140px; }
+
+    .match { min-height: 40px; }
+    .seed-line {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      grid-template-rows: auto auto;
+      grid-template-areas: "seed name score" "seed school score";
+      column-gap: 4px;
+      padding: 3px 5px;
+      min-height: auto;
+      align-items: center;
+    }
+    .seed { grid-area: seed; align-self: center; min-width: 12px; font-size: 8pt; }
+    .name {
+      grid-area: name;
+      font-size: 9.5pt;
+      line-height: 1.15;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-right: 0;
+    }
+    .school {
+      grid-area: school;
+      font-size: 7.5pt;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .seed-line .match-score {
+      grid-area: score;
+      align-self: center;
+      font-size: 8pt;
+      margin-left: 4px;
+      white-space: nowrap;
+    }
   }
   @media screen and (max-width: 600px) {
-    .seed-line { font-size: 7pt; }
-    .school { font-size: 6pt; }
+    .bracket > .round { min-width: 130px; }
+    .round.r32 { min-width: 150px; }
+    .name { font-size: 9pt; }
+    .school { font-size: 7pt; }
     .round-label { font-size: 6pt; padding: 2px; }
-    .bracket > .round { min-width: 95px; }
-    .round.r32 { min-width: 135px; }
   }
 </style>
 </head>
@@ -181,22 +222,22 @@
     <div class="round pigtails"><div class="round-label">R1</div>
       <div class="match pigtail"><span class="match-num">Match 1</span>
       
-        <div class="seed-line match-loser"><span class="name">Julia Tung</span><span class="school">Trinity Academy</span><span class="match-score">4, 0</span></div>
-        <div class="seed-line winner"><span class="name">Grace Melville</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">J. Tung</span><span class="school">Trinity Academy</span><span class="match-score">4, 0</span></div>
+        <div class="seed-line winner"><span class="name">G. Melville</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match empty"></div>
       <div class="match empty"></div>
       <div class="match empty"></div>
       <div class="match pigtail"><span class="match-num">Match 2</span>
       
-        <div class="seed-line winner"><span class="name">Kinzie Lazarus</span><span class="school">Blanchet</span><span class="match-score">7, 7</span></div>
-        <div class="seed-line match-loser"><span class="name">Grace Allori</span><span class="school">Westside Christian</span><span class="match-score">5, 5</span></div>
+        <div class="seed-line winner"><span class="name">K. Lazarus</span><span class="school">Blanchet</span><span class="match-score">7, 7</span></div>
+        <div class="seed-line match-loser"><span class="name">G. Allori</span><span class="school">Westside Christian</span><span class="match-score">5, 5</span></div>
       </div>
       <div class="match empty"></div>
       <div class="match pigtail"><span class="match-num">Match 3</span>
       
-        <div class="seed-line match-loser"><span class="name">Cinthia Ortiz</span><span class="school">St. Helens</span><span class="match-score">0, 0</span></div>
-        <div class="seed-line winner"><span class="name">Adelle Tyner</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Ortiz</span><span class="school">St. Helens</span><span class="match-score">0, 0</span></div>
+        <div class="seed-line winner"><span class="name">A. Tyner</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match empty"></div>
     </div>
@@ -205,43 +246,43 @@
     <div class="round r32"><div class="round-label">R32</div>
       <div class="match"><span class="match-num">Match 33</span>
       
-        <div class="seed-line winner"><span class="seed">1</span><span class="name">Ria Shah</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Grace Melville</span><span class="school">Scappoose</span><span class="match-score">0, 0</span></div>
+        <div class="seed-line winner"><span class="seed">1</span><span class="name">R. Shah</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">G. Melville</span><span class="school">Scappoose</span><span class="match-score">0, 0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 15</span>
       
-        <div class="seed-line match-loser"><span class="name">Crystal Chacon</span><span class="school">Tillamook</span><span class="match-score">6, 4</span></div>
-        <div class="seed-line winner"><span class="name">Riley Smith</span><span class="school">Oregon Episcopal</span><span class="match-score">7, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Chacon</span><span class="school">Tillamook</span><span class="match-score">6, 4</span></div>
+        <div class="seed-line winner"><span class="name">R. Smith</span><span class="school">Oregon Episcopal</span><span class="match-score">7, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 16</span>
       
-        <div class="seed-line match-loser"><span class="name">Kelsey Koss</span><span class="school">Westside Christian</span><span class="match-score">4, 2</span></div>
-        <div class="seed-line winner"><span class="name">Shirley Holmes</span><span class="school">St. Helens</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">K. Koss</span><span class="school">Westside Christian</span><span class="match-score">4, 2</span></div>
+        <div class="seed-line winner"><span class="name">S. Holmes</span><span class="school">St. Helens</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 17</span>
       
-        <div class="seed-line match-loser"><span class="name">Camila Barocio</span><span class="school">Blanchet</span><span class="match-score">2, 1</span></div>
-        <div class="seed-line winner"><span class="name">Genevieve Schaal</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Barocio</span><span class="school">Blanchet</span><span class="match-score">2, 1</span></div>
+        <div class="seed-line winner"><span class="name">G. Schaal</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 34</span>
       
-        <div class="seed-line winner"><span class="seed">4</span><span class="name">Taylor Thorne</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Kinzie Lazarus</span><span class="school">Blanchet</span><span class="match-score">1, 1</span></div>
+        <div class="seed-line winner"><span class="seed">4</span><span class="name">T. Thorne</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">K. Lazarus</span><span class="school">Blanchet</span><span class="match-score">1, 1</span></div>
       </div>
       <div class="match"><span class="match-num">Match 18</span>
       
-        <div class="seed-line winner"><span class="name">Cassidy Nino</span><span class="school">Trinity Academy</span><span class="match-score">3, 6, 10</span></div>
-        <div class="seed-line match-loser"><span class="name">Kasey Neaves</span><span class="school">Tillamook</span><span class="match-score">6, 4, 8</span></div>
+        <div class="seed-line winner"><span class="name">C. Nino</span><span class="school">Trinity Academy</span><span class="match-score">3, 6, 10</span></div>
+        <div class="seed-line match-loser"><span class="name">K. Neaves</span><span class="school">Tillamook</span><span class="match-score">6, 4, 8</span></div>
       </div>
       <div class="match"><span class="match-num">Match 35</span>
       
-        <div class="seed-line winner"><span class="seed">5</span><span class="name">Hailey Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">2, 6, 10</span></div>
-        <div class="seed-line match-loser"><span class="name">Adelle Tyner</span><span class="school">Catlin Gabel</span><span class="match-score">6, 3, 8</span></div>
+        <div class="seed-line winner"><span class="seed">5</span><span class="name">H. Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">2, 6, 10</span></div>
+        <div class="seed-line match-loser"><span class="name">A. Tyner</span><span class="school">Catlin Gabel</span><span class="match-score">6, 3, 8</span></div>
       </div>
       <div class="match"><span class="match-num">Match 19</span>
       
-        <div class="seed-line winner"><span class="name">Guadalupe Santiago-Hernandez</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Stella Gatziolis</span><span class="school">Riverdale</span><span class="match-score">1, 1</span></div>
+        <div class="seed-line winner"><span class="name">G. Santiago-Hernandez</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">S. Gatziolis</span><span class="school">Riverdale</span><span class="match-score">1, 1</span></div>
       </div>
     </div>
 
@@ -249,23 +290,23 @@
     <div class="round r16"><div class="round-label">R16</div>
       <div class="match"><span class="match-num">Match 47</span>
       
-        <div class="seed-line winner"><span class="seed">1</span><span class="name">Ria Shah</span><span class="school">Catlin Gabel</span><span class="match-score">0</span></div>
-        <div class="seed-line match-loser"><span class="name">Riley Smith</span><span class="school">Oregon Episcopal</span><span class="match-score">0</span></div>
+        <div class="seed-line winner"><span class="seed">1</span><span class="name">R. Shah</span><span class="school">Catlin Gabel</span><span class="match-score">0</span></div>
+        <div class="seed-line match-loser"><span class="name">R. Smith</span><span class="school">Oregon Episcopal</span><span class="match-score">0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 48</span>
       
-        <div class="seed-line winner"><span class="name">Shirley Holmes</span><span class="school">St. Helens</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Genevieve Schaal</span><span class="school">Valley Catholic</span><span class="match-score">1, 1</span></div>
+        <div class="seed-line winner"><span class="name">S. Holmes</span><span class="school">St. Helens</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">G. Schaal</span><span class="school">Valley Catholic</span><span class="match-score">1, 1</span></div>
       </div>
       <div class="match"><span class="match-num">Match 49</span>
       
-        <div class="seed-line winner"><span class="seed">4</span><span class="name">Taylor Thorne</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Cassidy Nino</span><span class="school">Trinity Academy</span><span class="match-score">3, 1</span></div>
+        <div class="seed-line winner"><span class="seed">4</span><span class="name">T. Thorne</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Nino</span><span class="school">Trinity Academy</span><span class="match-score">3, 1</span></div>
       </div>
       <div class="match"><span class="match-num">Match 50</span>
       
-        <div class="seed-line winner"><span class="seed">5</span><span class="name">Hailey Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Guadalupe Santiago-Hernandez</span><span class="school">Valley Catholic</span><span class="match-score">0, 0</span></div>
+        <div class="seed-line winner"><span class="seed">5</span><span class="name">H. Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">G. Santiago-Hernandez</span><span class="school">Valley Catholic</span><span class="match-score">0, 0</span></div>
       </div>
     </div>
 
@@ -273,13 +314,13 @@
     <div class="round qf"><div class="round-label">QF</div>
       <div class="match"><span class="match-num">Match 63</span>
       
-        <div class="seed-line winner"><span class="seed">1</span><span class="name">Ria Shah</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Shirley Holmes</span><span class="school">St. Helens</span><span class="match-score">0, 0</span></div>
+        <div class="seed-line winner"><span class="seed">1</span><span class="name">R. Shah</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">S. Holmes</span><span class="school">St. Helens</span><span class="match-score">0, 0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 64</span>
       
-        <div class="seed-line match-loser"><span class="seed">4</span><span class="name">Taylor Thorne</span><span class="school">Scappoose</span><span class="match-score">0, 1</span></div>
-        <div class="seed-line winner"><span class="seed">5</span><span class="name">Hailey Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="seed">4</span><span class="name">T. Thorne</span><span class="school">Scappoose</span><span class="match-score">0, 1</span></div>
+        <div class="seed-line winner"><span class="seed">5</span><span class="name">H. Clayton</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
       </div>
     </div>
 
@@ -290,7 +331,7 @@
 
     <!-- FINAL -->
     <div class="round f"><div class="round-label">F</div>
-      <div class="match" style="min-height:50px"><span class="match-num">Match 75</span><div class="seed-line placeholder"><span class="name">3rd Place</span></div></div>
+      <div class="match" style="min-height:50px"><span class="match-num">Match 75</span><div class="seed-line placeholder"><span class="name">3. Place</span></div></div>
       <div class="match" style="min-height:60px"><span class="match-num">Match 77</span><div class="seed-line placeholder"><span class="name">Champion</span></div></div>
     </div>
 
@@ -303,13 +344,13 @@
     <div class="round qf"><div class="round-label">QF</div>
       <div class="match"><span class="match-num">Match 65</span>
       
-        <div class="seed-line winner"><span class="seed">2</span><span class="name">Nina Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Carlie Li</span><span class="school">Oregon Episcopal</span><span class="match-score">4, 3</span></div>
+        <div class="seed-line winner"><span class="seed">2</span><span class="name">N. Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Li</span><span class="school">Oregon Episcopal</span><span class="match-score">4, 3</span></div>
       </div>
       <div class="match"><span class="match-num">Match 66</span>
       
-        <div class="seed-line match-loser"><span class="seed">6</span><span class="name">Joyce Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">2, 3</span></div>
-        <div class="seed-line winner"><span class="seed">3</span><span class="name">Margo Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="seed">6</span><span class="name">J. Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">2, 3</span></div>
+        <div class="seed-line winner"><span class="seed">3</span><span class="name">M. Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
       </div>
     </div>
 
@@ -317,23 +358,23 @@
     <div class="round r16"><div class="round-label">R16</div>
       <div class="match"><span class="match-num">Match 51</span>
       
-        <div class="seed-line winner"><span class="seed">2</span><span class="name">Nina Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Daisy Smith</span><span class="school">Scappoose</span><span class="match-score">1, 0</span></div>
+        <div class="seed-line winner"><span class="seed">2</span><span class="name">N. Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">D. Smith</span><span class="school">Scappoose</span><span class="match-score">1, 0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 52</span>
       
-        <div class="seed-line match-loser"><span class="name">Hana Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">3, 4</span></div>
-        <div class="seed-line winner"><span class="name">Carlie Li</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">H. Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">3, 4</span></div>
+        <div class="seed-line winner"><span class="name">C. Li</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 53</span>
       
-        <div class="seed-line winner"><span class="seed">6</span><span class="name">Joyce Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Charlotte Shreves</span><span class="school">Trinity Academy</span><span class="match-score">1, 0</span></div>
+        <div class="seed-line winner"><span class="seed">6</span><span class="name">J. Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">C. Shreves</span><span class="school">Trinity Academy</span><span class="match-score">1, 0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 54</span>
       
-        <div class="seed-line winner"><span class="seed">3</span><span class="name">Margo Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Madison Youngren</span><span class="school">Scappoose</span><span class="match-score">0, 2</span></div>
+        <div class="seed-line winner"><span class="seed">3</span><span class="name">M. Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">M. Youngren</span><span class="school">Scappoose</span><span class="match-score">0, 2</span></div>
       </div>
     </div>
 
@@ -341,43 +382,43 @@
     <div class="round r32"><div class="round-label">R32</div>
       <div class="match"><span class="match-num">Match 36</span>
       
-        <div class="seed-line winner"><span class="seed">2</span><span class="name">Nina Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Natalie Ledford</span><span class="school">Blanchet</span><span class="match-score">2, 0</span></div>
+        <div class="seed-line winner"><span class="seed">2</span><span class="name">N. Rinard</span><span class="school">Riverdale</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">N. Ledford</span><span class="school">Blanchet</span><span class="match-score">2, 0</span></div>
       </div>
       <div class="match"><span class="match-num">Match 20</span>
       
-        <div class="seed-line match-loser"><span class="name">Haddie Lattus</span><span class="school">Westside Christian</span><span class="match-score">3, 2</span></div>
-        <div class="seed-line winner"><span class="name">Daisy Smith</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">H. Lattus</span><span class="school">Westside Christian</span><span class="match-score">3, 2</span></div>
+        <div class="seed-line winner"><span class="name">D. Smith</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 37</span>
       
-        <div class="seed-line match-loser"><span class="seed">7</span><span class="name">Maria Felez</span><span class="school">Tillamook</span><span class="match-score">2, 0</span></div>
-        <div class="seed-line winner"><span class="name">Hana Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="seed">7</span><span class="name">M. Felez</span><span class="school">Tillamook</span><span class="match-score">2, 0</span></div>
+        <div class="seed-line winner"><span class="name">H. Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 21</span>
       
-        <div class="seed-line match-loser"><span class="name">Hannah Piano</span><span class="school">St. Helens</span><span class="match-score">0, 1</span></div>
-        <div class="seed-line winner"><span class="name">Carlie Li</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">H. Piano</span><span class="school">St. Helens</span><span class="match-score">0, 1</span></div>
+        <div class="seed-line winner"><span class="name">C. Li</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 38</span>
       
-        <div class="seed-line winner"><span class="seed">6</span><span class="name">Joyce Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Alana Iglesias</span><span class="school">Catlin Gabel</span><span class="match-score">3, 3</span></div>
+        <div class="seed-line winner"><span class="seed">6</span><span class="name">J. Nguyen</span><span class="school">Valley Catholic</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">A. Iglesias</span><span class="school">Catlin Gabel</span><span class="match-score">3, 3</span></div>
       </div>
       <div class="match"><span class="match-num">Match 22</span>
       
-        <div class="seed-line match-loser"><span class="name">Bridget Keane</span><span class="school">Blanchet</span><span class="match-score">4, 2</span></div>
-        <div class="seed-line winner"><span class="name">Charlotte Shreves</span><span class="school">Trinity Academy</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">B. Keane</span><span class="school">Blanchet</span><span class="match-score">4, 2</span></div>
+        <div class="seed-line winner"><span class="name">C. Shreves</span><span class="school">Trinity Academy</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match"><span class="match-num">Match 39</span>
       
-        <div class="seed-line winner"><span class="seed">3</span><span class="name">Margo Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Molli Burton</span><span class="school">St. Helens</span><span class="match-score">0, 1</span></div>
+        <div class="seed-line winner"><span class="seed">3</span><span class="name">M. Nicholas</span><span class="school">Oregon Episcopal</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">M. Burton</span><span class="school">St. Helens</span><span class="match-score">0, 1</span></div>
       </div>
       <div class="match"><span class="match-num">Match 23</span>
       
-        <div class="seed-line winner"><span class="name">Madison Youngren</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
-        <div class="seed-line match-loser"><span class="name">Sanni Venalainen</span><span class="school">Tillamook</span><span class="match-score">1, 0</span></div>
+        <div class="seed-line winner"><span class="name">M. Youngren</span><span class="school">Scappoose</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">S. Venalainen</span><span class="school">Tillamook</span><span class="match-score">1, 0</span></div>
       </div>
     </div>
 
@@ -385,26 +426,26 @@
     <div class="round pigtails"><div class="round-label">R1</div>
       <div class="match pigtail"><span class="match-num">Match 4</span>
       
-        <div class="seed-line match-loser"><span class="name">Hannah Fabel</span><span class="school">Trinity Academy</span><span class="match-score">5, 1</span></div>
-        <div class="seed-line winner"><span class="name">Natalie Ledford</span><span class="school">Blanchet</span><span class="match-score">7, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">H. Fabel</span><span class="school">Trinity Academy</span><span class="match-score">5, 1</span></div>
+        <div class="seed-line winner"><span class="name">N. Ledford</span><span class="school">Blanchet</span><span class="match-score">7, 6</span></div>
       </div>
       <div class="match empty"></div>
       <div class="match pigtail"><span class="match-num">Match 5</span>
       
-        <div class="seed-line match-loser"><span class="name">Emma Frias</span><span class="school">Valley Catholic</span><span class="match-score">1, 0</span></div>
-        <div class="seed-line winner"><span class="name">Hana Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">E. Frias</span><span class="school">Valley Catholic</span><span class="match-score">1, 0</span></div>
+        <div class="seed-line winner"><span class="name">H. Kocher</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match empty"></div>
       <div class="match pigtail"><span class="match-num">Match 6</span>
       
-        <div class="seed-line match-loser"><span class="name">Eden Cloutier</span><span class="school">Westside Christian</span><span class="match-score">1, 2</span></div>
-        <div class="seed-line winner"><span class="name">Alana Iglesias</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
+        <div class="seed-line match-loser"><span class="name">E. Cloutier</span><span class="school">Westside Christian</span><span class="match-score">1, 2</span></div>
+        <div class="seed-line winner"><span class="name">A. Iglesias</span><span class="school">Catlin Gabel</span><span class="match-score">6, 6</span></div>
       </div>
       <div class="match empty"></div>
       <div class="match pigtail"><span class="match-num">Match 7</span>
       
-        <div class="seed-line winner"><span class="name">Molli Burton</span><span class="school">St. Helens</span><span class="match-score">6, 4, 10</span></div>
-        <div class="seed-line match-loser"><span class="name">Eda Daim</span><span class="school">Riverdale</span><span class="match-score">4, 6, 8</span></div>
+        <div class="seed-line winner"><span class="name">M. Burton</span><span class="school">St. Helens</span><span class="match-score">6, 4, 10</span></div>
+        <div class="seed-line match-loser"><span class="name">E. Daim</span><span class="school">Riverdale</span><span class="match-score">4, 6, 8</span></div>
       </div>
       <div class="match empty"></div>
     </div>
@@ -532,7 +573,7 @@
 
     <!-- FINAL -->
     <div class="round f"><div class="round-label">F</div>
-      <div class="match" style="min-height:50px"><span class="match-num">Match 76</span><div class="seed-line placeholder"><span class="name">3rd Place</span></div></div>
+      <div class="match" style="min-height:50px"><span class="match-num">Match 76</span><div class="seed-line placeholder"><span class="name">3. Place</span></div></div>
       <div class="match" style="min-height:60px"><span class="match-num">Match 78</span><div class="seed-line placeholder"><span class="name">Champion</span></div></div>
     </div>
 
