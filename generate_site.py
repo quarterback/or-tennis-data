@@ -2180,11 +2180,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
     </style>
 </head>
 <body>
-    <a href="sd1-live-bracket.html" class="sd1-banner">
-        <span class="sd1-banner-tag">LIVE</span>
-        <span class="sd1-banner-text">2026 SD-1 Girls District Tournament — bracket &amp; live scores</span>
-        <span class="sd1-banner-arrow">&rarr;</span>
-    </a>
     <nav class="navbar navbar-dark">
         <div class="container-fluid">
             <span class="navbar-brand">Oregon HS Tennis Rankings</span>
