@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bracket Permutation Explorer — 4A/3A/2A/1A 2026</title>
+<style>
+  :root {
+    --bg: #fafafa;
+    --panel: #fff;
+    --border: #d0d0d0;
+    --text: #222;
+    --muted: #777;
+    --accent: #2a6dbf;
+    --hot: #e74c3c;
+    --warm: #f39c12;
+    --cool: #3498db;
+    --dim: #ecf0f1;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 16px; }
+  h1 { margin: 0 0 6px 0; font-size: 20px; }
+  h2 { margin: 16px 0 8px 0; font-size: 15px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 16px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding: 10px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 12px; }
+  .controls label { font-size: 13px; }
+  .controls select, .controls button { padding: 4px 8px; font-size: 13px; }
+  .grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; }
+  @media (max-width: 1000px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { padding: 4px 6px; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #f5f5f5; font-weight: 600; }
+  td.q { text-align: center; font-variant-numeric: tabular-nums; min-width: 38px; }
+  .seedrow td { background: #fff8d6; }
+  .dcrow td { background: #e6f5e6; }
+  .bracket-list { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; line-height: 1.5; max-height: 540px; overflow-y: auto; padding: 4px; }
+  .bracket-list .bye { color: #aaa; }
+  .bracket-list .seed { color: var(--accent); font-weight: 600; }
+  .bracket-list .dc { color: #2e7d32; font-weight: 600; }
+  .bracket-list .q-divider { border-top: 1px dashed #ccc; margin: 4px 0; }
+  .counts { font-size: 13px; line-height: 1.7; }
+  .counts span.num { font-variant-numeric: tabular-nums; font-weight: 600; }
+  .heat-0 { background: #ffffff; }
+  .heat-1 { background: #f7fbff; }
+  .heat-2 { background: #d9eaff; }
+  .heat-3 { background: #a4cdf5; }
+  .heat-4 { background: #5fa6e8; color: #fff; }
+  .heat-5 { background: #2a6dbf; color: #fff; }
+  .pill { display: inline-block; padding: 1px 6px; border-radius: 10px; font-size: 11px; }
+  .pill.s { background: #fff3a8; }
+  .pill.d { background: #c8e6c9; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .seed-config { display: flex; gap: 8px; align-items: center; }
+  button { cursor: pointer; }
+  .warn { color: var(--hot); font-size: 12px; }
+</style>
+</head>
+<body>
+
+<h1>Bracket Permutation Explorer — 4A/3A/2A/1A 2026</h1>
+<div class="subtitle">
+  Where do the multi-qualifier schools land under OSAA/USTA bracket rules? Sampled across valid configurations.
+</div>
+
+<div class="controls">
+  <label>Event:
+    <select id="eventSel">
+      <option value="doubles">Doubles</option>
+      <option value="singles">Singles</option>
+    </select>
+  </label>
+  <div class="seed-config">
+    <label>S1: <select id="s1Sel"></select></label>
+    <label>S2: <select id="s2Sel"></select></label>
+    <label>S3: <select id="s3Sel"></select></label>
+    <label>S4: <select id="s4Sel"></select></label>
+  </div>
+  <label>Samples:
+    <select id="sampleSel">
+      <option value="2000">2,000</option>
+      <option value="5000" selected>5,000</option>
+      <option value="10000">10,000</option>
+      <option value="25000">25,000</option>
+    </select>
+  </label>
+  <button id="runBtn">Re-run sampling</button>
+  <button id="reshuffleBtn">Reshuffle sample bracket</button>
+  <span id="status" class="note"></span>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <h2>Multi-school quarter heatmap</h2>
+    <div class="note">% of valid sampled brackets in which each qualifier lands in Q1 / Q2 / Q3 / Q4. Seeds shown for context.</div>
+    <table id="heatTable">
+      <thead><tr><th>Qualifier</th><th>School</th><th>SD</th><th>Tag</th><th class="q">Q1</th><th class="q">Q2</th><th class="q">Q3</th><th class="q">Q4</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <h2 style="margin-top:18px">Structural counts</h2>
+    <div class="counts" id="countsBox"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Sample bracket</h2>
+    <div class="note" id="sampleNote">One randomly drawn valid bracket. Click "Reshuffle" for another.</div>
+    <div class="bracket-list" id="bracketList"></div>
+  </div>
+</div>
+
+<div class="panel" style="margin-top:12px">
+  <h2>Top potential QF matchups (across same-quarter sample pairings)</h2>
+  <div class="note">Pairs of qualifiers that end up in the same quarter — how often, across sampled brackets. Most-common 12 shown.</div>
+  <table id="pairTable">
+    <thead><tr><th>Qualifier A</th><th>Qualifier B</th><th class="q">% of brackets</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</div>
+
+<script>
+// =====================================================================
+// Data — 2026 4A/3A/2A/1A girls qualifiers
+// =====================================================================
+
+// districtFinish: 1-4 = order at SD qualifying tournament (1=DC).
+// isDC: convenience — true if districtFinish==1.
+
+const DATA = {
+  doubles: [
+    // SD1
+    { id: 'D1-1', name: 'Perez/Mehta',         school: 'CG',        sd: 'SD1', fin: 1 },
+    { id: 'D1-2', name: 'Ji/Li',                school: 'OES',       sd: 'SD1', fin: 2 },
+    { id: 'D1-3', name: 'Kelly/Sharan',         school: 'CG',        sd: 'SD1', fin: 3 },
+    { id: 'D1-4', name: 'Yoken/Pajkic',         school: 'CG',        sd: 'SD1', fin: 4 },
+    // SD2
+    { id: 'D2-1', name: 'Larson/Tyner',         school: 'Marist',    sd: 'SD2', fin: 1 },
+    { id: 'D2-2', name: 'Suelzle/Withers',      school: 'Cascade',   sd: 'SD2', fin: 2 },
+    { id: 'D2-3', name: 'Murphy/Helfrich',      school: 'Marist',    sd: 'SD2', fin: 3 },
+    { id: 'D2-4', name: 'Hirons/McLaughlin',    school: 'Marist',    sd: 'SD2', fin: 4 },
+    // SD3
+    { id: 'D3-1', name: 'Cohee/Mahar',          school: 'CascChr',   sd: 'SD3', fin: 1 },
+    { id: 'D3-2', name: 'Ravassipour/Olson',    school: 'StM',       sd: 'SD3', fin: 2 },
+    { id: 'D3-3', name: 'Hung/Ho',              school: 'StM',       sd: 'SD3', fin: 3 },
+    { id: 'D3-4', name: 'Smith/Clark',          school: 'NBend',     sd: 'SD3', fin: 4 },
+    // SD4
+    { id: 'D4-1', name: 'Mueller/Yates',        school: 'Irrigon',   sd: 'SD4', fin: 1 },
+    { id: 'D4-2', name: 'Puddy/Pope',           school: 'Madras',    sd: 'SD4', fin: 2 },
+    { id: 'D4-3', name: 'Calvillo/Chavez',      school: 'Riverside', sd: 'SD4', fin: 3 },
+    { id: 'D4-4', name: 'Pope/Burts',           school: 'Madras',    sd: 'SD4', fin: 4 },
+    // SD5
+    { id: 'D5-1', name: 'Nieskens/Seals',       school: 'Vale',      sd: 'SD5', fin: 1 },
+    { id: 'D5-2', name: 'Scott/Armstrong',      school: 'LaGrande',  sd: 'SD5', fin: 2 },
+    { id: 'D5-3', name: 'Gonzalez/Schoorl',     school: 'Vale',      sd: 'SD5', fin: 3 },
+    { id: 'D5-4', name: 'Bennett/Mckrola',      school: 'Vale',      sd: 'SD5', fin: 4 },
+  ],
+  singles: [
+    // SD1
+    { id: 'S1-1', name: 'Ria Shah',             school: 'CG',        sd: 'SD1', fin: 1 },
+    { id: 'S1-2', name: 'Nina Rinard',          school: 'Riverdale', sd: 'SD1', fin: 2 },
+    { id: 'S1-3', name: 'Margo Nicholas',       school: 'OES',       sd: 'SD1', fin: 3 },
+    { id: 'S1-4', name: 'Hailey Clayton',       school: 'OES',       sd: 'SD1', fin: 4 },
+    // SD2
+    { id: 'S2-1', name: 'Whitney Hedden',       school: 'Marist',    sd: 'SD2', fin: 1 },
+    { id: 'S2-2', name: 'Phoebie Larson',       school: 'Marist',    sd: 'SD2', fin: 2 },
+    { id: 'S2-3', name: 'Alanna Scala',         school: 'Marist',    sd: 'SD2', fin: 3 },
+    { id: 'S2-4', name: 'Lucy King',            school: 'Philomath', sd: 'SD2', fin: 4 },
+    // SD3
+    { id: 'S3-1', name: 'Carys Chamberland',    school: 'StM',       sd: 'SD3', fin: 1 },
+    { id: 'S3-2', name: 'Adalie Ford',          school: 'StM',       sd: 'SD3', fin: 2 },
+    { id: 'S3-3', name: 'Mia Cabalo',           school: 'StM',       sd: 'SD3', fin: 3 },
+    { id: 'S3-4', name: 'Amelia Peck',          school: 'NBend',     sd: 'SD3', fin: 4 },
+    // SD4
+    { id: 'S4-1', name: 'Cypress Tolman',       school: 'Madras',    sd: 'SD4', fin: 1 },
+    { id: 'S4-2', name: 'Catalina Valencia',    school: 'Irrigon',   sd: 'SD4', fin: 2 },
+    { id: 'S4-3', name: 'Nancy Quinto',         school: 'Madras',    sd: 'SD4', fin: 3 },
+    { id: 'S4-4', name: 'Kylee Almonte',        school: 'StanEcho',  sd: 'SD4', fin: 4 },
+    // SD5
+    { id: 'S5-1', name: 'Brystol Keller',       school: 'Vale',      sd: 'SD5', fin: 1 },
+    { id: 'S5-2', name: 'Liz Timm',             school: 'BakerPV',   sd: 'SD5', fin: 2 },
+    { id: 'S5-3', name: 'McKinley Moore',       school: 'Pendleton', sd: 'SD5', fin: 3 },
+    { id: 'S5-4', name: 'Noemi Alvarez-Barroso',school: 'Pendleton', sd: 'SD5', fin: 4 },
+  ],
+};
+
+// Default seed picks per the user's working slate
+const DEFAULT_SEEDS = {
+  doubles: ['D1-1', 'D2-1', 'D1-2', 'D2-2'],
+  singles: ['S1-1', 'S2-1', 'S3-1', 'S5-1'], // reasonable working defaults; user can change
+};
+
+// =====================================================================
+// Bracket structure
+// =====================================================================
+// 32-line bracket, 20 entries, 12 byes.
+// Seed lines: 1 (S1), 9 (S3/4), 24 (S4/3), 32 (S2).
+// 5/6 protected lines: 8, 25.
+// 7/8 protected lines (next bye tier): 16, 17.
+// 9/12 protected lines (last bye tier): 4, 13, 20, 29.
+// Byes occupy the R1-partners of those positions: 2, 7, 10, 23, 26, 31, 15, 18, 3, 14, 19, 30.
+
+const SEED_LINES = { 1: 'S1', 9: 'S3', 24: 'S4', 32: 'S2' };
+const DC_LINES = [8, 25];                    // 5/6 seed-line positions
+const TEAM_LINES = [1, 4, 5, 6, 8, 9, 11, 12, 13, 16, 17, 20, 21, 22, 24, 25, 27, 28, 29, 32];
+const BYE_LINES  = [2, 3, 7, 10, 14, 15, 18, 19, 23, 26, 30, 31];
+const R1_PARTNER = {}; for (let i=1;i<=32;i+=2){ R1_PARTNER[i]=i+1; R1_PARTNER[i+1]=i; }
+function quarterOf(line) { return Math.ceil(line/8); }              // 1..4
+function eighthOf(line) { return Math.ceil(line/4); }               // 1..8
+function halfOf(line)   { return line<=16 ? 1 : 2; }
+
+// Sanity
+console.assert(TEAM_LINES.length === 20, 'team lines should be 20');
+console.assert(BYE_LINES.length === 12, 'bye lines should be 12');
+
+// =====================================================================
+// Population of the dropdowns
+// =====================================================================
+function populateSeedDropdowns() {
+  const event = document.getElementById('eventSel').value;
+  const entries = DATA[event];
+  const sels = ['s1Sel', 's2Sel', 's3Sel', 's4Sel'];
+  const defaults = DEFAULT_SEEDS[event];
+  sels.forEach((id, idx) => {
+    const sel = document.getElementById(id);
+    const prev = sel.value;
+    sel.innerHTML = '';
+    entries.forEach(e => {
+      const opt = document.createElement('option');
+      opt.value = e.id;
+      opt.textContent = `${e.name} (${e.school}, ${e.sd})`;
+      sel.appendChild(opt);
+    });
+    sel.value = entries.find(e => e.id === prev) ? prev : defaults[idx];
+  });
+}
+
+function getSeeds() {
+  return ['s1Sel','s2Sel','s3Sel','s4Sel'].map(id => document.getElementById(id).value);
+}
+
+// =====================================================================
+// Sampler
+// =====================================================================
+// Strategy: for each sample, fix seeds, draw which DC is the "3rd"
+// (random of the 3 unseeded DCs), draw the other two onto lines {8,25},
+// place the 3rd DC onto a randomly chosen legal team-line, then place
+// the remaining 13 teams onto the 13 still-open team-lines via
+// rejection sampling subject to:
+//   - same district  -> different eighths
+//   - same school    -> different quarters
+//   - 1st+2nd same school -> different halves
+// If a placement step dead-ends, the sample is restarted.
+// All samples accepted are uniformly drawn from the legal space within
+// a given Tier-A choice (which is determined by the user-selected S3/S4
+// order — we don't randomize that; the user picks it).
+
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function buildOneBracket(entries, seedIds) {
+  // Map for fast lookup
+  const byId = {}; entries.forEach(e => byId[e.id] = e);
+  const seeded = new Set(seedIds);
+
+  const placement = {};   // line -> entry
+  // Seeds
+  placement[1]  = byId[seedIds[0]];
+  placement[32] = byId[seedIds[1]];
+  placement[9]  = byId[seedIds[2]];
+  placement[24] = byId[seedIds[3]];
+
+  // Unseeded DCs
+  const allDCs = entries.filter(e => e.fin === 1);
+  const unseededDCs = allDCs.filter(e => !seeded.has(e.id));
+  const dcs = shuffleInPlace([...unseededDCs]);
+  // Need at least 2 unseeded DCs for lines 8/25; rest become "3rd DC" or beyond
+  // Place first 2 onto lines 8 and 25:
+  if (dcs.length >= 2) {
+    placement[8]  = dcs[0];
+    placement[25] = dcs[1];
+  }
+  const extraDCs = dcs.slice(2); // typically 1, possibly 0 if both unseeded DC slots aren't filled
+
+  // Place each extra DC on a random legal team-line that:
+  //   - is not already filled
+  //   - whose R1 partner isn't a seed or DC line
+  for (const dc of extraDCs) {
+    const candidates = TEAM_LINES.filter(L => {
+      if (placement[L]) return false;
+      const partner = R1_PARTNER[L];
+      // Forbidden if partner is a seed or already-placed DC's line:
+      const partnerEntry = placement[partner];
+      if (partnerEntry && (seeded.has(partnerEntry.id) || partnerEntry.fin === 1)) return false;
+      // Also forbidden if line itself is bye-paired with seed/DC (i.e., L is a bye position) — but L ∈ TEAM_LINES already excludes those.
+      return true;
+    });
+    if (candidates.length === 0) return null;
+    placement[candidates[Math.floor(Math.random() * candidates.length)]] = dc;
+  }
+
+  // Remaining entries to place
+  const placedIds = new Set(Object.values(placement).map(e => e.id));
+  const remaining = entries.filter(e => !placedIds.has(e.id));
+  const openLines = TEAM_LINES.filter(L => !placement[L]);
+
+  // Order remaining by constraint complexity (most-constrained-first):
+  // count same-school + same-district sibling counts
+  function constraintScore(e) {
+    let s = 0;
+    for (const o of entries) {
+      if (o.id === e.id) continue;
+      if (o.school === e.school) s += 10;
+      if (o.sd === e.sd) s += 1;
+    }
+    return s;
+  }
+  remaining.sort((a, b) => constraintScore(b) - constraintScore(a));
+
+  // Determine 1st/2nd-same-school halves rule per district
+  const halvesRule = {}; // entryId -> required half OR null
+  for (const sd of ['SD1','SD2','SD3','SD4','SD5']) {
+    const dEntries = entries.filter(e => e.sd === sd).sort((a,b) => a.fin - b.fin);
+    if (dEntries.length >= 2 && dEntries[0].school === dEntries[1].school) {
+      // Both 1st and 2nd from same school. They must be in different halves.
+      halvesRule[dEntries[0].id] = 'pair-' + sd + '-1';
+      halvesRule[dEntries[1].id] = 'pair-' + sd + '-2';
+    }
+  }
+
+  // Backtracking with random ordering of candidate lines per step.
+  function backtrack(rIdx) {
+    if (rIdx === remaining.length) return true;
+    const e = remaining[rIdx];
+
+    // Compute candidate lines
+    const cands = shuffleInPlace(openLines.filter(L => !placement[L]).filter(L => {
+      // same district -> different eighth
+      const e8 = eighthOf(L);
+      for (const oL of Object.keys(placement)) {
+        const o = placement[oL];
+        if (o.sd === e.sd && eighthOf(+oL) === e8) return false;
+        if (o.school === e.school && quarterOf(+oL) === quarterOf(L)) return false;
+      }
+      // 1st-2nd same school halves rule (if applicable, both must be in different halves)
+      if (halvesRule[e.id]) {
+        const partnerEntry = entries.find(x => x.sd === e.sd && halvesRule[x.id] && x.id !== e.id);
+        if (partnerEntry) {
+          for (const oL of Object.keys(placement)) {
+            if (placement[oL].id === partnerEntry.id && halfOf(+oL) === halfOf(L)) return false;
+          }
+        }
+      }
+      return true;
+    }));
+
+    for (const L of cands) {
+      placement[L] = e;
+      if (backtrack(rIdx + 1)) return true;
+      delete placement[L];
+    }
+    return false;
+  }
+
+  if (!backtrack(0)) return null;
+  return placement;
+}
+
+// =====================================================================
+// Run sampling
+// =====================================================================
+
+function runSampling() {
+  const event = document.getElementById('eventSel').value;
+  const entries = DATA[event];
+  const seedIds = getSeeds();
+
+  // Validate: 4 distinct seeds
+  const u = new Set(seedIds);
+  if (u.size !== 4) {
+    document.getElementById('status').innerHTML = '<span class="warn">Pick four distinct seeds.</span>';
+    return;
+  }
+
+  // Validate: seed placements don't directly violate same-district eighth or same-school quarter
+  const byId = {}; entries.forEach(e => byId[e.id] = e);
+  const seedLineMap = { 0: 1, 1: 32, 2: 9, 3: 24 };
+  const issues = [];
+  for (let i = 0; i < 4; i++) {
+    for (let j = i+1; j < 4; j++) {
+      const a = byId[seedIds[i]], b = byId[seedIds[j]];
+      const la = seedLineMap[i], lb = seedLineMap[j];
+      if (a.sd === b.sd && eighthOf(la) === eighthOf(lb)) {
+        issues.push(`S${i+1} and S${j+1} are same district (${a.sd}) and would share an eighth — illegal.`);
+      }
+      if (a.school === b.school && quarterOf(la) === quarterOf(lb)) {
+        issues.push(`S${i+1} and S${j+1} are same school (${a.school}) and would share a quarter — illegal.`);
+      }
+      // 1st-2nd same school halves rule check on seeds
+      const sd = a.sd;
+      const sortedSD = entries.filter(e => e.sd === sd).sort((x,y) => x.fin - y.fin);
+      if (sortedSD.length >= 2 && sortedSD[0].school === sortedSD[1].school) {
+        if ((a.id === sortedSD[0].id && b.id === sortedSD[1].id) ||
+            (a.id === sortedSD[1].id && b.id === sortedSD[0].id)) {
+          if (halfOf(la) === halfOf(lb)) {
+            issues.push(`S${i+1} and S${j+1} are 1st+2nd same-school in ${sd} and would share a half — illegal.`);
+          }
+        }
+      }
+    }
+  }
+  if (issues.length > 0) {
+    document.getElementById('status').innerHTML =
+      '<span class="warn">Invalid seed setup: ' + issues.join(' / ') + '</span>';
+    return;
+  }
+
+  const N = parseInt(document.getElementById('sampleSel').value, 10);
+  document.getElementById('status').textContent = `Sampling ${N.toLocaleString()}...`;
+
+  // Use setTimeout to let the UI repaint
+  setTimeout(() => {
+    const t0 = performance.now();
+    const quarterCount = {};   // entryId -> [Q1,Q2,Q3,Q4]
+    const pairCount = {};      // "idA|idB" -> count, idA<idB
+    let succeeded = 0;
+    let attempts = 0;
+    let lastBracket = null;
+
+    for (let s = 0; s < N; s++) {
+      let b = null;
+      for (let tries = 0; tries < 50 && !b; tries++) {
+        attempts++;
+        b = buildOneBracket(entries, seedIds);
+      }
+      if (!b) continue;
+      succeeded++;
+      lastBracket = b;
+
+      // Tally by entry
+      const lineByEntry = {};
+      for (const L of Object.keys(b)) {
+        const e = b[L];
+        const q = quarterOf(+L);
+        if (!quarterCount[e.id]) quarterCount[e.id] = [0,0,0,0];
+        quarterCount[e.id][q-1]++;
+        lineByEntry[e.id] = +L;
+      }
+      // Pair co-occurrence (same quarter)
+      const entryIds = Object.keys(lineByEntry);
+      for (let i = 0; i < entryIds.length; i++) {
+        for (let j = i+1; j < entryIds.length; j++) {
+          const a = entryIds[i], c = entryIds[j];
+          if (quarterOf(lineByEntry[a]) === quarterOf(lineByEntry[c])) {
+            const key = a < c ? a+'|'+c : c+'|'+a;
+            pairCount[key] = (pairCount[key] || 0) + 1;
+          }
+        }
+      }
+    }
+
+    const t1 = performance.now();
+    const elapsed = (t1 - t0).toFixed(0);
+    document.getElementById('status').textContent =
+      `Sampled ${succeeded.toLocaleString()} valid brackets (${attempts.toLocaleString()} attempts) in ${elapsed} ms`;
+
+    renderHeatmap(entries, seedIds, quarterCount, succeeded);
+    renderCounts(entries, seedIds);
+    renderBracket(lastBracket, seedIds);
+    renderPairs(entries, pairCount, succeeded);
+  }, 10);
+}
+
+// =====================================================================
+// Render: heatmap
+// =====================================================================
+function heatClass(pct) {
+  if (pct === 0)  return 'heat-0';
+  if (pct < 10)   return 'heat-1';
+  if (pct < 30)   return 'heat-2';
+  if (pct < 60)   return 'heat-3';
+  if (pct < 90)   return 'heat-4';
+  return 'heat-5';
+}
+
+function renderHeatmap(entries, seedIds, qCount, total) {
+  const tbody = document.querySelector('#heatTable tbody');
+  tbody.innerHTML = '';
+
+  // Group: multi-school schools first, then DCs from districts not represented, then rest
+  const schoolCount = {};
+  entries.forEach(e => { schoolCount[e.school] = (schoolCount[e.school]||0) + 1; });
+
+  const order = entries.slice().sort((a, b) => {
+    const aMulti = schoolCount[a.school] > 1 ? 0 : 1;
+    const bMulti = schoolCount[b.school] > 1 ? 0 : 1;
+    if (aMulti !== bMulti) return aMulti - bMulti;
+    if (a.school !== b.school) return a.school.localeCompare(b.school);
+    return a.fin - b.fin;
+  });
+
+  for (const e of order) {
+    const tr = document.createElement('tr');
+    const seedIdx = seedIds.indexOf(e.id);
+    const isSeed = seedIdx >= 0;
+    const isDC = e.fin === 1;
+    if (isSeed) tr.className = 'seedrow';
+    else if (isDC) tr.className = 'dcrow';
+
+    const counts = qCount[e.id] || [0,0,0,0];
+    const pcts = counts.map(c => total>0 ? (100*c/total) : 0);
+
+    let tag = '';
+    if (isSeed) tag = `<span class="pill s">S${seedIdx+1}</span>`;
+    else if (isDC) tag = '<span class="pill d">DC</span>';
+
+    tr.innerHTML = `
+      <td>${e.name}</td>
+      <td>${e.school}${schoolCount[e.school]>1 ? ' ×'+schoolCount[e.school] : ''}</td>
+      <td>${e.sd}</td>
+      <td>${tag}</td>
+      ${pcts.map(p => `<td class="q ${heatClass(p)}">${p.toFixed(1)}%</td>`).join('')}
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+// =====================================================================
+// Render: structural counts
+// =====================================================================
+function renderCounts(entries, seedIds) {
+  const seeded = new Set(seedIds);
+  const allDCs = entries.filter(e => e.fin === 1);
+  const unseededDCs = allDCs.filter(e => !seeded.has(e.id));
+  const tierA = 1; // user has picked S3/S4 order explicitly
+  const tierB = unseededDCs.length >= 2 ? unseededDCs.length * (unseededDCs.length - 1) : 0;
+  // Tier C: number of legal team-lines for an extra DC ≈ 14 (TEAM_LINES minus seed lines and the 2 DC lines)
+  const dcExtra = Math.max(0, unseededDCs.length - 2);
+  const tierC = dcExtra === 0 ? 1 : 14;
+
+  const box = document.getElementById('countsBox');
+  box.innerHTML = `
+    <div>Unseeded district champions: <span class="num">${unseededDCs.length}</span> (${unseededDCs.map(e=>e.school).join(', ') || 'none'})</div>
+    <div>Tier A — seeds 3/4 order: locked by your selection (<span class="num">${tierA}</span> way)</div>
+    <div>Tier B — which unseeded DCs to lines 8/25 (ordered): <span class="num">${tierB}</span> way${tierB===1?'':'s'}</div>
+    <div>Tier C — extra-DC line placement: <span class="num">${tierC}</span> way${tierC===1?'':'s'}</div>
+    <div style="margin-top:6px">A×B×C structural skeletons: <span class="num">${tierA*tierB*tierC}</span></div>
+    <div class="note">Tier D (placing the remaining ${entries.length - 4 - unseededDCs.length} teams under same-district/eighth and same-school/quarter constraints) is approximated by Monte Carlo above.</div>
+  `;
+}
+
+// =====================================================================
+// Render: sample bracket
+// =====================================================================
+let LAST_BRACKET = null;
+function renderBracket(b, seedIds) {
+  LAST_BRACKET = b;
+  const div = document.getElementById('bracketList');
+  if (!b) { div.textContent = '(no valid bracket found)'; return; }
+  const seedSet = new Set(seedIds);
+  const lines = [];
+  for (let L = 1; L <= 32; L++) {
+    const e = b[L];
+    let cls = '', text;
+    if (!e) {
+      cls = 'bye';
+      text = `Line ${String(L).padStart(2)}: (bye)`;
+    } else {
+      const isSeed = seedSet.has(e.id);
+      const seedIdx = seedIds.indexOf(e.id);
+      const isDC = e.fin === 1;
+      if (isSeed) cls = 'seed';
+      else if (isDC) cls = 'dc';
+      const tag = isSeed ? ` [S${seedIdx+1}]` : (isDC ? ' [DC]' : '');
+      text = `Line ${String(L).padStart(2)}: ${e.name.padEnd(24)} ${e.school.padEnd(10)} ${e.sd}${tag}`;
+    }
+    lines.push(`<div class="${cls}">${text}</div>`);
+    if (L === 8 || L === 16 || L === 24) {
+      lines.push(`<div class="q-divider"></div>`);
+    }
+  }
+  div.innerHTML = lines.join('\n');
+}
+
+// =====================================================================
+// Render: pair co-occurrence (same quarter)
+// =====================================================================
+function renderPairs(entries, pairCount, total) {
+  const byId = {}; entries.forEach(e => byId[e.id] = e);
+  const rows = Object.entries(pairCount)
+    .map(([k, c]) => { const [a, b] = k.split('|'); return { a, b, pct: 100*c/total }; })
+    .sort((x, y) => y.pct - x.pct)
+    .slice(0, 12);
+  const tbody = document.querySelector('#pairTable tbody');
+  tbody.innerHTML = '';
+  for (const r of rows) {
+    const ea = byId[r.a], eb = byId[r.b];
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${ea.name} <small style="color:#888">(${ea.school}, ${ea.sd})</small></td>
+      <td>${eb.name} <small style="color:#888">(${eb.school}, ${eb.sd})</small></td>
+      <td class="q ${heatClass(r.pct)}">${r.pct.toFixed(1)}%</td>
+    `;
+    tbody.appendChild(tr);
+  }
+}
+
+// =====================================================================
+// Wire up
+// =====================================================================
+document.getElementById('eventSel').addEventListener('change', () => {
+  populateSeedDropdowns();
+  runSampling();
+});
+['s1Sel','s2Sel','s3Sel','s4Sel','sampleSel'].forEach(id => {
+  document.getElementById(id).addEventListener('change', runSampling);
+});
+document.getElementById('runBtn').addEventListener('click', runSampling);
+document.getElementById('reshuffleBtn').addEventListener('click', () => {
+  const event = document.getElementById('eventSel').value;
+  const entries = DATA[event];
+  const seedIds = getSeeds();
+  let b = null;
+  for (let i = 0; i < 50 && !b; i++) b = buildOneBracket(entries, seedIds);
+  renderBracket(b, seedIds);
+});
+
+populateSeedDropdowns();
+runSampling();
+</script>
+
+</body>
+</html>
