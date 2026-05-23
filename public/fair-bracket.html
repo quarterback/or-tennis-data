@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fair Bracket Generator — OSAA Tennis</title>
+<style>
+  :root {
+    --bg: #fafafa; --panel: #fff; --border: #d0d0d0; --text: #222; --muted: #777;
+    --accent: #2a6dbf; --hot: #e74c3c; --warm: #f39c12; --good: #2e7d32; --dim: #ecf0f1;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 16px; }
+  h1 { margin: 0 0 6px 0; font-size: 20px; }
+  h2 { margin: 16px 0 8px 0; font-size: 15px; }
+  .subtitle { color: var(--muted); font-size: 13px; margin-bottom: 16px; max-width: 880px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; padding: 10px 12px; background: var(--panel); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 12px; }
+  .controls label { font-size: 13px; }
+  .controls select, .controls input, .controls button { padding: 4px 8px; font-size: 13px; }
+  .controls input[type=number] { width: 56px; }
+  .grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 12px; }
+  @media (max-width: 1000px) { .grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 10px 14px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+  th, td { padding: 4px 6px; text-align: left; border-bottom: 1px solid #eee; }
+  th { background: #f5f5f5; font-weight: 600; }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .seedrow td { background: #fff8d6; }
+  .champrow td { background: #e6f5e6; }
+  .bracket-list { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 11.5px; line-height: 1.45; max-height: 620px; overflow-y: auto; padding: 4px; }
+  .bracket-list .bye { color: #aaa; }
+  .bracket-list .seed { color: var(--accent); font-weight: 600; }
+  .bracket-list .champ { color: var(--good); font-weight: 600; }
+  .bracket-list .qdiv { border-top: 1px dashed #ccc; margin: 5px 0; padding-top: 3px; color: var(--muted); }
+  .bracket-list .matchnum { color: #bbb; }
+  .pill { display: inline-block; padding: 1px 6px; border-radius: 10px; font-size: 11px; }
+  .pill.bye { background: #ffe08a; color: #000; }
+  .pill.playin { background: #d9eaff; color: #024; }
+  .note { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .warn { color: var(--hot); font-size: 12px; font-weight: 600; }
+  .ok { color: var(--good); font-size: 12px; }
+  .legend { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .delta-pos { color: var(--good); }
+  .delta-neg { color: var(--hot); }
+  code { background: #f0f0f0; padding: 1px 4px; border-radius: 3px; }
+  .cutline td { border-bottom: 2px solid var(--hot); }
+</style>
+</head>
+<body>
+
+<h1>Fair Bracket Generator — OSAA-style individual tennis</h1>
+<div class="subtitle">
+  Builds a state draw from district placements where <strong>byes are allocated strictly by merit</strong>
+  (seeds &rarr; district champions &rarr; 2nd &rarr; 3rd &rarr; 4th), instead of partly by lot. Honors the OSAA
+  separation rules (same district not in round 1; same school not before the semifinals; a school's district
+  1&amp;2 not before the final). Works for any number of districts (4&ndash;8+) and any qualifiers-per-district.
+  The right panel recomputes team points under the legacy <em>round-reached</em> scoring vs. a <em>per-win</em>
+  scheme so you can see how much of the old point spread was an artifact of free byes.
+</div>
+
+<div class="controls">
+  <label>Field:
+    <select id="presetSel">
+      <option value="doubles2026">2026 Doubles (5 SD)</option>
+      <option value="singles2026">2026 Singles (5 SD)</option>
+      <option value="synthetic">Synthetic…</option>
+    </select>
+  </label>
+  <span id="synthControls" style="display:none">
+    <label>Districts: <input type="number" id="dInput" min="2" max="12" value="6"></label>
+    <label>Qual/district: <input type="number" id="qInput" min="2" max="6" value="4"></label>
+  </span>
+  <label>Seeds:
+    <select id="seedCount"><option>4</option><option>2</option><option>8</option><option>0</option></select>
+  </label>
+  <label>Byes:
+    <select id="byeMode">
+      <option value="merit">Merit (fair)</option>
+      <option value="lot">By lot (current-style)</option>
+    </select>
+  </label>
+  <label>Per-win podium bonus:
+    <input type="checkbox" id="podiumBonus" checked>
+  </label>
+  <label>Lot seed: <input type="number" id="lotSeed" value="1" style="width:48px"></label>
+  <button id="rebuildBtn">Rebuild</button>
+  <span id="status" class="note"></span>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <h2>Generated draw</h2>
+    <div class="legend">
+      <span class="pill bye">bye</span> top-tier entry that draws a bye &nbsp;
+      <span class="pill playin">play-in</span> bottom tier, must win round 1 &nbsp;
+      <span class="seed">seed</span> &nbsp; <span class="champ">district champ</span>
+    </div>
+    <div class="bracket-list" id="bracketList"></div>
+  </div>
+
+  <div class="panel">
+    <h2>Merit list &amp; bye cutline</h2>
+    <div class="note" id="cutNote"></div>
+    <table id="meritTable">
+      <thead><tr><th>#</th><th>Entry</th><th>School</th><th>SD</th><th>Fin</th><th>Tier</th><th>Bye?</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>Team points — chalk run (higher merit wins)</h2>
+    <div class="note">
+      Round-based: champ&nbsp;10 / final&nbsp;8 / 3rd&nbsp;6 / 4th&nbsp;5 / QF&nbsp;4 / R16&nbsp;2 / R32&nbsp;1.
+      Per-win: 1 per championship win<span id="bonusNote"> + podium bonus 4/3/2/1</span>; a bye is worth 0.
+    </div>
+    <table id="scoreTable">
+      <thead><tr><th>School</th><th class="n">Round-based</th><th class="n">Per-win</th><th class="n">Δ</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div id="fairnessBox"></div>
+  </div>
+</div>
+
+<script>
+// =====================================================================
+// Field data
+// =====================================================================
+const FIELDS = {
+  doubles2026: [
+    {name:'Perez/Mehta',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Ji/Li',school:'Oregon Episcopal',sd:'SD1',fin:2},
+    {name:'Kelly/Sharan',school:'Catlin Gabel',sd:'SD1',fin:3},
+    {name:'Yoken/Pajkic',school:'Catlin Gabel',sd:'SD1',fin:4},
+    {name:'Larson/Tyner',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Suelzle/Withers',school:'Cascade',sd:'SD2',fin:2},
+    {name:'Murphy/Helfrich',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'Hirons/McLaughlin',school:'Marist Catholic',sd:'SD2',fin:4},
+    {name:'Cohee/Mahar',school:'Cascade Christian',sd:'SD3',fin:1},
+    {name:'Ravassipour/Olson',school:"St. Mary's",sd:'SD3',fin:2},
+    {name:'Hung/Ho',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Smith/Clark',school:'North Bend',sd:'SD3',fin:4},
+    {name:'Mueller/Yates',school:'Irrigon',sd:'SD4',fin:1},
+    {name:'Puddy/Pope',school:'Madras',sd:'SD4',fin:2},
+    {name:'Calvillo/Chavez',school:'Riverside',sd:'SD4',fin:3},
+    {name:'Pope/Burts',school:'Madras',sd:'SD4',fin:4},
+    {name:'Nieskens/Seals',school:'Vale',sd:'SD5',fin:1},
+    {name:'Scott/Armstrong',school:'La Grande',sd:'SD5',fin:2},
+    {name:'Gonzalez/Schoorl',school:'Vale',sd:'SD5',fin:3},
+    {name:'Bennett/Mckrola',school:'Vale',sd:'SD5',fin:4},
+  ],
+  singles2026: [
+    {name:'Ria Shah',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Nina Rinard',school:'Riverdale',sd:'SD1',fin:2},
+    {name:'Margo Nicholas',school:'Oregon Episcopal',sd:'SD1',fin:3},
+    {name:'Hailey Clayton',school:'Oregon Episcopal',sd:'SD1',fin:4},
+    {name:'Whitney Hedden',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Phoebie Larson',school:'Marist Catholic',sd:'SD2',fin:2},
+    {name:'Alanna Scala',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'Lucy King',school:'Philomath',sd:'SD2',fin:4},
+    {name:'Carys Chamberland',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Adalie Ford',school:"St. Mary's",sd:'SD3',fin:2},
+    {name:'Mia Cabalo',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Amelia Peck',school:'North Bend',sd:'SD3',fin:4},
+    {name:'Cypress Tolman',school:'Madras',sd:'SD4',fin:1},
+    {name:'Catalina Valencia',school:'Irrigon',sd:'SD4',fin:2},
+    {name:'Nancy Quinto',school:'Madras',sd:'SD4',fin:3},
+    {name:'Kylee Almonte',school:'Stanfield/Echo',sd:'SD4',fin:4},
+    {name:'Brystol Keller',school:'Vale',sd:'SD5',fin:1},
+    {name:'Liz Timm',school:'Baker/PV',sd:'SD5',fin:2},
+    {name:'McKinley Moore',school:'Pendleton',sd:'SD5',fin:3},
+    {name:'Noemi Alvarez-Barroso',school:'Pendleton',sd:'SD5',fin:4},
+  ],
+};
+
+function syntheticField(D, Q) {
+  const out = [];
+  for (let d = 1; d <= D; d++)
+    for (let q = 1; q <= Q; q++)
+      out.push({ name:`SD${d}-${q}`, school:`Team ${d}.${q}`, sd:`SD${d}`, fin:q });
+  return out;
+}
+
+// =====================================================================
+// Deterministic RNG (mulberry32) so "lot" draws are reproducible
+// =====================================================================
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+let RNG = mulberry32(1);
+function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(RNG()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
+
+// =====================================================================
+// Bracket math
+// =====================================================================
+function nextPow2(n){ let p=1; while(p<n) p<<=1; return p; }
+
+// seedAtSlot[i] = seed number that the standard bracket places in slot (i+1)
+function seedAtSlot(n){
+  let pls=[1,2];
+  while(pls.length<n){
+    const sum=pls.length*2+1, out=[];
+    for(const p of pls){ out.push(p); out.push(sum-p); }
+    pls=out;
+  }
+  return pls;
+}
+
+// Build slot topology for bracketSize N with M real entries.
+// Returns: slotForSeed, byeAdjacentSlots, playInSlots, emptySlots (0-indexed slots)
+function topology(N, M){
+  const atSlot = seedAtSlot(N);          // atSlot[slot] = seed#
+  const slotForSeed = {};                // seed# -> slot
+  atSlot.forEach((s,slot)=>slotForSeed[s]=slot);
+  const r1partner = {};
+  for(let s=0;s<N;s+=2){ r1partner[s]=s+1; r1partner[s+1]=s; }
+  const byeAdjacent=[], playIn=[], empty=[];
+  for(let slot=0; slot<N; slot++){
+    const seedHere = atSlot[slot];
+    const partnerSeed = atSlot[r1partner[slot]];
+    if(seedHere>M){ empty.push(slot); continue; }       // BYE slot (no real entry)
+    if(partnerSeed>M) byeAdjacent.push(slot);            // real entry whose R1 foe is a bye
+    else playIn.push(slot);                              // real entry that must win R1
+  }
+  return { atSlot, slotForSeed, r1partner, byeAdjacent, playIn, empty };
+}
+
+const quarterOf = (slot,N)=> Math.floor(slot/(N/4));
+const halfOf    = (slot,N)=> slot < N/2 ? 0 : 1;
+const r1pairOf  = (slot)  => slot>>1;
+
+// =====================================================================
+// Merit ranking
+// =====================================================================
+// seeds: array of entry indices (committee order). Remaining ranked by
+// tier: champions (fin 1) -> fin 2 -> fin 3 -> ... ; within tier by lot.
+function meritOrder(entries, seedIdxs){
+  const seeded = new Set(seedIdxs);
+  const ranked = [...seedIdxs];               // seeds first, in committee order
+  const maxFin = Math.max(...entries.map(e=>e.fin));
+  for(let f=1; f<=maxFin; f++){
+    const tier = entries.map((e,i)=>i).filter(i=>!seeded.has(i) && entries[i].fin===f);
+    shuffle(tier);                            // within-tier order is by lot
+    ranked.push(...tier);
+  }
+  return ranked;                              // ranked[r] = entry index at merit rank r (0-based)
+}
+
+function tierLabel(e, seededSet, idx){
+  if(seededSet.has(idx)) return 'seed';
+  if(e.fin===1) return 'champion';
+  return `${e.fin}${['','st','nd','rd'][e.fin]||'th'}`;
+}
+
+// =====================================================================
+// Placement: assign entries to slots respecting separation rules.
+// poolSlotsForRank(rank) tells which slot pool a merit rank belongs to.
+// =====================================================================
+function placeable(entry, slot, placement, entries, N){
+  for(const [s,eIdx] of Object.entries(placement)){
+    const o = entries[eIdx]; const os = +s;
+    if(o.sd===entry.sd && r1pairOf(os)===r1pairOf(slot)) return false;          // same district, R1
+    if(o.school===entry.school && quarterOf(os,N)===quarterOf(slot,N)) return false; // same school, before SF
+    // same-school district 1&2 -> different halves
+    const pairRule = (entry.fin<=2 && o.fin<=2 && o.school===entry.school && o.sd===entry.sd);
+    if(pairRule && halfOf(os,N)===halfOf(slot,N)) return false;
+  }
+  return true;
+}
+
+function constraintScore(e, entries){
+  let s=0; for(const o of entries){ if(o===e) continue; if(o.school===e.school) s+=10; if(o.sd===e.sd) s+=1; } return s;
+}
+
+// Assign a list of entry-indices to a set of slots via backtracking.
+function assignPool(order, slotPool, placement, entries, N){
+  const slots = [...slotPool];
+  function bt(i){
+    if(i===order.length) return true;
+    const eIdx = order[i]; const e = entries[eIdx];
+    const cands = shuffle(slots.filter(s=>!(s in placement) && placeable(e,s,placement,entries,N)));
+    for(const s of cands){
+      placement[s]=eIdx;
+      if(bt(i+1)) return true;
+      delete placement[s];
+    }
+    return false;
+  }
+  return bt(0);
+}
+
+// =====================================================================
+// Build the full draw
+// =====================================================================
+function buildDraw(entries, seedIdxs, byeMode){
+  const M = entries.length, N = nextPow2(M);
+  const topo = topology(N, M);
+  const byeCount = N - M;
+  const ranked = meritOrder(entries, seedIdxs);     // rank -> entry idx
+  const rankOf = {}; ranked.forEach((eIdx,r)=>rankOf[eIdx]=r);
+  const seededSet = new Set(seedIdxs);
+
+  // Decide which entries are "bye entries" (get a R1 bye) and which "play-in".
+  let byeEntries, playInEntries;
+  if(byeMode==='merit'){
+    byeEntries   = ranked.slice(0, byeCount);
+    playInEntries= ranked.slice(byeCount);
+  } else {
+    // Lot: seeds always get byes; remaining byes drawn by lot from the rest.
+    const seeds = seedIdxs.filter(i=>topo.byeAdjacent.length); // seeds get byes
+    const nonSeed = ranked.filter(i=>!seededSet.has(i));
+    const pool = shuffle([...nonSeed]);
+    byeEntries = [...seedIdxs, ...pool.slice(0, Math.max(0, byeCount - seedIdxs.length))];
+    const byeSet = new Set(byeEntries);
+    playInEntries = ranked.filter(i=>!byeSet.has(i));
+  }
+
+  // Order each group most-constrained-first for placement success.
+  const ord = (g)=> g.slice().sort((a,b)=> constraintScore(entries[b],entries)-constraintScore(entries[a],entries));
+
+  // Try several times (randomized) to satisfy constraints.
+  for(let attempt=0; attempt<400; attempt++){
+    const placement = {};
+    // Seeds onto canonical seed slots first (1,2,3,4 -> their standard anchors)
+    let ok=true;
+    seedIdxs.forEach((eIdx, k)=>{ placement[topo.slotForSeed[k+1]] = eIdx; });
+    // Place bye entries (minus seeds already placed) on remaining byeAdjacent slots
+    const seedSlots = new Set(seedIdxs.map((_,k)=>topo.slotForSeed[k+1]));
+    const remBye = ord(byeEntries.filter(i=>!seededSet.has(i)));
+    const openByeSlots = topo.byeAdjacent.filter(s=>!seedSlots.has(s));
+    ok = assignPool(remBye, openByeSlots, placement, entries, N);
+    if(ok) ok = assignPool(ord(playInEntries.filter(i=>!seededSet.has(i))), topo.playIn, placement, entries, N);
+    if(ok) return { placement, N, M, topo, byeCount, ranked, rankOf, seededSet,
+                    byeSet:new Set(byeEntries) };
+  }
+  return null; // could not satisfy (rare / over-constrained input)
+}
+
+// =====================================================================
+// Chalk simulation + scoring
+// =====================================================================
+function simulate(draw, entries){
+  const { placement, N, rankOf } = draw;
+  // slot occupant or null (bye)
+  let layer = [];
+  for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
+  const exitRound = {};            // entry idx -> round index they LOST (0=R1). winner never set here.
+  let round=0, semiLosers=[], runnerUp=null;
+  while(layer.length>1){
+    const next=[];
+    for(let i=0;i<layer.length;i+=2){
+      const a=layer[i], b=layer[i+1];
+      let win, lose;
+      if(a===null && b===null){ next.push(null); continue; }
+      if(a===null){ win=b; lose=null; }
+      else if(b===null){ win=a; lose=null; }
+      else { if(rankOf[a]<=rankOf[b]){win=a;lose=b;} else {win=b;lose=a;} }
+      if(lose!==null){
+        if(layer.length===2) runnerUp=lose;          // lost the final
+        else if(layer.length===4) semiLosers.push(lose);
+        else exitRound[lose]=round;
+      }
+      next.push(win);
+    }
+    layer=next; round++;
+  }
+  const champion = layer[0];
+  // 3rd place: better-merit semifinal loser
+  semiLosers.sort((a,b)=>rankOf[a]-rankOf[b]);
+  const third = semiLosers[0], fourth = semiLosers[1];
+
+  // Points
+  const roundBased = {}; const wins = {};
+  function add(map, eIdx, v){ if(eIdx==null) return; const sc=entries[eIdx].school; map[sc]=(map[sc]||0)+v; }
+  // round-of-N loss table
+  function rbForLossRound(r){
+    const fieldEntering = N >> r;     // 32,16,8,...
+    if(fieldEntering>=32) return fieldEntering===32?1:0.5*(32/fieldEntering); // R32=1, R64=0.5,...
+    if(fieldEntering===16) return 2;
+    if(fieldEntering===8)  return 4;  // QF loss
+    return 0;
+  }
+  entries.forEach((_,i)=>{
+    if(i===champion){ add(roundBased,i,10); }
+    else if(i===runnerUp){ add(roundBased,i,8); }
+    else if(i===third){ add(roundBased,i,6); }
+    else if(i===fourth){ add(roundBased,i,5); }
+    else if(i in exitRound){ add(roundBased,i, rbForLossRound(exitRound[i])); }
+  });
+
+  // wins: count championship matches won (byes are NOT wins)
+  // recompute by simulation tracking
+  const winCount = {}; entries.forEach((_,i)=>winCount[i]=0);
+  { let lyr=[]; for(let s=0;s<N;s++) lyr.push(s in placement?placement[s]:null);
+    while(lyr.length>1){ const nx=[]; for(let i=0;i<lyr.length;i+=2){ const a=lyr[i],b=lyr[i+1]; let w;
+      if(a===null&&b===null){nx.push(null);continue;}
+      if(a===null)w=b; else if(b===null)w=a; else { w = rankOf[a]<=rankOf[b]?a:b; winCount[w]++; }
+      nx.push(w);} lyr=nx; } }
+  const perWin={};
+  entries.forEach((_,i)=>add(perWin,i,winCount[i]));
+  if(document.getElementById('podiumBonus').checked){
+    add(perWin,champion,4); add(perWin,runnerUp,3); add(perWin,third,2); add(perWin,fourth,1);
+  }
+  return { roundBased, perWin, champion, runnerUp, third, fourth };
+}
+
+// =====================================================================
+// Render
+// =====================================================================
+function esc(s){ return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+function render(){
+  const preset = document.getElementById('presetSel').value;
+  document.getElementById('synthControls').style.display = preset==='synthetic' ? '' : 'none';
+  let entries;
+  if(preset==='synthetic'){
+    const D=+document.getElementById('dInput').value, Q=+document.getElementById('qInput').value;
+    entries = syntheticField(D,Q);
+  } else entries = FIELDS[preset].map(e=>({...e}));
+
+  RNG = mulberry32(+document.getElementById('lotSeed').value || 1);
+  const seedCount = +document.getElementById('seedCount').value;
+  const byeMode = document.getElementById('byeMode').value;
+  document.getElementById('bonusNote').style.display = document.getElementById('podiumBonus').checked?'':'none';
+
+  // Seeds = champions of the first `seedCount` districts (committee stand-in).
+  const champByDistrict = {};
+  entries.forEach((e,i)=>{ if(e.fin===1 && !(e.sd in champByDistrict)) champByDistrict[e.sd]=i; });
+  const seedIdxs = Object.values(champByDistrict).slice(0, seedCount);
+  const seededSet = new Set(seedIdxs);
+
+  const draw = buildDraw(entries, seedIdxs, byeMode);
+  const statusEl = document.getElementById('status');
+  if(!draw){ statusEl.innerHTML = '<span class="warn">Could not satisfy separation rules for this input — try a different lot seed.</span>'; return; }
+  statusEl.innerHTML = `<span class="ok">${draw.M} entries · ${draw.N}-line draw · ${draw.byeCount} byes</span>`;
+
+  // ---- draw list ----
+  const { placement, N, topo } = draw;
+  let html=''; const perQ = N/4;
+  for(let s=0;s<N;s++){
+    if(s % perQ === 0) html += `<div class="qdiv">Quarter ${s/perQ+1}</div>`;
+    const partner = topo.r1partner[s];
+    const occ = s in placement ? entries[placement[s]] : null;
+    const partnerEmpty = !(partner in placement);
+    if(s % 2 === 0){
+      // print the R1 pair on two lines with a match marker
+      const top = occ, topIdx = placement[s];
+      const bot = (partner in placement) ? entries[placement[partner]] : null, botIdx=placement[partner];
+      const fmt = (e,idx)=>{
+        if(!e) return '<span class="bye">— bye —</span>';
+        let cls = seededSet.has(idx)?'seed':(e.fin===1?'champ':'');
+        const seedNo = seededSet.has(idx)? ' (' + (draw.ranked.indexOf(idx)+1) + ')' : '';
+        return `<span class="${cls}">${esc(e.name)}</span> <span class="matchnum">${esc(e.school)}·${e.sd}·${e.fin}${seedNo}</span>`;
+      };
+      const tag = (!occ||!bot) ? '<span class="pill bye">bye</span>' : '<span class="pill playin">R1</span>';
+      html += `<div>${fmt(top,topIdx)}</div>`;
+      html += `<div>${fmt(bot,botIdx)} ${tag}</div>`;
+    }
+  }
+  document.getElementById('bracketList').innerHTML = html;
+
+  // ---- merit table ----
+  const mtb = document.querySelector('#meritTable tbody'); mtb.innerHTML='';
+  draw.ranked.forEach((eIdx,r)=>{
+    const e=entries[eIdx];
+    const isBye = draw.byeSet.has(eIdx);
+    const tr=document.createElement('tr');
+    if(seededSet.has(eIdx)) tr.className='seedrow'; else if(e.fin===1) tr.className='champrow';
+    if(r===draw.byeCount-1) tr.classList.add('cutline');
+    tr.innerHTML=`<td class="n">${r+1}</td><td>${esc(e.name)}</td><td>${esc(e.school)}</td><td>${e.sd}</td>`+
+                 `<td class="n">${e.fin}</td><td>${tierLabel(e,seededSet,eIdx)}</td>`+
+                 `<td>${isBye?'<span class="pill bye">bye</span>':'<span class="pill playin">play-in</span>'}</td>`;
+    mtb.appendChild(tr);
+  });
+  document.getElementById('cutNote').innerHTML =
+    `Red line = bye cutline. Above it gets a first-round bye; below plays in. `+
+    `In merit mode the cut falls exactly on a tier boundary as far as the math allows.`;
+
+  // ---- scoring ----
+  const sim = simulate(draw, entries);
+  const schools = [...new Set(entries.map(e=>e.school))];
+  const rows = schools.map(sc=>({sc, rb:sim.roundBased[sc]||0, pw:sim.perWin[sc]||0}))
+                      .sort((a,b)=> b.rb-a.rb || b.pw-a.pw);
+  const stb = document.querySelector('#scoreTable tbody'); stb.innerHTML='';
+  rows.forEach(r=>{
+    if(r.rb===0 && r.pw===0) return;
+    const d = (r.pw-r.rb);
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${esc(r.sc)}</td><td class="n">${r.rb}</td><td class="n">${r.pw}</td>`+
+                 `<td class="n ${d>0?'delta-pos':d<0?'delta-neg':''}">${d>0?'+':''}${d}</td>`;
+    stb.appendChild(tr);
+  });
+
+  // ---- fairness diagnostic ----
+  let worstByeRank=-1, bestPlayInRank=1e9;
+  draw.ranked.forEach((eIdx,r)=>{ if(draw.byeSet.has(eIdx)) worstByeRank=Math.max(worstByeRank,r); else bestPlayInRank=Math.min(bestPlayInRank,r); });
+  const inversion = worstByeRank > bestPlayInRank;
+  const fb=document.getElementById('fairnessBox');
+  if(draw.byeCount===0){
+    fb.innerHTML = `<p class="ok">Full bracket — no byes, so nothing to allocate.</p>`;
+  } else if(byeMode==='merit'){
+    fb.innerHTML = `<p class="ok">✓ Merit byes: every bye goes to a higher-ranked entry than every play-in entry. `+
+      `No district champion is ever forced to play in while a lower finisher rests.</p>`;
+  } else {
+    fb.innerHTML = `<p class="${inversion?'warn':'note'}">${inversion?'⚠':'•'} Lot byes: a rank-${bestPlayInRank+1} entry must play in while a rank-${worstByeRank+1} entry got a bye — `+
+      `the kind of inversion that lets a 3rd/4th-place finisher out-score a champion under round-based scoring. Flip Byes to “Merit” to remove it.</p>`;
+  }
+}
+
+['presetSel','seedCount','byeMode','podiumBonus','lotSeed','dInput','qInput','rebuildBtn']
+  .forEach(id=>{ const el=document.getElementById(id); el.addEventListener('change',render); });
+document.getElementById('rebuildBtn').addEventListener('click',render);
+render();
+</script>
+</body>
+</html>
