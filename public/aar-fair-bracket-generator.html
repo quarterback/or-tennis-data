@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Fairer Way to Seed the OSAA Tennis Bracket - Oregon HS Tennis</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 820px; margin: 40px auto; padding: 0 20px; color: #212529; line-height: 1.6; }
+  h1 { font-size: 1.7rem; margin: 0 0 8px; }
+  h2 { font-size: 1.25rem; margin: 28px 0 8px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }
+  h3 { font-size: 1.05rem; margin: 20px 0 6px; color: #212529; }
+  p  { margin: 8px 0; }
+  a  { color: #0d6efd; }
+  code { background: #f1f3f5; padding: 1px 5px; border-radius: 3px; font-size: 0.9em; }
+  pre { background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 4px; padding: 10px 14px; overflow-x: auto; font-size: 0.85em; line-height: 1.45; }
+  pre code { background: none; padding: 0; }
+  ul { margin: 6px 0 10px 24px; }
+  table { border-collapse: collapse; margin: 12px 0; font-size: 0.9em; }
+  th, td { border: 1px solid #dee2e6; padding: 6px 12px; text-align: left; }
+  th { background: #f8f9fa; }
+  footer { margin-top: 40px; padding: 16px; text-align: center; }
+  footer a { color: #6c757d; font-size: 12px; }
+</style>
+</head>
+<body>
+<h1>A Fairer Way to Seed the OSAA Tennis Bracket</h1>
+<p><strong>What this is:</strong> an interactive tool that rebuilds an OSAA-style individual tennis state draw so that <strong>byes are earned by merit instead of handed out partly by lot</strong>. It honors every OSAA/USTA separation rule, works for any number of special districts (4, 5, 6, 7, 8+), and recomputes team points under two scoring systems so you can see how much of the old point spread was an artifact of free byes. <a href="fair-bracket.html">Open the generator →</a></p>
+<h2>The problem: a bye is worth points</h2>
+<p>OSAA&#x27;s smaller-classification tennis bracket (4A/3A/2A/1A) takes the top four finishers from each special district. With five districts that is <strong>20 entries dropped into a 32-line bracket — so 12 of them draw a first-round bye.</strong></p>
+<p>That would be harmless if a bye were just a rest. It isn&#x27;t. Team points are awarded by how deep you go, and a bye is a free step deeper. Worse, OSAA&#x27;s own scoring rule spells out the inequity in black and white:</p>
+<p><strong>&quot;Each singles player or doubles team receives two (2) points for each win in the main draw … If a player receives a bye in the first round of the main draw, four (4) points are given only if the second-round match is won.&quot;</strong></p>
+<p>Read that carefully. A player who <strong>was handed a bye</strong> and then wins one match banks <strong>4 points</strong>. A player who had to <strong>play and win a first-round match</strong> banks <strong>2 points</strong> for the very same single win. The bye is worth a free +2 — and in a 20-into-32 draw, twelve of those byes are floating around to be assigned.</p>
+<h2>The smoking gun: Special District 3, 2026 doubles</h2>
+<p>Here is how the byes actually fell for one district&#x27;s doubles teams in the real 2026 girls draw:</p>
+<table><thead><tr><th>District finish</th><th>Team</th><th>Got a bye?</th></tr></thead><tbody><tr><td>1st (champion)</td><td>Cohee / Mahar</td><td>No — played round 1</td></tr><tr><td>2nd</td><td>Ravassipour / Olson</td><td><strong>Yes</strong></td></tr><tr><td>3rd</td><td>Hung / Ho</td><td><strong>Yes</strong></td></tr><tr><td>4th</td><td>Smith / Clark</td><td>No — played round 1</td></tr></tbody></table>
+<p>Inside a single district, the <strong>champion and the fourth-place team had to play in, while the second- and third-place teams rested.</strong> A team that finished third in its district got a structurally easier, higher-scoring path than the team that won that same district. Draw that &quot;by lot&quot; across five districts and the distortion is everywhere — and it compounds for schools that qualify several entries, since each extra entry is another lottery ticket for a free bye.</p>
+<h2>The fix: rank everyone once, then give byes top-down</h2>
+<p>The tool builds a single <strong>merit order</strong> for the whole field:</p>
+<p><strong>seeds → district champions → 2nd-place → 3rd-place → 4th-place</strong></p>
+<p>Byes are then assigned strictly down that list. No fourth-place team ever draws a bye before a champion does. With 20 entries and 12 byes, that is the four committee seeds, the remaining district champions, all five runners-up, and then the two best third-place teams — and the bottom eight (the rest of the 3rds and 4ths) play a first-round qualifier, exactly as a fair draw should.</p>
+<p>The unavoidable wrinkle is honest math: 20 entries don&#x27;t divide cleanly into powers of two, so <strong>some</strong> tier has to be split (here, two of five third-place teams get byes and three don&#x27;t). The point isn&#x27;t to pretend that goes away — it&#x27;s to <strong>confine the split to a single adjacent tier, decided on merit, instead of scattering free byes across champions and runners-up by chance.</strong></p>
+<p>Every OSAA separation rule is enforced while this happens:</p>
+<ul><li>Players/teams from the same district can&#x27;t meet in the first round.</li><li>Players from the same school can&#x27;t meet before the semifinals (so a school&#x27;s entries are spread across different quarters — which also prevents a multi-entry school from stacking an easy region).</li><li>A school&#x27;s district 1st and 2nd finishers can&#x27;t meet before the final.</li></ul>
+<h2>It generalizes</h2>
+<p>The same engine works for any field size, because it derives the bracket from the entry count:</p>
+<table><thead><tr><th>Districts (×4 qualifiers)</th><th>Entries</th><th>Bracket</th><th>Byes</th></tr></thead><tbody><tr><td>4</td><td>16</td><td>16-line</td><td>0</td></tr><tr><td>5</td><td>20</td><td>32-line</td><td>12</td></tr><tr><td>6</td><td>24</td><td>32-line</td><td>8</td></tr><tr><td>7</td><td>28</td><td>32-line</td><td>4</td></tr><tr><td>8</td><td>32</td><td>32-line</td><td>0</td></tr></tbody></table>
+<p>Verified across all of these: zero separation-rule violations, and in merit mode every bye goes to a higher-ranked entry than every play-in entry. Flip the toggle to &quot;by lot&quot; and the tool flags the inversions the current procedure can create.</p>
+<h2>Two ways to keep score</h2>
+<p>The generator runs a chalk simulation (higher merit wins) and tallies team points under both:</p>
+<ul><li><strong>Round-reached (legacy):</strong> the OSAA system above, where a bye can convert one win into four points.</li><li><strong>Per-win:</strong> one point per match actually won, plus a small podium bonus, and <strong>a bye is worth zero</strong> — because you have to win a match to score.</li></ul>
+<p>Per-win is the simpler, more honest fix: it makes the unavoidable byes point-neutral, so it no longer matters who gets them. The structural merit-bye draw is the answer if you want to keep the legacy point table.</p>
+<h2>A worked example: 2026 4A/3A/2A/1A girls</h2>
+<p>The real tournament is a clean illustration. Marist Catholic won the team title with <strong>28 points</strong> to Catlin Gabel&#x27;s 19. Four Marist entries drew a first-round bye and won their second-round match — that&#x27;s <strong>+8 of &quot;free&quot; points</strong> under the bye rule. Catlin Gabel had two such entries, <strong>+4</strong>.</p>
+<p>Strip the bye bonus back to true per-win value and the board reads roughly <strong>Marist 20, Catlin Gabel 15</strong>: the title doesn&#x27;t change, but the nine-point margin halves to about five. And under the merit-bye draw, Marist&#x27;s <strong>third- and fourth-place</strong> district doubles teams would not have drawn byes at all — those go to champions and runners-up first. A real chunk of the depth scoring this year was precisely the &quot;qualify a lot, collect free byes&quot; effect.</p>
+<p>None of this is a knock on the teams — they played the bracket they were given, and they won it. The point is narrower: <strong>the bracket itself shouldn&#x27;t be the thing handing out points.</strong></p>
+<h2>What it does and doesn&#x27;t claim</h2>
+<p>It does not predict winners, re-rank players, or argue any team was undeserving. It is a structural tool: given district finishes and the committee&#x27;s seeds, it produces a draw whose byes track merit and whose point outcomes don&#x27;t hinge on the luck of the lottery. The seeds shown are a stand-in (the champions of the first districts); plug in the real committee seeds and the rest of the draw falls out around them.</p>
+<p><a href="fair-bracket.html">Open the generator →</a></p>
+<footer>
+  <a href="index.html">&larr; Back to Rankings</a>
+  &middot;
+  <a href="changelog.html">Changelog</a>
+  &middot;
+  <a href="methodology.html">Methodology</a>
+</footer>
+</body>
+</html>
