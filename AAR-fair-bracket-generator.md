@@ -66,11 +66,18 @@ Per-win is the simpler, more honest fix: it makes the unavoidable byes point-neu
 
 ## A worked example: 2026 4A/3A/2A/1A girls
 
-The real tournament is a clean illustration. Marist Catholic won the team title with **28 points** to Catlin Gabel's 19. Four Marist entries drew a first-round bye and won their second-round match — that's **+8 of "free" points** under the bye rule. Catlin Gabel had two such entries, **+4**.
+The real tournament is a clean illustration. Marist Catholic won the team title with **28 points** to Catlin Gabel's 19 — a nine-point solo championship. Now rescore the exact same results under main-draw per-win plus a 4-3-2-1 podium bonus, leaving the consolation bracket at its real value (capped at 2):
 
-Strip the bye bonus back to true per-win value and the board reads roughly **Marist 20, Catlin Gabel 15**: the title doesn't change, but the nine-point margin halves to about five. And under the merit-bye draw, Marist's **third- and fourth-place** district doubles teams would not have drawn byes at all — those go to champions and runners-up first. A real chunk of the depth scoring this year was precisely the "qualify a lot, collect free byes" effect.
+| Team | Official | Per-win + 4-3-2-1 (+ consolation) |
+|---|---|---|
+| Marist Catholic | 28 | 15 |
+| Catlin Gabel | 19 | 15 |
+| St. Mary's, Medford | 15.5 | 9.5 |
+| Oregon Episcopal | 12 | 8 |
 
-None of this is a knock on the teams — they played the bracket they were given, and they won it. The point is narrower: **the bracket itself shouldn't be the thing handing out points.**
+The nine-point runaway becomes a **15–15 tie** — and because OSAA shares team titles, that's a **co-championship**, not a tiebreak: Marist and Catlin Gabel both first, no second place, St. Mary's third. The swing is entirely the first-round bye points. Four Marist entries drew a bye and won one match for four points each; Catlin Gabel had two. Once a win has to be a win, Catlin Gabel's two finalists (champion Perez/Mehta and runner-up Shah) match Marist's champion-plus-depth — and under the merit-bye draw, Marist's **third- and fourth-place** district doubles teams would not have drawn byes in the first place.
+
+None of this is a knock on the teams — they played the bracket they were given, and they won it. The point is narrower: **the bracket and its bye points, not the tennis, produced the margin.**
 
 ## What it does and doesn't claim
 

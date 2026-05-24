@@ -107,8 +107,9 @@
 
     <h2>Team points — chalk run (higher merit wins)</h2>
     <div class="note">
-      Round-based: champ&nbsp;10 / final&nbsp;8 / 3rd&nbsp;6 / 4th&nbsp;5 / QF&nbsp;4 / R16&nbsp;2 / R32&nbsp;1.
-      Per-win: 1 per championship win<span id="bonusNote"> + podium bonus 4/3/2/1</span>; a bye is worth 0.
+      Round-based (legacy OSAA): 2 per main-draw win, a first-round bye worth +2 if the second-round match is won, +1 for the 3rd-place match.
+      Per-win: 1 per main-draw win<span id="bonusNote"> + a 4/3/2/1 podium bonus</span>; a bye is worth 0.
+      Both add the consolation bracket (capped at 2): +0.5 to reach its semifinal, +0.5 the final, +1 to win it.
     </div>
     <table id="scoreTable">
       <thead><tr><th>School</th><th class="n">Round-based</th><th class="n">Per-win</th><th class="n">Δ</th></tr></thead>
@@ -118,7 +119,31 @@
   </div>
 </div>
 
+<div class="panel" style="margin-top:12px">
+  <h2>Worked example: 2026 4A/3A/2A/1A girls (actual results)</h2>
+  <div class="note">
+    The panels above are a hypothetical chalk run. This table is the <strong>real</strong> 2026 final —
+    the official team scores as published, beside the same results rescored under main-draw per-win + a
+    4/3/2/1 podium bonus, with the consolation bracket left at its real value (capped at 2). It's a clean
+    illustration, not a knock on any team: everyone played the bracket they were given. The point is only
+    that the scoring system, not the tennis, produced the margin.
+  </div>
+  <table id="actualTable">
+    <thead><tr><th>Team</th><th class="n">Official</th><th class="n">Per-win + 4-3-2-1 (+ consolation ≤2)</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div id="actualNote" style="font-size:13px;margin-top:8px"></div>
+</div>
+
 <script>
+// Actual 2026 4A/3A/2A/1A girls final, official vs. rescored (hardcoded from OSAA team scores).
+const ACTUAL_2026 = [
+  ['Marist Catholic', 28, 15], ['Catlin Gabel', 19, 15], ["St. Mary's, Medford", 15.5, 9.5],
+  ['Oregon Episcopal', 12, 8], ['Vale', 10, 4], ['Cascade', 7, 5], ['Madras', 5, 4],
+  ['Baker / Powder Valley', 4, 1], ['Irrigon', 4, 1], ['Riverdale', 4, 1], ['North Bend', 2.5, 1.5],
+  ['Cascade Christian', 2, 1], ['La Grande', 2, 1], ['Philomath', 2, 1], ['Pendleton', 1, 1],
+  ['Riverside', 0, 0], ['Stanfield / Echo', 0, 0],
+];
 // =====================================================================
 // Field data
 // =====================================================================
@@ -363,38 +388,65 @@ function simulate(draw, entries){
   semiLosers.sort((a,b)=>rankOf[a]-rankOf[b]);
   const third = semiLosers[0], fourth = semiLosers[1];
 
-  // Points
-  const roundBased = {}; const wins = {};
-  function add(map, eIdx, v){ if(eIdx==null) return; const sc=entries[eIdx].school; map[sc]=(map[sc]||0)+v; }
-  // round-of-N loss table
-  function rbForLossRound(r){
-    const fieldEntering = N >> r;     // 32,16,8,...
-    if(fieldEntering>=32) return fieldEntering===32?1:0.5*(32/fieldEntering); // R32=1, R64=0.5,...
-    if(fieldEntering===16) return 2;
-    if(fieldEntering===8)  return 4;  // QF loss
-    return 0;
-  }
-  entries.forEach((_,i)=>{
-    if(i===champion){ add(roundBased,i,10); }
-    else if(i===runnerUp){ add(roundBased,i,8); }
-    else if(i===third){ add(roundBased,i,6); }
-    else if(i===fourth){ add(roundBased,i,5); }
-    else if(i in exitRound){ add(roundBased,i, rbForLossRound(exitRound[i])); }
-  });
-
-  // wins: count championship matches won (byes are NOT wins)
-  // recompute by simulation tracking
+  // ---- main-draw match wins (a bye is NOT a win) ----
   const winCount = {}; entries.forEach((_,i)=>winCount[i]=0);
   { let lyr=[]; for(let s=0;s<N;s++) lyr.push(s in placement?placement[s]:null);
     while(lyr.length>1){ const nx=[]; for(let i=0;i<lyr.length;i+=2){ const a=lyr[i],b=lyr[i+1]; let w;
       if(a===null&&b===null){nx.push(null);continue;}
       if(a===null)w=b; else if(b===null)w=a; else { w = rankOf[a]<=rankOf[b]?a:b; winCount[w]++; }
       nx.push(w);} lyr=nx; } }
-  const perWin={};
-  entries.forEach((_,i)=>add(perWin,i,winCount[i]));
-  if(document.getElementById('podiumBonus').checked){
-    add(perWin,champion,4); add(perWin,runnerUp,3); add(perWin,third,2); add(perWin,fourth,1);
+
+  // ---- who drew a first-round bye ----
+  const slotOf = {}; for(const s in placement) slotOf[placement[s]] = +s;
+  const hadBye = {};
+  entries.forEach((_,i)=>{ const p = draw.topo.r1partner[slotOf[i]]; hadBye[i] = !(p in placement); });
+
+  // ---- consolation bracket: fed by round-0 and round-1 losers, chalk-run ----
+  // Scoring matches OSAA: +0.5 to reach the consolation semi, +0.5 the final,
+  // +1 to win it (capped at 2). Modeled by depth: champ 2, finalist 1, semis 0.5.
+  const consPts = {}; entries.forEach((_,i)=>consPts[i]=0);
+  const consField = [];
+  entries.forEach((_,i)=>{ if(exitRound[i]===0 || exitRound[i]===1) consField.push(i); });
+  if(consField.length>=2){
+    consField.sort((a,b)=>rankOf[a]-rankOf[b]);
+    const CN = nextPow2(consField.length), cAt = seedAtSlot(CN);
+    let cl = cAt.map(seed => seed<=consField.length ? consField[seed-1] : null);
+    let cFinalist=null, cSemis=[];
+    while(cl.length>1){
+      const nx=[];
+      for(let i=0;i<cl.length;i+=2){
+        const a=cl[i], b=cl[i+1]; let win, lose;
+        if(a==null && b==null){ nx.push(null); continue; }
+        if(a==null){ win=b; lose=null; } else if(b==null){ win=a; lose=null; }
+        else { if(rankOf[a]<=rankOf[b]){win=a;lose=b;} else {win=b;lose=a;} }
+        if(lose!=null){ if(cl.length===2) cFinalist=lose; else if(cl.length===4) cSemis.push(lose); }
+        nx.push(win);
+      }
+      cl=nx;
+    }
+    if(cl[0]!=null) consPts[cl[0]] = 2;
+    if(cFinalist!=null) consPts[cFinalist] = 1;
+    cSemis.forEach(e=>{ if(e!=null) consPts[e] = 0.5; });
   }
+
+  // ---- two scoring systems (consolation is identical in both) ----
+  const roundBased = {}, perWin = {};
+  function add(map, eIdx, v){ if(eIdx==null || !v) return; const sc=entries[eIdx].school; map[sc]=(map[sc]||0)+v; }
+  const bonusOn = document.getElementById('podiumBonus').checked;
+  entries.forEach((_,i)=>{
+    const aw = winCount[i];                              // advancement wins (not the 3rd-place match)
+    const byeBonus = (hadBye[i] && aw>=1) ? 1 : 0;       // legacy free-bye point
+    const thirdWin = (i===third) ? 1 : 0;                // won the 3rd-place match
+    // Legacy OSAA: 2 per credited round (+ free bye) + 1 for the 3rd-place match
+    add(roundBased, i, 2*(aw + byeBonus) + thirdWin);
+    // Per-win: 1 per real win (incl. 3rd-place match) + 4-3-2-1 podium, byes worth 0
+    let pw = aw + thirdWin;
+    if(bonusOn) pw += (i===champion?4 : i===runnerUp?3 : i===third?2 : i===fourth?1 : 0);
+    add(perWin, i, pw);
+    // Consolation, identical in both, capped at 2
+    add(roundBased, i, consPts[i]);
+    add(perWin, i, consPts[i]);
+  });
   return { roundBased, perWin, champion, runnerUp, third, fourth };
 }
 
@@ -500,6 +552,25 @@ function render(){
       `the kind of inversion that lets a 3rd/4th-place finisher out-score a champion under round-based scoring. Flip Byes to “Merit” to remove it.</p>`;
   }
 }
+
+function renderActual(){
+  const tb = document.querySelector('#actualTable tbody'); tb.innerHTML='';
+  const top = Math.max(...ACTUAL_2026.map(r=>r[2]));
+  ACTUAL_2026.forEach(([team,off,pw])=>{
+    const tr=document.createElement('tr');
+    if(pw===top) tr.className='champrow';
+    tr.innerHTML=`<td>${esc(team)}</td><td class="n">${off}</td><td class="n">${pw}</td>`;
+    tb.appendChild(tr);
+  });
+  const cochamps = ACTUAL_2026.filter(r=>r[2]===top).map(r=>r[0]);
+  document.getElementById('actualNote').innerHTML =
+    `Official result: <strong>Marist Catholic 28, a 9-point solo title.</strong> Rescored, the top is a `+
+    `<strong>${top}–${top} tie between ${cochamps.join(' and ')}</strong> — and OSAA shares team titles, so this `+
+    `is a <strong>co-championship</strong> (no second place; St. Mary's 3rd, Oregon Episcopal 4th). The entire `+
+    `margin of victory was the first-round bye points: once a win has to be a win, two finalists (Catlin Gabel's `+
+    `champion + runner-up) match five entries (Marist's champion + depth).`;
+}
+renderActual();
 
 ['presetSel','seedCount','byeMode','podiumBonus','lotSeed','dInput','qInput','rebuildBtn']
   .forEach(id=>{ const el=document.getElementById(id); el.addEventListener('change',render); });
