@@ -62,8 +62,22 @@
 <div class="controls">
   <label>Field:
     <select id="presetSel">
-      <option value="doubles2026">2026 Doubles (5 SD)</option>
-      <option value="singles2026">2026 Singles (5 SD)</option>
+      <optgroup label="Girls">
+        <option value="g6Ad">Girls 6A — Doubles (7 SD)</option>
+        <option value="g6As">Girls 6A — Singles (7 SD)</option>
+        <option value="g5Ad">Girls 5A — Doubles (4 SD)</option>
+        <option value="g5As">Girls 5A — Singles (4 SD)</option>
+        <option value="g4Ad">Girls 4A/3A/2A/1A — Doubles (5 SD)</option>
+        <option value="g4As">Girls 4A/3A/2A/1A — Singles (5 SD)</option>
+      </optgroup>
+      <optgroup label="Boys">
+        <option value="b6Ad">Boys 6A — Doubles (7 SD)</option>
+        <option value="b6As">Boys 6A — Singles (7 SD)</option>
+        <option value="b5Ad">Boys 5A — Doubles (4 SD)</option>
+        <option value="b5As">Boys 5A — Singles (4 SD)</option>
+        <option value="b4Ad">Boys 4A/3A/2A/1A — Doubles (5 SD)</option>
+        <option value="b4As">Boys 4A/3A/2A/1A — Singles (5 SD)</option>
+      </optgroup>
       <option value="synthetic">Synthetic…</option>
     </select>
   </label>
@@ -126,8 +140,109 @@
 // =====================================================================
 // Field data
 // =====================================================================
+// All 2026 fields, by gender / classification / event. sd = district index,
+// fin = district finishing place (1=champion … 4). Doubles use last/last names.
 const FIELDS = {
-  doubles2026: [
+  // ---------------- GIRLS 6A (7 districts) ----------------
+  g6Ad: [
+    {name:'Sacks/Brennecke',school:'Grant',sd:'SD1',fin:1},
+    {name:'Llados/Johnston',school:'Ida B. Wells',sd:'SD1',fin:2},
+    {name:'Hanson/Tadjedin',school:'Grant',sd:'SD1',fin:3},
+    {name:'Jones/Stevens',school:'Lincoln',sd:'SD1',fin:4},
+    {name:'Larsen/Hasle',school:'Jesuit',sd:'SD2',fin:1},
+    {name:'MacPherson/Cormack',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Rahul/Lu',school:'Westview',sd:'SD2',fin:3},
+    {name:'Blinkova/Wu',school:'Mountainside',sd:'SD2',fin:4},
+    {name:'Hendricks/Rickards',school:'McMinnville',sd:'SD3',fin:1},
+    {name:'Douglass/Kondrath',school:'Sherwood',sd:'SD3',fin:2},
+    {name:'Hendricks/Nash',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Squires/Northrup',school:'Sherwood',sd:'SD3',fin:4},
+    {name:'Stanford/Zanavich',school:'Central Catholic',sd:'SD4',fin:1},
+    {name:'Mahurin/Mahurin',school:'Barlow',sd:'SD4',fin:2},
+    {name:'Mork/Chandler',school:'Central Catholic',sd:'SD4',fin:3},
+    {name:'Sdrulla/Albano',school:'Central Catholic',sd:'SD4',fin:4},
+    {name:'Fitzgerald/Fitzgerald',school:'Lakeridge',sd:'SD5',fin:1},
+    {name:'Rice/Schmidt',school:'Lake Oswego',sd:'SD5',fin:2},
+    {name:'Papasouliotis/Agan',school:'Lakeridge',sd:'SD5',fin:3},
+    {name:'Tan/Villanueva',school:'Tualatin',sd:'SD5',fin:4},
+    {name:'Warner/Crump',school:'Sprague',sd:'SD6',fin:1},
+    {name:'Foote/Heikila',school:'West Salem',sd:'SD6',fin:2},
+    {name:'Beilby/Schaefer',school:'South Salem',sd:'SD6',fin:3},
+    {name:'Nakagawa/Lohrman',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Kearney/Piquette',school:'Sheldon',sd:'SD7',fin:1},
+    {name:'Cho/Park',school:'South Eugene',sd:'SD7',fin:2},
+    {name:'Alrahmani/Yao',school:'South Eugene',sd:'SD7',fin:3},
+    {name:'Berg/Robinson',school:'Grants Pass',sd:'SD7',fin:4},
+  ],
+  g6As: [
+    {name:'Carlyta Barfield',school:'Benson',sd:'SD1',fin:1},
+    {name:'Stella Seidel',school:'Grant',sd:'SD1',fin:2},
+    {name:'Sitara Soman',school:'Lincoln',sd:'SD1',fin:3},
+    {name:'Evie Sasek',school:'Grant',sd:'SD1',fin:4},
+    {name:'Nikhitha Suresh',school:'Westview',sd:'SD2',fin:1},
+    {name:'Krupa Rao',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Anna Bucher',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Joelle Anderson',school:'Mountainside',sd:'SD2',fin:4},
+    {name:'Marjorie Tamber',school:'McMinnville',sd:'SD3',fin:1},
+    {name:'Lilyanna Gerber',school:'Glencoe',sd:'SD3',fin:2},
+    {name:'Stephanie Fuchs',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Adele Clenaghen',school:'Sherwood',sd:'SD3',fin:4},
+    {name:'Sofia Sorokina',school:'Nelson',sd:'SD4',fin:1},
+    {name:'Lauren Wood',school:'Barlow',sd:'SD4',fin:2},
+    {name:'Haley Wood',school:'Barlow',sd:'SD4',fin:3},
+    {name:'Amy Do',school:'David Douglas',sd:'SD4',fin:4},
+    {name:'Sonya Drayton',school:'West Linn',sd:'SD5',fin:1},
+    {name:'Molly Eames',school:'Lake Oswego',sd:'SD5',fin:2},
+    {name:'Lilly Prideaux',school:'West Linn',sd:'SD5',fin:3},
+    {name:'McKinley Fisher',school:"St. Mary's Acad.",sd:'SD5',fin:4},
+    {name:'Mariela Hajdaravic',school:'Sprague',sd:'SD6',fin:1},
+    {name:'Ava Decker',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Cate Nickel',school:'Sprague',sd:'SD6',fin:3},
+    {name:'Ellison Kerr',school:'West Salem',sd:'SD6',fin:4},
+    {name:'Alexis Uschold',school:'South Medford',sd:'SD7',fin:1},
+    {name:'Olivia Uschold',school:'South Medford',sd:'SD7',fin:2},
+    {name:'Sydney Chandler',school:'South Eugene',sd:'SD7',fin:3},
+    {name:'Keira Chance',school:'Sheldon',sd:'SD7',fin:4},
+  ],
+  // ---------------- GIRLS 5A (4 districts) ----------------
+  g5Ad: [
+    {name:'Carter/Montecucco',school:'La Salle Prep',sd:'SD1',fin:1},
+    {name:'Nguyen/Maulding',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Fuller/Dalbey',school:'Hood River Valley',sd:'SD1',fin:3},
+    {name:'Anderson/Valdivia',school:'La Salle Prep',sd:'SD1',fin:4},
+    {name:'Pearson-Albano/Vogel',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Paulick/Boney',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Wilson/Wilson',school:'Thurston',sd:'SD2',fin:3},
+    {name:'Richardson/Toensing',school:'Springfield',sd:'SD2',fin:4},
+    {name:'Lin/Newbery',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Davisson/Davisson',school:'Silverton',sd:'SD3',fin:2},
+    {name:'Yong/Li',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Arnett/Fletcher',school:'West Albany',sd:'SD3',fin:4},
+    {name:'Jones/Jones',school:'Redmond',sd:'SD4',fin:1},
+    {name:'Vaughan/Vaughan',school:'Bend',sd:'SD4',fin:2},
+    {name:'Steltzer/Monson',school:'Redmond',sd:'SD4',fin:3},
+    {name:'Finley/Cook',school:'Summit',sd:'SD4',fin:4},
+  ],
+  g5As: [
+    {name:'Kaylen Mitchell',school:'Hood River Valley',sd:'SD1',fin:1},
+    {name:'Trina Dinh',school:'Parkrose',sd:'SD1',fin:2},
+    {name:'Luci Reid',school:'La Salle Prep',sd:'SD1',fin:3},
+    {name:'Teagan Hamilton',school:'Wilsonville',sd:'SD1',fin:4},
+    {name:'Claudia Stadtmueller',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Anika Stadtmueller',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Lauren Thomas',school:'Churchill',sd:'SD2',fin:3},
+    {name:'Lilly Hall',school:'Churchill',sd:'SD2',fin:4},
+    {name:'Emily Gu',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Suzie Liu',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Tessa Zevallos',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Leah Trinidad',school:'Crescent Valley',sd:'SD3',fin:4},
+    {name:'Teagan Campbell',school:'Summit',sd:'SD4',fin:1},
+    {name:'Meghan Kelly',school:'Summit',sd:'SD4',fin:2},
+    {name:'Kuinlan Hayes',school:'Bend',sd:'SD4',fin:3},
+    {name:'Rylie Rosenberg',school:'Redmond',sd:'SD4',fin:4},
+  ],
+  // ---------------- GIRLS 4A/3A/2A/1A (5 districts) ----------------
+  g4Ad: [
     {name:'Perez/Mehta',school:'Catlin Gabel',sd:'SD1',fin:1},
     {name:'Ji/Li',school:'Oregon Episcopal',sd:'SD1',fin:2},
     {name:'Kelly/Sharan',school:'Catlin Gabel',sd:'SD1',fin:3},
@@ -149,7 +264,7 @@ const FIELDS = {
     {name:'Gonzalez/Schoorl',school:'Vale',sd:'SD5',fin:3},
     {name:'Bennett/Mckrola',school:'Vale',sd:'SD5',fin:4},
   ],
-  singles2026: [
+  g4As: [
     {name:'Ria Shah',school:'Catlin Gabel',sd:'SD1',fin:1},
     {name:'Nina Rinard',school:'Riverdale',sd:'SD1',fin:2},
     {name:'Margo Nicholas',school:'Oregon Episcopal',sd:'SD1',fin:3},
@@ -171,15 +286,162 @@ const FIELDS = {
     {name:'McKinley Moore',school:'Pendleton',sd:'SD5',fin:3},
     {name:'Noemi Alvarez-Barroso',school:'Pendleton',sd:'SD5',fin:4},
   ],
+  // ---------------- BOYS 6A (7 districts) ----------------
+  b6Ad: [
+    {name:'Alexander/Ramachandran',school:'Lincoln',sd:'SD1',fin:1},
+    {name:'Potter/Martinez Griffin',school:'Grant',sd:'SD1',fin:2},
+    {name:'Solodky/Silver',school:'Lincoln',sd:'SD1',fin:3},
+    {name:'Semler/Torch',school:'Lincoln',sd:'SD1',fin:4},
+    {name:'Pitchuka/Patel',school:'Westview',sd:'SD2',fin:1},
+    {name:'Pfeiffer/Moore',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Ebramsyah/Lee',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Koopman/Wang',school:'Jesuit',sd:'SD2',fin:4},
+    {name:'Delay/Mears',school:'Newberg',sd:'SD3',fin:1},
+    {name:'Alawode/Bigham',school:'Glencoe',sd:'SD3',fin:2},
+    {name:'Bills/Haught',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Miele/Doman',school:'Newberg',sd:'SD3',fin:4},
+    {name:'Albano/Chandler',school:'Central Catholic',sd:'SD4',fin:1},
+    {name:'Truong/Sorokin',school:'Nelson',sd:'SD4',fin:2},
+    {name:'Kaydalin/Aing',school:'Nelson',sd:'SD4',fin:3},
+    {name:'Nguyen/Diep',school:'Clackamas',sd:'SD4',fin:4},
+    {name:'Cui/Cui',school:'Lake Oswego',sd:'SD5',fin:1},
+    {name:'Huberty/Morrison',school:'West Linn',sd:'SD5',fin:2},
+    {name:'Xiao/Lee',school:'Lakeridge',sd:'SD5',fin:3},
+    {name:'Lee/Golovnykh',school:'Lake Oswego',sd:'SD5',fin:4},
+    {name:'Wilcox/Solis',school:'South Salem',sd:'SD6',fin:1},
+    {name:'Pederson/Basl',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Nagaraj/Mungra',school:'South Salem',sd:'SD6',fin:3},
+    {name:'Crosby/Wickstrom',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Zaretsky/Wang',school:'South Eugene',sd:'SD7',fin:1},
+    {name:'Howard/Hoddle',school:'Roseburg',sd:'SD7',fin:2},
+    {name:'Smith/Von Strahl',school:'South Medford',sd:'SD7',fin:3},
+    {name:'Huffaker/Huffaker',school:'Grants Pass',sd:'SD7',fin:4},
+  ],
+  b6As: [
+    {name:'Cayden Laughton',school:'Lincoln',sd:'SD1',fin:1},
+    {name:'Josh Parker Howard',school:'McDaniel',sd:'SD1',fin:2},
+    {name:'Max Rasheed',school:'Cleveland',sd:'SD1',fin:3},
+    {name:'Rafa Valverde',school:'Grant',sd:'SD1',fin:4},
+    {name:'Tristan Hernandez',school:'Jesuit',sd:'SD2',fin:1},
+    {name:'Arnav Arora',school:'Mountainside',sd:'SD2',fin:2},
+    {name:'Logan Aman',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Ethan Dusicka',school:'Beaverton',sd:'SD2',fin:4},
+    {name:'Jai Tana',school:'Liberty',sd:'SD3',fin:1},
+    {name:'Andrew Swartout',school:'Newberg',sd:'SD3',fin:2},
+    {name:'Elijah Miele',school:'Newberg',sd:'SD3',fin:3},
+    {name:'Luc Barre',school:'Newberg',sd:'SD3',fin:4},
+    {name:'Patrick Wood',school:'Barlow',sd:'SD4',fin:1},
+    {name:'Wade Robertson',school:'Central Catholic',sd:'SD4',fin:2},
+    {name:'Noah Dahl',school:'Barlow',sd:'SD4',fin:3},
+    {name:'Tom Ca',school:'David Douglas',sd:'SD4',fin:4},
+    {name:'Camden Board',school:'Tigard',sd:'SD5',fin:1},
+    {name:'Evan Lange',school:'West Linn',sd:'SD5',fin:2},
+    {name:'Sam Eder',school:'Lake Oswego',sd:'SD5',fin:3},
+    {name:'Shingo Okazaki',school:'Tualatin',sd:'SD5',fin:4},
+    {name:'Josiah Smith',school:'South Salem',sd:'SD6',fin:1},
+    {name:'Marcus Heater',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Will Haworth',school:'West Salem',sd:'SD6',fin:3},
+    {name:'Evan Burnett',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Alexander Totoian',school:'Roseburg',sd:'SD7',fin:1},
+    {name:'Alex Gurov',school:'South Medford',sd:'SD7',fin:2},
+    {name:'Andy Brown',school:'Sheldon',sd:'SD7',fin:3},
+    {name:'Ramin Abrahime',school:'Roseburg',sd:'SD7',fin:4},
+  ],
+  // ---------------- BOYS 5A (4 districts) ----------------
+  b5Ad: [
+    {name:'Windsheimer/Wettstein',school:'Wilsonville',sd:'SD1',fin:1},
+    {name:'Wong/Wong',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Richmond/Faisel',school:'Wilsonville',sd:'SD1',fin:3},
+    {name:'Wagner/Wagner',school:'Hood River Valley',sd:'SD1',fin:4},
+    {name:'Conachy Chang/Park',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Spain/Jagels',school:'Thurston',sd:'SD2',fin:2},
+    {name:'Leiserson/Campagna',school:'Ashland',sd:'SD2',fin:3},
+    {name:'Hernandez/Torres-Montes',school:'Thurston',sd:'SD2',fin:4},
+    {name:'Koller/Greschner',school:'Corvallis',sd:'SD3',fin:1},
+    {name:'Mcmanus/Tokarczyk',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Hackethorn/Larsen',school:'Corvallis',sd:'SD3',fin:3},
+    {name:'Elliott/Hughes',school:'West Albany',sd:'SD3',fin:4},
+    {name:'Young/Virgilio',school:'Summit',sd:'SD4',fin:1},
+    {name:'Segesta/Perle',school:'Summit',sd:'SD4',fin:2},
+    {name:'Schaalma/Bottorff',school:'Ridgeview',sd:'SD4',fin:3},
+    {name:'Quinn/Walker',school:'Crook County',sd:'SD4',fin:4},
+  ],
+  b5As: [
+    {name:'Dmitrii Ganovichev',school:'Canby',sd:'SD1',fin:1},
+    {name:'Kaiden Harris',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Tom Huynh',school:'Parkrose',sd:'SD1',fin:3},
+    {name:'River Nicols',school:'La Salle Prep',sd:'SD1',fin:4},
+    {name:'Max Herron',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Aarav Sheoran',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Rikuya Kasai',school:'Springfield',sd:'SD2',fin:3},
+    {name:'Peyton Reed',school:'Thurston',sd:'SD2',fin:4},
+    {name:'Andrew Liu',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Aidan Lin',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Jason Han',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Cristian Herrera',school:'South Albany',sd:'SD3',fin:4},
+    {name:'Mika Nader',school:'Bend',sd:'SD4',fin:1},
+    {name:'Dashiell Meltzer',school:'Bend',sd:'SD4',fin:2},
+    {name:'Max Voige',school:'Caldera',sd:'SD4',fin:3},
+    {name:'Jensen Burke',school:'Redmond',sd:'SD4',fin:4},
+  ],
+  // ---------------- BOYS 4A/3A/2A/1A (5 districts) ----------------
+  b4Ad: [
+    {name:'Freres/Oei-Johnson',school:'Oregon Episcopal',sd:'SD1',fin:1},
+    {name:'Do/Bhardwaj',school:'Oregon Episcopal',sd:'SD1',fin:2},
+    {name:'Young/Deshmukh',school:'Oregon Episcopal',sd:'SD1',fin:3},
+    {name:'Do/Peizner',school:'Oregon Episcopal',sd:'SD1',fin:4},
+    {name:'Hedges/Murphy',school:'Cascade',sd:'SD2',fin:1},
+    {name:'Larsen/Hatfield',school:'Stayton',sd:'SD2',fin:2},
+    {name:'McNamar/Barnes',school:'Junction City',sd:'SD2',fin:3},
+    {name:'Delaney/Vadlani',school:'Marist Catholic',sd:'SD2',fin:4},
+    {name:'Peterson/Dorcak',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Kucinsky/Kerley',school:'Henley',sd:'SD3',fin:2},
+    {name:'Johnston/David',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Ennis-Haro/Murphy',school:'Cascade Christian',sd:'SD3',fin:4},
+    {name:'Sanchez/Angel',school:'Stanfield/Echo',sd:'SD4',fin:1},
+    {name:'Derksen/Murray',school:'Sisters',sd:'SD4',fin:2},
+    {name:'Rodriguez/Emmett',school:'The Dalles',sd:'SD4',fin:3},
+    {name:'Pothier/Chavez',school:'The Dalles',sd:'SD4',fin:4},
+    {name:'Burton/Burton',school:'Baker/PV',sd:'SD5',fin:1},
+    {name:'Pepera/Schwartz',school:'Baker/PV',sd:'SD5',fin:2},
+    {name:'Hildebrandt/Jones',school:'La Grande',sd:'SD5',fin:3},
+    {name:'Cutler/Young',school:'Nyssa',sd:'SD5',fin:4},
+  ],
+  b4As: [
+    {name:'Zareh Gonzalvo',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Kai Stone',school:'Catlin Gabel',sd:'SD1',fin:2},
+    {name:'Ethan Anand',school:'Riverdale',sd:'SD1',fin:3},
+    {name:'Casen Rasmussen',school:'Blanchet Catholic',sd:'SD1',fin:4},
+    {name:'Griffen Scoble',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Andrew Suelzle',school:'Cascade',sd:'SD2',fin:2},
+    {name:'Alexander Ricketts',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'William Clausen',school:'Cascade',sd:'SD2',fin:4},
+    {name:'Ben Smith',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Glenn Dougherty',school:'Klamath Union',sd:'SD3',fin:2},
+    {name:'Luke Oliva',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Ben Turek',school:'Cascade Christian',sd:'SD3',fin:4},
+    {name:'Dominic Pulver',school:'Sisters',sd:'SD4',fin:1},
+    {name:'Isidro Olivera',school:'Madras',sd:'SD4',fin:2},
+    {name:'Dante Kim',school:'The Dalles',sd:'SD4',fin:3},
+    {name:'Andrew Calderon',school:'Riverside',sd:'SD4',fin:4},
+    {name:'Eli Seals',school:'Vale',sd:'SD5',fin:1},
+    {name:'Elijah Grimaldo',school:'Four Rivers',sd:'SD5',fin:2},
+    {name:'Andy Villa',school:'Four Rivers',sd:'SD5',fin:3},
+    {name:'Bryan Martinez',school:'McLoughlin',sd:'SD5',fin:4},
+  ],
 };
 
-// Actual committee seed lists per preset, in seed order (1..4). Names must match
-// the `name` field above. Note these include district *runners-up* (girls doubles #3
-// Suelzle/Withers and singles #3 Phoebie Larson), which is exactly why deriving seeds
-// from "district champions" is wrong — the committee can seed a 2nd-place finisher.
+// Actual committee seed lists, in seed order. Names must match a `name` above.
+// Verified from the published state brackets for 4A/3A/2A/1A (girls + boys); these
+// include district *runners-up* (e.g. girls doubles #3 Suelzle/Withers, singles #3
+// Phoebie Larson) — which is exactly why deriving seeds from "district champions"
+// is wrong. Fields without an entry here default the pickers to district champions;
+// set the real seeds yourself with the dropdowns.
 const SEEDS = {
-  doubles2026: ['Perez/Mehta', 'Larson/Tyner', 'Suelzle/Withers', 'Nieskens/Seals'],
-  singles2026: ['Whitney Hedden', 'Ria Shah', 'Phoebie Larson', 'Carys Chamberland'],
+  g4Ad: ['Perez/Mehta', 'Larson/Tyner', 'Suelzle/Withers', 'Nieskens/Seals'],
+  g4As: ['Whitney Hedden', 'Ria Shah', 'Phoebie Larson', 'Carys Chamberland'],
+  b4Ad: ['Freres/Oei-Johnson', 'Peterson/Dorcak', 'Do/Bhardwaj', 'Hedges/Murphy'],
+  b4As: ['Zareh Gonzalvo', 'Griffen Scoble', 'Kai Stone', 'Ben Smith'],
 };
 
 function syntheticField(D, Q) {
