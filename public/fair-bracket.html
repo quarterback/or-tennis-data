@@ -49,12 +49,14 @@
 
 <h1>Fair Bracket Generator — OSAA-style individual tennis</h1>
 <div class="subtitle">
-  Builds a state draw from district placements where <strong>byes are allocated strictly by merit</strong>
-  (seeds &rarr; district champions &rarr; 2nd &rarr; 3rd &rarr; 4th), instead of partly by lot. Honors the OSAA
-  separation rules (same district not in round 1; same school not before the semifinals; a school's district
-  1&amp;2 not before the final). Works for any number of districts (4&ndash;8+) and any qualifiers-per-district.
-  The right panel recomputes team points under the legacy <em>round-reached</em> scoring vs. a <em>per-win</em>
-  scheme so you can see how much of the old point spread was an artifact of free byes.
+  A demonstration that the individual state draw can be seeded fairly <strong>within OSAA's existing rules</strong>.
+  Byes are allocated strictly by merit — <strong>seeds &rarr; district champions &rarr; 2nd &rarr; 3rd &rarr; 4th</strong> —
+  so unseeded 3rd/4th finishers land on play-in (pigtail) lines rather than being handed a bye over a district
+  champion or a 2nd-place finisher. It honors every separation rule (same district not in round 1; same school not
+  before the semifinals; a school's district 1&amp;2 not before the final) and works for any number of districts
+  (4&ndash;8+) and qualifiers-per-district. The scoring panel is illustrative only — a hypothetical chalk run, not
+  any real tournament — showing how the legacy <em>round-reached</em> points (where a bye buys points) compare to a
+  <em>per-win</em> scheme.
 </div>
 
 <div class="controls">
@@ -72,6 +74,7 @@
   <label>Seeds:
     <select id="seedCount"><option>4</option><option>2</option><option>8</option><option>0</option></select>
   </label>
+  <span id="seedPickers" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"></span>
   <label>Byes:
     <select id="byeMode">
       <option value="merit">Merit (fair)</option>
@@ -119,31 +122,7 @@
   </div>
 </div>
 
-<div class="panel" style="margin-top:12px">
-  <h2>Worked example: 2026 4A/3A/2A/1A girls (actual results)</h2>
-  <div class="note">
-    The panels above are a hypothetical chalk run. This table is the <strong>real</strong> 2026 final —
-    the official team scores as published, beside the same results rescored under main-draw per-win + a
-    4/3/2/1 podium bonus, with the consolation bracket left at its real value (capped at 2). It's a clean
-    illustration, not a knock on any team: everyone played the bracket they were given. The point is only
-    that the scoring system, not the tennis, produced the margin.
-  </div>
-  <table id="actualTable">
-    <thead><tr><th>Team</th><th class="n">Official</th><th class="n">Per-win + 4-3-2-1 (+ consolation ≤2)</th></tr></thead>
-    <tbody></tbody>
-  </table>
-  <div id="actualNote" style="font-size:13px;margin-top:8px"></div>
-</div>
-
 <script>
-// Actual 2026 4A/3A/2A/1A girls final, official vs. rescored (hardcoded from OSAA team scores).
-const ACTUAL_2026 = [
-  ['Marist Catholic', 28, 15], ['Catlin Gabel', 19, 15], ["St. Mary's, Medford", 15.5, 9.5],
-  ['Oregon Episcopal', 12, 8], ['Vale', 10, 4], ['Cascade', 7, 5], ['Madras', 5, 4],
-  ['Baker / Powder Valley', 4, 1], ['Irrigon', 4, 1], ['Riverdale', 4, 1], ['North Bend', 2.5, 1.5],
-  ['Cascade Christian', 2, 1], ['La Grande', 2, 1], ['Philomath', 2, 1], ['Pendleton', 1, 1],
-  ['Riverside', 0, 0], ['Stanfield / Echo', 0, 0],
-];
 // =====================================================================
 // Field data
 // =====================================================================
@@ -192,6 +171,15 @@ const FIELDS = {
     {name:'McKinley Moore',school:'Pendleton',sd:'SD5',fin:3},
     {name:'Noemi Alvarez-Barroso',school:'Pendleton',sd:'SD5',fin:4},
   ],
+};
+
+// Actual committee seed lists per preset, in seed order (1..4). Names must match
+// the `name` field above. Note these include district *runners-up* (girls doubles #3
+// Suelzle/Withers and singles #3 Phoebie Larson), which is exactly why deriving seeds
+// from "district champions" is wrong — the committee can seed a 2nd-place finisher.
+const SEEDS = {
+  doubles2026: ['Perez/Mehta', 'Larson/Tyner', 'Suelzle/Withers', 'Nieskens/Seals'],
+  singles2026: ['Whitney Hedden', 'Ria Shah', 'Phoebie Larson', 'Carys Chamberland'],
 };
 
 function syntheticField(D, Q) {
@@ -455,24 +443,60 @@ function simulate(draw, entries){
 // =====================================================================
 function esc(s){ return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
 
+function getEntries(){
+  const preset = document.getElementById('presetSel').value;
+  if(preset==='synthetic'){
+    const D=+document.getElementById('dInput').value, Q=+document.getElementById('qInput').value;
+    return syntheticField(D,Q);
+  }
+  return FIELDS[preset].map(e=>({...e}));
+}
+
+// Default seed names: actual committee seeds for real presets, else first-district champions.
+function defaultSeedNames(entries, count){
+  const preset = document.getElementById('presetSel').value;
+  if(SEEDS[preset]) return SEEDS[preset].slice(0, count);
+  const champs=[], seen=new Set();
+  entries.forEach(e=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); champs.push(e.name); } });
+  return champs.slice(0, count);
+}
+
+// Build the seed-picker dropdowns (one per seed line), defaulted but editable.
+function populateSeedPickers(){
+  const entries = getEntries();
+  const count = +document.getElementById('seedCount').value;
+  const defs = defaultSeedNames(entries, count);
+  const cont = document.getElementById('seedPickers');
+  cont.innerHTML='';
+  for(let k=0;k<count;k++){
+    const lab=document.createElement('label'); lab.style.fontSize='13px';
+    lab.textContent='S'+(k+1)+':';
+    const sel=document.createElement('select'); sel.className='seedPick';
+    entries.forEach((e,i)=>{ const o=document.createElement('option'); o.value=i;
+      o.textContent=`${e.name} (${e.sd} #${e.fin})`; sel.appendChild(o); });
+    const di = entries.findIndex(e=>e.name===defs[k]);
+    sel.value = di>=0 ? di : k;
+    sel.addEventListener('change', render);
+    lab.appendChild(sel); cont.appendChild(lab);
+  }
+}
+
+function getSeedIdxs(){
+  const seen=new Set(), out=[];
+  document.querySelectorAll('.seedPick').forEach(s=>{ const i=+s.value; if(!seen.has(i)){ seen.add(i); out.push(i); } });
+  return out;
+}
+
 function render(){
   const preset = document.getElementById('presetSel').value;
   document.getElementById('synthControls').style.display = preset==='synthetic' ? '' : 'none';
-  let entries;
-  if(preset==='synthetic'){
-    const D=+document.getElementById('dInput').value, Q=+document.getElementById('qInput').value;
-    entries = syntheticField(D,Q);
-  } else entries = FIELDS[preset].map(e=>({...e}));
+  const entries = getEntries();
 
   RNG = mulberry32(+document.getElementById('lotSeed').value || 1);
-  const seedCount = +document.getElementById('seedCount').value;
   const byeMode = document.getElementById('byeMode').value;
   document.getElementById('bonusNote').style.display = document.getElementById('podiumBonus').checked?'':'none';
 
-  // Seeds = champions of the first `seedCount` districts (committee stand-in).
-  const champByDistrict = {};
-  entries.forEach((e,i)=>{ if(e.fin===1 && !(e.sd in champByDistrict)) champByDistrict[e.sd]=i; });
-  const seedIdxs = Object.values(champByDistrict).slice(0, seedCount);
+  const seedIdxs = getSeedIdxs();
   const seededSet = new Set(seedIdxs);
 
   const draw = buildDraw(entries, seedIdxs, byeMode);
@@ -553,29 +577,13 @@ function render(){
   }
 }
 
-function renderActual(){
-  const tb = document.querySelector('#actualTable tbody'); tb.innerHTML='';
-  const top = Math.max(...ACTUAL_2026.map(r=>r[2]));
-  ACTUAL_2026.forEach(([team,off,pw])=>{
-    const tr=document.createElement('tr');
-    if(pw===top) tr.className='champrow';
-    tr.innerHTML=`<td>${esc(team)}</td><td class="n">${off}</td><td class="n">${pw}</td>`;
-    tb.appendChild(tr);
-  });
-  const cochamps = ACTUAL_2026.filter(r=>r[2]===top).map(r=>r[0]);
-  document.getElementById('actualNote').innerHTML =
-    `Official result: <strong>Marist Catholic 28, a 9-point solo title.</strong> Rescored, the top is a `+
-    `<strong>${top}–${top} tie between ${cochamps.join(' and ')}</strong> — and OSAA shares team titles, so this `+
-    `is a <strong>co-championship</strong> (no second place; St. Mary's 3rd, Oregon Episcopal 4th). The entire `+
-    `margin of victory was the first-round bye points: once a win has to be a win, two finalists (Catlin Gabel's `+
-    `champion + runner-up) match five entries (Marist's champion + depth).`;
-}
-renderActual();
-
-['presetSel','seedCount','byeMode','podiumBonus','lotSeed','dInput','qInput','rebuildBtn']
-  .forEach(id=>{ const el=document.getElementById(id); el.addEventListener('change',render); });
+function refresh(){ populateSeedPickers(); render(); }
+// Field / seed-count / synthetic-size changes rebuild the seed pickers, then render.
+['presetSel','seedCount','dInput','qInput'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
+// These don't change the field, so just re-render.
+['byeMode','podiumBonus','lotSeed'].forEach(id=>document.getElementById(id).addEventListener('change',render));
 document.getElementById('rebuildBtn').addEventListener('click',render);
-render();
+refresh();
 </script>
 </body>
 </html>

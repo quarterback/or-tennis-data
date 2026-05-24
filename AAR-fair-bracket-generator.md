@@ -12,18 +12,18 @@ That would be harmless if a bye were just a rest. It isn't. Team points are awar
 
 Read that carefully. A player who **was handed a bye** and then wins one match banks **4 points**. A player who had to **play and win a first-round match** banks **2 points** for the very same single win. The bye is worth a free +2 — and in a 20-into-32 draw, twelve of those byes are floating around to be assigned.
 
-## The smoking gun: Special District 3, 2026 doubles
+## The symptom: a district's own placements get scrambled
 
-Here is how the byes actually fell for one district's doubles teams in the real 2026 girls draw:
+Because the unseeded portion of the draw is filled "by lot," it is routine to see a single district's four qualifiers land like this:
 
-| District finish | Team | Got a bye? |
-|---|---|---|
-| 1st (champion) | Cohee / Mahar | No — played round 1 |
-| 2nd | Ravassipour / Olson | **Yes** |
-| 3rd | Hung / Ho | **Yes** |
-| 4th | Smith / Clark | No — played round 1 |
+| District finish | Got a first-round bye? |
+|---|---|
+| 1st (champion) | No — played round 1 |
+| 2nd | **Yes** |
+| 3rd | **Yes** |
+| 4th | No — played round 1 |
 
-Inside a single district, the **champion and the fourth-place team had to play in, while the second- and third-place teams rested.** A team that finished third in its district got a structurally easier, higher-scoring path than the team that won that same district. Draw that "by lot" across five districts and the distortion is everywhere — and it compounds for schools that qualify several entries, since each extra entry is another lottery ticket for a free bye.
+Inside one district, the **champion and the fourth-place team play in, while the second- and third-place teams rest.** The team that *finished third* gets a structurally easier, higher-scoring path than the team that *won* that same district. Spread that across every district and the distortion is everywhere — and it compounds for schools that qualify several entries, since each extra entry is another lottery ticket for a free bye. None of that reflects how anyone played; it's purely where the lot dropped them.
 
 ## The fix: rank everyone once, then give byes top-down
 
@@ -64,20 +64,16 @@ The generator runs a chalk simulation (higher merit wins) and tallies team point
 
 Per-win is the simpler, more honest fix: it makes the unavoidable byes point-neutral, so it no longer matters who gets them. The structural merit-bye draw is the answer if you want to keep the legacy point table.
 
-## A worked example: 2026 4A/3A/2A/1A girls
+## Why the bye points matter so much
 
-The real tournament is a clean illustration. Marist Catholic won the team title with **28 points** to Catlin Gabel's 19 — a nine-point solo championship. Now rescore the exact same results under main-draw per-win plus a 4-3-2-1 podium bonus, leaving the consolation bracket at its real value (capped at 2):
+Consider two hypothetical schools with the same on-court results. School A enters two extra teams that each happen to draw a first-round bye and win one match; School B enters two finalists who win their way through. Under the current rule, each of School A's bye-aided teams banks **4 points off a single win**, while a team that has to *play* its opening match banks **2 points for that same win**. A school that stacks low-seeded entries into bye lines can out-point a school whose entries actually went deeper — not because of the tennis, but because of where the lot dropped them.
 
-| Team | Official | Per-win + 4-3-2-1 (+ consolation) |
-|---|---|---|
-| Marist Catholic | 28 | 15 |
-| Catlin Gabel | 19 | 15 |
-| St. Mary's, Medford | 15.5 | 9.5 |
-| Oregon Episcopal | 12 | 8 |
+The two fixes below each neutralize that:
 
-The nine-point runaway becomes a **15–15 tie** — and because OSAA shares team titles, that's a **co-championship**, not a tiebreak: Marist and Catlin Gabel both first, no second place, St. Mary's third. The swing is entirely the first-round bye points. Four Marist entries drew a bye and won one match for four points each; Catlin Gabel had two. Once a win has to be a win, Catlin Gabel's two finalists (champion Perez/Mehta and runner-up Shah) match Marist's champion-plus-depth — and under the merit-bye draw, Marist's **third- and fourth-place** district doubles teams would not have drawn byes in the first place.
+- **Merit byes** make "round reached" an honest proxy again, because no 3rd/4th-place entry can draw a bye over a champion or a 2nd to begin with.
+- **Per-win scoring** makes a bye worth zero, so a single win is one point for everyone.
 
-None of this is a knock on the teams — they played the bracket they were given, and they won it. The point is narrower: **the bracket and its bye points, not the tennis, produced the margin.**
+Run any field through the tool and toggle Byes between *Merit* and *By lot*, or the scoring between *round-reached* and *per-win*: the team totals visibly compress as the free-bye points come out.
 
 ## What it does and doesn't claim
 
