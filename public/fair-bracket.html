@@ -86,7 +86,7 @@
     <label>Qual/district: <input type="number" id="qInput" min="2" max="6" value="4"></label>
   </span>
   <label>Seeds:
-    <select id="seedCount"><option>4</option><option>2</option><option>8</option><option>0</option></select>
+    <select id="seedCount"><option>4</option><option>2</option><option>6</option><option>8</option><option>0</option></select>
   </label>
   <span id="seedPickers" style="display:flex;flex-wrap:wrap;gap:6px;align-items:center"></span>
   <label>Byes:
@@ -438,11 +438,26 @@ const FIELDS = {
 // is wrong. Fields without an entry here default the pickers to district champions;
 // set the real seeds yourself with the dropdowns.
 const SEEDS = {
+  // 6A seeds 8 (girls doubles: only 1-6 legible in the bracket; 7-8 left to default)
+  g6Ad: ['Larsen/Hasle', 'MacPherson/Cormack', 'Rahul/Lu', 'Hendricks/Rickards', 'Kearney/Piquette', 'Cho/Park'],
+  g6As: ['Sofia Sorokina', 'Nikhitha Suresh', 'Sonya Drayton', 'Carlyta Barfield', 'Lauren Wood', 'Alexis Uschold', 'Krupa Rao', 'Haley Wood'],
+  b6Ad: ['Cui/Cui', 'Alexander/Ramachandran', 'Zaretsky/Wang', 'Pitchuka/Patel', 'Potter/Martinez Griffin', 'Huberty/Morrison', 'Pfeiffer/Moore', 'Semler/Torch'],
+  b6As: ['Cayden Laughton', 'Tristan Hernandez', 'Arnav Arora', 'Camden Board', 'Alexander Totoian', 'Patrick Wood', 'Alex Gurov', 'Logan Aman'],
+  // 4A/3A/2A/1A seeds 4
   g4Ad: ['Perez/Mehta', 'Larson/Tyner', 'Suelzle/Withers', 'Nieskens/Seals'],
   g4As: ['Whitney Hedden', 'Ria Shah', 'Phoebie Larson', 'Carys Chamberland'],
   b4Ad: ['Freres/Oei-Johnson', 'Peterson/Dorcak', 'Do/Bhardwaj', 'Hedges/Murphy'],
   b4As: ['Zareh Gonzalvo', 'Griffen Scoble', 'Kai Stone', 'Ben Smith'],
 };
+
+// Default seed count: the number actually seeded for that field (the committee may
+// seed fewer than the max — e.g. girls 6A doubles seeded only 6). Falls back to the
+// OSAA maximum for the field size (6A→8, else→4) when no committee list is known.
+function defaultSeedCount(){
+  const preset = document.getElementById('presetSel').value;
+  if(SEEDS[preset]) return SEEDS[preset].length;
+  return getEntries().length >= 28 ? 8 : 4;
+}
 
 function syntheticField(D, Q) {
   const out = [];
@@ -840,11 +855,17 @@ function render(){
 }
 
 function refresh(){ populateSeedPickers(); render(); }
-// Field / seed-count / synthetic-size changes rebuild the seed pickers, then render.
-['presetSel','seedCount','dInput','qInput'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
+// Changing the field also resets the seed count to that classification's default (6A→8).
+document.getElementById('presetSel').addEventListener('change',()=>{
+  document.getElementById('seedCount').value = String(defaultSeedCount());
+  refresh();
+});
+// Seed-count / synthetic-size changes rebuild the seed pickers, then render.
+['seedCount','dInput','qInput'].forEach(id=>document.getElementById(id).addEventListener('change',refresh));
 // These don't change the field, so just re-render.
 ['byeMode','podiumBonus','lotSeed'].forEach(id=>document.getElementById(id).addEventListener('change',render));
 document.getElementById('rebuildBtn').addEventListener('click',render);
+document.getElementById('seedCount').value = String(defaultSeedCount());
 refresh();
 </script>
 </body>
