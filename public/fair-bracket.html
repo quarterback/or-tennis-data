@@ -52,11 +52,13 @@
   A demonstration that the individual state draw can be seeded fairly <strong>within OSAA's existing rules</strong>.
   Byes are allocated strictly by merit — <strong>seeds &rarr; district champions &rarr; 2nd &rarr; 3rd &rarr; 4th</strong> —
   so unseeded 3rd/4th finishers land on play-in (pigtail) lines rather than being handed a bye over a district
-  champion or a 2nd-place finisher. It honors every separation rule (same district not in round 1; same school not
-  before the semifinals; a school's district 1&amp;2 not before the final) and works for any number of districts
-  (4&ndash;8+) and qualifiers-per-district. The scoring panel is illustrative only — a hypothetical chalk run, not
-  any real tournament — showing how the legacy <em>round-reached</em> points (where a bye buys points) compare to a
-  <em>per-win</em> scheme.
+  champion or a 2nd-place finisher. Seeds 1 and 2 anchor opposite ends; seeds 3&ndash;4 (and 5&ndash;8) are
+  <strong>drawn by lot within their seed group</strong> — the OSAA "flip" that prevents manipulation — and kept in
+  place only when a separation rule forces it. It honors every separation rule (same district not in round 1; same
+  school not before the semifinals; a school's district 1&amp;2 not before the final) and works for any number of
+  districts (4&ndash;8+) and qualifiers-per-district. The team-points panel combines <strong>singles + doubles</strong>
+  (that's how OSAA scores the team race) and is illustrative only — a hypothetical chalk run, not any real tournament —
+  showing how legacy <em>round-reached</em> points (where a bye buys points) compare to a <em>per-win</em> scheme.
 </div>
 
 <div class="controls">
@@ -122,12 +124,13 @@
       <tbody></tbody>
     </table>
 
-    <h2>Team points — chalk run (higher merit wins)</h2>
+    <h2 id="scoreHdr">Team points — chalk run (higher merit wins)</h2>
     <div class="note">
       Round-based (legacy OSAA): 2 per main-draw win, a first-round bye worth +2 if the second-round match is won, +1 for the 3rd-place match.
       Per-win: 1 per main-draw win<span id="bonusNote"> + a 4/3/2/1 podium bonus</span>; a bye is worth 0.
       Both add the consolation bracket (capped at 2): +0.5 to reach its semifinal, +0.5 the final, +1 to win it.
     </div>
+    <div class="note" id="scoreNote"></div>
     <table id="scoreTable">
       <thead><tr><th>School</th><th class="n">Round-based</th><th class="n">Per-win</th><th class="n">Δ</th></tr></thead>
       <tbody></tbody>
@@ -581,6 +584,16 @@ function assignPool(order, slotPool, placement, entries, N){
 // =====================================================================
 // Build the full draw
 // =====================================================================
+// Standard seed groups: {1},{2},{3,4},{5,8},{9,16}… Seeds within a group >1 are
+// interchangeable by lot (the "flip").
+function seedGroups(count){
+  const groups=[];
+  for(const s of [1,2]) if(count>=s) groups.push([s,s]);
+  let lo=3;
+  while(lo<=count){ const hi=Math.min(count, lo*2-2); groups.push([lo,hi]); lo=hi+1; }
+  return groups;
+}
+
 function buildDraw(entries, seedIdxs, byeMode){
   const M = entries.length, N = nextPow2(M);
   const topo = topology(N, M);
@@ -610,9 +623,16 @@ function buildDraw(entries, seedIdxs, byeMode){
   // Try several times (randomized) to satisfy constraints.
   for(let attempt=0; attempt<400; attempt++){
     const placement = {};
-    // Seeds onto canonical seed slots first (1,2,3,4 -> their standard anchors)
     let ok=true;
-    seedIdxs.forEach((eIdx, k)=>{ placement[topo.slotForSeed[k+1]] = eIdx; });
+    // Seeds 1 & 2 anchor opposite ends; seeds 3-4, 5-8, 9-16 are drawn by lot within
+    // their seed group (the OSAA "flip" that prevents manipulation), but assignPool
+    // keeps a seed where a separation rule forces it to a particular quadrant.
+    for(const [lo,hi] of seedGroups(seedIdxs.length)){
+      const gSeeds=[], gSlots=[];
+      for(let s=lo;s<=hi;s++){ gSeeds.push(seedIdxs[s-1]); gSlots.push(topo.slotForSeed[s]); }
+      if(!assignPool(gSeeds, gSlots, placement, entries, N)){ ok=false; break; }
+    }
+    if(!ok) continue;
     // Place bye entries (minus seeds already placed) on remaining byeAdjacent slots
     const seedSlots = new Set(seedIdxs.map((_,k)=>topo.slotForSeed[k+1]));
     const remBye = ord(byeEntries.filter(i=>!seededSet.has(i)));
@@ -769,6 +789,23 @@ function getSeedIdxs(){
   return out;
 }
 
+// The other event in the same gender/classification (g6Ad <-> g6As).
+function siblingKey(preset){
+  if(preset==='synthetic') return null;
+  const sib = preset.slice(0,-1) + (preset.endsWith('d') ? 's' : 'd');
+  return FIELDS[sib] ? sib : null;
+}
+
+// Score a field with its committee-seed defaults (used for the non-selected event).
+function scoreField(fieldKey, byeMode){
+  const ents = FIELDS[fieldKey];
+  let seeds;
+  if(SEEDS[fieldKey]) seeds = SEEDS[fieldKey].map(nm=>ents.findIndex(e=>e.name===nm)).filter(i=>i>=0);
+  else { const champ=[], seen=new Set(); ents.forEach((e,i)=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); champ.push(i); } }); seeds=champ.slice(0,4); }
+  const d = buildDraw(ents, seeds, byeMode);
+  return d ? simulate(d, ents) : null;
+}
+
 function render(){
   const preset = document.getElementById('presetSel').value;
   document.getElementById('synthControls').style.display = preset==='synthetic' ? '' : 'none';
@@ -828,10 +865,24 @@ function render(){
     `Red line = bye cutline. Above it gets a first-round bye; below plays in. `+
     `In merit mode the cut falls exactly on a tier boundary as far as the math allows.`;
 
-  // ---- scoring ----
+  // ---- scoring: combine Singles + Doubles into one team race ----
   const sim = simulate(draw, entries);
-  const schools = [...new Set(entries.map(e=>e.school))];
-  const rows = schools.map(sc=>({sc, rb:sim.roundBased[sc]||0, pw:sim.perWin[sc]||0}))
+  const totals = {};
+  function addSim(s){ if(!s) return;
+    for(const sc in s.roundBased){ (totals[sc] ||= {rb:0,pw:0}).rb += s.roundBased[sc]; }
+    for(const sc in s.perWin){ (totals[sc] ||= {rb:0,pw:0}).pw += s.perWin[sc]; }
+  }
+  addSim(sim);
+  const sib = siblingKey(preset);
+  if(sib) addSim(scoreField(sib, byeMode));
+  const selectedEvent = preset.endsWith('d') ? 'Doubles' : (preset.endsWith('s') ? 'Singles' : 'this draw');
+  document.getElementById('scoreHdr').textContent = sib
+    ? 'Team points — Singles + Doubles combined (chalk run)'
+    : 'Team points — chalk run (higher merit wins)';
+  document.getElementById('scoreNote').innerHTML = sib
+    ? `Combined team race for this gender/class. The <strong>${esc(selectedEvent)}</strong> draw uses the seeds you set above; the other event uses its committee-seed defaults.`
+    : '';
+  const rows = Object.keys(totals).map(sc=>({sc, rb:totals[sc].rb, pw:totals[sc].pw}))
                       .sort((a,b)=> b.rb-a.rb || b.pw-a.pw);
   const stb = document.querySelector('#scoreTable tbody'); stb.innerHTML='';
   rows.forEach(r=>{
