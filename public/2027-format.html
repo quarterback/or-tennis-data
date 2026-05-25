@@ -30,10 +30,13 @@
 <h1>2027 OSAA Tennis Format Modeler</h1>
 <div class="subtitle">
   Models the proposed 2027 individual tournament: a <strong>16-team mixed doubles</strong> bracket replaces consolation
-  in each classification. Mixed pairs are <strong>same-school only</strong>. Two streams fill the 16 lines —
+  in each classification. Mixed pairs are <strong>same-school only</strong>, and per the proposal <strong>only one
+  partner must be a state qualifier</strong> — the other can be a rostered teammate who played the regular season and
+  districts but didn't qualify (shown fictional, tagged <em>+roster</em>). Two streams fill the 16 lines —
   <span class="pill auto">automatic</span> district bids and <span class="pill prov">provisional</span> pairs that
-  <strong>activate only if both partners lose their first match</strong>. After singles/doubles round 1, eligible
-  provisionals are sorted by averaged district finish (lower finishers first) and backfill the open
+  <strong>activate when the pair's state qualifier loses their first match</strong> (a two-qualifier pair needs both
+  to lose). After singles/doubles round 1, eligible provisionals are sorted by averaged district finish (a
+  non-qualifier counts as 5; lower finishers first) and backfill the open
   <span class="pill tbd">TBD</span> slots; the rest are <span class="pill alt">alternates</span>. No team points exist
   in 2027 — this is its own championship. Everything is chalk-simulated and reproducible from the draw seed.
 </div>
@@ -53,7 +56,7 @@
     <div class="note" id="fieldNote"></div>
     <div id="gapBox"></div>
     <h2 style="margin-top:14px">Provisional activation (after singles/doubles R1)</h2>
-    <div class="note">Eligible = both partners lost their first match. Sorted by averaged district finish, lower finishers first; ties by draw. Top N fill open slots; rest are alternates.</div>
+    <div class="note">Eligible = the pair's state qualifier(s) lost their first match (a <em>+roster</em> non-qualifier has no match to lose). Sorted by averaged district finish (non-qualifier = 5), lower finishers first; ties by draw. Top N fill open slots; rest are alternates.</div>
     <table id="provTable"><thead><tr><th>#</th><th>Pair (same school)</th><th>School</th><th>SD</th><th class="n">avg fin</th><th>Status</th></tr></thead><tbody></tbody></table>
   </div>
   <div class="panel">
@@ -801,16 +804,17 @@ function memberUnits(cls, gender){
   FIELDS[dKey].forEach((e,i)=>u.push({key:dKey,idx:i,name:e.name+' (dbls)',school:e.school,sd:e.sd,fin:e.fin}));
   return u;
 }
-// Same-school boy + girl candidate provisional pairs (singles or doubles members).
-function provisionalCandidates(cls){
-  const boys=memberUnits(cls,'b'), girls=memberUnits(cls,'g');
-  const gByS={}; girls.forEach(g=>(gByS[g.school]=gByS[g.school]||[]).push(g));
-  const pairs=[];
-  boys.forEach(b=>{ (gByS[b.school]||[]).forEach(g=>{
-    pairs.push({boy:b, girl:g, school:b.school, sd:b.sd, avgFin:(b.fin+g.fin)/2, source:'provisional',
-                name:b.name+' / '+g.name});
-  });});
-  return pairs;
+// Fictional non-qualifier partners. The proposal lets a qualifying pairing add a
+// rostered teammate who played the regular season + districts but didn't qualify for
+// state; only ONE partner must be a qualifier. No roster data exists, so these are
+// fictional, tagged "+roster", and counted as district placement 5 for the sort.
+const NQ_FIN=5;
+const NQ_FIRST=['Jordan','Avery','Riley','Casey','Quinn','Hayden','Rowan','Sawyer','Emerson','Finley','Skyler','Reese','Parker','Tatum','Marlowe','Ellis'];
+const NQ_LAST=['Carter','Bennett','Hughes','Vance','Ramsey','Doyle','Mercer','Holt','Sutton','Cross','Patel','Larsen','Walsh','Reyes','Okafor','Nguyen'];
+let NQ_SEQ=0;
+function fictionalPartner(school, sd){
+  const fn=NQ_FIRST[Math.floor(RNG()*NQ_FIRST.length)], ln=NQ_LAST[Math.floor(RNG()*NQ_LAST.length)];
+  return {fictional:true, key:'nq', idx:NQ_SEQ++, name:fn+' '+ln+' (+roster)', school, sd, fin:NQ_FIN};
 }
 
 // Illustrative automatics: up to 2 same-school pairs per district fielding both genders.
@@ -892,20 +896,37 @@ function run(){
   RNG = mulberry32(+document.getElementById('seed').value || 1);
   const bids=BIDS[cls];
 
-  // 1. Automatics (illustrative) + 2. provisional candidates
+  // 1. Automatics (illustrative)
   const autos=genAutomatics(cls);
-  const cands=provisionalCandidates(cls);
 
-  // 3. Run R1 (singles + doubles, both genders) -> first-match losers, per field key
+  // 2. Run R1 (singles + doubles, both genders) -> first-match losers, per field key
   const cf=CLASS_FIELDS[cls];
   const lossByKey={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>{ lossByKey[k]=runR1(k); });
-  const lost=(u)=> lossByKey[u.key].has(u.idx);
+  const lost=(u)=> u.fictional || lossByKey[u.key].has(u.idx);
 
-  // 4. Eligible provisionals (both members lost their first match), excluding members used as automatics
-  const autoNames=new Set(); autos.forEach(p=>{ autoNames.add(p.school+'|'+(p.boy?p.boy.name:'')); autoNames.add(p.school+'|'+(p.girl?p.girl.name:'')); });
-  const elig=cands.filter(p=> lost(p.boy) && lost(p.girl)
-                && !autoNames.has(p.school+'|'+p.boy.name) && !autoNames.has(p.school+'|'+p.girl.name));
-  // sort: lower district finishers first => DESCENDING avgFin; ties by draw
+  // 3. Eligible state qualifiers = real qualifiers who lost their first match,
+  //    minus any already used in an automatic pair.
+  const autoNames=new Set(); autos.forEach(p=>{ if(p.boy) autoNames.add(p.school+'|'+p.boy.name); if(p.girl) autoNames.add(p.school+'|'+p.girl.name); });
+  NQ_SEQ=0;
+  const eligB=memberUnits(cls,'b').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
+  const eligG=memberUnits(cls,'g').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
+
+  // 4. Form provisional pairs (only ONE partner must be a state qualifier): within a
+  //    school, match eligible boys<->girls into two-qualifier pairs; leftover or
+  //    single-gender qualifiers bring a fictional +roster non-qualifier teammate.
+  const cands=[];
+  [...new Set([...eligB,...eligG].map(u=>u.school))].forEach(s=>{
+    const bs=eligB.filter(u=>u.school===s), gs=eligG.filter(u=>u.school===s), n=Math.min(bs.length,gs.length);
+    for(let i=0;i<n;i++){ const b=bs[i],g=gs[i];
+      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'2q',name:b.name+' / '+g.name}); }
+    for(let i=n;i<bs.length;i++){ const b=bs[i],g=fictionalPartner(s,b.sd);
+      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
+    for(let i=n;i<gs.length;i++){ const g=gs[i],b=fictionalPartner(s,g.sd);
+      cands.push({boy:b,girl:g,school:s,sd:g.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
+  });
+
+  // 5. Priority: lower district finishers first => DESCENDING avgFin; ties by draw
+  const elig=cands;
   elig.sort((a,b)=> (b.avgFin-a.avgFin) || (RNG()-0.5));
   const open=Math.max(0, MIXED_N - autos.length);
   // fill open slots in priority order, never reusing a player across two activated pairs
@@ -928,7 +949,7 @@ function run(){
 
   const gap=document.getElementById('gapBox');
   gap.innerHTML = short>0
-    ? `<div class="gap"><strong>Field short by ${short}.</strong> Not enough same-school pairs whose partners both lost their first match to fill all ${bids.prov} provisional slots — the bracket runs with ${short} bye line(s). A real submission window would let schools designate more provisional pairings than the data here captures.</div>`
+    ? `<div class="gap"><strong>Field short by ${short}.</strong> Not enough eligible state qualifiers (lost their first match) to fill all ${bids.prov} provisional slots — the bracket runs with ${short} bye line(s). A real submission window would let schools designate more provisional pairings than the data here captures.</div>`
     : '';
 
   // provisional table
@@ -941,7 +962,7 @@ function run(){
                  `<td class="n">${p.avgFin.toFixed(1)}</td><td>${status}</td>`;
     ptb.appendChild(tr);
   });
-  if(!elig.length){ const tr=document.createElement('tr'); tr.innerHTML='<td colspan="6" class="note">No eligible provisional pairs this run (no same-school boy+girl singles qualifiers who both lost their first match).</td>'; ptb.appendChild(tr); }
+  if(!elig.length){ const tr=document.createElement('tr'); tr.innerHTML='<td colspan="6" class="note">No eligible provisional pairs this run (no state qualifiers lost their first match).</td>'; ptb.appendChild(tr); }
 
   // automatics table
   const atb=document.querySelector('#autoTable tbody'); atb.innerHTML='';
