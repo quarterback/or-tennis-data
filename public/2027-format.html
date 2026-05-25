@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2027 Format Modeler — Mixed Doubles + Dual Finals</title>
+<style>
+  :root{--bg:#fafafa;--panel:#fff;--border:#d0d0d0;--text:#222;--muted:#777;--accent:#2a6dbf;--hot:#e74c3c;--good:#2e7d32;--warm:#f39c12;}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:16px;}
+  h1{margin:0 0 6px;font-size:20px;} h2{margin:16px 0 8px;font-size:15px;}
+  .subtitle{color:var(--muted);font-size:13px;margin-bottom:14px;max-width:900px;}
+  .controls{display:flex;flex-wrap:wrap;gap:14px;align-items:center;padding:10px 12px;background:var(--panel);border:1px solid var(--border);border-radius:6px;margin-bottom:12px;}
+  .controls label{font-size:13px;} .controls select,.controls input,.controls button{padding:4px 8px;font-size:13px;}
+  .controls input[type=number]{width:60px;}
+  .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:12px;} @media(max-width:1000px){.grid{grid-template-columns:1fr;}}
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:10px 14px;margin-bottom:12px;}
+  table{width:100%;border-collapse:collapse;font-size:12.5px;} th,td{padding:4px 6px;text-align:left;border-bottom:1px solid #eee;}
+  th{background:#f5f5f5;font-weight:600;} td.n{text-align:right;font-variant-numeric:tabular-nums;}
+  .pill{display:inline-block;padding:1px 6px;border-radius:10px;font-size:11px;}
+  .pill.auto{background:#e6f5e6;color:#143;} .pill.prov{background:#d9eaff;color:#024;} .pill.alt{background:#eee;color:#666;} .pill.tbd{background:#ffe08a;color:#000;}
+  .note{font-size:12px;color:var(--muted);margin-top:6px;} .warn{color:var(--hot);font-weight:600;font-size:12px;} .ok{color:var(--good);font-size:12px;}
+  .bracket{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;line-height:1.5;}
+  .bracket .champ{color:var(--good);font-weight:700;} .bracket .rnd{color:var(--muted);border-top:1px dashed #ccc;margin-top:6px;padding-top:3px;}
+  .gap{background:#fff8e1;border:1px solid #ffe08a;border-radius:5px;padding:8px 10px;font-size:12px;margin-top:8px;}
+  code{background:#f0f0f0;padding:1px 4px;border-radius:3px;}
+</style>
+</head>
+<body>
+
+<h1>2027 OSAA Tennis Format Modeler</h1>
+<div class="subtitle">
+  Models the proposed 2027 individual tournament: a <strong>16-team mixed doubles</strong> bracket replaces consolation
+  in each classification. Mixed pairs are <strong>same-school only</strong>, and per the proposal <strong>only one
+  partner must be a state qualifier</strong> — the other can be a rostered teammate who played the regular season and
+  districts but didn't qualify (shown fictional, tagged <em>+roster</em>). Two streams fill the 16 lines —
+  <span class="pill auto">automatic</span> district bids and <span class="pill prov">provisional</span> pairs that
+  <strong>activate when the pair's state qualifier loses their first match</strong> (a two-qualifier pair needs both
+  to lose). After singles/doubles round 1, eligible provisionals are sorted by averaged district finish (a
+  non-qualifier counts as 5; lower finishers first) and backfill the open
+  <span class="pill tbd">TBD</span> slots; the rest are <span class="pill alt">alternates</span>. No team points exist
+  in 2027 — this is its own championship. Everything is chalk-simulated and reproducible from the draw seed.
+</div>
+
+<div class="controls">
+  <label>Classification:
+    <select id="clsSel"><option>6A</option><option>5A</option><option>4A</option></select>
+  </label>
+  <label>Draw seed: <input type="number" id="seed" value="1"></label>
+  <button id="runBtn">Run R1 &amp; build mixed bracket</button>
+  <span id="status" class="note"></span>
+</div>
+
+<div class="grid">
+  <div class="panel">
+    <h2>Mixed field assembly</h2>
+    <div class="note" id="fieldNote"></div>
+    <div id="gapBox"></div>
+    <h2 style="margin-top:14px">Provisional activation (after singles/doubles R1)</h2>
+    <div class="note">Eligible = the pair's state qualifier(s) lost their first match (a <em>+roster</em> non-qualifier has no match to lose). Sorted by averaged district finish (non-qualifier = 5), lower finishers first; ties by draw. Top N fill open slots; rest are alternates.</div>
+    <table id="provTable"><thead><tr><th>#</th><th>Pair (same school)</th><th>School</th><th>SD</th><th class="n">avg fin</th><th>Status</th></tr></thead><tbody></tbody></table>
+  </div>
+  <div class="panel">
+    <h2 id="brHdr">Mixed doubles bracket</h2>
+    <div class="note" id="brNote"></div>
+    <div class="bracket" id="bracket"></div>
+  </div>
+</div>
+
+<div class="panel">
+  <h2>Automatic entries (illustrative)</h2>
+  <div class="note">District mixed bids aren't regulated by OSAA and have no published data, so these are generated as a plausible
+    spread (up to 2 same-school pairs per district that fields both genders). They're placeholders to demonstrate field
+    composition, not real entries.</div>
+  <table id="autoTable"><thead><tr><th>#</th><th>Pair</th><th>School</th><th>SD</th><th class="n">avg fin</th></tr></thead><tbody></tbody></table>
+</div>
+
+<div class="panel">
+  <h2>Dual team finals (2027 new event)</h2>
+  <div class="note">Each class's dual tournament ends with a Boys final and a Girls final at the state site — an
+    8-match dual (4 singles + 4 doubles), <strong>play-to-clinch: first school to 5 wins</strong> takes the title;
+    remaining matches are dead rubbers. Played <span id="dualDay"></span>. Finalists are illustrative (no dual-bracket
+    data exists) — pick any two schools, click winners, or Simulate. Click a result cell to cycle —/A/B.</div>
+  <div id="duals"></div>
+</div>
+
+<div class="panel" id="schedPanel">
+  <h2>Schedule / info sheet <button id="printBtn" style="font-size:12px;margin-left:8px">Print</button></h2>
+  <div class="note">Drop-in running order: mixed doubles occupies the former consolation slots; the dual finals sit on
+    the pre-individual day. Times per the proposal brief.</div>
+  <div id="schedule"></div>
+</div>
+
+<script>
+const FIELDS = {
+  // ---------------- GIRLS 6A (7 districts) ----------------
+  g6Ad: [
+    {name:'Sacks/Brennecke',school:'Grant',sd:'SD1',fin:1},
+    {name:'Llados/Johnston',school:'Ida B. Wells',sd:'SD1',fin:2},
+    {name:'Hanson/Tadjedin',school:'Grant',sd:'SD1',fin:3},
+    {name:'Jones/Stevens',school:'Lincoln',sd:'SD1',fin:4},
+    {name:'Larsen/Hasle',school:'Jesuit',sd:'SD2',fin:1},
+    {name:'MacPherson/Cormack',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Rahul/Lu',school:'Westview',sd:'SD2',fin:3},
+    {name:'Blinkova/Wu',school:'Mountainside',sd:'SD2',fin:4},
+    {name:'Hendricks/Rickards',school:'McMinnville',sd:'SD3',fin:1},
+    {name:'Douglass/Kondrath',school:'Sherwood',sd:'SD3',fin:2},
+    {name:'Hendricks/Nash',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Squires/Northrup',school:'Sherwood',sd:'SD3',fin:4},
+    {name:'Stanford/Zanavich',school:'Central Catholic',sd:'SD4',fin:1},
+    {name:'Mahurin/Mahurin',school:'Barlow',sd:'SD4',fin:2},
+    {name:'Mork/Chandler',school:'Central Catholic',sd:'SD4',fin:3},
+    {name:'Sdrulla/Albano',school:'Central Catholic',sd:'SD4',fin:4},
+    {name:'Fitzgerald/Fitzgerald',school:'Lakeridge',sd:'SD5',fin:1},
+    {name:'Rice/Schmidt',school:'Lake Oswego',sd:'SD5',fin:2},
+    {name:'Papasouliotis/Agan',school:'Lakeridge',sd:'SD5',fin:3},
+    {name:'Tan/Villanueva',school:'Tualatin',sd:'SD5',fin:4},
+    {name:'Warner/Crump',school:'Sprague',sd:'SD6',fin:1},
+    {name:'Foote/Heikila',school:'West Salem',sd:'SD6',fin:2},
+    {name:'Beilby/Schaefer',school:'South Salem',sd:'SD6',fin:3},
+    {name:'Nakagawa/Lohrman',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Kearney/Piquette',school:'Sheldon',sd:'SD7',fin:1},
+    {name:'Cho/Park',school:'South Eugene',sd:'SD7',fin:2},
+    {name:'Alrahmani/Yao',school:'South Eugene',sd:'SD7',fin:3},
+    {name:'Berg/Robinson',school:'Grants Pass',sd:'SD7',fin:4},
+  ],
+  g6As: [
+    {name:'Carlyta Barfield',school:'Benson',sd:'SD1',fin:1},
+    {name:'Stella Seidel',school:'Grant',sd:'SD1',fin:2},
+    {name:'Sitara Soman',school:'Lincoln',sd:'SD1',fin:3},
+    {name:'Evie Sasek',school:'Grant',sd:'SD1',fin:4},
+    {name:'Nikhitha Suresh',school:'Westview',sd:'SD2',fin:1},
+    {name:'Krupa Rao',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Anna Bucher',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Joelle Anderson',school:'Mountainside',sd:'SD2',fin:4},
+    {name:'Marjorie Tamber',school:'McMinnville',sd:'SD3',fin:1},
+    {name:'Lilyanna Gerber',school:'Glencoe',sd:'SD3',fin:2},
+    {name:'Stephanie Fuchs',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Adele Clenaghen',school:'Sherwood',sd:'SD3',fin:4},
+    {name:'Sofia Sorokina',school:'Nelson',sd:'SD4',fin:1},
+    {name:'Lauren Wood',school:'Barlow',sd:'SD4',fin:2},
+    {name:'Haley Wood',school:'Barlow',sd:'SD4',fin:3},
+    {name:'Amy Do',school:'David Douglas',sd:'SD4',fin:4},
+    {name:'Sonya Drayton',school:'West Linn',sd:'SD5',fin:1},
+    {name:'Molly Eames',school:'Lake Oswego',sd:'SD5',fin:2},
+    {name:'Lilly Prideaux',school:'West Linn',sd:'SD5',fin:3},
+    {name:'McKinley Fisher',school:"St. Mary's Acad.",sd:'SD5',fin:4},
+    {name:'Mariela Hajdaravic',school:'Sprague',sd:'SD6',fin:1},
+    {name:'Ava Decker',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Cate Nickel',school:'Sprague',sd:'SD6',fin:3},
+    {name:'Ellison Kerr',school:'West Salem',sd:'SD6',fin:4},
+    {name:'Alexis Uschold',school:'South Medford',sd:'SD7',fin:1},
+    {name:'Olivia Uschold',school:'South Medford',sd:'SD7',fin:2},
+    {name:'Sydney Chandler',school:'South Eugene',sd:'SD7',fin:3},
+    {name:'Keira Chance',school:'Sheldon',sd:'SD7',fin:4},
+  ],
+  // ---------------- GIRLS 5A (4 districts) ----------------
+  g5Ad: [
+    {name:'Carter/Montecucco',school:'La Salle Prep',sd:'SD1',fin:1},
+    {name:'Nguyen/Maulding',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Fuller/Dalbey',school:'Hood River Valley',sd:'SD1',fin:3},
+    {name:'Anderson/Valdivia',school:'La Salle Prep',sd:'SD1',fin:4},
+    {name:'Pearson-Albano/Vogel',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Paulick/Boney',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Wilson/Wilson',school:'Thurston',sd:'SD2',fin:3},
+    {name:'Richardson/Toensing',school:'Springfield',sd:'SD2',fin:4},
+    {name:'Lin/Newbery',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Davisson/Davisson',school:'Silverton',sd:'SD3',fin:2},
+    {name:'Yong/Li',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Arnett/Fletcher',school:'West Albany',sd:'SD3',fin:4},
+    {name:'Jones/Jones',school:'Redmond',sd:'SD4',fin:1},
+    {name:'Vaughan/Vaughan',school:'Bend',sd:'SD4',fin:2},
+    {name:'Steltzer/Monson',school:'Redmond',sd:'SD4',fin:3},
+    {name:'Finley/Cook',school:'Summit',sd:'SD4',fin:4},
+  ],
+  g5As: [
+    {name:'Kaylen Mitchell',school:'Hood River Valley',sd:'SD1',fin:1},
+    {name:'Trina Dinh',school:'Parkrose',sd:'SD1',fin:2},
+    {name:'Luci Reid',school:'La Salle Prep',sd:'SD1',fin:3},
+    {name:'Teagan Hamilton',school:'Wilsonville',sd:'SD1',fin:4},
+    {name:'Claudia Stadtmueller',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Anika Stadtmueller',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Lauren Thomas',school:'Churchill',sd:'SD2',fin:3},
+    {name:'Lilly Hall',school:'Churchill',sd:'SD2',fin:4},
+    {name:'Emily Gu',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Suzie Liu',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Tessa Zevallos',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Leah Trinidad',school:'Crescent Valley',sd:'SD3',fin:4},
+    {name:'Teagan Campbell',school:'Summit',sd:'SD4',fin:1},
+    {name:'Meghan Kelly',school:'Summit',sd:'SD4',fin:2},
+    {name:'Kuinlan Hayes',school:'Bend',sd:'SD4',fin:3},
+    {name:'Rylie Rosenberg',school:'Redmond',sd:'SD4',fin:4},
+  ],
+  // ---------------- GIRLS 4A/3A/2A/1A (5 districts) ----------------
+  g4Ad: [
+    {name:'Perez/Mehta',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Ji/Li',school:'Oregon Episcopal',sd:'SD1',fin:2},
+    {name:'Kelly/Sharan',school:'Catlin Gabel',sd:'SD1',fin:3},
+    {name:'Yoken/Pajkic',school:'Catlin Gabel',sd:'SD1',fin:4},
+    {name:'Larson/Tyner',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Suelzle/Withers',school:'Cascade',sd:'SD2',fin:2},
+    {name:'Murphy/Helfrich',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'Hirons/McLaughlin',school:'Marist Catholic',sd:'SD2',fin:4},
+    {name:'Cohee/Mahar',school:'Cascade Christian',sd:'SD3',fin:1},
+    {name:'Ravassipour/Olson',school:"St. Mary's",sd:'SD3',fin:2},
+    {name:'Hung/Ho',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Smith/Clark',school:'North Bend',sd:'SD3',fin:4},
+    {name:'Mueller/Yates',school:'Irrigon',sd:'SD4',fin:1},
+    {name:'Puddy/Pope',school:'Madras',sd:'SD4',fin:2},
+    {name:'Calvillo/Chavez',school:'Riverside',sd:'SD4',fin:3},
+    {name:'Pope/Burts',school:'Madras',sd:'SD4',fin:4},
+    {name:'Nieskens/Seals',school:'Vale',sd:'SD5',fin:1},
+    {name:'Scott/Armstrong',school:'La Grande',sd:'SD5',fin:2},
+    {name:'Gonzalez/Schoorl',school:'Vale',sd:'SD5',fin:3},
+    {name:'Bennett/Mckrola',school:'Vale',sd:'SD5',fin:4},
+  ],
+  g4As: [
+    {name:'Ria Shah',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Nina Rinard',school:'Riverdale',sd:'SD1',fin:2},
+    {name:'Margo Nicholas',school:'Oregon Episcopal',sd:'SD1',fin:3},
+    {name:'Hailey Clayton',school:'Oregon Episcopal',sd:'SD1',fin:4},
+    {name:'Whitney Hedden',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Phoebie Larson',school:'Marist Catholic',sd:'SD2',fin:2},
+    {name:'Alanna Scala',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'Lucy King',school:'Philomath',sd:'SD2',fin:4},
+    {name:'Carys Chamberland',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Adalie Ford',school:"St. Mary's",sd:'SD3',fin:2},
+    {name:'Mia Cabalo',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Amelia Peck',school:'North Bend',sd:'SD3',fin:4},
+    {name:'Cypress Tolman',school:'Madras',sd:'SD4',fin:1},
+    {name:'Catalina Valencia',school:'Irrigon',sd:'SD4',fin:2},
+    {name:'Nancy Quinto',school:'Madras',sd:'SD4',fin:3},
+    {name:'Kylee Almonte',school:'Stanfield/Echo',sd:'SD4',fin:4},
+    {name:'Brystol Keller',school:'Vale',sd:'SD5',fin:1},
+    {name:'Liz Timm',school:'Baker/PV',sd:'SD5',fin:2},
+    {name:'McKinley Moore',school:'Pendleton',sd:'SD5',fin:3},
+    {name:'Noemi Alvarez-Barroso',school:'Pendleton',sd:'SD5',fin:4},
+  ],
+  // ---------------- BOYS 6A (7 districts) ----------------
+  b6Ad: [
+    {name:'Alexander/Ramachandran',school:'Lincoln',sd:'SD1',fin:1},
+    {name:'Potter/Martinez Griffin',school:'Grant',sd:'SD1',fin:2},
+    {name:'Solodky/Silver',school:'Lincoln',sd:'SD1',fin:3},
+    {name:'Semler/Torch',school:'Lincoln',sd:'SD1',fin:4},
+    {name:'Pitchuka/Patel',school:'Westview',sd:'SD2',fin:1},
+    {name:'Pfeiffer/Moore',school:'Sunset',sd:'SD2',fin:2},
+    {name:'Ebramsyah/Lee',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Koopman/Wang',school:'Jesuit',sd:'SD2',fin:4},
+    {name:'Delay/Mears',school:'Newberg',sd:'SD3',fin:1},
+    {name:'Alawode/Bigham',school:'Glencoe',sd:'SD3',fin:2},
+    {name:'Bills/Haught',school:'McMinnville',sd:'SD3',fin:3},
+    {name:'Miele/Doman',school:'Newberg',sd:'SD3',fin:4},
+    {name:'Albano/Chandler',school:'Central Catholic',sd:'SD4',fin:1},
+    {name:'Truong/Sorokin',school:'Nelson',sd:'SD4',fin:2},
+    {name:'Kaydalin/Aing',school:'Nelson',sd:'SD4',fin:3},
+    {name:'Nguyen/Diep',school:'Clackamas',sd:'SD4',fin:4},
+    {name:'Cui/Cui',school:'Lake Oswego',sd:'SD5',fin:1},
+    {name:'Huberty/Morrison',school:'West Linn',sd:'SD5',fin:2},
+    {name:'Xiao/Lee',school:'Lakeridge',sd:'SD5',fin:3},
+    {name:'Lee/Golovnykh',school:'Lake Oswego',sd:'SD5',fin:4},
+    {name:'Wilcox/Solis',school:'South Salem',sd:'SD6',fin:1},
+    {name:'Pederson/Basl',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Nagaraj/Mungra',school:'South Salem',sd:'SD6',fin:3},
+    {name:'Crosby/Wickstrom',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Zaretsky/Wang',school:'South Eugene',sd:'SD7',fin:1},
+    {name:'Howard/Hoddle',school:'Roseburg',sd:'SD7',fin:2},
+    {name:'Smith/Von Strahl',school:'South Medford',sd:'SD7',fin:3},
+    {name:'Huffaker/Huffaker',school:'Grants Pass',sd:'SD7',fin:4},
+  ],
+  b6As: [
+    {name:'Cayden Laughton',school:'Lincoln',sd:'SD1',fin:1},
+    {name:'Josh Parker Howard',school:'McDaniel',sd:'SD1',fin:2},
+    {name:'Max Rasheed',school:'Cleveland',sd:'SD1',fin:3},
+    {name:'Rafa Valverde',school:'Grant',sd:'SD1',fin:4},
+    {name:'Tristan Hernandez',school:'Jesuit',sd:'SD2',fin:1},
+    {name:'Arnav Arora',school:'Mountainside',sd:'SD2',fin:2},
+    {name:'Logan Aman',school:'Jesuit',sd:'SD2',fin:3},
+    {name:'Ethan Dusicka',school:'Beaverton',sd:'SD2',fin:4},
+    {name:'Jai Tana',school:'Liberty',sd:'SD3',fin:1},
+    {name:'Andrew Swartout',school:'Newberg',sd:'SD3',fin:2},
+    {name:'Elijah Miele',school:'Newberg',sd:'SD3',fin:3},
+    {name:'Luc Barre',school:'Newberg',sd:'SD3',fin:4},
+    {name:'Patrick Wood',school:'Barlow',sd:'SD4',fin:1},
+    {name:'Wade Robertson',school:'Central Catholic',sd:'SD4',fin:2},
+    {name:'Noah Dahl',school:'Barlow',sd:'SD4',fin:3},
+    {name:'Tom Ca',school:'David Douglas',sd:'SD4',fin:4},
+    {name:'Camden Board',school:'Tigard',sd:'SD5',fin:1},
+    {name:'Evan Lange',school:'West Linn',sd:'SD5',fin:2},
+    {name:'Sam Eder',school:'Lake Oswego',sd:'SD5',fin:3},
+    {name:'Shingo Okazaki',school:'Tualatin',sd:'SD5',fin:4},
+    {name:'Josiah Smith',school:'South Salem',sd:'SD6',fin:1},
+    {name:'Marcus Heater',school:'Sprague',sd:'SD6',fin:2},
+    {name:'Will Haworth',school:'West Salem',sd:'SD6',fin:3},
+    {name:'Evan Burnett',school:'Sprague',sd:'SD6',fin:4},
+    {name:'Alexander Totoian',school:'Roseburg',sd:'SD7',fin:1},
+    {name:'Alex Gurov',school:'South Medford',sd:'SD7',fin:2},
+    {name:'Andy Brown',school:'Sheldon',sd:'SD7',fin:3},
+    {name:'Ramin Abrahime',school:'Roseburg',sd:'SD7',fin:4},
+  ],
+  // ---------------- BOYS 5A (4 districts) ----------------
+  b5Ad: [
+    {name:'Windsheimer/Wettstein',school:'Wilsonville',sd:'SD1',fin:1},
+    {name:'Wong/Wong',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Richmond/Faisel',school:'Wilsonville',sd:'SD1',fin:3},
+    {name:'Wagner/Wagner',school:'Hood River Valley',sd:'SD1',fin:4},
+    {name:'Conachy Chang/Park',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Spain/Jagels',school:'Thurston',sd:'SD2',fin:2},
+    {name:'Leiserson/Campagna',school:'Ashland',sd:'SD2',fin:3},
+    {name:'Hernandez/Torres-Montes',school:'Thurston',sd:'SD2',fin:4},
+    {name:'Koller/Greschner',school:'Corvallis',sd:'SD3',fin:1},
+    {name:'Mcmanus/Tokarczyk',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Hackethorn/Larsen',school:'Corvallis',sd:'SD3',fin:3},
+    {name:'Elliott/Hughes',school:'West Albany',sd:'SD3',fin:4},
+    {name:'Young/Virgilio',school:'Summit',sd:'SD4',fin:1},
+    {name:'Segesta/Perle',school:'Summit',sd:'SD4',fin:2},
+    {name:'Schaalma/Bottorff',school:'Ridgeview',sd:'SD4',fin:3},
+    {name:'Quinn/Walker',school:'Crook County',sd:'SD4',fin:4},
+  ],
+  b5As: [
+    {name:'Dmitrii Ganovichev',school:'Canby',sd:'SD1',fin:1},
+    {name:'Kaiden Harris',school:'La Salle Prep',sd:'SD1',fin:2},
+    {name:'Tom Huynh',school:'Parkrose',sd:'SD1',fin:3},
+    {name:'River Nicols',school:'La Salle Prep',sd:'SD1',fin:4},
+    {name:'Max Herron',school:'Ashland',sd:'SD2',fin:1},
+    {name:'Aarav Sheoran',school:'Ashland',sd:'SD2',fin:2},
+    {name:'Rikuya Kasai',school:'Springfield',sd:'SD2',fin:3},
+    {name:'Peyton Reed',school:'Thurston',sd:'SD2',fin:4},
+    {name:'Andrew Liu',school:'Crescent Valley',sd:'SD3',fin:1},
+    {name:'Aidan Lin',school:'Crescent Valley',sd:'SD3',fin:2},
+    {name:'Jason Han',school:'Crescent Valley',sd:'SD3',fin:3},
+    {name:'Cristian Herrera',school:'South Albany',sd:'SD3',fin:4},
+    {name:'Mika Nader',school:'Bend',sd:'SD4',fin:1},
+    {name:'Dashiell Meltzer',school:'Bend',sd:'SD4',fin:2},
+    {name:'Max Voige',school:'Caldera',sd:'SD4',fin:3},
+    {name:'Jensen Burke',school:'Redmond',sd:'SD4',fin:4},
+  ],
+  // ---------------- BOYS 4A/3A/2A/1A (5 districts) ----------------
+  b4Ad: [
+    {name:'Freres/Oei-Johnson',school:'Oregon Episcopal',sd:'SD1',fin:1},
+    {name:'Do/Bhardwaj',school:'Oregon Episcopal',sd:'SD1',fin:2},
+    {name:'Young/Deshmukh',school:'Oregon Episcopal',sd:'SD1',fin:3},
+    {name:'Do/Peizner',school:'Oregon Episcopal',sd:'SD1',fin:4},
+    {name:'Hedges/Murphy',school:'Cascade',sd:'SD2',fin:1},
+    {name:'Larsen/Hatfield',school:'Stayton',sd:'SD2',fin:2},
+    {name:'McNamar/Barnes',school:'Junction City',sd:'SD2',fin:3},
+    {name:'Delaney/Vadlani',school:'Marist Catholic',sd:'SD2',fin:4},
+    {name:'Peterson/Dorcak',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Kucinsky/Kerley',school:'Henley',sd:'SD3',fin:2},
+    {name:'Johnston/David',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Ennis-Haro/Murphy',school:'Cascade Christian',sd:'SD3',fin:4},
+    {name:'Sanchez/Angel',school:'Stanfield/Echo',sd:'SD4',fin:1},
+    {name:'Derksen/Murray',school:'Sisters',sd:'SD4',fin:2},
+    {name:'Rodriguez/Emmett',school:'The Dalles',sd:'SD4',fin:3},
+    {name:'Pothier/Chavez',school:'The Dalles',sd:'SD4',fin:4},
+    {name:'Burton/Burton',school:'Baker/PV',sd:'SD5',fin:1},
+    {name:'Pepera/Schwartz',school:'Baker/PV',sd:'SD5',fin:2},
+    {name:'Hildebrandt/Jones',school:'La Grande',sd:'SD5',fin:3},
+    {name:'Cutler/Young',school:'Nyssa',sd:'SD5',fin:4},
+  ],
+  b4As: [
+    {name:'Zareh Gonzalvo',school:'Catlin Gabel',sd:'SD1',fin:1},
+    {name:'Kai Stone',school:'Catlin Gabel',sd:'SD1',fin:2},
+    {name:'Ethan Anand',school:'Riverdale',sd:'SD1',fin:3},
+    {name:'Casen Rasmussen',school:'Blanchet Catholic',sd:'SD1',fin:4},
+    {name:'Griffen Scoble',school:'Marist Catholic',sd:'SD2',fin:1},
+    {name:'Andrew Suelzle',school:'Cascade',sd:'SD2',fin:2},
+    {name:'Alexander Ricketts',school:'Marist Catholic',sd:'SD2',fin:3},
+    {name:'William Clausen',school:'Cascade',sd:'SD2',fin:4},
+    {name:'Ben Smith',school:"St. Mary's",sd:'SD3',fin:1},
+    {name:'Glenn Dougherty',school:'Klamath Union',sd:'SD3',fin:2},
+    {name:'Luke Oliva',school:"St. Mary's",sd:'SD3',fin:3},
+    {name:'Ben Turek',school:'Cascade Christian',sd:'SD3',fin:4},
+    {name:'Dominic Pulver',school:'Sisters',sd:'SD4',fin:1},
+    {name:'Isidro Olivera',school:'Madras',sd:'SD4',fin:2},
+    {name:'Dante Kim',school:'The Dalles',sd:'SD4',fin:3},
+    {name:'Andrew Calderon',school:'Riverside',sd:'SD4',fin:4},
+    {name:'Eli Seals',school:'Vale',sd:'SD5',fin:1},
+    {name:'Elijah Grimaldo',school:'Four Rivers',sd:'SD5',fin:2},
+    {name:'Andy Villa',school:'Four Rivers',sd:'SD5',fin:3},
+    {name:'Bryan Martinez',school:'McLoughlin',sd:'SD5',fin:4},
+  ],
+};
+
+// Actual committee seed lists, in seed order. Names must match a `name` above.
+// Verified from the published state brackets for 4A/3A/2A/1A (girls + boys); these
+// include district *runners-up* (e.g. girls doubles #3 Suelzle/Withers, singles #3
+// Phoebie Larson) — which is exactly why deriving seeds from "district champions"
+// is wrong. Fields without an entry here default the pickers to district champions;
+// set the real seeds yourself with the dropdowns.
+const SEEDS = {
+  // 6A seeds 8 (girls doubles: only 1-6 legible in the bracket; 7-8 left to default)
+  g6Ad: ['Larsen/Hasle', 'MacPherson/Cormack', 'Rahul/Lu', 'Hendricks/Rickards', 'Kearney/Piquette', 'Cho/Park'],
+  g6As: ['Sofia Sorokina', 'Nikhitha Suresh', 'Sonya Drayton', 'Carlyta Barfield', 'Lauren Wood', 'Alexis Uschold', 'Krupa Rao', 'Haley Wood'],
+  b6Ad: ['Cui/Cui', 'Alexander/Ramachandran', 'Zaretsky/Wang', 'Pitchuka/Patel', 'Potter/Martinez Griffin', 'Huberty/Morrison', 'Pfeiffer/Moore', 'Semler/Torch'],
+  b6As: ['Cayden Laughton', 'Tristan Hernandez', 'Arnav Arora', 'Camden Board', 'Alexander Totoian', 'Patrick Wood', 'Alex Gurov', 'Logan Aman'],
+  // 5A seeds 4
+  g5Ad: ['Lin/Newbery', 'Carter/Montecucco', 'Jones/Jones', 'Davisson/Davisson'],
+  g5As: ['Emily Gu', 'Claudia Stadtmueller', 'Kaylen Mitchell', 'Kuinlan Hayes'],
+  b5Ad: ['Koller/Greschner', 'Windsheimer/Wettstein', 'Wong/Wong', 'Young/Virgilio'],
+  b5As: ['Dmitrii Ganovichev', 'Kaiden Harris', 'Andrew Liu', 'Mika Nader'],
+  // 4A/3A/2A/1A seeds 4
+  g4Ad: ['Perez/Mehta', 'Larson/Tyner', 'Suelzle/Withers', 'Nieskens/Seals'],
+  g4As: ['Whitney Hedden', 'Ria Shah', 'Phoebie Larson', 'Carys Chamberland'],
+  b4Ad: ['Freres/Oei-Johnson', 'Peterson/Dorcak', 'Do/Bhardwaj', 'Hedges/Murphy'],
+  b4As: ['Zareh Gonzalvo', 'Griffen Scoble', 'Kai Stone', 'Ben Smith'],
+};
+
+// Default seed count: the number actually seeded for that field (the committee may
+// seed fewer than the max — e.g. girls 6A doubles seeded only 6). Falls back to the
+// OSAA maximum for the field size (6A→8, else→4) when no committee list is known.
+function defaultSeedCount(){
+  const preset = document.getElementById('presetSel').value;
+  if(SEEDS[preset]) return SEEDS[preset].length;
+  return getEntries().length >= 28 ? 8 : 4;
+}
+
+function syntheticField(D, Q) {
+  const out = [];
+  for (let d = 1; d <= D; d++)
+    for (let q = 1; q <= Q; q++)
+      out.push({ name:`SD${d}-${q}`, school:`Team ${d}.${q}`, sd:`SD${d}`, fin:q });
+  return out;
+}
+
+// =====================================================================
+// Deterministic RNG (mulberry32) so "lot" draws are reproducible
+// =====================================================================
+function mulberry32(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+let RNG = mulberry32(1);
+function shuffle(arr){ for(let i=arr.length-1;i>0;i--){ const j=Math.floor(RNG()*(i+1)); [arr[i],arr[j]]=[arr[j],arr[i]]; } return arr; }
+
+// =====================================================================
+// Bracket math
+// =====================================================================
+function nextPow2(n){ let p=1; while(p<n) p<<=1; return p; }
+
+// seedAtSlot[i] = seed number that the standard bracket places in slot (i+1)
+function seedAtSlot(n){
+  let pls=[1,2];
+  while(pls.length<n){
+    const sum=pls.length*2+1, out=[];
+    for(const p of pls){ out.push(p); out.push(sum-p); }
+    pls=out;
+  }
+  return pls;
+}
+
+// Build slot topology for bracketSize N with M real entries.
+// Returns: slotForSeed, byeAdjacentSlots, playInSlots, emptySlots (0-indexed slots)
+function topology(N, M){
+  const atSlot = seedAtSlot(N);          // atSlot[slot] = seed#
+  const slotForSeed = {};                // seed# -> slot
+  atSlot.forEach((s,slot)=>slotForSeed[s]=slot);
+  const r1partner = {};
+  for(let s=0;s<N;s+=2){ r1partner[s]=s+1; r1partner[s+1]=s; }
+  const byeAdjacent=[], playIn=[], empty=[];
+  for(let slot=0; slot<N; slot++){
+    const seedHere = atSlot[slot];
+    const partnerSeed = atSlot[r1partner[slot]];
+    if(seedHere>M){ empty.push(slot); continue; }       // BYE slot (no real entry)
+    if(partnerSeed>M) byeAdjacent.push(slot);            // real entry whose R1 foe is a bye
+    else playIn.push(slot);                              // real entry that must win R1
+  }
+  return { atSlot, slotForSeed, r1partner, byeAdjacent, playIn, empty };
+}
+
+const quarterOf = (slot,N)=> Math.floor(slot/(N/4));
+const halfOf    = (slot,N)=> slot < N/2 ? 0 : 1;
+const r1pairOf  = (slot)  => slot>>1;
+
+// =====================================================================
+// Merit ranking
+// =====================================================================
+// seeds: array of entry indices (committee order). Remaining ranked by
+// tier: champions (fin 1) -> fin 2 -> fin 3 -> ... ; within tier by lot.
+function meritOrder(entries, seedIdxs){
+  const seeded = new Set(seedIdxs);
+  const ranked = [...seedIdxs];               // seeds first, in committee order
+  const maxFin = Math.max(...entries.map(e=>e.fin));
+  for(let f=1; f<=maxFin; f++){
+    const tier = entries.map((e,i)=>i).filter(i=>!seeded.has(i) && entries[i].fin===f);
+    shuffle(tier);                            // within-tier order is by lot
+    ranked.push(...tier);
+  }
+  return ranked;                              // ranked[r] = entry index at merit rank r (0-based)
+}
+
+function tierLabel(e, seededSet, idx){
+  if(seededSet.has(idx)) return 'seed';
+  if(e.fin===1) return 'champion';
+  return `${e.fin}${['','st','nd','rd'][e.fin]||'th'}`;
+}
+
+// =====================================================================
+// Placement: assign entries to slots respecting separation rules.
+// poolSlotsForRank(rank) tells which slot pool a merit rank belongs to.
+// =====================================================================
+function placeable(entry, slot, placement, entries, N){
+  for(const [s,eIdx] of Object.entries(placement)){
+    const o = entries[eIdx]; const os = +s;
+    if(o.sd===entry.sd && r1pairOf(os)===r1pairOf(slot)) return false;          // same district, R1
+    if(o.school===entry.school && quarterOf(os,N)===quarterOf(slot,N)) return false; // same school, before SF
+    // same-school district 1&2 -> different halves
+    const pairRule = (entry.fin<=2 && o.fin<=2 && o.school===entry.school && o.sd===entry.sd);
+    if(pairRule && halfOf(os,N)===halfOf(slot,N)) return false;
+  }
+  return true;
+}
+
+function constraintScore(e, entries){
+  let s=0; for(const o of entries){ if(o===e) continue; if(o.school===e.school) s+=10; if(o.sd===e.sd) s+=1; } return s;
+}
+
+// Assign a list of entry-indices to a set of slots via backtracking.
+function assignPool(order, slotPool, placement, entries, N){
+  const slots = [...slotPool];
+  function bt(i){
+    if(i===order.length) return true;
+    const eIdx = order[i]; const e = entries[eIdx];
+    const cands = shuffle(slots.filter(s=>!(s in placement) && placeable(e,s,placement,entries,N)));
+    for(const s of cands){
+      placement[s]=eIdx;
+      if(bt(i+1)) return true;
+      delete placement[s];
+    }
+    return false;
+  }
+  return bt(0);
+}
+
+// =====================================================================
+// Build the full draw
+// =====================================================================
+// Standard seed groups: {1},{2},{3,4},{5,8},{9,16}… Seeds within a group >1 are
+// interchangeable by lot (the "flip").
+function seedGroups(count){
+  const groups=[];
+  for(const s of [1,2]) if(count>=s) groups.push([s,s]);
+  let lo=3;
+  while(lo<=count){ const hi=Math.min(count, lo*2-2); groups.push([lo,hi]); lo=hi+1; }
+  return groups;
+}
+
+function buildDraw(entries, seedIdxs, byeMode){
+  const M = entries.length, N = nextPow2(M);
+  const topo = topology(N, M);
+  const byeCount = N - M;
+  const ranked = meritOrder(entries, seedIdxs);     // rank -> entry idx
+  const rankOf = {}; ranked.forEach((eIdx,r)=>rankOf[eIdx]=r);
+  const seededSet = new Set(seedIdxs);
+
+  // Decide which entries are "bye entries" (get a R1 bye) and which "play-in".
+  let byeEntries, playInEntries;
+  if(byeMode==='merit'){
+    byeEntries   = ranked.slice(0, byeCount);
+    playInEntries= ranked.slice(byeCount);
+  } else {
+    // Lot: seeds always get byes; remaining byes drawn by lot from the rest.
+    const seeds = seedIdxs.filter(i=>topo.byeAdjacent.length); // seeds get byes
+    const nonSeed = ranked.filter(i=>!seededSet.has(i));
+    const pool = shuffle([...nonSeed]);
+    byeEntries = [...seedIdxs, ...pool.slice(0, Math.max(0, byeCount - seedIdxs.length))];
+    const byeSet = new Set(byeEntries);
+    playInEntries = ranked.filter(i=>!byeSet.has(i));
+  }
+
+  // Order each group most-constrained-first for placement success.
+  const ord = (g)=> g.slice().sort((a,b)=> constraintScore(entries[b],entries)-constraintScore(entries[a],entries));
+
+  // Try several times (randomized) to satisfy constraints.
+  for(let attempt=0; attempt<400; attempt++){
+    const placement = {};
+    let ok=true;
+    // Seeds 1 & 2 anchor opposite ends; seeds 3-4, 5-8, 9-16 are drawn by lot within
+    // their seed group (the OSAA "flip" that prevents manipulation), but assignPool
+    // keeps a seed where a separation rule forces it to a particular quadrant.
+    for(const [lo,hi] of seedGroups(seedIdxs.length)){
+      const gSeeds=[], gSlots=[];
+      for(let s=lo;s<=hi;s++){ gSeeds.push(seedIdxs[s-1]); gSlots.push(topo.slotForSeed[s]); }
+      if(!assignPool(gSeeds, gSlots, placement, entries, N)){ ok=false; break; }
+    }
+    if(!ok) continue;
+    // Place bye entries (minus seeds already placed) on remaining byeAdjacent slots
+    const seedSlots = new Set(seedIdxs.map((_,k)=>topo.slotForSeed[k+1]));
+    const remBye = ord(byeEntries.filter(i=>!seededSet.has(i)));
+    const openByeSlots = topo.byeAdjacent.filter(s=>!seedSlots.has(s));
+    ok = assignPool(remBye, openByeSlots, placement, entries, N);
+    if(ok) ok = assignPool(ord(playInEntries.filter(i=>!seededSet.has(i))), topo.playIn, placement, entries, N);
+    if(ok) return { placement, N, M, topo, byeCount, ranked, rankOf, seededSet,
+                    byeSet:new Set(byeEntries) };
+  }
+  return null; // could not satisfy (rare / over-constrained input)
+}
+
+// =====================================================================
+// Chalk simulation + scoring
+// =====================================================================
+function simulate(draw, entries){
+  const { placement, N, rankOf } = draw;
+  // slot occupant or null (bye)
+  let layer = [];
+  for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
+  const exitRound = {};            // entry idx -> round index they LOST (0=R1). winner never set here.
+  let round=0, semiLosers=[], runnerUp=null;
+  while(layer.length>1){
+    const next=[];
+    for(let i=0;i<layer.length;i+=2){
+      const a=layer[i], b=layer[i+1];
+      let win, lose;
+      if(a===null && b===null){ next.push(null); continue; }
+      if(a===null){ win=b; lose=null; }
+      else if(b===null){ win=a; lose=null; }
+      else { if(rankOf[a]<=rankOf[b]){win=a;lose=b;} else {win=b;lose=a;} }
+      if(lose!==null){
+        if(layer.length===2) runnerUp=lose;          // lost the final
+        else if(layer.length===4) semiLosers.push(lose);
+        else exitRound[lose]=round;
+      }
+      next.push(win);
+    }
+    layer=next; round++;
+  }
+  const champion = layer[0];
+  // 3rd place: better-merit semifinal loser
+  semiLosers.sort((a,b)=>rankOf[a]-rankOf[b]);
+  const third = semiLosers[0], fourth = semiLosers[1];
+
+  // ---- main-draw match wins (a bye is NOT a win) ----
+  const winCount = {}; entries.forEach((_,i)=>winCount[i]=0);
+  { let lyr=[]; for(let s=0;s<N;s++) lyr.push(s in placement?placement[s]:null);
+    while(lyr.length>1){ const nx=[]; for(let i=0;i<lyr.length;i+=2){ const a=lyr[i],b=lyr[i+1]; let w;
+      if(a===null&&b===null){nx.push(null);continue;}
+      if(a===null)w=b; else if(b===null)w=a; else { w = rankOf[a]<=rankOf[b]?a:b; winCount[w]++; }
+      nx.push(w);} lyr=nx; } }
+
+  // ---- who drew a first-round bye ----
+  const slotOf = {}; for(const s in placement) slotOf[placement[s]] = +s;
+  const hadBye = {};
+  entries.forEach((_,i)=>{ const p = draw.topo.r1partner[slotOf[i]]; hadBye[i] = !(p in placement); });
+
+  // ---- consolation bracket: fed by round-0 and round-1 losers, chalk-run ----
+  // Scoring matches OSAA: +0.5 to reach the consolation semi, +0.5 the final,
+  // +1 to win it (capped at 2). Modeled by depth: champ 2, finalist 1, semis 0.5.
+  const consPts = {}; entries.forEach((_,i)=>consPts[i]=0);
+  const consField = [];
+  entries.forEach((_,i)=>{ if(exitRound[i]===0 || exitRound[i]===1) consField.push(i); });
+  if(consField.length>=2){
+    consField.sort((a,b)=>rankOf[a]-rankOf[b]);
+    const CN = nextPow2(consField.length), cAt = seedAtSlot(CN);
+    let cl = cAt.map(seed => seed<=consField.length ? consField[seed-1] : null);
+    let cFinalist=null, cSemis=[];
+    while(cl.length>1){
+      const nx=[];
+      for(let i=0;i<cl.length;i+=2){
+        const a=cl[i], b=cl[i+1]; let win, lose;
+        if(a==null && b==null){ nx.push(null); continue; }
+        if(a==null){ win=b; lose=null; } else if(b==null){ win=a; lose=null; }
+        else { if(rankOf[a]<=rankOf[b]){win=a;lose=b;} else {win=b;lose=a;} }
+        if(lose!=null){ if(cl.length===2) cFinalist=lose; else if(cl.length===4) cSemis.push(lose); }
+        nx.push(win);
+      }
+      cl=nx;
+    }
+    if(cl[0]!=null) consPts[cl[0]] = 2;
+    if(cFinalist!=null) consPts[cFinalist] = 1;
+    cSemis.forEach(e=>{ if(e!=null) consPts[e] = 0.5; });
+  }
+
+  // ---- two scoring systems (consolation is identical in both) ----
+  const roundBased = {}, perWin = {};
+  function add(map, eIdx, v){ if(eIdx==null || !v) return; const sc=entries[eIdx].school; map[sc]=(map[sc]||0)+v; }
+  const bonusOn = document.getElementById('podiumBonus').checked;
+  entries.forEach((_,i)=>{
+    const aw = winCount[i];                              // advancement wins (not the 3rd-place match)
+    const byeBonus = (hadBye[i] && aw>=1) ? 1 : 0;       // legacy free-bye point
+    const thirdWin = (i===third) ? 1 : 0;                // won the 3rd-place match
+    // Legacy OSAA: 2 per credited round (+ free bye) + 1 for the 3rd-place match
+    add(roundBased, i, 2*(aw + byeBonus) + thirdWin);
+    // Per-win: 1 per real win (incl. 3rd-place match) + 4-3-2-1 podium, byes worth 0
+    let pw = aw + thirdWin;
+    if(bonusOn) pw += (i===champion?4 : i===runnerUp?3 : i===third?2 : i===fourth?1 : 0);
+    add(perWin, i, pw);
+    // Consolation, identical in both, capped at 2
+    add(roundBased, i, consPts[i]);
+    add(perWin, i, consPts[i]);
+  });
+  return { roundBased, perWin, champion, runnerUp, third, fourth };
+}
+
+// =====================================================================
+// Render
+// =====================================================================
+function esc(s){ return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+function getEntries(){
+  const preset = document.getElementById('presetSel').value;
+  if(preset==='synthetic'){
+    const D=+document.getElementById('dInput').value, Q=+document.getElementById('qInput').value;
+    return syntheticField(D,Q);
+  }
+  return FIELDS[preset].map(e=>({...e}));
+}
+
+// Default seed names: actual committee seeds for real presets, else first-district champions.
+function defaultSeedNames(entries, count){
+  const preset = document.getElementById('presetSel').value;
+  if(SEEDS[preset]) return SEEDS[preset].slice(0, count);
+  const champs=[], seen=new Set();
+  entries.forEach(e=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); champs.push(e.name); } });
+  return champs.slice(0, count);
+}
+
+// Build the seed-picker dropdowns (one per seed line), defaulted but editable.
+function populateSeedPickers(){
+  const entries = getEntries();
+  const count = +document.getElementById('seedCount').value;
+  const defs = defaultSeedNames(entries, count);
+  const cont = document.getElementById('seedPickers');
+  cont.innerHTML='';
+  for(let k=0;k<count;k++){
+    const lab=document.createElement('label'); lab.style.fontSize='13px';
+    lab.textContent='S'+(k+1)+':';
+    const sel=document.createElement('select'); sel.className='seedPick';
+    entries.forEach((e,i)=>{ const o=document.createElement('option'); o.value=i;
+      o.textContent=`${e.name} (${e.sd} #${e.fin})`; sel.appendChild(o); });
+    const di = entries.findIndex(e=>e.name===defs[k]);
+    sel.value = di>=0 ? di : k;
+    sel.addEventListener('change', render);
+    lab.appendChild(sel); cont.appendChild(lab);
+  }
+}
+
+function getSeedIdxs(){
+  const seen=new Set(), out=[];
+  document.querySelectorAll('.seedPick').forEach(s=>{ const i=+s.value; if(!seen.has(i)){ seen.add(i); out.push(i); } });
+  return out;
+}
+
+// The other event in the same gender/classification (g6Ad <-> g6As).
+function siblingKey(preset){
+  if(preset==='synthetic') return null;
+  const sib = preset.slice(0,-1) + (preset.endsWith('d') ? 's' : 'd');
+  return FIELDS[sib] ? sib : null;
+}
+
+// Score a field with its committee-seed defaults (used for the non-selected event).
+function scoreField(fieldKey, byeMode){
+  const ents = FIELDS[fieldKey];
+  let seeds;
+  if(SEEDS[fieldKey]) seeds = SEEDS[fieldKey].map(nm=>ents.findIndex(e=>e.name===nm)).filter(i=>i>=0);
+  else { const champ=[], seen=new Set(); ents.forEach((e,i)=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); champ.push(i); } }); seeds=champ.slice(0,4); }
+  const d = buildDraw(ents, seeds, byeMode);
+  return d ? simulate(d, ents) : null;
+}
+
+// =====================================================================
+// 2027 mixed-doubles model
+// =====================================================================
+const CLASS_FIELDS = {
+  '6A': {bs:'b6As', bd:'b6Ad', gs:'g6As', gd:'g6Ad', districts:7},
+  '5A': {bs:'b5As', bd:'b5Ad', gs:'g5As', gd:'g5Ad', districts:4},
+  '4A': {bs:'b4As', bd:'b4Ad', gs:'g4As', gd:'g4Ad', districts:5},
+};
+const BIDS = { '6A':{auto:14,prov:2}, '5A':{auto:8,prov:8}, '4A':{auto:10,prov:6} };
+const MIXED_N = 16;
+
+// Entries that lost their FIRST PLAYED match (a bye player's first match is round 2).
+// Equivalent to: played >=1 real match and won 0.
+function firstMatchLosers(draw){
+  const {placement,N,rankOf} = draw;
+  let layer=[]; for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
+  const wins={}, played={};
+  while(layer.length>1){
+    const nx=[];
+    for(let i=0;i<layer.length;i+=2){
+      const a=layer[i], b=layer[i+1]; let w;
+      if(a==null&&b==null){ nx.push(null); continue; }
+      if(a==null){ w=b; } else if(b==null){ w=a; }
+      else { played[a]=1; played[b]=1; w = rankOf[a]<=rankOf[b]?a:b; wins[w]=(wins[w]||0)+1; }
+      nx.push(w);
+    }
+    layer=nx;
+  }
+  const losers=new Set();
+  for(const k in played){ const idx=+k; if(!wins[idx]) losers.add(idx); }
+  return losers;
+}
+
+function committeeSeeds(key){
+  const ents=FIELDS[key];
+  if(SEEDS[key]) return SEEDS[key].map(nm=>ents.findIndex(e=>e.name===nm)).filter(i=>i>=0);
+  const c=[], seen=new Set(); ents.forEach((e,i)=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); c.push(i); } });
+  return c;
+}
+function runR1(key){ const d=buildDraw(FIELDS[key], committeeSeeds(key), 'merit'); return d ? firstMatchLosers(d) : new Set(); }
+
+function singlesUnits(key){ return FIELDS[key].map((e,i)=>({key,idx:i,name:e.name,school:e.school,sd:e.sd,fin:e.fin})); }
+
+// A school's eligible members come from its singles AND doubles state qualifiers.
+// A doubles entry is a 2-person team; we treat it as one available member unit
+// (an approximation — its district place and R1 result stand in for the member).
+function memberUnits(cls, gender){
+  const cf=CLASS_FIELDS[cls], sKey=gender==='b'?cf.bs:cf.gs, dKey=gender==='b'?cf.bd:cf.gd, u=[];
+  FIELDS[sKey].forEach((e,i)=>u.push({key:sKey,idx:i,name:e.name,school:e.school,sd:e.sd,fin:e.fin}));
+  FIELDS[dKey].forEach((e,i)=>u.push({key:dKey,idx:i,name:e.name+' (dbls)',school:e.school,sd:e.sd,fin:e.fin}));
+  return u;
+}
+// Fictional non-qualifier partners. The proposal lets a qualifying pairing add a
+// rostered teammate who played the regular season + districts but didn't qualify for
+// state; only ONE partner must be a qualifier. No roster data exists, so these are
+// fictional, tagged "+roster", and counted as district placement 5 for the sort.
+const NQ_FIN=5;
+const NQ_FIRST=['Jordan','Avery','Riley','Casey','Quinn','Hayden','Rowan','Sawyer','Emerson','Finley','Skyler','Reese','Parker','Tatum','Marlowe','Ellis'];
+const NQ_LAST=['Carter','Bennett','Hughes','Vance','Ramsey','Doyle','Mercer','Holt','Sutton','Cross','Patel','Larsen','Walsh','Reyes','Okafor','Nguyen'];
+let NQ_SEQ=0;
+function fictionalPartner(school, sd){
+  const fn=NQ_FIRST[Math.floor(RNG()*NQ_FIRST.length)], ln=NQ_LAST[Math.floor(RNG()*NQ_LAST.length)];
+  return {fictional:true, key:'nq', idx:NQ_SEQ++, name:fn+' '+ln+' (+roster)', school, sd, fin:NQ_FIN};
+}
+
+// Illustrative automatics: up to 2 same-school pairs per district fielding both genders.
+function schoolDistrict(cls, school){
+  const cf=CLASS_FIELDS[cls];
+  for(const k of [cf.bs,cf.bd,cf.gs,cf.gd]){ const e=FIELDS[k].find(x=>x.school===school); if(e) return e.sd; }
+  return 'SD?';
+}
+function repMember(cls, gender, school){
+  const cf=CLASS_FIELDS[cls]; const sKey=gender==='b'?cf.bs:cf.gs, dKey=gender==='b'?cf.bd:cf.gd;
+  let e=FIELDS[sKey].find(x=>x.school===school), tag='';
+  if(!e){ e=FIELDS[dKey].find(x=>x.school===school); tag=' (dbls)'; }
+  return e ? {name:e.name+tag, sd:e.sd, fin:e.fin} : null;
+}
+function genAutomatics(cls){
+  const cf=CLASS_FIELDS[cls], need=BIDS[cls].auto;
+  const schools=new Set(); [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>FIELDS[k].forEach(e=>schools.add(e.school)));
+  const dual=[...schools].filter(s=>{
+    const hasB=FIELDS[cf.bs].some(e=>e.school===s)||FIELDS[cf.bd].some(e=>e.school===s);
+    const hasG=FIELDS[cf.gs].some(e=>e.school===s)||FIELDS[cf.gd].some(e=>e.school===s);
+    return hasB&&hasG;
+  });
+  const byDist={}; dual.forEach(s=>{ const sd=schoolDistrict(cls,s); (byDist[sd]=byDist[sd]||[]).push(s); });
+  const out=[];
+  for(const sd of Object.keys(byDist).sort()){
+    shuffle(byDist[sd]).slice(0,2).forEach(s=>{
+      const b=repMember(cls,'b',s), g=repMember(cls,'g',s); if(!b||!g) return;
+      out.push({school:s, sd:b.sd, avgFin:(b.fin+g.fin)/2, source:'automatic', name:b.name+' / '+g.name,
+                boy:{name:b.name,fin:b.fin}, girl:{name:g.name,fin:g.fin}});
+    });
+  }
+  return out.slice(0, need);
+}
+
+// Lay 16 mixed pairs into a 16-line bracket: same district -> opposite halves; same school -> different quarter.
+function placeMixed(pairs){
+  const N=MIXED_N, placement={}, slots=[]; for(let i=0;i<N;i++) slots.push(i);
+  const legal=(p,slot)=>{
+    for(const s in placement){ const q=pairs[placement[s]], os=+s;
+      // Same-district -> opposite halves is the automatic-draw rule (<=2 per district);
+      // provisionals just fill remaining lines, so it isn't re-imposed on them.
+      if(p.source==='automatic' && q.source==='automatic' && q.sd===p.sd && halfOf(os,N)===halfOf(slot,N)) return false;
+      if(q.school===p.school && quarterOf(os,N)===quarterOf(slot,N)) return false;
+    }
+    return true;
+  };
+  // Place automatics first (they carry the half rule), then provisionals into what's left.
+  const order=pairs.map((_,i)=>i).sort((a,b)=> (pairs[a].source==='automatic'?0:1)-(pairs[b].source==='automatic'?0:1));
+  const bt=(i)=>{ if(i===order.length) return true; const p=pairs[order[i]];
+    for(const s of shuffle(slots.filter(x=>!(x in placement) && legal(p,x)))){ placement[s]=order[i]; if(bt(i+1)) return true; delete placement[s]; }
+    return false; };
+  for(let attempt=0; attempt<150; attempt++){ for(const k in placement) delete placement[k]; if(bt(0)) return placement; }
+  return null;
+}
+
+// Chalk-run the mixed bracket (lower avgFin wins; ties by draw). Returns rounds + champion.
+function simMixed(placement, pairs){
+  const N=MIXED_N; let layer=[]; for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
+  const rounds=[];
+  while(layer.length>1){
+    const matchups=[], nx=[];
+    for(let i=0;i<layer.length;i+=2){
+      const a=layer[i], b=layer[i+1]; let w;
+      if(a==null&&b==null){ nx.push(null); continue; }
+      if(a==null){ w=b; } else if(b==null){ w=a; }
+      else { const fa=pairs[a].avgFin, fb=pairs[b].avgFin; w = (fa<fb || (fa===fb && RNG()<0.5)) ? a : b; }
+      matchups.push({a,b,w}); nx.push(w);
+    }
+    rounds.push(matchups); layer=nx;
+  }
+  return {rounds, champion:layer[0]};
+}
+
+// =====================================================================
+// Render
+// =====================================================================
+function run(){
+  const cls=document.getElementById('clsSel').value;
+  RNG = mulberry32(+document.getElementById('seed').value || 1);
+  const bids=BIDS[cls];
+
+  // 1. Automatics (illustrative)
+  const autos=genAutomatics(cls);
+
+  // 2. Run R1 (singles + doubles, both genders) -> first-match losers, per field key
+  const cf=CLASS_FIELDS[cls];
+  const lossByKey={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>{ lossByKey[k]=runR1(k); });
+  const lost=(u)=> u.fictional || lossByKey[u.key].has(u.idx);
+
+  // 3. Eligible state qualifiers = real qualifiers who lost their first match,
+  //    minus any already used in an automatic pair.
+  const autoNames=new Set(); autos.forEach(p=>{ if(p.boy) autoNames.add(p.school+'|'+p.boy.name); if(p.girl) autoNames.add(p.school+'|'+p.girl.name); });
+  NQ_SEQ=0;
+  const eligB=memberUnits(cls,'b').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
+  const eligG=memberUnits(cls,'g').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
+
+  // 4. Form provisional pairs (only ONE partner must be a state qualifier): within a
+  //    school, match eligible boys<->girls into two-qualifier pairs; leftover or
+  //    single-gender qualifiers bring a fictional +roster non-qualifier teammate.
+  const cands=[];
+  [...new Set([...eligB,...eligG].map(u=>u.school))].forEach(s=>{
+    const bs=eligB.filter(u=>u.school===s), gs=eligG.filter(u=>u.school===s), n=Math.min(bs.length,gs.length);
+    for(let i=0;i<n;i++){ const b=bs[i],g=gs[i];
+      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'2q',name:b.name+' / '+g.name}); }
+    for(let i=n;i<bs.length;i++){ const b=bs[i],g=fictionalPartner(s,b.sd);
+      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
+    for(let i=n;i<gs.length;i++){ const g=gs[i],b=fictionalPartner(s,g.sd);
+      cands.push({boy:b,girl:g,school:s,sd:g.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
+  });
+
+  // 5. Priority: lower district finishers first => DESCENDING avgFin; ties by draw
+  const elig=cands;
+  elig.sort((a,b)=> (b.avgFin-a.avgFin) || (RNG()-0.5));
+  const open=Math.max(0, MIXED_N - autos.length);
+  // fill open slots in priority order, never reusing a player across two activated pairs
+  const used=new Set(), activated=[], alternates=[];
+  const uk=(u)=>u.key+':'+u.idx;
+  for(const p of elig){
+    if(activated.length<open && !used.has(uk(p.boy)) && !used.has(uk(p.girl))){ activated.push(p); used.add(uk(p.boy)); used.add(uk(p.girl)); }
+    else alternates.push(p);
+  }
+
+  // 5. Field + bracket
+  const field=autos.concat(activated);
+  const short=MIXED_N - field.length;
+  document.getElementById('status').innerHTML =
+    `<span class="ok">${cls}: ${autos.length} automatic + ${activated.length} provisional = ${field.length}/16</span>`;
+  document.getElementById('fieldNote').innerHTML =
+    `<strong>${cls}</strong> needs ${bids.auto} automatic bids (2 × ${cf.districts} districts) and `+
+    `${bids.prov} provisional slots. Eligible provisionals this run: <strong>${elig.length}</strong> `+
+    `(${activated.length} activated, ${alternates.length} alternate).`;
+
+  const gap=document.getElementById('gapBox');
+  gap.innerHTML = short>0
+    ? `<div class="gap"><strong>Field short by ${short}.</strong> Not enough eligible state qualifiers (lost their first match) to fill all ${bids.prov} provisional slots — the bracket runs with ${short} bye line(s). A real submission window would let schools designate more provisional pairings than the data here captures.</div>`
+    : '';
+
+  // provisional table
+  const activeSet=new Set(activated);
+  const ptb=document.querySelector('#provTable tbody'); ptb.innerHTML='';
+  elig.forEach((p,i)=>{
+    const status = activeSet.has(p) ? '<span class="pill prov">activated</span>' : '<span class="pill alt">alternate</span>';
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.name)}</td><td>${esc(p.school)}</td><td>${p.sd}</td>`+
+                 `<td class="n">${p.avgFin.toFixed(1)}</td><td>${status}</td>`;
+    ptb.appendChild(tr);
+  });
+  if(!elig.length){ const tr=document.createElement('tr'); tr.innerHTML='<td colspan="6" class="note">No eligible provisional pairs this run (no state qualifiers lost their first match).</td>'; ptb.appendChild(tr); }
+
+  // automatics table
+  const atb=document.querySelector('#autoTable tbody'); atb.innerHTML='';
+  autos.forEach((p,i)=>{ const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.name)}</td><td>${esc(p.school)}</td><td>${p.sd}</td><td class="n">${p.avgFin.toFixed(1)}</td>`;
+    atb.appendChild(tr); });
+
+  // bracket
+  const placement = field.length ? placeMixed(field) : null;
+  const br=document.getElementById('bracket');
+  document.getElementById('brNote').innerHTML = field.length
+    ? `16-line draw, same-district pairs in opposite halves. Chalk projection (lower averaged district finish wins).`
+    : '';
+  if(!placement){ br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; LAST_MC=null; renderSchedule(cls,null); return; }
+  const sim=simMixed(placement, field);
+  const tag=(p)=> p.source==='automatic' ? '<span class="pill auto">A</span>' : '<span class="pill prov">P</span>';
+  let html='<div class="rnd">Round 1</div>';
+  for(let s=0;s<MIXED_N;s+=2){
+    const t=placement[s], b=placement[s+1];
+    const line=(idx)=> idx==null ? '<span class="pill tbd">bye</span>'
+      : `${tag(field[idx])} ${esc(field[idx].name)} <span class="note">(${field[idx].sd}·${field[idx].avgFin.toFixed(1)})</span>`;
+    html+=`<div>${line(t)}</div><div>${line(b)}</div><div class="note">&nbsp;</div>`;
+  }
+  if(sim.champion!=null){
+    const names=['Champion','Finalist'];
+    html+=`<div class="rnd">Chalk result</div><div class="champ">Projected champion: ${esc(field[sim.champion].name)} (${field[sim.champion].school})</div>`;
+  }
+  br.innerHTML=html;
+  LAST_MC = sim.champion!=null ? esc(field[sim.champion].name)+' ('+esc(field[sim.champion].school)+')' : null;
+  renderSchedule(cls, LAST_MC);
+}
+
+// =====================================================================
+// Dual team finals (play-to-clinch)
+// =====================================================================
+let LAST_MC=null, dualState={};
+const DUAL_DAY={'6A':'Wednesday afternoon at THPRD','5A':'Thursday morning at WHRFC','4A':'Thursday morning at OSU'};
+const MATCH_LABELS=['S1','S2','S3','S4','D1','D2','D3','D4'];
+
+function classSchools(cls){ const cf=CLASS_FIELDS[cls]; const s=new Set(); [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>FIELDS[k].forEach(e=>s.add(e.school))); return [...s].sort(); }
+function schoolStrength(cls, g, school){ const cf=CLASS_FIELDS[cls]; const keys=g==='Boys'?[cf.bs,cf.bd]:[cf.gs,cf.gd]; const f=[]; keys.forEach(k=>FIELDS[k].forEach(e=>{ if(e.school===school) f.push(e.fin); })); return f.length ? f.reduce((a,b)=>a+b,0)/f.length : 4.5; }
+function initDuals(cls){ const sc=classSchools(cls); dualState={ Boys:{a:sc[0]||'',b:sc[1]||sc[0]||'',w:Array(8).fill(null)}, Girls:{a:sc[0]||'',b:sc[1]||sc[0]||'',w:Array(8).fill(null)} }; }
+function clinchInfo(w){ let aw=0,bw=0,by=null,idx=-1; for(let i=0;i<8;i++){ if(w[i]==='A')aw++; else if(w[i]==='B')bw++; if(by===null){ if(aw===5){by='A';idx=i;} else if(bw===5){by='B';idx=i;} } } return {aw,bw,by,idx}; }
+function simulateDual(cls, g){ const d=dualState[g]; const sA=schoolStrength(cls,g,d.a), sB=schoolStrength(cls,g,d.b); const p=sA<=sB?0.68:0.32; for(let i=0;i<8;i++) d.w[i]= RNG()<p ? 'A':'B'; renderDuals(); }
+
+function renderDuals(){
+  const cls=document.getElementById('clsSel').value;
+  document.getElementById('dualDay').textContent=DUAL_DAY[cls];
+  const sc=classSchools(cls), cont=document.getElementById('duals'); cont.innerHTML='';
+  ['Boys','Girls'].forEach(g=>{
+    const d=dualState[g]; if(!sc.includes(d.a)) d.a=sc[0]; if(!sc.includes(d.b)) d.b=sc[1]||sc[0];
+    const ci=clinchInfo(d.w), opt=(sel)=>sc.map(s=>`<option ${s===sel?'selected':''}>${esc(s)}</option>`).join('');
+    let h=`<h3 style="margin:8px 0 4px;font-size:13px">${g} final &nbsp;`+
+      `<select data-g="${g}" data-side="a" class="dualSel">${opt(d.a)}</select> vs `+
+      `<select data-g="${g}" data-side="b" class="dualSel">${opt(d.b)}</select> `+
+      `<button class="dualSim" data-g="${g}">Simulate</button> <button class="dualClr" data-g="${g}">Clear</button></h3>`;
+    h+=`<table><thead><tr><th>Match</th><th>${esc(d.a)}</th><th style="text-align:center">result</th><th>${esc(d.b)}</th></tr></thead><tbody>`;
+    for(let i=0;i<8;i++){
+      const dead = ci.by!==null && i>ci.idx && d.w[i]===null;
+      const cell = d.w[i]==='A'?'◀ win':(d.w[i]==='B'?'win ▶':'—');
+      h+=`<tr style="${dead?'opacity:.4':''}"><td>${MATCH_LABELS[i]}</td><td>${esc(d.a)}</td>`+
+         `<td style="text-align:center;cursor:pointer" class="dualCell" data-g="${g}" data-i="${i}">${cell}</td><td>${esc(d.b)}</td></tr>`;
+    }
+    h+='</tbody></table>';
+    h+=`<div style="margin-top:4px">${ ci.by ? `<span class="ok"><strong>${esc(ci.by==='A'?d.a:d.b)} clinches</strong> at ${MATCH_LABELS[ci.idx]} (${Math.max(ci.aw,ci.bw)}–${Math.min(ci.aw,ci.bw)}); later matches are dead rubbers</span>` : `<span class="note">${ci.aw}–${ci.bw} — first to 5 clinches</span>` }</div>`;
+    const wrap=document.createElement('div'); wrap.innerHTML=h; cont.appendChild(wrap);
+  });
+  cont.querySelectorAll('.dualSel').forEach(s=>s.addEventListener('change',e=>{ const g=e.target.dataset.g; dualState[g][e.target.dataset.side]=e.target.value; dualState[g].w=Array(8).fill(null); renderDuals(); }));
+  cont.querySelectorAll('.dualSim').forEach(b=>b.addEventListener('click',e=>simulateDual(cls,e.target.dataset.g)));
+  cont.querySelectorAll('.dualClr').forEach(b=>b.addEventListener('click',e=>{ dualState[e.target.dataset.g].w=Array(8).fill(null); renderDuals(); }));
+  cont.querySelectorAll('.dualCell').forEach(c=>c.addEventListener('click',e=>{ const g=e.target.dataset.g,i=+e.target.dataset.i,cur=dualState[g].w[i]; dualState[g].w[i]= cur===null?'A':(cur==='A'?'B':null); renderDuals(); }));
+  renderSchedule(cls, LAST_MC);
+}
+
+// =====================================================================
+// Schedule / info sheet
+// =====================================================================
+function dualLine(g){ const d=dualState[g], ci=clinchInfo(d.w); return ci.by ? `${g}: <strong>${esc(ci.by==='A'?d.a:d.b)}</strong> def. ${esc(ci.by==='A'?d.b:d.a)} (${Math.max(ci.aw,ci.bw)}–${Math.min(ci.aw,ci.bw)})` : `${g}: ${esc(d.a)} vs ${esc(d.b)} — result TBD`; }
+const SCHED={
+  '6A':(mc)=>[
+    ['Wednesday — THPRD', ['Boys &amp; Girls dual team finals — play-to-clinch (8 matches each):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Thursday', ['R32 + R16 singles/doubles — unchanged']],
+    ['Friday', ['8am — <strong>Mixed R1</strong> (former consolation R1, #81–112)','9am — Singles/doubles QF','10am — <strong>Mixed QF</strong> (former consolation QF, #129–144)','1pm — Singles/doubles SF','2pm — <strong>Mixed SF</strong> (former consolation SF, #153–160)']],
+    ['Saturday', ['9am — 3rd-place matches + <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'12pm — Doubles championships','1pm — Singles championships']],
+  ],
+  '5A':(mc)=>[
+    ['Thursday morning — WHRFC', ['Boys &amp; Girls dual team finals — play-to-clinch:', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Friday — WHRFC', ['8am — Singles/doubles R16','11am — <strong>Mixed R1 upper half</strong> (former consolation, #33–40)','12:30pm — <strong>Mixed R1 lower half</strong> (#41–48)','1pm — Singles/doubles QF','3pm — <strong>Mixed QF</strong>']],
+    ['Saturday — THPRD', ['8am — <strong>Mixed SF</strong> (former consolation SF, #161–168) + singles/doubles SF','9am — <strong>Mixed 3rd + final</strong> (former consolation finals, #185–188)'+(mc?' — proj. champ: '+mc:''),'10am — Singles/doubles 3rd place','12pm — Doubles championships','1pm — Singles championships']],
+  ],
+  '4A':(mc)=>[
+    ['Thursday morning — OSU', ['Boys &amp; Girls dual team finals — play-to-clinch (8am–~12pm):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Thursday afternoon — OSU', ['4pm — Singles/doubles R32 — unchanged']],
+    ['Friday — OSU', ['8am — Singles/doubles R16','11:30am — <strong>Mixed R1</strong> (former consolation R1, #49–64)','12:30pm — Singles/doubles QF','2:45pm — <strong>Mixed QF</strong> (former consolation QF, #81–96)']],
+    ['Saturday — OSU', ['8am — <strong>Mixed SF</strong> + singles/doubles SF','9:30am — <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'10:30am — Singles/doubles 3rd place','12pm — Championship finals']],
+  ],
+};
+function renderSchedule(cls, mc){
+  const blocks=SCHED[cls](mc); let h='';
+  blocks.forEach(([day,items])=>{ h+=`<div style="margin-top:8px"><strong>${day}</strong><ul style="margin:4px 0 0 18px">`+items.map(x=>`<li>${x}</li>`).join('')+'</ul></div>'; });
+  document.getElementById('schedule').innerHTML=h;
+}
+
+document.getElementById('runBtn').addEventListener('click', run);
+document.getElementById('seed').addEventListener('change', run);
+document.getElementById('clsSel').addEventListener('change', ()=>{ initDuals(document.getElementById('clsSel').value); run(); renderDuals(); });
+document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+initDuals(document.getElementById('clsSel').value);
+run();
+renderDuals();
+</script>
+</body>
+</html>
