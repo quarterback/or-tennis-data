@@ -26,22 +26,45 @@
   .explain{background:#eef4fb;border:1px solid #cfe0f5;border-radius:6px;padding:10px 14px;font-size:12.5px;line-height:1.55;margin-bottom:12px;max-width:1100px;}
   .explain strong{color:var(--accent);}
   .standby-panel{border-width:2px;border-color:var(--accent);}
-  .legend{font-size:11.5px;color:var(--muted);margin:4px 0 10px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-  .sb{display:grid;grid-template-columns:44px 1fr 230px;gap:10px;align-items:center;padding:8px 8px;border-bottom:1px solid #eee;}
-  .sb-rank{font-weight:700;font-size:15px;color:var(--muted);text-align:right;}
-  .sb-pair{font-size:13.5px;font-weight:600;line-height:1.4;}
-  .sb-cond{font-size:12px;color:#5a4a10;margin-top:4px;background:#fbf7e8;border-left:3px solid var(--warm);padding:3px 8px;border-radius:3px;}
-  .sb-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
-  .plus{color:var(--muted);margin:0 3px;}
   .sub{font-size:11px;color:var(--muted);font-weight:400;}
-  .rosterTag{display:inline-block;background:#ffe9d6;color:#9a4a00;border-radius:8px;padding:0 6px;font-size:10.5px;font-weight:600;}
+  .rost{font-style:italic;color:#9a4a00;font-size:11px;}
+  .plus{color:var(--muted);margin:0 3px;}
+  /* header stat blocks */
+  .sbHeader{display:flex;gap:10px;margin:6px 0 14px;flex-wrap:wrap;}
+  .stat{background:#f5f7fa;border:1px solid var(--border);border-radius:6px;padding:8px 18px;min-width:92px;text-align:center;}
+  .stat-n{font-size:30px;font-weight:800;line-height:1;}
+  .stat-l{font-size:10.5px;color:var(--muted);margin-top:5px;text-transform:uppercase;letter-spacing:.04em;}
+  .ok-stat{background:#eaf6ea;border-color:#bfe3bf;} .ok-stat .stat-n{color:var(--good);}
+  .warn-stat{background:#fff6e0;border-color:#f0d690;} .warn-stat .stat-n{color:#b07b00;}
+  .out-stat .stat-n{color:#999;}
+  /* standby table (airport board) */
+  .sbtbl{width:100%;border-collapse:collapse;}
+  .sbtbl th{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);text-align:left;padding:5px 8px;border-bottom:2px solid var(--border);}
+  .sbtbl td{padding:8px;border-bottom:1px solid #eee;vertical-align:middle;font-size:13px;}
+  .c-rank{width:62px;text-align:center;}
+  .rank-big{font-size:27px;font-weight:800;color:var(--text);}
+  .rank-in{font-size:26px;font-weight:800;color:var(--good);}
+  .rank-alt{font-size:13px;font-weight:700;color:#789;text-transform:uppercase;letter-spacing:.03em;}
+  .rank-out{font-size:17px;font-weight:600;color:#bbb;text-decoration:line-through;}
+  .cell-pair{font-size:14px;font-weight:600;line-height:1.35;} .cell-pair b{font-weight:700;}
+  .c-src{font-size:12px;color:#444;line-height:1.7;}
+  .evchip{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px;}
+  .ev-gs{background:#2e7d32;} .ev-bs{background:#2a6dbf;} .ev-gd{background:#f39c12;} .ev-bd{background:#7e57c2;}
+  .c-act{font-size:13px;max-width:340px;}
+  .act-pending{color:#9a6b00;font-weight:600;} .act-met{color:var(--good);font-weight:700;}
+  .act-alt{color:#567;font-weight:600;} .act-out{color:var(--hot);text-decoration:line-through;font-weight:600;}
+  .pill{display:inline-block;padding:1px 7px;border-radius:10px;font-size:11px;font-weight:600;}
   .pill.t1{background:#fde0e0;color:#902;} .pill.t2{background:#e3e8ef;color:#345;}
-  .pill.st-pending{background:#fff0c2;color:#7a5a00;} .pill.st-dropped{background:#f0f0f0;color:#999;}
-  .pill.st-activated{background:#d7f0d7;color:#185018;font-weight:600;} .pill.st-alternate{background:#e7ecf5;color:#456;}
-  .sb-dropped{opacity:.55;} .sb-dropped .sb-pair{text-decoration:line-through;} .sb-activated{background:#f4fbf4;}
-  .chips{margin-top:5px;}
+  .st-activated{background:#d7f0d7;color:#185018;} .st-pending{background:#fff0c2;color:#7a5a00;}
+  .st-alternate{background:#e7ecf5;color:#456;} .st-dropped{background:#f0f0f0;color:#999;}
+  .sec td{font-weight:800;font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;padding:8px;border-bottom:2px solid var(--border);}
+  .sec-act td{background:#eaf6ea;color:#185018;} .sec-pend td{background:#fff6e0;color:#8a6200;}
+  .sec-alt td{background:#eef1f6;color:#456;} .sec-out td{background:#f4f4f4;color:#999;}
+  .sec-n{opacity:.6;}
+  .r-activated{background:#f6fcf6;} .r-out{opacity:.5;} .r-out .cell-pair{text-decoration:line-through;}
+  .chips{display:block;margin-top:5px;}
   .qtoggle{display:inline-block;cursor:pointer;border:1px solid #ccc;border-radius:8px;padding:0 7px;font-size:11px;margin-right:5px;user-select:none;}
-  .qtoggle.res-lost{background:#fde0e0;border-color:#e7b3b3;color:#902;} .qtoggle.res-won{background:#e6f0ff;border-color:#bcd3f0;color:#024;}
+  .qtoggle.res-lost{background:#fde0e0;border-color:#e7b3b3;color:#902;} .qtoggle.res-won{background:#e6f0ff;border-color:#bcd3f0;color:#024;} .qtoggle.res-wait{background:#f3f3f3;color:#888;}
   .mline{padding:1px 0;} .mgap{height:7px;}
 </style>
 </head>
@@ -64,31 +87,27 @@
   <label>Draw seed: <input type="number" id="seed" value="1"></label>
   <label><input type="checkbox" id="upsetChk"> Allow upsets (random R1)</label>
   <button id="genBtn">Generate standby list</button>
-  <button id="simBtn">Simulate R1 &rarr;</button>
+  <button id="stepBtn">Step R1 &rarr;</button>
+  <button id="simBtn">Simulate R1 (all)</button>
   <button id="resetBtn">Reset R1</button>
   <span id="status" class="note"></span>
 </div>
 
 <div class="explain">
-  <strong>How mixed doubles fills.</strong> Mixed doubles fills via two paths.
-  <strong>10&ndash;14 spots are district bids</strong> submitted the Saturday after districts (the
-  <span class="pill auto">automatic</span> entries below). The remaining <strong>2&ndash;8 spots come from this
-  standby list</strong> when state qualifiers lose their R1 match. The list is public from the moment brackets
-  publish &mdash; schools watch it through Friday R1. A pair becomes eligible only when its qualifier side(s)
-  <em>lose</em> R1 (a two-qualifier pair needs both to lose); a <span class="pill t1">Tier&nbsp;1</span> pigtail/R32
-  loser ranks ahead of a <span class="pill t2">Tier&nbsp;2</span> R16 loser. Schools decide whether to bring their
-  <span class="rosterTag">+roster</span> partner based on their position here.
+  <strong>How mixed doubles fills.</strong> The bracket is set with the known main draw first &mdash;
+  <strong>10&ndash;14 <span class="pill auto">automatic</span> district bids</strong> submitted the Saturday after
+  districts. The remaining <strong>2&ndash;8 provisional slots fill continuously off this standby list as Round&nbsp;1
+  plays out</strong>, exactly like a consolation bracket fills as losers become known. The list publishes ranked by
+  <span class="pill t1">Tier&nbsp;1</span> (pigtail/R32 losers) ahead of <span class="pill t2">Tier&nbsp;2</span>
+  (R16 losers), then weaker district finish first. When a qualifier <em>loses</em> R1 its pair becomes eligible and, if
+  a slot is open, clears straight into the bracket; when a qualifier <em>wins</em>, its pair drops out (still alive in
+  singles/doubles). Once the slots are full, later-eligible pairs wait as alternates. If the pool runs dry, unfilled
+  bracket lines simply play as byes. Use <strong>Step&nbsp;R1</strong> to watch results post one at a time.
 </div>
 
 <div class="panel standby-panel">
-  <h2>Provisional standby list <span class="sub">— published when brackets are drawn</span></h2>
-  <div class="legend">
-    <span><span class="pill st-pending">pending</span> awaiting R1</span>
-    <span><span class="pill st-activated">activated</span> in the field</span>
-    <span><span class="pill st-alternate">alternate</span> eligible but bumped</span>
-    <span><span class="pill st-dropped">dropped</span> qualifier won R1</span>
-    <span class="sub">Sorted: Tier&nbsp;1 before Tier&nbsp;2, then weaker district finish first. After R1 runs, click a result chip to flip a match.</span>
-  </div>
+  <h2>Provisional standby list <span class="sub">— the gate board schools watch during Friday R1</span></h2>
+  <div id="sbHeader" class="sbHeader"></div>
   <div id="standby"></div>
 </div>
 
@@ -939,98 +958,152 @@ function placeMixed(pairs){
 }
 
 // ---- display helpers ----
-function sideLabel(s){
-  if(!s.qualifier) return `${esc(s.surname)} <span class="rosterTag">+roster</span> <span class="sub">(${esc(s.school)})</span>`;
-  if(s.kind==='doubles') return `${esc(s.surname)} <span class="sub">(from ${GLAB[s.gender]} Doubles ${esc(s.teamName)}, ${esc(s.school)} ${s.sd}, ${ORD(s.fin)})</span>`;
-  return `${esc(s.surname)} <span class="sub">(${GLAB[s.gender]} Singles, ${esc(s.school)} ${s.sd}, ${ORD(s.fin)})</span>`;
-}
-function clauseFor(s){
-  return s.kind==='doubles' ? `${esc(s.teamName)} ${GLAB[s.gender]} Doubles team` : esc(s.surname);
-}
-function activationText(p){
+const EV={ gs:{label:'Girls Singles',c:'gs'}, bs:{label:'Boys Singles',c:'bs'}, gd:{label:'Girls Doubles',c:'gd'}, bd:{label:'Boys Doubles',c:'bd'} };
+function eventKey(s){ return s.gender + (s.kind==='doubles'?'d':'s'); }
+function eventChip(s){ const e=EV[eventKey(s)]; const tn = s.kind==='doubles' ? ' '+esc(s.teamName) : ''; return `<span class="evchip ev-${e.c}"></span>${e.label}${tn} <span class="sub">(${ORD(s.fin)})</span>`; }
+function partnerName(s){ return s.qualifier ? `<b>${esc(s.surname)}</b>` : `<b>${esc(s.surname)}</b> <span class="rost">+roster</span>`; }
+function clauseFor(s){ return s.kind==='doubles' ? `${esc(s.teamName)} ${EV[eventKey(s)].label} team` : esc(s.surname); }
+function activationBase(p){
   if(p.quals.length===1){ const s=p.quals[0];
-    return s.kind==='doubles'
-      ? `${esc(s.teamName)} doubles team must lose ${GLAB[s.gender]} Doubles R1`
-      : `${esc(s.surname)} must lose ${GLAB[s.gender]} Singles R1`;
-  }
+    return s.kind==='doubles' ? `${esc(s.teamName)} doubles team must lose R1` : `${esc(s.surname)} must lose R1`; }
   return `${clauseFor(p.quals[0])} AND ${clauseFor(p.quals[1])} must both lose R1`;
 }
 
 // ---- state ----
 let ST=null;
-function r1mode(){ const c=document.getElementById('upsetChk'); return c && c.checked ? 'random' : 'chalk'; }
-function ensureLosers(){
-  if(ST.losers) return;
-  ST.mode=r1mode(); const cf=CLASS_FIELDS[ST.cls];
-  ST.losers={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>ST.losers[k]=firstMatchLosers(ST.draws[k], ST.mode));
-}
-function sideResult(s){
-  const k=s.key+':'+s.idx, ov=ST.overrides[k];
-  if(ov) return ov;
-  return ST.losers && ST.losers[s.key].has(s.idx) ? 'lost' : 'won';
-}
+function r1mode(){ const c=document.getElementById('upsetChk'); return c&&c.checked?'random':'chalk'; }
+function sideKey(s){ return s.key+':'+s.idx; }
+function ensureLosers(){ if(ST.losers) return; ST.mode=r1mode(); const cf=CLASS_FIELDS[ST.cls]; ST.losers={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>ST.losers[k]=firstMatchLosers(ST.draws[k],ST.mode)); }
+function revealed(s){ return ST.revealed.has(sideKey(s)); }
+function sideResult(s){ const k=sideKey(s), ov=ST.overrides[k]; if(ov) return ov; ensureLosers(); return ST.losers[s.key].has(s.idx)?'lost':'won'; }
 
 function publish(){
   const cls=document.getElementById('clsSel').value;
-  RNG = mulberry32(+document.getElementById('seed').value || 1);
-  const names=genNames(cls);
-  const draws=classDraws(cls);
-  const cf=CLASS_FIELDS[cls];
+  RNG=mulberry32(+document.getElementById('seed').value||1);
+  const names=genNames(cls), draws=classDraws(cls), cf=CLASS_FIELDS[cls];
   const tiers={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>tiers[k]=entryTiers(draws[k]));
   const autos=genAutomatics(cls);
-  const pairings=buildPairings(cls, names, tiers);
-  ST={cls, names, draws, tiers, autos, pairings, r1Done:false, overrides:{}, losers:null, mode:'chalk'};
+  const pairings=buildPairings(cls,names,tiers);
+  pairings.forEach((p,i)=>{ p.rank=i+1; });
+  // R1 completion order: R32 (Tier 1) matches finish before R16 (Tier 2); seeded jitter within a round.
+  const order=[];
+  pairings.forEach(p=>p.quals.forEach(s=>{ s.revealTime=(s.tier||2)*1000 + RNG()*900; order.push(s); }));
+  order.sort((a,b)=>a.revealTime-b.revealTime);
+  // pre-place the known main draw (automatic district bids); provisional slots stay open.
+  const autoPl=placeMixed(autos);
+  const autoSlots = autoPl ? Object.fromEntries(Object.entries(autoPl).map(([s,i])=>[s,autos[i]])) : null;
+  const openSlots = autoPl ? [...Array(MIXED_N).keys()].filter(s=>!(s in autoPl)) : [];
+  ST={cls,names,draws,tiers,autos,pairings,revealOrder:order,revealed:new Set(),overrides:{},losers:null,mode:'chalk',autoSlots,openSlots};
   renderAll();
 }
-function resolveR1(){ if(!ST) return; ST.r1Done=true; ST.losers=null; ST.mode=r1mode(); ensureLosers(); renderAll(); }
-function resetR1(){ if(!ST) return; ST.r1Done=false; ST.overrides={}; ST.losers=null; renderAll(); }
+function stepR1(){ if(!ST) return; ensureLosers(); const nx=ST.revealOrder.find(s=>!ST.revealed.has(sideKey(s))); if(nx) ST.revealed.add(sideKey(nx)); renderAll(); }
+function simAll(){ if(!ST) return; ensureLosers(); ST.revealOrder.forEach(s=>ST.revealed.add(sideKey(s))); renderAll(); }
+function resetR1(){ if(!ST) return; ST.revealed=new Set(); ST.overrides={}; ST.losers=null; renderAll(); }
 function toggleSide(key,idx){
-  if(!ST) return;
-  ST.r1Done=true; ensureLosers();
-  const k=key+':'+idx, base=ST.losers[key].has(idx)?'lost':'won', cur=ST.overrides[k]||base;
-  ST.overrides[k]= cur==='lost'?'won':'lost';
+  if(!ST) return; ensureLosers(); const k=key+':'+idx;
+  if(!ST.revealed.has(k)) ST.revealed.add(k);                          // first click: reveal natural result
+  else { const base=ST.losers[key].has(idx)?'lost':'won', cur=ST.overrides[k]||base; ST.overrides[k]=cur==='lost'?'won':'lost'; }
   renderAll();
 }
 
-// ---- render ----
-function pairBaseStatus(p){
-  if(!ST.r1Done) return 'pending';
-  return p.quals.some(s=>sideResult(s)==='won') ? 'dropped' : 'eligible';
+// ---- core: replay R1 in completion order, fill slots continuously (no bumping) ----
+function replay(){
+  const prov=BIDS[ST.cls].prov;
+  const known=ST.revealOrder.filter(s=>ST.revealed.has(sideKey(s)));   // in completion order
+  const knownSet=new Set(known.map(sideKey)), pos={}; known.forEach((s,i)=>pos[sideKey(s)]=i);
+  ST.pairings.forEach(p=>{ p._zone='pending'; p._met=0; p._slot=null; });
+  const decisions=[];
+  ST.pairings.forEach(p=>{
+    let dropIdx=null;
+    p.quals.forEach(s=>{ if(knownSet.has(sideKey(s)) && sideResult(s)==='won'){ const i=pos[sideKey(s)]; if(dropIdx===null||i<dropIdx) dropIdx=i; } });
+    if(dropIdx!==null){ decisions.push({p,idx:dropIdx,out:true}); return; }
+    const kq=p.quals.filter(s=>knownSet.has(sideKey(s)));
+    p._met=kq.filter(s=>sideResult(s)==='lost').length;
+    if(kq.length===p.quals.length) decisions.push({p,idx:Math.max(...p.quals.map(s=>pos[sideKey(s)])),out:false});
+  });
+  decisions.sort((a,b)=> a.idx-b.idx || a.p.rank-b.p.rank);
+  let filled=0;
+  decisions.forEach(d=>{
+    if(d.out){ d.p._zone='out'; return; }
+    if(filled<prov){ d.p._zone='activated'; d.p._slot=filled; filled++; d.p._met=d.p.quals.length; }
+    else { d.p._zone='alternate'; d.p._met=d.p.quals.length; }
+  });
+  return {prov,filled};
 }
+
+// ---- render ----
 function renderAll(){
-  const cls=ST.cls, bids=BIDS[cls];
-  const eligible=[];
-  ST.pairings.forEach(p=>{ p._status=pairBaseStatus(p); if(p._status==='eligible') eligible.push(p); });
-  let act=0; eligible.forEach(p=>{ if(act<bids.prov){ p._status='activated'; act++; } else p._status='alternate'; });
-  const activated=ST.pairings.filter(p=>p._status==='activated');
-  document.getElementById('status').innerHTML = ST.r1Done
-    ? `<span class="ok">${cls}: ${ST.autos.length} automatic + ${activated.length} standby = ${ST.autos.length+activated.length}/16 — ${eligible.length} eligible, ${Math.max(0,eligible.length-activated.length)} alternate</span>`
-    : `<span class="ok">${cls}: standby list published — ${ST.pairings.length} pairings pending. Run R1 to resolve.</span>`;
+  const cls=ST.cls, {prov,filled}=replay();
+  const elig=ST.pairings.filter(p=>p._zone==='activated'||p._zone==='alternate').length;
+  const pend=ST.pairings.filter(p=>p._zone==='pending').length;
+  const out=ST.pairings.filter(p=>p._zone==='out').length;
+  const total=ST.revealOrder.length, done=ST.revealed.size;
+  document.getElementById('status').innerHTML = done
+    ? `<span class="ok">${cls}: ${ST.autos.length} automatic + ${filled} cleared = ${ST.autos.length+filled}/16 — R1 ${done}/${total} results in</span>`
+    : `<span class="ok">${cls}: standby list published — ${ST.pairings.length} pairs pending. Step or Simulate R1.</span>`;
+  document.getElementById('sbHeader').innerHTML =
+    `<div class="stat"><div class="stat-n">${Math.max(0,prov-filled)}</div><div class="stat-l">slots open</div></div>`+
+    `<div class="stat ok-stat"><div class="stat-n">${elig}</div><div class="stat-l">eligible so far</div></div>`+
+    `<div class="stat warn-stat"><div class="stat-n">${pend}</div><div class="stat-l">pending R1</div></div>`+
+    `<div class="stat out-stat"><div class="stat-n">${out}</div><div class="stat-l">out</div></div>`;
   renderStandby();
   renderAutos();
-  renderBracket(activated);
+  renderBracket(pend);
   renderSchedule(cls);
 }
-function resultChips(p){
-  return '<div class="chips">'+p.quals.map(s=>{ const r=sideResult(s);
-    return `<span class="qtoggle res-${r}" data-key="${s.key}" data-idx="${s.idx}" title="click to flip this R1 result">${esc(s.surname)}: ${r==='lost'?'lost R1':'won R1'}</span>`;
-  }).join('')+'</div>';
+
+function chipRow(p){
+  return '<span class="chips">'+p.quals.map(s=>{
+    if(!revealed(s)) return `<span class="qtoggle res-wait" data-key="${s.key}" data-idx="${s.idx}" title="click to reveal this R1 result">${esc(s.surname)}: ?</span>`;
+    const r=sideResult(s);
+    return `<span class="qtoggle res-${r}" data-key="${s.key}" data-idx="${s.idx}" title="click to flip this R1 result">${esc(s.surname)}: ${r==='lost'?'lost':'won'}</span>`;
+  }).join('')+'</span>';
+}
+function activationCell(p){
+  const chips = ST.revealed.size ? chipRow(p) : '';
+  let main;
+  if(p._zone==='out'){ const w=p.quals.find(s=>revealed(s)&&sideResult(s)==='won'); main=`<span class="act-out">${clauseFor(w)} won R1 — OUT</span>`; }
+  else if(p._zone==='activated'){ main=`<span class="act-met">✓ cleared — ${p.quals.length>1?'both qualifiers lost R1':'qualifier lost R1'}</span>`; }
+  else if(p._zone==='alternate'){ main=`<span class="act-alt">✓ eligible (no open slot) — held as alternate</span>`; }
+  else { const partial = (p.quals.length>1 && p._met>0) ? ` <span class="sub">(${p._met} of ${p.quals.length} met)</span>` : '';
+         main=`<span class="act-pending">${activationBase(p)}</span>${partial}`; }
+  return main + chips;
+}
+function statusPill(z){
+  const m={activated:['CLEARED','st-activated'],pending:['PENDING','st-pending'],alternate:['ALTERNATE','st-alternate'],out:['OUT','st-dropped']};
+  const [t,c]=m[z]; return `<span class="pill ${c}">${t}</span>`;
 }
 function renderStandby(){
+  const cols=8;
+  const head=`<tr class="sb-head"><th class="c-rank">#</th><th>Pair</th><th>Qualifier source</th><th>SD</th><th>Activation — what has to happen</th><th>Tier</th><th class="n">Avg</th><th>Status</th></tr>`;
+  function rankCell(p){
+    if(p._zone==='activated') return `<span class="rank-in" title="rank #${p.rank}">✓</span>`;
+    if(p._zone==='alternate') return `<span class="rank-alt">Alt</span>`;
+    if(p._zone==='out') return `<span class="rank-out">${p.rank}</span>`;
+    return `<span class="rank-big">${p.rank}</span>`;
+  }
+  function row(p){
+    const pair=`<div class="cell-pair">${partnerName(p.sideG)} <span class="plus">+</span> ${partnerName(p.sideB)}</div><div class="sub">${esc(p.school)} · ${p.sd}</div>`;
+    const src=p.quals.map(eventChip).join('<br>');
+    return `<tr class="r-${p._zone}"><td class="c-rank">${rankCell(p)}</td><td>${pair}</td><td class="c-src">${src}</td>`+
+           `<td>${p.sd}</td><td class="c-act">${activationCell(p)}</td><td><span class="pill t${p.tier}">T${p.tier}</span></td>`+
+           `<td class="n">${p.avgFin.toFixed(1)}</td><td>${statusPill(p._zone)}</td></tr>`;
+  }
+  function section(title,sc,list){ if(!list.length) return '';
+    return `<tr class="sec sec-${sc}"><td colspan="${cols}">${title} <span class="sec-n">${list.length}</span></td></tr>`+list.map(row).join(''); }
+  const byRank=(a,b)=>a.rank-b.rank, bySlot=(a,b)=>a._slot-b._slot;
+  const act=ST.pairings.filter(p=>p._zone==='activated').sort(bySlot);
+  const pend=ST.pairings.filter(p=>p._zone==='pending').sort(byRank);
+  const alt=ST.pairings.filter(p=>p._zone==='alternate').sort(byRank);
+  const out=ST.pairings.filter(p=>p._zone==='out').sort(byRank);
+  let body='';
+  body+=section('In the field — cleared into the bracket','act',act);
+  body+=section('Standby — pending R1','pend',pend);
+  body+=section('Alternates — eligible, no open slot','alt',alt);
+  body+=section('Out — qualifier won R1, still alive in singles/doubles','out',out);
   const wrap=document.getElementById('standby');
-  if(!ST.pairings.length){ wrap.innerHTML='<div class="note">No provisional pairings for this class/seed.</div>'; return; }
-  let h='';
-  ST.pairings.forEach((p,i)=>{
-    const st=p._status, roster=p.quals.length<2 ? ' <span class="rosterTag">+roster pair</span>' : '';
-    const cond = `<div class="sb-cond">${activationText(p)}${ST.r1Done?resultChips(p):''}</div>`;
-    h+=`<div class="sb sb-${st}">`+
-       `<div class="sb-rank">#${i+1}</div>`+
-       `<div class="sb-main"><div class="sb-pair">${sideLabel(p.sideG)} <span class="plus">+</span> ${sideLabel(p.sideB)}${roster}</div>${cond}</div>`+
-       `<div class="sb-meta"><span class="pill t${p.tier}">Tier ${p.tier}</span> <span class="sub">avg finish ${p.avgFin.toFixed(1)}</span> <span class="pill st-${st}">${st}</span></div>`+
-       `</div>`;
-  });
-  wrap.innerHTML=h;
-  wrap.querySelectorAll('.qtoggle').forEach(el=>el.addEventListener('click',()=>toggleSide(el.dataset.key, +el.dataset.idx)));
+  wrap.innerHTML=`<table class="sbtbl">${head}${body}</table>`;
+  wrap.querySelectorAll('.qtoggle').forEach(el=>el.addEventListener('click',()=>toggleSide(el.dataset.key,+el.dataset.idx)));
 }
 function renderAutos(){
   const tb=document.querySelector('#autoTable tbody'); tb.innerHTML='';
@@ -1038,20 +1111,20 @@ function renderAutos(){
     tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.label)}</td><td>${esc(p.school)}</td><td><span class="pill auto">${p.sd}</span></td>`;
     tb.appendChild(tr); });
 }
-function renderBracket(activated){
+function renderBracket(pend){
   const br=document.getElementById('bracket'), note=document.getElementById('brNote');
-  if(!ST.r1Done){ note.innerHTML=''; br.innerHTML='<p class="note">The 16-line bracket is drawn once R1 resolves the standby list. Click <strong>Simulate R1</strong> to populate it.</p>'; return; }
-  const field=ST.autos.concat(activated);
-  const placement = field.length ? placeMixed(field) : null;
-  if(!placement){ note.innerHTML=''; br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; return; }
-  note.innerHTML=`${ST.autos.length} automatic district bids + ${activated.length} activated standby pairs. Same-district automatics drawn to opposite halves; no mixed-match simulation — bracket shown ready to play.`;
+  if(!ST.autoSlots){ note.innerHTML=''; br.innerHTML='<p class="warn">Could not place the automatic bids under the same-district/opposite-half rule — try another draw seed.</p>'; return; }
+  const slot={...ST.autoSlots};
+  ST.pairings.filter(p=>p._zone==='activated').forEach(p=>{ if(p._slot!=null && p._slot<ST.openSlots.length) slot[ST.openSlots[p._slot]]=p; });
+  const filled=ST.pairings.filter(p=>p._zone==='activated').length;
+  note.innerHTML=`${ST.autos.length} automatic district bids placed; ${filled}/${BIDS[ST.cls].prov} provisional slots cleared from standby. `+
+    (pend>0 ? 'Empty provisional lines are awaiting R1 results.' : 'R1 complete — any unfilled line plays as a bye.');
   const badge=(p)=> p.source==='automatic' ? `<span class="pill auto">${p.sd}</span>` : `<span class="pill t${p.tier}">T${p.tier}</span>`;
+  const openLabel = pend>0 ? '<span class="pill tbd">awaiting standby</span>' : '<span class="pill tbd">bye</span>';
   let html='';
   for(let s=0;s<MIXED_N;s+=2){
-    const t=placement[s], b=placement[s+1];
-    const line=(idx)=> idx==null ? '<span class="pill tbd">open</span>'
-      : `${badge(field[idx])} ${esc(field[idx].label)} <span class="sub">(${esc(field[idx].school)})</span>`;
-    html+=`<div class="mline">${line(t)}</div><div class="mline">${line(b)}</div><div class="mgap"></div>`;
+    const line=(i)=> slot[i] ? `${badge(slot[i])} ${esc(slot[i].label)} <span class="sub">(${esc(slot[i].school)})</span>` : openLabel;
+    html+=`<div class="mline">${line(s)}</div><div class="mline">${line(s+1)}</div><div class="mgap"></div>`;
   }
   br.innerHTML=html;
 }
@@ -1128,10 +1201,11 @@ function renderSchedule(cls){
 }
 
 document.getElementById('genBtn').addEventListener('click', publish);
-document.getElementById('simBtn').addEventListener('click', resolveR1);
+document.getElementById('stepBtn').addEventListener('click', stepR1);
+document.getElementById('simBtn').addEventListener('click', simAll);
 document.getElementById('resetBtn').addEventListener('click', resetR1);
 document.getElementById('seed').addEventListener('change', publish);
-document.getElementById('upsetChk').addEventListener('change', ()=>{ if(ST && ST.r1Done) resolveR1(); });
+document.getElementById('upsetChk').addEventListener('change', ()=>{ if(ST){ ST.losers=null; renderAll(); } });
 document.getElementById('clsSel').addEventListener('change', ()=>{ initDuals(document.getElementById('clsSel').value); publish(); renderDuals(); });
 document.getElementById('printBtn').addEventListener('click', ()=>window.print());
 initDuals(document.getElementById('clsSel').value);
