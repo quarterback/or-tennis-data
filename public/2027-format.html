@@ -71,6 +71,22 @@
   <table id="autoTable"><thead><tr><th>#</th><th>Pair</th><th>School</th><th>SD</th><th class="n">avg fin</th></tr></thead><tbody></tbody></table>
 </div>
 
+<div class="panel">
+  <h2>Dual team finals (2027 new event)</h2>
+  <div class="note">Each class's dual tournament ends with a Boys final and a Girls final at the state site — an
+    8-match dual (4 singles + 4 doubles), <strong>play-to-clinch: first school to 5 wins</strong> takes the title;
+    remaining matches are dead rubbers. Played <span id="dualDay"></span>. Finalists are illustrative (no dual-bracket
+    data exists) — pick any two schools, click winners, or Simulate. Click a result cell to cycle —/A/B.</div>
+  <div id="duals"></div>
+</div>
+
+<div class="panel" id="schedPanel">
+  <h2>Schedule / info sheet <button id="printBtn" style="font-size:12px;margin-left:8px">Print</button></h2>
+  <div class="note">Drop-in running order: mixed doubles occupies the former consolation slots; the dual finals sit on
+    the pre-individual day. Times per the proposal brief.</div>
+  <div id="schedule"></div>
+</div>
+
 <script>
 const FIELDS = {
   // ---------------- GIRLS 6A (7 districts) ----------------
@@ -939,7 +955,7 @@ function run(){
   document.getElementById('brNote').innerHTML = field.length
     ? `16-line draw, same-district pairs in opposite halves. Chalk projection (lower averaged district finish wins).`
     : '';
-  if(!placement){ br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; return; }
+  if(!placement){ br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; LAST_MC=null; renderSchedule(cls,null); return; }
   const sim=simMixed(placement, field);
   const tag=(p)=> p.source==='automatic' ? '<span class="pill auto">A</span>' : '<span class="pill prov">P</span>';
   let html='<div class="rnd">Round 1</div>';
@@ -954,12 +970,88 @@ function run(){
     html+=`<div class="rnd">Chalk result</div><div class="champ">Projected champion: ${esc(field[sim.champion].name)} (${field[sim.champion].school})</div>`;
   }
   br.innerHTML=html;
+  LAST_MC = sim.champion!=null ? esc(field[sim.champion].name)+' ('+esc(field[sim.champion].school)+')' : null;
+  renderSchedule(cls, LAST_MC);
+}
+
+// =====================================================================
+// Dual team finals (play-to-clinch)
+// =====================================================================
+let LAST_MC=null, dualState={};
+const DUAL_DAY={'6A':'Wednesday afternoon at THPRD','5A':'Thursday morning at WHRFC','4A':'Thursday morning at OSU'};
+const MATCH_LABELS=['S1','S2','S3','S4','D1','D2','D3','D4'];
+
+function classSchools(cls){ const cf=CLASS_FIELDS[cls]; const s=new Set(); [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>FIELDS[k].forEach(e=>s.add(e.school))); return [...s].sort(); }
+function schoolStrength(cls, g, school){ const cf=CLASS_FIELDS[cls]; const keys=g==='Boys'?[cf.bs,cf.bd]:[cf.gs,cf.gd]; const f=[]; keys.forEach(k=>FIELDS[k].forEach(e=>{ if(e.school===school) f.push(e.fin); })); return f.length ? f.reduce((a,b)=>a+b,0)/f.length : 4.5; }
+function initDuals(cls){ const sc=classSchools(cls); dualState={ Boys:{a:sc[0]||'',b:sc[1]||sc[0]||'',w:Array(8).fill(null)}, Girls:{a:sc[0]||'',b:sc[1]||sc[0]||'',w:Array(8).fill(null)} }; }
+function clinchInfo(w){ let aw=0,bw=0,by=null,idx=-1; for(let i=0;i<8;i++){ if(w[i]==='A')aw++; else if(w[i]==='B')bw++; if(by===null){ if(aw===5){by='A';idx=i;} else if(bw===5){by='B';idx=i;} } } return {aw,bw,by,idx}; }
+function simulateDual(cls, g){ const d=dualState[g]; const sA=schoolStrength(cls,g,d.a), sB=schoolStrength(cls,g,d.b); const p=sA<=sB?0.68:0.32; for(let i=0;i<8;i++) d.w[i]= RNG()<p ? 'A':'B'; renderDuals(); }
+
+function renderDuals(){
+  const cls=document.getElementById('clsSel').value;
+  document.getElementById('dualDay').textContent=DUAL_DAY[cls];
+  const sc=classSchools(cls), cont=document.getElementById('duals'); cont.innerHTML='';
+  ['Boys','Girls'].forEach(g=>{
+    const d=dualState[g]; if(!sc.includes(d.a)) d.a=sc[0]; if(!sc.includes(d.b)) d.b=sc[1]||sc[0];
+    const ci=clinchInfo(d.w), opt=(sel)=>sc.map(s=>`<option ${s===sel?'selected':''}>${esc(s)}</option>`).join('');
+    let h=`<h3 style="margin:8px 0 4px;font-size:13px">${g} final &nbsp;`+
+      `<select data-g="${g}" data-side="a" class="dualSel">${opt(d.a)}</select> vs `+
+      `<select data-g="${g}" data-side="b" class="dualSel">${opt(d.b)}</select> `+
+      `<button class="dualSim" data-g="${g}">Simulate</button> <button class="dualClr" data-g="${g}">Clear</button></h3>`;
+    h+=`<table><thead><tr><th>Match</th><th>${esc(d.a)}</th><th style="text-align:center">result</th><th>${esc(d.b)}</th></tr></thead><tbody>`;
+    for(let i=0;i<8;i++){
+      const dead = ci.by!==null && i>ci.idx && d.w[i]===null;
+      const cell = d.w[i]==='A'?'◀ win':(d.w[i]==='B'?'win ▶':'—');
+      h+=`<tr style="${dead?'opacity:.4':''}"><td>${MATCH_LABELS[i]}</td><td>${esc(d.a)}</td>`+
+         `<td style="text-align:center;cursor:pointer" class="dualCell" data-g="${g}" data-i="${i}">${cell}</td><td>${esc(d.b)}</td></tr>`;
+    }
+    h+='</tbody></table>';
+    h+=`<div style="margin-top:4px">${ ci.by ? `<span class="ok"><strong>${esc(ci.by==='A'?d.a:d.b)} clinches</strong> at ${MATCH_LABELS[ci.idx]} (${Math.max(ci.aw,ci.bw)}–${Math.min(ci.aw,ci.bw)}); later matches are dead rubbers</span>` : `<span class="note">${ci.aw}–${ci.bw} — first to 5 clinches</span>` }</div>`;
+    const wrap=document.createElement('div'); wrap.innerHTML=h; cont.appendChild(wrap);
+  });
+  cont.querySelectorAll('.dualSel').forEach(s=>s.addEventListener('change',e=>{ const g=e.target.dataset.g; dualState[g][e.target.dataset.side]=e.target.value; dualState[g].w=Array(8).fill(null); renderDuals(); }));
+  cont.querySelectorAll('.dualSim').forEach(b=>b.addEventListener('click',e=>simulateDual(cls,e.target.dataset.g)));
+  cont.querySelectorAll('.dualClr').forEach(b=>b.addEventListener('click',e=>{ dualState[e.target.dataset.g].w=Array(8).fill(null); renderDuals(); }));
+  cont.querySelectorAll('.dualCell').forEach(c=>c.addEventListener('click',e=>{ const g=e.target.dataset.g,i=+e.target.dataset.i,cur=dualState[g].w[i]; dualState[g].w[i]= cur===null?'A':(cur==='A'?'B':null); renderDuals(); }));
+  renderSchedule(cls, LAST_MC);
+}
+
+// =====================================================================
+// Schedule / info sheet
+// =====================================================================
+function dualLine(g){ const d=dualState[g], ci=clinchInfo(d.w); return ci.by ? `${g}: <strong>${esc(ci.by==='A'?d.a:d.b)}</strong> def. ${esc(ci.by==='A'?d.b:d.a)} (${Math.max(ci.aw,ci.bw)}–${Math.min(ci.aw,ci.bw)})` : `${g}: ${esc(d.a)} vs ${esc(d.b)} — result TBD`; }
+const SCHED={
+  '6A':(mc)=>[
+    ['Wednesday — THPRD', ['Boys &amp; Girls dual team finals — play-to-clinch (8 matches each):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Thursday', ['R32 + R16 singles/doubles — unchanged']],
+    ['Friday', ['8am — <strong>Mixed R1</strong> (former consolation R1, #81–112)','9am — Singles/doubles QF','10am — <strong>Mixed QF</strong> (former consolation QF, #129–144)','1pm — Singles/doubles SF','2pm — <strong>Mixed SF</strong> (former consolation SF, #153–160)']],
+    ['Saturday', ['9am — 3rd-place matches + <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'12pm — Doubles championships','1pm — Singles championships']],
+  ],
+  '5A':(mc)=>[
+    ['Thursday morning — WHRFC', ['Boys &amp; Girls dual team finals — play-to-clinch:', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Friday — WHRFC', ['8am — Singles/doubles R16','11am — <strong>Mixed R1 upper half</strong> (former consolation, #33–40)','12:30pm — <strong>Mixed R1 lower half</strong> (#41–48)','1pm — Singles/doubles QF','3pm — <strong>Mixed QF</strong>']],
+    ['Saturday — THPRD', ['8am — <strong>Mixed SF</strong> (former consolation SF, #161–168) + singles/doubles SF','9am — <strong>Mixed 3rd + final</strong> (former consolation finals, #185–188)'+(mc?' — proj. champ: '+mc:''),'10am — Singles/doubles 3rd place','12pm — Doubles championships','1pm — Singles championships']],
+  ],
+  '4A':(mc)=>[
+    ['Thursday morning — OSU', ['Boys &amp; Girls dual team finals — play-to-clinch (8am–~12pm):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
+    ['Thursday afternoon — OSU', ['4pm — Singles/doubles R32 — unchanged']],
+    ['Friday — OSU', ['8am — Singles/doubles R16','11:30am — <strong>Mixed R1</strong> (former consolation R1, #49–64)','12:30pm — Singles/doubles QF','2:45pm — <strong>Mixed QF</strong> (former consolation QF, #81–96)']],
+    ['Saturday — OSU', ['8am — <strong>Mixed SF</strong> + singles/doubles SF','9:30am — <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'10:30am — Singles/doubles 3rd place','12pm — Championship finals']],
+  ],
+};
+function renderSchedule(cls, mc){
+  const blocks=SCHED[cls](mc); let h='';
+  blocks.forEach(([day,items])=>{ h+=`<div style="margin-top:8px"><strong>${day}</strong><ul style="margin:4px 0 0 18px">`+items.map(x=>`<li>${x}</li>`).join('')+'</ul></div>'; });
+  document.getElementById('schedule').innerHTML=h;
 }
 
 document.getElementById('runBtn').addEventListener('click', run);
-document.getElementById('clsSel').addEventListener('change', run);
 document.getElementById('seed').addEventListener('change', run);
+document.getElementById('clsSel').addEventListener('change', ()=>{ initDuals(document.getElementById('clsSel').value); run(); renderDuals(); });
+document.getElementById('printBtn').addEventListener('click', ()=>window.print());
+initDuals(document.getElementById('clsSel').value);
 run();
+renderDuals();
 </script>
 </body>
 </html>
