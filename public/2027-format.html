@@ -898,7 +898,8 @@ function genAutomatics(cls){
 // One partner must be a state qualifier (singles individual or one designated member of a
 // doubles team); the other may be a +roster non-qualifier teammate. Schools submit these in
 // advance, so the full list publishes with the bracket; R1 results only flip statuses.
-function rosterSide(gender, school){ return {qualifier:false, kind:'roster', gender, surname:pickSurname(), school}; }
+const NQ_FIN=5; // a +roster non-qualifier counts as district finish 5 (below any real 1st-4th)
+function rosterSide(gender, school){ return {qualifier:false, kind:'roster', gender, surname:pickSurname(), school, fin:NQ_FIN}; }
 function buildPairings(cls, names, tiers){
   const cf=CLASS_FIELDS[cls];
   const bySchool={};
@@ -924,7 +925,9 @@ function buildPairings(cls, names, tiers){
       let sideG = gs[i] || rosterSide('g', school);
       const quals=[sideB,sideG].filter(s=>s.qualifier);
       if(!quals.length) break;
-      const avgFin = quals.reduce((a,s)=>a+s.fin,0)/quals.length;
+      // Average over BOTH partners; a +roster non-qualifier counts as 5. This lifts a
+      // one-qualifier pair above two-qualifier pairs, which need both sides to lose to clear.
+      const avgFin = (sideB.fin + sideG.fin)/2;
       const tier = Math.max(...quals.map(s=>s.tier));
       pairings.push({source:'provisional', school, sd, sideB, sideG, quals, avgFin, tier,
                      label: sideB.surname+' / '+sideG.surname, r:RNG()});
