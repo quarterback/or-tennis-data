@@ -10,10 +10,12 @@ and a suite of live tournament tools, all generated from raw match data and
 served as a single static site.
 
 It's also the data layer behind a real institutional change — the analysis
-that supported Oregon's adoption of a dual team tennis championship, with the
-first events in 2027. The interesting part isn't the outcome; it's how a small,
-honest, fully transparent system got built to make that kind of argument
-possible.
+that supported Oregon's adoption of a dual team tennis championship. The format
+is now on the calendar: power-ranking-seeded brackets debuting in spring 2027 —
+12 teams at 6A, 8 at 5A and 4A-1A, per gender — higher seed hosting through to
+a final at the state championship site. The interesting part isn't the outcome;
+it's how a small, honest, fully transparent system got built to make that kind
+of argument possible.
 
 ---
 
@@ -82,7 +84,7 @@ What began as an All-State archive is now a small suite of public tools.
 
 **SD1 draw suite** — A live seeding board, draw tool, and printable/live brackets built to run an actual special-district tournament in the room, on the day, with cloud-saved state.
 
-**2027 format tools** — Built ahead of the new event: a mixed-doubles standby-list tool and the dual team finals format.
+**2027 format tools** — Built ahead of the new event: a mixed-doubles standby-list tool and the dual team finals format, matching the adopted bracket structure and seeding.
 
 **Changelog & after-action reports** — The work shown openly: what changed, what was tested, what was learned.
 
