@@ -1,117 +1,120 @@
 # oregontennis.org
 
-*The data that changed a state championship.*
+*A statewide sports-rating engine, playoff simulator, and live tournament toolkit — built as one self-contained system.*
 
 ---
 
-In May 2026, the OSAA adopted a dual team tennis championship — boys and
-girls, across 6A, 5A, and 4A-1A — with the first tournaments in 2027. It's
-the first new team format Oregon tennis has had, and it makes Oregon the most
-recent state to join the more-than-half of the country that already crowns a
-team champion. (Colorado was the last before this.)
+oregontennis.org is the analytics platform for Oregon high school tennis: four
+years of statewide results, four original rating models, a playoff simulator,
+and a suite of live tournament tools, all generated from raw match data and
+served as a single static site.
 
-oregontennis.org is the data backbone that made the case. The argument for the
-new championship — who would qualify, how brackets would seed, how many more
-kids would actually get to play, what the travel looked like — wasn't asserted.
-It was *computed*, published, and handed to the committee as a working model.
-The state championship committee recommended adoption; the OSAA accepted it.
-
-This is the whole arc: notice a problem, build the evidence, make the
-argument, and take it all the way to the people who decide.
+It's also the data layer behind a real institutional change — the analysis
+that supported Oregon's adoption of a dual team tennis championship, with the
+first events in 2027. The interesting part isn't the outcome; it's how a small,
+honest, fully transparent system got built to make that kind of argument
+possible.
 
 ---
 
-## The bigger story
+## The problem it models
 
-Oregon tennis only ever had an individual tournament — singles and doubles.
-Roughly 10–15% of varsity players ever reached state; a 12-player roster might
-send two. Twenty-seven other states already ran a dual team championship.
-Oregon didn't.
+A tennis dual meet is eight concurrent matches — *matches within matches*.
+Four singles, four doubles; win five flights and you win the meet. That
+structure breaks ordinary ranking: a 5–3 win at the bottom of the lineup looks
+identical to a 5–3 win at the top, win-loss records ignore who you played, and
+lineups can be "stacked" to game any naive metric. There was no central data
+and no rating that understood any of this.
 
-Changing that required more than a pitch. It required answering every
-practical objection with data: *Can teams field viable rosters? How big should
-the brackets be? Who gets auto-bids? What does it do to travel? How do you seed
-it fairly?* oregontennis.org existed to answer exactly those questions — first
-as a ranking experiment, then as the analytical engine behind a multi-year
-advocacy effort, documented along the way in proposals, redistricting analysis,
-and after-action reports.
-
-The result: a recommendation, then adoption, then a real event on the 2027
-calendar.
-
----
-
-## Everything on the site
-
-It started as a rankings table. It's now a small suite of public tools.
-
-**Rankings dashboard** — Four interlocking views in one app:
-— *Rankings* — every team rated by four different models, filterable by year, class, and league
-— *Playoff Simulator* — what-if brackets, including a regional mode that optimizes travel against competitive integrity
-— *Comparison* — head-to-head and model-vs-model, so you can see where the math disagrees with itself
-— *Analysis* — the deeper cuts behind the numbers
-
-**Methodology** — The Power Index explained in plain language, so the rankings are auditable rather than a black box.
-
-**Weekly rankings** — In-season snapshots, week by week, so the picture is live, not just a year-end summary.
-
-**All-State archive** — All-State teams, 2022–2025, preserved in one place.
-
-**Bracket tools** — A permutation explorer and a fair-bracket generator that stress-test how different seedings would actually play out.
-
-**SD1 draw suite** — A live seeding board, draw tool, and printable/live brackets built to run an actual special-district tournament in the room, on the day, with cloud-saved state.
-
-**2027 format tools** — Built ahead of the new event: a mixed-doubles standby-list tool and the dual team finals format the advocacy effort created.
-
-**Changelog & after-action reports** — The work shown openly: what changed, what was tested, what was learned, including an A/B test of two rating models written up honestly.
+So the system had to invent the measurement, then build everything on top of
+it — ingestion, rating models, simulation, and the public tools — handling
+real-world mess along the way: forfeits, ties, six-flight meets, classification
+changes, and dirty source data.
 
 ---
 
 ## The models
 
-**APR** — Adjusted Power Rating. RPI-style strength of schedule: your wins
-matter, your opponents' wins matter more, theirs matter too. *"How good are
-you, given who you played?"*
+**APR** — Adjusted Power Rating. RPI-style strength of schedule, aligned with
+what the OSAA already uses: your wins matter, your opponents' more, theirs too.
+*"How good are you, given who you played?"*
 
-**FWS / oFWS** — Flight-Weighted Score. A dual meet is eight positions, not
-one. Winning 6–1 is deeper than scraping 4–3. FWS weights each flight,
-normalizes for short matches, and the opponent-weighted variant folds in *who*
-you beat. *"How deep is your roster?"*
+**FWS** — Flight-Weighted Score. Scores all eight flights on a weighted curve
+(1st singles/doubles = 1.00 down to 4th doubles = 0.10, max 3.95). The top of
+the lineup drives the number, but depth counts — a 7–1 sweep outscores a 5–3
+win with the same top flights — which makes stacking pointless. Normalized for
+flights actually contested, so a six-flight meet isn't penalized.
 
-**Power Index** — The blend. Half APR, half normalized FWS — winning and depth
-in one number.
+**FWS+** — FWS made legible, indexed like baseball's ERA+. 100 is exactly
+average for the classification; 115 is 15% above. It recalibrates as the season
+fills in, so a team's standing reads in real time and across history without
+needing to know the raw averages.
+
+**Power Index** — The blend: `(APR × 0.50) + (FWS × 0.50)`. Opponent quality
+and flight dominance in one number, fuller than either alone.
 
 **TOSS** — A later model folding in game-share margin, A/B-tested against the
-Power Index, with results reported rather than assumed.
+Power Index with results reported, not assumed.
 
 **H2H engine** — When teams are close, head-to-head breaks the tie — but only
 when it doesn't create a rock-paper-scissors loop (A beats B beats C beats A).
-The edge cases are the whole job.
+Split series defer to the metrics. The edge cases are the whole job.
 
 ---
 
-## Stack
+## Everything on the site
 
-**Generation** Python — every model computed and emitted as one self-contained `index.html` with the data embedded
-**Geocoding** Nominatim / OpenStreetMap, geocoded once and cached so fresh clones never hit the network
-**Frontend** Vanilla JS + Bootstrap + DataTables over embedded JSON; React/TypeScript/Vite in the original prototype
-**Live tooling** Netlify Functions (v2) + Netlify Blobs for the cloud-saved SD1 draw
-**Hosting** Netlify — static, zero-infrastructure, offline-capable
-**Data** ~1,200 team-seasons, every flight, 2021–present, straight from the OSAA source API
+What began as an All-State archive is now a small suite of public tools.
+
+**Rankings dashboard** — Four interlocking views in one app:
+— *Rankings* — every team rated by the models, filterable by year, class, and league
+— *Playoff Simulator* — what-if brackets, with a regional mode that optimizes travel against competitive integrity
+— *Comparison* — head-to-head and model-vs-model, plus rating-vs-actual results (how well dual-meet strength predicts the individual tournament — spoiler: not very)
+— *Analysis* — league strength, top to bottom
+
+**Methodology** — The Power Index explained in plain language, so the rankings are auditable rather than a black box.
+
+**Weekly rankings** — In-season snapshots, week by week — live, not just a year-end summary.
+
+**All-State archive** — All-State teams, 2022–2025, in one place.
+
+**Bracket tools** — A permutation explorer and a fair-bracket generator that stress-test how different seedings actually play out.
+
+**SD1 draw suite** — A live seeding board, draw tool, and printable/live brackets built to run an actual special-district tournament in the room, on the day, with cloud-saved state.
+
+**2027 format tools** — Built ahead of the new event: a mixed-doubles standby-list tool and the dual team finals format.
+
+**Changelog & after-action reports** — The work shown openly: what changed, what was tested, what was learned.
 
 ---
 
-## Why it matters
+## Stack & build
+
+**Generation** A single Python program computes every model and emits one self-contained `index.html` with the data embedded — no database, no API, no server to defend, hosts anywhere.
+**Geocoding** Nominatim / OpenStreetMap, geocoded once and cached so fresh clones never hit the network; powers the simulator's travel optimization.
+**Frontend** Vanilla JS + Bootstrap + DataTables over embedded JSON; React/TypeScript/Vite in the original prototype.
+**Live tooling** Netlify Functions (v2) + Netlify Blobs for the cloud-saved SD1 draw.
+**Hosting** Netlify — static, zero-infrastructure, offline-capable.
+**Data** ~1,200 team-seasons, every flight, 2021–present, straight from the OSAA source API.
+
+---
+
+## Design decisions
 
 The boring choices are deliberate. Static HTML and embedded JSON instead of a
 backend, because the audience — coaches and athletic directors — needs
-something fast, free, and saveable, not a platform to log into. The interesting
-choices are everywhere else: in the rating math, the tiebreaker edge cases, the
-travel optimization, and the decision to publish the proposals instead of just
-shipping numbers.
+something fast, free, and saveable, not a platform to log into. A dataset this
+size belongs *in* the page. The model exposes raw, intuitive scores (0–3.95
+FWS, ERA+-style FWS+) up front and keeps the normalized math underneath.
 
-The point of the project isn't the rankings. It's that a clear, honest model,
-made public and argued well, can move an institution. The site is the proof of
-work — the championship is the outcome.
+The interesting choices are everywhere else: the rating design that makes
+stacking pointless, the tiebreaker logic that refuses to produce circular
+results, the travel optimization that protects top seeds while cutting miles
+for the rest, and the decision to publish the methodology so the numbers can be
+trusted rather than taken on faith.
+
+The throughline: a clear, honest, fully transparent model — built end to end,
+from raw API to live tournament board — that's credible enough to move an
+institution.
 
 → [oregontennis.org](https://oregontennis.org)
