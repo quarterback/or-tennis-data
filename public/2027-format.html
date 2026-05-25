@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>2027 Format Modeler — Mixed Doubles + Dual Finals</title>
+<title>2027 Mixed Doubles — Standby List Tool</title>
 <style>
   :root{--bg:#fafafa;--panel:#fff;--border:#d0d0d0;--text:#222;--muted:#777;--accent:#2a6dbf;--hot:#e74c3c;--good:#2e7d32;--warm:#f39c12;}
   body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);margin:0;padding:16px;}
@@ -23,22 +23,38 @@
   .bracket .champ{color:var(--good);font-weight:700;} .bracket .rnd{color:var(--muted);border-top:1px dashed #ccc;margin-top:6px;padding-top:3px;}
   .gap{background:#fff8e1;border:1px solid #ffe08a;border-radius:5px;padding:8px 10px;font-size:12px;margin-top:8px;}
   code{background:#f0f0f0;padding:1px 4px;border-radius:3px;}
+  .explain{background:#eef4fb;border:1px solid #cfe0f5;border-radius:6px;padding:10px 14px;font-size:12.5px;line-height:1.55;margin-bottom:12px;max-width:1100px;}
+  .explain strong{color:var(--accent);}
+  .standby-panel{border-width:2px;border-color:var(--accent);}
+  .legend{font-size:11.5px;color:var(--muted);margin:4px 0 10px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .sb{display:grid;grid-template-columns:44px 1fr 230px;gap:10px;align-items:center;padding:8px 8px;border-bottom:1px solid #eee;}
+  .sb-rank{font-weight:700;font-size:15px;color:var(--muted);text-align:right;}
+  .sb-pair{font-size:13.5px;font-weight:600;line-height:1.4;}
+  .sb-cond{font-size:12px;color:#5a4a10;margin-top:4px;background:#fbf7e8;border-left:3px solid var(--warm);padding:3px 8px;border-radius:3px;}
+  .sb-meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
+  .plus{color:var(--muted);margin:0 3px;}
+  .sub{font-size:11px;color:var(--muted);font-weight:400;}
+  .rosterTag{display:inline-block;background:#ffe9d6;color:#9a4a00;border-radius:8px;padding:0 6px;font-size:10.5px;font-weight:600;}
+  .pill.t1{background:#fde0e0;color:#902;} .pill.t2{background:#e3e8ef;color:#345;}
+  .pill.st-pending{background:#fff0c2;color:#7a5a00;} .pill.st-dropped{background:#f0f0f0;color:#999;}
+  .pill.st-activated{background:#d7f0d7;color:#185018;font-weight:600;} .pill.st-alternate{background:#e7ecf5;color:#456;}
+  .sb-dropped{opacity:.55;} .sb-dropped .sb-pair{text-decoration:line-through;} .sb-activated{background:#f4fbf4;}
+  .chips{margin-top:5px;}
+  .qtoggle{display:inline-block;cursor:pointer;border:1px solid #ccc;border-radius:8px;padding:0 7px;font-size:11px;margin-right:5px;user-select:none;}
+  .qtoggle.res-lost{background:#fde0e0;border-color:#e7b3b3;color:#902;} .qtoggle.res-won{background:#e6f0ff;border-color:#bcd3f0;color:#024;}
+  .mline{padding:1px 0;} .mgap{height:7px;}
 </style>
 </head>
 <body>
 
-<h1>2027 OSAA Tennis Format Modeler</h1>
+<h1>2027 OSAA Mixed Doubles — Standby List Tool</h1>
 <div class="subtitle">
-  Models the proposed 2027 individual tournament: a <strong>16-team mixed doubles</strong> bracket replaces consolation
-  in each classification. Mixed pairs are <strong>same-school only</strong>, and per the proposal <strong>only one
-  partner must be a state qualifier</strong> — the other can be a rostered teammate who played the regular season and
-  districts but didn't qualify (shown fictional, tagged <em>+roster</em>). Two streams fill the 16 lines —
-  <span class="pill auto">automatic</span> district bids and <span class="pill prov">provisional</span> pairs that
-  <strong>activate when the pair's state qualifier loses their first match</strong> (a two-qualifier pair needs both
-  to lose). After singles/doubles round 1, eligible provisionals are sorted by averaged district finish (a
-  non-qualifier counts as 5; lower finishers first) and backfill the open
-  <span class="pill tbd">TBD</span> slots; the rest are <span class="pill alt">alternates</span>. No team points exist
-  in 2027 — this is its own championship. Everything is chalk-simulated and reproducible from the draw seed.
+  In the proposed 2027 format a <strong>16-line mixed doubles</strong> bracket replaces consolation in each
+  classification. Pairs are <strong>same-school</strong> and only <strong>one partner must be a state qualifier</strong>;
+  the other can be a rostered teammate who played the regular season and districts but didn't qualify
+  (<em>+roster</em>). This tool demonstrates the part that's new to OSAA: the <strong>public standby list</strong> that
+  fills the provisional slots when qualifiers lose their first match. All student names are fictional; schools and
+  special districts are real.
 </div>
 
 <div class="controls">
@@ -46,32 +62,48 @@
     <select id="clsSel"><option>6A</option><option>5A</option><option>4A</option></select>
   </label>
   <label>Draw seed: <input type="number" id="seed" value="1"></label>
-  <button id="runBtn">Run R1 &amp; build mixed bracket</button>
+  <label><input type="checkbox" id="upsetChk"> Allow upsets (random R1)</label>
+  <button id="genBtn">Generate standby list</button>
+  <button id="simBtn">Simulate R1 &rarr;</button>
+  <button id="resetBtn">Reset R1</button>
   <span id="status" class="note"></span>
+</div>
+
+<div class="explain">
+  <strong>How mixed doubles fills.</strong> Mixed doubles fills via two paths.
+  <strong>10&ndash;14 spots are district bids</strong> submitted the Saturday after districts (the
+  <span class="pill auto">automatic</span> entries below). The remaining <strong>2&ndash;8 spots come from this
+  standby list</strong> when state qualifiers lose their R1 match. The list is public from the moment brackets
+  publish &mdash; schools watch it through Friday R1. A pair becomes eligible only when its qualifier side(s)
+  <em>lose</em> R1 (a two-qualifier pair needs both to lose); a <span class="pill t1">Tier&nbsp;1</span> pigtail/R32
+  loser ranks ahead of a <span class="pill t2">Tier&nbsp;2</span> R16 loser. Schools decide whether to bring their
+  <span class="rosterTag">+roster</span> partner based on their position here.
+</div>
+
+<div class="panel standby-panel">
+  <h2>Provisional standby list <span class="sub">— published when brackets are drawn</span></h2>
+  <div class="legend">
+    <span><span class="pill st-pending">pending</span> awaiting R1</span>
+    <span><span class="pill st-activated">activated</span> in the field</span>
+    <span><span class="pill st-alternate">alternate</span> eligible but bumped</span>
+    <span><span class="pill st-dropped">dropped</span> qualifier won R1</span>
+    <span class="sub">Sorted: Tier&nbsp;1 before Tier&nbsp;2, then weaker district finish first. After R1 runs, click a result chip to flip a match.</span>
+  </div>
+  <div id="standby"></div>
 </div>
 
 <div class="grid">
   <div class="panel">
-    <h2>Mixed field assembly</h2>
-    <div class="note" id="fieldNote"></div>
-    <div id="gapBox"></div>
-    <h2 style="margin-top:14px">Provisional activation (after singles/doubles R1)</h2>
-    <div class="note">Eligible = the pair's state qualifier(s) lost their first match (a <em>+roster</em> non-qualifier has no match to lose). Sorted by averaged district finish (non-qualifier = 5), lower finishers first; ties by draw. Top N fill open slots; rest are alternates.</div>
-    <table id="provTable"><thead><tr><th>#</th><th>Pair (same school)</th><th>School</th><th>SD</th><th class="n">avg fin</th><th>Status</th></tr></thead><tbody></tbody></table>
+    <h2>Automatic entries <span class="sub">(district bids — illustrative)</span></h2>
+    <div class="note">Mixed district bids aren't regulated by OSAA and have no published data, so these are a plausible
+      spread (up to 2 same-school pairs per district that fields both genders). Fictional names; real schools/districts.</div>
+    <table id="autoTable"><thead><tr><th>#</th><th>Pair</th><th>School</th><th>SD</th></tr></thead><tbody></tbody></table>
   </div>
   <div class="panel">
     <h2 id="brHdr">Mixed doubles bracket</h2>
     <div class="note" id="brNote"></div>
     <div class="bracket" id="bracket"></div>
   </div>
-</div>
-
-<div class="panel">
-  <h2>Automatic entries (illustrative)</h2>
-  <div class="note">District mixed bids aren't regulated by OSAA and have no published data, so these are generated as a plausible
-    spread (up to 2 same-school pairs per district that fields both genders). They're placeholders to demonstrate field
-    composition, not real entries.</div>
-  <table id="autoTable"><thead><tr><th>#</th><th>Pair</th><th>School</th><th>SD</th><th class="n">avg fin</th></tr></thead><tbody></tbody></table>
 </div>
 
 <div class="panel">
@@ -753,7 +785,7 @@ function scoreField(fieldKey, byeMode){
 }
 
 // =====================================================================
-// 2027 mixed-doubles model
+// 2027 mixed-doubles model — public standby-list tool
 // =====================================================================
 const CLASS_FIELDS = {
   '6A': {bs:'b6As', bd:'b6Ad', gs:'g6As', gd:'g6Ad', districts:7},
@@ -762,72 +794,70 @@ const CLASS_FIELDS = {
 };
 const BIDS = { '6A':{auto:14,prov:2}, '5A':{auto:8,prov:8}, '4A':{auto:10,prov:6} };
 const MIXED_N = 16;
+const GLAB = {b:'Boys', g:'Girls'};
+const ORD = n => ({1:'1st',2:'2nd',3:'3rd',4:'4th'}[n] || n+'th');
 
-// Entries that lost their FIRST PLAYED match (a bye player's first match is round 2).
-// Equivalent to: played >=1 real match and won 0.
-function firstMatchLosers(draw){
-  const {placement,N,rankOf} = draw;
-  let layer=[]; for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
-  const wins={}, played={};
-  while(layer.length>1){
-    const nx=[];
-    for(let i=0;i<layer.length;i+=2){
-      const a=layer[i], b=layer[i+1]; let w;
-      if(a==null&&b==null){ nx.push(null); continue; }
-      if(a==null){ w=b; } else if(b==null){ w=a; }
-      else { played[a]=1; played[b]=1; w = rankOf[a]<=rankOf[b]?a:b; wins[w]=(wins[w]||0)+1; }
-      nx.push(w);
-    }
-    layer=nx;
-  }
-  const losers=new Set();
-  for(const k in played){ const idx=+k; if(!wins[idx]) losers.add(idx); }
-  return losers;
-}
-
+// District-champion default seeds (the bracket only uses these for seeding/byes).
 function committeeSeeds(key){
   const ents=FIELDS[key];
-  if(SEEDS[key]) return SEEDS[key].map(nm=>ents.findIndex(e=>e.name===nm)).filter(i=>i>=0);
+  if(typeof SEEDS!=='undefined' && SEEDS[key]) return SEEDS[key].map(nm=>ents.findIndex(e=>e.name===nm)).filter(i=>i>=0);
   const c=[], seen=new Set(); ents.forEach((e,i)=>{ if(e.fin===1 && !seen.has(e.sd)){ seen.add(e.sd); c.push(i); } });
   return c;
 }
-function runR1(key){ const d=buildDraw(FIELDS[key], committeeSeeds(key), 'merit'); return d ? firstMatchLosers(d) : new Set(); }
 
-function singlesUnits(key){ return FIELDS[key].map((e,i)=>({key,idx:i,name:e.name,school:e.school,sd:e.sd,fin:e.fin})); }
-
-// A school's eligible members come from its singles AND doubles state qualifiers.
-// A doubles entry is a 2-person team; we treat it as one available member unit
-// (an approximation — its district place and R1 result stand in for the member).
-function memberUnits(cls, gender){
-  const cf=CLASS_FIELDS[cls], sKey=gender==='b'?cf.bs:cf.gs, dKey=gender==='b'?cf.bd:cf.gd, u=[];
-  FIELDS[sKey].forEach((e,i)=>u.push({key:sKey,idx:i,name:e.name,school:e.school,sd:e.sd,fin:e.fin}));
-  FIELDS[dKey].forEach((e,i)=>u.push({key:dKey,idx:i,name:e.name+' (dbls)',school:e.school,sd:e.sd,fin:e.fin}));
-  return u;
-}
-// Fictional non-qualifier partners. The proposal lets a qualifying pairing add a
-// rostered teammate who played the regular season + districts but didn't qualify for
-// state; only ONE partner must be a qualifier. No roster data exists, so these are
-// fictional, tagged "+roster", and counted as district placement 5 for the sort.
-const NQ_FIN=5;
-const NQ_FIRST=['Jordan','Avery','Riley','Casey','Quinn','Hayden','Rowan','Sawyer','Emerson','Finley','Skyler','Reese','Parker','Tatum','Marlowe','Ellis'];
-const NQ_LAST=['Carter','Bennett','Hughes','Vance','Ramsey','Doyle','Mercer','Holt','Sutton','Cross','Patel','Larsen','Walsh','Reyes','Okafor','Nguyen'];
-let NQ_SEQ=0;
-function fictionalPartner(school, sd){
-  const fn=NQ_FIRST[Math.floor(RNG()*NQ_FIRST.length)], ln=NQ_LAST[Math.floor(RNG()*NQ_LAST.length)];
-  return {fictional:true, key:'nq', idx:NQ_SEQ++, name:fn+' '+ln+' (+roster)', school, sd, fin:NQ_FIN};
+// ---- fictional student surnames (real schools/districts, fake people) ----
+const SURNAMES=['Clark','Wilson','Reyes','Park','Jensen','Nguyen','Patel','Brooks','Carter','Hughes','Vance','Ramsey','Doyle','Mercer','Holt','Sutton','Cross','Larsen','Walsh','Okafor','Bauer','Frost','Quill','Ibarra','Soto','Mraz','Yoon','Tran','Diaz','Ford','Kane','Lowe','Nash','Pope','Rhee','Stein','Tate','Voss','Ware','Yates','Abbott','Boyd','Chen','Dunn','Ellis','Flynn','Gore','Hahn','Ito','Kerr','Lim','Maas','Noll','Pratt','Roe','Sano','Udall','Vega','Wills'];
+function pickSurname(){ return SURNAMES[Math.floor(RNG()*SURNAMES.length)]; }
+function genNames(cls){
+  const cf=CLASS_FIELDS[cls], out={};
+  [cf.bs,cf.bd,cf.gs,cf.gd].forEach(key=>{
+    const isD=key.endsWith('d');
+    out[key]=FIELDS[key].map(()=>{
+      if(isD){ let a=pickSurname(), b=pickSurname(), g=0; while(b===a && g++<6) b=pickSurname(); return {surnames:[a,b], team:a+'/'+b}; }
+      return {surnames:[pickSurname()]};
+    });
+  });
+  return out;
 }
 
-// Illustrative automatics: up to 2 same-school pairs per district fielding both genders.
+// ---- singles/doubles draws: structure (tiers) + R1 outcomes ----
+// Tier 1 = lost a round-of-32 (pigtail) match. Tier 2 = lost a round-of-16 first match
+// (a R32-bye entry, or a 16-entry bracket like 5A that has no R32 at all).
+function classDraws(cls){
+  const cf=CLASS_FIELDS[cls], out={};
+  [cf.bs,cf.bd,cf.gs,cf.gd].forEach(key=>{ out[key]=buildDraw(FIELDS[key], committeeSeeds(key), 'merit'); });
+  return out;
+}
+function entryTiers(draw){
+  const {placement,N,topo}=draw, info={};
+  for(const s in placement){
+    const idx=placement[s], partner=topo.r1partner[+s], hadBye=!(partner in placement);
+    const firstSize = hadBye ? N/2 : N;
+    info[idx]={ hadBye, tier: firstSize>=32 ? 1 : 2 };
+  }
+  return info;
+}
+// Entries that lost their FIRST PLAYED match. mode 'chalk' uses merit ranking; 'random' coin-flips.
+function firstMatchLosers(draw, mode){
+  const {placement,N,rankOf}=draw;
+  let layer=[]; for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
+  const wins={}, played={};
+  while(layer.length>1){ const nx=[];
+    for(let i=0;i<layer.length;i+=2){ const a=layer[i], b=layer[i+1]; let w;
+      if(a==null&&b==null){ nx.push(null); continue; }
+      if(a==null){ w=b; } else if(b==null){ w=a; }
+      else { played[a]=1; played[b]=1; w = (mode==='random') ? (RNG()<0.5?a:b) : (rankOf[a]<=rankOf[b]?a:b); wins[w]=(wins[w]||0)+1; }
+      nx.push(w); }
+    layer=nx; }
+  const losers=new Set(); for(const k in played){ const idx=+k; if(!wins[idx]) losers.add(idx); }
+  return losers;
+}
+
+// ---- automatic district bids (illustrative): up to 2 same-school pairs per district ----
 function schoolDistrict(cls, school){
   const cf=CLASS_FIELDS[cls];
   for(const k of [cf.bs,cf.bd,cf.gs,cf.gd]){ const e=FIELDS[k].find(x=>x.school===school); if(e) return e.sd; }
   return 'SD?';
-}
-function repMember(cls, gender, school){
-  const cf=CLASS_FIELDS[cls]; const sKey=gender==='b'?cf.bs:cf.gs, dKey=gender==='b'?cf.bd:cf.gd;
-  let e=FIELDS[sKey].find(x=>x.school===school), tag='';
-  if(!e){ e=FIELDS[dKey].find(x=>x.school===school); tag=' (dbls)'; }
-  return e ? {name:e.name+tag, sd:e.sd, fin:e.fin} : null;
 }
 function genAutomatics(cls){
   const cf=CLASS_FIELDS[cls], need=BIDS[cls].auto;
@@ -840,28 +870,66 @@ function genAutomatics(cls){
   const byDist={}; dual.forEach(s=>{ const sd=schoolDistrict(cls,s); (byDist[sd]=byDist[sd]||[]).push(s); });
   const out=[];
   for(const sd of Object.keys(byDist).sort()){
-    shuffle(byDist[sd]).slice(0,2).forEach(s=>{
-      const b=repMember(cls,'b',s), g=repMember(cls,'g',s); if(!b||!g) return;
-      out.push({school:s, sd:b.sd, avgFin:(b.fin+g.fin)/2, source:'automatic', name:b.name+' / '+g.name,
-                boy:{name:b.name,fin:b.fin}, girl:{name:g.name,fin:g.fin}});
-    });
+    shuffle(byDist[sd]).slice(0,2).forEach(s=>{ out.push({source:'automatic', school:s, sd, label:pickSurname()+' / '+pickSurname()}); });
   }
   return out.slice(0, need);
 }
 
-// Lay 16 mixed pairs into a 16-line bracket: same district -> opposite halves; same school -> different quarter.
+// ---- provisional pairings (the standby list) ----
+// One partner must be a state qualifier (singles individual or one designated member of a
+// doubles team); the other may be a +roster non-qualifier teammate. Schools submit these in
+// advance, so the full list publishes with the bracket; R1 results only flip statuses.
+function rosterSide(gender, school){ return {qualifier:false, kind:'roster', gender, surname:pickSurname(), school}; }
+function buildPairings(cls, names, tiers){
+  const cf=CLASS_FIELDS[cls];
+  const bySchool={};
+  function addSides(key){
+    const gender=key[0], isD=key.endsWith('d');
+    FIELDS[key].forEach((e,i)=>{
+      const nm=names[key][i], ti=tiers[key][i] ? tiers[key][i].tier : 2;
+      let side;
+      if(isD){ const m=Math.floor(RNG()*2);
+        side={qualifier:true, kind:'doubles', gender, key, idx:i, surname:nm.surnames[m], teamName:nm.team, school:e.school, sd:e.sd, fin:e.fin, tier:ti}; }
+      else side={qualifier:true, kind:'singles', gender, key, idx:i, surname:nm.surnames[0], school:e.school, sd:e.sd, fin:e.fin, tier:ti};
+      (bySchool[e.school]=bySchool[e.school]||{b:[],g:[]})[gender].push(side);
+    });
+  }
+  [cf.bs,cf.bd,cf.gs,cf.gd].forEach(addSides);
+  const pairings=[];
+  Object.keys(bySchool).forEach(school=>{
+    const S=bySchool[school], bs=shuffle(S.b.slice()), gs=shuffle(S.g.slice());
+    const sd=(bs[0]||gs[0]).sd, n=Math.max(bs.length, gs.length);
+    let made=0;
+    for(let i=0;i<n && made<2;i++){
+      let sideB = bs[i] || rosterSide('b', school);
+      let sideG = gs[i] || rosterSide('g', school);
+      const quals=[sideB,sideG].filter(s=>s.qualifier);
+      if(!quals.length) break;
+      const avgFin = quals.reduce((a,s)=>a+s.fin,0)/quals.length;
+      const tier = Math.max(...quals.map(s=>s.tier));
+      pairings.push({source:'provisional', school, sd, sideB, sideG, quals, avgFin, tier,
+                     label: sideB.surname+' / '+sideG.surname, r:RNG()});
+      made++;
+    }
+  });
+  const target = Math.min(pairings.length, Math.max(12, Math.min(20, BIDS[cls].prov*2+6)));
+  shuffle(pairings);
+  const list = pairings.slice(0, target);
+  // Tier 1 ahead of Tier 2; within tier weaker district finish first; ties reproducible by draw.
+  list.sort((a,b)=> (a.tier-b.tier) || (b.avgFin-a.avgFin) || (a.r-b.r));
+  return list;
+}
+
+// ---- bracket placement: same-district automatics to opposite halves; same school to different quarters ----
 function placeMixed(pairs){
   const N=MIXED_N, placement={}, slots=[]; for(let i=0;i<N;i++) slots.push(i);
   const legal=(p,slot)=>{
     for(const s in placement){ const q=pairs[placement[s]], os=+s;
-      // Same-district -> opposite halves is the automatic-draw rule (<=2 per district);
-      // provisionals just fill remaining lines, so it isn't re-imposed on them.
       if(p.source==='automatic' && q.source==='automatic' && q.sd===p.sd && halfOf(os,N)===halfOf(slot,N)) return false;
       if(q.school===p.school && quarterOf(os,N)===quarterOf(slot,N)) return false;
     }
     return true;
   };
-  // Place automatics first (they carry the half rule), then provisionals into what's left.
   const order=pairs.map((_,i)=>i).sort((a,b)=> (pairs[a].source==='automatic'?0:1)-(pairs[b].source==='automatic'?0:1));
   const bt=(i)=>{ if(i===order.length) return true; const p=pairs[order[i]];
     for(const s of shuffle(slots.filter(x=>!(x in placement) && legal(p,x)))){ placement[s]=order[i]; if(bt(i+1)) return true; delete placement[s]; }
@@ -870,135 +938,128 @@ function placeMixed(pairs){
   return null;
 }
 
-// Chalk-run the mixed bracket (lower avgFin wins; ties by draw). Returns rounds + champion.
-function simMixed(placement, pairs){
-  const N=MIXED_N; let layer=[]; for(let s=0;s<N;s++) layer.push(s in placement ? placement[s] : null);
-  const rounds=[];
-  while(layer.length>1){
-    const matchups=[], nx=[];
-    for(let i=0;i<layer.length;i+=2){
-      const a=layer[i], b=layer[i+1]; let w;
-      if(a==null&&b==null){ nx.push(null); continue; }
-      if(a==null){ w=b; } else if(b==null){ w=a; }
-      else { const fa=pairs[a].avgFin, fb=pairs[b].avgFin; w = (fa<fb || (fa===fb && RNG()<0.5)) ? a : b; }
-      matchups.push({a,b,w}); nx.push(w);
-    }
-    rounds.push(matchups); layer=nx;
+// ---- display helpers ----
+function sideLabel(s){
+  if(!s.qualifier) return `${esc(s.surname)} <span class="rosterTag">+roster</span> <span class="sub">(${esc(s.school)})</span>`;
+  if(s.kind==='doubles') return `${esc(s.surname)} <span class="sub">(from ${GLAB[s.gender]} Doubles ${esc(s.teamName)}, ${esc(s.school)} ${s.sd}, ${ORD(s.fin)})</span>`;
+  return `${esc(s.surname)} <span class="sub">(${GLAB[s.gender]} Singles, ${esc(s.school)} ${s.sd}, ${ORD(s.fin)})</span>`;
+}
+function clauseFor(s){
+  return s.kind==='doubles' ? `${esc(s.teamName)} ${GLAB[s.gender]} Doubles team` : esc(s.surname);
+}
+function activationText(p){
+  if(p.quals.length===1){ const s=p.quals[0];
+    return s.kind==='doubles'
+      ? `${esc(s.teamName)} doubles team must lose ${GLAB[s.gender]} Doubles R1`
+      : `${esc(s.surname)} must lose ${GLAB[s.gender]} Singles R1`;
   }
-  return {rounds, champion:layer[0]};
+  return `${clauseFor(p.quals[0])} AND ${clauseFor(p.quals[1])} must both lose R1`;
 }
 
-// =====================================================================
-// Render
-// =====================================================================
-function run(){
+// ---- state ----
+let ST=null;
+function r1mode(){ const c=document.getElementById('upsetChk'); return c && c.checked ? 'random' : 'chalk'; }
+function ensureLosers(){
+  if(ST.losers) return;
+  ST.mode=r1mode(); const cf=CLASS_FIELDS[ST.cls];
+  ST.losers={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>ST.losers[k]=firstMatchLosers(ST.draws[k], ST.mode));
+}
+function sideResult(s){
+  const k=s.key+':'+s.idx, ov=ST.overrides[k];
+  if(ov) return ov;
+  return ST.losers && ST.losers[s.key].has(s.idx) ? 'lost' : 'won';
+}
+
+function publish(){
   const cls=document.getElementById('clsSel').value;
   RNG = mulberry32(+document.getElementById('seed').value || 1);
-  const bids=BIDS[cls];
-
-  // 1. Automatics (illustrative)
-  const autos=genAutomatics(cls);
-
-  // 2. Run R1 (singles + doubles, both genders) -> first-match losers, per field key
+  const names=genNames(cls);
+  const draws=classDraws(cls);
   const cf=CLASS_FIELDS[cls];
-  const lossByKey={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>{ lossByKey[k]=runR1(k); });
-  const lost=(u)=> u.fictional || lossByKey[u.key].has(u.idx);
+  const tiers={}; [cf.bs,cf.bd,cf.gs,cf.gd].forEach(k=>tiers[k]=entryTiers(draws[k]));
+  const autos=genAutomatics(cls);
+  const pairings=buildPairings(cls, names, tiers);
+  ST={cls, names, draws, tiers, autos, pairings, r1Done:false, overrides:{}, losers:null, mode:'chalk'};
+  renderAll();
+}
+function resolveR1(){ if(!ST) return; ST.r1Done=true; ST.losers=null; ST.mode=r1mode(); ensureLosers(); renderAll(); }
+function resetR1(){ if(!ST) return; ST.r1Done=false; ST.overrides={}; ST.losers=null; renderAll(); }
+function toggleSide(key,idx){
+  if(!ST) return;
+  ST.r1Done=true; ensureLosers();
+  const k=key+':'+idx, base=ST.losers[key].has(idx)?'lost':'won', cur=ST.overrides[k]||base;
+  ST.overrides[k]= cur==='lost'?'won':'lost';
+  renderAll();
+}
 
-  // 3. Eligible state qualifiers = real qualifiers who lost their first match,
-  //    minus any already used in an automatic pair.
-  const autoNames=new Set(); autos.forEach(p=>{ if(p.boy) autoNames.add(p.school+'|'+p.boy.name); if(p.girl) autoNames.add(p.school+'|'+p.girl.name); });
-  NQ_SEQ=0;
-  const eligB=memberUnits(cls,'b').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
-  const eligG=memberUnits(cls,'g').filter(u=> lost(u) && !autoNames.has(u.school+'|'+u.name));
-
-  // 4. Form provisional pairs (only ONE partner must be a state qualifier): within a
-  //    school, match eligible boys<->girls into two-qualifier pairs; leftover or
-  //    single-gender qualifiers bring a fictional +roster non-qualifier teammate.
-  const cands=[];
-  [...new Set([...eligB,...eligG].map(u=>u.school))].forEach(s=>{
-    const bs=eligB.filter(u=>u.school===s), gs=eligG.filter(u=>u.school===s), n=Math.min(bs.length,gs.length);
-    for(let i=0;i<n;i++){ const b=bs[i],g=gs[i];
-      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'2q',name:b.name+' / '+g.name}); }
-    for(let i=n;i<bs.length;i++){ const b=bs[i],g=fictionalPartner(s,b.sd);
-      cands.push({boy:b,girl:g,school:s,sd:b.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
-    for(let i=n;i<gs.length;i++){ const g=gs[i],b=fictionalPartner(s,g.sd);
-      cands.push({boy:b,girl:g,school:s,sd:g.sd,avgFin:(b.fin+g.fin)/2,source:'provisional',kind:'1q',name:b.name+' / '+g.name}); }
+// ---- render ----
+function pairBaseStatus(p){
+  if(!ST.r1Done) return 'pending';
+  return p.quals.some(s=>sideResult(s)==='won') ? 'dropped' : 'eligible';
+}
+function renderAll(){
+  const cls=ST.cls, bids=BIDS[cls];
+  const eligible=[];
+  ST.pairings.forEach(p=>{ p._status=pairBaseStatus(p); if(p._status==='eligible') eligible.push(p); });
+  let act=0; eligible.forEach(p=>{ if(act<bids.prov){ p._status='activated'; act++; } else p._status='alternate'; });
+  const activated=ST.pairings.filter(p=>p._status==='activated');
+  document.getElementById('status').innerHTML = ST.r1Done
+    ? `<span class="ok">${cls}: ${ST.autos.length} automatic + ${activated.length} standby = ${ST.autos.length+activated.length}/16 — ${eligible.length} eligible, ${Math.max(0,eligible.length-activated.length)} alternate</span>`
+    : `<span class="ok">${cls}: standby list published — ${ST.pairings.length} pairings pending. Run R1 to resolve.</span>`;
+  renderStandby();
+  renderAutos();
+  renderBracket(activated);
+  renderSchedule(cls);
+}
+function resultChips(p){
+  return '<div class="chips">'+p.quals.map(s=>{ const r=sideResult(s);
+    return `<span class="qtoggle res-${r}" data-key="${s.key}" data-idx="${s.idx}" title="click to flip this R1 result">${esc(s.surname)}: ${r==='lost'?'lost R1':'won R1'}</span>`;
+  }).join('')+'</div>';
+}
+function renderStandby(){
+  const wrap=document.getElementById('standby');
+  if(!ST.pairings.length){ wrap.innerHTML='<div class="note">No provisional pairings for this class/seed.</div>'; return; }
+  let h='';
+  ST.pairings.forEach((p,i)=>{
+    const st=p._status, roster=p.quals.length<2 ? ' <span class="rosterTag">+roster pair</span>' : '';
+    const cond = `<div class="sb-cond">${activationText(p)}${ST.r1Done?resultChips(p):''}</div>`;
+    h+=`<div class="sb sb-${st}">`+
+       `<div class="sb-rank">#${i+1}</div>`+
+       `<div class="sb-main"><div class="sb-pair">${sideLabel(p.sideG)} <span class="plus">+</span> ${sideLabel(p.sideB)}${roster}</div>${cond}</div>`+
+       `<div class="sb-meta"><span class="pill t${p.tier}">Tier ${p.tier}</span> <span class="sub">avg finish ${p.avgFin.toFixed(1)}</span> <span class="pill st-${st}">${st}</span></div>`+
+       `</div>`;
   });
-
-  // 5. Priority: lower district finishers first => DESCENDING avgFin; ties by draw
-  const elig=cands;
-  elig.sort((a,b)=> (b.avgFin-a.avgFin) || (RNG()-0.5));
-  const open=Math.max(0, MIXED_N - autos.length);
-  // fill open slots in priority order, never reusing a player across two activated pairs
-  const used=new Set(), activated=[], alternates=[];
-  const uk=(u)=>u.key+':'+u.idx;
-  for(const p of elig){
-    if(activated.length<open && !used.has(uk(p.boy)) && !used.has(uk(p.girl))){ activated.push(p); used.add(uk(p.boy)); used.add(uk(p.girl)); }
-    else alternates.push(p);
-  }
-
-  // 5. Field + bracket
-  const field=autos.concat(activated);
-  const short=MIXED_N - field.length;
-  document.getElementById('status').innerHTML =
-    `<span class="ok">${cls}: ${autos.length} automatic + ${activated.length} provisional = ${field.length}/16</span>`;
-  document.getElementById('fieldNote').innerHTML =
-    `<strong>${cls}</strong> needs ${bids.auto} automatic bids (2 × ${cf.districts} districts) and `+
-    `${bids.prov} provisional slots. Eligible provisionals this run: <strong>${elig.length}</strong> `+
-    `(${activated.length} activated, ${alternates.length} alternate).`;
-
-  const gap=document.getElementById('gapBox');
-  gap.innerHTML = short>0
-    ? `<div class="gap"><strong>Field short by ${short}.</strong> Not enough eligible state qualifiers (lost their first match) to fill all ${bids.prov} provisional slots — the bracket runs with ${short} bye line(s). A real submission window would let schools designate more provisional pairings than the data here captures.</div>`
-    : '';
-
-  // provisional table
-  const activeSet=new Set(activated);
-  const ptb=document.querySelector('#provTable tbody'); ptb.innerHTML='';
-  elig.forEach((p,i)=>{
-    const status = activeSet.has(p) ? '<span class="pill prov">activated</span>' : '<span class="pill alt">alternate</span>';
-    const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.name)}</td><td>${esc(p.school)}</td><td>${p.sd}</td>`+
-                 `<td class="n">${p.avgFin.toFixed(1)}</td><td>${status}</td>`;
-    ptb.appendChild(tr);
-  });
-  if(!elig.length){ const tr=document.createElement('tr'); tr.innerHTML='<td colspan="6" class="note">No eligible provisional pairs this run (no state qualifiers lost their first match).</td>'; ptb.appendChild(tr); }
-
-  // automatics table
-  const atb=document.querySelector('#autoTable tbody'); atb.innerHTML='';
-  autos.forEach((p,i)=>{ const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.name)}</td><td>${esc(p.school)}</td><td>${p.sd}</td><td class="n">${p.avgFin.toFixed(1)}</td>`;
-    atb.appendChild(tr); });
-
-  // bracket
+  wrap.innerHTML=h;
+  wrap.querySelectorAll('.qtoggle').forEach(el=>el.addEventListener('click',()=>toggleSide(el.dataset.key, +el.dataset.idx)));
+}
+function renderAutos(){
+  const tb=document.querySelector('#autoTable tbody'); tb.innerHTML='';
+  ST.autos.forEach((p,i)=>{ const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="n">${i+1}</td><td>${esc(p.label)}</td><td>${esc(p.school)}</td><td><span class="pill auto">${p.sd}</span></td>`;
+    tb.appendChild(tr); });
+}
+function renderBracket(activated){
+  const br=document.getElementById('bracket'), note=document.getElementById('brNote');
+  if(!ST.r1Done){ note.innerHTML=''; br.innerHTML='<p class="note">The 16-line bracket is drawn once R1 resolves the standby list. Click <strong>Simulate R1</strong> to populate it.</p>'; return; }
+  const field=ST.autos.concat(activated);
   const placement = field.length ? placeMixed(field) : null;
-  const br=document.getElementById('bracket');
-  document.getElementById('brNote').innerHTML = field.length
-    ? `16-line draw, same-district pairs in opposite halves. Chalk projection (lower averaged district finish wins).`
-    : '';
-  if(!placement){ br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; LAST_MC=null; renderSchedule(cls,null); return; }
-  const sim=simMixed(placement, field);
-  const tag=(p)=> p.source==='automatic' ? '<span class="pill auto">A</span>' : '<span class="pill prov">P</span>';
-  let html='<div class="rnd">Round 1</div>';
+  if(!placement){ note.innerHTML=''; br.innerHTML='<p class="warn">Could not place the field under the same-district/opposite-half rule — try another draw seed.</p>'; return; }
+  note.innerHTML=`${ST.autos.length} automatic district bids + ${activated.length} activated standby pairs. Same-district automatics drawn to opposite halves; no mixed-match simulation — bracket shown ready to play.`;
+  const badge=(p)=> p.source==='automatic' ? `<span class="pill auto">${p.sd}</span>` : `<span class="pill t${p.tier}">T${p.tier}</span>`;
+  let html='';
   for(let s=0;s<MIXED_N;s+=2){
     const t=placement[s], b=placement[s+1];
-    const line=(idx)=> idx==null ? '<span class="pill tbd">bye</span>'
-      : `${tag(field[idx])} ${esc(field[idx].name)} <span class="note">(${field[idx].sd}·${field[idx].avgFin.toFixed(1)})</span>`;
-    html+=`<div>${line(t)}</div><div>${line(b)}</div><div class="note">&nbsp;</div>`;
-  }
-  if(sim.champion!=null){
-    const names=['Champion','Finalist'];
-    html+=`<div class="rnd">Chalk result</div><div class="champ">Projected champion: ${esc(field[sim.champion].name)} (${field[sim.champion].school})</div>`;
+    const line=(idx)=> idx==null ? '<span class="pill tbd">open</span>'
+      : `${badge(field[idx])} ${esc(field[idx].label)} <span class="sub">(${esc(field[idx].school)})</span>`;
+    html+=`<div class="mline">${line(t)}</div><div class="mline">${line(b)}</div><div class="mgap"></div>`;
   }
   br.innerHTML=html;
-  LAST_MC = sim.champion!=null ? esc(field[sim.champion].name)+' ('+esc(field[sim.champion].school)+')' : null;
-  renderSchedule(cls, LAST_MC);
 }
 
 // =====================================================================
 // Dual team finals (play-to-clinch)
 // =====================================================================
-let LAST_MC=null, dualState={};
+let dualState={};
 const DUAL_DAY={'6A':'Wednesday afternoon at THPRD','5A':'Thursday morning at WHRFC','4A':'Thursday morning at OSU'};
 const MATCH_LABELS=['S1','S2','S3','S4','D1','D2','D3','D4'];
 
@@ -1034,7 +1095,7 @@ function renderDuals(){
   cont.querySelectorAll('.dualSim').forEach(b=>b.addEventListener('click',e=>simulateDual(cls,e.target.dataset.g)));
   cont.querySelectorAll('.dualClr').forEach(b=>b.addEventListener('click',e=>{ dualState[e.target.dataset.g].w=Array(8).fill(null); renderDuals(); }));
   cont.querySelectorAll('.dualCell').forEach(c=>c.addEventListener('click',e=>{ const g=e.target.dataset.g,i=+e.target.dataset.i,cur=dualState[g].w[i]; dualState[g].w[i]= cur===null?'A':(cur==='A'?'B':null); renderDuals(); }));
-  renderSchedule(cls, LAST_MC);
+  renderSchedule(cls);
 }
 
 // =====================================================================
@@ -1042,36 +1103,39 @@ function renderDuals(){
 // =====================================================================
 function dualLine(g){ const d=dualState[g], ci=clinchInfo(d.w); return ci.by ? `${g}: <strong>${esc(ci.by==='A'?d.a:d.b)}</strong> def. ${esc(ci.by==='A'?d.b:d.a)} (${Math.max(ci.aw,ci.bw)}–${Math.min(ci.aw,ci.bw)})` : `${g}: ${esc(d.a)} vs ${esc(d.b)} — result TBD`; }
 const SCHED={
-  '6A':(mc)=>[
+  '6A':()=>[
     ['Wednesday — THPRD', ['Boys &amp; Girls dual team finals — play-to-clinch (8 matches each):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
     ['Thursday', ['R32 + R16 singles/doubles — unchanged']],
     ['Friday', ['8am — <strong>Mixed R1</strong> (former consolation R1, #81–112)','9am — Singles/doubles QF','10am — <strong>Mixed QF</strong> (former consolation QF, #129–144)','1pm — Singles/doubles SF','2pm — <strong>Mixed SF</strong> (former consolation SF, #153–160)']],
-    ['Saturday', ['9am — 3rd-place matches + <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'12pm — Doubles championships','1pm — Singles championships']],
+    ['Saturday', ['9am — Singles/doubles 3rd-place matches + <strong>Mixed final</strong> (former consolation final, #161; no 3rd-place match)','12pm — Doubles championships','1pm — Singles championships']],
   ],
-  '5A':(mc)=>[
+  '5A':()=>[
     ['Thursday morning — WHRFC', ['Boys &amp; Girls dual team finals — play-to-clinch:', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
     ['Friday — WHRFC', ['8am — Singles/doubles R16','11am — <strong>Mixed R1 upper half</strong> (former consolation, #33–40)','12:30pm — <strong>Mixed R1 lower half</strong> (#41–48)','1pm — Singles/doubles QF','3pm — <strong>Mixed QF</strong>']],
-    ['Saturday — THPRD', ['8am — <strong>Mixed SF</strong> (former consolation SF, #161–168) + singles/doubles SF','9am — <strong>Mixed 3rd + final</strong> (former consolation finals, #185–188)'+(mc?' — proj. champ: '+mc:''),'10am — Singles/doubles 3rd place','12pm — Doubles championships','1pm — Singles championships']],
+    ['Saturday — THPRD', ['8am — <strong>Mixed SF</strong> (former consolation SF, #161–168) + singles/doubles SF','9am — <strong>Mixed final</strong> (former consolation final, #185; no 3rd-place match)','10am — Singles/doubles 3rd place','12pm — Doubles championships','1pm — Singles championships']],
   ],
-  '4A':(mc)=>[
+  '4A':()=>[
     ['Thursday morning — OSU', ['Boys &amp; Girls dual team finals — play-to-clinch (8am–~12pm):', '&nbsp;&nbsp;'+dualLine('Boys'), '&nbsp;&nbsp;'+dualLine('Girls')]],
     ['Thursday afternoon — OSU', ['4pm — Singles/doubles R32 — unchanged']],
     ['Friday — OSU', ['8am — Singles/doubles R16','11:30am — <strong>Mixed R1</strong> (former consolation R1, #49–64)','12:30pm — Singles/doubles QF','2:45pm — <strong>Mixed QF</strong> (former consolation QF, #81–96)']],
-    ['Saturday — OSU', ['8am — <strong>Mixed SF</strong> + singles/doubles SF','9:30am — <strong>Mixed 3rd + final</strong>'+(mc?' — proj. champ: '+mc:''),'10:30am — Singles/doubles 3rd place','12pm — Championship finals']],
+    ['Saturday — OSU', ['8am — <strong>Mixed SF</strong> + singles/doubles SF','9:30am — <strong>Mixed final</strong> (no 3rd-place match)','10:30am — Singles/doubles 3rd place','12pm — Championship finals']],
   ],
 };
-function renderSchedule(cls, mc){
-  const blocks=SCHED[cls](mc); let h='';
+function renderSchedule(cls){
+  const blocks=SCHED[cls](); let h='';
   blocks.forEach(([day,items])=>{ h+=`<div style="margin-top:8px"><strong>${day}</strong><ul style="margin:4px 0 0 18px">`+items.map(x=>`<li>${x}</li>`).join('')+'</ul></div>'; });
   document.getElementById('schedule').innerHTML=h;
 }
 
-document.getElementById('runBtn').addEventListener('click', run);
-document.getElementById('seed').addEventListener('change', run);
-document.getElementById('clsSel').addEventListener('change', ()=>{ initDuals(document.getElementById('clsSel').value); run(); renderDuals(); });
+document.getElementById('genBtn').addEventListener('click', publish);
+document.getElementById('simBtn').addEventListener('click', resolveR1);
+document.getElementById('resetBtn').addEventListener('click', resetR1);
+document.getElementById('seed').addEventListener('change', publish);
+document.getElementById('upsetChk').addEventListener('change', ()=>{ if(ST && ST.r1Done) resolveR1(); });
+document.getElementById('clsSel').addEventListener('change', ()=>{ initDuals(document.getElementById('clsSel').value); publish(); renderDuals(); });
 document.getElementById('printBtn').addEventListener('click', ()=>window.print());
 initDuals(document.getElementById('clsSel').value);
-run();
+publish();
 renderDuals();
 </script>
 </body>
