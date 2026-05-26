@@ -19,6 +19,25 @@ of argument possible.
 
 ---
 
+## The long game
+
+The tools are the visible half. The other half was governance — a slow,
+multi-year effort to change how a state runs a sport, where the win condition
+isn't shipping code but persuading an institution.
+
+— **2019** — the gap gets noticed: Oregon has no team tennis championship, unlike most of the country.
+— **2020–2021** — the case goes public in writing — split the seasons, raise the match limit, add a power-ranking-seeded team tournament.
+— **through the early 2020s** — the argument meets reality. Concerns about scheduling, travel, and roster viability get worked through with the OSAA rather than around it — which is exactly when hard data became necessary.
+— **2026** — the OSAA State Championship Committee recommends it; the OSAA adopts it for the next four-year block.
+— **2027** — the first dual team championships are played.
+
+Six years from "someone should fix this" to a line on the state calendar. The
+software is what made the late innings winnable: when the questions turned
+concrete — *who qualifies, how do you seed it, what does it cost in travel* —
+the answers were already computed and public.
+
+---
+
 ## The problem it models
 
 A tennis dual meet is eight concurrent matches — *matches within matches*.
@@ -116,7 +135,8 @@ for the rest, and the decision to publish the methodology so the numbers can be
 trusted rather than taken on faith.
 
 The throughline: a clear, honest, fully transparent model — built end to end,
-from raw API to live tournament board — that's credible enough to move an
-institution.
+from raw API to live tournament board — credible enough, and patient enough,
+to move an institution. The code was the easy part. Sticking with it for six
+years until the institution said yes was the project.
 
 → [oregontennis.org](https://oregontennis.org)
