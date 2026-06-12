@@ -1,9 +1,10 @@
 name: Fetch Tennis Data
 
 on:
-  schedule:
-    # Run every 4 hours during tennis season (March-June)
-    - cron: '0 */4 * * *'
+  # Schedule disabled for the off-season. The 2027 season starts the
+  # 2nd week of March 2027 — re-enable then (and bump --year to 2027):
+  # schedule:
+  #   - cron: '0 */4 * 3-6 *'  # every 4 hours, March-June only
   workflow_dispatch: # Allow manual triggers
 
 jobs:
