@@ -143,7 +143,7 @@
       </div>
       <div class="card-body">
         <table id="ladder-table">
-          <thead><tr><th class="n">#</th><th>Player</th><th>Courts played (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
+          <thead><tr><th class="n">#</th><th>Player</th><th>Positions (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
           <tbody id="ladder-body"></tbody>
         </table>
       </div>
@@ -416,7 +416,7 @@ function matchLog(p) {
     `<td>${escapeHtml(m.opp||'')}</td>` +
     `<td class="small muted">${m.post?'<span class="pill d">post</span>':''} ${escapeHtml(m.meet||'')}</td></tr>`
   ).join('');
-  return `<table><thead><tr><th>Date</th><th>Court</th><th>Res</th><th>Score</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+  return `<table><thead><tr><th>Date</th><th>Position</th><th>Res</th><th>Score</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 // ---------- submit ----------
