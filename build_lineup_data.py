@@ -177,6 +177,15 @@ def build_team(path, school_id, gender):
         )
         rec["primary"] = best if rec["slots"][best] else None
         rec["total"] = sum(rec["slots"].values())
+        # Win/loss record per position and overall (courts don't tie: not-won = loss).
+        rec_slots = {s: [0, 0] for s in ALL_SLOTS}
+        for m in rec["matches"]:
+            rec_slots[m["slot"]][0 if m["won"] else 1] += 1
+        rec["rec_slots"] = {s: wl for s, wl in rec_slots.items() if wl[0] or wl[1]}
+        rec["rec"] = [
+            sum(wl[0] for wl in rec_slots.values()),
+            sum(wl[1] for wl in rec_slots.values()),
+        ]
 
     meta = load_master().get(
         school_id,
@@ -206,6 +215,8 @@ def build_team(path, school_id, gender):
                 "primary": r["primary"],
                 "total": r["total"],
                 "slots": r["slots"],
+                "rec": r["rec"],
+                "rec_slots": r["rec_slots"],
                 "derived_rank": r["derived_rank"],
                 "matches": r["matches"],
             }

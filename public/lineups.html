@@ -56,6 +56,12 @@
   .pill.lock { background: var(--green-bg); color: #0f5132; }
   .pill.open { background: var(--amber-bg); color: #664d03; }
   .pill.grade { background: #ede7f6; color: #4527a0; }
+  .poschip { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.78rem;
+             margin: 2px 4px 2px 0; border: 1px solid transparent; white-space: nowrap; }
+  .poschip.s { background: var(--blue-soft); color: #084298; }
+  .poschip.d { background: #e2e3e5; color: #41464b; }
+  .poschip.primary { border-color: #495057; font-weight: 600; }
+  .poschip b { font-weight: 700; }
   /* ladder */
   table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
   th, td { padding: 6px 8px; border-bottom: 1px solid var(--line-soft); text-align: left; }
@@ -131,11 +137,12 @@
 <div class="backlink"><a href="index.html">&larr; Back to Rankings</a></div>
 <h1>Lineups — Ladder &amp; Position Matrix</h1>
 <p class="lede">
-  Two coach tools for the new state-tournament format. The <strong>Ladder</strong> shows each team's
-  rank order of players ("letter order") derived from where they actually played this season — a coach
-  verifies it and submits a final locked ladder before the playoffs. The <strong>Position Matrix</strong>
-  shows where every rostered player appeared across the season, court by court, so it's easy to see that
-  teams aren't stacking lower flights. Both read from real match results already in the system.
+  Two coach tools for the new state-tournament format. Pick a team by classification, district and gender.
+  The <strong>Team Ladder</strong> shows that team's rank order of players ("letter order"), the court(s)
+  each played and their win-loss record at each — a coach verifies the order and submits a final locked
+  ladder before the playoffs. The <strong>Position Matrix</strong> shows where every rostered player
+  appeared across the season, court by court, so it's easy to see that teams aren't stacking lower flights.
+  Both read from real match results already in the system.
 </p>
 
 <div class="header-bar">
@@ -144,6 +151,9 @@
   </label>
   <label>Class
     <select id="sel-class"><option value="">All</option></select>
+  </label>
+  <label>District
+    <select id="sel-district" style="min-width:150px"><option value="">All</option></select>
   </label>
   <label>Gender
     <select id="sel-gender"><option value="">All</option><option>Boys</option><option>Girls</option></select>
@@ -155,7 +165,7 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-tab="ladder">Ladder / Letter Order</button>
+  <button class="tab active" data-tab="ladder">Team Ladder</button>
   <button class="tab" data-tab="matrix">Position Matrix</button>
 </div>
 
@@ -172,10 +182,11 @@
       <div class="card-body">
         <p class="small muted" style="margin-top:0">
           Order below starts from the season's data-derived ladder. Reorder with the arrows to match your
-          verified letter order, then submit. Column at right shows each player's most-played court.
+          verified letter order, then submit. Each row shows the court(s) that player played and their
+          win-loss record at each.
         </p>
         <table id="ladder-table">
-          <thead><tr><th class="n">#</th><th></th><th>Player</th><th>Grade</th><th>Usual court</th><th class="n">Matches</th></tr></thead>
+          <thead><tr><th class="n">#</th><th></th><th>Player</th><th>Gr</th><th>Courts played (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
           <tbody id="ladder-body"></tbody>
         </table>
       </div>
@@ -220,7 +231,7 @@
             <th class="name">Player</th><th>Gr</th>
             <th class="slot">1S</th><th class="slot">2S</th><th class="slot">3S</th><th class="slot">4S</th>
             <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th>
-            <th class="n">Total</th><th>Courts</th>
+            <th class="n">Total</th><th class="n">Rec</th><th>Courts</th>
           </tr></thead>
           <tbody id="matrix-body"></tbody>
         </table>
@@ -288,6 +299,7 @@ async function boot() {
     const o = document.createElement('option'); o.value = y; o.textContent = y; ySel.appendChild(o);
   });
   refreshClassOptions();
+  refreshDistrictOptions();
   refreshTeamOptions();
 }
 
@@ -301,12 +313,25 @@ function refreshClassOptions() {
   const classes = [...new Set(currentTeams().map(t => t.classification).filter(Boolean))].sort();
   sel.innerHTML = '<option value="">All</option>' + classes.map(c => `<option${c===cur?' selected':''}>${c}</option>`).join('');
 }
+function refreshDistrictOptions() {
+  const cls = document.getElementById('sel-class').value;
+  const gen = document.getElementById('sel-gender').value;
+  const sel = document.getElementById('sel-district');
+  const cur = sel.value;
+  const districts = [...new Set(currentTeams()
+    .filter(t => (!cls || t.classification === cls) && (!gen || t.gender === gen))
+    .map(t => t.league).filter(Boolean))].sort();
+  const keep = districts.includes(cur) ? cur : '';
+  sel.innerHTML = '<option value="">All</option>' +
+    districts.map(d => `<option${d===keep?' selected':''}>${escapeHtml(d)}</option>`).join('');
+}
 function refreshTeamOptions() {
   const cls = document.getElementById('sel-class').value;
+  const dist = document.getElementById('sel-district').value;
   const gen = document.getElementById('sel-gender').value;
   const sel = document.getElementById('sel-team');
   const teams = currentTeams()
-    .filter(t => (!cls || t.classification === cls) && (!gen || t.gender === gen))
+    .filter(t => (!cls || t.classification === cls) && (!dist || t.league === dist) && (!gen || t.gender === gen))
     .sort((a,b) => a.name.localeCompare(b.name) || a.gender.localeCompare(b.gender));
   sel.innerHTML = '<option value="">— select a team —</option>' +
     teams.map(t => `<option value="${t.key}">${escapeHtml(t.name)} — ${t.gender} (${t.classification||'?'})</option>`).join('');
@@ -332,6 +357,21 @@ async function selectTeam(key) {
 
 // ---------- rendering ----------
 function playerByPid(pid) { return detail.ladder.find(p => p.pid === pid); }
+
+function recStr(rec) { return rec && (rec[0] || rec[1]) ? `${rec[0]}–${rec[1]}` : '–'; }
+
+// Chips for the courts a player actually played, in strength order, each with
+// that court's win-loss record. The player's most-played court is emphasized.
+function posChips(p) {
+  const rs = p.rec_slots || {};
+  const chips = SLOTS.filter(s => rs[s]).map(s => {
+    const [w, l] = rs[s];
+    const kind = s[0] === 'S' ? 's' : 'd';
+    const primary = s === p.primary ? ' primary' : '';
+    return `<span class="poschip ${kind}${primary}"><b>${SLOT_LABEL[s]}</b> ${w}–${l}</span>`;
+  });
+  return chips.length ? chips.join('') : '<span class="muted">—</span>';
+}
 
 function render() {
   const has = !!detail;
@@ -364,7 +404,6 @@ function renderLadder() {
     let deltaHtml = '';
     if (delta > 0) deltaHtml = `<span class="delta up" title="up from data rank ${derivedRank}">▲${delta}</span>`;
     else if (delta < 0) deltaHtml = `<span class="delta down" title="down from data rank ${derivedRank}">▼${-delta}</span>`;
-    const usual = p.primary ? `<span class="pill ${p.primary[0]==='S'?'s':'d'}">${SLOT_LABEL[p.primary]}</span>` : '<span class="muted">—</span>';
     const tr = document.createElement('tr');
     tr.className = 'ladder-row';
     tr.innerHTML =
@@ -375,8 +414,8 @@ function renderLadder() {
       `</span></td>` +
       `<td>${escapeHtml(p.name)}</td>` +
       `<td>${p.grade?`<span class="pill grade">${escapeHtml(p.grade)}</span>`:''}</td>` +
-      `<td>${usual}</td>` +
-      `<td class="n">${p.total}</td>`;
+      `<td>${posChips(p)}</td>` +
+      `<td class="n">${recStr(p.rec)}</td>`;
     body.appendChild(tr);
   });
   body.querySelectorAll('[data-up]').forEach(b => b.onclick = () => moveRow(+b.dataset.up, -1));
@@ -404,7 +443,9 @@ function renderMatrix() {
     const distinct = SLOTS.filter(s => p.slots[s] > 0).length;
     const cells = SLOTS.map(s => {
       const n = p.slots[s];
-      return `<td class="slot ${n?heatClass(n):'z'}">${n||'·'}</td>`;
+      const wl = (p.rec_slots || {})[s];
+      const title = wl ? `${SLOT_LABEL[s]}: ${wl[0]}–${wl[1]}` : '';
+      return `<td class="slot ${n?heatClass(n):'z'}"${title?` title="${title}"`:''}>${n||'·'}</td>`;
     }).join('');
     const spread = distinct >= 4 ? `<span class="flag">▲ ${distinct}</span>` : `<span class="spread muted">${distinct}</span>`;
     const tr = document.createElement('tr');
@@ -415,11 +456,12 @@ function renderMatrix() {
       `<td class="small muted">${escapeHtml(p.grade||'')}</td>` +
       cells +
       `<td class="n">${p.total}</td>` +
+      `<td class="n">${recStr(p.rec)}</td>` +
       `<td class="slot-count">${spread}</td>`;
     body.appendChild(tr);
     const log = document.createElement('tr');
     log.className = 'log'; log.id = 'log-' + p.pid;
-    log.innerHTML = `<td colspan="11"><div class="log-inner">${matchLog(p)}</div></td>`;
+    log.innerHTML = `<td colspan="12"><div class="log-inner">${matchLog(p)}</div></td>`;
     body.appendChild(log);
     tr.onclick = () => { const el = document.getElementById('log-'+p.pid); el.style.display = el.style.display==='table-row'?'none':'table-row'; };
   });
@@ -471,9 +513,10 @@ document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   t.classList.add('active');
   document.getElementById('pane-'+t.dataset.tab).classList.add('active');
 });
-document.getElementById('sel-year').onchange = () => { refreshClassOptions(); refreshTeamOptions(); selectTeam(''); document.getElementById('sel-team').value=''; };
-document.getElementById('sel-class').onchange = refreshTeamOptions;
-document.getElementById('sel-gender').onchange = refreshTeamOptions;
+document.getElementById('sel-year').onchange = () => { refreshClassOptions(); refreshDistrictOptions(); refreshTeamOptions(); selectTeam(''); document.getElementById('sel-team').value=''; };
+document.getElementById('sel-class').onchange = () => { refreshDistrictOptions(); refreshTeamOptions(); };
+document.getElementById('sel-district').onchange = refreshTeamOptions;
+document.getElementById('sel-gender').onchange = () => { refreshDistrictOptions(); refreshTeamOptions(); };
 document.getElementById('sel-team').onchange = (e) => selectTeam(e.target.value);
 document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); };
 document.getElementById('btn-submit').onclick = submitLadder;
