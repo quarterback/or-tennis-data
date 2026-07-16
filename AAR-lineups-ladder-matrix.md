@@ -1,11 +1,11 @@
 # Bringing the Ladder and Position Matrix to oregontennis.org
 
-**What this is:** a coach-facing **Lineups** section that, for any one team, shows its **ladder ("letter order")** — the rank order of players with the court(s) each played and their **win-loss record at every court** — plus a season **position matrix** showing where each rostered player appeared, court by court. It reads from the real match results already scraped into the site, sits behind a sign-in, and is deliberately kept off the public navigation while OSAA reviews it. [Open the tool →](lineups.html)
+**What this is:** a coach-facing **Lineups** section that, for any one team, shows its **ladder ("letter order")** — the rank order of players with the court(s) each played and their **win-loss record at every court** — plus a season **position matrix** showing where each rostered player appeared, court by court. It reads from the real match results already scraped into the site and is deliberately kept off the public navigation while OSAA reviews it. [Open the tool →](lineups.html)
 
 **Date:** 2026-07-16 (built and shipped to branch)
 **Branch:** `claude/tournament-lineup-challenges-6a54ts`
 **Author:** Engineering, iteratively scoped with the site owner.
-**Access:** private preview — shared-passcode sign-in, not linked from the main nav.
+**Access:** unlisted preview — reachable by direct URL, not linked from the main nav.
 
 ## Why this exists
 
@@ -24,7 +24,7 @@ Two views over one team at a time, reachable by narrowing **classification → d
 - **Team Ladder.** Players in rank order. Each row shows the court(s) that player played as chips carrying the **win-loss record at that court** (`1S 2–4`, `1D 2–0`, …), the player's usual court emphasized, and an overall record. A coach with the team's access code can reorder to their verified order and submit or lock the final ladder.
 - **Position Matrix.** A player × court grid (1S–4S, 1D–3D) of how many times each player appeared at each court, heat-shaded by volume, with an overall record column and a per-cell record on hover. Each row expands to that player's full match log — date, court, result, set scores and opponent.
 
-The whole section opens on a **sign-in gate** — a shared passcode, hashed in the browser so the plain code isn't sitting in the page source, remembered for the session. It is a soft gate to keep the preview private, not per-coach account security.
+For the OSAA preview the section is simply **unlisted** — reachable by direct URL and left off the public navigation, so it can be shared without friction. Viewing needs nothing; only *submitting* a ladder is gated (by the per-team access code below).
 
 ## How the data is derived
 
