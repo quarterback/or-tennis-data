@@ -34,7 +34,7 @@ The key move is **attribution by `schoolId`.** Every player object in a match li
 
 - **Slots** are counted per court (`S1`–`S4`, `D1`–`D3`).
 - **Records** are tallied per court and overall from each appearance's win flag (a court match doesn't tie: not-won is a loss).
-- **The derived ladder** orders players by the strength of the court they usually played — the average singles-flight number, with singles players ranking above doubles-only players. This is a *starting point*, nothing more (see below).
+- **The derived ladder** orders players by the strength of the court they usually play, with singles and doubles interleaved — a 1-doubles regular ranks among the stronger players rather than beneath every singles player. This is a *starting point*, nothing more (see below); the coach sets the real order.
 
 ## Decisions worth recording
 

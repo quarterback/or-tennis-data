@@ -122,8 +122,6 @@
   <div class="card">
     <div class="card-body" style="padding:22px 22px 18px">
       <h2>Lineups — coach access</h2>
-      <p>This is a preview of the state-tournament lineup tools (ladder / letter order and
-         season position matrix). It's not public — enter the access code shared with you to view the demo.</p>
       <div class="field">
         <label for="gate-code">Access code</label>
         <input type="password" id="gate-code" autocomplete="off" placeholder="access code" autofocus>
@@ -138,14 +136,6 @@
 <div id="app">
 <div class="backlink"><a href="index.html">&larr; Back to Rankings</a></div>
 <h1>Lineups — Ladder &amp; Position Matrix</h1>
-<p class="lede">
-  Two coach tools for the new state-tournament format. Pick a team by classification, district and gender.
-  The <strong>Team Ladder</strong> shows that team's rank order of players ("letter order"), the court(s)
-  each played and their win-loss record at each — a coach verifies the order and submits a final locked
-  ladder before the playoffs. The <strong>Position Matrix</strong> shows where every rostered player
-  appeared across the season, court by court, so it's easy to see that teams aren't stacking lower flights.
-  Both read from real match results already in the system.
-</p>
 
 <div class="header-bar">
   <label>Year
@@ -182,10 +172,6 @@
         <span class="muted small" id="ladder-updated" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin-top:0">
-          Set your ladder by picking the player for each position from the dropdowns — it starts from the
-          season's data-derived order. Each row shows that player's court(s) and win-loss record. Submit when done.
-        </p>
         <table id="ladder-table">
           <thead><tr><th class="n">#</th><th>Player</th><th>Courts played (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
           <tbody id="ladder-body"></tbody>
@@ -201,15 +187,6 @@
       <button id="btn-submit">Submit ladder</button>
       <span id="submit-status" class="status"></span>
     </div>
-    <details class="help">
-      <summary>How the access code works</summary>
-      <div class="help-body">
-        The first time a ladder is submitted for a team, the code you type <em>claims</em> that team — keep it
-        safe and reuse it. After that, only someone with the same code can change or lock that team's ladder.
-        Everyone can still <em>view</em> the ladder and matrix without a code. (Challenge-match results are not
-        entered here — keep those on your paper form.)
-      </div>
-    </details>
   </div>
 </div>
 
@@ -223,10 +200,6 @@
         <span class="muted small" id="matrix-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin-top:0">
-          Each cell is how many times that player played that court this season. Click a row to see the match log.
-          A wide spread across many courts, or appearances well below a player's usual court, is worth a look.
-        </p>
         <table class="matrix" id="matrix-table">
           <thead><tr>
             <th class="name">Player</th><th>Gr</th>
