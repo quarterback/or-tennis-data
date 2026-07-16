@@ -55,6 +55,7 @@
   .pill.d { background: #e2e3e5; color: #41464b; }
   .pill.lock { background: var(--green-bg); color: #0f5132; }
   .pill.open { background: var(--amber-bg); color: #664d03; }
+  .pill.derived { background: #e9ecef; color: #495057; }
   .pill.grade { background: #ede7f6; color: #4527a0; }
   .poschip { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.78rem;
              margin: 2px 4px 2px 0; border: 1px solid transparent; white-space: nowrap; }
@@ -387,10 +388,11 @@ function render() {
 function renderLadder() {
   document.getElementById('ladder-team-name').textContent =
     `${detail.name} — ${detail.gender} ${detail.classification||''}`;
+  const coachSet = !!(stored && stored.ladder && stored.ladder.length);
   const lp = document.getElementById('ladder-lockpill');
-  if (stored && stored.locked) lp.innerHTML = '<span class="pill lock">Final ladder locked</span>';
-  else if (stored && stored.updatedAt) lp.innerHTML = '<span class="pill open">Draft submitted</span>';
-  else lp.innerHTML = '<span class="pill open">Not yet submitted</span>';
+  if (coachSet && stored.locked) lp.innerHTML = '<span class="pill lock">Coach ladder · locked</span>';
+  else if (coachSet) lp.innerHTML = '<span class="pill open">Coach ladder · draft</span>';
+  else lp.innerHTML = '<span class="pill derived">Data-derived order · coach hasn\'t set a ladder</span>';
   document.getElementById('ladder-updated').textContent =
     stored && stored.updatedAt ? 'Updated ' + fmtDate(stored.updatedAt) : '';
 
