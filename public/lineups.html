@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lineups — Ladder &amp; Position Matrix — Oregon HS Tennis</title>
+<style>
+  :root {
+    --fg: #212529; --muted: #6c757d; --bg: #fff; --pane: #f8f9fa;
+    --line: #dee2e6; --line-soft: #e9ecef; --primary: #0d6efd;
+    --green: #198754; --green-bg: #d1e7dd; --red: #dc3545;
+    --amber: #ffc107; --amber-bg: #fff3cd; --blue-soft: #cfe2ff;
+    --heat0: #f8f9fa; --heat1: #e3efff; --heat2: #b9d6fb; --heat3: #7fb2f4; --heat4: #4a90e2;
+  }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         max-width: 1200px; margin: 24px auto; padding: 0 16px;
+         color: var(--fg); line-height: 1.4; }
+  a { color: var(--primary); }
+  h1 { font-size: 1.5rem; margin: 0 0 4px; }
+  h2 { font-size: 1.15rem; margin: 22px 0 10px; color: var(--primary); }
+  p.lede { color: var(--muted); margin: 4px 0 14px; font-size: 0.92rem; max-width: 820px; }
+  .backlink { font-size: 0.85rem; }
+  .header-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
+                background: var(--pane); border: 1px solid var(--line);
+                border-radius: 6px; padding: 10px 14px; margin: 14px 0 4px;
+                font-size: 0.88rem; }
+  .header-bar label { display: flex; gap: 6px; align-items: center; }
+  .header-bar select, .header-bar input[type="text"], .header-bar input[type="password"] {
+    padding: 4px 8px; border: 1px solid var(--line); border-radius: 3px; font-size: 0.88rem; }
+  .header-bar .backend { margin-left: auto; font-size: 0.82rem; }
+  .header-bar .backend.ok { color: var(--green); }
+  .header-bar .backend.fail { color: #b54708; }
+  button, .btn { background: var(--primary); color: #fff; border: 0;
+                 padding: 6px 14px; border-radius: 4px; cursor: pointer;
+                 font-size: 0.88rem; font-weight: 600; }
+  button:hover { filter: brightness(0.92); }
+  button.ghost { background: #fff; color: var(--fg); border: 1px solid var(--line); }
+  button.tiny { padding: 2px 7px; font-size: 0.78rem; }
+  button:disabled { background: #adb5bd; cursor: not-allowed; }
+  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin: 18px 0 16px; }
+  .tabs .tab { padding: 9px 18px; border: 1px solid transparent; border-bottom: 0;
+               cursor: pointer; font-size: 0.92rem; background: transparent; color: var(--fg);
+               border-radius: 5px 5px 0 0; font-weight: 600; }
+  .tabs .tab.active { background: var(--pane); border-color: var(--line); color: var(--primary); }
+  .tab-pane { display: none; } .tab-pane.active { display: block; }
+  .card { border: 1px solid var(--line); border-radius: 6px; background: #fff; margin-bottom: 16px; }
+  .card-head { padding: 10px 14px; background: var(--pane); border-bottom: 1px solid var(--line);
+               border-radius: 6px 6px 0 0; font-weight: 600; display: flex; align-items: center; gap: 10px; }
+  .card-body { padding: 12px 14px; }
+  .muted { color: var(--muted); }
+  .small { font-size: 0.82rem; }
+  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+  .pill.s { background: var(--blue-soft); color: #084298; }
+  .pill.d { background: #e2e3e5; color: #41464b; }
+  .pill.lock { background: var(--green-bg); color: #0f5132; }
+  .pill.open { background: var(--amber-bg); color: #664d03; }
+  .pill.grade { background: #ede7f6; color: #4527a0; }
+  /* ladder */
+  table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
+  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line-soft); text-align: left; }
+  th { background: var(--pane); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+  td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
+  .ladder-row td { vertical-align: middle; }
+  .rank { font-weight: 700; font-size: 1.05rem; width: 34px; text-align: center; color: var(--fg); }
+  .move-btns { display: inline-flex; gap: 3px; }
+  .delta { font-size: 0.72rem; margin-left: 6px; }
+  .delta.up { color: var(--green); } .delta.down { color: var(--red); }
+  /* matrix */
+  .matrix th.slot, .matrix td.slot { text-align: center; width: 44px; }
+  .matrix td.slot { font-weight: 600; }
+  .matrix td.slot.z { color: #ccd; font-weight: 400; }
+  .matrix .name { min-width: 170px; }
+  .matrix tr:hover td { background: #fbfdff; }
+  .spread { font-size: 0.78rem; }
+  .flag { color: #b54708; font-weight: 600; }
+  .heat0{background:var(--heat0)} .heat1{background:var(--heat1)} .heat2{background:var(--heat2)}
+  .heat3{background:var(--heat3);color:#fff} .heat4{background:var(--heat4);color:#fff}
+  .log { display: none; background: #fbfcfe; }
+  .log td { padding: 0; }
+  .log-inner { padding: 8px 12px 12px; }
+  .log table { font-size: 0.8rem; }
+  .status { font-size: 0.84rem; }
+  .status.ok { color: var(--green); } .status.err { color: var(--red); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
+  .legend .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
+  .empty { padding: 40px; text-align: center; color: var(--muted); }
+  .submit-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 14px;
+                background: var(--pane); border: 1px solid var(--line); border-radius: 6px; margin-top: 6px; }
+  .submit-bar input[type="password"], .submit-bar input[type="text"] {
+    padding: 5px 8px; border: 1px solid var(--line); border-radius: 3px; font-size: 0.86rem; }
+  details.help { margin: 10px 0 0; }
+  details.help summary { cursor: pointer; font-size: 0.84rem; color: var(--primary); }
+  details.help .help-body { font-size: 0.83rem; color: var(--muted); padding: 8px 0 0; line-height: 1.5; max-width: 780px; }
+</style>
+</head>
+<body>
+
+<div class="backlink"><a href="index.html">&larr; Back to Rankings</a></div>
+<h1>Lineups — Ladder &amp; Position Matrix</h1>
+<p class="lede">
+  Two coach tools for the new state-tournament format. The <strong>Ladder</strong> shows each team's
+  rank order of players ("letter order") derived from where they actually played this season — a coach
+  verifies it and submits a final locked ladder before the playoffs. The <strong>Position Matrix</strong>
+  shows where every rostered player appeared across the season, court by court, so it's easy to see that
+  teams aren't stacking lower flights. Both read from real match results already in the system.
+</p>
+
+<div class="header-bar">
+  <label>Year
+    <select id="sel-year"></select>
+  </label>
+  <label>Class
+    <select id="sel-class"><option value="">All</option></select>
+  </label>
+  <label>Gender
+    <select id="sel-gender"><option value="">All</option><option>Boys</option><option>Girls</option></select>
+  </label>
+  <label>Team
+    <select id="sel-team" style="min-width:220px"><option value="">— select a team —</option></select>
+  </label>
+  <span id="backend" class="backend">Backend: …</span>
+</div>
+
+<div class="tabs">
+  <button class="tab active" data-tab="ladder">Ladder / Letter Order</button>
+  <button class="tab" data-tab="matrix">Position Matrix</button>
+</div>
+
+<!-- ===================== LADDER TAB ===================== -->
+<div class="tab-pane active" id="pane-ladder">
+  <div id="ladder-empty" class="empty">Select a team above to view its ladder.</div>
+  <div id="ladder-content" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <span id="ladder-team-name">Team</span>
+        <span id="ladder-lockpill"></span>
+        <span class="muted small" id="ladder-updated" style="margin-left:auto"></span>
+      </div>
+      <div class="card-body">
+        <p class="small muted" style="margin-top:0">
+          Order below starts from the season's data-derived ladder. Reorder with the arrows to match your
+          verified letter order, then submit. Column at right shows each player's most-played court.
+        </p>
+        <table id="ladder-table">
+          <thead><tr><th class="n">#</th><th></th><th>Player</th><th>Grade</th><th>Usual court</th><th class="n">Matches</th></tr></thead>
+          <tbody id="ladder-body"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="submit-bar">
+      <button class="ghost" id="btn-reset-order">Reset to data order</button>
+      <label class="small"><input type="checkbox" id="chk-lock"> Lock as final ladder</label>
+      <span style="margin-left:auto"></span>
+      <input type="password" id="team-code" placeholder="team access code" autocomplete="off">
+      <button id="btn-submit">Submit ladder</button>
+      <span id="submit-status" class="status"></span>
+    </div>
+    <details class="help">
+      <summary>How the access code works</summary>
+      <div class="help-body">
+        The first time a ladder is submitted for a team, the code you type <em>claims</em> that team — keep it
+        safe and reuse it. After that, only someone with the same code can change or lock that team's ladder.
+        Everyone can still <em>view</em> the ladder and matrix without a code. (Challenge-match results are not
+        entered here — keep those on your paper form.)
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- ===================== MATRIX TAB ===================== -->
+<div class="tab-pane" id="pane-matrix">
+  <div id="matrix-empty" class="empty">Select a team above to view its position matrix.</div>
+  <div id="matrix-content" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <span id="matrix-team-name">Team</span>
+        <span class="muted small" id="matrix-summary" style="margin-left:auto"></span>
+      </div>
+      <div class="card-body">
+        <p class="small muted" style="margin-top:0">
+          Each cell is how many times that player played that court this season. Click a row to see the match log.
+          A wide spread across many courts, or appearances well below a player's usual court, is worth a look.
+        </p>
+        <table class="matrix" id="matrix-table">
+          <thead><tr>
+            <th class="name">Player</th><th>Gr</th>
+            <th class="slot">1S</th><th class="slot">2S</th><th class="slot">3S</th><th class="slot">4S</th>
+            <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th>
+            <th class="n">Total</th><th>Courts</th>
+          </tr></thead>
+          <tbody id="matrix-body"></tbody>
+        </table>
+        <div class="legend">
+          <span><span class="sw heat1"></span>1</span>
+          <span><span class="sw heat2"></span>2–3</span>
+          <span><span class="sw heat3"></span>4–6</span>
+          <span><span class="sw heat4"></span>7+</span>
+          <span><span class="flag">▲</span> played 4+ different courts (frequent movement)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const SLOTS = ['S1','S2','S3','S4','D1','D2','D3'];
+const SLOT_LABEL = {S1:'1S',S2:'2S',S3:'3S',S4:'4S',D1:'1D',D2:'2D',D3:'3D'};
+const API_BASE = '/api/lineups';
+
+let INDEX = null;         // index.json
+let detail = null;        // current team detail
+let workingOrder = [];    // array of pids in current ladder order
+let derivedOrder = [];    // array of pids in data-derived order
+let stored = null;        // submitted ladder from backend
+let backendOk = false;
+
+// ---------- backend ----------
+async function checkBackend() {
+  const el = document.getElementById('backend');
+  try {
+    const r = await fetch(`${API_BASE}/__ping`);
+    backendOk = r.ok || r.status === 404;
+  } catch { backendOk = false; }
+  el.textContent = backendOk ? 'Backend: ✓ syncing' : 'Backend: ✗ view-only (offline)';
+  el.className = 'backend ' + (backendOk ? 'ok' : 'fail');
+}
+
+function teamId() { // blob id: <year>_<key>
+  return `${document.getElementById('sel-year').value}_${detail.key}`;
+}
+
+async function loadStored() {
+  stored = null;
+  if (!backendOk || !detail) return;
+  try {
+    const r = await fetch(`${API_BASE}/${encodeURIComponent(teamId())}`);
+    if (r.ok) stored = await r.json();
+  } catch {}
+}
+
+// ---------- data load ----------
+async function boot() {
+  await checkBackend();
+  try {
+    const r = await fetch('data/lineups/index.json');
+    INDEX = await r.json();
+  } catch (e) {
+    document.getElementById('ladder-empty').textContent = 'Could not load lineup data.';
+    return;
+  }
+  const ySel = document.getElementById('sel-year');
+  INDEX.generated_years.slice().reverse().forEach(y => {
+    const o = document.createElement('option'); o.value = y; o.textContent = y; ySel.appendChild(o);
+  });
+  refreshClassOptions();
+  refreshTeamOptions();
+}
+
+function currentTeams() {
+  const y = document.getElementById('sel-year').value;
+  return (INDEX.teams[y] || []);
+}
+function refreshClassOptions() {
+  const sel = document.getElementById('sel-class');
+  const cur = sel.value;
+  const classes = [...new Set(currentTeams().map(t => t.classification).filter(Boolean))].sort();
+  sel.innerHTML = '<option value="">All</option>' + classes.map(c => `<option${c===cur?' selected':''}>${c}</option>`).join('');
+}
+function refreshTeamOptions() {
+  const cls = document.getElementById('sel-class').value;
+  const gen = document.getElementById('sel-gender').value;
+  const sel = document.getElementById('sel-team');
+  const teams = currentTeams()
+    .filter(t => (!cls || t.classification === cls) && (!gen || t.gender === gen))
+    .sort((a,b) => a.name.localeCompare(b.name) || a.gender.localeCompare(b.gender));
+  sel.innerHTML = '<option value="">— select a team —</option>' +
+    teams.map(t => `<option value="${t.key}">${escapeHtml(t.name)} — ${t.gender} (${t.classification||'?'})</option>`).join('');
+}
+
+async function selectTeam(key) {
+  const y = document.getElementById('sel-year').value;
+  if (!key) { detail = null; render(); return; }
+  try {
+    const r = await fetch(`data/lineups/${y}/${key}.json`);
+    detail = await r.json();
+    detail.key = key;
+  } catch { detail = null; }
+  derivedOrder = detail ? detail.ladder.map(p => p.pid) : [];
+  await loadStored();
+  workingOrder = (stored && stored.ladder && stored.ladder.length)
+    ? stored.ladder.slice().filter(pid => derivedOrder.includes(pid))
+        .concat(derivedOrder.filter(pid => !stored.ladder.includes(pid)))
+    : derivedOrder.slice();
+  document.getElementById('chk-lock').checked = !!(stored && stored.locked);
+  render();
+}
+
+// ---------- rendering ----------
+function playerByPid(pid) { return detail.ladder.find(p => p.pid === pid); }
+
+function render() {
+  const has = !!detail;
+  document.getElementById('ladder-empty').style.display = has ? 'none' : '';
+  document.getElementById('ladder-content').style.display = has ? '' : 'none';
+  document.getElementById('matrix-empty').style.display = has ? 'none' : '';
+  document.getElementById('matrix-content').style.display = has ? '' : 'none';
+  if (!has) return;
+  renderLadder();
+  renderMatrix();
+}
+
+function renderLadder() {
+  document.getElementById('ladder-team-name').textContent =
+    `${detail.name} — ${detail.gender} ${detail.classification||''}`;
+  const lp = document.getElementById('ladder-lockpill');
+  if (stored && stored.locked) lp.innerHTML = '<span class="pill lock">Final ladder locked</span>';
+  else if (stored && stored.updatedAt) lp.innerHTML = '<span class="pill open">Draft submitted</span>';
+  else lp.innerHTML = '<span class="pill open">Not yet submitted</span>';
+  document.getElementById('ladder-updated').textContent =
+    stored && stored.updatedAt ? 'Updated ' + fmtDate(stored.updatedAt) : '';
+
+  const body = document.getElementById('ladder-body');
+  body.innerHTML = '';
+  workingOrder.forEach((pid, i) => {
+    const p = playerByPid(pid);
+    if (!p) return;
+    const derivedRank = derivedOrder.indexOf(pid) + 1;
+    const delta = derivedRank - (i + 1);
+    let deltaHtml = '';
+    if (delta > 0) deltaHtml = `<span class="delta up" title="up from data rank ${derivedRank}">▲${delta}</span>`;
+    else if (delta < 0) deltaHtml = `<span class="delta down" title="down from data rank ${derivedRank}">▼${-delta}</span>`;
+    const usual = p.primary ? `<span class="pill ${p.primary[0]==='S'?'s':'d'}">${SLOT_LABEL[p.primary]}</span>` : '<span class="muted">—</span>';
+    const tr = document.createElement('tr');
+    tr.className = 'ladder-row';
+    tr.innerHTML =
+      `<td class="rank">${i+1}${deltaHtml}</td>` +
+      `<td class="n"><span class="move-btns">` +
+        `<button class="ghost tiny" data-up="${i}" ${i===0?'disabled':''}>▲</button>` +
+        `<button class="ghost tiny" data-down="${i}" ${i===workingOrder.length-1?'disabled':''}>▼</button>` +
+      `</span></td>` +
+      `<td>${escapeHtml(p.name)}</td>` +
+      `<td>${p.grade?`<span class="pill grade">${escapeHtml(p.grade)}</span>`:''}</td>` +
+      `<td>${usual}</td>` +
+      `<td class="n">${p.total}</td>`;
+    body.appendChild(tr);
+  });
+  body.querySelectorAll('[data-up]').forEach(b => b.onclick = () => moveRow(+b.dataset.up, -1));
+  body.querySelectorAll('[data-down]').forEach(b => b.onclick = () => moveRow(+b.dataset.down, 1));
+}
+
+function moveRow(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= workingOrder.length) return;
+  [workingOrder[i], workingOrder[j]] = [workingOrder[j], workingOrder[i]];
+  renderLadder();
+}
+
+function heatClass(n) { return n===0?'heat0':n===1?'heat1':n<=3?'heat2':n<=6?'heat3':'heat4'; }
+
+function renderMatrix() {
+  document.getElementById('matrix-team-name').textContent =
+    `${detail.name} — ${detail.gender} ${detail.classification||''}`;
+  const totalMatches = detail.ladder.reduce((a,p)=>a+p.total,0);
+  document.getElementById('matrix-summary').textContent =
+    `${detail.ladder.length} players · ${totalMatches} court appearances · ${detail.meets_counted} meets · record ${detail.record.win}-${detail.record.loss}${detail.record.tie?'-'+detail.record.tie:''}`;
+  const body = document.getElementById('matrix-body');
+  body.innerHTML = '';
+  detail.ladder.forEach((p, idx) => {
+    const distinct = SLOTS.filter(s => p.slots[s] > 0).length;
+    const cells = SLOTS.map(s => {
+      const n = p.slots[s];
+      return `<td class="slot ${n?heatClass(n):'z'}">${n||'·'}</td>`;
+    }).join('');
+    const spread = distinct >= 4 ? `<span class="flag">▲ ${distinct}</span>` : `<span class="spread muted">${distinct}</span>`;
+    const tr = document.createElement('tr');
+    tr.dataset.pid = p.pid;
+    tr.style.cursor = 'pointer';
+    tr.innerHTML =
+      `<td class="name">${escapeHtml(p.name)}</td>` +
+      `<td class="small muted">${escapeHtml(p.grade||'')}</td>` +
+      cells +
+      `<td class="n">${p.total}</td>` +
+      `<td class="slot-count">${spread}</td>`;
+    body.appendChild(tr);
+    const log = document.createElement('tr');
+    log.className = 'log'; log.id = 'log-' + p.pid;
+    log.innerHTML = `<td colspan="11"><div class="log-inner">${matchLog(p)}</div></td>`;
+    body.appendChild(log);
+    tr.onclick = () => { const el = document.getElementById('log-'+p.pid); el.style.display = el.style.display==='table-row'?'none':'table-row'; };
+  });
+}
+
+function matchLog(p) {
+  if (!p.matches.length) return '<span class="muted small">No matches.</span>';
+  const rows = p.matches.slice().sort((a,b)=>(a.date||'').localeCompare(b.date||'')).map(m =>
+    `<tr><td>${escapeHtml(m.date||'')}</td>` +
+    `<td><span class="pill ${m.slot[0]==='S'?'s':'d'}">${SLOT_LABEL[m.slot]}</span></td>` +
+    `<td>${m.won?'<span style="color:var(--green);font-weight:600">W</span>':'<span style="color:var(--red)">L</span>'}</td>` +
+    `<td>${escapeHtml(m.opp||'')}</td>` +
+    `<td class="small muted">${m.post?'<span class="pill d">post</span>':''} ${escapeHtml(m.meet||'')}</td></tr>`
+  ).join('');
+  return `<table><thead><tr><th>Date</th><th>Court</th><th>Res</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+
+// ---------- submit ----------
+async function submitLadder() {
+  const st = document.getElementById('submit-status');
+  if (!backendOk) { st.textContent = 'Backend offline — cannot submit.'; st.className='status err'; return; }
+  const code = document.getElementById('team-code').value.trim();
+  if (code.length < 4) { st.textContent = 'Enter your team code (min 4 chars).'; st.className='status err'; return; }
+  st.textContent = 'Submitting…'; st.className = 'status';
+  try {
+    const r = await fetch(`${API_BASE}/${encodeURIComponent(teamId())}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'x-team-code': code },
+      body: JSON.stringify({ ladder: workingOrder, locked: document.getElementById('chk-lock').checked }),
+    });
+    const j = await r.json();
+    if (!r.ok) { st.textContent = j.error || ('Error ' + r.status); st.className = 'status err'; return; }
+    st.textContent = j.locked ? 'Saved & locked ✓' : 'Saved ✓'; st.className = 'status ok';
+    await loadStored();
+    renderLadder();
+  } catch (e) {
+    st.textContent = 'Network error.'; st.className = 'status err';
+  }
+}
+
+// ---------- utils ----------
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function fmtDate(iso){ try { return new Date(iso).toLocaleString(); } catch { return iso; } }
+
+// ---------- wire up ----------
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById('pane-'+t.dataset.tab).classList.add('active');
+});
+document.getElementById('sel-year').onchange = () => { refreshClassOptions(); refreshTeamOptions(); selectTeam(''); document.getElementById('sel-team').value=''; };
+document.getElementById('sel-class').onchange = refreshTeamOptions;
+document.getElementById('sel-gender').onchange = refreshTeamOptions;
+document.getElementById('sel-team').onchange = (e) => selectTeam(e.target.value);
+document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); };
+document.getElementById('btn-submit').onclick = submitLadder;
+
+boot();
+</script>
+</body>
+</html>

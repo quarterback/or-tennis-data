@@ -2203,6 +2203,9 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                     <a class="nav-link" href="all-state.html">All-State Teams</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="lineups.html">Lineups</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="methodology.html">Methodology</a>
                 </li>
             </ul>
@@ -4696,6 +4699,16 @@ def main():
     sd1_out = repo_root / 'public' / 'sd1-seeding.html'
     render_sd1_seeding_page(sd1_data, sd1_out)
     print(f"SD1 seeding page saved to {sd1_out}")
+
+    # Build the derived data for the Lineups section (ladder + position matrix).
+    # Kept in a standalone module so it can also be run on its own; failures here
+    # must not sink the main ranking build.
+    print("Building lineup data (ladder + position matrix)...")
+    try:
+        import build_lineup_data
+        build_lineup_data.main(['2026'])  # demo scope: current season only
+    except Exception as exc:  # noqa: BLE001 - best-effort, don't fail the site build
+        print(f"WARNING: lineup data build failed: {exc}")
 
 
 if __name__ == '__main__':
