@@ -22,7 +22,7 @@ All of this already exists in the tennis simulator (the "Lineup Lab" and the per
 Two views over one team at a time, reachable by narrowing **classification → district → gender → team**:
 
 - **Team Ladder.** Players in rank order. Each row shows the court(s) that player played as chips carrying the **win-loss record at that court** (`1S 2–4`, `1D 2–0`, …), the player's usual court emphasized, and an overall record. A coach with the team's access code can reorder to their verified order and submit or lock the final ladder.
-- **Position Matrix.** A player × court grid (1S–4S, 1D–3D) of how many times each player appeared at each court, heat-shaded by volume, with an overall record column, a per-cell record on hover, and a movement flag on any player who bounced across four or more different courts. Each row expands to that player's full match log (date, court, result, opponent).
+- **Position Matrix.** A player × court grid (1S–4S, 1D–3D) of how many times each player appeared at each court, heat-shaded by volume, with an overall record column and a per-cell record on hover. Each row expands to that player's full match log — date, court, result, set scores and opponent.
 
 The whole section opens on a **sign-in gate** — a shared passcode, hashed in the browser so the plain code isn't sitting in the page source, remembered for the session. It is a soft gate to keep the preview private, not per-coach account security.
 

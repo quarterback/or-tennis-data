@@ -81,6 +81,28 @@ def slot_for(line):
     return None
 
 
+def score_str(sets, my_id, opp_id):
+    """Set scores from our side's perspective, e.g. '6-2, 7-6(3)' or '8-6'.
+
+    Each set dict is keyed by matchTeam id (as a string) -> games won, with an
+    optional 'tie' = the losing side's tiebreak points (rendered in parens, the
+    standard convention). Pro-sets appear as a single set to 8/9.
+    """
+    if not sets or my_id is None or opp_id is None:
+        return ""
+    parts = []
+    for s in sorted(sets, key=lambda x: x.get("number") or 0):
+        mine = s.get(str(my_id))
+        theirs = s.get(str(opp_id))
+        if mine is None or theirs is None:
+            continue
+        seg = "%s-%s" % (mine, theirs)
+        if s.get("tie") is not None:
+            seg += "(%s)" % s["tie"]
+        parts.append(seg)
+    return ", ".join(parts)
+
+
 def build_team(path, school_id, gender):
     """Aggregate one team-season file into a detail dict, or None if empty."""
     try:
@@ -118,12 +140,17 @@ def build_team(path, school_id, gender):
                     won = bool(t.get("isWinner"))
                     # opponent = the other side's player name(s)
                     opp_names = []
+                    opp_team = None
                     for ot in teams:
                         if ot is t:
                             continue
+                        opp_team = opp_team or ot
                         for op in ot.get("players") or []:
                             opp_names.append(player_name(op))
                     opp = " / ".join(opp_names) if opp_names else ""
+                    score = score_str(
+                        line.get("sets"), t.get("id"), opp_team.get("id") if opp_team else None
+                    )
                     for p in ours:
                         pid = str(p.get("id"))
                         rec = players.get(pid)
@@ -141,6 +168,7 @@ def build_team(path, school_id, gender):
                                 "date": date,
                                 "opp": opp,
                                 "won": won,
+                                "score": score,
                                 "post": post,
                                 "meet": title,
                             }
