@@ -232,7 +232,7 @@
             <th class="name">Player</th><th>Gr</th>
             <th class="slot">1S</th><th class="slot">2S</th><th class="slot">3S</th><th class="slot">4S</th>
             <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th>
-            <th class="n">Total</th><th class="n">Rec</th><th>Courts</th>
+            <th class="n">Total</th><th class="n">Rec</th>
           </tr></thead>
           <tbody id="matrix-body"></tbody>
         </table>
@@ -241,7 +241,6 @@
           <span><span class="sw heat2"></span>2–3</span>
           <span><span class="sw heat3"></span>4–6</span>
           <span><span class="sw heat4"></span>7+</span>
-          <span><span class="flag">▲</span> played 4+ different courts (frequent movement)</span>
         </div>
       </div>
     </div>
@@ -442,14 +441,12 @@ function renderMatrix() {
   const body = document.getElementById('matrix-body');
   body.innerHTML = '';
   detail.ladder.forEach((p, idx) => {
-    const distinct = SLOTS.filter(s => p.slots[s] > 0).length;
     const cells = SLOTS.map(s => {
       const n = p.slots[s];
       const wl = (p.rec_slots || {})[s];
       const title = wl ? `${SLOT_LABEL[s]}: ${wl[0]}–${wl[1]}` : '';
       return `<td class="slot ${n?heatClass(n):'z'}"${title?` title="${title}"`:''}>${n||'·'}</td>`;
     }).join('');
-    const spread = distinct >= 4 ? `<span class="flag">▲ ${distinct}</span>` : `<span class="spread muted">${distinct}</span>`;
     const tr = document.createElement('tr');
     tr.dataset.pid = p.pid;
     tr.style.cursor = 'pointer';
@@ -458,12 +455,11 @@ function renderMatrix() {
       `<td class="small muted">${escapeHtml(p.grade||'')}</td>` +
       cells +
       `<td class="n">${p.total}</td>` +
-      `<td class="n">${recStr(p.rec)}</td>` +
-      `<td class="slot-count">${spread}</td>`;
+      `<td class="n">${recStr(p.rec)}</td>`;
     body.appendChild(tr);
     const log = document.createElement('tr');
     log.className = 'log'; log.id = 'log-' + p.pid;
-    log.innerHTML = `<td colspan="12"><div class="log-inner">${matchLog(p)}</div></td>`;
+    log.innerHTML = `<td colspan="11"><div class="log-inner">${matchLog(p)}</div></td>`;
     body.appendChild(log);
     tr.onclick = () => { const el = document.getElementById('log-'+p.pid); el.style.display = el.style.display==='table-row'?'none':'table-row'; };
   });
@@ -475,10 +471,11 @@ function matchLog(p) {
     `<tr><td>${escapeHtml(m.date||'')}</td>` +
     `<td><span class="pill ${m.slot[0]==='S'?'s':'d'}">${SLOT_LABEL[m.slot]}</span></td>` +
     `<td>${m.won?'<span style="color:var(--green);font-weight:600">W</span>':'<span style="color:var(--red)">L</span>'}</td>` +
+    `<td style="font-variant-numeric:tabular-nums;white-space:nowrap">${escapeHtml(m.score||'')}</td>` +
     `<td>${escapeHtml(m.opp||'')}</td>` +
     `<td class="small muted">${m.post?'<span class="pill d">post</span>':''} ${escapeHtml(m.meet||'')}</td></tr>`
   ).join('');
-  return `<table><thead><tr><th>Date</th><th>Court</th><th>Res</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
+  return `<table><thead><tr><th>Date</th><th>Court</th><th>Res</th><th>Score</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
 // ---------- submit ----------
