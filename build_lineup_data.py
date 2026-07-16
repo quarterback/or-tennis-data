@@ -180,20 +180,29 @@ def build_team(path, school_id, gender):
     if not players:
         return None
 
-    # Derived ladder: order by strongest court usually played.
-    # Weight is the average singles flight number (1 = best). Players with singles
-    # appearances rank above doubles-only players; doubles-only sort by avg
-    # doubles flight, and appear after the singles ladder.
+    # Derived ladder: order by the strength of the courts a player usually plays.
+    # Singles and doubles interleave — a 1D regular is stronger than a 2S/3S — so
+    # we rank each court on an approximate competitive-strength scale (lower =
+    # stronger) and take a per-player appearance-weighted average. This is just an
+    # ordering heuristic for the fallback ladder, not a codified rule.
+    COURT_STRENGTH = {"S1": 1, "D1": 2, "S2": 3, "D2": 4, "S3": 5, "S4": 6, "D3": 7}
+
     def ladder_key(item):
         pid, rec = item
         slots = rec["slots"]
-        s_total = sum(slots[s] for s in SINGLES_FLIGHTS)
-        d_total = sum(slots[s] for s in DOUBLES_FLIGHTS)
-        if s_total:
-            avg = sum(int(s[1]) * slots[s] for s in SINGLES_FLIGHTS) / s_total
-            return (0, avg, -s_total)
-        avg = sum(int(s[1]) * slots[s] for s in DOUBLES_FLIGHTS) / d_total if d_total else 9
-        return (1, avg, -d_total)
+        total = sum(slots.values())
+        if not total:
+            return (99, 99.0, 0)
+        # Primary court drives the rank (a 1S regular tops a 1D regular); ties in
+        # most-played break to the stronger court, then by appearance-weighted
+        # average strength, then by volume.
+        top_count = max(slots.values())
+        primary = min(
+            (s for s in ALL_SLOTS if slots[s] == top_count),
+            key=lambda s: COURT_STRENGTH[s],
+        )
+        wavg = sum(COURT_STRENGTH[s] * slots[s] for s in ALL_SLOTS) / total
+        return (COURT_STRENGTH[primary], wavg, -total)
 
     ordered = sorted(players.items(), key=ladder_key)
     for rank, (pid, rec) in enumerate(ordered, start=1):
