@@ -2,8 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Lineups — Ladder &amp; Position Matrix — Oregon HS Tennis</title>
+<!-- PWA / installable home-screen app -->
+<meta name="theme-color" content="#198754">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Lineups">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="lineups.webmanifest">
 <style>
   :root {
     --fg: #212529; --muted: #6c757d; --bg: #fff; --pane: #f8f9fa;
@@ -12,14 +21,22 @@
     --amber: #ffc107; --amber-bg: #fff3cd; --blue-soft: #cfe2ff;
     --heat0: #f8f9fa; --heat1: #e3efff; --heat2: #b9d6fb; --heat3: #7fb2f4; --heat4: #4a90e2;
   }
-  * { box-sizing: border-box; }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
+  html { -webkit-text-size-adjust: 100%; }
   body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-         background: #f8f9fa; margin: 0; color: var(--fg); line-height: 1.4; }
+         background: #f8f9fa; margin: 0; color: var(--fg); line-height: 1.4;
+         overscroll-behavior-y: none;
+         padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
   a { color: var(--primary); }
-  .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+  .container { max-width: 1200px; margin: 0 auto;
+               padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left)); }
+  /* Horizontal-scroll wrapper so wide tables never blow out the layout */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   /* Site chrome — matches the main rankings site */
-  .navbar { background: #198754; }
-  .navbar-inner { max-width: 1200px; margin: 0 auto; padding: 12px 16px;
+  .navbar { background: #198754; position: sticky; top: 0; z-index: 30;
+            padding-top: env(safe-area-inset-top); }
+  .navbar-inner { max-width: 1200px; margin: 0 auto;
+                  padding: 12px calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));
                   display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
   .navbar .back { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
   .navbar .back:hover { color: #dee2e6; }
@@ -110,6 +127,40 @@
   details.help { margin: 10px 0 0; }
   details.help summary { cursor: pointer; font-size: 0.84rem; color: var(--primary); }
   details.help .help-body { font-size: 0.83rem; color: var(--muted); padding: 8px 0 0; line-height: 1.5; max-width: 780px; }
+
+  /* ===== Mobile / app layout ===== */
+  @media (max-width: 640px) {
+    .hero { padding: 16px 0; margin-bottom: 16px; }
+    .hero h1 { font-size: 1.2rem; }
+    .navbar .brand { font-size: 0.95rem; }
+
+    /* Filters: full-width, two-up, and 16px fonts so iOS doesn't zoom on focus */
+    .header-bar { gap: 10px; padding: 12px; border-radius: 10px; }
+    .header-bar label { flex: 1 1 44%; flex-direction: column; align-items: stretch; gap: 3px;
+                        font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
+    .header-bar select { width: 100%; min-width: 0 !important; min-height: 42px; font-size: 16px; }
+    .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
+
+    /* Tabs: full-width, thumb-sized */
+    .tabs { gap: 4px; }
+    .tabs .tab { flex: 1; text-align: center; padding: 12px 6px; font-size: 0.9rem; }
+
+    /* Ladder: dropdown fills the row, chips wrap; give real tap height */
+    .pos-select { width: 100%; min-width: 0; min-height: 42px; font-size: 16px; }
+    #ladder-table th, #ladder-table td { padding: 8px 6px; }
+    .rank { font-size: 1rem; width: 26px; }
+
+    /* Submit bar stacks */
+    .submit-bar { flex-direction: column; align-items: stretch; }
+    .submit-bar > * { width: 100%; }
+    .submit-bar input[type="password"], .submit-bar input[type="text"] { min-height: 42px; font-size: 16px; }
+    button, .btn { min-height: 42px; }
+
+    /* Matrix stays dense but scrolls sideways inside its wrapper */
+    .matrix th, .matrix td { padding: 6px 4px; }
+    .card-head { flex-wrap: wrap; }
+    #matrix-summary, #ladder-updated { margin-left: 0 !important; flex-basis: 100%; }
+  }
 </style>
 </head>
 <body>
@@ -160,10 +211,12 @@
         <span class="muted small" id="ladder-updated" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
+        <div class="table-wrap">
         <table id="ladder-table">
           <thead><tr><th class="n">#</th><th>Player</th><th>Positions (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
           <tbody id="ladder-body"></tbody>
         </table>
+        </div>
       </div>
     </div>
 
@@ -188,6 +241,7 @@
         <span class="muted small" id="matrix-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
+        <div class="table-wrap">
         <table class="matrix" id="matrix-table">
           <thead><tr>
             <th class="name">Player</th><th>Gr</th>
@@ -197,6 +251,7 @@
           </tr></thead>
           <tbody id="matrix-body"></tbody>
         </table>
+        </div>
         <div class="legend">
           <span><span class="sw heat1"></span>1</span>
           <span><span class="sw heat2"></span>2–3</span>
