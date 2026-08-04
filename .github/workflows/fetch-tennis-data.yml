@@ -73,7 +73,8 @@ jobs:
       - name: Merge entered duals over the scrape
         run: python merge_entered_data.py --year "$SEASON"
 
-      # generate_site.py also builds the lineup data and the seeding packets.
+      # generate_site.py also builds the lineup data, the seeding packets, the
+      # scoreboard and the committee evaluation data.
       - name: Regenerate site
         run: python generate_site.py
 

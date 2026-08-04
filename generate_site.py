@@ -4757,6 +4757,20 @@ def main():
     except Exception as exc:  # noqa: BLE001 - best-effort
         print(f"WARNING: seeding packet build failed: {exc}")
 
+    # The scoreboard and the committee board read the merged season the same way
+    # the rankings do, so they run here rather than as separate CI steps. Both
+    # are best-effort for the same reason as the two above.
+    for label, module in (("scoreboard", "build_scoreboard"),
+                          ("committee evaluation data", "build_committee_data")):
+        print(f"Building {label}...")
+        try:
+            mod = __import__(module)
+            for build_year in ('2026', '2027'):
+                if (data_dir / build_year).is_dir():
+                    mod.main(['--year', build_year])
+        except Exception as exc:  # noqa: BLE001 - best-effort
+            print(f"WARNING: {label} build failed: {exc}")
+
 
 if __name__ == '__main__':
     main()

@@ -169,7 +169,10 @@ a:hover { text-decoration: underline; }
   box-shadow: var(--shadow);
   margin: 14px 0;
 }
-.controls label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-3); }
+/* min-width:0 on both so a long option label (a full date, a school name)
+   shrinks instead of pushing the page wider than the viewport. */
+.controls label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-3); min-width: 0; }
+.controls select, .controls input { min-width: 0; max-width: 100%; }
 
 select, input[type="search"], input[type="text"] {
   font: inherit;

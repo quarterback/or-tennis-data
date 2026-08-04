@@ -79,24 +79,44 @@ def sets_and_games(meet: dict, school_id: int) -> tuple[int, int, int, int]:
 
 
 def tiebreak(meet: dict, school_id: int) -> tuple[str, int, int] | None:
-    """(basis, ours, theirs) for a level dual, or None when it was not level.
+    """(basis, ours, theirs) for a dual that a tiebreaker actually decided.
 
-    basis is 'sets' or 'games'. Returns None when the flight score was not level,
-    and ('none', 0, 0) is never returned — a dual level on both simply has no
-    tiebreak to report.
+    basis is 'sets' or 'games'. Returns None unless the flight score was level
+    AND a winner was recorded — a level dual with no `winnerSchoolId` is a tie,
+    whatever the set totals happen to say, and reporting a parenthetical next to
+    it would assert a decision nobody made.
+
+    That distinction is not hypothetical: TennisReporting files one side under
+    `winners` even for duals it left undecided, so trusting that placement
+    produces "3-3 (5-6)" — a winner with fewer sets.
     """
     scores = _flight_scores(meet)
     mine = scores.get(school_id)
     theirs = next((v for k, v in scores.items() if k != school_id), None)
     if mine is None or theirs is None or mine != theirs:
         return None
+    if meet.get("winnerSchoolId") is None:
+        return None
 
     my_sets, opp_sets, my_games, opp_games = sets_and_games(meet, school_id)
+    won = meet.get("winnerSchoolId") == school_id
+
     if my_sets != opp_sets:
-        return ("sets", my_sets, opp_sets)
-    if my_games != opp_games:
-        return ("games", my_games, opp_games)
-    return None
+        basis, mine_v, theirs_v = "sets", my_sets, opp_sets
+    elif my_games != opp_games:
+        basis, mine_v, theirs_v = "games", my_games, opp_games
+    else:
+        return None
+
+    # Only report the tiebreak when it explains the recorded winner. Imported
+    # duals sometimes carry a winner whose set totals we cannot reproduce —
+    # partial flight data, or a decision made on figures the feed did not give
+    # us — and printing "3-3 (5-6)" next to the team that won reads as a bug in
+    # the page rather than a gap in the source. The winner still stands; we just
+    # do not narrate a reason we cannot support.
+    if (mine_v > theirs_v) != won:
+        return None
+    return (basis, mine_v, theirs_v)
 
 
 def scoreline(meet: dict, school_id: int) -> str:

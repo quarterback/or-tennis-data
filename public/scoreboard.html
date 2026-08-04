@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Scoreboard</title>
+<meta name="theme-color" content="#14181f">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<style>
+  /* Scoreboard-specific: a day's slate, then a box score behind each line. */
+  #date { max-width: 15rem; }
+  .daybar { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding-bottom: 4px; }
+  .daybar button { white-space: nowrap; }
+  .daybar button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+
+  /* align-items:start so expanding one box score does not stretch every card
+     in its row to match. */
+  .slate { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; align-items: start; }
+  .game {
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 10px;
+    box-shadow: var(--shadow); overflow: hidden;
+  }
+  .game-head {
+    display: flex; align-items: center; gap: 8px; padding: 7px 12px;
+    border-bottom: 1px solid var(--rule-2); font-size: 0.7rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3);
+  }
+  .team-row {
+    display: flex; align-items: center; gap: 10px; padding: 9px 12px; cursor: pointer;
+  }
+  .team-row + .team-row { border-top: 1px solid var(--rule-2); }
+  .team-row .name { flex: 1; font-weight: 600; font-size: 0.92rem; }
+  .team-row .name .meta { display: block; font-weight: 400; font-size: 0.72rem; color: var(--ink-3); }
+  .team-row .score { font-size: 1.28rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right; }
+  .team-row.won .score, .team-row.won .name { color: var(--ink); }
+  .team-row.lost .score, .team-row.lost .name { color: var(--ink-4); }
+  .team-row .pk { font-size: 0.78rem; color: var(--ink-3); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
+  .game-foot {
+    padding: 6px 12px; border-top: 1px solid var(--rule-2); background: var(--paper-2);
+    display: flex; align-items: center; gap: 8px; font-size: 0.74rem; color: var(--ink-3);
+  }
+  .game-foot button { padding: 2px 8px; font-size: 0.72rem; margin-left: auto; }
+
+  /* The card clips its corners, so the box score has to scroll inside itself
+     rather than be cut off — the set scores are the point of opening it. */
+  .box { border-top: 1px solid var(--rule); padding: 4px 0 8px; background: var(--paper-2); overflow-x: auto; }
+  .box table { font-size: 0.78rem; min-width: 100%; }
+  .box th { position: static; background: transparent; padding: 5px 12px; }
+  .box td { padding: 5px 12px; border-bottom: 1px solid var(--rule-2); }
+  .box td:nth-child(2), .box td:nth-child(3) { min-width: 108px; }
+  .box tr:last-child td { border-bottom: 0; }
+  .box .slot { font-weight: 700; color: var(--ink-3); width: 30px; }
+  .box .w { font-weight: 700; }
+  .box .l { color: var(--ink-3); }
+  .box .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .box .fin { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--flag); }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div class="pagehead">
+    <h1>Scoreboard</h1>
+    <p class="sub">Every dual match, by the day it was played. Open one to see all
+    eight flights.</p>
+  </div>
+
+  <div class="controls">
+    <label>Season <select id="year"></select></label>
+    <label>Date <select id="date"></select></label>
+    <label>Gender
+      <select id="gender">
+        <option value="">Both</option><option>Boys</option><option>Girls</option>
+      </select>
+    </label>
+    <label>Class <select id="class"><option value="">All</option></select></label>
+    <input type="search" id="q" placeholder="Find a school…" style="min-width:170px">
+    <span id="count" class="tiny muted" style="margin-left:auto"></span>
+  </div>
+
+  <div class="daybar no-print" id="daybar"></div>
+
+  <div id="slate" class="slate" style="margin-top:14px"></div>
+  <div id="empty" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+
+applyBrand('Scoreboard', {
+  current: 'Scoreboard',
+  links: [
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'committee.html', label: 'Selection' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const YEARS = [2026];
+let index = null;
+let day = null;
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+function longDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined,
+    { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+function shortDate(iso) {
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+async function boot() {
+  const yearSel = document.getElementById('year');
+  yearSel.innerHTML = YEARS.map((y) => `<option>${y}</option>`).join('');
+  yearSel.onchange = () => loadYear(Number(yearSel.value));
+  for (const el of ['gender', 'class', 'q']) {
+    document.getElementById(el).oninput = render;
+    document.getElementById(el).onchange = render;
+  }
+  await loadYear(YEARS[0]);
+}
+
+async function loadYear(year) {
+  index = await fetch(`data/scoreboard/${year}/index.json`).then((r) => r.json());
+
+  const classes = [...new Set(index.teams.map((t) => t.classification).filter(Boolean))].sort();
+  document.getElementById('class').innerHTML =
+    '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
+
+  const sel = document.getElementById('date');
+  sel.innerHTML = index.dates.map((d) =>
+    `<option value="${d.date}">${longDate(d.date)} — ${d.duals} dual${d.duals === 1 ? '' : 's'}</option>`
+  ).join('');
+  sel.onchange = () => loadDate(sel.value);
+
+  // The most recent ten days as one-tap buttons; the select covers the season.
+  document.getElementById('daybar').innerHTML = index.dates.slice(0, 10).map((d) =>
+    `<button data-date="${d.date}">${shortDate(d.date)} <span class="muted">${d.duals}</span></button>`
+  ).join('');
+  document.querySelectorAll('#daybar button').forEach((b) => {
+    b.onclick = () => { document.getElementById('date').value = b.dataset.date; loadDate(b.dataset.date); };
+  });
+
+  await loadDate(index.dates[0].date);
+}
+
+async function loadDate(date) {
+  day = await fetch(`data/scoreboard/${index.year}/${date}.json`).then((r) => r.json());
+  document.querySelectorAll('#daybar button').forEach((b) =>
+    b.classList.toggle('on', b.dataset.date === date));
+  render();
+}
+
+function visible() {
+  const gender = document.getElementById('gender').value;
+  const cls = document.getElementById('class').value;
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  return day.duals.filter((d) => {
+    if (gender && d.gender !== gender) return false;
+    if (cls && d.a.classification !== cls && d.b.classification !== cls) return false;
+    if (q && !`${d.a.name} ${d.b.name}`.toLowerCase().includes(q)) return false;
+    return true;
+  });
+}
+
+function teamRow(side, dual) {
+  const t = dual[side];
+  // A tie styles neither side as a winner — that is the whole point of it.
+  const state = dual.tied ? '' : (dual.winnerId === t.id ? 'won' : 'lost');
+  // Penalty-shootout convention: the tiebreak figures sit beside the score.
+  const pk = dual.tiebreak ? (side === 'a' ? dual.tiebreak.a : dual.tiebreak.b) : '';
+  return `<div class="team-row ${state}">
+    <span class="name">${esc(t.name)}
+      <span class="meta">${esc(t.classification)}${t.league ? ` · ${esc(t.league)}` : ''}</span>
+    </span>
+    <span class="pk">${pk === '' ? '' : `(${pk})`}</span>
+    <span class="score">${esc(t.score)}</span>
+  </div>`;
+}
+
+function render() {
+  const list = visible();
+  const slate = document.getElementById('slate');
+  const empty = document.getElementById('empty');
+  document.getElementById('count').textContent =
+    `${list.length} of ${day.duals.length} duals`;
+
+  if (!list.length) {
+    slate.innerHTML = '';
+    empty.style.display = '';
+    empty.textContent = 'No duals match those filters on this date.';
+    return;
+  }
+  empty.style.display = 'none';
+
+  slate.innerHTML = list.map((d, i) => {
+    const tags = [
+      d.postseason ? '<span class="chip quiet">Postseason</span>' : '',
+      d.contested ? '<span class="chip flag">Disputed</span>' : '',
+      d.source === 'entered' ? '<span class="chip aq">Coach-reported</span>' : '',
+      d.tied ? '<span class="chip quiet">Tie</span>' : '',
+    ].filter(Boolean).join(' ');
+    return `<div class="game" data-i="${i}">
+      <div class="game-head"><span>${esc(d.gender)}</span>${tags}</div>
+      ${teamRow('a', d)}
+      ${teamRow('b', d)}
+      <div class="game-foot">
+        <span>${d.flights.length} flight${d.flights.length === 1 ? '' : 's'}</span>
+        <button class="js-box" data-i="${i}">Box score</button>
+      </div>
+      <div class="box" id="box-${i}" style="display:none"></div>
+    </div>`;
+  }).join('');
+
+  slate.querySelectorAll('.js-box').forEach((b) => {
+    b.onclick = () => toggleBox(Number(b.dataset.i), list, b);
+  });
+}
+
+function toggleBox(i, list, button) {
+  const mount = document.getElementById(`box-${i}`);
+  if (mount.style.display !== 'none') {
+    mount.style.display = 'none';
+    button.textContent = 'Box score';
+    return;
+  }
+  const d = list[i];
+  const rows = d.flights.map((f) => {
+    const score = f.sets.map((s) =>
+      `${s.home}-${s.away}${s.tie != null ? `(${s.tie})` : ''}`).join(', ');
+    const name = (arr) => arr.length ? esc(arr.join(' / ')) : '<span class="muted">no player</span>';
+    const finish = f.finish
+      ? `<span class="fin">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
+    return `<tr>
+      <td class="slot">${esc(f.label)}</td>
+      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players)}</td>
+      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players)}</td>
+      <td class="sc">${esc(score) || '&mdash;'} ${finish}</td>
+    </tr>`;
+  }).join('');
+
+  mount.innerHTML = `<table>
+    <thead><tr><th></th><th>${esc(d.a.name)}</th><th>${esc(d.b.name)}</th><th class="sc">Score</th></tr></thead>
+    <tbody>${rows}</tbody></table>` +
+    (d.flights.length < 8
+      ? `<p class="tiny muted" style="padding:6px 12px 0">Only ${d.flights.length} of the
+         eight flights were contested.</p>` : '');
+  mount.style.display = '';
+  button.textContent = 'Hide';
+}
+
+boot();
+</script>
+</body>
+</html>
