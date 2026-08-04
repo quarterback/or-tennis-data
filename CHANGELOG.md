@@ -1,5 +1,58 @@
 # Changelog
 
+## 2026-08-04
+
+### Added: Coaches can report dual matches on the site
+
+**What:** A reporting system where coaches sign in, keep a roster, and enter dual
+match results directly. Entered results take precedence over the TennisReporting
+scrape and feed the rankings through the existing pipeline. The home coach files
+a dual; the away coach confirms or disputes it.
+
+**Why:** Every number on this site has been a read over somebody else's data,
+which caps its quality at the quality of that scrape. Oregon plays four singles
+and four doubles, but the scraped 2026 season is overwhelmingly 3S+3D — 2,879
+duals in that shape against 64 fourth-singles and 70 fourth-doubles lines
+statewide. Reporting on the site closes that gap and makes the season's records
+answerable to the coaches who played them.
+
+**Impact:** Nothing changes for a team that never enters anything — the scrape
+still populates it, and a build with no entered data leaves `data/` untouched.
+No league is enrolled yet; entry is gated per team and the target is a 2027 beta.
+
+**Detail:** [Coach Reporting AAR](aar-coach-reporting.html).
+
+### Added: League seeding packets
+
+**What:** A printable page per league at `seeding/<year>/`, holding the
+standings, a head-to-head grid, a page per team with its eight-flight record and
+submitted ladder, and every league dual as a scorecard. 32 league pages for 2026.
+
+**Why:** District seeding committees print the season out and mark it up in the
+room. Until now that meant screenshotting the rankings table.
+
+### Fixed: Fourth doubles was missing from the ladder and position matrix
+
+**Problem:** `build_lineup_data.py` capped doubles at 3D, so every appearance at
+fourth doubles was dropped. Oregon's dual card is four singles and four doubles,
+and `generate_site.py` has always weighted 4S and 4D at 0.10 — only the Lineups
+tool was short a position.
+
+**Impact:** In 2026 this hid 32 players from their team's ladder and position
+matrix entirely, and left 94 more with incomplete records. Rankings were never
+affected; the Power Index already counted those flights.
+
+### Fixed: processed_rankings.json churned between machines
+
+**Problem:** Ranked teams were emitted in rank order, but unranked (NR) teams
+followed filesystem directory order, which differs between a local checkout and
+the Actions runner. The committed artifact changed on rebuild with no value
+changing.
+
+**Fix:** The data glob is sorted. Two consecutive builds are now byte-identical,
+which is also what makes it verifiable that a build with no coach-entered data
+reproduces the published numbers exactly.
+
 ## 2026-04-26
 
 ### Changed: TOSS Power Index weights rebalanced to 65/25/10
