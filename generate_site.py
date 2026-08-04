@@ -353,11 +353,21 @@ def dedupe_meets(meets):
 
     Two dual meets with the same date and same pair of school IDs are treated as
     duplicates even if the meet-level scores differ slightly (coaches sometimes
-    record different flights). Keeps the entry with the most completed flight
-    match data; ties broken by lowest meet id.
+    record different flights). A coach-entered meet always beats a scraped one;
+    among meets from the same source, keeps the entry with the most completed
+    flight match data, ties broken by lowest meet id.
+
+    The source rank is the second of two independent guards against a dual being
+    counted twice — merge_entered_data.py already removes the scraped twin before
+    the file is written. Keeping the rule here as well means a missed removal
+    degrades to "the scraped copy is ignored" rather than to inflated records.
     """
     if not meets:
         return meets
+
+    def source_rank(meet):
+        """1 for a coach-entered meet, 0 for a scraped one."""
+        return 1 if meet.get('source') == 'entered' else 0
 
     def flight_count(meet):
         n = 0
@@ -388,8 +398,8 @@ def dedupe_meets(meets):
         if key in seen:
             idx = seen[key]
             kept = result[idx]
-            new_score = (flight_count(meet), -(meet.get('id') or 0))
-            old_score = (flight_count(kept), -(kept.get('id') or 0))
+            new_score = (source_rank(meet), flight_count(meet), -(meet.get('id') or 0))
+            old_score = (source_rank(kept), flight_count(kept), -(kept.get('id') or 0))
             if new_score > old_score:
                 result[idx] = meet
         else:
@@ -925,12 +935,17 @@ def build_rankings(data_dir, master_school_list):
         if not year_dir.is_dir():
             continue
         year = year_dir.name
-        if not year.isdigit() or int(year) < 2021 or int(year) > 2026:
+        if not year.isdigit() or int(year) < 2021 or int(year) > 2027:
             continue
 
         print(f"Processing year {year}...")
 
-        for json_file in year_dir.glob('school_*_gender_*.json'):
+        # Sorted: glob() returns directory order, which differs between a local
+        # checkout and the Actions runner. Ranked teams are emitted in rank order
+        # regardless, but unranked (NR) teams are appended as encountered, so an
+        # unsorted glob made processed_rankings.json churn between machines with
+        # no change in any value.
+        for json_file in sorted(year_dir.glob('school_*_gender_*.json')):
             parts = json_file.stem.split('_')
             school_id = int(parts[1])
             gender_id = int(parts[3])
@@ -4703,7 +4718,7 @@ def main():
     print("Building lineup data (ladder + position matrix)...")
     try:
         import build_lineup_data
-        build_lineup_data.main(['2026'])  # demo scope: current season only
+        build_lineup_data.main(['2026', '2027'])  # seasons with the Lineups tool
     except Exception as exc:  # noqa: BLE001 - best-effort, don't fail the site build
         print(f"WARNING: lineup data build failed: {exc}")
 
