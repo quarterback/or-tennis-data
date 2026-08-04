@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report a Dual — Oregon HS Tennis</title>
+<meta name="theme-color" content="#198754">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/coach.css">
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"></div></nav>
+<header class="hero"><div class="container"></div></header>
+
+<div class="container">
+  <div id="signin" style="display:none"></div>
+  <div id="app" style="display:none">
+
+    <div id="banner"></div>
+
+    <div class="card">
+      <div class="card-head">Match details</div>
+      <div class="card-body">
+        <div class="row">
+          <label class="small muted">Date
+            <input type="date" id="played-on">
+          </label>
+          <label class="small muted">Opponent
+            <select id="opponent"></select>
+          </label>
+          <label class="small muted">Site
+            <select id="site">
+              <option value="home">We hosted</option>
+              <option value="away">We travelled</option>
+            </select>
+          </label>
+          <label class="small muted">
+            <input type="checkbox" id="postseason"> District or state
+          </label>
+        </div>
+        <p class="small muted" id="reporter-note" style="margin:10px 0 0"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span>The card</span>
+        <span class="small muted" id="card-progress"></span>
+      </div>
+      <div class="card-body" id="card"></div>
+    </div>
+
+    <p class="small muted">Leave a flight blank if it was not played. Six-flight
+    duals are fine &mdash; the rankings adjust for a short card.</p>
+  </div>
+</div>
+
+<div class="savebar" id="savebar" style="display:none">
+  <span class="score" id="live-score">0&ndash;0</span>
+  <span class="small muted" id="live-label"></span>
+  <span class="grow"></span>
+  <span class="status" id="status"></span>
+  <button class="ghost" id="save-draft">Save draft</button>
+  <button id="submit">Submit to opponent</button>
+</div>
+
+<script type="module">
+import {
+  api, cardScore, completeSets, escapeHtml, FLIGHTS, lastTeam, lineWinner,
+  renderChrome, requireSession, setStatus, teamLabel,
+} from './js/coach-common.js';
+
+renderChrome({ title: 'Report a Dual', subtitle: 'One card, eight flights.' });
+
+const params = new URLSearchParams(location.search);
+const dualId = params.get('dual') ? Number(params.get('dual')) : null;
+
+let team = null;          // our team_season
+let teams = [];
+let opponents = [];       // {school_id, school_name, id}
+let ourRoster = [];
+let theirRoster = [];
+let lines = [];           // one per FLIGHTS entry, index-aligned
+let loadedUpdatedAt = null;
+let readOnly = false;
+
+async function boot() {
+  const s = await requireSession();
+  if (!s) return;
+  teams = s.teams || [];
+
+  const teamId = lastTeam.get();
+  team = teams.find((t) => Number(t.id) === teamId) || teams[0];
+  if (!team) {
+    document.getElementById('signin').style.display = '';
+    document.getElementById('signin').innerHTML =
+      '<div class="banner warn">No team is assigned to this address yet.</div>';
+    return;
+  }
+  lastTeam.set(team.id);
+
+  document.getElementById('app').style.display = '';
+  document.getElementById('savebar').style.display = '';
+  document.querySelector('.hero p').textContent =
+    `${teamLabel(team)} — one card, eight flights.`;
+
+  lines = FLIGHTS.map(() => ({ homePlayers: [], awayPlayers: [], sets: [], homeWon: null }));
+
+  await loadOpponents();
+  ourRoster = (await api(`/api/roster/${team.id}`)).players.filter((p) => p.active);
+
+  if (dualId) {
+    await loadExisting();
+  } else {
+    // Default to today only when today is actually in this team's season.
+    // Pre-filling 2026 on a 2027 team hands the coach a date the server will
+    // reject, and a date field they have to notice is wrong.
+    const today = new Date().toISOString().slice(0, 10);
+    const input = document.getElementById('played-on');
+    input.min = `${team.year}-01-01`;
+    input.max = `${team.year}-12-31`;
+    if (today.startsWith(String(team.year))) input.value = today;
+  }
+
+  document.getElementById('opponent').onchange = onOpponentChange;
+  document.getElementById('site').onchange = render;
+  document.getElementById('save-draft').onclick = () => save(true);
+  document.getElementById('submit').onclick = () => save(false);
+
+  await onOpponentChange();
+}
+
+/**
+ * Opponents are every team in the same season, gender and level.
+ *
+ * Deliberately not restricted to our league: non-conference duals are most of
+ * the early season, and the rankings care about them just as much.
+ */
+async function loadOpponents() {
+  const res = await api(`/api/admin/teams?year=${team.year}`).catch(() => null);
+  if (res) {
+    opponents = res.teams.filter((t) =>
+      Number(t.gender_id) === Number(team.gender_id) &&
+      t.is_jv === team.is_jv && Number(t.id) !== Number(team.id));
+  } else {
+    // The teams index is administrator-only; fall back to the public school
+    // list the rest of the site is built from.
+    const rankings = await fetch('data/processed_rankings.json').then((r) => r.json());
+    const gender = Number(team.gender_id) === 1 ? 'Boys' : 'Girls';
+    const seen = new Map();
+    for (const e of rankings) {
+      if (e.gender !== gender || Number(e.school_id) === Number(team.school_id)) continue;
+      if (!seen.has(e.school_id)) seen.set(e.school_id, { school_id: e.school_id, school_name: e.school_name });
+    }
+    opponents = [...seen.values()];
+  }
+  opponents.sort((a, b) => String(a.school_name).localeCompare(String(b.school_name)));
+  document.getElementById('opponent').innerHTML =
+    '<option value="">Choose…</option>' +
+    opponents.map((o) =>
+      `<option value="${o.school_id}">${escapeHtml(o.school_name)}</option>`).join('');
+}
+
+async function onOpponentChange() {
+  const schoolId = Number(document.getElementById('opponent').value);
+  theirRoster = [];
+  if (schoolId) {
+    const opp = opponents.find((o) => Number(o.school_id) === schoolId);
+    if (opp && opp.id) {
+      const res = await api(`/api/roster/${opp.id}`).catch(() => null);
+      if (res) theirRoster = res.players.filter((p) => p.active);
+    }
+  }
+  render();
+}
+
+async function loadExisting() {
+  const { dual } = await api(`/api/duals/${dualId}`);
+  loadedUpdatedAt = dual.updated_at;
+  readOnly = Number(dual.home_school_id) !== Number(team.school_id);
+
+  document.getElementById('played-on').value = String(dual.played_on).slice(0, 10);
+  document.getElementById('postseason').checked = !!dual.is_postseason;
+  const weAreHome = Number(dual.home_school_id) === Number(team.school_id);
+  document.getElementById('site').value = weAreHome ? 'home' : 'away';
+  document.getElementById('opponent').value =
+    weAreHome ? dual.away_school_id : dual.home_school_id;
+
+  for (const line of dual.lines) {
+    const idx = FLIGHTS.findIndex((f) =>
+      f.matchType === line.match_type && f.flight === Number(line.flight));
+    if (idx < 0) continue;
+    lines[idx] = {
+      homePlayers: line.homePlayers, awayPlayers: line.awayPlayers,
+      sets: line.sets, homeWon: line.home_won,
+    };
+  }
+
+  if (readOnly) {
+    document.getElementById('banner').innerHTML =
+      '<div class="banner warn">The home team reports this dual. You can review ' +
+      'it here and confirm or dispute it from your inbox.</div>';
+    document.getElementById('save-draft').style.display = 'none';
+    document.getElementById('submit').style.display = 'none';
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Rendering
+//
+// "home" and "away" are the dual's sides, not ours. The site selector decides
+// which column is ours, so a coach always reads their own players on the left.
+// ---------------------------------------------------------------------------
+
+function weAreHome() {
+  return document.getElementById('site').value === 'home';
+}
+
+function rosterFor(side) {
+  const ours = side === (weAreHome() ? 'home' : 'away');
+  return ours ? ourRoster : theirRoster;
+}
+
+function playerOptions(side, selectedId) {
+  const roster = rosterFor(side);
+  const opts = roster.map((p) =>
+    `<option value="${p.id}"${Number(p.id) === Number(selectedId) ? ' selected' : ''}>` +
+    `${escapeHtml(p.last_name)}, ${escapeHtml(p.first_name)}</option>`).join('');
+  const ours = side === (weAreHome() ? 'home' : 'away');
+  const blank = ours ? 'Choose a player…' : 'Type their name…';
+  return `<option value="">${blank}</option>${opts}`;
+}
+
+function render() {
+  const mount = document.getElementById('card');
+  mount.innerHTML = FLIGHTS.map((f, i) => {
+    const line = lines[i];
+    const doubles = f.matchType === 'Doubles';
+    const winner = line.homeWon === true ? 'home'
+      : line.homeWon === false ? 'away' : lineWinner(line.sets);
+    const ourSide = weAreHome() ? 'home' : 'away';
+    const winLabel = !winner ? ''
+      : winner === ourSide ? '<span class="winner home">We won</span>'
+        : '<span class="winner away">They won</span>';
+
+    const sides = ['home', 'away'].sort((a) => (a === ourSide ? -1 : 1));
+    const sideRows = sides.map((side) => {
+      const players = line[`${side}Players`];
+      const label = side === ourSide ? 'Us' : 'Them';
+      const selects = Array.from({ length: doubles ? 2 : 1 }, (_, slot) => {
+        const sel = players[slot] ? players[slot].id : '';
+        const isOurs = side === ourSide;
+        return isOurs
+          ? `<select data-line="${i}" data-side="${side}" data-slot="${slot}" class="js-player">
+               ${playerOptions(side, sel)}</select>`
+          : `<input type="text" data-line="${i}" data-side="${side}" data-slot="${slot}"
+                    class="js-name" placeholder="Opponent name"
+                    value="${escapeHtml(players[slot] ? `${players[slot].firstName} ${players[slot].lastName}` : '')}">`;
+      }).join('');
+      return `<div class="flight-side"><span class="side-label">${label}</span>${selects}</div>`;
+    }).join('');
+
+    const setBoxes = [1, 2, 3].map((n) => {
+      const s = line.sets.find((x) => Number(x.number) === n) || {};
+      return `<span class="setbox"><span class="n">${n}</span>
+        <input type="number" inputmode="numeric" min="0" max="30" data-line="${i}"
+               data-set="${n}" data-side="home" class="js-set" value="${s.homeGames ?? ''}">
+        <span class="dash">&ndash;</span>
+        <input type="number" inputmode="numeric" min="0" max="30" data-line="${i}"
+               data-set="${n}" data-side="away" class="js-set" value="${s.awayGames ?? ''}">
+      </span>`;
+    }).join('');
+
+    return `<div class="flight">
+      <div class="flight-head">
+        <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
+        ${winLabel}
+      </div>
+      ${sideRows}
+      <div class="sets">${setBoxes}</div>
+    </div>`;
+  }).join('');
+
+  if (readOnly) {
+    mount.querySelectorAll('input, select').forEach((el) => { el.disabled = true; });
+  }
+
+  mount.querySelectorAll('.js-player').forEach((el) => { el.onchange = onPlayerChange; });
+  mount.querySelectorAll('.js-name').forEach((el) => { el.onchange = onNameChange; });
+  mount.querySelectorAll('.js-set').forEach((el) => { el.oninput = onSetChange; });
+
+  updateScore();
+}
+
+function onPlayerChange(e) {
+  const { line, side, slot } = e.target.dataset;
+  const id = Number(e.target.value);
+  const list = lines[line][`${side}Players`];
+  if (!id) list.splice(Number(slot), 1);
+  else {
+    const p = ourRoster.find((x) => Number(x.id) === id);
+    list[Number(slot)] = { id, firstName: p.first_name, lastName: p.last_name };
+  }
+  updateScore();
+}
+
+function onNameChange(e) {
+  const { line, side, slot } = e.target.dataset;
+  const text = e.target.value.trim().replace(/\s+/g, ' ');
+  const list = lines[line][`${side}Players`];
+  if (!text) { list.splice(Number(slot), 1); return; }
+  const parts = text.split(' ');
+  // A single word goes in as the surname; a coach writing "Nguyen" for an
+  // opponent they only know by one name should not be blocked.
+  list[Number(slot)] = parts.length > 1
+    ? { firstName: parts.slice(0, -1).join(' '), lastName: parts[parts.length - 1] }
+    : { firstName: '', lastName: text };
+  updateScore();
+}
+
+function onSetChange(e) {
+  const { line, set, side } = e.target.dataset;
+  const i = Number(line);
+  const n = Number(set);
+  let entry = lines[i].sets.find((s) => Number(s.number) === n);
+  if (!entry) { entry = { number: n }; lines[i].sets.push(entry); }
+  const value = e.target.value === '' ? null : Number(e.target.value);
+  entry[side === 'home' ? 'homeGames' : 'awayGames'] = value;
+
+  // Drop a set only when BOTH boxes are empty. Half-filled sets have to survive
+  // — a coach types "6" before they type "3", and discarding the first number on
+  // the way to the second means nothing is ever recorded.
+  const blank = (v) => v === null || v === undefined;
+  lines[i].sets = lines[i].sets.filter((s) => !(blank(s.homeGames) && blank(s.awayGames)));
+  lines[i].sets.sort((a, b) => a.number - b.number);
+  lines[i].homeWon = null;   // recomputed from the sets
+  updateScore();
+}
+
+function updateScore() {
+  const { home, away } = cardScore(lines);
+  const ours = weAreHome() ? home : away;
+  const theirs = weAreHome() ? away : home;
+  document.getElementById('live-score').innerHTML = `${ours}&ndash;${theirs}`;
+
+  const played = lines.filter((l) => lineWinner(l.sets)).length;
+  document.getElementById('live-label').textContent =
+    `${played} of 8 flights entered`;
+  document.getElementById('card-progress').textContent =
+    played ? `${played} entered` : '';
+
+  // Refresh the per-flight winner labels without re-rendering the inputs, which
+  // would steal focus mid-typing.
+  document.querySelectorAll('#card .flight').forEach((el, i) => {
+    const head = el.querySelector('.flight-head');
+    const existing = head.querySelector('.winner');
+    if (existing) existing.remove();
+    const w = lineWinner(lines[i].sets);
+    if (!w) return;
+    const ourSide = weAreHome() ? 'home' : 'away';
+    const span = document.createElement('span');
+    span.className = `winner ${w === ourSide ? 'home' : 'away'}`;
+    span.textContent = w === ourSide ? 'We won' : 'They won';
+    head.appendChild(span);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Saving
+// ---------------------------------------------------------------------------
+
+function buildPayload(draft) {
+  const opponentId = Number(document.getElementById('opponent').value);
+  if (!opponentId) throw new Error('Choose an opponent.');
+  const playedOn = document.getElementById('played-on').value;
+  if (!playedOn) throw new Error('Choose a date.');
+
+  const home = weAreHome();
+  const payload = {
+    year: team.year,
+    genderId: Number(team.gender_id),
+    isJv: !!team.is_jv,
+    playedOn,
+    homeSchoolId: home ? Number(team.school_id) : opponentId,
+    awaySchoolId: home ? opponentId : Number(team.school_id),
+    isPostseason: document.getElementById('postseason').checked,
+    draft,
+    updatedAt: loadedUpdatedAt,
+    lines: [],
+  };
+
+  FLIGHTS.forEach((f, i) => {
+    const line = lines[i];
+    // Only finished sets are sent — a half-typed set is a UI state, not a score.
+    const sets = completeSets(line.sets);
+    if (!sets.length || !line.homePlayers.length || !line.awayPlayers.length) return;
+    const winner = lineWinner(sets);
+    payload.lines.push({
+      matchType: f.matchType,
+      flight: f.flight,
+      homeWon: winner === null ? null : winner === 'home',
+      homePlayers: line.homePlayers,
+      awayPlayers: line.awayPlayers,
+      sets,
+    });
+  });
+
+  if (!payload.lines.length) throw new Error('Enter at least one flight.');
+  return payload;
+}
+
+async function save(draft) {
+  const status = document.getElementById('status');
+  let payload;
+  try {
+    payload = buildPayload(draft);
+  } catch (e) {
+    return setStatus(status, e.message, 'err');
+  }
+
+  const buttons = document.querySelectorAll('.savebar button');
+  buttons.forEach((b) => { b.disabled = true; });
+  try {
+    const res = dualId
+      ? await api(`/api/duals/${dualId}`, { method: 'PUT', body: JSON.stringify(payload) })
+      : await api('/api/duals', { method: 'POST', body: JSON.stringify(payload) });
+    loadedUpdatedAt = res.dual.updated_at;
+    setStatus(status, draft ? 'Draft saved.' : 'Submitted to your opponent.');
+    if (!dualId) {
+      setTimeout(() => { location.href = `coach.html?team=${team.id}`; }, 900);
+    }
+  } catch (e) {
+    if (e.status === 409 && e.body && e.body.dualId) {
+      document.getElementById('banner').innerHTML =
+        '<div class="banner warn">Your opponent has already reported this dual. ' +
+        `<a href="coach-inbox.html?team=${team.id}">Review and confirm it</a> ` +
+        'instead of entering it twice.</div>';
+      setStatus(status, 'Already reported.', 'err');
+    } else {
+      setStatus(status, e.message, 'err');
+    }
+  } finally {
+    buttons.forEach((b) => { b.disabled = false; });
+  }
+}
+
+boot();
+</script>
+</body>
+</html>

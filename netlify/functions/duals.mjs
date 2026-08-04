@@ -227,6 +227,12 @@ async function createDual(req) {
   const playedOn = String(body.playedOn || '').slice(0, 10);
 
   if (!/^\d{4}-\d{2}-\d{2}$/.test(playedOn)) throw new HttpError(400, 'playedOn must be YYYY-MM-DD');
+  // The date has to fall in the season it is filed under, or the dual compiles
+  // into data/<year>/ carrying a date from a different season and the natural
+  // key stops matching the scraped copy of the same match.
+  if (!playedOn.startsWith(`${year}-`)) {
+    throw new HttpError(400, `a ${year} dual cannot be dated ${playedOn}`);
+  }
   if (homeSchoolId === awaySchoolId) throw new HttpError(400, 'a team cannot play itself');
 
   const homeTeam = await teamSeason({ year, schoolId: homeSchoolId, genderId, isJv });
@@ -394,8 +400,17 @@ async function listDuals(req) {
   const rows = await sql`
     SELECT d.*,
            (d.home_school_id = ${team.school_id}) AS is_home,
-           (SELECT count(*)::int FROM dual_line dl WHERE dl.dual_id = d.id) AS flight_count
+           hs.school_name AS home_name, aws.school_name AS away_name,
+           (SELECT count(*)::int FROM dual_line dl WHERE dl.dual_id = d.id) AS flight_count,
+           (SELECT count(*)::int FROM dual_line dl
+             WHERE dl.dual_id = d.id AND dl.home_won IS TRUE) AS home_flights,
+           (SELECT count(*)::int FROM dual_line dl
+             WHERE dl.dual_id = d.id AND dl.home_won IS FALSE) AS away_flights
       FROM dual d
+      LEFT JOIN team_season hs ON hs.year = d.year AND hs.school_id = d.home_school_id
+                              AND hs.gender_id = d.gender_id AND hs.is_jv = d.is_jv
+      LEFT JOIN team_season aws ON aws.year = d.year AND aws.school_id = d.away_school_id
+                              AND aws.gender_id = d.gender_id AND aws.is_jv = d.is_jv
      WHERE d.year = ${team.year} AND d.gender_id = ${team.gender_id}
        AND d.is_jv = ${team.is_jv}
        AND (d.home_school_id = ${team.school_id} OR d.away_school_id = ${team.school_id})

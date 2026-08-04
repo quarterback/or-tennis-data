@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Report Results — Oregon HS Tennis</title>
+<meta name="theme-color" content="#198754">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Report">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="coach.webmanifest">
+<link rel="stylesheet" href="css/coach.css">
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"></div></nav>
+<header class="hero"><div class="container"></div></header>
+
+<div class="container">
+  <div id="signin" style="display:none"></div>
+
+  <div id="app" style="display:none">
+    <div class="header-bar">
+      <label>Team
+        <select id="team-picker"></select>
+      </label>
+      <span id="who" class="small muted"></span>
+      <span class="backend" id="backend">checking&hellip;</span>
+    </div>
+
+    <div id="not-open" class="banner warn" style="display:none">
+      Entry is not open for this team yet. You can look around, but saving is
+      disabled until your league joins the beta.
+    </div>
+
+    <div class="tiles" style="margin:16px 0">
+      <a class="tile" href="#" id="tile-new">
+        <div class="n">+</div>
+        <div class="label">Report a dual</div>
+      </a>
+      <a class="tile" id="tile-inbox" href="coach-inbox.html">
+        <div class="n" id="count-inbox">0</div>
+        <div class="label">Awaiting your confirmation</div>
+      </a>
+      <a class="tile" href="#" id="tile-drafts">
+        <div class="n" id="count-drafts">0</div>
+        <div class="label">Drafts</div>
+      </a>
+      <a class="tile" id="tile-roster" href="coach-roster.html">
+        <div class="n" id="count-roster">&mdash;</div>
+        <div class="label">Players on the roster</div>
+      </a>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span>This season</span>
+        <span class="small muted" id="season-summary"></span>
+        <button class="ghost tiny" id="signout" style="margin-left:auto">Sign out</button>
+      </div>
+      <div class="card-body">
+        <div id="duals-empty" class="empty">No duals reported yet. Use
+          &ldquo;Report a dual&rdquo; above after your next match.</div>
+        <div class="table-wrap">
+          <table id="duals-table" style="display:none">
+            <thead><tr>
+              <th>Date</th><th>Opponent</th><th class="n">Score</th>
+              <th class="n">Flights</th><th>Status</th><th></th>
+            </tr></thead>
+            <tbody id="duals-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import {
+  api, checkBackend, escapeHtml, fmtDate, lastTeam, renderChrome,
+  requireSession, signOut, teamLabel,
+} from './js/coach-common.js';
+
+renderChrome({
+  title: 'Report Results',
+  subtitle: 'Enter your dual matches here and they feed the rankings directly.',
+});
+
+let teams = [];
+let team = null;
+
+async function boot() {
+  const params = new URLSearchParams(location.search);
+  if (params.get('error')) {
+    const messages = {
+      expired: 'That sign-in link has expired or was already used. Request a new one.',
+      missing: 'That sign-in link was incomplete. Request a new one.',
+    };
+    const banner = document.createElement('div');
+    banner.className = 'banner err';
+    banner.textContent = messages[params.get('error')] || 'Sign-in failed.';
+    document.querySelector('.container').prepend(banner);
+  }
+
+  const s = await requireSession();
+  if (!s) return;
+
+  document.getElementById('app').style.display = '';
+  document.getElementById('who').textContent = s.coach.email +
+    (s.coach.isAdmin ? ' (administrator)' : '');
+  checkBackend(document.getElementById('backend'));
+  document.getElementById('signout').onclick = signOut;
+
+  teams = s.teams || [];
+  if (!teams.length) {
+    document.getElementById('app').innerHTML =
+      '<div class="banner warn">You are signed in, but no team is assigned to ' +
+      'this address yet. An administrator can assign one.</div>';
+    return;
+  }
+
+  const picker = document.getElementById('team-picker');
+  picker.innerHTML = teams.map((t) =>
+    `<option value="${t.id}">${escapeHtml(teamLabel(t))}</option>`).join('');
+  const remembered = lastTeam.get();
+  if (remembered && teams.some((t) => Number(t.id) === remembered)) picker.value = remembered;
+  picker.onchange = () => selectTeam(Number(picker.value));
+
+  await selectTeam(Number(picker.value));
+}
+
+async function selectTeam(id) {
+  team = teams.find((t) => Number(t.id) === id);
+  lastTeam.set(id);
+
+  document.getElementById('not-open').style.display = team.entry_enabled ? 'none' : '';
+  document.getElementById('tile-new').href = `coach-dual.html?team=${id}`;
+  document.getElementById('tile-inbox').href = `coach-inbox.html?team=${id}`;
+  document.getElementById('tile-roster').href = `coach-roster.html?team=${id}`;
+  document.getElementById('tile-drafts').href = `#drafts`;
+
+  const [roster, duals] = await Promise.all([
+    api(`/api/roster/${id}`).catch(() => ({ players: [] })),
+    api(`/api/duals?team=${id}`).catch(() => ({ duals: [], awaitingYou: [] })),
+  ]);
+
+  document.getElementById('count-roster').textContent =
+    roster.players.filter((p) => p.active).length;
+  document.getElementById('count-inbox').textContent = duals.awaitingYou.length;
+  document.getElementById('tile-inbox').classList.toggle('alert', duals.awaitingYou.length > 0);
+  document.getElementById('count-drafts').textContent =
+    duals.duals.filter((d) => d.status === 'draft').length;
+
+  renderDuals(duals.duals);
+}
+
+const STATUS_PILL = {
+  draft: ['warn', 'Draft'],
+  reported: ['warn', 'Awaiting opponent'],
+  confirmed: ['ok', 'Confirmed'],
+  contested: ['bad', 'Disputed'],
+};
+
+function renderDuals(duals) {
+  const table = document.getElementById('duals-table');
+  const empty = document.getElementById('duals-empty');
+  const body = document.getElementById('duals-body');
+
+  if (!duals.length) {
+    table.style.display = 'none';
+    empty.style.display = '';
+    document.getElementById('season-summary').textContent = '';
+    return;
+  }
+  table.style.display = '';
+  empty.style.display = 'none';
+
+  const played = duals.filter((d) => d.status !== 'draft');
+  document.getElementById('season-summary').textContent =
+    `${played.length} dual${played.length === 1 ? '' : 's'} reported`;
+
+  body.innerHTML = duals.map((d) => {
+    const opponent = d.is_home ? d.away_name : d.home_name;
+    const [kind, label] = STATUS_PILL[d.status] || ['', d.status];
+    const us = d.is_home ? d.home_flights : d.away_flights;
+    const them = d.is_home ? d.away_flights : d.home_flights;
+    const score = d.status === 'draft' ? '&mdash;' : `${us}&ndash;${them}`;
+    return `<tr>
+      <td>${escapeHtml(fmtDate(d.played_on))}</td>
+      <td>${d.is_home ? 'vs' : 'at'} ${escapeHtml(opponent || 'opponent')}</td>
+      <td class="n">${score}</td>
+      <td class="n">${escapeHtml(d.flight_count)}</td>
+      <td><span class="pill ${kind}">${escapeHtml(label)}</span></td>
+      <td><a class="small" href="coach-dual.html?team=${team.id}&dual=${d.id}">
+        ${d.is_home ? 'Edit' : 'View'}</a></td>
+    </tr>`;
+  }).join('');
+}
+
+boot();
+</script>
+</body>
+</html>
