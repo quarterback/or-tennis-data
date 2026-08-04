@@ -10,11 +10,12 @@ scrape and feed the rankings through the existing pipeline. The home coach files
 a dual; the away coach confirms or disputes it.
 
 **Why:** Every number on this site has been a read over somebody else's data,
-which caps its quality at the quality of that scrape. Oregon plays four singles
-and four doubles, but the scraped 2026 season is overwhelmingly 3S+3D — 2,879
-duals in that shape against 64 fourth-singles and 70 fourth-doubles lines
-statewide. Reporting on the site closes that gap and makes the season's records
-answerable to the coaches who played them.
+which caps its quality at the quality of that feed. Oregon plays four singles and
+four doubles, but fourth singles and fourth doubles do not come through the
+TennisReporting API — only 64 and 70 of those lines exist in the entire 2026
+season, against 2,879 duals that arrived as six flights. Two of a team's eight
+positions are therefore missing from the record through no fault of the coaches
+who played them. Reporting on the site is how those flights get counted.
 
 **Impact:** Nothing changes for a team that never enters anything — the scrape
 still populates it, and a build with no entered data leaves `data/` untouched.
@@ -36,7 +37,9 @@ room. Until now that meant screenshotting the rankings table.
 **Problem:** `build_lineup_data.py` capped doubles at 3D, so every appearance at
 fourth doubles was dropped. Oregon's dual card is four singles and four doubles,
 and `generate_site.py` has always weighted 4S and 4D at 0.10 — only the Lineups
-tool was short a position.
+tool was short a position. Fourth-flight data is scarce because the
+TennisReporting API does not deliver it, not because the position isn't played;
+the tool has to be ready for it either way.
 
 **Impact:** In 2026 this hid 32 players from their team's ladder and position
 matrix entirely, and left 94 more with incomplete records. Rankings were never

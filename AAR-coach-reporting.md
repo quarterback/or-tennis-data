@@ -22,11 +22,18 @@ site's quality at the quality of that scrape.
 
 Two costs were already visible in the 2026 season:
 
-- Oregon's dual card is four singles and four doubles, but the scraped season is
-  overwhelmingly 3S+3D: 2,879 duals in that shape against 64 fourth-singles and
-  70 fourth-doubles lines in the entire state.
-- `build_lineup_data.py` capped doubles at 3D, so even the fourth-doubles lines
-  that were scraped never reached the ladder or the position matrix.
+- Oregon's dual card is four singles and four doubles, but **fourth singles and
+  fourth doubles do not come through the TennisReporting API.** The 2026 season
+  holds 64 fourth-singles and 70 fourth-doubles lines statewide against 2,879
+  duals that arrived as six flights. This is a known limitation of the feed, not
+  a statement about how Oregon plays, and it is not ours to fix upstream — two of
+  every team's eight positions are simply absent from the record.
+- `build_lineup_data.py` capped doubles at 3D, so even the handful of
+  fourth-doubles lines that did arrive never reached the ladder or the matrix.
+
+The second is a bug we fixed. The first is the argument for the whole project:
+the only way those two positions get counted is if the coaches who played them
+report them here.
 
 2027 raises the stakes, because the proposed format adds a dual team
 championship. Dual results stop being a curiosity and become a seeding input.
@@ -127,7 +134,9 @@ nothing derivable is asked for.
 
 **Fourth doubles now counts.** Adding `D4` to `build_lineup_data.py` and the
 position matrix restored 32 players who were absent from their team's ladder
-entirely and corrected 94 more with incomplete records.
+entirely and corrected 94 more with incomplete records. The system is now
+first-class eight-flight everywhere — entry card, ladder, matrix, rankings,
+seeding packet — so when reporting replaces the feed it needs no further change.
 
 **The build is deterministic.** Ranked teams were already emitted in rank order,
 but unranked ones followed directory order, so `processed_rankings.json` churned

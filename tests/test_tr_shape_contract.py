@@ -45,7 +45,10 @@ def test_tie_resolves_through_winner_school_id(tied_dual):
     # get_meet_result falls back to winnerSchoolId when flight scores are level.
     assert meet["winnerSchoolId"] == HOME_ID
     assert gs.get_meet_result(meet, HOME_ID) == "win"
-    assert gs.get_meet_result(meet, AWAY_ID) == "loss"
+    # The side that lost the tiebreaker keeps a tie on its record and a loss in
+    # the head-to-head — see tests/test_flight_outcomes.py.
+    assert gs.get_meet_result(meet, AWAY_ID) == "tie"
+    assert gs.get_meet_result(meet, AWAY_ID, for_h2h=True) == "loss"
 
 
 def test_extract_match_results_sees_every_flight(full_card_dual):

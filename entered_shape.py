@@ -105,7 +105,12 @@ def dual_title(home_name: str, away_name: str) -> str:
 # ---------------------------------------------------------------------------
 
 def flight_score(lines: list[dict]) -> tuple[int, int]:
-    """(home flights won, away flights won). Unplayed lines count for neither."""
+    """(home flights won, away flights won).
+
+    A defaulted flight has a winner and counts; a flight that was never
+    contested is simply not in `lines` at all, so it counts for neither side and
+    drops out of the flight denominator downstream.
+    """
     home = sum(1 for ln in lines if ln.get("home_won") is True)
     away = sum(1 for ln in lines if ln.get("home_won") is False)
     return home, away
@@ -132,8 +137,12 @@ def tiebreak_winner(dual: dict) -> int | None:
     """Oregon's dual tiebreaker when flight scores are level: sets, then games.
 
     Returned as a school id for the meet's `winnerSchoolId`, which is what
-    `get_meet_result` (generate_site.py:401) falls back to on a tie. Returns None
-    when even games are level — a genuine tie, which the pipeline records as one.
+    `get_meet_result` (generate_site.py:401) falls back to on a tie.
+
+    Returns None when sets AND games are also level. **A tie is a real result in
+    the Oregon regular season** — 4-4 with nothing to separate the teams stands
+    as a tie, and the pipeline records it as one rather than manufacturing a
+    winner. (The postseason will need a further tiebreaker; it has not been set.)
     """
     hs, aws, hg, ag = _sets_and_games(dual["lines"])
     if hs != aws:
@@ -192,6 +201,12 @@ def _line(ln: dict, dual: dict) -> dict:
             "tie": s.get("tie"),
         })
 
+    # A defaulted flight has players on one side only — the other team had
+    # nobody at that position. Both matchTeams are still emitted, because
+    # `calculate_fws_per_match` treats a flight as contested on `len(matchTeams)
+    # >= 2`: the side that showed up banks the flight, the side that could not
+    # field a player is charged with having played and lost it, and neither
+    # contributes games. That is the behaviour a forfeit should have.
     home_team = {
         "id": home_mt,
         "isWinner": home_won is True,

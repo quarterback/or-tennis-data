@@ -121,7 +121,11 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 /* The 8-flight entry card */
 .flight { border-bottom: 1px solid var(--line-soft); padding: 10px 0; }
 .flight:last-child { border-bottom: 0; }
-.flight-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.flight.skipped { opacity: .62; }
+.flight-head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+/* The outcome control sits at the end of the flight header: most flights are
+   simply played, so it stays out of the way until it is needed. */
+.flight-outcome { margin-left: auto; font-size: 0.8rem; padding: 3px 6px; }
 .flight-head .who { font-weight: 600; font-size: 0.9rem; }
 .flight-side { display: flex; gap: 6px; align-items: center; margin: 4px 0; flex-wrap: wrap; }
 .flight-side .side-label { font-size: 0.75rem; text-transform: uppercase; color: var(--muted); min-width: 46px; }
@@ -134,7 +138,9 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 }
 .setbox .dash { color: var(--muted); }
 .setbox .n { font-size: 0.72rem; color: var(--muted); margin-right: 2px; }
-.winner { margin-left: auto; font-size: 0.82rem; font-weight: 600; }
+/* Sits beside the flight label, not pushed right — the outcome control owns
+   the right edge of the header. */
+.winner { font-size: 0.82rem; font-weight: 600; }
 .winner.home { color: var(--green); }
 .winner.away { color: var(--red); }
 

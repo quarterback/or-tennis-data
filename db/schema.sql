@@ -195,14 +195,27 @@ CREATE TABLE IF NOT EXISTS dual_line (
     id         BIGINT PRIMARY KEY DEFAULT nextval('dual_line_id_seq'),
     dual_id    BIGINT   NOT NULL REFERENCES dual(id) ON DELETE CASCADE,
     match_type TEXT     NOT NULL CHECK (match_type IN ('Singles', 'Doubles')),
-    -- Oregon's card is 4 singles + 4 doubles. Six-flight duals are legal and
-    -- common; the FWS/APR denominator in generate_site.py already adjusts for a
-    -- short card, so a missing flight is simply an absent row.
+    -- Oregon's card is 4 singles + 4 doubles, and every league plays all eight.
+    -- (The fourth flights are missing from the imported data because the
+    -- TennisReporting API does not expose who played them — a feed limitation,
+    -- not a format one.)
     flight     SMALLINT NOT NULL CHECK (flight BETWEEN 1 AND 4),
     home_won   BOOLEAN,
-    -- 'retired' | 'default' | 'walkover' | NULL. Free text so a coach can note
-    -- something the enum did not anticipate.
-    finish     TEXT,
+    -- How the flight ended:
+    --   NULL       played out normally
+    --   'retired'  a player quit mid-match; the other side wins whatever the
+    --              score was when they stopped
+    --   'default'  one team had nobody at that position; the side that fielded
+    --              a player wins the point without playing
+    -- A flight that was never contested at all is simply ABSENT — no row. That
+    -- is not the same as a default: nobody wins it, and generate_site.py leaves
+    -- it out of the flight denominator, which is what makes a short card score
+    -- correctly. Coaches may agree to play a subset of the card, and teams
+    -- short of players forfeit from the bottom up.
+    finish     TEXT     CHECK (finish IS NULL OR finish IN ('retired', 'default')),
+    -- A retirement and a default both have a winner; only a played flight can
+    -- be left undecided (mid-entry).
+    CHECK (finish IS NULL OR home_won IS NOT NULL),
     UNIQUE (dual_id, match_type, flight)
 );
 

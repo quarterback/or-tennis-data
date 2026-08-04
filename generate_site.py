@@ -408,12 +408,29 @@ def dedupe_meets(meets):
     return result
 
 
-def get_meet_result(meet, school_id):
+def get_meet_result(meet, school_id, for_h2h=False):
     """Determine if a school won, lost, or tied a meet.
 
     Uses flight scores first. When scores are equal, falls back to
-    winnerSchoolId which tennisreporting.com sets based on the Oregon
-    tiebreaker (sets won, then games won).
+    winnerSchoolId, which is set by the Oregon tiebreaker (sets won, then games
+    won).
+
+    **A team that loses a 4-4 tiebreaker is recorded with a TIE, not a loss.**
+    The dual was level on the court; the tiebreaker decides who advances and who
+    takes the win, but it does not turn the other team's afternoon into a defeat.
+    This is the NHL's overtime-loss convention, and it matters here because these
+    records feed playoff seeding: win percentage counts a tie as half a win
+    (`wp = (wins + ties * 0.5) / total`), which is exactly what a 4-4 is worth.
+    Charging a full loss would understate a team that never lost the dual.
+
+    The consequence is that wins and losses do not balance statewide — one team
+    banks a win, the other a tie. That asymmetry is deliberate.
+
+    `for_h2h=True` asks the other question: who won the meeting. **Losing a
+    tiebreaker does lose the head-to-head**, so this returns 'loss' where the
+    record returns 'tie'. Seeding arguments turn on "did you beat them", and the
+    answer there is no. Use it for head-to-head comparisons only; every W-L-T
+    record on the site uses the default.
 
     Returns 'win', 'loss', or 'tie'.
     """
@@ -443,14 +460,18 @@ def get_meet_result(meet, school_id):
     elif school_score < opponent_score:
         return 'loss'
 
-    # Scores tied — check winnerSchoolId (tiebreaker: sets, then games)
+    # Scores tied — check winnerSchoolId (tiebreaker: sets, then games).
+    # The tiebreak winner takes the win; the other side keeps a tie.
     winner_school_id = meet.get('winnerSchoolId')
     if winner_school_id is not None:
         if winner_school_id == school_id:
             return 'win'
-        else:
+        # Head to head asks who won the meeting, and they did not.
+        if for_h2h:
             return 'loss'
 
+    # Covers both the tiebreak loser and a dual left level by mutual agreement —
+    # coaches are not obliged to break a tie, and the system does not force it.
     return 'tie'
 
 
@@ -605,7 +626,8 @@ def get_head_to_head(school1_meets, school1_id, school2_id):
         if school2_id not in all_ids:
             continue
 
-        result = get_meet_result(meet, school1_id)
+        # Head to head, not the record: a lost tiebreaker is a lost meeting.
+        result = get_meet_result(meet, school1_id, for_h2h=True)
         if result == 'win':
             wins += 1
         elif result == 'loss':
@@ -680,7 +702,8 @@ def get_head_to_head_detailed(school1_meets, school1_id, school2_id):
                                         fws2 += weight
                                     break
 
-            result = get_meet_result(meet, school1_id)
+            # Head to head, not the record: a lost tiebreaker is a lost meeting.
+            result = get_meet_result(meet, school1_id, for_h2h=True)
             if result is None:
                 result = 'tie'
 

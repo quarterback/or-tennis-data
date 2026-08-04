@@ -42,6 +42,41 @@ const PUBLISHED = new Set(['reported', 'confirmed', 'contested']);
 // Everything below is a rule a real dual cannot break.
 // ---------------------------------------------------------------------------
 
+const FINISHES = new Set([null, undefined, 'retired', 'default']);
+
+/**
+ * The bottom-up forfeit rule.
+ *
+ * A team short of players gives up the bottom of the card, so the contested
+ * flights have to run from the top with no hole in them. Fourth singles played
+ * while third singles is absent is a data-entry error, not a lineup. Enforced
+ * here as well as in the browser because the browser is not the authority.
+ */
+function validateBottomUp(lines) {
+  for (const matchType of ['Singles', 'Doubles']) {
+    const present = new Map();
+    for (const line of lines) {
+      if (line.matchType === matchType) present.set(Number(line.flight), line);
+    }
+    // A default has a winner but was not contested, so it forfeits the position
+    // exactly as an absent flight does.
+    const contested = [...present.entries()]
+      .filter(([, l]) => l.finish !== 'default')
+      .map(([f]) => f);
+    if (!contested.length) continue;
+    const deepest = Math.max(...contested);
+    for (let f = 1; f < deepest; f += 1) {
+      const line = present.get(f);
+      if (!line || line.finish === 'default') {
+        const pos = (n) => `${n}${matchType === 'Singles' ? 'S' : 'D'}`;
+        throw new HttpError(400,
+          `${pos(deepest)} was played but ${pos(f)} was not. Forfeits come from ` +
+          `the bottom of the card up.`);
+      }
+    }
+  }
+}
+
 function validateCard(lines) {
   if (!Array.isArray(lines) || !lines.length) {
     throw new HttpError(400, 'a dual needs at least one flight');
@@ -63,9 +98,26 @@ function validateCard(lines) {
     if (seen.has(key)) throw new HttpError(400, `${key} appears twice`);
     seen.add(key);
 
+    if (!FINISHES.has(line.finish ?? null)) {
+      throw new HttpError(400, `${key}: unknown finish ${line.finish}`);
+    }
+    if (line.finish && line.homeWon !== true && line.homeWon !== false) {
+      throw new HttpError(400, `${key}: a ${line.finish} needs a winner`);
+    }
+    if (line.finish === 'default' && (line.sets || []).length) {
+      throw new HttpError(400, `${key}: a default has no score`);
+    }
+
     const expected = line.matchType === 'Doubles' ? 2 : 1;
     for (const side of ['homePlayers', 'awayPlayers']) {
       const list = line[side] || [];
+      // On a default one side had nobody — that is the whole meaning of the
+      // result, so an empty side is required rather than merely tolerated.
+      const winnerSide = line.homeWon ? 'homePlayers' : 'awayPlayers';
+      if (line.finish === 'default' && side !== winnerSide) {
+        if (list.length) throw new HttpError(400, `${key}: a defaulting team has no player`);
+        continue;
+      }
       if (list.length !== expected) {
         throw new HttpError(400, `${key} needs ${expected} player(s) per side`);
       }
@@ -101,6 +153,8 @@ function validateCard(lines) {
       throw new HttpError(400, `${key}: homeWon must be true, false or null`);
     }
   }
+
+  validateBottomUp(lines);
 }
 
 // ---------------------------------------------------------------------------

@@ -16,6 +16,58 @@ export const FLIGHTS = [
   { matchType: 'Doubles', flight: 4, label: '4D' },
 ];
 
+/**
+ * How a flight ended.
+ *
+ * `skipped` is not stored — the flight is simply left out of the dual, so it
+ * counts for neither team and drops out of the flight denominator. That is what
+ * makes a short card score correctly, and coaches agreeing to play a subset of
+ * the eight is ordinary practice, not an exception.
+ */
+export const OUTCOMES = [
+  { key: 'played', label: 'Played', hint: 'Normal match, enter the set scores.' },
+  { key: 'retired', label: 'Retired', hint: 'A player quit mid-match. The other side wins whatever the score was.' },
+  { key: 'default', label: 'Default', hint: 'One team had nobody at this position. The other side wins the point.' },
+  { key: 'skipped', label: 'Not played', hint: 'Neither team contested this position. It counts for nobody.' },
+];
+
+const CONTESTED = new Set(['played', 'retired']);
+
+/**
+ * Check the bottom-up forfeit rule.
+ *
+ * A team short of players gives up the BOTTOM of the card, so the flights that
+ * were actually played have to run from the top without a hole: playing fourth
+ * singles while third singles went unplayed or defaulted is a data-entry error,
+ * not a lineup. Returns an array of human-readable problems, empty when valid.
+ *
+ * `lines` is index-aligned with FLIGHTS.
+ */
+export function cardProblems(lines) {
+  const problems = [];
+  for (const matchType of ['Singles', 'Doubles']) {
+    const indexes = FLIGHTS
+      .map((f, i) => ({ f, i }))
+      .filter(({ f }) => f.matchType === matchType);
+
+    let lastContested = 0;
+    for (const { f, i } of indexes) {
+      if (CONTESTED.has(lines[i].outcome)) lastContested = f.flight;
+    }
+    for (const { f, i } of indexes) {
+      if (f.flight >= lastContested) continue;
+      if (!CONTESTED.has(lines[i].outcome)) {
+        const played = FLIGHTS.find((x) => x.matchType === matchType && x.flight === lastContested);
+        problems.push(
+          `${f.label} was not played but ${played.label} was. Forfeits come from ` +
+          `the bottom of the card up, so ${played.label} cannot be played while ` +
+          `${f.label} is empty.`);
+      }
+    }
+  }
+  return problems;
+}
+
 export function escapeHtml(s) {
   return String(s ?? '').replace(/[&<>"']/g, (c) =>
     ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -145,6 +197,10 @@ export function cardScore(lines) {
   let home = 0;
   let away = 0;
   for (const line of lines) {
+    // A flight marked not-played counts for nobody, even though the coach may
+    // have typed a score into it before changing their mind. The outcome is the
+    // authority, not the leftover set boxes.
+    if (line.outcome === 'skipped') continue;
     const w = line.homeWon === true ? 'home'
       : line.homeWon === false ? 'away'
         : lineWinner(line.sets);

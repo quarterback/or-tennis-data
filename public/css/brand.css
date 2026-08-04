@@ -1,0 +1,322 @@
+/* The product's visual identity.
+ *
+ * ───────────────────────────────────────────────────────────────────────────
+ * WORKING TITLE. Swap the wordmark font at the @font-face block below and the
+ * name in js/brand.js; nothing else needs to change.
+ * ───────────────────────────────────────────────────────────────────────────
+ *
+ * Deliberately NOT the oregontennis.org green. This is a separate product that
+ * currently runs inside that site, and a selection committee should be able to
+ * tell it apart from the public rankings page it is reading alongside. The
+ * palette is ink on paper with one deep teal accent: it has to survive being
+ * printed in black and white and still be legible, because that is how half of
+ * it will be consumed.
+ */
+
+/* Drop the custom wordmark face in here. Until then the stack below is a
+ * tight grotesque that will not embarrass the layout.
+ *
+ * @font-face {
+ *   font-family: 'Wordmark';
+ *   src: url('../fonts/wordmark.woff2') format('woff2');
+ *   font-weight: 700;
+ *   font-display: swap;
+ * }
+ */
+
+:root {
+  --brand-font: 'Wordmark', 'Inter Tight', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --body-font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --mono-font: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, monospace;
+
+  --ink: #14181f;
+  --ink-2: #3d4652;
+  --ink-3: #6b7684;
+  --ink-4: #9aa4b2;
+  --rule: #e3e7ec;
+  --rule-2: #f0f3f6;
+  --paper: #ffffff;
+  --paper-2: #f7f9fb;
+
+  --accent: #0e5049;
+  --accent-2: #0a3d38;
+  --accent-wash: #e6f0ee;
+
+  --win: #146c43;
+  --win-wash: #e6f2ec;
+  --loss: #a4243b;
+  --loss-wash: #fbeaed;
+  --flag: #a35a00;
+  --flag-wash: #fdf2e3;
+
+  --shadow: 0 1px 2px rgba(20, 24, 31, .05), 0 4px 14px rgba(20, 24, 31, .05);
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  background: var(--paper-2);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Numbers are compared down columns constantly here, so they line up
+ * everywhere, without exception. */
+.num, td.num, th.num, .tabular { font-variant-numeric: tabular-nums; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Masthead ─────────────────────────────────────────────────────────── */
+
+.mast {
+  background: var(--ink);
+  color: #fff;
+  padding-top: env(safe-area-inset-top);
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+.mast-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 11px calc(20px + env(safe-area-inset-right)) 11px calc(20px + env(safe-area-inset-left));
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.wordmark {
+  font-family: var(--brand-font);
+  font-weight: 700;
+  font-size: 1.22rem;
+  letter-spacing: -0.022em;
+  color: #fff;
+}
+.wordmark:hover { text-decoration: none; color: #fff; }
+.mast-tagline {
+  color: var(--ink-4);
+  font-size: 0.78rem;
+  letter-spacing: .01em;
+  padding-left: 14px;
+  border-left: 1px solid #333b47;
+}
+.mast-nav { margin-left: auto; display: flex; gap: 18px; }
+.mast-link { color: #c3cad4; font-size: 0.84rem; font-weight: 500; }
+.mast-link:hover { color: #fff; text-decoration: none; }
+.mast-link.current { color: #fff; box-shadow: 0 2px 0 var(--accent); }
+
+/* ── Layout ───────────────────────────────────────────────────────────── */
+
+.wrap {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 calc(20px + env(safe-area-inset-right)) 60px calc(20px + env(safe-area-inset-left));
+}
+
+.pagehead { padding: 26px 0 6px; }
+.pagehead h1 {
+  font-family: var(--brand-font);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+.pagehead .sub { color: var(--ink-3); margin: 4px 0 0; font-size: 0.9rem; max-width: 62ch; }
+
+.panel {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin: 16px 0;
+  overflow: hidden;
+}
+.panel-head {
+  padding: 11px 16px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  background: linear-gradient(var(--paper), var(--paper-2));
+}
+.panel-head h2 {
+  margin: 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--ink-2);
+}
+.panel-body { padding: 14px 16px; }
+.panel-body.flush { padding: 0; }
+
+.controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 12px 16px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  margin: 14px 0;
+}
+.controls label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-3); }
+
+select, input[type="search"], input[type="text"] {
+  font: inherit;
+  font-size: 0.86rem;
+  padding: 6px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  background: var(--paper);
+  color: var(--ink);
+}
+select:focus, input:focus { outline: 2px solid var(--accent-wash); border-color: var(--accent); }
+
+button {
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 7px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+}
+button:hover { background: var(--paper-2); }
+button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button.primary:hover { background: var(--accent-2); }
+button.sm { padding: 3px 9px; font-size: 0.76rem; }
+button:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ── Tables ───────────────────────────────────────────────────────────── */
+
+table { border-collapse: collapse; width: 100%; }
+thead th {
+  position: sticky;
+  top: 0;
+  background: var(--paper-2);
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--ink-3);
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rule);
+  white-space: nowrap;
+  z-index: 2;
+}
+thead th.sortable { cursor: pointer; user-select: none; }
+thead th.sortable:hover { color: var(--ink); }
+thead th .arrow { opacity: .35; margin-left: 3px; font-size: 0.7em; }
+thead th.sorted .arrow { opacity: 1; }
+tbody td { padding: 8px 10px; border-bottom: 1px solid var(--rule-2); font-size: 0.85rem; }
+tbody tr:hover td { background: var(--paper-2); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.mid, th.mid { text-align: center; }
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* ── Chips and marks ──────────────────────────────────────────────────── */
+
+.chip {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+.chip.aq { background: var(--accent-wash); color: var(--accent-2); }
+.chip.win { background: var(--win-wash); color: var(--win); }
+.chip.loss { background: var(--loss-wash); color: var(--loss); }
+.chip.flag { background: var(--flag-wash); color: var(--flag); }
+.chip.quiet { background: var(--rule-2); color: var(--ink-3); }
+
+.rankbox {
+  display: inline-block;
+  min-width: 26px;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+}
+
+/* The at-large cut line. This is the single most important line on the page —
+ * it is what the committee is actually arguing about — so it gets a rule the
+ * eye lands on and a label that survives printing. */
+tr.cutline td {
+  border-bottom: 2px solid var(--flag);
+  position: relative;
+}
+tr.cutline-label td {
+  background: var(--flag-wash);
+  color: var(--flag);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  padding: 5px 10px;
+}
+
+/* A compact win/loss run, newest first. Reads as a shape before it reads as
+ * data, which is the point at a glance. */
+.form { display: inline-flex; gap: 2px; }
+.form i {
+  width: 7px; height: 14px; border-radius: 2px; display: inline-block;
+  font-style: normal;
+}
+.form i.w { background: var(--win); }
+.form i.l { background: var(--loss); }
+.form i.t { background: var(--ink-4); }
+
+/* Horizontal bar used for a single 0–1 metric inside a table cell. */
+.meter { position: relative; height: 5px; background: var(--rule-2); border-radius: 3px; min-width: 52px; }
+.meter > span { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 3px; }
+
+.muted { color: var(--ink-3); }
+.tiny { font-size: 0.74rem; }
+.empty { color: var(--ink-3); padding: 30px 16px; text-align: center; font-size: 0.9rem; }
+
+.note {
+  border-left: 3px solid var(--rule);
+  padding: 2px 0 2px 12px;
+  color: var(--ink-3);
+  font-size: 0.8rem;
+  margin: 10px 0;
+}
+.note.flag { border-color: var(--flag); color: var(--flag); }
+
+/* ── Print ────────────────────────────────────────────────────────────── */
+
+@media print {
+  @page { size: letter portrait; margin: 0.5in; }
+  body { background: #fff; font-size: 10px; }
+  .mast, .controls, .no-print { display: none !important; }
+  .wrap { max-width: none; padding: 0; }
+  .panel { break-inside: avoid; box-shadow: none; border-color: #ccc; margin: 0 0 12px; }
+  thead th { position: static; }
+  thead { display: table-header-group; }
+  .page-break { break-before: page; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: inherit; text-decoration: none; }
+  .print-only { display: block !important; }
+}
+.print-only { display: none; }
+
+@media (max-width: 720px) {
+  .mast-tagline { display: none; }
+  .pagehead h1 { font-size: 1.3rem; }
+  .controls { gap: 8px; }
+}

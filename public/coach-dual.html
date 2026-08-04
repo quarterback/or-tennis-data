@@ -52,8 +52,12 @@
       <div class="card-body" id="card"></div>
     </div>
 
-    <p class="small muted">Leave a flight blank if it was not played. Six-flight
-    duals are fine &mdash; the rankings adjust for a short card.</p>
+    <div id="card-problems"></div>
+
+    <p class="small muted">Oregon plays four singles and four doubles, and fourth
+    singles and fourth doubles have never made it into the imported results
+    &mdash; entering them here is the only way they get counted. Leave a flight
+    blank if it genuinely was not played; the rankings adjust for a short card.</p>
   </div>
 </div>
 
@@ -68,8 +72,8 @@
 
 <script type="module">
 import {
-  api, cardScore, completeSets, escapeHtml, FLIGHTS, lastTeam, lineWinner,
-  renderChrome, requireSession, setStatus, teamLabel,
+  api, cardProblems, cardScore, completeSets, escapeHtml, FLIGHTS, lastTeam,
+  lineWinner, OUTCOMES, renderChrome, requireSession, setStatus, teamLabel,
 } from './js/coach-common.js';
 
 renderChrome({ title: 'Report a Dual', subtitle: 'One card, eight flights.' });
@@ -106,7 +110,9 @@ async function boot() {
   document.querySelector('.hero p').textContent =
     `${teamLabel(team)} — one card, eight flights.`;
 
-  lines = FLIGHTS.map(() => ({ homePlayers: [], awayPlayers: [], sets: [], homeWon: null }));
+  lines = FLIGHTS.map(() => ({
+    homePlayers: [], awayPlayers: [], sets: [], homeWon: null, outcome: 'played',
+  }));
 
   await loadOpponents();
   ourRoster = (await api(`/api/roster/${team.id}`)).players.filter((p) => p.active);
@@ -188,6 +194,10 @@ async function loadExisting() {
   document.getElementById('opponent').value =
     weAreHome ? dual.away_school_id : dual.home_school_id;
 
+  // A flight absent from a saved dual was not contested — that is what absence
+  // means in the store — so start everything skipped and fill in what is there.
+  lines.forEach((l) => { l.outcome = 'skipped'; });
+
   for (const line of dual.lines) {
     const idx = FLIGHTS.findIndex((f) =>
       f.matchType === line.match_type && f.flight === Number(line.flight));
@@ -195,6 +205,7 @@ async function loadExisting() {
     lines[idx] = {
       homePlayers: line.homePlayers, awayPlayers: line.awayPlayers,
       sets: line.sets, homeWon: line.home_won,
+      outcome: line.finish || 'played',
     };
   }
 
@@ -245,6 +256,43 @@ function render() {
       : winner === ourSide ? '<span class="winner home">We won</span>'
         : '<span class="winner away">They won</span>';
 
+    const outcomeSel =
+      `<select class="js-outcome flight-outcome" data-line="${i}">` +
+      OUTCOMES.map((o) =>
+        `<option value="${o.key}"${line.outcome === o.key ? ' selected' : ''}>${o.label}</option>`
+      ).join('') + '</select>';
+
+    if (line.outcome === 'skipped') {
+      return `<div class="flight skipped">
+        <div class="flight-head">
+          <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
+          <span class="small muted">Not played &mdash; counts for neither team</span>
+          ${outcomeSel}
+        </div>
+      </div>`;
+    }
+
+    // A default is one team failing to field anybody, so the only thing to
+    // record is which side did.
+    if (line.outcome === 'default') {
+      const weWon = line.homeWon === (weAreHome() ? true : false);
+      const decided = line.homeWon !== null && line.homeWon !== undefined;
+      return `<div class="flight">
+        <div class="flight-head">
+          <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
+          <span class="small muted">Nobody at this position for one team</span>
+          ${outcomeSel}
+        </div>
+        <div class="flight-side">
+          <span class="side-label">Won by</span>
+          <button type="button" class="js-default ${decided && weWon ? '' : 'ghost'}"
+                  data-line="${i}" data-who="us">Us</button>
+          <button type="button" class="js-default ${decided && !weWon ? '' : 'ghost'}"
+                  data-line="${i}" data-who="them">Them</button>
+        </div>
+      </div>`;
+    }
+
     const sides = ['home', 'away'].sort((a) => (a === ourSide ? -1 : 1));
     const sideRows = sides.map((side) => {
       const players = line[`${side}Players`];
@@ -273,13 +321,26 @@ function render() {
       </span>`;
     }).join('');
 
+    // On a retirement the score is whatever it was when they stopped, so the
+    // set boxes stay but the winner has to be stated rather than derived.
+    const retiredPicker = line.outcome !== 'retired' ? '' : `
+      <div class="flight-side">
+        <span class="side-label">Won by</span>
+        <button type="button" class="js-default ${line.homeWon === (weAreHome()) ? '' : 'ghost'}"
+                data-line="${i}" data-who="us">Us</button>
+        <button type="button" class="js-default ${line.homeWon === (!weAreHome()) ? '' : 'ghost'}"
+                data-line="${i}" data-who="them">Them</button>
+      </div>`;
+
     return `<div class="flight">
       <div class="flight-head">
         <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
         ${winLabel}
+        ${outcomeSel}
       </div>
       ${sideRows}
       <div class="sets">${setBoxes}</div>
+      ${retiredPicker}
     </div>`;
   }).join('');
 
@@ -290,8 +351,34 @@ function render() {
   mount.querySelectorAll('.js-player').forEach((el) => { el.onchange = onPlayerChange; });
   mount.querySelectorAll('.js-name').forEach((el) => { el.onchange = onNameChange; });
   mount.querySelectorAll('.js-set').forEach((el) => { el.oninput = onSetChange; });
+  mount.querySelectorAll('.js-outcome').forEach((el) => { el.onchange = onOutcomeChange; });
+  mount.querySelectorAll('.js-default').forEach((el) => { el.onclick = onDefaultWinner; });
 
   updateScore();
+}
+
+function onOutcomeChange(e) {
+  const i = Number(e.target.dataset.line);
+  const next = e.target.value;
+  lines[i].outcome = next;
+  if (next === 'default') {
+    // A default has no score, and the side that could not field anybody has no
+    // player to name.
+    lines[i].sets = [];
+  }
+  if (next === 'played' || next === 'skipped') lines[i].homeWon = null;
+  render();
+}
+
+function onDefaultWinner(e) {
+  const i = Number(e.target.dataset.line);
+  const usWon = e.target.dataset.who === 'us';
+  lines[i].homeWon = weAreHome() ? usWon : !usWon;
+  if (lines[i].outcome === 'default') {
+    // Clear the side that defaulted; there was nobody there.
+    lines[i][lines[i].homeWon ? 'awayPlayers' : 'homePlayers'] = [];
+  }
+  render();
 }
 
 function onPlayerChange(e) {
@@ -345,11 +432,18 @@ function updateScore() {
   const theirs = weAreHome() ? away : home;
   document.getElementById('live-score').innerHTML = `${ours}&ndash;${theirs}`;
 
-  const played = lines.filter((l) => lineWinner(l.sets)).length;
+  const decided = lines.filter(decidedSide).length;
+  const skipped = lines.filter((l) => l.outcome === 'skipped').length;
   document.getElementById('live-label').textContent =
-    `${played} of 8 flights entered`;
-  document.getElementById('card-progress').textContent =
-    played ? `${played} entered` : '';
+    `${decided} of ${8 - skipped} flights entered` + (skipped ? `, ${skipped} not played` : '');
+  document.getElementById('card-progress').textContent = decided ? `${decided} entered` : '';
+
+  // The bottom-up rule is shown as it happens rather than saved against, so a
+  // coach finds out while the card is in front of them.
+  const problems = cardProblems(lines);
+  const banner = document.getElementById('card-problems');
+  banner.innerHTML = problems.length
+    ? `<div class="banner err">${escapeHtml(problems[0])}</div>` : '';
 
   // Refresh the per-flight winner labels without re-rendering the inputs, which
   // would steal focus mid-typing.
@@ -357,14 +451,23 @@ function updateScore() {
     const head = el.querySelector('.flight-head');
     const existing = head.querySelector('.winner');
     if (existing) existing.remove();
-    const w = lineWinner(lines[i].sets);
+    if (lines[i].outcome === 'skipped') return;
+    const w = decidedSide(lines[i]);
     if (!w) return;
     const ourSide = weAreHome() ? 'home' : 'away';
     const span = document.createElement('span');
     span.className = `winner ${w === ourSide ? 'home' : 'away'}`;
     span.textContent = w === ourSide ? 'We won' : 'They won';
-    head.appendChild(span);
+    head.insertBefore(span, head.querySelector('.flight-outcome'));
   });
+}
+
+/** 'home' | 'away' | null — who took this flight, however it was decided. */
+function decidedSide(line) {
+  if (line.outcome === 'skipped') return null;
+  if (line.homeWon === true) return 'home';
+  if (line.homeWon === false) return 'away';
+  return line.outcome === 'played' ? lineWinner(line.sets) : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -391,16 +494,39 @@ function buildPayload(draft) {
     lines: [],
   };
 
+  const problems = cardProblems(lines);
+  if (problems.length) throw new Error(problems[0]);
+
   FLIGHTS.forEach((f, i) => {
     const line = lines[i];
+    // A skipped flight is simply not sent. Absence is how "nobody contested
+    // this position" is stored, and it keeps the flight out of the denominator.
+    if (line.outcome === 'skipped') return;
+
     // Only finished sets are sent — a half-typed set is a UI state, not a score.
-    const sets = completeSets(line.sets);
-    if (!sets.length || !line.homePlayers.length || !line.awayPlayers.length) return;
-    const winner = lineWinner(sets);
+    const sets = line.outcome === 'default' ? [] : completeSets(line.sets);
+
+    if (line.outcome === 'default') {
+      if (line.homeWon === null || line.homeWon === undefined) {
+        throw new Error(`${f.label}: say which team won the default.`);
+      }
+    } else if (line.outcome === 'retired') {
+      if (line.homeWon === null || line.homeWon === undefined) {
+        throw new Error(`${f.label}: say which player won after the retirement.`);
+      }
+      if (!line.homePlayers.length || !line.awayPlayers.length) {
+        throw new Error(`${f.label}: name both players.`);
+      }
+    } else {
+      if (!sets.length || !line.homePlayers.length || !line.awayPlayers.length) return;
+    }
+
+    const winner = line.outcome === 'played' ? lineWinner(sets) : (line.homeWon ? 'home' : 'away');
     payload.lines.push({
       matchType: f.matchType,
       flight: f.flight,
       homeWon: winner === null ? null : winner === 'home',
+      finish: line.outcome === 'played' ? null : line.outcome,
       homePlayers: line.homePlayers,
       awayPlayers: line.awayPlayers,
       sets,

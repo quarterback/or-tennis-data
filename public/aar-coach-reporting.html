@@ -29,10 +29,11 @@
 <h2>Why this exists</h2>
 <p>The site has been a one-way pipe. <code>fetch_data.py</code> scrapes TennisReporting, <code>generate_site.py</code> turns that into rankings, a GitHub Action commits the result. Everything the site does well — the TOSS Power Index, the weekly snapshots, the Lineups ladder, all-state — is a read over somebody else&#x27;s data, which caps the site&#x27;s quality at the quality of that scrape.</p>
 <p>Two costs were already visible in the 2026 season:</p>
-<ul><li>Oregon&#x27;s dual card is four singles and four doubles, but the scraped season is</li></ul>
-<p>overwhelmingly 3S+3D: 2,879 duals in that shape against 64 fourth-singles and   70 fourth-doubles lines in the entire state.</p>
-<ul><li><code>build_lineup_data.py</code> capped doubles at 3D, so even the fourth-doubles lines</li></ul>
-<p>that were scraped never reached the ladder or the position matrix.</p>
+<ul><li>Oregon&#x27;s dual card is four singles and four doubles, but **fourth singles and</li></ul>
+<p>fourth doubles do not come through the TennisReporting API.** The 2026 season   holds 64 fourth-singles and 70 fourth-doubles lines statewide against 2,879   duals that arrived as six flights. This is a known limitation of the feed, not   a statement about how Oregon plays, and it is not ours to fix upstream — two of   every team&#x27;s eight positions are simply absent from the record.</p>
+<ul><li><code>build_lineup_data.py</code> capped doubles at 3D, so even the handful of</li></ul>
+<p>fourth-doubles lines that did arrive never reached the ladder or the matrix.</p>
+<p>The second is a bug we fixed. The first is the argument for the whole project: the only way those two positions get counted is if the coaches who played them report them here.</p>
 <p>2027 raises the stakes, because the proposed format adds a dual team championship. Dual results stop being a curiosity and become a seeding input.</p>
 <h2>The architectural bet</h2>
 <p>**Entered duals are compiled back into TennisReporting meet shape and written into <code>data/&lt;year&gt;/school_&lt;id&gt;_gender_&lt;g&gt;.json</code>.**</p>
@@ -54,7 +55,7 @@
 <p><strong>Cards are replaced, never merged.</strong> The read-modify-write deep merge in <code>scores.mjs</code> loses an edit when two people save at once. A dual&#x27;s lines are deleted and re-inserted in one transaction, and writes carry the timestamp the client loaded, so a concurrent edit is a 409 rather than a silent overwrite.</p>
 <p><strong>Rosters are pre-populated.</strong> 266 team-seasons, 262 coach emails and 3,547 players carry forward from the 2026 scrape, seniors dropped and grades bumped. A coach who has to type a roster from scratch in March stops using the system, so nothing derivable is asked for.</p>
 <h2>What this fixed on the way</h2>
-<p><strong>Fourth doubles now counts.</strong> Adding <code>D4</code> to <code>build_lineup_data.py</code> and the position matrix restored 32 players who were absent from their team&#x27;s ladder entirely and corrected 94 more with incomplete records.</p>
+<p><strong>Fourth doubles now counts.</strong> Adding <code>D4</code> to <code>build_lineup_data.py</code> and the position matrix restored 32 players who were absent from their team&#x27;s ladder entirely and corrected 94 more with incomplete records. The system is now first-class eight-flight everywhere — entry card, ladder, matrix, rankings, seeding packet — so when reporting replaces the feed it needs no further change.</p>
 <p><strong>The build is deterministic.</strong> Ranked teams were already emitted in rank order, but unranked ones followed directory order, so <code>processed_rankings.json</code> churned between a local checkout and the Actions runner with no value changing. Sorting the glob fixed it, which is also what makes &quot;the compile step is a no-op on an empty database&quot; a claim that can be checked.</p>
 <p><strong>There are tests.</strong> There were none. There are now 49 Python tests and 13 JavaScript tests, including a contract file that hands the adapter&#x27;s output to the real downstream functions rather than to a description of them, and an end-to-end file that runs the chain a coach triggers.</p>
 <h2>What is deliberately not here</h2>
