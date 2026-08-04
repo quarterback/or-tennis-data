@@ -246,7 +246,7 @@
           <thead><tr>
             <th class="name">Player</th><th>Gr</th>
             <th class="slot">1S</th><th class="slot">2S</th><th class="slot">3S</th><th class="slot">4S</th>
-            <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th>
+            <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th><th class="slot">4D</th>
             <th class="n">Total</th><th class="n">Rec</th>
           </tr></thead>
           <tbody id="matrix-body"></tbody>
@@ -265,8 +265,8 @@
 </div><!-- /.container -->
 
 <script>
-const SLOTS = ['S1','S2','S3','S4','D1','D2','D3'];
-const SLOT_LABEL = {S1:'1S',S2:'2S',S3:'3S',S4:'4S',D1:'1D',D2:'2D',D3:'3D'};
+const SLOTS = ['S1','S2','S3','S4','D1','D2','D3','D4'];
+const SLOT_LABEL = {S1:'1S',S2:'2S',S3:'3S',S4:'4S',D1:'1D',D2:'2D',D3:'3D',D4:'4D'};
 const API_BASE = '/api/lineups';
 
 let INDEX = null;         // index.json
@@ -474,7 +474,7 @@ function renderMatrix() {
     body.appendChild(tr);
     const log = document.createElement('tr');
     log.className = 'log'; log.id = 'log-' + p.pid;
-    log.innerHTML = `<td colspan="11"><div class="log-inner">${matchLog(p)}</div></td>`;
+    log.innerHTML = `<td colspan="12"><div class="log-inner">${matchLog(p)}</div></td>`;
     body.appendChild(log);
     tr.onclick = () => { const el = document.getElementById('log-'+p.pid); el.style.display = el.style.display==='table-row'?'none':'table-row'; };
   });

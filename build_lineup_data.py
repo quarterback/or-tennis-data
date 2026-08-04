@@ -38,7 +38,9 @@ MASTER_CSV = os.path.join(ROOT, "master_school_list.csv")
 
 GENDER_NAME = {1: "Boys", 2: "Girls"}
 SINGLES_FLIGHTS = ["S1", "S2", "S3", "S4"]
-DOUBLES_FLIGHTS = ["D1", "D2", "D3"]
+# Oregon's dual card is 4 singles + 4 doubles. Most scraped duals only carry six
+# flights, but 4D is a real position and dropping it hid every appearance there.
+DOUBLES_FLIGHTS = ["D1", "D2", "D3", "D4"]
 ALL_SLOTS = SINGLES_FLIGHTS + DOUBLES_FLIGHTS
 
 
@@ -76,7 +78,7 @@ def slot_for(line):
         return None
     if mt == "Singles" and 1 <= flight <= 4:
         return "S%d" % flight
-    if mt == "Doubles" and 1 <= flight <= 3:
+    if mt == "Doubles" and 1 <= flight <= 4:
         return "D%d" % flight
     return None
 
@@ -185,7 +187,8 @@ def build_team(path, school_id, gender):
     # we rank each court on an approximate competitive-strength scale (lower =
     # stronger) and take a per-player appearance-weighted average. This is just an
     # ordering heuristic for the fallback ladder, not a codified rule.
-    COURT_STRENGTH = {"S1": 1, "D1": 2, "S2": 3, "D2": 4, "S3": 5, "S4": 6, "D3": 7}
+    COURT_STRENGTH = {"S1": 1, "D1": 2, "S2": 3, "D2": 4, "S3": 5, "S4": 6, "D3": 7,
+                      "D4": 8}
 
     def ladder_key(item):
         pid, rec = item
