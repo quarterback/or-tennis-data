@@ -1,0 +1,10 @@
+# Everything the build and the test suite need.
+#
+# The runtime scripts (fetch_data.py, generate_site.py) need requests/geopy/numpy;
+# psycopg is only used by export_entered_meets.py and scripts/seed_reporting_db.py,
+# both of which degrade to a no-op without a DATABASE_URL.
+requests
+geopy
+numpy
+psycopg[binary]
+pytest

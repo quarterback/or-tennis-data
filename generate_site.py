@@ -4722,6 +4722,18 @@ def main():
     except Exception as exc:  # noqa: BLE001 - best-effort, don't fail the site build
         print(f"WARNING: lineup data build failed: {exc}")
 
+    # Seeding packets read processed_rankings.json and the lineup data written
+    # above, so they run last. Best-effort for the same reason as the lineups
+    # build: a formatting failure here must not cost the site its rankings.
+    print("Building league seeding packets...")
+    try:
+        import build_seeding_packet
+        for packet_year in ('2026', '2027'):
+            if (data_dir / packet_year).is_dir():
+                build_seeding_packet.main(['--year', packet_year])
+    except Exception as exc:  # noqa: BLE001 - best-effort
+        print(f"WARNING: seeding packet build failed: {exc}")
+
 
 if __name__ == '__main__':
     main()
