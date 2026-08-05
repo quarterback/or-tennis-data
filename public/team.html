@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* A team's season, in the order a reference site puts it: who they are and
+     the season line, then results, then the roster. */
+  .tcard { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; padding: 16px; }
+  .tcard h1 { font-family: var(--display-font); font-size: 1.7rem; margin: 0; letter-spacing: .01em; }
+  .tcard .sub { color: var(--ink-3); font-size: 0.88rem; margin: 3px 0 0; }
+  .tcard .lines { display: flex; gap: 22px; margin-left: auto; text-align: right; flex-wrap: wrap; }
+  .tcard .lines .n { font-family: var(--display-font); font-size: 1.5rem; line-height: 1; }
+  .tcard .lines .k {
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--ink-3); margin-top: 4px;
+  }
+
+  td.res { font-weight: 700; width: 28px; }
+  td.res.w { color: var(--win); }
+  td.res.l { color: var(--loss); }
+  td.res.t { color: var(--ink-3); }
+  td.sc { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .oppmeta { color: var(--ink-3); font-size: 0.76rem; }
+
+  /* How often the team won each position across the season. */
+  .flights { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 4px 0; }
+  .flights div { text-align: center; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 7px; padding: 7px 2px; }
+  .flights .p { font-size: 0.62rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
+  .flights .v { font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+
+  @media (max-width: 640px) {
+    .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
+    .flights { grid-template-columns: repeat(4, 1fr); }
+    #res-table, #res-table tbody, #res-table tr, #res-table td { display: block; width: 100%; }
+    #res-table thead { display: none; }
+    #res-table tbody tr {
+      border: 1px solid var(--rule); border-radius: 9px;
+      padding: 9px 11px; margin-bottom: 8px; position: relative;
+    }
+    #res-table td { border: 0; padding: 2px 0; }
+    #res-table td.res { position: absolute; top: 9px; right: 11px; width: auto; }
+  }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div id="loading" class="empty">Loading…</div>
+
+  <div id="team" style="display:none">
+    <div class="panel" style="margin-top:18px">
+      <div class="tcard">
+        <div>
+          <h1 id="tname"></h1>
+          <p class="sub" id="tsub"></p>
+        </div>
+        <div class="lines" id="tlines"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Results</h2><span class="tiny muted" id="resnote"></span></div>
+      <div class="panel-body flush scroll">
+        <table id="res-table">
+          <thead><tr>
+            <th>Date</th><th class="mid"></th><th>Opponent</th>
+            <th>Score</th><th class="mid">Type</th>
+          </tr></thead>
+          <tbody id="resbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>By position</h2>
+        <span class="tiny muted">Share of flights won at each position</span></div>
+      <div class="panel-body"><div class="flights" id="flights"></div></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Roster</h2><span class="tiny muted" id="rosnote"></span></div>
+      <div class="panel-body flush scroll">
+        <table>
+          <thead><tr>
+            <th class="mid">#</th><th>Player</th><th class="mid">Grade</th>
+            <th class="mid">Position</th><th class="num">Record</th>
+          </tr></thead>
+          <tbody id="rosbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="missing" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+
+applyBrand('Team', {
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const SLOT_LABEL = {
+  S1: '1S', S2: '2S', S3: '3S', S4: '4S',
+  D1: '1D', D2: '2D', D3: '3D', D4: '4D',
+};
+const SLOTS = ['S1', 'S2', 'S3', 'S4', 'D1', 'D2', 'D3', 'D4'];
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+const params = new URLSearchParams(location.search);
+const schoolId = params.get('s');
+const gender = (params.get('g') || 'girls').toLowerCase();
+const year = params.get('y') || '2026';
+
+async function boot() {
+  if (!schoolId) return fail('No team asked for.');
+
+  // The committee export is per classification, and a school's classification
+  // is not in the URL, so find the team by walking the season's fields. There
+  // are six; this is one small fetch each and it keeps the URL to a school id.
+  let index;
+  try {
+    index = await fetch(`data/committee/${year}/index.json`).then((r) => r.json());
+  } catch {
+    return fail('No season data published yet.');
+  }
+
+  // The index names each field's file, so use it rather than rebuilding the
+  // slug — one fewer thing to keep in step with the exporter.
+  const fields = index.fields.filter((f) => f.gender.toLowerCase() === gender);
+  for (const f of fields) {
+    let data;
+    try {
+      data = await fetch(`data/committee/${year}/${f.file}`).then((r) => r.json());
+    } catch { continue; }
+    const team = data.teams.find((t) => String(t.schoolId) === String(schoolId));
+    if (team) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('team').style.display = '';
+      return render(team, data);
+    }
+  }
+  fail('That team has no published season for this year.');
+}
+
+function fail(message) {
+  document.getElementById('loading').style.display = 'none';
+  const el = document.getElementById('missing');
+  el.style.display = '';
+  el.innerHTML = `${esc(message)} <a href="scoreboard.html">Back to the scoreboard</a>`;
+}
+
+function render(t, field) {
+  document.title = `${t.name} — Cheesybook`;
+  document.getElementById('tname').textContent = t.name;
+  document.getElementById('tsub').textContent = [
+    t.city, `${field.classification} ${field.gender}`, t.league,
+  ].filter(Boolean).join(' · ');
+
+  document.getElementById('tlines').innerHTML = [
+    [t.record, 'Record'],
+    [t.leagueRecord, 'League'],
+    [t.powerIndex === null ? '—' : Number(t.powerIndex).toFixed(4), 'Power Index'],
+    [t.classRank ? `#${t.classRank}` : '—', 'Class rank'],
+    [t.owp === null ? '—' : Number(t.owp).toFixed(3), 'SOS'],
+  ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
+
+  // Results, newest first the way a schedule page reads once a season is done.
+  const results = (t.results || []).slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  document.getElementById('resnote').textContent =
+    `${results.length} dual${results.length === 1 ? '' : 's'}, newest first`;
+  document.getElementById('resbody').innerHTML = results.map((r) => {
+    const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
+    const tags = [
+      r.postseason ? '<span class="chip quiet">Post</span>' : '',
+      r.league ? '<span class="chip quiet">League</span>' : '',
+      r.source === 'entered' ? '<span class="chip aq">Reported</span>' : '',
+    ].filter(Boolean).join(' ');
+    return `<tr>
+      <td>${esc(fmtDate(r.date))}</td>
+      <td class="res ${cls}">${esc(r.result)}</td>
+      <td><a href="team.html?s=${encodeURIComponent(r.opponentId)}&g=${esc(gender)}&y=${esc(year)}">${esc(r.opponent)}</a>
+        <span class="oppmeta">${r.opponentClassRank ? `${esc(r.opponentClassification)} #${r.opponentClassRank}` : ''}</span></td>
+      <td class="sc">${esc(r.scoreline)}</td>
+      <td class="mid">${tags}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="5" class="empty">No duals on record.</td></tr>';
+
+  const fb = t.flightBreakdown || {};
+  document.getElementById('flights').innerHTML = SLOTS.map((s) => {
+    const v = fb[s];
+    return `<div><div class="p">${SLOT_LABEL[s]}</div>
+      <div class="v">${v === null || v === undefined ? '—' : `${Math.round(v)}%`}</div></div>`;
+  }).join('');
+
+  // The ladder here carries names but no player ids, so a roster row links to
+  // the Lineups tool for the team rather than pretending to know the player's
+  // card URL.
+  const ladder = t.ladder || [];
+  document.getElementById('rosnote').textContent =
+    ladder.length ? `${ladder.length} players` : '';
+  document.getElementById('rosbody').innerHTML = ladder.map((p, i) => `
+    <tr>
+      <td class="mid">${i + 1}</td>
+      <td>${esc(p.name)}</td>
+      <td class="mid">${esc(p.grade || '')}</td>
+      <td class="mid">${p.primary ? `<span class="chip quiet">${esc(SLOT_LABEL[p.primary] || p.primary)}</span>` : ''}</td>
+      <td class="num">${p.record ? `${p.record[0]}–${p.record[1]}` : '—'}</td>
+    </tr>`).join('')
+    || '<tr><td colspan="5" class="empty">No roster published.</td></tr>';
+}
+
+boot();
+</script>
+</body>
+</html>

@@ -37,6 +37,8 @@
   }
   .team-row + .team-row { border-top: 1px solid var(--rule-2); }
   .team-row .name { flex: 1; font-weight: 600; font-size: 0.92rem; }
+  .team-row .name a { color: inherit; }
+  .team-row .name a:hover { color: var(--accent); }
   /* ESPN marks the winner with a caret at the row's left edge. The column is
      always present so the two rows stay aligned. */
   .team-row .mark { width: 9px; color: var(--ink); font-size: 0.72rem; }
@@ -215,7 +217,7 @@ function teamRow(side, dual) {
   // not the team's final one.
   return `<div class="team-row ${state}">
     <span class="mark">${state === 'won' ? '\u25B8' : ''}</span>
-    <span class="name">${esc(t.name)}${t.record ? ` <span class="rec">${esc(t.record)}</span>` : ''}
+    <span class="name"><a href="team.html?s=${encodeURIComponent(t.id)}&g=${esc(String(dual.gender).toLowerCase())}">${esc(t.name)}</a>${t.record ? ` <span class="rec">${esc(t.record)}</span>` : ''}
       <span class="meta">${esc(t.classification)}${t.league ? ` · ${esc(t.league)}` : ''}</span>
     </span>
     <span class="pk">${pk === '' ? '' : `(${pk})`}</span>
