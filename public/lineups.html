@@ -248,7 +248,6 @@
       <button id="btn-reset-order">Reset to data order</button>
       <label class="small"><input type="checkbox" id="chk-lock"> Lock as final ladder</label>
       <span style="margin-left:auto"></span>
-      <input type="password" id="team-code" placeholder="team access code" autocomplete="off">
       <button class="primary" id="btn-submit">Submit ladder</button>
       <span id="submit-status" class="status"></span>
     </div>
@@ -540,13 +539,14 @@ function matchLog(p) {
 async function submitLadder() {
   const st = document.getElementById('submit-status');
   if (!backendOk) { st.textContent = 'Backend offline — cannot submit.'; st.className='status err'; return; }
-  const code = document.getElementById('team-code').value.trim();
-  if (code.length < 4) { st.textContent = 'Enter your team code (min 4 chars).'; st.className='status err'; return; }
   st.textContent = 'Submitting…'; st.className = 'status';
   try {
+    // No access code while the tool is being demonstrated: a coach or an AD
+    // being shown the ladder needs to be able to submit one. The header is
+    // still read server-side, so restoring the gate is putting the field back.
     const r = await fetch(`${API_BASE}/${encodeURIComponent(teamId())}`, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'x-team-code': code },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ladder: workingOrder, locked: document.getElementById('chk-lock').checked }),
     });
     const j = await r.json();

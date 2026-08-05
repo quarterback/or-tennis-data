@@ -42,7 +42,9 @@ const PUBLISHED = new Set(['reported', 'confirmed', 'contested']);
 // Everything below is a rule a real dual cannot break.
 // ---------------------------------------------------------------------------
 
-const FINISHES = new Set([null, undefined, 'retired', 'default']);
+const FINISHES = new Set([null, undefined, 'retired', 'default', 'forfeit']);
+/** Finishes where one side simply took the point: no score, one player named. */
+const AWARDED = new Set(['default', 'forfeit']);
 
 /**
  * The bottom-up forfeit rule.
@@ -61,13 +63,13 @@ function validateBottomUp(lines) {
     // A default has a winner but was not contested, so it forfeits the position
     // exactly as an absent flight does.
     const contested = [...present.entries()]
-      .filter(([, l]) => l.finish !== 'default')
+      .filter(([, l]) => !AWARDED.has(l.finish))
       .map(([f]) => f);
     if (!contested.length) continue;
     const deepest = Math.max(...contested);
     for (let f = 1; f < deepest; f += 1) {
       const line = present.get(f);
-      if (!line || line.finish === 'default') {
+      if (!line || AWARDED.has(line.finish)) {
         const pos = (n) => `${n}${matchType === 'Singles' ? 'S' : 'D'}`;
         throw new HttpError(400,
           `${pos(deepest)} was played but ${pos(f)} was not. Forfeits come from ` +
@@ -104,7 +106,7 @@ function validateCard(lines) {
     if (line.finish && line.homeWon !== true && line.homeWon !== false) {
       throw new HttpError(400, `${key}: a ${line.finish} needs a winner`);
     }
-    if (line.finish === 'default' && (line.sets || []).length) {
+    if (AWARDED.has(line.finish) && (line.sets || []).length) {
       throw new HttpError(400, `${key}: a default has no score`);
     }
 
@@ -114,7 +116,7 @@ function validateCard(lines) {
       // On a default one side had nobody — that is the whole meaning of the
       // result, so an empty side is required rather than merely tolerated.
       const winnerSide = line.homeWon ? 'homePlayers' : 'awayPlayers';
-      if (line.finish === 'default' && side !== winnerSide) {
+      if (AWARDED.has(line.finish) && side !== winnerSide) {
         if (list.length) throw new HttpError(400, `${key}: a defaulting team has no player`);
         continue;
       }

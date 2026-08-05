@@ -92,7 +92,14 @@ export default async function handler(req) {
     const isAdmin = adminOk(req);
     const suppliedCode = (req.headers.get('x-team-code') || '').trim();
 
-    if (!isAdmin) {
+    // Open while the tool is being demonstrated (owner decision): a coach or an
+    // athletic director being shown the ladder has to be able to submit one,
+    // and a code they were never issued stops the demo dead. Set
+    // LINEUPS_REQUIRE_CODE=1 to put the gate back — the hashes are still
+    // written and matched below, so nothing has to be re-established.
+    const requireCode = process.env.LINEUPS_REQUIRE_CODE === '1';
+
+    if (!isAdmin && requireCode) {
       if (existing.codeHash) {
         // Team already claimed — the supplied code must match.
         if (!suppliedCode || (await sha256(suppliedCode)) !== existing.codeHash) {

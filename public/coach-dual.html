@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Report a Dual — Cheesybook</title>
+<title>Report a dual — Cheesybook</title>
 <meta name="theme-color" content="#6a3937">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -11,6 +11,103 @@
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <link rel="stylesheet" href="css/coach.css">
+<style>
+  /* A data-entry form, not a stack of cards. The page is capped so the fields
+     do not stretch across a 27-inch monitor, and the eight flights are a table
+     dense enough to see at once. */
+  .wrap { max-width: 1120px; }
+
+  /* Match details: labelled fields on a grid that reflows by field width. */
+  .fields {
+    display: grid; gap: 12px 16px;
+    grid-template-columns: 9.5rem minmax(0, 1fr) minmax(0, 1fr) 10rem 9rem 9rem;
+    align-items: end;
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .field > label {
+    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--ink-3);
+  }
+  .field select, .field input { width: 100%; }
+
+  /* Lineup table */
+  .lineup { width: 100%; table-layout: fixed; }
+  .lineup thead th {
+    position: static;
+    font-size: 0.68rem; letter-spacing: .05em;
+  }
+  .lineup th.flight { width: 6rem; }
+  .lineup th.score { width: 10.5rem; }
+  .lineup th.st { width: 8.6rem; }
+  .lineup td { padding: 7px 10px; vertical-align: middle; }
+  .lineup tbody tr:hover td { background: none; }
+  /* A subtle divider between flights, and a firmer one where doubles start. */
+  .lineup tbody tr { border-bottom: 1px solid var(--rule-2); }
+  .lineup tbody tr.dline { border-top: 2px solid var(--rule); }
+  .lineup td.flight { font-weight: 700; font-size: 0.82rem; white-space: nowrap; }
+  .lineup tr.away td { color: var(--ink-4); }
+  .pair { display: flex; gap: 6px; min-width: 0; }
+  .pair > * { flex: 1 1 0; min-width: 0; }
+  .lineup .sc-in { width: 100%; font-variant-numeric: tabular-nums; }
+  .lineup .sc-in.bad { border-color: var(--loss); }
+  .lineup .awarded { font-size: 0.78rem; color: var(--ink-3); }
+  .lineup .won {
+    font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--win); white-space: nowrap;
+  }
+  .lineup .wonby {
+    font-size: 0.64rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .05em; color: var(--ink-3); margin: 4px 0 3px;
+  }
+  .lineup .who { display: flex; gap: 5px; }
+  .lineup .who button {
+    flex: 1 1 0; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .lineup .who button { padding: 4px 9px; font-size: 0.74rem; }
+  .lineup .who button.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .scerr { font-size: 0.72rem; color: var(--loss); margin-top: 3px; }
+
+  /* Fixed action area. */
+  .actions {
+    position: sticky; bottom: 0; z-index: 20;
+    display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+    padding: 11px calc(16px + env(safe-area-inset-right)) calc(11px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
+    background: var(--paper); border-top: 1px solid var(--rule);
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.07);
+  }
+  .actions .tally { font-weight: 700; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+  .actions .grow { flex: 1 1 auto; }
+
+  @media (max-width: 900px) {
+    .fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .fields .field.wide { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 720px) {
+    /* A flight becomes a labelled block. Same columns, same words, stacked. */
+    .lineup, .lineup tbody, .lineup tr, .lineup td { display: block; width: 100%; }
+    .lineup thead { display: none; }
+    .lineup tbody tr {
+      border: 1px solid var(--rule); border-radius: 10px;
+      padding: 10px 12px 12px; margin-bottom: 10px; background: var(--paper);
+    }
+    .lineup tbody tr.dline { border-top: 1px solid var(--rule); }
+    .lineup td { padding: 4px 0; }
+    .lineup td.flight { font-size: 0.9rem; margin-bottom: 4px; }
+    .lineup td[data-label]::before {
+      content: attr(data-label);
+      display: block; font-size: 0.66rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3);
+      margin-bottom: 3px;
+    }
+    .pair { flex-direction: column; }
+    /* Two rows, not four: the tally and its label on one line, the two
+       actions side by side under it. */
+    .actions { gap: 8px 10px; padding-top: 9px; }
+    .actions .grow { flex-basis: 100%; height: 0; }
+    .actions button { flex: 1 1 0; }
+  }
+</style>
 </head>
 <body>
 <header class="mast"></header>
@@ -25,68 +122,101 @@
     <div class="card">
       <div class="card-head">Match details</div>
       <div class="card-body">
-        <div class="row">
-          <label class="small muted">Date
+        <div class="fields">
+          <div class="field">
+            <label for="played-on">Date</label>
             <input type="date" id="played-on">
-          </label>
-          <label class="small muted">Opponent
+          </div>
+
+          <div class="field wide">
+            <label for="home-search">Home team</label>
             <div class="combo">
-              <input type="text" id="opponent-search" autocomplete="off"
-                     placeholder="Type a school…" aria-label="Opponent">
-              <button type="button" class="combo-clear" id="opponent-clear"
-                      aria-label="Clear" hidden>&times;</button>
-              <div class="combo-list" id="opponent-list" hidden></div>
+              <input type="text" id="home-search" autocomplete="off" placeholder="Search schools…">
+              <button type="button" class="combo-clear" id="home-clear" aria-label="Clear" hidden>&times;</button>
+              <div class="combo-list" id="home-list" hidden></div>
             </div>
-            <!-- The school id lives here so everything downstream keeps
-                 reading `opponent.value` exactly as it did with a select. -->
-            <input type="hidden" id="opponent">
-          </label>
-          <label class="small muted">Site
-            <select id="site">
-              <option value="home">We hosted</option>
-              <option value="away">We travelled</option>
+            <input type="hidden" id="home-school">
+          </div>
+
+          <div class="field wide">
+            <label for="away-search">Away team</label>
+            <div class="combo">
+              <input type="text" id="away-search" autocomplete="off" placeholder="Search schools…">
+              <button type="button" class="combo-clear" id="away-clear" aria-label="Clear" hidden>&times;</button>
+              <div class="combo-list" id="away-list" hidden></div>
+            </div>
+            <input type="hidden" id="away-school">
+          </div>
+
+          <div class="field">
+            <label for="match-type">Match type</label>
+            <select id="match-type">
+              <option value="conference">Conference</option>
+              <option value="nonconference">Non-Conference</option>
+              <option value="postseason">Postseason</option>
             </select>
-          </label>
-          <label class="small muted">
-            <input type="checkbox" id="postseason"> District or state
-          </label>
+          </div>
+
+          <div class="field">
+            <label for="venue">Venue</label>
+            <select id="venue">
+              <option value="home">Home</option>
+              <option value="neutral">Neutral site</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="dual-status">Status</label>
+            <select id="dual-status">
+              <option value="completed">Completed</option>
+              <option value="postponed">Postponed</option>
+              <option value="cancelled">Cancelled</option>
+            </select>
+          </div>
         </div>
-        <p class="small muted" id="reporter-note" style="margin:10px 0 0"></p>
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" id="lineup-card">
       <div class="card-head">
-        <span>The card</span>
-        <span class="small muted" id="card-progress"></span>
+        <span>Lineup and results</span>
+        <span class="small muted" id="entered"></span>
       </div>
-      <div class="card-body" id="card"></div>
+      <div class="card-body flush">
+        <div class="table-wrap">
+          <table class="lineup">
+            <thead><tr>
+              <th class="flight">Flight</th>
+              <th id="th-home">Home</th>
+              <th id="th-away">Away</th>
+              <th class="score">Score</th>
+              <th class="st">Status</th>
+            </tr></thead>
+            <tbody id="card"></tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div id="card-problems"></div>
-
-    <p class="small muted">Oregon plays four singles and four doubles, and fourth
-    singles and fourth doubles have never made it into the imported results
-    &mdash; entering them here is the only way they get counted. Leave a flight
-    blank if it genuinely was not played; the rankings adjust for a short card.</p>
   </div>
 </div>
 
-<div class="savebar" id="savebar" style="display:none">
-  <span class="score" id="live-score">0&ndash;0</span>
+<div class="actions" id="actions" style="display:none">
+  <span class="tally" id="live-score">0&ndash;0</span>
   <span class="small" id="live-tb"></span>
   <span class="small muted" id="live-label"></span>
   <span class="grow"></span>
   <span class="status" id="status"></span>
-  <button class="ghost" id="save-draft">Save draft</button>
-  <button class="primary" id="submit">Submit to opponent</button>
+  <button id="save-draft">Save draft</button>
+  <button class="primary" id="submit">Submit result</button>
 </div>
 
 <script type="module">
 import {
-  api, cardProblems, cardScore, cardTiebreak, completeSets, escapeHtml, FLIGHTS, lastTeam,
-  lineWinner, OUTCOMES, renderChrome, requireSession, setStatus, teamLabel,
-  setSubtitle,
+  api, AWARDED, cardProblems, cardScore, cardTiebreak, escapeHtml, FLIGHTS,
+  formatScore, lastTeam, lineWinner, OUTCOMES, parseScore, renderChrome,
+  requireSession, setStatus, setSubtitle, teamLabel,
 } from './js/coach-common.js';
 
 renderChrome({ title: 'Report a dual', subtitle: '' });
@@ -94,14 +224,16 @@ renderChrome({ title: 'Report a dual', subtitle: '' });
 const params = new URLSearchParams(location.search);
 const dualId = params.get('dual') ? Number(params.get('dual')) : null;
 
-let team = null;          // our team_season
+let team = null;          // the reporting coach's team_season
 let teams = [];
-let opponents = [];       // {school_id, school_name, id}
-let ourRoster = [];
-let theirRoster = [];
+let schools = [];         // every school in this season/gender: {school_id, school_name, league, classification, id?}
+let rosters = { home: [], away: [] };   // [{id?, first_name, last_name}]
 let lines = [];           // one per FLIGHTS entry, index-aligned
 let loadedUpdatedAt = null;
 let readOnly = false;
+
+/** A flight's label the way the form names it: "1 Singles", "3 Doubles". */
+const flightName = (f) => `${f.flight} ${f.matchType}`;
 
 async function boot() {
   const s = await requireSession();
@@ -119,22 +251,25 @@ async function boot() {
   lastTeam.set(team.id);
 
   document.getElementById('app').style.display = '';
-  document.getElementById('savebar').style.display = '';
+  document.getElementById('actions').style.display = '';
   setSubtitle(teamLabel(team));
 
   lines = FLIGHTS.map(() => ({
-    homePlayers: [], awayPlayers: [], sets: [], homeWon: null, outcome: 'played',
+    homePlayers: [], awayPlayers: [], sets: [], scoreText: '',
+    scoreError: null, homeWon: null, outcome: 'played',
   }));
 
-  await loadOpponents();
-  ourRoster = (await api(`/api/roster/${team.id}`)).players.filter((p) => p.active);
+  await loadSchools();
+  buildCombo('home');
+  buildCombo('away');
 
   if (dualId) {
     await loadExisting();
   } else {
-    // Default to today only when today is actually in this team's season.
-    // Pre-filling 2026 on a 2027 team hands the coach a date the server will
-    // reject, and a date field they have to notice is wrong.
+    // The reporting coach's own team leads as the home side — most duals a
+    // coach files are ones they hosted, and it is one fewer field to fill.
+    // They can move themselves to Away; the two selectors are symmetrical.
+    await setSchool('home', Number(team.school_id));
     const today = new Date().toISOString().slice(0, 10);
     const input = document.getElementById('played-on');
     input.min = `${team.year}-01-01`;
@@ -142,26 +277,24 @@ async function boot() {
     if (today.startsWith(String(team.year))) input.value = today;
   }
 
-  document.getElementById('opponent').onchange = onOpponentChange;
-  document.getElementById('site').onchange = render;
+  document.getElementById('dual-status').onchange = render;
   document.getElementById('save-draft').onclick = () => save(true);
   document.getElementById('submit').onclick = () => save(false);
 
-  await onOpponentChange();
+  render();
 }
 
 /**
- * Opponents are every team in the same season, gender and level.
+ * Every school playing this season, gender and level.
  *
  * Deliberately not restricted to our league: non-conference duals are most of
- * the early season, and the rankings care about them just as much.
+ * the early season, and the rankings count them the same.
  */
-async function loadOpponents() {
+async function loadSchools() {
   const res = await api(`/api/admin/teams?year=${team.year}`).catch(() => null);
   if (res) {
-    opponents = res.teams.filter((t) =>
-      Number(t.gender_id) === Number(team.gender_id) &&
-      t.is_jv === team.is_jv && Number(t.id) !== Number(team.id));
+    schools = res.teams.filter((t) =>
+      Number(t.gender_id) === Number(team.gender_id) && t.is_jv === team.is_jv);
   } else {
     // The teams index is administrator-only; fall back to the public school
     // list the rest of the site is built from.
@@ -169,9 +302,7 @@ async function loadOpponents() {
     const gender = Number(team.gender_id) === 1 ? 'Boys' : 'Girls';
     const seen = new Map();
     for (const e of rankings) {
-      if (e.gender !== gender || Number(e.school_id) === Number(team.school_id)) continue;
-      // league/classification come along so the picker can lead with the
-      // teams in your own league.
+      if (e.gender !== gender) continue;
       if (!seen.has(e.school_id)) {
         seen.set(e.school_id, {
           school_id: e.school_id, school_name: e.school_name,
@@ -179,31 +310,99 @@ async function loadOpponents() {
         });
       }
     }
-    opponents = [...seen.values()];
+    schools = [...seen.values()];
   }
-  opponents.sort((a, b) => String(a.school_name).localeCompare(String(b.school_name)));
-  buildCombo();
+  schools.sort((a, b) => String(a.school_name).localeCompare(String(b.school_name)));
+}
+
+const schoolById = (id) => schools.find((x) => Number(x.school_id) === Number(id));
+const sideName = (side) => {
+  const s = schoolById(document.getElementById(`${side}-school`).value);
+  return s ? s.school_name : (side === 'home' ? 'Home' : 'Away');
+};
+
+/**
+ * Both schools' rosters, loaded the moment a school is chosen.
+ *
+ * Two sources, in order. A school whose coach uses this tool has a real roster
+ * behind /api/roster. Everyone else has the published ladder the Lineups page
+ * writes — names only, no ids, which is enough to pick from. A school with
+ * neither falls through to a plain text field.
+ */
+async function loadRoster(side, schoolId) {
+  rosters[side] = [];
+  if (!schoolId) return;
+
+  // Our own team always has a real roster behind the API. Another school has
+  // one only if its coach uses this tool.
+  const entry = schoolById(schoolId);
+  const teamSeasonId = Number(schoolId) === Number(team.school_id)
+    ? team.id : (entry && entry.id);
+  if (teamSeasonId) {
+    const res = await api(`/api/roster/${teamSeasonId}`).catch(() => null);
+    if (res && res.players) {
+      rosters[side] = res.players.filter((p) => p.active);
+      if (rosters[side].length) return;
+    }
+  }
+
+  // Otherwise the ladder the Lineups page publishes — names only, which is all
+  // a picker needs. Last season's is tried too: a roster mostly carries over,
+  // and picking a name that is one graduate stale beats typing all eight.
+  const key = `${Number(team.gender_id) === 1 ? 1 : 2}${schoolId}`;
+  for (const y of [team.year, team.year - 1]) {
+    try {
+      const d = await fetch(`data/lineups/${y}/${key}.json`).then((r) => {
+        if (!r.ok) throw new Error('none');
+        return r.json();
+      });
+      const ladder = d.ladder || [];
+      if (!ladder.length) continue;
+      rosters[side] = ladder.map((pl) => {
+        const parts = String(pl.name).trim().split(/\s+/);
+        return {
+          id: null,
+          first_name: parts.slice(0, -1).join(' '),
+          last_name: parts[parts.length - 1] || String(pl.name),
+        };
+      });
+      return;
+    } catch { /* try the season before, then fall through to a text field */ }
+  }
+}
+
+async function setSchool(side, schoolId) {
+  const s = schoolById(schoolId);
+  document.getElementById(`${side}-school`).value = schoolId ? String(schoolId) : '';
+  document.getElementById(`${side}-search`).value = s ? s.school_name : '';
+  document.getElementById(`${side}-clear`).hidden = !schoolId;
+  await loadRoster(side, schoolId);
+  render();
 }
 
 /**
- * Opponent picker.
+ * School picker.
  *
  * A native select with 132 schools in it is unusable on a phone — you scroll
- * past sixty names to reach yours. This types to filter instead, and with an
- * empty box it leads with the teams in your own league, which is who you play
- * most. Everything else is still there under a heading.
+ * past sixty names to reach yours. This types to filter, and with an empty box
+ * it leads with your own league, which is who you play most.
  */
-function buildCombo() {
-  const search = document.getElementById('opponent-search');
-  const list = document.getElementById('opponent-list');
-  const hidden = document.getElementById('opponent');
-  const clear = document.getElementById('opponent-clear');
+function buildCombo(side) {
+  const search = document.getElementById(`${side}-search`);
+  const list = document.getElementById(`${side}-list`);
+  const hidden = document.getElementById(`${side}-school`);
+  const clear = document.getElementById(`${side}-clear`);
   let active = -1;
 
+  // Whatever the other selector holds cannot be picked here.
+  const taken = () => document.getElementById(
+    `${side === 'home' ? 'away' : 'home'}-school`).value;
+
   const groups = () => {
+    const pool = schools.filter((o) => String(o.school_id) !== String(taken()));
     const q = search.value.trim().toLowerCase();
     if (q) {
-      const hit = opponents.filter((o) => o.school_name.toLowerCase().includes(q));
+      const hit = pool.filter((o) => o.school_name.toLowerCase().includes(q));
       // Names that START with what was typed are what the person meant.
       hit.sort((a, b) => {
         const as = a.school_name.toLowerCase().startsWith(q) ? 0 : 1;
@@ -212,49 +411,38 @@ function buildCombo() {
       });
       return [{ label: '', items: hit.slice(0, 40) }];
     }
-    const mine = opponents.filter((o) => o.league && o.league === team.league);
-    const rest = opponents.filter((o) => !mine.includes(o));
+    const mine = pool.filter((o) => o.league && o.league === team.league);
+    const rest = pool.filter((o) => !mine.includes(o));
     return [
       ...(mine.length ? [{ label: team.league, items: mine }] : []),
       { label: mine.length ? 'Everyone else' : '', items: rest },
     ];
   };
 
-  function render() {
+  function paint() {
     const gs = groups();
     let i = -1;
     list.innerHTML = gs.map((g) => {
       const head = g.label ? `<div class="combo-head">${escapeHtml(g.label)}</div>` : '';
       return head + g.items.map((o) => {
         i += 1;
-        const sub = o.classification && o.league && !search.value.trim()
-          ? '' : `<span class="combo-sub">${escapeHtml(o.league || o.classification || '')}</span>`;
         return `<button type="button" class="combo-item${i === active ? ' on' : ''}"
-                 data-id="${o.school_id}" data-i="${i}">${escapeHtml(o.school_name)}${sub}</button>`;
+                 data-id="${o.school_id}">${escapeHtml(o.school_name)}` +
+               `<span class="combo-sub">${escapeHtml(o.league || o.classification || '')}</span></button>`;
       }).join('');
     }).join('') || '<div class="combo-empty">No school by that name.</div>';
 
     list.querySelectorAll('.combo-item').forEach((b) => {
-      b.onmousedown = (e) => { e.preventDefault(); pick(Number(b.dataset.id)); };
+      b.onmousedown = (e) => { e.preventDefault(); setSchool(side, Number(b.dataset.id)); close(); };
     });
   }
 
-  function open() { list.hidden = false; active = -1; render(); }
+  function open() { list.hidden = false; active = -1; paint(); }
   function close() { list.hidden = true; }
-
-  function pick(id) {
-    const o = opponents.find((x) => Number(x.school_id) === id);
-    if (!o) return;
-    hidden.value = String(id);
-    search.value = o.school_name;
-    clear.hidden = false;
-    close();
-    onOpponentChange();
-  }
 
   search.oninput = () => {
     // Typing after a pick means they are changing their mind.
-    if (hidden.value) { hidden.value = ''; clear.hidden = true; onOpponentChange(); }
+    if (hidden.value) { hidden.value = ''; clear.hidden = true; rosters[side] = []; render(); }
     open();
   };
   search.onfocus = open;
@@ -265,35 +453,17 @@ function buildCombo() {
       e.preventDefault();
       if (list.hidden) return open();
       active = Math.max(0, Math.min(items.length - 1, active + (e.key === 'ArrowDown' ? 1 : -1)));
-      render();
+      paint();
       items[active]?.scrollIntoView({ block: 'nearest' });
     } else if (e.key === 'Enter') {
-      if (!list.hidden && items[active]) { e.preventDefault(); pick(Number(items[active].dataset.id)); }
-      else if (!list.hidden && items.length === 1) { e.preventDefault(); pick(Number(items[0].dataset.id)); }
+      const pick = items[active] || (items.length === 1 ? items[0] : null);
+      if (!list.hidden && pick) { e.preventDefault(); setSchool(side, Number(pick.dataset.id)); close(); }
     } else if (e.key === 'Escape') { close(); }
   };
   clear.onclick = () => {
-    hidden.value = ''; search.value = ''; clear.hidden = true; onOpponentChange(); search.focus();
+    hidden.value = ''; search.value = ''; clear.hidden = true;
+    rosters[side] = []; render(); search.focus();
   };
-
-  // Reflect a value set programmatically (loading a saved dual).
-  hidden.addEventListener('change', () => {
-    const o = opponents.find((x) => Number(x.school_id) === Number(hidden.value));
-    if (o) { search.value = o.school_name; clear.hidden = false; }
-  });
-}
-
-async function onOpponentChange() {
-  const schoolId = Number(document.getElementById('opponent').value);
-  theirRoster = [];
-  if (schoolId) {
-    const opp = opponents.find((o) => Number(o.school_id) === schoolId);
-    if (opp && opp.id) {
-      const res = await api(`/api/roster/${opp.id}`).catch(() => null);
-      if (res) theirRoster = res.players.filter((p) => p.active);
-    }
-  }
-  render();
 }
 
 async function loadExisting() {
@@ -302,15 +472,15 @@ async function loadExisting() {
   readOnly = Number(dual.home_school_id) !== Number(team.school_id);
 
   document.getElementById('played-on').value = String(dual.played_on).slice(0, 10);
-  document.getElementById('postseason').checked = !!dual.is_postseason;
-  const weAreHome = Number(dual.home_school_id) === Number(team.school_id);
-  document.getElementById('site').value = weAreHome ? 'home' : 'away';
-  const oppField = document.getElementById('opponent');
-  oppField.value = weAreHome ? dual.away_school_id : dual.home_school_id;
-  oppField.dispatchEvent(new Event('change'));
+  document.getElementById('match-type').value = dual.is_postseason ? 'postseason'
+    : (dual.conference === false ? 'nonconference' : 'conference');
+  if (dual.result_status) document.getElementById('dual-status').value = dual.result_status;
+
+  await setSchool('home', Number(dual.home_school_id));
+  await setSchool('away', Number(dual.away_school_id));
 
   // A flight absent from a saved dual was not contested — that is what absence
-  // means in the store — so start everything skipped and fill in what is there.
+  // means in the store — so start everything not played and fill in what is there.
   lines.forEach((l) => { l.outcome = 'skipped'; });
 
   for (const line of dual.lines) {
@@ -319,8 +489,8 @@ async function loadExisting() {
     if (idx < 0) continue;
     lines[idx] = {
       homePlayers: line.homePlayers, awayPlayers: line.awayPlayers,
-      sets: line.sets, homeWon: line.home_won,
-      outcome: line.finish || 'played',
+      sets: line.sets, scoreText: formatScore(line.sets), scoreError: null,
+      homeWon: line.home_won, outcome: line.finish || 'played',
     };
   }
 
@@ -335,162 +505,150 @@ async function loadExisting() {
 
 // ---------------------------------------------------------------------------
 // Rendering
-//
-// "home" and "away" are the dual's sides, not ours. The site selector decides
-// which column is ours, so a coach always reads their own players on the left.
 // ---------------------------------------------------------------------------
 
-function weAreHome() {
-  return document.getElementById('site').value === 'home';
+/** One player control: a select off the roster, or a text field when there is none. */
+function playerControl(i, side, slot, doubles) {
+  const roster = rosters[side];
+  const chosen = lines[i][`${side}Players`][slot];
+  const label = `${sideName(side)} player`;
+
+  if (!roster.length) {
+    const value = chosen ? `${chosen.firstName} ${chosen.lastName}`.trim() : '';
+    return `<input type="text" class="js-name"
+                   placeholder="${doubles ? `Player ${slot + 1}` : 'Player name'}"
+                   aria-label="${escapeHtml(label)}"
+                   data-line="${i}" data-side="${side}" data-slot="${slot}"
+                   value="${escapeHtml(value)}">`;
+  }
+
+  const name = (p) => `${p.last_name}, ${p.first_name}`.replace(/,\s*$/, '');
+  const isChosen = (p) => chosen && (p.id != null
+    ? Number(p.id) === Number(chosen.id)
+    : `${p.first_name} ${p.last_name}`.trim() === `${chosen.firstName} ${chosen.lastName}`.trim());
+
+  const opts = roster.map((p, n) =>
+    `<option value="${n}"${isChosen(p) ? ' selected' : ''}>${escapeHtml(name(p))}</option>`).join('');
+  return `<select class="js-player" aria-label="${escapeHtml(label)}"
+                  data-line="${i}" data-side="${side}" data-slot="${slot}">
+            <option value="">${doubles ? `Player ${slot + 1}` : 'Search or select player'}</option>${opts}</select>`;
 }
 
-function rosterFor(side) {
-  const ours = side === (weAreHome() ? 'home' : 'away');
-  return ours ? ourRoster : theirRoster;
+function sideCell(i, side, doubles) {
+  const line = lines[i];
+  // On a forfeit or a default the side that could not field anybody has no
+  // player to name, so only the side that took the point gets controls.
+  if (AWARDED.has(line.outcome)) {
+    const took = line.homeWon === (side === 'home');
+    if (line.homeWon === null || !took) return '<span class="awarded">&mdash;</span>';
+  }
+  const slots = doubles ? [0, 1] : [0];
+  return `<div class="pair">${slots.map((slot) => playerControl(i, side, slot, doubles)).join('')}</div>`;
 }
 
-function playerOptions(side, selectedId) {
-  const roster = rosterFor(side);
-  const opts = roster.map((p) =>
-    `<option value="${p.id}"${Number(p.id) === Number(selectedId) ? ' selected' : ''}>` +
-    `${escapeHtml(p.last_name)}, ${escapeHtml(p.first_name)}</option>`).join('');
-  const ours = side === (weAreHome() ? 'home' : 'away');
-  const blank = ours ? 'Choose a player…' : 'Type their name…';
-  return `<option value="">${blank}</option>${opts}`;
+/** Won by <school>, for flights the score cannot decide. */
+function winnerPicker(i, f, homeName, awayName) {
+  const line = lines[i];
+  const sel = (v) => (line.homeWon === v ? ' selected' : '');
+  return `<select class="js-award" data-line="${i}"
+                  aria-label="${escapeHtml(flightName(f))} won by">
+      <option value=""${line.homeWon === null || line.homeWon === undefined ? ' selected' : ''}>Won by…</option>
+      <option value="home"${sel(true)}>${escapeHtml(homeName)}</option>
+      <option value="away"${sel(false)}>${escapeHtml(awayName)}</option>
+    </select>`;
 }
 
 function render() {
+  const homeName = sideName('home');
+  const awayName = sideName('away');
+  document.getElementById('th-home').textContent = homeName;
+  document.getElementById('th-away').textContent = awayName;
+
+  const status = document.getElementById('dual-status').value;
+  const lineupCard = document.getElementById('lineup-card');
+  // A postponed or cancelled dual has no card to fill in.
+  lineupCard.style.display = status === 'completed' ? '' : 'none';
+  document.getElementById('submit').textContent =
+    status === 'completed' ? 'Submit result' : 'Save match';
+
   const mount = document.getElementById('card');
   mount.innerHTML = FLIGHTS.map((f, i) => {
     const line = lines[i];
     const doubles = f.matchType === 'Doubles';
-    const winner = line.homeWon === true ? 'home'
-      : line.homeWon === false ? 'away' : lineWinner(line.sets);
-    const ourSide = weAreHome() ? 'home' : 'away';
-    const winLabel = !winner ? ''
-      : winner === ourSide ? '<span class="winner home">We won</span>'
-        : '<span class="winner away">They won</span>';
+    const first = doubles && f.flight === 1;
+    const off = line.outcome === 'skipped';
 
-    const outcomeSel =
-      `<select class="js-outcome flight-outcome" data-line="${i}">` +
+    const statusSel =
+      `<select class="js-outcome" data-line="${i}" aria-label="${escapeHtml(flightName(f))} status">` +
       OUTCOMES.map((o) =>
         `<option value="${o.key}"${line.outcome === o.key ? ' selected' : ''}>${o.label}</option>`
       ).join('') + '</select>';
 
-    if (line.outcome === 'skipped') {
-      return `<div class="flight skipped">
-        <div class="flight-head">
-          <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
-          <span class="small muted">Not played &mdash; counts for neither team</span>
-          ${outcomeSel}
-        </div>
-      </div>`;
+    // A forfeit or a default has no score, so the Score cell asks the only
+    // question left: which team took the point. A retirement keeps its score
+    // but still needs a winner, since the last set does not decide it.
+    let scoreCell;
+    if (off) {
+      scoreCell = '<span class="awarded">&mdash;</span>';
+    } else if (AWARDED.has(line.outcome)) {
+      scoreCell = `${winnerPicker(i, f, homeName, awayName)}`;
+    } else {
+      scoreCell = `<input type="text" class="sc-in js-score${line.scoreError ? ' bad' : ''}"
+                inputmode="text" autocomplete="off" placeholder="6-4, 6-2"
+                aria-label="${escapeHtml(flightName(f))} score"
+                data-line="${i}" value="${escapeHtml(line.scoreText)}">
+         ${line.scoreError ? `<div class="scerr">${escapeHtml(line.scoreError)}</div>` : ''}
+         ${line.outcome === 'retired'
+           ? `${winnerPicker(i, f, homeName, awayName)}` : ''}`;
     }
 
-    // A default is one team failing to field anybody, so the only thing to
-    // record is which side did.
-    if (line.outcome === 'default') {
-      const weWon = line.homeWon === (weAreHome() ? true : false);
-      const decided = line.homeWon !== null && line.homeWon !== undefined;
-      return `<div class="flight">
-        <div class="flight-head">
-          <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
-          <span class="small muted">Nobody at this position for one team</span>
-          ${outcomeSel}
-        </div>
-        <div class="flight-side">
-          <span class="side-label">Won by</span>
-          <button type="button" class="js-default ${decided && weWon ? '' : 'ghost'}"
-                  data-line="${i}" data-who="us">Us</button>
-          <button type="button" class="js-default ${decided && !weWon ? '' : 'ghost'}"
-                  data-line="${i}" data-who="them">Them</button>
-        </div>
-      </div>`;
-    }
+    const cells = off
+      ? `<td data-label="${escapeHtml(homeName)}"><span class="awarded">&mdash;</span></td>
+         <td data-label="${escapeHtml(awayName)}"><span class="awarded">&mdash;</span></td>
+         <td class="score" data-label="Score"><span class="awarded">&mdash;</span></td>`
+      : `<td data-label="${escapeHtml(homeName)}">${sideCell(i, 'home', doubles)}</td>
+         <td data-label="${escapeHtml(awayName)}">${sideCell(i, 'away', doubles)}</td>
+         <td class="score" data-label="Score">${scoreCell}</td>`;
 
-    const sides = ['home', 'away'].sort((a) => (a === ourSide ? -1 : 1));
-    const sideRows = sides.map((side) => {
-      const players = line[`${side}Players`];
-      const label = side === ourSide ? 'Us' : 'Them';
-      const selects = Array.from({ length: doubles ? 2 : 1 }, (_, slot) => {
-        const sel = players[slot] ? players[slot].id : '';
-        const isOurs = side === ourSide;
-        return isOurs
-          ? `<select data-line="${i}" data-side="${side}" data-slot="${slot}" class="js-player">
-               ${playerOptions(side, sel)}</select>`
-          : `<input type="text" data-line="${i}" data-side="${side}" data-slot="${slot}"
-                    class="js-name" placeholder="Opponent name"
-                    value="${escapeHtml(players[slot] ? `${players[slot].firstName} ${players[slot].lastName}` : '')}">`;
-      }).join('');
-      return `<div class="flight-side"><span class="side-label">${label}</span>${selects}</div>`;
-    }).join('');
-
-    const setBoxes = [1, 2, 3].map((n) => {
-      const s = line.sets.find((x) => Number(x.number) === n) || {};
-      return `<span class="setbox"><span class="n">${n}</span>
-        <input type="number" inputmode="numeric" min="0" max="30" data-line="${i}"
-               data-set="${n}" data-side="home" class="js-set" value="${s.homeGames ?? ''}">
-        <span class="dash">&ndash;</span>
-        <input type="number" inputmode="numeric" min="0" max="30" data-line="${i}"
-               data-set="${n}" data-side="away" class="js-set" value="${s.awayGames ?? ''}">
-      </span>`;
-    }).join('');
-
-    // On a retirement the score is whatever it was when they stopped, so the
-    // set boxes stay but the winner has to be stated rather than derived.
-    const retiredPicker = line.outcome !== 'retired' ? '' : `
-      <div class="flight-side">
-        <span class="side-label">Won by</span>
-        <button type="button" class="js-default ${line.homeWon === (weAreHome()) ? '' : 'ghost'}"
-                data-line="${i}" data-who="us">Us</button>
-        <button type="button" class="js-default ${line.homeWon === (!weAreHome()) ? '' : 'ghost'}"
-                data-line="${i}" data-who="them">Them</button>
-      </div>`;
-
-    return `<div class="flight">
-      <div class="flight-head">
-        <span class="pill ${doubles ? 'd' : 's'}">${f.label}</span>
-        ${winLabel}
-        ${outcomeSel}
-      </div>
-      ${sideRows}
-      <div class="sets">${setBoxes}</div>
-      ${retiredPicker}
-    </div>`;
+    return `<tr class="${first ? 'dline' : ''}">
+      <td class="flight">${escapeHtml(flightName(f))}</td>
+      ${cells}
+      <td class="st" data-label="Status">${statusSel}</td>
+    </tr>`;
   }).join('');
 
   if (readOnly) {
-    mount.querySelectorAll('input, select').forEach((el) => { el.disabled = true; });
+    mount.querySelectorAll('input, select, button').forEach((el) => { el.disabled = true; });
   }
 
   mount.querySelectorAll('.js-player').forEach((el) => { el.onchange = onPlayerChange; });
   mount.querySelectorAll('.js-name').forEach((el) => { el.onchange = onNameChange; });
-  mount.querySelectorAll('.js-set').forEach((el) => { el.oninput = onSetChange; });
+  mount.querySelectorAll('.js-score').forEach((el) => { el.oninput = onScoreChange; });
   mount.querySelectorAll('.js-outcome').forEach((el) => { el.onchange = onOutcomeChange; });
-  mount.querySelectorAll('.js-default').forEach((el) => { el.onclick = onDefaultWinner; });
+  mount.querySelectorAll('.js-award').forEach((el) => { el.onchange = onAward; });
 
-  updateScore();
+  updateTally();
 }
 
 function onOutcomeChange(e) {
   const i = Number(e.target.dataset.line);
   const next = e.target.value;
   lines[i].outcome = next;
-  if (next === 'default') {
-    // A default has no score, and the side that could not field anybody has no
-    // player to name.
+  if (AWARDED.has(next) || next === 'skipped') {
     lines[i].sets = [];
+    lines[i].scoreText = '';
+    lines[i].scoreError = null;
   }
   if (next === 'played' || next === 'skipped') lines[i].homeWon = null;
   render();
 }
 
-function onDefaultWinner(e) {
+function onAward(e) {
   const i = Number(e.target.dataset.line);
-  const usWon = e.target.dataset.who === 'us';
-  lines[i].homeWon = weAreHome() ? usWon : !usWon;
-  if (lines[i].outcome === 'default') {
-    // Clear the side that defaulted; there was nobody there.
+  const v = e.target.value;
+  lines[i].homeWon = v === '' ? null : v === 'home';
+  if (AWARDED.has(lines[i].outcome)) {
+    // Clear the side that could not field anybody; there was nobody there.
     lines[i][lines[i].homeWon ? 'awayPlayers' : 'homePlayers'] = [];
   }
   render();
@@ -498,14 +656,14 @@ function onDefaultWinner(e) {
 
 function onPlayerChange(e) {
   const { line, side, slot } = e.target.dataset;
-  const id = Number(e.target.value);
+  const idx = e.target.value;
   const list = lines[line][`${side}Players`];
-  if (!id) list.splice(Number(slot), 1);
+  if (idx === '') { list.splice(Number(slot), 1); }
   else {
-    const p = ourRoster.find((x) => Number(x.id) === id);
-    list[Number(slot)] = { id, firstName: p.first_name, lastName: p.last_name };
+    const p = rosters[side][Number(idx)];
+    list[Number(slot)] = { id: p.id ?? undefined, firstName: p.first_name, lastName: p.last_name };
   }
-  updateScore();
+  updateTally();
 }
 
 function onNameChange(e) {
@@ -514,87 +672,75 @@ function onNameChange(e) {
   const list = lines[line][`${side}Players`];
   if (!text) { list.splice(Number(slot), 1); return; }
   const parts = text.split(' ');
-  // A single word goes in as the surname; a coach writing "Nguyen" for an
-  // opponent they only know by one name should not be blocked.
+  // A single word goes in as the surname; a coach writing "Nguyen" for a player
+  // they only know by one name should not be blocked.
   list[Number(slot)] = parts.length > 1
     ? { firstName: parts.slice(0, -1).join(' '), lastName: parts[parts.length - 1] }
     : { firstName: '', lastName: text };
-  updateScore();
+  updateTally();
 }
 
-function onSetChange(e) {
-  const { line, set, side } = e.target.dataset;
-  const i = Number(line);
-  const n = Number(set);
-  let entry = lines[i].sets.find((s) => Number(s.number) === n);
-  if (!entry) { entry = { number: n }; lines[i].sets.push(entry); }
-  const value = e.target.value === '' ? null : Number(e.target.value);
-  entry[side === 'home' ? 'homeGames' : 'awayGames'] = value;
+/**
+ * The score is one text field, parsed as it is typed.
+ *
+ * Re-rendering on every keystroke would steal focus mid-score, so the error
+ * message and the field's own state are patched in place and the rest of the
+ * table is left alone.
+ */
+function onScoreChange(e) {
+  const i = Number(e.target.dataset.line);
+  const { sets, error } = parseScore(e.target.value);
+  lines[i].scoreText = e.target.value;
+  lines[i].scoreError = error;
+  lines[i].sets = error ? [] : sets;
+  if (lines[i].outcome === 'played') lines[i].homeWon = null;   // derived from the sets
 
-  // Drop a set only when BOTH boxes are empty. Half-filled sets have to survive
-  // — a coach types "6" before they type "3", and discarding the first number on
-  // the way to the second means nothing is ever recorded.
-  const blank = (v) => v === null || v === undefined;
-  lines[i].sets = lines[i].sets.filter((s) => !(blank(s.homeGames) && blank(s.awayGames)));
-  lines[i].sets.sort((a, b) => a.number - b.number);
-  lines[i].homeWon = null;   // recomputed from the sets
-  updateScore();
+  e.target.classList.toggle('bad', !!error);
+  const cell = e.target.closest('td');
+  const existing = cell.querySelector('.scerr');
+  if (existing) existing.remove();
+  if (error) {
+    const div = document.createElement('div');
+    div.className = 'scerr';
+    div.textContent = error;
+    e.target.insertAdjacentElement('afterend', div);
+  }
+  updateTally();
 }
 
-function updateScore() {
+function updateTally() {
   const { home, away } = cardScore(lines);
-  const ours = weAreHome() ? home : away;
-  const theirs = weAreHome() ? away : home;
-  document.getElementById('live-score').innerHTML = `${ours}&ndash;${theirs}`;
+  document.getElementById('live-score').innerHTML = `${home}&ndash;${away}`;
 
-  // A level card goes to sets, then games — both already typed, so the coach
-  // is told the outcome rather than asked to nominate one. A card level on all
+  // A level card goes to sets, then games — both already typed, so the coach is
+  // told the outcome rather than asked to nominate one. A card level on all
   // three stays a tie, which is a real result and not an error.
-  const tb = cardTiebreak(lines);
+  const tb = (home + away) > 0 ? cardTiebreak(lines) : null;
   const tbEl = document.getElementById('live-tb');
   if (!tb) {
     tbEl.textContent = '';
     tbEl.className = 'small';
   } else if (tb.basis === null) {
-    tbEl.textContent = 'level on sets and games — a tie';
+    tbEl.textContent = 'Level on sets and games — a tie';
     tbEl.className = 'small muted';
   } else {
-    const oursV = weAreHome() ? tb.home : tb.away;
-    const theirsV = weAreHome() ? tb.away : tb.home;
-    const weTake = weAreHome() ? tb.homeWon : !tb.homeWon;
-    tbEl.textContent = `${weTake ? 'You take' : 'They take'} the ${tb.basis} `
-      + `tiebreaker ${oursV}\u2013${theirsV}`;
-    tbEl.className = `small ${weTake ? 'tb-win' : 'tb-lose'}`;
+    const winner = tb.homeWon ? sideName('home') : sideName('away');
+    tbEl.textContent = `${winner} takes the ${tb.basis} tiebreaker `
+      + `${tb.homeWon ? tb.home : tb.away}–${tb.homeWon ? tb.away : tb.home}`;
+    tbEl.className = 'small tb-win';
   }
 
   const decided = lines.filter(decidedSide).length;
   const skipped = lines.filter((l) => l.outcome === 'skipped').length;
   document.getElementById('live-label').textContent =
-    `${decided} of ${8 - skipped} flights entered` + (skipped ? `, ${skipped} not played` : '');
-  document.getElementById('card-progress').textContent = decided ? `${decided} entered` : '';
+    `${decided} of ${8 - skipped} flights entered`;
+  document.getElementById('entered').textContent = decided ? `${decided} entered` : '';
 
-  // The bottom-up rule is shown as it happens rather than saved against, so a
-  // coach finds out while the card is in front of them.
+  // The bottom-up forfeit rule is shown as it happens rather than saved
+  // against, so a coach finds out while the card is in front of them.
   const problems = cardProblems(lines);
-  const banner = document.getElementById('card-problems');
-  banner.innerHTML = problems.length
+  document.getElementById('card-problems').innerHTML = problems.length
     ? `<div class="banner err">${escapeHtml(problems[0])}</div>` : '';
-
-  // Refresh the per-flight winner labels without re-rendering the inputs, which
-  // would steal focus mid-typing.
-  document.querySelectorAll('#card .flight').forEach((el, i) => {
-    const head = el.querySelector('.flight-head');
-    const existing = head.querySelector('.winner');
-    if (existing) existing.remove();
-    if (lines[i].outcome === 'skipped') return;
-    const w = decidedSide(lines[i]);
-    if (!w) return;
-    const ourSide = weAreHome() ? 'home' : 'away';
-    const span = document.createElement('span');
-    span.className = `winner ${w === ourSide ? 'home' : 'away'}`;
-    span.textContent = w === ourSide ? 'We won' : 'They won';
-    head.insertBefore(span, head.querySelector('.flight-outcome'));
-  });
 }
 
 /** 'home' | 'away' | null — who took this flight, however it was decided. */
@@ -610,50 +756,65 @@ function decidedSide(line) {
 // ---------------------------------------------------------------------------
 
 function buildPayload(draft) {
-  const opponentId = Number(document.getElementById('opponent').value);
-  if (!opponentId) throw new Error('Choose an opponent.');
+  const homeSchoolId = Number(document.getElementById('home-school').value);
+  const awaySchoolId = Number(document.getElementById('away-school').value);
+  if (!homeSchoolId) throw new Error('Choose a home team.');
+  if (!awaySchoolId) throw new Error('Choose an away team.');
+  if (homeSchoolId === awaySchoolId) throw new Error('A team cannot play itself.');
+  if (homeSchoolId !== Number(team.school_id) && awaySchoolId !== Number(team.school_id)) {
+    throw new Error(`One of the two teams has to be ${team.school_name}.`);
+  }
   const playedOn = document.getElementById('played-on').value;
   if (!playedOn) throw new Error('Choose a date.');
 
-  const home = weAreHome();
+  const matchType = document.getElementById('match-type').value;
+  const resultStatus = document.getElementById('dual-status').value;
+
   const payload = {
     year: team.year,
     genderId: Number(team.gender_id),
     isJv: !!team.is_jv,
     playedOn,
-    homeSchoolId: home ? Number(team.school_id) : opponentId,
-    awaySchoolId: home ? opponentId : Number(team.school_id),
-    isPostseason: document.getElementById('postseason').checked,
+    homeSchoolId,
+    awaySchoolId,
+    isPostseason: matchType === 'postseason',
+    conference: matchType === 'conference',
+    venue: document.getElementById('venue').value,
+    resultStatus,
     draft,
     updatedAt: loadedUpdatedAt,
     lines: [],
   };
+
+  // A postponed or cancelled dual is the match record and nothing else.
+  if (resultStatus !== 'completed') return payload;
 
   const problems = cardProblems(lines);
   if (problems.length) throw new Error(problems[0]);
 
   FLIGHTS.forEach((f, i) => {
     const line = lines[i];
-    // A skipped flight is simply not sent. Absence is how "nobody contested
-    // this position" is stored, and it keeps the flight out of the denominator.
+    // A flight that was not played is simply not sent. Absence is how "nobody
+    // contested this position" is stored, and it keeps the flight out of the
+    // denominator.
     if (line.outcome === 'skipped') return;
+    if (line.scoreError) throw new Error(`${flightName(f)}: ${line.scoreError}`);
 
-    // Only finished sets are sent — a half-typed set is a UI state, not a score.
-    const sets = line.outcome === 'default' ? [] : completeSets(line.sets);
+    const sets = AWARDED.has(line.outcome) ? [] : line.sets;
 
-    if (line.outcome === 'default') {
+    if (AWARDED.has(line.outcome)) {
       if (line.homeWon === null || line.homeWon === undefined) {
-        throw new Error(`${f.label}: say which team won the default.`);
+        throw new Error(`${flightName(f)}: say which team took the point.`);
       }
     } else if (line.outcome === 'retired') {
       if (line.homeWon === null || line.homeWon === undefined) {
-        throw new Error(`${f.label}: say which player won after the retirement.`);
+        throw new Error(`${flightName(f)}: say which player won after the retirement.`);
       }
       if (!line.homePlayers.length || !line.awayPlayers.length) {
-        throw new Error(`${f.label}: name both players.`);
+        throw new Error(`${flightName(f)}: name both players.`);
       }
-    } else {
-      if (!sets.length || !line.homePlayers.length || !line.awayPlayers.length) return;
+    } else if (!sets.length || !line.homePlayers.length || !line.awayPlayers.length) {
+      return;
     }
 
     const winner = line.outcome === 'played' ? lineWinner(sets) : (line.homeWon ? 'home' : 'away');
@@ -681,14 +842,14 @@ async function save(draft) {
     return setStatus(status, e.message, 'err');
   }
 
-  const buttons = document.querySelectorAll('.savebar button');
+  const buttons = document.querySelectorAll('.actions button');
   buttons.forEach((b) => { b.disabled = true; });
   try {
     const res = dualId
       ? await api(`/api/duals/${dualId}`, { method: 'PUT', body: JSON.stringify(payload) })
       : await api('/api/duals', { method: 'POST', body: JSON.stringify(payload) });
     loadedUpdatedAt = res.dual.updated_at;
-    setStatus(status, draft ? 'Draft saved.' : 'Submitted to your opponent.');
+    setStatus(status, draft ? 'Draft saved.' : 'Result submitted.');
     if (!dualId) {
       setTimeout(() => { location.href = `coach.html?team=${team.id}`; }, 900);
     }

@@ -28,11 +28,15 @@ export const FLIGHTS = [
  * the eight is ordinary practice, not an exception.
  */
 export const OUTCOMES = [
-  { key: 'played', label: 'Played', hint: 'Normal match, enter the set scores.' },
-  { key: 'retired', label: 'Retired', hint: 'A player quit mid-match. The other side wins whatever the score was.' },
-  { key: 'default', label: 'Default', hint: 'One team had nobody at this position. The other side wins the point.' },
-  { key: 'skipped', label: 'Not played', hint: 'Neither team contested this position. It counts for nobody.' },
+  { key: 'played', label: 'Completed' },
+  { key: 'skipped', label: 'Not played' },
+  { key: 'forfeit', label: 'Forfeit' },
+  { key: 'retired', label: 'Retired' },
+  { key: 'default', label: 'Default' },
 ];
+
+/** Outcomes that need no score: one side simply took the point. */
+export const AWARDED = new Set(['forfeit', 'default']);
 
 const CONTESTED = new Set(['played', 'retired']);
 
@@ -53,18 +57,28 @@ export function cardProblems(lines) {
       .map((f, i) => ({ f, i }))
       .filter(({ f }) => f.matchType === matchType);
 
+    // A flight left on Completed with nothing in it has not been entered yet —
+    // it is not evidence that the position was contested. Every flight starts
+    // on Completed, so treating an empty one as played fired this warning
+    // against rows the coach had not reached.
+    const contested = (i) => CONTESTED.has(lines[i].outcome)
+      && ((lines[i].sets || []).length
+        || (lines[i].homePlayers || []).length
+        || (lines[i].awayPlayers || []).length);
+
     let lastContested = 0;
     for (const { f, i } of indexes) {
-      if (CONTESTED.has(lines[i].outcome)) lastContested = f.flight;
+      if (contested(i)) lastContested = f.flight;
     }
     for (const { f, i } of indexes) {
       if (f.flight >= lastContested) continue;
-      if (!CONTESTED.has(lines[i].outcome)) {
+      if (!contested(i)) {
         const played = FLIGHTS.find((x) => x.matchType === matchType && x.flight === lastContested);
+        const name = (x) => `${x.flight} ${x.matchType}`;
         problems.push(
-          `${f.label} was not played but ${played.label} was. Forfeits come from ` +
-          `the bottom of the card up, so ${played.label} cannot be played while ` +
-          `${f.label} is empty.`);
+          `${name(f)} was not played but ${name(played)} was. Forfeits come from ` +
+          `the bottom of the card up, so ${name(played)} cannot be played while ` +
+          `${name(f)} is empty.`);
       }
     }
   }
@@ -373,4 +387,56 @@ export async function requireSession(mountId = 'signin') {
     });
   }
   return null;
+}
+
+/**
+ * Parse a tennis score as a coach writes it.
+ *
+ * "6-4, 6-2" · "4-6, 6-3, 10-7" · "7-6(5), 6-4" · "6-0 6-0". An en dash reads
+ * as a hyphen, because a phone keyboard and a paste from a scoresheet both
+ * produce them. Returns { sets, error }; sets is index-ordered and shaped the
+ * way the API takes them.
+ *
+ * This replaced a grid of six number inputs per flight. Coaches read scores off
+ * a scoresheet in exactly this notation, and typing it is one field instead of
+ * six tab stops.
+ */
+export function parseScore(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return { sets: [], error: null };
+
+  const chunks = raw
+    .replace(/[\u2010-\u2015\u2212]/g, '-')   // en/em dash, minus
+    .split(/[,;]|\s{2,}|\s(?=\d+\s*-)/)
+    .map((c) => c.trim())
+    .filter(Boolean);
+
+  const sets = [];
+  for (const chunk of chunks) {
+    const m = chunk.match(/^(\d{1,2})\s*-\s*(\d{1,2})(?:\s*\((\d{1,2})\))?$/);
+    if (!m) return { sets: [], error: `“${chunk}” is not a set score.` };
+    const home = Number(m[1]);
+    const away = Number(m[2]);
+    if (home > 30 || away > 30) return { sets: [], error: `“${chunk}” is not a set score.` };
+    if (home === away) return { sets: [], error: `“${chunk}” has no winner.` };
+    sets.push({
+      number: sets.length + 1,
+      homeGames: home,
+      awayGames: away,
+      tiePoints: m[3] === undefined ? null : Number(m[3]),
+    });
+  }
+  if (sets.length > 5) return { sets: [], error: 'A match is at most five sets.' };
+  return { sets, error: null };
+}
+
+/** The inverse: sets back to the text a coach would have typed. */
+export function formatScore(sets) {
+  return (sets || [])
+    .slice()
+    .sort((a, b) => Number(a.number) - Number(b.number))
+    .filter((s) => s.homeGames != null && s.awayGames != null)
+    .map((s) => `${s.homeGames}-${s.awayGames}`
+      + (s.tiePoints == null ? '' : `(${s.tiePoints})`))
+    .join(', ');
 }
