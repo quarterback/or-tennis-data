@@ -84,6 +84,7 @@
       </select>
     </label>
     <label>Class <select id="class"><option value="">All</option></select></label>
+    <label>League <select id="league"><option value="">All</option></select></label>
     <input type="search" id="q" placeholder="Find a school…" style="min-width:170px">
   </div>
 
@@ -110,6 +111,8 @@ applyBrand('Scoreboard', {
 const YEARS = [2026];
 let index = null;
 let day = null;
+// school id -> league, for the league filter.
+let byLeague = new Map();
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
   (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -128,7 +131,7 @@ async function boot() {
   const yearSel = document.getElementById('year');
   yearSel.innerHTML = YEARS.map((y) => `<option>${y}</option>`).join('');
   yearSel.onchange = () => loadYear(Number(yearSel.value));
-  for (const el of ['gender', 'class', 'q']) {
+  for (const el of ['gender', 'class', 'league', 'q']) {
     document.getElementById(el).oninput = render;
     document.getElementById(el).onchange = render;
   }
@@ -141,6 +144,25 @@ async function loadYear(year) {
   const classes = [...new Set(index.teams.map((t) => t.classification).filter(Boolean))].sort();
   document.getElementById('class').innerHTML =
     '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
+
+  // League picker, the way a scoreboard offers conference. Grouped under the
+  // classification each league belongs to, so the list reads the way ESPN's
+  // does — the division first, then its conferences.
+  byLeague = new Map();
+  for (const t of index.teams) {
+    if (t.league) byLeague.set(t.id, t.league);
+  }
+  const leagues = new Map();
+  for (const t of index.teams) {
+    if (!t.league) continue;
+    if (!leagues.has(t.classification)) leagues.set(t.classification, new Set());
+    leagues.get(t.classification).add(t.league);
+  }
+  document.getElementById('league').innerHTML = '<option value="">All</option>'
+    + [...leagues.entries()].sort().map(([cls, set]) =>
+      `<optgroup label="${esc(cls)}">`
+      + [...set].sort().map((l) => `<option>${esc(l)}</option>`).join('')
+      + '</optgroup>').join('');
 
   const sel = document.getElementById('date');
   sel.innerHTML = index.dates.map((d) =>
@@ -168,10 +190,15 @@ async function loadDate(date) {
 function visible() {
   const gender = document.getElementById('gender').value;
   const cls = document.getElementById('class').value;
+  const league = document.getElementById('league').value;
   const q = document.getElementById('q').value.trim().toLowerCase();
   return day.duals.filter((d) => {
     if (gender && d.gender !== gender) return false;
     if (cls && d.a.classification !== cls && d.b.classification !== cls) return false;
+    // A league's slate is every dual either of its teams played, non-conference
+    // included — the same as picking a conference on a college scoreboard.
+    if (league && d.a.league !== league && d.b.league !== league
+        && byLeague.get(d.a.id) !== league && byLeague.get(d.b.id) !== league) return false;
     if (q && !`${d.a.name} ${d.b.name}`.toLowerCase().includes(q)) return false;
     return true;
   });
