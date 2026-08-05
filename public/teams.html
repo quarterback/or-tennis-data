@@ -78,11 +78,13 @@ async function boot() {
   document.getElementById('class').innerHTML =
     '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
 
-  for (const id of ['q', 'gender', 'class']) {
-    const el = document.getElementById(id);
-    el.oninput = render;
-    el.onchange = render;
-  }
+  // The search box listens on input only. With change as well, clicking a
+  // result blurred the box, fired change, and re-rendered the list — which
+  // removed the anchor under the cursor before the click landed, so nothing
+  // navigated. The selects legitimately need change.
+  document.getElementById('q').oninput = render;
+  document.getElementById('gender').onchange = render;
+  document.getElementById('class').onchange = render;
   await render();
 }
 

@@ -416,6 +416,20 @@ tr.cutline-label td {
 .print-only { display: none; }
 
 @media (max-width: 720px) {
+  /* iOS zooms the whole page when a control smaller than 16px takes focus,
+     and the zoom does not undo itself. Every control gets 16px and a 40px
+     box — the size a thumb actually hits — rather than each page fixing it
+     locally and missing some. */
+  select, textarea,
+  input[type="search"], input[type="text"], input[type="date"],
+  input[type="number"], input[type="email"], input[type="password"] {
+    font-size: 16px;
+    min-height: 40px;
+  }
+  button, .btn { min-height: 40px; }
+  button.sm, button.tiny { min-height: 32px; }
+  input[type="checkbox"], input[type="radio"] { width: 24px; height: 24px; }
+
   .mast-tagline { display: none; }
   /* Six nav items do not fit a phone on one line. Let them wrap rather than
      push the page wider than the viewport — adding Teams was what tipped it. */

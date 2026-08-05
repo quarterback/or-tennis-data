@@ -228,10 +228,13 @@ async function boot() {
   yearSel.innerHTML = YEARS.map((y) => `<option>${y}</option>`).join('');
   yearSel.onchange = () => loadYear(Number(yearSel.value));
 
-  for (const id of F) {
-    const el = document.getElementById(id);
-    el.oninput = () => { renderActiveFilters(); render(); };
-    el.onchange = () => { renderActiveFilters(); render(); };
+  // Text search listens on input only. Binding change as well means clicking a
+  // result blurs the box, fires change, re-renders the slate, and removes the
+  // link under the cursor before the click lands — so nothing navigates.
+  const refresh = () => { renderActiveFilters(); render(); };
+  document.getElementById('q').oninput = refresh;
+  for (const id of ['gender', 'class', 'league']) {
+    document.getElementById(id).onchange = refresh;
   }
   document.getElementById('drawer-clear').onclick = () => {
     F.forEach((id) => { document.getElementById(id).value = ''; });

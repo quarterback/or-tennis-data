@@ -199,3 +199,21 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 .combo-item:hover, .combo-item.on { background: var(--blue-soft); }
 .combo-sub { margin-left: auto; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
 .combo-empty { padding: 14px 12px; color: var(--muted); font-size: 0.88rem; }
+
+
+@media (max-width: 720px) {
+  /* This sheet loads after brand.css, so its base font-size beats the mobile
+     rule there — equal specificity, later wins. Restated here so a coach
+     tapping a score box on a phone does not get the page zoomed in on them. */
+  select, textarea,
+  input[type="text"], input[type="email"], input[type="date"],
+  input[type="number"], input[type="password"] {
+    font-size: 16px;
+    min-height: 40px;
+  }
+  .setbox input { width: 52px; min-height: 44px; font-size: 17px; }
+  .flight-outcome { font-size: 16px; min-height: 40px; }
+  button, .btn { min-height: 40px; }
+  button.tiny { min-height: 32px; }
+  input[type="checkbox"] { width: 24px; height: 24px; }
+}

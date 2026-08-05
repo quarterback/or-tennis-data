@@ -40,6 +40,13 @@
   .cmp dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 
   @media (max-width: 860px) { .sheet-inner { grid-template-columns: 1fr; } }
+
+  @media (max-width: 720px) {
+    /* The pick box is the one thing a committee actually taps on this page,
+       so it gets a real target rather than a browser-default checkbox. */
+    td .js-pick { width: 26px; height: 26px; }
+    #board td, #board th { padding: 10px 8px; }
+  }
 </style>
 </head>
 <body>
