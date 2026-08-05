@@ -44,9 +44,6 @@ ALIAS = {
  "Riverside, WLWV":"Riverside (West Linn - Wilsonville)","St. Mary's, Medford":"St Mary's of Medford",
  "Ione":"Ione-Heppner",
  "Central":"Central (Independence)",
- # Stanfield-Echo is one co-op program; the data carries it as Stanfield. OSAA
- # lists the two schools separately for classification, but they field one team.
- "Echo":"Stanfield",
  "Milwaukie":"Milwaukie / Milwaukie Acad. of the Arts",
 }
 
@@ -90,9 +87,9 @@ for league, extras in GIRLS_EXTRA.items():
     cls = next(l.split("|")[0] for l in BOYS.strip().splitlines() if l.split("|")[1]==league)
     for school in extras: add("Girls", cls, league, school)
 
-# Echo and Stanfield resolve to the same co-op team, so keep one row for it.
-# Keep the row whose name the data actually uses, so the co-op stays Stanfield
-# rather than becoming Echo on an alphabetical accident.
+# Two schools can still resolve to one id — a genuine co-op, or an alias that
+# turns out to cover both. Keep one row per team, preferring the name the data
+# already uses so a co-op is not renamed by an alphabetical accident.
 seen, deduped = set(), []
 ordered = sorted(rows, key=lambda r: (r["gender"], r["classification"], r["league"],
                                       r["school_name"] != r["matched_name"],
