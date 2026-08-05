@@ -50,7 +50,7 @@
     /* A fixed name column so every score lands in the same place — a schedule
        is scanned down the score, and a ragged one cannot be. The trailing 1fr
        keeps the score near the name instead of at the far edge of a wide page. */
-    grid-template-columns: 20px 20rem 3.5rem 1fr;
+    grid-template-columns: 20rem auto 1fr;
     align-items: baseline;
     gap: 0 10px;
     padding: 5px 2px;
@@ -71,14 +71,14 @@
   .g:hover { background: var(--paper-2); }
   .g[aria-expanded="true"] { background: var(--paper-2); }
 
-  .g .r { font-weight: 700; font-size: 0.95rem; }
+  .g .r { font-weight: 700; font-size: 0.95rem; margin-right: 3px; }
   .g .r.w { color: var(--win); }
   .g .r.l { color: var(--loss); }
   .g .r.t { color: var(--ink-3); }
   .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
   .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.8rem; margin-right: 5px; }
   .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; }
-  .g .when { grid-column: 2 / 5; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
+  .g .when { grid-column: 1 / 4; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
 
   .gbox {
     display: grid; grid-template-rows: 0fr;
@@ -136,8 +136,8 @@
 
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
-    .g { padding: 5px 2px; grid-template-columns: 18px 1fr auto; }
-    .g .when { grid-column: 2 / 4; }
+    .g { padding: 5px 2px; grid-template-columns: 1fr auto; }
+    .g .when { grid-column: 1 / 3; }
   }
 </style>
 </head>
@@ -328,6 +328,22 @@ const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? '
 
 const kindOf = (r) => (r.postseason ? 'Postseason' : (r.league ? 'League' : 'Non-league'));
 
+/**
+ * A dual scoreline, winner first.
+ *
+ * Tennis reports the winning side's figure first — never the home team's, and
+ * never the page's own team's. The export writes it from this team's side, so a
+ * loss arrives as 2-6 and has to be turned round to 6-2. The tiebreak in
+ * parentheses turns with it.
+ */
+function winnerFirst(scoreline) {
+  return String(scoreline || '').replace(/(\d+)-(\d+)/g, (whole, a, b) => {
+    const x = Number(a);
+    const y = Number(b);
+    return x >= y ? `${x}-${y}` : `${y}-${x}`;
+  });
+}
+
 /* `result` is already asymmetric for a dual decided on a tiebreaker: the team
    that took it reads W, the team that lost it reads T, and the scoreline
    carries the figures — Grant 4-4 (7-6) W, Lakeridge 4-4 (6-7) T, one dual.
@@ -350,9 +366,8 @@ function renderSchedule(t, ourClass) {
     // schools sharing a number across classes bothers nobody.
     const rank = r.opponentClassRank ? `#${r.opponentClassRank}` : '';
     return `<button class="g" data-i="${i}" aria-expanded="false">
-        <span class="r ${cls}">${esc(r.result)}</span>
         <span class="opp">${rank ? `<span class="rk">${esc(rank)}</span>` : ''}${esc(r.opponent)}</span>
-        <span class="sc">${esc(r.scoreline)}</span>
+        <span class="sc"><span class="r ${cls}">${esc(r.result)}</span> ${esc(winnerFirst(r.scoreline))}</span>
         <span class="when">${esc(fmtDate(r.date))} &middot; ${esc(kindOf(r))}</span>
       </button>
       <div class="gbox" id="gbox-${i}"><div class="gbox-in"></div></div>`;
