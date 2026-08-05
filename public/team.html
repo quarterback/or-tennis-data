@@ -95,6 +95,9 @@
   .flights .p { font-size: 0.62rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
   .flights .v { font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 
+  /* `display` beats the hidden attribute, so say so. */
+  [hidden] { display: none !important; }
+
   .poschip {
     display: inline-flex; align-items: baseline; gap: 4px;
     background: var(--paper-2); border: 1px solid var(--rule);
@@ -387,7 +390,9 @@ function renderSchedule(t, ourClass) {
  */
 async function storedLadder(key) {
   try {
-    const r = await fetch(`/api/lineups/${encodeURIComponent(key)}`);
+    // The blob id is <year>_<key>, the same one lineups.html writes under.
+    // Fetching the bare key returned nothing, every time, silently.
+    const r = await fetch(`/api/lineups/${encodeURIComponent(`${year}_${key}`)}`);
     if (!r.ok) return null;
     return await r.json();
   } catch { return null; }   // no backend — the derived order stands
