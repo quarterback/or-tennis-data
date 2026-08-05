@@ -151,10 +151,31 @@
     .tabs { gap: 4px; }
     .tabs .tab { flex: 1; text-align: center; padding: 12px 6px; font-size: 0.9rem; }
 
-    /* Ladder: dropdown fills the row, chips wrap; give real tap height */
-    .pos-select { width: 100%; min-width: 0; min-height: 42px; font-size: 16px; }
-    #ladder-table th, #ladder-table td { padding: 8px 6px; }
-    .rank { font-size: 1rem; width: 26px; }
+    /* Ladder becomes one card per player.
+       As a four-column table the name dropdown gets whatever width is left
+       after the position chips, which on a phone is enough for "Eva Bl…".
+       Stacking gives the name the full width and lets the chips wrap under it,
+       which is the only way this is usable on the device most coaches have in
+       their hand at a match. */
+    #ladder-table, #ladder-table tbody, #ladder-table tr, #ladder-table td { display: block; width: 100%; }
+    #ladder-table thead { display: none; }
+    #ladder-table .ladder-row {
+      border: 1px solid var(--line); border-radius: 10px;
+      padding: 10px 12px 12px; margin-bottom: 10px; background: #fff;
+      position: relative;
+    }
+    #ladder-table .ladder-row td { border: 0; padding: 3px 0; }
+    /* Rank sits as a badge in the corner rather than its own column. */
+    #ladder-table .rank {
+      position: absolute; top: 10px; right: 12px; width: auto;
+      font-size: 0.72rem; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .06em;
+    }
+    #ladder-table .rank::before { content: 'Court '; }
+    .pos-select { width: 100%; min-width: 0; min-height: 44px; font-size: 16px; }
+    /* Overall record loses its header when the table stacks, so name it. */
+    #ladder-table .ladder-row td.n { text-align: left; font-size: 0.82rem; color: var(--muted); }
+    #ladder-table .ladder-row td.n::before { content: 'Overall '; }
 
     /* Submit bar stacks */
     .submit-bar { flex-direction: column; align-items: stretch; }
