@@ -104,7 +104,12 @@
   .team-row .score { font-size: 1.45rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 24px; text-align: right; line-height: 1.15; }
   .team-row.won .score, .team-row.won .name { color: var(--ink); }
   .team-row.lost .score, .team-row.lost .name { color: var(--ink-4); }
-  .team-row .pk { font-size: 0.78rem; color: var(--ink-3); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
+  /* The tiebreak reads as one line under the score, the way a soccer page
+     prints PKs (4-3) — not as a figure split across the two team rows. */
+  .game-tb {
+    padding: 0 11px 2px; text-align: right;
+    font-size: 0.72rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+  }
   .game-foot {
     padding: 5px 11px 7px;
     display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--ink-3);
@@ -185,6 +190,8 @@ let byLeague = new Map();
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
   (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const TIEBREAK_LABEL = { sets: 'Sets', games: 'Games' };
 
 const parts = (iso) => String(iso).split('-').map(Number);
 function longDate(iso) {
@@ -333,13 +340,12 @@ function visible() {
 function teamRow(side, dual) {
   const t = dual[side];
   const state = dual.tied ? '' : (dual.winnerId === t.id ? 'won' : 'lost');
-  const pk = dual.tiebreak ? (side === 'a' ? dual.tiebreak.a : dual.tiebreak.b) : '';
+
   // The whole row is the link: wrapping only the name gives a target a few
   // glyphs wide that looks exactly like the text beside it.
   return `<a class="team-row ${state}" href="team.html?s=${encodeURIComponent(t.id)}&g=${esc(String(dual.gender).toLowerCase())}">
     <span class="mark">${state === 'won' ? '\u25B8' : ''}</span>
     <span class="name">${esc(t.name)}${t.record ? ` <span class="rec">${esc(t.record)}</span>` : ''}</span>
-    <span class="pk">${pk === '' ? '' : `(${pk})`}</span>
     <span class="score">${esc(t.score)}</span>
   </a>`;
 }
@@ -359,6 +365,7 @@ function card(d, i) {
     <div class="game-head"><span class="final">${d.tied ? 'Final · Tie' : 'Final'}</span>${tags}</div>
     ${teamRow('a', d)}
     ${teamRow('b', d)}
+    ${d.tiebreak ? `<div class="game-tb">${esc(TIEBREAK_LABEL[d.tiebreak.basis] || d.tiebreak.basis)} (${esc(d.tiebreak.a)}-${esc(d.tiebreak.b)})</div>` : ''}
     <div class="game-meta">${esc(meta)}</div>
     <div class="game-foot"><button class="js-box" data-i="${i}">Box score</button></div>
     <div class="box" id="box-${i}" style="display:none"></div>

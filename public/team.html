@@ -286,6 +286,15 @@ const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? '
 
 const kindOf = (r) => (r.postseason ? 'Postseason' : (r.league ? 'League' : 'Non-league'));
 
+/* `result` is already asymmetric for a dual decided on a tiebreaker: the team
+   that took it reads W, the team that lost it reads T, and the scoreline
+   carries the figures — Grant 4-4 (7-6) W, Lakeridge 4-4 (6-7) T, one dual.
+   Nothing to compute here. */
+
+// The scoreline already carries the tiebreak in parentheses — "4-4 (7-6)" —
+// which is the convention this site has always used and the one a soccer page
+// uses for PKs. Nothing more is needed on the metadata line.
+
 /** The season as a divided list: result, opponent, score; date and type under. */
 function renderSchedule(t, ourClass) {
   const results = (t.results || []).slice()

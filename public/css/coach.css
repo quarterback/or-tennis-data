@@ -145,6 +145,10 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 .winner.home { color: var(--green); }
 .winner.away { color: var(--red); }
 
+/* The automatic tiebreak readout on a level card. */
+.tb-win { color: var(--green); font-weight: 600; }
+.tb-lose { color: var(--red); font-weight: 600; }
+
 /* Sticky save bar */
 .savebar {
   position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line);

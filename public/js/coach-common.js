@@ -233,6 +233,36 @@ export function lineWinner(sets) {
 }
 
 /** Flights won by each side across a card. */
+/**
+ * The tiebreak on a level card — computed, never asked.
+ *
+ * A dual that finishes level goes to sets, then games. Both are already on the
+ * card, so the coach is never asked to nominate a winner: totalling what they
+ * typed is the whole rule. Mirrors `tiebreak_winner` in entered_shape.py, which
+ * is what the pipeline applies on save.
+ *
+ * Returns null when the card is not level, and {basis: null} when sets AND
+ * games are also level — a tie that stays a tie, which is a real result.
+ */
+export function cardTiebreak(lines) {
+  const { home, away } = cardScore(lines);
+  if (home !== away) return null;
+
+  let hs = 0; let as = 0; let hg = 0; let ag = 0;
+  for (const line of lines) {
+    if (line.outcome === 'skipped') continue;
+    for (const set of completeSets(line.sets)) {
+      if (set.homeGames > set.awayGames) hs += 1; else as += 1;
+      hg += set.homeGames;
+      ag += set.awayGames;
+    }
+  }
+
+  if (hs !== as) return { basis: 'sets', home: hs, away: as, homeWon: hs > as };
+  if (hg !== ag) return { basis: 'games', home: hg, away: ag, homeWon: hg > ag };
+  return { basis: null, home: hs, away: as, homeWon: null };
+}
+
 export function cardScore(lines) {
   let home = 0;
   let away = 0;

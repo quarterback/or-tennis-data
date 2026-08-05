@@ -74,6 +74,7 @@
 
 <div class="savebar" id="savebar" style="display:none">
   <span class="score" id="live-score">0&ndash;0</span>
+  <span class="small" id="live-tb"></span>
   <span class="small muted" id="live-label"></span>
   <span class="grow"></span>
   <span class="status" id="status"></span>
@@ -83,7 +84,7 @@
 
 <script type="module">
 import {
-  api, cardProblems, cardScore, completeSets, escapeHtml, FLIGHTS, lastTeam,
+  api, cardProblems, cardScore, cardTiebreak, completeSets, escapeHtml, FLIGHTS, lastTeam,
   lineWinner, OUTCOMES, renderChrome, requireSession, setStatus, teamLabel,
 } from './js/coach-common.js';
 
@@ -545,6 +546,26 @@ function updateScore() {
   const ours = weAreHome() ? home : away;
   const theirs = weAreHome() ? away : home;
   document.getElementById('live-score').innerHTML = `${ours}&ndash;${theirs}`;
+
+  // A level card goes to sets, then games — both already typed, so the coach
+  // is told the outcome rather than asked to nominate one. A card level on all
+  // three stays a tie, which is a real result and not an error.
+  const tb = cardTiebreak(lines);
+  const tbEl = document.getElementById('live-tb');
+  if (!tb) {
+    tbEl.textContent = '';
+    tbEl.className = 'small';
+  } else if (tb.basis === null) {
+    tbEl.textContent = 'level on sets and games — a tie';
+    tbEl.className = 'small muted';
+  } else {
+    const oursV = weAreHome() ? tb.home : tb.away;
+    const theirsV = weAreHome() ? tb.away : tb.home;
+    const weTake = weAreHome() ? tb.homeWon : !tb.homeWon;
+    tbEl.textContent = `${weTake ? 'You take' : 'They take'} the ${tb.basis} `
+      + `tiebreaker ${oursV}\u2013${theirsV}`;
+    tbEl.className = `small ${weTake ? 'tb-win' : 'tb-lose'}`;
+  }
 
   const decided = lines.filter(decidedSide).length;
   const skipped = lines.filter((l) => l.outcome === 'skipped').length;

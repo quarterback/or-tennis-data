@@ -33,7 +33,7 @@ import sys
 from collections import defaultdict
 
 import generate_site as gs
-from scoreline import result_letter, scoreline
+from scoreline import result_letter, scoreline, tiebreak
 from season_duals import load_year
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -282,6 +282,12 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
                 "postseason": d["postseason"],
                 "source": d["source"],
                 "tied": d["tied"],
+                # A 4-4 decided on sets is the tennis equivalent of a shootout:
+                # the dual is a tie, and the parenthetical says who took the
+                # tiebreaker. Null when nothing decided it, which is every
+                # scraped tie — the feed records no winner for those.
+                "tiebreak": (lambda tb: {"basis": tb[0], "ours": tb[1], "theirs": tb[2]}
+                             if tb else None)(tiebreak(d["meet"], sid)),
             }
             results.append(row)
 
