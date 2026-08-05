@@ -165,10 +165,8 @@ CREATE TABLE IF NOT EXISTS dual (
     -- Whether the dual is in league play. Derived from the two schools today,
     -- but a coach can say so directly and leagues change year to year.
     conference     BOOLEAN,
-    -- Where it was played. A dual is at the home team's site unless a
-    -- tournament put both teams somewhere else.
     venue          TEXT     NOT NULL DEFAULT 'home'
-                            CHECK (venue IN ('home', 'neutral')),
+                            CHECK (venue IN ('home', 'away')),
     -- What happened to the fixture, as against `status` below, which is where
     -- the REPORT is in the confirm cycle. A postponed or cancelled dual is a
     -- real row with no card.
