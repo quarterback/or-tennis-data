@@ -23,7 +23,7 @@ export const BRAND = {
   titleSuffix: 'Cheesybook',
 };
 
-/** `document.title` for a page, e.g. "Selection Board — Baseline". */
+/** `document.title` for a page, e.g. "Selection Board — Cheesybook". */
 export function pageTitle(page) {
   return page ? `${page} — ${BRAND.titleSuffix}` : BRAND.titleSuffix;
 }
