@@ -162,6 +162,7 @@
     <section id="tab-ladder" role="tabpanel" hidden>
       <div class="panel">
         <div class="panel-head"><h2>Ladder</h2>
+          <span class="chip aq" id="laddermark" hidden></span>
           <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
         </div>
         <div class="panel-body flush scroll">
@@ -377,6 +378,21 @@ function renderSchedule(t, ourClass) {
   }).join('');
 }
 
+/**
+ * The ladder a coach submitted, if there is one.
+ *
+ * Same endpoint the Lineups page writes to. It is a live read rather than
+ * something baked into the export, because the export runs nightly and a coach
+ * who reorders their ladder expects to see it on their team page now.
+ */
+async function storedLadder(key) {
+  try {
+    const r = await fetch(`/api/lineups/${encodeURIComponent(key)}`);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }   // no backend — the derived order stands
+}
+
 async function loadLineups(schoolId, genderWord) {
   const key = `${String(genderWord).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
   document.getElementById('editladder').href = `lineups.html?team=${encodeURIComponent(key)}`;
@@ -389,6 +405,23 @@ async function loadLineups(schoolId, genderWord) {
     })).ladder || [];
   } catch { return; }
   if (!ladder.length) return;
+
+  // The export carries the order derived from results. A coach who has set a
+  // ladder on the Lineups page has said something different, and that is the
+  // order the team's own page has to show — otherwise submitting a ladder
+  // appears to do nothing until the next nightly export.
+  const stored = await storedLadder(key);
+  if (stored && stored.ladder && stored.ladder.length) {
+    const byPid = new Map(ladder.map((pl) => [String(pl.pid), pl]));
+    const named = stored.ladder.map((pid) => byPid.get(String(pid))).filter(Boolean);
+    const rest = ladder.filter((pl) => !stored.ladder.some((pid) => String(pid) === String(pl.pid)));
+    if (named.length) ladder = [...named, ...rest];
+    const mark = document.getElementById('laddermark');
+    if (mark) {
+      mark.textContent = stored.locked ? 'Coach ladder · locked' : 'Coach ladder';
+      mark.hidden = false;
+    }
+  }
 
   const card = (p) => `player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(p.pid)}`;
 
