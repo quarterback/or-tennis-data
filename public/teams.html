@@ -37,6 +37,9 @@
   table.stand .rec { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; width: 4.5rem; }
   table.stand th.rec { text-align: right; }
   table.stand .lead { font-weight: 700; }
+  /* Too few league matches to be ranked on the record — shown, not hidden. */
+  table.stand tr.short td { color: var(--ink-3); }
+  table.stand tr.short .nm a { color: var(--ink-3); }
 
   .sortby { display: flex; gap: 4px; align-items: center; margin-left: auto; }
   .sortby button { padding: 5px 11px; font-size: 0.78rem; }
@@ -94,6 +97,28 @@ function pct(rec) {
   const [w, l, t] = String(rec || '0-0-0').split('-').map(Number);
   const played = (w || 0) + (l || 0) + (t || 0);
   return played ? ((w || 0) + (t || 0) * 0.5) / played : -1;
+}
+
+function played(rec) {
+  const [w, l, t] = String(rec || '0-0-0').split('-').map(Number);
+  return (w || 0) + (l || 0) + (t || 0);
+}
+
+/**
+ * How many matches a team needs before its record ranks it.
+ *
+ * 1-0-0 is not a better season than 10-1-0, but sorting on percentage says it
+ * is. The bar is half the league's median, so it travels between a twelve-team
+ * district and a five-team one, with a floor of three so a tiny league does not
+ * set it at one. Teams under the bar are listed below, unranked, rather than
+ * hidden — they played, and a committee should see them.
+ */
+function minMatches(counts) {
+  const sorted = [...counts].sort((a, b) => a - b);
+  if (!sorted.length) return 0;
+  const mid = Math.floor(sorted.length / 2);
+  const median = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  return Math.max(3, Math.floor(median / 2));
 }
 
 async function boot() {
@@ -169,13 +194,22 @@ async function render() {
     // other as the tiebreak and Power Index behind that.
     const key = (t) => (sortBy === 'league' ? t.leagueRecord : t.record);
     const other = (t) => (sortBy === 'league' ? t.record : t.leagueRecord);
+
+    const bar = minMatches(ts.map((t) => played(key(t))));
+    // Early in a season nobody has cleared the bar yet. Gating then would
+    // unrank the entire league, so the gate only applies once somebody has
+    // played enough for it to separate anyone.
+    const anyQualify = ts.some((t) => played(key(t)) >= bar);
+    const qualifies = (t) => !anyQualify || played(key(t)) >= bar;
     ts.sort((a, b) =>
-      pct(key(b)) - pct(key(a))
+      (qualifies(b) ? 1 : 0) - (qualifies(a) ? 1 : 0)
+      || pct(key(b)) - pct(key(a))
       || pct(other(b)) - pct(other(a))
       || (b.powerIndex || 0) - (a.powerIndex || 0));
 
-    const rows = ts.map((t, i) => `<tr>
-      <td class="pos">${i + 1}</td>
+    let pos = 0;
+    const rows = ts.map((t) => `<tr class="${qualifies(t) ? '' : 'short'}">
+      <td class="pos">${qualifies(t) ? ++pos : '&mdash;'}</td>
       <td class="nm">${t.classRank ? `<span class="rk">#${t.classRank}</span>` : ''}<a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">${esc(t.name)}</a></td>
       <td class="rec ${sortBy === 'league' ? 'lead' : ''}">${esc(t.leagueRecord || '')}</td>
       <td class="rec ${sortBy === 'overall' ? 'lead' : ''}">${esc(t.record || '')}</td>

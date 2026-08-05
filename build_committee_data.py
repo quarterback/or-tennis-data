@@ -96,6 +96,32 @@ def _league_win_pct(team: dict) -> float | None:
 # allowed to reorder them. Matches the playoff simulator's threshold.
 LEAGUE_H2H_BAND = 0.1
 
+# The fewest league matches a team may have played and still be eligible to be
+# named champion, expressed against the league's median.
+CHAMPION_MIN_FLOOR = 3
+
+
+def _league_played(team: dict) -> int:
+    return ((team.get("league_wins") or 0) + (team.get("league_losses") or 0)
+            + (team.get("league_ties") or 0))
+
+
+def _champion_bar(members: list[dict]) -> int:
+    """Half the league's median, with a floor.
+
+    A 1-0-0 is not a better league season than 10-1-0, but win percentage says
+    it is — and this decides an automatic bid, so it cannot. The bar travels
+    between a twelve-team district and a five-team one instead of being a fixed
+    number, and it is switched off entirely until somebody clears it, so an
+    early-season league is not left with no champion at all.
+    """
+    counts = sorted(_league_played(t) for t in members)
+    if not counts:
+        return 0
+    mid = len(counts) // 2
+    median = counts[mid] if len(counts) % 2 else (counts[mid - 1] + counts[mid]) / 2
+    return max(CHAMPION_MIN_FLOOR, int(median // 2))
+
 
 def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     """The league champion, using the league tiebreakers the site already has.
@@ -127,6 +153,13 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     scored = [(t, p) for t, p in scored if p is not None]
     if not scored:
         return None
+
+    # Teams too far short of the league's usual match count cannot be champion
+    # on a percentage nobody else had the chance to run up.
+    bar = _champion_bar([t for t, _ in scored])
+    eligible = [(t, p) for t, p in scored if _league_played(t) >= bar]
+    if eligible:
+        scored = eligible
 
     order = [t for t, _ in sorted(
         scored, key=lambda x: (x[1], x[0].get("power_index") or 0), reverse=True)]
