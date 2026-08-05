@@ -26,10 +26,24 @@
      sit under in small type. Rows are ~34px so a phone shows eight of them. */
   /* One continuous season log — no container, no rounded rectangle. The rule
      above the first row and between rows is the only structure it needs. */
-  .loghead {
-    font-size: 0.92rem; font-weight: 700; letter-spacing: 0;
-    margin: 22px 0 0; padding-bottom: 5px; border-bottom: 2px solid var(--ink);
+  /* Tabs, so a phone is not scrolling past a sixteen-game log to reach the
+     matrix. The strip scrolls sideways rather than wrapping, which keeps the
+     selected tab and its neighbours on one line at any width. */
+  .tabs {
+    display: flex; gap: 4px; margin: 20px 0 0;
+    border-bottom: 2px solid var(--ink);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
   }
+  .tabs::-webkit-scrollbar { height: 0; }
+  .tabs button {
+    flex: none; background: none; border: 0; border-radius: 0;
+    padding: 8px 12px; font-size: 0.9rem; font-weight: 600;
+    color: var(--ink-3); cursor: pointer; white-space: nowrap;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+  }
+  .tabs button:hover { background: none; color: var(--ink); }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  [role="tabpanel"] { margin-top: 4px; }
   .sched { display: flex; flex-direction: column; }
   .g {
     display: grid;
@@ -41,7 +55,9 @@
     gap: 0 10px;
     padding: 5px 2px;
     line-height: 1.22;
-    border-bottom: 1px solid var(--rule-2);
+    /* The faint rule token disappeared between 48px rows. A game needs to read
+       as its own block at a glance. */
+    border-bottom: 2px solid var(--rule);
     cursor: pointer;
     background: none;
     border-left: 0; border-right: 0; border-top: 0;
@@ -69,7 +85,7 @@
     transition: grid-template-rows .22s ease;
     background: var(--paper-2);
   }
-  .gbox.open { grid-template-rows: 1fr; border-bottom: 1px solid var(--rule-2); }
+  .gbox.open { grid-template-rows: 1fr; border-bottom: 2px solid var(--rule); }
   .gbox > .gbox-in { overflow: hidden; }
   .gbox.open > .gbox-in { overflow-x: auto; }
   @media (prefers-reduced-motion: reduce) { .gbox { transition: none; } }
@@ -131,38 +147,52 @@
       </div>
     </div>
 
-    <h2 class="loghead">Results</h2>
-    <div id="resbody" class="sched"></div>
-
-    <div class="panel">
-      <div class="panel-head"><h2>By position</h2></div>
-      <div class="panel-body"><div class="flights" id="flights"></div></div>
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="results" aria-selected="true">Results</button>
+      <button role="tab" data-tab="ladder" aria-selected="false">Ladder</button>
+      <button role="tab" data-tab="matrix" aria-selected="false">Position matrix</button>
+      <button role="tab" data-tab="byposition" aria-selected="false">By position</button>
     </div>
 
-    <div class="panel">
-      <div class="panel-head"><h2>Ladder</h2>
-        <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
-      </div>
-      <div class="panel-body flush scroll">
-        <table>
-          <thead><tr>
-            <th class="mid">#</th><th>Player</th><th class="mid">Gr</th>
-            <th>Positions played</th><th class="num">Overall</th>
-          </tr></thead>
-          <tbody id="rosbody"></tbody>
-        </table>
-      </div>
-    </div>
+    <section id="tab-results" role="tabpanel">
+      <div id="resbody" class="sched"></div>
+    </section>
 
-    <div class="panel" id="matrix-panel" style="display:none">
-      <div class="panel-head"><h2>Position matrix</h2></div>
-      <div class="panel-body flush scroll">
-        <table class="matrix">
-          <thead><tr id="matrix-head"></tr></thead>
-          <tbody id="matrix-body"></tbody>
-        </table>
+    <section id="tab-ladder" role="tabpanel" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2>Ladder</h2>
+          <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
+        </div>
+        <div class="panel-body flush scroll">
+          <table>
+            <thead><tr>
+              <th class="mid">#</th><th>Player</th><th class="mid">Gr</th>
+              <th>Positions played</th><th class="num">Overall</th>
+            </tr></thead>
+            <tbody id="rosbody"></tbody>
+          </table>
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section id="tab-matrix" role="tabpanel" hidden>
+      <div class="panel" id="matrix-panel" style="display:none">
+        <div class="panel-head"><h2>Position matrix</h2></div>
+        <div class="panel-body flush scroll">
+          <table class="matrix">
+            <thead><tr id="matrix-head"></tr></thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-byposition" role="tabpanel" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2>By position</h2></div>
+        <div class="panel-body"><div class="flights" id="flights"></div></div>
+      </div>
+    </section>
   </div>
 
   <div id="missing" class="empty" style="display:none"></div>
@@ -438,6 +468,25 @@ async function loadLineups(schoolId, genderWord) {
       + `<td class="slot">${p.total ?? ''}</td></tr>`;
   }).join('');
 }
+
+const TABS = ['results', 'ladder', 'matrix', 'byposition'];
+
+/** Show one panel. The name lives in the hash so a tab can be linked to. */
+function showTab(name, push) {
+  if (!TABS.includes(name)) name = TABS[0];
+  for (const t of TABS) {
+    document.getElementById(`tab-${t}`).hidden = t !== name;
+    document.querySelector(`.tabs [data-tab="${t}"]`)
+      .setAttribute('aria-selected', String(t === name));
+  }
+  if (push) history.replaceState(null, '', `#${name}`);
+}
+
+document.querySelectorAll('.tabs [data-tab]').forEach((b) => {
+  b.onclick = () => showTab(b.dataset.tab, true);
+});
+window.addEventListener('hashchange', () => showTab(location.hash.slice(1), false));
+showTab(location.hash.slice(1) || 'results', false);
 
 boot();
 </script>
