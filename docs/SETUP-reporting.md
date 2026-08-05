@@ -39,19 +39,7 @@ Then in Netlify → **Site configuration → Environment variables**, add:
 The free tier is far more than this needs — a whole season of Oregon tennis is
 a few megabytes.
 
-## 2. Create the tables (~1 minute)
-
-The schema lives in `db/schema.sql`. Apply it once:
-
-```
-psql "postgresql://…the same connection string…" -f db/schema.sql
-```
-
-If you do not have `psql`, Neon's dashboard has an **SQL Editor** — paste the
-contents of `db/schema.sql` into it and run. The file is safe to run twice;
-every statement is `CREATE … IF NOT EXISTS`.
-
-## 3. Two secrets (~2 minutes)
+## 2. Two secrets (~2 minutes)
 
 Still in Netlify → **Site configuration → Environment variables**:
 
@@ -63,18 +51,22 @@ Still in Netlify → **Site configuration → Environment variables**:
 That is the required set. Redeploy (or trigger any deploy) so the functions
 pick them up.
 
-## 4. Load the teams and rosters (~2 minutes)
+## 3. Create the tables and load the teams (~2 minutes, one command)
 
-This fills in the 266 team-seasons, the coach email addresses already in the
-scraped data, and last season's rosters carried forward:
+This creates the tables on first run, then fills in the 266 team-seasons, the
+coach email addresses already in the scraped data, and last season's rosters
+carried forward:
 
 ```
-export DATABASE_URL="postgresql://…"
+export DATABASE_URL="postgresql://…the connection string…"
 pip install "psycopg[binary]"
 python scripts/seed_reporting_db.py --year 2027
 ```
 
-Add `--dry-run` first if you want to see the counts without writing anything.
+Run `--dry-run` first if you want to see the counts without writing anything.
+Both steps are safe to repeat: the schema is `CREATE … IF NOT EXISTS`
+throughout and the seed is idempotent, so re-running as staff and rosters
+change is the intended way to use it.
 
 ---
 

@@ -199,6 +199,35 @@ def seed(conn, year: int, source_season: int, carry_roster: bool, dry_run: bool)
     return stats
 
 
+def ensure_schema(conn) -> bool:
+    """Create the tables if they are not there yet.
+
+    Applying db/schema.sql used to be a separate step needing psql on the
+    command line, which is a real obstacle for someone who has never run a
+    database before — and forgetting it produces a confusing "relation does not
+    exist" rather than an obvious "you skipped a step". Every statement in the
+    schema is CREATE … IF NOT EXISTS, so running it against an existing
+    database changes nothing.
+
+    Returns True if the schema was applied.
+    """
+    with conn.cursor() as cur:
+        cur.execute("SELECT to_regclass('public.team_season') IS NOT NULL")
+        if cur.fetchone()[0]:
+            return False
+
+    schema = os.path.join(ROOT, "db", "schema.sql")
+    if not os.path.exists(schema):
+        raise SystemExit(f"tables are missing and {schema} is not there to create them")
+    print(f"First run against this database — applying db/schema.sql…")
+    with open(schema, encoding="utf-8") as fh:
+        sql = fh.read()
+    with conn.cursor() as cur:
+        cur.execute(sql)
+    conn.commit()
+    return True
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--year", type=int, required=True, help="season to seed")
@@ -219,9 +248,11 @@ def main(argv=None):
         print(f"  {len(coaches)} coach emails and {players} players found in {source}")
         return 0
 
-    url = os.environ.get("DATABASE_URL")
+    url = os.environ.get("DATABASE_URL") or os.environ.get("NETLIFY_DATABASE_URL")
     if not url:
-        print("DATABASE_URL is not set", file=sys.stderr)
+        print("DATABASE_URL is not set.\n"
+              "Copy the connection string from your database provider and:\n"
+              "  export DATABASE_URL='postgresql://…'", file=sys.stderr)
         return 1
     try:
         import psycopg
@@ -230,6 +261,7 @@ def main(argv=None):
         return 1
 
     with psycopg.connect(url) as conn:
+        ensure_schema(conn)
         stats = seed(conn, args.year, source, not args.no_roster, False)
 
     print(f"Seeded {args.year} from {source}: "
