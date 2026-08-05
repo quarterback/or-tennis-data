@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cheesybook</title>
+<meta name="description" content="Report and read Oregon high school tennis dual matches.">
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="coach.webmanifest">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* The front door. Every other page in the product links back here, and this
+     is the one URL worth remembering or handing to somebody. It is built so it
+     could become the index of its own domain without changing: every link is
+     relative and nothing on it assumes it sits inside oregontennis.org. */
+  .hero {
+    background: var(--mast);
+    color: var(--mast-fg);
+    padding: 54px 0 48px;
+  }
+  .hero .wrap { padding-bottom: 0; }
+  .hero .mark {
+    font-family: var(--brand-font);
+    font-size: clamp(2.6rem, 9vw, 4.2rem);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .hero .say {
+    font-size: 1.02rem;
+    max-width: 48ch;
+    margin: 14px 0 0;
+    color: #f0dcd6;
+  }
+  .hero .rule { height: 4px; width: 74px; background: var(--brand-pop); margin: 20px 0 0; border-radius: 2px; }
+
+  .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 14px; margin: -30px 0 0; }
+  .door {
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    padding: 18px 18px 16px;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .door:hover { border-color: var(--accent); text-decoration: none; }
+  .door h2 {
+    font-family: var(--display-font);
+    font-size: 1.16rem;
+    margin: 0 0 5px;
+    letter-spacing: .01em;
+    color: var(--ink);
+  }
+  .door p { margin: 0; font-size: 0.87rem; color: var(--ink-3); }
+  .door .who {
+    display: inline-block; margin-top: 11px; font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em; color: var(--accent-2);
+    background: var(--accent-wash); padding: 2px 8px; border-radius: 999px;
+  }
+
+  /* Palette preview. Unlabelled swatches, bottom of the page — this is here to
+     choose a scheme before launch, not a setting anyone needs after. */
+  .palettes { display: flex; gap: 8px; align-items: center; margin-top: 34px; }
+  .palettes .k { font-size: 0.7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); margin-right: 4px; }
+  .sw { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--rule); cursor: pointer; padding: 0; }
+  .sw.on { border-color: var(--ink); }
+  .sw.cheese { background: linear-gradient(135deg, #6a3937 50%, #ffd800 50%); }
+  .sw.cool   { background: linear-gradient(135deg, #274156 50%, #1c6e8c 50%); }
+  .sw.warm   { background: linear-gradient(135deg, #412234 50%, #e35226 50%); }
+
+  footer { margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 0.82rem; color: var(--ink-3); }
+  footer a { margin-right: 16px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1 class="mark">Cheesybook</h1>
+    <p class="say">Oregon high school tennis.</p>
+    <div class="rule"></div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doors">
+    <a class="door" href="coach.html">
+      <h2>Report a dual</h2>
+      <p>Enter your match, flight by flight.</p>
+      <span class="who">Coaches</span>
+    </a>
+    <a class="door" href="scoreboard.html">
+      <h2>Scoreboard</h2>
+      <p>Every dual by date, with box scores.</p>
+      <span class="who">Everyone</span>
+    </a>
+    <a class="door" href="lineups.html">
+      <h2>Lineups</h2>
+      <p>Ladders and position matrices.</p>
+      <span class="who">Coaches &middot; Committees</span>
+    </a>
+  </div>
+
+  <div class="palettes">
+    <span class="k">Palette</span>
+    <button class="sw cheese" data-p="cheese" title="Cheese"></button>
+    <button class="sw cool" data-p="cool" title="Slate and cerulean"></button>
+    <button class="sw warm" data-p="warm" title="Paprika and midnight violet"></button>
+  </div>
+
+  <footer>
+    <a href="index.html">Oregon HS Tennis rankings</a>
+    <a href="seeding/2026/index.html">League seeding packets</a>
+    <a href="api/setup">Setup check</a>
+  </footer>
+</div>
+
+<script type="module">
+import { BRAND } from './js/brand.js';
+
+document.title = BRAND.name;
+document.querySelector('.mark').textContent = BRAND.name;
+
+const current = () => localStorage.getItem('cb_palette') || 'cheese';
+function paintSwatches() {
+  document.querySelectorAll('.sw').forEach((b) =>
+    b.classList.toggle('on', b.dataset.p === current()));
+}
+document.querySelectorAll('.sw').forEach((b) => {
+  b.onclick = () => {
+    localStorage.setItem('cb_palette', b.dataset.p);
+    // The attribute drives every page; setting it here shows the change now,
+    // and the head snippet re-applies it on the next page.
+    if (b.dataset.p === 'cheese') document.documentElement.removeAttribute('data-palette');
+    else document.documentElement.setAttribute('data-palette', b.dataset.p);
+    paintSwatches();
+  };
+});
+paintSwatches();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team Roster — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<link rel="stylesheet" href="css/coach.css">
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"></div></nav>
+<header class="hero"><div class="container"></div></header>
+
+<div class="container">
+  <div id="signin" style="display:none"></div>
+  <div id="app" style="display:none">
+    <div class="header-bar">
+      <label>Team <select id="team-picker"></select></label>
+      <span class="small muted" id="counts"></span>
+      <span class="status" id="status" style="margin-left:auto"></span>
+    </div>
+
+    <p class="lede">Your roster is what keeps a player's record together across
+    the season &mdash; the ladder, the position matrix and the flight records all
+    follow these names. Returning players were carried over from last season, so
+    most of this should already be right.</p>
+
+    <div class="card">
+      <div class="card-head">Add a player</div>
+      <div class="card-body">
+        <div class="row">
+          <input type="text" id="first" placeholder="First name" autocomplete="off">
+          <input type="text" id="last" placeholder="Last name" autocomplete="off">
+          <select id="grade">
+            <option value="">Grade</option>
+            <option>9</option><option>10</option><option>11</option><option>12</option>
+          </select>
+          <button id="add">Add</button>
+        </div>
+        <details style="margin-top:12px">
+          <summary class="small muted" style="cursor:pointer">Paste a whole roster</summary>
+          <p class="small muted" style="margin:8px 0">One name per line, either
+          &ldquo;First Last&rdquo; or &ldquo;Last, First&rdquo;.</p>
+          <textarea id="bulk" placeholder="Ada Lovelace&#10;Curie, Marie"></textarea>
+          <button class="ghost" id="import" style="margin-top:8px">Add these players</button>
+        </details>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span>Roster</span>
+        <span class="small muted" id="inactive-note" style="margin-left:auto"></span>
+      </div>
+      <div class="card-body">
+        <div id="roster-empty" class="empty">No players yet. Add them above.</div>
+        <div class="table-wrap">
+          <table id="roster-table" style="display:none">
+            <thead><tr>
+              <th>Player</th><th class="n">Grade</th><th class="n">Carried over</th>
+              <th class="n">Status</th><th></th>
+            </tr></thead>
+            <tbody id="roster-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import {
+  api, escapeHtml, lastTeam, renderChrome, requireSession, setStatus, teamLabel,
+} from './js/coach-common.js';
+
+renderChrome({ title: 'Team Roster', subtitle: '' });
+
+let teams = [];
+let team = null;
+let players = [];
+
+async function boot() {
+  const s = await requireSession();
+  if (!s) return;
+  teams = s.teams || [];
+  if (!teams.length) return;
+
+  document.getElementById('app').style.display = '';
+  const picker = document.getElementById('team-picker');
+  picker.innerHTML = teams.map((t) =>
+    `<option value="${t.id}">${escapeHtml(teamLabel(t))}</option>`).join('');
+  const remembered = lastTeam.get();
+  if (remembered && teams.some((t) => Number(t.id) === remembered)) picker.value = remembered;
+  picker.onchange = () => load(Number(picker.value));
+
+  document.getElementById('add').onclick = addPlayer;
+  document.getElementById('import').onclick = importRoster;
+  await load(Number(picker.value));
+}
+
+async function load(id) {
+  team = teams.find((t) => Number(t.id) === id);
+  lastTeam.set(id);
+  document.querySelector('.hero p').textContent = teamLabel(team);
+  const res = await api(`/api/roster/${id}`);
+  players = res.players;
+  render();
+}
+
+function render() {
+  const active = players.filter((p) => p.active);
+  document.getElementById('counts').textContent =
+    `${active.length} active player${active.length === 1 ? '' : 's'}`;
+  const inactive = players.length - active.length;
+  document.getElementById('inactive-note').textContent =
+    inactive ? `${inactive} inactive` : '';
+
+  const table = document.getElementById('roster-table');
+  const empty = document.getElementById('roster-empty');
+  if (!players.length) {
+    table.style.display = 'none';
+    empty.style.display = '';
+    return;
+  }
+  table.style.display = '';
+  empty.style.display = 'none';
+
+  document.getElementById('roster-body').innerHTML = players.map((p) => `
+    <tr${p.active ? '' : ' style="opacity:.55"'}>
+      <td>${escapeHtml(p.last_name)}, ${escapeHtml(p.first_name)}</td>
+      <td class="n">${p.grade ? `<span class="pill grade">${escapeHtml(p.grade)}</span>` : ''}</td>
+      <td class="n small muted">${p.tr_player_id ? 'yes' : ''}</td>
+      <td class="n"><span class="pill ${p.active ? 'ok' : ''}">${p.active ? 'Active' : 'Inactive'}</span></td>
+      <td><button class="ghost tiny js-toggle" data-id="${p.id}">
+        ${p.active ? 'Deactivate' : 'Reactivate'}</button></td>
+    </tr>`).join('');
+
+  document.querySelectorAll('.js-toggle').forEach((b) => { b.onclick = toggle; });
+}
+
+async function addPlayer() {
+  const status = document.getElementById('status');
+  const firstName = document.getElementById('first').value.trim();
+  const lastName = document.getElementById('last').value.trim();
+  if (!firstName || !lastName) return setStatus(status, 'Both names are required.', 'err');
+  try {
+    const res = await api(`/api/roster/${team.id}`, {
+      method: 'POST',
+      body: JSON.stringify({ firstName, lastName, grade: document.getElementById('grade').value }),
+    });
+    players = res.players;
+    document.getElementById('first').value = '';
+    document.getElementById('last').value = '';
+    document.getElementById('first').focus();
+    render();
+    setStatus(status, `${firstName} ${lastName} added.`);
+  } catch (e) {
+    setStatus(status, e.message, 'err');
+  }
+}
+
+async function importRoster() {
+  const status = document.getElementById('status');
+  const text = document.getElementById('bulk').value;
+  if (!text.trim()) return setStatus(status, 'Paste some names first.', 'err');
+  try {
+    const res = await api(`/api/roster/${team.id}/import`, {
+      method: 'POST', body: JSON.stringify({ text }),
+    });
+    players = res.players;
+    document.getElementById('bulk').value = '';
+    render();
+    setStatus(status, `${res.added} name${res.added === 1 ? '' : 's'} added.`);
+  } catch (e) {
+    setStatus(status, e.message, 'err');
+  }
+}
+
+async function toggle(e) {
+  const id = Number(e.target.dataset.id);
+  const player = players.find((p) => Number(p.id) === id);
+  const status = document.getElementById('status');
+  try {
+    await api(`/api/roster/player/${id}`, {
+      method: 'PATCH', body: JSON.stringify({ active: !player.active }),
+    });
+    // Deactivating never deletes: a player who leaves the team mid-season still
+    // played the matches they played, and those records point at this row.
+    player.active = !player.active;
+    render();
+    setStatus(status, 'Roster updated.');
+  } catch (err) {
+    setStatus(status, err.message, 'err');
+  }
+}
+
+boot();
+</script>
+</body>
+</html>

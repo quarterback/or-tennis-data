@@ -1,14 +1,50 @@
 name: Fetch Tennis Data
 
 on:
-  # Schedule disabled for the off-season. The 2027 season starts the
-  # 2nd week of March 2027 — re-enable then (and bump --year to 2027):
-  # schedule:
-  #   - cron: '0 */4 * 3-6 *'  # every 4 hours, March-June only
+  # March–June only, every 4 hours. The 2027 season starts the second week of
+  # March; outside those months this never fires, so it is safe to leave armed.
+  schedule:
+    - cron: '0 */4 * 3-6 *'
   workflow_dispatch: # Allow manual triggers
+    inputs:
+      year:
+        description: 'Season to refresh'
+        required: false
+        default: '2027'
+  # Run the tests on every pull request. Without this the suite only ever runs
+  # ahead of a scheduled refresh, which means a change can be reviewed and
+  # merged without anything having executed it.
+  pull_request:
+  push:
+    branches: [main]
+
+env:
+  SEASON: ${{ github.event.inputs.year || '2027' }}
 
 jobs:
+  # Gate the data commit on the test suite. This pipeline writes the numbers the
+  # site publishes; a broken adapter or a shifted Power Index should stop the
+  # run, not get committed at four in the morning.
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: node --test "tests/functions/*.test.mjs"
+
+  # Only the scheduled and manual runs fetch and commit. A pull request runs the
+  # tests and stops — it must never push data to the branch it is reviewing.
   fetch-data:
+    needs: test
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -23,17 +59,31 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install requests geopy numpy
+        run: pip install requests geopy numpy 'psycopg[binary]'
 
       - name: Discover active schools (most wins)
-        run: python fetch_most_wins.py --year 2026
+        run: python fetch_most_wins.py --year "$SEASON"
 
       - name: Fetch boys data
-        run: python fetch_data.py --year 2026 --gender 1 --output data/2026
+        run: python fetch_data.py --year "$SEASON" --gender 1 --output "data/$SEASON"
 
       - name: Fetch girls data
-        run: python fetch_data.py --year 2026 --gender 2 --output data/2026
+        run: python fetch_data.py --year "$SEASON" --gender 2 --output "data/$SEASON"
 
+      # Coach-entered duals. continue-on-error is on the export ONLY: a database
+      # blip must never take the site build down. With no bundle the merge is a
+      # no-op and the site builds from the scrape alone, exactly as it does today.
+      - name: Export coach-entered duals
+        continue-on-error: true
+        env:
+          DATABASE_URL_RO: ${{ secrets.DATABASE_URL_RO }}
+        run: python export_entered_meets.py --year "$SEASON"
+
+      - name: Merge entered duals over the scrape
+        run: python merge_entered_data.py --year "$SEASON"
+
+      # generate_site.py also builds the lineup data, the seeding packets, the
+      # scoreboard and the committee evaluation data.
       - name: Regenerate site
         run: python generate_site.py
 
@@ -44,5 +94,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/2026/ index.html public/ oregon_schools.csv
-          git diff --staged --quiet || (git commit -m "Update 2026 tennis data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push)
+          git add "data/$SEASON/" index.html public/ oregon_schools.csv
+          [ -d data_jv ] && git add data_jv/ || true
+          [ -d entered ] && git add entered/ || true
+          git diff --staged --quiet || (git commit -m "Update $SEASON tennis data $(date -u '+%Y-%m-%d %H:%M UTC')" && git push)

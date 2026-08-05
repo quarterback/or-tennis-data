@@ -353,11 +353,21 @@ def dedupe_meets(meets):
 
     Two dual meets with the same date and same pair of school IDs are treated as
     duplicates even if the meet-level scores differ slightly (coaches sometimes
-    record different flights). Keeps the entry with the most completed flight
-    match data; ties broken by lowest meet id.
+    record different flights). A coach-entered meet always beats a scraped one;
+    among meets from the same source, keeps the entry with the most completed
+    flight match data, ties broken by lowest meet id.
+
+    The source rank is the second of two independent guards against a dual being
+    counted twice — merge_entered_data.py already removes the scraped twin before
+    the file is written. Keeping the rule here as well means a missed removal
+    degrades to "the scraped copy is ignored" rather than to inflated records.
     """
     if not meets:
         return meets
+
+    def source_rank(meet):
+        """1 for a coach-entered meet, 0 for a scraped one."""
+        return 1 if meet.get('source') == 'entered' else 0
 
     def flight_count(meet):
         n = 0
@@ -388,8 +398,8 @@ def dedupe_meets(meets):
         if key in seen:
             idx = seen[key]
             kept = result[idx]
-            new_score = (flight_count(meet), -(meet.get('id') or 0))
-            old_score = (flight_count(kept), -(kept.get('id') or 0))
+            new_score = (source_rank(meet), flight_count(meet), -(meet.get('id') or 0))
+            old_score = (source_rank(kept), flight_count(kept), -(kept.get('id') or 0))
             if new_score > old_score:
                 result[idx] = meet
         else:
@@ -398,12 +408,29 @@ def dedupe_meets(meets):
     return result
 
 
-def get_meet_result(meet, school_id):
+def get_meet_result(meet, school_id, for_h2h=False):
     """Determine if a school won, lost, or tied a meet.
 
     Uses flight scores first. When scores are equal, falls back to
-    winnerSchoolId which tennisreporting.com sets based on the Oregon
-    tiebreaker (sets won, then games won).
+    winnerSchoolId, which is set by the Oregon tiebreaker (sets won, then games
+    won).
+
+    **A team that loses a 4-4 tiebreaker is recorded with a TIE, not a loss.**
+    The dual was level on the court; the tiebreaker decides who advances and who
+    takes the win, but it does not turn the other team's afternoon into a defeat.
+    This is the NHL's overtime-loss convention, and it matters here because these
+    records feed playoff seeding: win percentage counts a tie as half a win
+    (`wp = (wins + ties * 0.5) / total`), which is exactly what a 4-4 is worth.
+    Charging a full loss would understate a team that never lost the dual.
+
+    The consequence is that wins and losses do not balance statewide — one team
+    banks a win, the other a tie. That asymmetry is deliberate.
+
+    `for_h2h=True` asks the other question: who won the meeting. **Losing a
+    tiebreaker does lose the head-to-head**, so this returns 'loss' where the
+    record returns 'tie'. Seeding arguments turn on "did you beat them", and the
+    answer there is no. Use it for head-to-head comparisons only; every W-L-T
+    record on the site uses the default.
 
     Returns 'win', 'loss', or 'tie'.
     """
@@ -433,14 +460,18 @@ def get_meet_result(meet, school_id):
     elif school_score < opponent_score:
         return 'loss'
 
-    # Scores tied — check winnerSchoolId (tiebreaker: sets, then games)
+    # Scores tied — check winnerSchoolId (tiebreaker: sets, then games).
+    # The tiebreak winner takes the win; the other side keeps a tie.
     winner_school_id = meet.get('winnerSchoolId')
     if winner_school_id is not None:
         if winner_school_id == school_id:
             return 'win'
-        else:
+        # Head to head asks who won the meeting, and they did not.
+        if for_h2h:
             return 'loss'
 
+    # Covers both the tiebreak loser and a dual left level by mutual agreement —
+    # coaches are not obliged to break a tie, and the system does not force it.
     return 'tie'
 
 
@@ -595,7 +626,8 @@ def get_head_to_head(school1_meets, school1_id, school2_id):
         if school2_id not in all_ids:
             continue
 
-        result = get_meet_result(meet, school1_id)
+        # Head to head, not the record: a lost tiebreaker is a lost meeting.
+        result = get_meet_result(meet, school1_id, for_h2h=True)
         if result == 'win':
             wins += 1
         elif result == 'loss':
@@ -670,7 +702,8 @@ def get_head_to_head_detailed(school1_meets, school1_id, school2_id):
                                         fws2 += weight
                                     break
 
-            result = get_meet_result(meet, school1_id)
+            # Head to head, not the record: a lost tiebreaker is a lost meeting.
+            result = get_meet_result(meet, school1_id, for_h2h=True)
             if result is None:
                 result = 'tie'
 
@@ -925,12 +958,17 @@ def build_rankings(data_dir, master_school_list):
         if not year_dir.is_dir():
             continue
         year = year_dir.name
-        if not year.isdigit() or int(year) < 2021 or int(year) > 2026:
+        if not year.isdigit() or int(year) < 2021 or int(year) > 2027:
             continue
 
         print(f"Processing year {year}...")
 
-        for json_file in year_dir.glob('school_*_gender_*.json'):
+        # Sorted: glob() returns directory order, which differs between a local
+        # checkout and the Actions runner. Ranked teams are emitted in rank order
+        # regardless, but unranked (NR) teams are appended as encountered, so an
+        # unsorted glob made processed_rankings.json churn between machines with
+        # no change in any value.
+        for json_file in sorted(year_dir.glob('school_*_gender_*.json')):
             parts = json_file.stem.split('_')
             school_id = int(parts[1])
             gender_id = int(parts[3])
@@ -2082,36 +2120,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
         footer a {{ color: #6c757d; font-size: 12px; }}
 
-        .sd1-banner {{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 18px;
-            background: linear-gradient(90deg, #198754 0%, #157347 100%);
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            border-bottom: 1px solid rgba(0,0,0,0.15);
-            transition: filter 0.15s;
-        }}
-        .sd1-banner:hover, .sd1-banner:focus {{ filter: brightness(1.08); color: #fff; }}
-        .sd1-banner-tag {{
-            background: rgba(255,255,255,0.22);
-            border: 1px solid rgba(255,255,255,0.4);
-            border-radius: 3px;
-            padding: 2px 7px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-        }}
-        .sd1-banner-text {{ flex: 1; }}
-        .sd1-banner-arrow {{ font-size: 16px; opacity: 0.85; }}
-        @media (max-width: 600px) {{
-            .sd1-banner {{ font-size: 13px; padding: 8px 12px; }}
-            .sd1-banner-text {{ font-size: 12px; }}
-        }}
-
         /* Responsive design for mobile devices */
         @media (max-width: 768px) {{
             .navbar {{ padding: 10px 0; }}
@@ -2462,12 +2470,10 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         </div>
     </div>
 
+    <!-- Cheesybook is deliberately NOT linked here yet — it goes into the nav
+         when it launches, not before. -->
     <footer>
         <a href="changelog.html">Changelog</a>
-        &middot;
-        <a href="sd1-live-bracket.html">SD1 Live Bracket</a>
-        &middot;
-        <a href="sd1-printable-bracket.html">SD1 Printable Bracket</a>
         &middot;
         <a href="?view=analysis" id="adminLink">Admin Analysis</a>
     </footer>
@@ -4390,260 +4396,6 @@ def _full_name(player):
     return (fn + ' ' + ln).strip()
 
 
-def build_sd1_girls_seeding_data(data_dir, school_info, year='2026'):
-    """Per-player singles + doubles records for every SD1 girls program.
-
-    Output shape:
-      { school_id: {'name': str, 'players': { player_name: {
-            'singles': [match...],
-            'doubles': { partner_name: [match...] } } } } }
-    Each match dict carries date, flight, opp_name(/opp_pair), opp_school,
-    opp_school_id, won, sets ([(my_games, opp_games), ...]), in_league.
-    """
-    sd1_ids = {sid for sid, info in school_info.items()
-               if info.get('league') == 'Special District 1'}
-    year_dir = data_dir / year
-    schools = {}
-    for sid in sorted(sd1_ids):
-        path = year_dir / f'school_{sid}_gender_2.json'
-        if not path.exists():
-            continue
-        with open(path) as f:
-            data = json.load(f)
-        meets = dedupe_meets(data.get('meets', []) or [])
-        players = {}
-        for meet in meets:
-            if not is_dual_match(meet):
-                continue
-            mdate = (meet.get('meetDateTime') or '')[:10]
-            for category, key in [('Singles', 'singles'), ('Doubles', 'doubles')]:
-                for match in (meet.get('matches', {}) or {}).get(category, []) or []:
-                    if match.get('isNotVarsity'):
-                        continue
-                    teams = match.get('matchTeams') or []
-                    if len(teams) != 2:
-                        continue
-                    our_team = next((t for t in teams
-                                     if any(p.get('schoolId') == sid for p in t.get('players', []))), None)
-                    if not our_team:
-                        continue
-                    opp_team = teams[0] if teams[1]['id'] == our_team['id'] else teams[1]
-                    our_players = our_team.get('players') or []
-                    opp_players = opp_team.get('players') or []
-                    expected = 1 if category == 'Singles' else 2
-                    if len(our_players) < expected or len(opp_players) < expected:
-                        continue
-                    won = match.get('winnerTeamId') == our_team['id']
-                    our_id_str = str(our_team['id'])
-                    opp_id_str = str(opp_team['id'])
-                    set_scores = []
-                    for s in match.get('sets', []) or []:
-                        a = s.get(our_id_str)
-                        b = s.get(opp_id_str)
-                        if a is not None and b is not None:
-                            set_scores.append((a, b))
-                    opp_school_id = opp_players[0].get('schoolId')
-                    opp_school = (opp_players[0].get('school') or {}).get('name', '')
-                    in_league = opp_school_id in sd1_ids
-                    flight = match.get('flight')
-                    base = {'date': mdate, 'flight': flight, 'opp_school': opp_school,
-                            'opp_school_id': opp_school_id, 'won': won, 'sets': set_scores,
-                            'in_league': in_league}
-                    if category == 'Singles':
-                        me = _full_name(our_players[0])
-                        if not me:
-                            continue
-                        opp_name = _full_name(opp_players[0])
-                        rec = dict(base, opp_name=opp_name)
-                        players.setdefault(me, {'singles': [], 'doubles': {}})['singles'].append(rec)
-                    else:
-                        p1, p2 = _full_name(our_players[0]), _full_name(our_players[1])
-                        opp_pair = ' / '.join(filter(None, [_full_name(opp_players[0]),
-                                                            _full_name(opp_players[1])]))
-                        for me, partner in ((p1, p2), (p2, p1)):
-                            if not me:
-                                continue
-                            rec = dict(base, opp_pair=opp_pair, partner=partner)
-                            slot = players.setdefault(me, {'singles': [], 'doubles': {}})
-                            slot['doubles'].setdefault(partner, []).append(rec)
-        schools[sid] = {'name': school_info[sid]['name'], 'players': players}
-    return schools
-
-
-def render_sd1_seeding_page(schools, out_path):
-    """Render the SD1 girls seeding-data report."""
-    import html as _html
-
-    def _summarize(matches):
-        w = sum(1 for m in matches if m['won'])
-        l = len(matches) - w
-        lw = sum(1 for m in matches if m['won'] and m['in_league'])
-        ll = sum(1 for m in matches if (not m['won']) and m['in_league'])
-        return w, l, lw, ll
-
-    def _set_str(sets):
-        return ', '.join(f'{a}-{b}' for a, b in sets) if sets else '—'
-
-    def _result_badge(won):
-        cls = 'w' if won else 'l'
-        text = 'W' if won else 'L'
-        return f'<span class="res {cls}">{text}</span>'
-
-    sections = []
-    toc_items = []
-    ordered = sorted(schools.items(), key=lambda kv: kv[1]['name'].lower())
-    for sid, sch in ordered:
-        anchor = f'school-{sid}'
-        toc_items.append(f'<li><a href="#{anchor}">{_html.escape(sch["name"])}</a> '
-                         f'<span class="muted">({len(sch["players"])} players)</span></li>')
-        if not sch['players']:
-            sections.append(f'<section id="{anchor}"><h2>{_html.escape(sch["name"])}</h2>'
-                            f'<p class="muted">No 2026 dual-match data found.</p></section>')
-            continue
-
-        # Order players by total matches descending so the most-active are on top.
-        ordered_players = sorted(
-            sch['players'].items(),
-            key=lambda kv: (-(len(kv[1]['singles']) + sum(len(v) for v in kv[1]['doubles'].values())),
-                            kv[0].lower()))
-
-        rows = []
-        for pname, pdata in ordered_players:
-            singles = sorted(pdata['singles'], key=lambda m: (m['date'], m['flight'] or ''))
-            doubles_by_partner = pdata['doubles']
-            sw, sl, slw, sll = _summarize(singles)
-            # Aggregate doubles across partners for the player header.
-            all_d = [m for ms in doubles_by_partner.values() for m in ms]
-            dw, dl, dlw, dll = _summarize(all_d)
-            singles_seedable = '✓' if slw + sll >= 2 else '✗'
-
-            blocks = []
-            blocks.append(
-                f'<div class="player-head">'
-                f'<h3>{_html.escape(pname)}</h3>'
-                f'<div class="meta">'
-                f'<span>Singles: <b>{sw}-{sl}</b> overall &middot; <b>{slw}-{sll}</b> in SD1 '
-                f'<span class="muted">(seed-eligible: {singles_seedable})</span></span>'
-                f'<span>Doubles: <b>{dw}-{dl}</b> overall &middot; <b>{dlw}-{dll}</b> in SD1</span>'
-                f'</div></div>'
-            )
-
-            if singles:
-                srows = []
-                for m in singles:
-                    score = _set_str(m['sets'])
-                    flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
-                    srows.append(
-                        f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
-                        f'<td>{_html.escape(m["opp_name"])}</td>'
-                        f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
-                        f'<td>{_result_badge(m["won"])}</td>'
-                        f'<td class="score">{score}</td></tr>'
-                    )
-                blocks.append(
-                    '<table class="match-tbl"><caption>Singles matches</caption>'
-                    '<thead><tr><th>Date</th><th>Flt</th><th>Opponent</th>'
-                    '<th>School</th><th>Result</th><th>Sets</th></tr></thead>'
-                    f'<tbody>{"".join(srows)}</tbody></table>'
-                )
-
-            if all_d:
-                # One flat doubles table per individual with Partner as a column.
-                # Pairings shift across the season, so we sort by date and let
-                # the seeding committee scan partner columns themselves.
-                all_d_sorted = sorted(all_d, key=lambda m: (m['date'], m['flight'] or ''))
-                drows = []
-                for m in all_d_sorted:
-                    flag = '<span class="lg">SD1</span>' if m['in_league'] else ''
-                    drows.append(
-                        f'<tr><td>{m["date"]}</td><td>{m["flight"] or ""}</td>'
-                        f'<td>{_html.escape(m.get("partner") or "")}</td>'
-                        f'<td>{_html.escape(m["opp_pair"])}</td>'
-                        f'<td>{_html.escape(m["opp_school"])} {flag}</td>'
-                        f'<td>{_result_badge(m["won"])}</td>'
-                        f'<td class="score">{_set_str(m["sets"])}</td></tr>'
-                    )
-                blocks.append(
-                    '<table class="match-tbl"><caption>Doubles matches</caption>'
-                    '<thead><tr><th>Date</th><th>Flt</th><th>Partner</th>'
-                    '<th>Opponents</th><th>School</th><th>Result</th><th>Sets</th></tr></thead>'
-                    f'<tbody>{"".join(drows)}</tbody></table>'
-                )
-
-            rows.append('<div class="player">' + ''.join(blocks) + '</div>')
-
-        sections.append(
-            f'<section id="{anchor}"><h2>{_html.escape(sch["name"])}</h2>'
-            + ''.join(rows) + '</section>'
-        )
-
-    page = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SD1 Girls Seeding Data — Oregon HS Tennis</title>
-<style>
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; max-width: 1100px; margin: 32px auto; padding: 0 18px; color: #212529; line-height: 1.45; }}
-  h1 {{ font-size: 1.6rem; margin: 0 0 4px; }}
-  h2 {{ font-size: 1.2rem; margin: 32px 0 10px; color: #0d6efd; border-bottom: 1px solid #dee2e6; padding-bottom: 4px; }}
-  h3 {{ font-size: 1.0rem; margin: 18px 0 4px; }}
-  p.lede {{ color: #495057; margin: 4px 0 18px; }}
-  .toc {{ background: #f8f9fa; border: 1px solid #e9ecef; border-radius: 6px; padding: 10px 16px; margin: 12px 0 24px; }}
-  .toc ul {{ columns: 2; -webkit-columns: 2; -moz-columns: 2; margin: 6px 0 0 18px; padding: 0; }}
-  .toc li {{ margin: 2px 0; }}
-  .player {{ border-top: 1px dashed #dee2e6; padding: 10px 0 14px; }}
-  .player-head {{ display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; }}
-  .player-head .meta {{ font-size: 0.85rem; color: #495057; display: flex; gap: 18px; flex-wrap: wrap; }}
-  table.match-tbl {{ border-collapse: collapse; margin: 6px 0 12px; font-size: 0.85rem; width: 100%; }}
-  table.match-tbl caption {{ text-align: left; font-weight: 600; padding: 4px 0; color: #343a40; }}
-  table.match-tbl th, table.match-tbl td {{ border: 1px solid #e9ecef; padding: 4px 8px; }}
-  table.match-tbl th {{ background: #f8f9fa; text-align: left; }}
-  table.match-tbl td.score {{ font-variant-numeric: tabular-nums; white-space: nowrap; }}
-  .res {{ display: inline-block; min-width: 18px; text-align: center; padding: 1px 5px; border-radius: 3px; font-weight: 600; font-size: 0.8rem; }}
-  .res.w {{ background: #d1e7dd; color: #0f5132; }}
-  .res.l {{ background: #f8d7da; color: #842029; }}
-  .lg {{ display: inline-block; background: #cfe2ff; color: #084298; font-size: 0.7rem; padding: 0 4px; border-radius: 3px; margin-left: 4px; }}
-  .muted {{ color: #6c757d; }}
-  .actions {{ margin: 12px 0 24px; }}
-  .actions a {{ display: inline-block; padding: 8px 14px; background: #0d6efd; color: #fff; text-decoration: none; border-radius: 4px; font-weight: 600; }}
-  footer {{ margin-top: 40px; padding: 16px; text-align: center; }}
-  footer a {{ color: #6c757d; font-size: 12px; }}
-</style>
-</head>
-<body>
-<h1>SD1 Girls — 2026 Seeding Data</h1>
-<p class="lede">
-  Per-school player records for the Special District 1 girls (4A/3A/2A/1A)
-  district seeding meeting. Pulled from posted dual-match results; matches
-  against fellow SD1 schools are tagged <span class="lg">SD1</span>. Doubles
-  rows show the partner per match — pairings shift across the season, so
-  records are kept at the individual level. Coaches decide the seeds; this
-  page just lays out the inputs. (Per the SOP, doubles seed eligibility
-  needs 2+ league matches with the same partner — easy to spot by scanning
-  the Partner column.)
-</p>
-<div class="actions">
-  <a href="sd1-bracket-draw.html">Open the bracket-draw tool →</a>
-</div>
-<div class="toc">
-  <b>Schools</b>
-  <ul>{''.join(toc_items)}</ul>
-</div>
-{''.join(sections)}
-<footer>
-  <a href="../index.html">&larr; Back to Rankings</a>
-  &middot;
-  <a href="sd1-bracket-draw.html">Bracket Draw</a>
-</footer>
-</body>
-</html>
-"""
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, 'w') as f:
-        f.write(page)
-
-
 def main():
     script_dir = Path(__file__).parent
     repo_root = script_dir
@@ -4691,21 +4443,41 @@ def main():
         render_md_page(aar_md, aar_html, page_title=f'{first_h1} - Oregon HS Tennis')
         print(f"AAR saved to {aar_html}")
 
-    print("Building SD1 girls seeding data...")
-    sd1_data = build_sd1_girls_seeding_data(data_dir, school_info, year='2026')
-    sd1_out = repo_root / 'public' / 'sd1-seeding.html'
-    render_sd1_seeding_page(sd1_data, sd1_out)
-    print(f"SD1 seeding page saved to {sd1_out}")
-
     # Build the derived data for the Lineups section (ladder + position matrix).
     # Kept in a standalone module so it can also be run on its own; failures here
     # must not sink the main ranking build.
     print("Building lineup data (ladder + position matrix)...")
     try:
         import build_lineup_data
-        build_lineup_data.main(['2026'])  # demo scope: current season only
+        build_lineup_data.main(['2026', '2027'])  # seasons with the Lineups tool
     except Exception as exc:  # noqa: BLE001 - best-effort, don't fail the site build
         print(f"WARNING: lineup data build failed: {exc}")
+
+    # Seeding packets read processed_rankings.json and the lineup data written
+    # above, so they run last. Best-effort for the same reason as the lineups
+    # build: a formatting failure here must not cost the site its rankings.
+    print("Building league seeding packets...")
+    try:
+        import build_seeding_packet
+        for packet_year in ('2026', '2027'):
+            if (data_dir / packet_year).is_dir():
+                build_seeding_packet.main(['--year', packet_year])
+    except Exception as exc:  # noqa: BLE001 - best-effort
+        print(f"WARNING: seeding packet build failed: {exc}")
+
+    # The scoreboard and the committee board read the merged season the same way
+    # the rankings do, so they run here rather than as separate CI steps. Both
+    # are best-effort for the same reason as the two above.
+    for label, module in (("scoreboard", "build_scoreboard"),
+                          ("committee evaluation data", "build_committee_data")):
+        print(f"Building {label}...")
+        try:
+            mod = __import__(module)
+            for build_year in ('2026', '2027'):
+                if (data_dir / build_year).is_dir():
+                    mod.main(['--year', build_year])
+        except Exception as exc:  # noqa: BLE001 - best-effort
+            print(f"WARNING: {label} build failed: {exc}")
 
 
 if __name__ == '__main__':

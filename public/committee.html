@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Selection Board</title>
+<meta name="theme-color" content="#14181f">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  .fieldbar { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; padding: 14px 16px; }
+  .fieldbar .stat .n { font-size: 1.5rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+  .fieldbar .stat .k { font-size: 0.7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); margin-top: 3px; }
+
+  td.team { min-width: 190px; }
+  td.team .nm { font-weight: 600; }
+  td.team .lg { display: block; font-size: 0.72rem; color: var(--ink-3); }
+  tr.selected td { background: var(--accent-wash) !important; }
+  tr.out td .nm { color: var(--ink-3); }
+
+  .sheet { background: var(--paper-2); }
+  .sheet-inner { padding: 14px 16px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; }
+  .sheet h4 { margin: 0 0 7px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); }
+  .sheet table { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
+  .sheet td, .sheet th { font-size: 0.78rem; padding: 5px 9px; }
+
+  .flightgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; }
+  .flightgrid div { text-align: center; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 2px; }
+  .flightgrid .p { font-size: 0.64rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; }
+  .flightgrid .v { font-weight: 700; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+
+  .cmp { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .cmp .col { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; padding: 12px 14px; }
+  .cmp .col h3 { margin: 0 0 2px; font-size: 1rem; }
+  .cmp dl { margin: 10px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 5px 10px; font-size: 0.82rem; }
+  .cmp dt { color: var(--ink-3); }
+  .cmp dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
+
+  @media (max-width: 860px) { .sheet-inner { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div class="pagehead">
+    <h1>Selection Board</h1>
+    <p class="sub">Every team in the classification, with its season behind it.</p>
+  </div>
+
+  <div class="controls no-print">
+    <label>Season <select id="year"></select></label>
+    <label>Class <select id="class"></select></label>
+    <label>Gender <select id="gender"><option>Boys</option><option>Girls</option></select></label>
+    <button id="compare" disabled>Compare 0</button>
+    <button id="clear" class="no-print">Clear</button>
+    <button onclick="window.print()">Print</button>
+  </div>
+
+  <div class="panel">
+    <div class="fieldbar" id="fieldbar"></div>
+  </div>
+
+  <div id="undesignated"></div>
+
+  <div id="comparison"></div>
+
+  <div class="panel">
+    <div class="panel-head">
+      <h2>The board</h2>
+      <span class="tiny muted" id="boardnote"></span>
+    </div>
+    <div class="panel-body flush scroll">
+      <table id="board">
+        <thead><tr>
+          <th class="mid">#</th>
+          <th>Team</th>
+          <th class="mid">Bid</th>
+          <th>Record</th>
+          <th>League</th>
+          <th class="num sortable" data-k="powerIndex">Power Index<span class="arrow">▾</span></th>
+          <th class="num sortable" data-k="owp">SOS<span class="arrow">▾</span></th>
+          <th class="mid">vs Field</th>
+          <th>Best win</th>
+          <th>Worst loss</th>
+          <th class="mid">Pick</th>
+        </tr></thead>
+        <tbody id="boardbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+
+applyBrand('Selection Board', {
+  current: 'Selection',
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const YEARS = [2026];
+let index = null;
+let data = null;
+let sortKey = 'powerIndex';
+const picked = new Set();
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const n4 = (v) => (v === null || v === undefined ? '—' : Number(v).toFixed(4));
+const n3 = (v) => (v === null || v === undefined ? '—' : Number(v).toFixed(3));
+const band = (b) => `${b[0]}-${b[1]}${b[2] ? `-${b[2]}` : ''}`;
+
+async function boot() {
+  const y = document.getElementById('year');
+  y.innerHTML = YEARS.map((v) => `<option>${v}</option>`).join('');
+  index = await fetch(`data/committee/${YEARS[0]}/index.json`).then((r) => r.json());
+
+  const classes = [...new Set(index.fields.map((f) => f.classification))];
+  document.getElementById('class').innerHTML =
+    classes.map((c) => `<option>${esc(c)}</option>`).join('');
+
+  for (const id of ['class', 'gender', 'year']) {
+    document.getElementById(id).onchange = load;
+  }
+  document.getElementById('clear').onclick = () => { picked.clear(); render(); };
+  document.getElementById('compare').onclick = renderComparison;
+  document.querySelectorAll('th.sortable').forEach((th) => {
+    th.onclick = () => { sortKey = th.dataset.k; render(); };
+  });
+  await load();
+}
+
+async function load() {
+  const year = document.getElementById('year').value;
+  const cls = document.getElementById('class').value;
+  const gender = document.getElementById('gender').value;
+  const slug = cls.replace(/\//g, '').replace(/\s/g, '').toLowerCase();
+  data = await fetch(`data/committee/${year}/${slug}-${gender.toLowerCase()}.json`)
+    .then((r) => r.json());
+  picked.clear();
+  document.getElementById('comparison').innerHTML = '';
+  render();
+}
+
+function ranked() {
+  const teams = [...data.teams];
+  teams.sort((a, b) => {
+    const av = a[sortKey], bv = b[sortKey];
+    if (av === bv) return String(a.name).localeCompare(String(b.name));
+    if (av === null || av === undefined) return 1;
+    if (bv === null || bv === undefined) return -1;
+    return bv - av;
+  });
+  return teams;
+}
+
+function renderFieldbar() {
+  document.getElementById('fieldbar').innerHTML = `
+    <div class="stat"><div class="n">${data.fieldSize}</div><div class="k">Field</div></div>
+    <div class="stat"><div class="n">${data.autoBids}</div><div class="k">Automatic bids</div></div>
+    <div class="stat"><div class="n">${data.atLargeBids}</div><div class="k">At large</div></div>
+    <div class="stat"><div class="n">${data.teams.length}</div><div class="k">Teams in class</div></div>
+    <div class="stat" style="margin-left:auto">
+      <div class="n">${data.autoBids - data.undesignated.length}/${data.autoBids}</div>
+      <div class="k">Champions designated</div></div>`;
+
+  const un = document.getElementById('undesignated');
+  const parts = [];
+  if (data.derivedChampions.length) {
+    // Oregon does not publish league champions, so the board reads them off the
+    // standings. Saying so is what stops a committee arguing with the number.
+    parts.push(`<div class="note"><strong>${data.derivedChampions.length} automatic
+      bids are read from the league standings</strong> — best league record, ties
+      broken on head to head. Hover a bid for the basis.</div>`);
+  }
+  if (data.undesignated.length) {
+    parts.push(`<div class="note flag"><strong>No champion in
+      ${esc(data.undesignated.join(', '))}</strong> — no league matches on
+      record. Those bids are open.</div>`);
+  }
+  un.innerHTML = parts.join('');
+}
+
+function render() {
+  renderFieldbar();
+  const teams = ranked();
+
+  // The cut line is drawn where the at-large bids run out, counting only teams
+  // that do not already hold an automatic bid. That is the line the committee is
+  // actually arguing about.
+  let atLargeUsed = 0;
+  let cutAfter = -1;
+  teams.forEach((t, i) => {
+    if (!t.autoBid) {
+      atLargeUsed += 1;
+      if (atLargeUsed === data.atLargeBids && cutAfter === -1) cutAfter = i;
+    }
+  });
+
+  const rows = [];
+  teams.forEach((t, i) => {
+    const inField = t.autoBid || (cutAfter !== -1 && i <= cutAfter);
+    const res = (r) => (r
+      ? `<span class="tiny">${esc(r.opponent)} <span class="muted">#${r.opponentClassRank}</span>
+         <span class="muted">${esc(r.scoreline)}</span></span>`
+      : '<span class="tiny muted">—</span>');
+
+    rows.push(`<tr data-id="${t.schoolId}" class="${picked.has(t.schoolId) ? 'selected' : ''}${inField ? '' : ' out'}">
+      <td class="mid"><span class="rankbox">${i + 1}</span></td>
+      <td class="team js-sheet" style="cursor:pointer">
+        <span class="nm">${esc(t.name)}</span>
+        <span class="lg">${esc(t.league || '')} &middot; class rank
+          ${t.classRank ?? 'NR'}</span>
+      </td>
+      <td class="mid">${t.autoBid
+        ? `<span class="chip aq" title="${esc(t.league)} champion — ${esc(t.autoBidBasis)}${
+            t.autoBidTiedWith.length ? `; level with ${esc(t.autoBidTiedWith.join(', '))}` : ''
+          }">Auto${t.autoBidDerived ? '*' : ''}</span>`
+        : (inField ? '<span class="chip quiet">At large</span>' : '')}</td>
+      <td class="num">${esc(t.record)}</td>
+      <td class="num">${esc(t.leagueRecord)}</td>
+      <td class="num">${n4(t.powerIndex)}</td>
+      <td class="num">${n3(t.owp)}</td>
+      <td class="mid">${band(t.bands.field)}</td>
+      <td>${res(t.bestWin)}</td>
+      <td>${res(t.worstLoss)}</td>
+      <td class="mid"><input type="checkbox" class="js-pick" data-id="${t.schoolId}"
+            ${picked.has(t.schoolId) ? 'checked' : ''}></td>
+    </tr>
+    <tr class="sheet" id="sheet-${t.schoolId}" style="display:none"><td colspan="11"></td></tr>`);
+
+    if (i === cutAfter) {
+      rows.push(`<tr class="cutline-label"><td colspan="11">
+        At-large cut line — ${data.atLargeBids} at-large bid${data.atLargeBids === 1 ? '' : 's'}
+        used by Power Index order</td></tr>`);
+    }
+  });
+
+  document.getElementById('boardbody').innerHTML = rows.join('');
+  // The leading number is this board's order, which follows whichever column is
+  // sorted. The published class rank can differ from it — head-to-head
+  // tiebreakers move teams in the official table — so both are shown rather than
+  // letting them look like the same number disagreeing with itself.
+  document.getElementById('boardnote').textContent =
+    `# is this board's order, sorted by ` +
+    `${sortKey === 'owp' ? 'strength of schedule' : 'Power Index'}; published class ` +
+    `rank is under each team · “vs Field” is the record against the top ` +
+    `${data.fieldSize} of the classification`;
+
+  document.querySelectorAll('.js-pick').forEach((cb) => {
+    cb.onclick = (e) => {
+      e.stopPropagation();
+      const id = Number(cb.dataset.id);
+      if (cb.checked) picked.add(id); else picked.delete(id);
+      updateCompareButton();
+      document.querySelector(`tr[data-id="${id}"]`).classList.toggle('selected', cb.checked);
+    };
+  });
+  document.querySelectorAll('.js-sheet').forEach((td) => {
+    td.onclick = () => toggleSheet(Number(td.closest('tr').dataset.id));
+  });
+  updateCompareButton();
+}
+
+function updateCompareButton() {
+  const b = document.getElementById('compare');
+  b.textContent = `Compare ${picked.size}`;
+  b.disabled = picked.size < 2;
+  b.classList.toggle('primary', picked.size >= 2);
+}
+
+function teamById(id) { return data.teams.find((t) => t.schoolId === id); }
+
+function toggleSheet(id) {
+  const row = document.getElementById(`sheet-${id}`);
+  if (row.style.display !== 'none') { row.style.display = 'none'; return; }
+  const t = teamById(id);
+
+  const results = t.results.map((r) => `<tr>
+    <td class="muted">${esc(r.date.slice(5))}</td>
+    <td>${esc(r.opponent)} ${r.opponentClassRank ? `<span class="muted">#${r.opponentClassRank}</span>` : ''}
+        ${r.league ? '<span class="chip quiet">Lg</span>' : ''}</td>
+    <td class="num">${esc(r.scoreline)}</td>
+    <td class="mid"><span class="chip ${r.result === 'W' ? 'win' : r.result === 'L' ? 'loss' : 'quiet'}">${r.result}</span>
+      ${r.result !== r.h2h ? `<span class="tiny muted" title="head to head">h2h ${r.h2h}</span>` : ''}</td>
+  </tr>`).join('');
+
+  const flights = ['S1', 'S2', 'S3', 'S4', 'D1', 'D2', 'D3', 'D4'].map((s) => {
+    const v = (t.flightBreakdown || {})[s];
+    return `<div><div class="p">${s[1]}${s[0]}</div>
+      <div class="v">${v === null || v === undefined ? '—' : `${Math.round(v)}%`}</div></div>`;
+  }).join('');
+
+  const ladder = t.ladder.length
+    ? `<table><tbody>${t.ladder.map((p, i) => `<tr>
+        <td class="muted">${i + 1}</td><td>${esc(p.name)}</td>
+        <td class="muted">${esc(p.grade)}</td>
+        <td class="num">${p.record ? `${p.record[0]}-${p.record[1]}` : ''}</td></tr>`).join('')}</tbody></table>`
+    : '<p class="tiny muted">No ladder on file.</p>';
+
+  row.querySelector('td').innerHTML = `<div class="sheet-inner">
+    <div>
+      <h4>Every result</h4>
+      <div class="scroll"><table><tbody>${results}</tbody></table></div>
+    </div>
+    <div>
+      <h4>Record by opponent quality</h4>
+      <table><tbody>
+        <tr><td>vs top ${data.fieldSize}</td><td class="num">${band(t.bands.field)}</td></tr>
+        <tr><td>vs next ${data.fieldSize}</td><td class="num">${band(t.bands.next)}</td></tr>
+        <tr><td>vs the rest</td><td class="num">${band(t.bands.rest)}</td></tr>
+        <tr><td>outside the classification</td><td class="num">${band(t.bands.outside)}</td></tr>
+      </tbody></table>
+      <h4 style="margin-top:14px">Flight win rate</h4>
+      <div class="flightgrid">${flights}</div>
+      <h4 style="margin-top:14px">Ladder</h4>
+      ${ladder}
+    </div>
+  </div>`;
+  row.style.display = '';
+}
+
+function renderComparison() {
+  const teams = [...picked].map(teamById).filter(Boolean);
+  if (teams.length < 2) return;
+
+  // Common opponents are the committee's oldest instrument: two teams that never
+  // met can still be compared through who they both played.
+  const oppSets = teams.map((t) => new Map(t.results.map((r) => [r.opponentId, r])));
+  const common = [...oppSets[0].keys()].filter((id) =>
+    oppSets.every((m) => m.has(id)) && !teams.some((t) => t.schoolId === id));
+
+  const cols = teams.map((t, i) => `<div class="col">
+    <h3>${esc(t.name)} ${t.autoBid ? '<span class="chip aq">Auto</span>' : ''}</h3>
+    <div class="tiny muted">${esc(t.league || '')} · class rank ${t.classRank ?? 'NR'}</div>
+    <dl>
+      <dt>Record</dt><dd>${esc(t.record)}</dd>
+      <dt>League</dt><dd>${esc(t.leagueRecord)}</dd>
+      <dt>Power Index</dt><dd>${n4(t.powerIndex)}</dd>
+      <dt>APR</dt><dd>${n4(t.apr)}</dd>
+      <dt>Strength of schedule</dt><dd>${n3(t.owp)}</dd>
+      <dt>vs top ${data.fieldSize}</dt><dd>${band(t.bands.field)}</dd>
+      <dt>Flights won</dt><dd>${t.flightsWon}/${t.flightsPlayed}</dd>
+      <dt>Best win</dt><dd>${t.bestWin ? esc(t.bestWin.opponent) : '—'}</dd>
+      <dt>Worst loss</dt><dd>${t.worstLoss ? esc(t.worstLoss.opponent) : '—'}</dd>
+    </dl>
+  </div>`).join('');
+
+  const h2hRows = [];
+  for (const a of teams) {
+    for (const r of a.results) {
+      const b = teams.find((t) => t.schoolId === r.opponentId);
+      if (b) h2hRows.push(`<tr><td>${esc(a.name)} vs ${esc(b.name)}</td>
+        <td class="muted">${esc(r.date)}</td><td class="num">${esc(r.scoreline)}</td>
+        <td class="mid"><span class="chip ${r.h2h === 'W' ? 'win' : 'loss'}">${esc(a.name)} ${r.h2h}</span></td></tr>`);
+    }
+  }
+
+  const commonRows = common.map((id) => {
+    const cells = teams.map((t, i) => {
+      const r = oppSets[i].get(id);
+      return `<td class="num"><span class="chip ${r.result === 'W' ? 'win' : r.result === 'L' ? 'loss' : 'quiet'}">${r.result}</span>
+        <span class="tiny muted">${esc(r.scoreline)}</span></td>`;
+    }).join('');
+    const name = oppSets[0].get(id).opponent;
+    const rank = oppSets[0].get(id).opponentClassRank;
+    return `<tr><td>${esc(name)} ${rank ? `<span class="muted">#${rank}</span>` : ''}</td>${cells}</tr>`;
+  }).join('');
+
+  document.getElementById('comparison').innerHTML = `
+    <div class="panel">
+      <div class="panel-head"><h2>Comparison</h2>
+        <span class="tiny muted">${teams.length} teams · ${common.length} common opponents</span></div>
+      <div class="panel-body">
+        <div class="cmp">${cols}</div>
+        ${h2hRows.length ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Head to head</h4>
+          <table><tbody>${h2hRows.join('')}</tbody></table>
+          <p class="tiny muted" style="margin-top:6px">A dual level at 4-4 is a tie on
+          both records, but the tiebreak winner still wins the head-to-head.</p>` : ''}
+        ${commonRows ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Common opponents</h4>
+          <div class="scroll"><table><thead><tr><th>Opponent</th>
+            ${teams.map((t) => `<th class="num">${esc(t.name)}</th>`).join('')}</tr></thead>
+            <tbody>${commonRows}</tbody></table></div>`
+          : '<p class="tiny muted" style="margin-top:14px">No opponents in common.</p>'}
+      </div>
+    </div>`;
+  document.getElementById('comparison').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+boot();
+</script>
+</body>
+</html>

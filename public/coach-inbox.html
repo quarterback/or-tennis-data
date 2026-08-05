@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Confirm Results — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<link rel="stylesheet" href="css/coach.css">
+</head>
+<body>
+<nav class="navbar"><div class="navbar-inner"></div></nav>
+<header class="hero"><div class="container"></div></header>
+
+<div class="container">
+  <div id="signin" style="display:none"></div>
+  <div id="app" style="display:none">
+    <div class="header-bar">
+      <label>Team <select id="team-picker"></select></label>
+      <span class="status" id="status" style="margin-left:auto"></span>
+    </div>
+
+    <p class="lede">Your opponent reported these duals. Confirming says the card
+    matches yours. A dual counts in the rankings either way &mdash; confirming
+    records that both teams agree, and disputing flags it for a human rather than
+    removing it.</p>
+
+    <div id="list"></div>
+  </div>
+</div>
+
+<script type="module">
+import {
+  api, escapeHtml, fmtDate, FLIGHTS, lastTeam, renderChrome, requireSession,
+  setStatus, teamLabel,
+} from './js/coach-common.js';
+
+renderChrome({ title: 'Confirm Results', subtitle: '' });
+
+let teams = [];
+let team = null;
+
+async function boot() {
+  const s = await requireSession();
+  if (!s) return;
+  teams = s.teams || [];
+  if (!teams.length) return;
+
+  document.getElementById('app').style.display = '';
+  const picker = document.getElementById('team-picker');
+  picker.innerHTML = teams.map((t) =>
+    `<option value="${t.id}">${escapeHtml(teamLabel(t))}</option>`).join('');
+  const remembered = lastTeam.get();
+  if (remembered && teams.some((t) => Number(t.id) === remembered)) picker.value = remembered;
+  picker.onchange = () => load(Number(picker.value));
+  await load(Number(picker.value));
+}
+
+async function load(id) {
+  team = teams.find((t) => Number(t.id) === id);
+  lastTeam.set(id);
+  document.querySelector('.hero p').textContent = teamLabel(team);
+
+  const res = await api(`/api/duals?team=${id}`);
+  const pending = res.duals.filter((d) => res.awaitingYou.includes(Number(d.id)));
+  const list = document.getElementById('list');
+
+  if (!pending.length) {
+    list.innerHTML = '<div class="empty">Nothing waiting on you. Anything your ' +
+      'opponents report will show up here.</div>';
+    return;
+  }
+
+  list.innerHTML = '';
+  for (const d of pending) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = await renderDual(d);
+    list.appendChild(card);
+    card.querySelector('.js-confirm').onclick = () => respond(d.id, 'confirm', card);
+    card.querySelector('.js-dispute').onclick = () => dispute(d.id, card);
+  }
+}
+
+async function renderDual(summary) {
+  const { dual } = await api(`/api/duals/${summary.id}`);
+  const weAreHome = Number(dual.home_school_id) === Number(team.school_id);
+  const ours = weAreHome ? summary.home_flights : summary.away_flights;
+  const theirs = weAreHome ? summary.away_flights : summary.home_flights;
+
+  const rows = FLIGHTS.map((f) => {
+    const line = dual.lines.find((l) =>
+      l.match_type === f.matchType && Number(l.flight) === f.flight);
+    if (!line) return '';
+    const name = (list) => list.map((p) =>
+      `${escapeHtml(p.firstName)} ${escapeHtml(p.lastName)}`).join(' / ') || '&mdash;';
+    const score = line.sets.map((s) =>
+      `${s.homeGames}-${s.awayGames}${s.tiePoints != null ? `(${s.tiePoints})` : ''}`).join(', ');
+    const usWon = line.home_won === weAreHome;
+    return `<tr>
+      <td><span class="pill ${f.matchType === 'Doubles' ? 'd' : 's'}">${f.label}</span></td>
+      <td>${name(weAreHome ? line.homePlayers : line.awayPlayers)}</td>
+      <td>${name(weAreHome ? line.awayPlayers : line.homePlayers)}</td>
+      <td class="n">${escapeHtml(score)}</td>
+      <td class="n">${line.home_won === null ? '' :
+        `<span class="pill ${usWon ? 'ok' : 'bad'}">${usWon ? 'W' : 'L'}</span>`}</td>
+    </tr>`;
+  }).join('');
+
+  return `
+    <div class="card-head">
+      <span>${escapeHtml(fmtDate(dual.played_on))} &middot;
+        ${weAreHome ? 'vs' : 'at'} ${escapeHtml(summary.is_home ? summary.away_name : summary.home_name)}</span>
+      <span class="pill ${ours > theirs ? 'ok' : 'bad'}">${ours}&ndash;${theirs}</span>
+    </div>
+    <div class="card-body">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th></th><th>Us</th><th>Them</th><th class="n">Score</th><th class="n"></th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div class="row" style="margin-top:14px">
+        <button class="js-confirm">This matches our card</button>
+        <button class="ghost js-dispute">Something is wrong</button>
+        <span class="status js-status"></span>
+      </div>
+      <div class="js-dispute-form" style="display:none;margin-top:12px">
+        <textarea class="js-note" placeholder="What is wrong? Name the flights and what the score should be."></textarea>
+        <button class="danger js-dispute-send" style="margin-top:8px">Send the dispute</button>
+      </div>
+    </div>`;
+}
+
+async function respond(id, action, card, note) {
+  const status = card.querySelector('.js-status');
+  card.querySelectorAll('button').forEach((b) => { b.disabled = true; });
+  try {
+    await api(`/api/duals/${id}/${action}`, {
+      method: 'POST', body: JSON.stringify({ note: note || '' }),
+    });
+    card.querySelector('.card-body').innerHTML = action === 'confirm'
+      ? '<div class="banner ok">Confirmed. Thank you.</div>'
+      : '<div class="banner warn">Disputed. An administrator has been notified; ' +
+        'the result stays on the site, flagged, until it is resolved.</div>';
+  } catch (e) {
+    setStatus(status, e.message, 'err');
+    card.querySelectorAll('button').forEach((b) => { b.disabled = false; });
+  }
+}
+
+function dispute(id, card) {
+  const form = card.querySelector('.js-dispute-form');
+  form.style.display = '';
+  card.querySelector('.js-dispute-send').onclick = () => {
+    const note = card.querySelector('.js-note').value.trim();
+    if (!note) {
+      return setStatus(card.querySelector('.js-status'),
+        'Say what is wrong so it can be fixed.', 'err');
+    }
+    respond(id, 'dispute', card, note);
+  };
+}
+
+boot();
+</script>
+</body>
+</html>
