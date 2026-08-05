@@ -21,12 +21,49 @@
     color: var(--ink-3); margin-top: 4px;
   }
 
-  td.res { font-weight: 700; width: 28px; }
-  td.res.w { color: var(--win); }
-  td.res.l { color: var(--loss); }
-  td.res.t { color: var(--ink-3); }
-  td.sc { font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .oppmeta { color: var(--ink-3); font-size: 0.76rem; }
+  /* A season reads as a timeline: a divided list of tight rows, not one card
+     per match. Result first, then opponent, then score; date and match type
+     sit under in small type. Rows are ~34px so a phone shows eight of them. */
+  .sched { display: flex; flex-direction: column; }
+  .g {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    align-items: baseline;
+    gap: 0 10px;
+    padding: 6px 14px;
+    line-height: 1.25;
+    border-bottom: 1px solid var(--rule-2);
+    cursor: pointer;
+    background: none;
+    border-left: 0; border-right: 0; border-top: 0;
+    text-align: left;
+    width: 100%;
+    font: inherit;
+    color: inherit;
+    border-radius: 0;
+  }
+  .g:last-of-type { border-bottom: 0; }
+  .g:hover { background: var(--paper-2); }
+  .g[aria-expanded="true"] { background: var(--paper-2); }
+
+  .g .r { font-weight: 700; font-size: 0.95rem; }
+  .g .r.w { color: var(--win); }
+  .g .r.l { color: var(--loss); }
+  .g .r.t { color: var(--ink-3); }
+  .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
+  .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.74rem; margin-left: 5px; }
+  .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; }
+  .g .when { grid-column: 2 / 4; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
+
+  .gbox { border-bottom: 1px solid var(--rule-2); background: var(--paper-2); overflow-x: auto; }
+  .gbox table { font-size: 0.78rem; }
+  .gbox th { position: static; background: transparent; padding: 5px 14px; }
+  .gbox td { padding: 4px 14px; border-bottom: 1px solid var(--rule-2); }
+  .gbox tr:last-child td { border-bottom: 0; }
+  .gbox .slot { font-weight: 700; color: var(--ink-3); width: 26px; }
+  .gbox .w { font-weight: 700; }
+  .gbox .l { color: var(--ink-3); }
+  .gbox .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   /* How often the team won each position across the season. */
   .flights { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 4px 0; }
@@ -55,14 +92,7 @@
   @media (max-width: 640px) {
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
-    #res-table, #res-table tbody, #res-table tr, #res-table td { display: block; width: 100%; }
-    #res-table thead { display: none; }
-    #res-table tbody tr {
-      border: 1px solid var(--rule); border-radius: 9px;
-      padding: 9px 11px; margin-bottom: 8px; position: relative;
-    }
-    #res-table td { border: 0; padding: 2px 0; }
-    #res-table td.res { position: absolute; top: 9px; right: 11px; width: auto; }
+    .g { padding: 7px 12px; }
   }
 </style>
 </head>
@@ -85,15 +115,7 @@
 
     <div class="panel">
       <div class="panel-head"><h2>Results</h2></div>
-      <div class="panel-body flush scroll">
-        <table id="res-table">
-          <thead><tr>
-            <th>Date</th><th class="mid"></th><th>Opponent</th>
-            <th>Score</th><th class="mid">Type</th>
-          </tr></thead>
-          <tbody id="resbody"></tbody>
-        </table>
-      </div>
+      <div class="panel-body flush"><div id="resbody" class="sched"></div></div>
     </div>
 
     <div class="panel">
@@ -217,25 +239,7 @@ function render(t, field) {
     [t.owp === null ? '—' : Number(t.owp).toFixed(3), 'SOS'],
   ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
 
-  // Results, newest first the way a schedule page reads once a season is done.
-  const results = (t.results || []).slice()
-    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
-  document.getElementById('resbody').innerHTML = results.map((r) => {
-    const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
-    const tags = [
-      r.postseason ? '<span class="chip quiet">Post</span>' : '',
-      r.league ? '<span class="chip quiet">League</span>' : '',
-      r.source === 'entered' ? '<span class="chip aq">Reported</span>' : '',
-    ].filter(Boolean).join(' ');
-    return `<tr>
-      <td>${esc(fmtDate(r.date))}</td>
-      <td class="res ${cls}">${esc(r.result)}</td>
-      <td><a href="team.html?s=${encodeURIComponent(r.opponentId)}&g=${esc(gender)}&y=${esc(year)}">${esc(r.opponent)}</a>
-        <span class="oppmeta">${r.opponentClassRank ? `${esc(r.opponentClassification)} #${r.opponentClassRank}` : ''}</span></td>
-      <td class="sc">${esc(r.scoreline)}</td>
-      <td class="mid">${tags}</td>
-    </tr>`;
-  }).join('') || '<tr><td colspan="5" class="empty">No duals on record.</td></tr>';
+  renderSchedule(t);
 
   const fb = t.flightBreakdown || {};
   document.getElementById('flights').innerHTML = SLOTS.map((s) => {
@@ -263,6 +267,93 @@ function render(t, field) {
 }
 
 const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? 'h3' : 'h4');
+
+const kindOf = (r) => (r.postseason ? 'Postseason' : (r.league ? 'League' : 'Non-league'));
+
+/** The season as a divided list: result, opponent, score; date and type under. */
+function renderSchedule(t) {
+  const results = (t.results || []).slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+  const el = document.getElementById('resbody');
+  el.innerHTML = results.map((r, i) => {
+    const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
+    const rank = [
+      r.opponentClassRank ? `#${r.opponentClassRank}` : '',
+      r.opponentClassification || '',
+    ].filter(Boolean).join(', ');
+    return `<button class="g" data-i="${i}" aria-expanded="false">
+        <span class="r ${cls}">${esc(r.result)}</span>
+        <span class="opp">${esc(r.opponent)}${rank ? `<span class="rk">${esc(rank)}</span>` : ''}</span>
+        <span class="sc">${esc(r.scoreline)}</span>
+        <span class="when">${esc(fmtDate(r.date))} &middot; ${esc(kindOf(r))}</span>
+      </button>
+      <div class="gbox" id="gbox-${i}" hidden></div>`;
+  }).join('');
+
+  el.querySelectorAll('.g').forEach((b) => {
+    b.onclick = () => expand(Number(b.dataset.i), results[Number(b.dataset.i)], b, t);
+  });
+}
+
+// A day's duals, for the flights behind a schedule row. The committee export
+// carries the scoreline but not the card, and the scoreboard export carries the
+// card — so the row opens by reading that day's file.
+const dayCache = new Map();
+async function dayDuals(date) {
+  if (dayCache.has(date)) return dayCache.get(date);
+  let duals = [];
+  try {
+    duals = (await fetch(`data/scoreboard/${year}/${date}.json`).then((r) => {
+      if (!r.ok) throw new Error('none');
+      return r.json();
+    })).duals || [];
+  } catch { /* nothing published for that date */ }
+  dayCache.set(date, duals);
+  return duals;
+}
+
+async function expand(i, r, button, t) {
+  const mount = document.getElementById(`gbox-${i}`);
+  if (!mount.hidden) {
+    mount.hidden = true;
+    button.setAttribute('aria-expanded', 'false');
+    return;
+  }
+  button.setAttribute('aria-expanded', 'true');
+  mount.hidden = false;
+
+  if (mount.dataset.loaded) return;
+  const duals = await dayDuals(r.date);
+  const d = duals.find((x) =>
+    (String(x.a.id) === String(t.schoolId) && String(x.b.id) === String(r.opponentId))
+    || (String(x.b.id) === String(t.schoolId) && String(x.a.id) === String(r.opponentId)));
+
+  if (!d || !d.flights || !d.flights.length) {
+    mount.innerHTML = '<div class="empty" style="padding:12px 14px">No card on record.</div>';
+    mount.dataset.loaded = '1';
+    return;
+  }
+
+  const rows = d.flights.map((f) => {
+    const score = f.sets.map((x) =>
+      `${x.home}-${x.away}${x.tie != null ? `(${x.tie})` : ''}`).join(', ');
+    const name = (arr) => (arr.length ? esc(arr.join(' / ')) : '<span class="muted">—</span>');
+    const fin = f.finish
+      ? ` <span class="tiny muted">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
+    return `<tr>
+      <td class="slot">${esc(f.label)}</td>
+      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players)}</td>
+      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players)}</td>
+      <td class="sc">${esc(score) || '&mdash;'}${fin}</td>
+    </tr>`;
+  }).join('');
+
+  mount.innerHTML = `<table>
+    <thead><tr><th></th><th>${esc(d.a.name)}</th><th>${esc(d.b.name)}</th><th class="sc">Score</th></tr></thead>
+    <tbody>${rows}</tbody></table>`;
+  mount.dataset.loaded = '1';
+}
 
 /**
  * Fold the lineups export into this page.
