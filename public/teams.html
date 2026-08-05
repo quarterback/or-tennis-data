@@ -33,7 +33,6 @@
   table.stand .nm { font-weight: 600; }
   table.stand .nm a { color: inherit; }
   table.stand .nm a:hover { color: var(--accent); }
-  table.stand .rk { font-weight: 400; color: var(--ink-3); font-size: 0.78rem; margin-right: 5px; }
   table.stand .rec { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; width: 4.5rem; }
   table.stand th.rec { text-align: right; }
   table.stand .lead { font-weight: 700; }
@@ -264,7 +263,7 @@ async function render() {
       }
       return `<tr class="${qualifies(t) ? '' : 'short'}">
       <td class="pos">${shown}</td>
-      <td class="nm">${t.classRank ? `<span class="rk">#${t.classRank}</span>` : ''}<a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">${esc(t.name)}</a></td>
+      <td class="nm"><a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">${esc(t.name)}</a></td>
       <td class="rec ${sortBy === 'league' ? 'lead' : ''}">${esc(t.leagueRecord || '')}</td>
       <td class="rec ${sortBy === 'overall' ? 'lead' : ''}">${esc(t.record || '')}</td>
     </tr>`;

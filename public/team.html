@@ -261,6 +261,13 @@ const SLOT_LABEL = {
 };
 const SLOTS = ['S1', 'S2', 'S3', 'S4', 'D1', 'D2', 'D3', 'D4'];
 
+// These are our numbers, not OSAA's, and they move every week. A number beside
+// every school reads like an official standing; a number on the handful at the
+// top of a classification reads like what it is. Classifications run 30 to 50
+// teams, so the top ten is the cut. Below it, no number anywhere.
+const RANKED_TOP = 10;
+const ranked = (n) => Number.isFinite(Number(n)) && Number(n) >= 1 && Number(n) <= RANKED_TOP;
+
 function fmtDate(iso) {
   if (!iso) return '';
   const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number);
@@ -322,9 +329,10 @@ function render(t, field) {
     [t.record, 'Record'],
     [t.leagueRecord, 'League'],
     [t.powerIndex === null ? '—' : Number(t.powerIndex).toFixed(4), 'Power Index'],
-    [t.classRank ? `#${t.classRank}` : '—', 'Class rank'],
+    ranked(t.classRank) ? [`#${t.classRank}`, 'Class rank'] : null,
     [t.owp === null ? '—' : Number(t.owp).toFixed(3), 'SOS'],
-  ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
+  ].filter(Boolean)
+    .map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
 
   renderSchedule(t, field.classification);
 
@@ -393,9 +401,8 @@ function renderSchedule(t, ourClass) {
   el.innerHTML = results.map((r, i) => {
     const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
     // Rank leads the name, the way a college schedule prints it — #10
-    // Lakeridge. No classification: everybody knows or can look it up, and two
-    // schools sharing a number across classes bothers nobody.
-    const rank = r.opponentClassRank ? `#${r.opponentClassRank}` : '';
+    // Lakeridge — and only for a ranked opponent. See `ranked`.
+    const rank = ranked(r.opponentClassRank) ? `#${r.opponentClassRank}` : '';
     const kind = kindOf(r);
     return `<button class="g" data-i="${i}" aria-expanded="false">
         <span class="date">${esc(fmtDate(r.date))}</span>
