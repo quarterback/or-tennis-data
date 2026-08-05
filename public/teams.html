@@ -14,21 +14,33 @@
   .findbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0 16px; }
   .findbar input { flex: 1 1 240px; min-height: 40px; font-size: 16px; }
 
-  .lg { margin: 0 0 18px; }
+  /* Standings, not cards. A box per team ate the page; a league is a table. */
+  .lg { margin: 0 0 20px; }
   .lg > h2 {
-    font-family: var(--display-font); font-size: 0.95rem; margin: 0 0 7px;
-    padding-bottom: 4px; border-bottom: 2px solid var(--ink); letter-spacing: .02em;
+    font-size: 0.92rem; font-weight: 700; margin: 0 0 4px;
+    padding-bottom: 4px; border-bottom: 2px solid var(--ink);
   }
-  .rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px; }
-  .row {
-    display: flex; align-items: baseline; gap: 8px;
-    background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
-    padding: 8px 11px; text-decoration: none; color: inherit;
+  table.stand { width: 100%; border-collapse: collapse; }
+  table.stand th {
+    position: static; background: none; border-bottom: 1px solid var(--rule);
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--ink-3); padding: 5px 8px; text-align: left; white-space: nowrap;
   }
-  .row:hover { border-color: var(--accent); background: var(--accent-wash); text-decoration: none; }
-  .row .nm { font-weight: 600; font-size: 0.9rem; flex: 1; min-width: 0; }
-  .row .rk { font-size: 0.7rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-  .row .rec { font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  table.stand td { padding: 6px 8px; border-bottom: 1px solid var(--rule-2); font-size: 0.87rem; }
+  table.stand tr:last-child td { border-bottom: 0; }
+  table.stand tbody tr:hover td { background: var(--paper-2); }
+  table.stand .pos { color: var(--ink-3); font-variant-numeric: tabular-nums; width: 26px; text-align: right; }
+  table.stand .nm { font-weight: 600; }
+  table.stand .nm a { color: inherit; }
+  table.stand .nm a:hover { color: var(--accent); }
+  table.stand .rk { font-weight: 400; color: var(--ink-3); font-size: 0.78rem; margin-right: 5px; }
+  table.stand .rec { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; width: 4.5rem; }
+  table.stand th.rec { text-align: right; }
+  table.stand .lead { font-weight: 700; }
+
+  .sortby { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+  .sortby button { padding: 5px 11px; font-size: 0.78rem; }
+  .sortby button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 </style>
 </head>
 <body>
@@ -44,6 +56,10 @@
     <label class="tiny muted">Gender
       <select id="gender"><option>Girls</option><option>Boys</option></select></label>
     <label class="tiny muted">Class <select id="class"></select></label>
+    <span class="sortby">
+      <button data-sort="league" class="on">League</button>
+      <button data-sort="overall">Overall</button>
+    </span>
   </div>
 
   <div id="list"></div>
@@ -70,7 +86,15 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
 
 const YEAR = 2026;
 let index = null;
+let sortBy = 'league';
 const cache = new Map();
+
+/** W-L-T as a fraction, a tie counting half — the same convention as the record. */
+function pct(rec) {
+  const [w, l, t] = String(rec || '0-0-0').split('-').map(Number);
+  const played = (w || 0) + (l || 0) + (t || 0);
+  return played ? ((w || 0) + (t || 0) * 0.5) / played : -1;
+}
 
 async function boot() {
   index = await fetch(`data/committee/${YEAR}/index.json`).then((r) => r.json());
@@ -85,6 +109,14 @@ async function boot() {
   document.getElementById('q').oninput = render;
   document.getElementById('gender').onchange = render;
   document.getElementById('class').onchange = render;
+  document.querySelectorAll('.sortby button').forEach((b) => {
+    b.onclick = () => {
+      sortBy = b.dataset.sort;
+      document.querySelectorAll('.sortby button')
+        .forEach((x) => x.classList.toggle('on', x.dataset.sort === sortBy));
+      render();
+    };
+  });
   await render();
 }
 
@@ -130,16 +162,30 @@ async function render() {
   }
 
   el.innerHTML = [...byLeague.entries()].sort().map(([league, ts]) => {
-    // Best league record first — a league list is a standings list.
-    ts.sort((a, b) => (b.powerIndex || 0) - (a.powerIndex || 0));
+    // Standings order follows whichever record is being stood on, with the
+    // other as the tiebreak and Power Index behind that.
+    const key = (t) => (sortBy === 'league' ? t.leagueRecord : t.record);
+    const other = (t) => (sortBy === 'league' ? t.record : t.leagueRecord);
+    ts.sort((a, b) =>
+      pct(key(b)) - pct(key(a))
+      || pct(other(b)) - pct(other(a))
+      || (b.powerIndex || 0) - (a.powerIndex || 0));
+
+    const rows = ts.map((t, i) => `<tr>
+      <td class="pos">${i + 1}</td>
+      <td class="nm">${t.classRank ? `<span class="rk">#${t.classRank}</span>` : ''}<a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">${esc(t.name)}</a></td>
+      <td class="rec ${sortBy === 'league' ? 'lead' : ''}">${esc(t.leagueRecord || '')}</td>
+      <td class="rec ${sortBy === 'overall' ? 'lead' : ''}">${esc(t.record || '')}</td>
+    </tr>`).join('');
+
     return `<section class="lg">
       <h2>${esc(league)}</h2>
-      <div class="rows">${ts.map((t) => `
-        <a class="row" href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">
-          <span class="rk">${t.classRank ? `#${t.classRank}` : ''}</span>
-          <span class="nm">${esc(t.name)}</span>
-          <span class="rec">${esc(t.record || '')}</span>
-        </a>`).join('')}</div>
+      <table class="stand">
+        <thead><tr>
+          <th></th><th>Team</th><th class="rec">League</th><th class="rec">Overall</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
     </section>`;
   }).join('');
 }
