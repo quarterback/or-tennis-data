@@ -24,6 +24,12 @@
   /* A season reads as a timeline: a divided list of tight rows, not one card
      per match. Result first, then opponent, then score; date and match type
      sit under in small type. Rows are ~34px so a phone shows eight of them. */
+  /* One continuous season log — no container, no rounded rectangle. The rule
+     above the first row and between rows is the only structure it needs. */
+  .loghead {
+    font-family: var(--display-font); font-size: 0.95rem; letter-spacing: .02em;
+    margin: 22px 0 0; padding-bottom: 5px; border-bottom: 2px solid var(--ink);
+  }
   .sched { display: flex; flex-direction: column; }
   .g {
     display: grid;
@@ -33,8 +39,8 @@
     grid-template-columns: 20px 20rem 3.5rem 1fr;
     align-items: baseline;
     gap: 0 10px;
-    padding: 6px 14px;
-    line-height: 1.25;
+    padding: 5px 2px;
+    line-height: 1.22;
     border-bottom: 1px solid var(--rule-2);
     cursor: pointer;
     background: none;
@@ -58,12 +64,20 @@
   .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; }
   .g .when { grid-column: 2 / 5; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
 
-  .gbox { border-bottom: 1px solid var(--rule-2); background: var(--paper-2); overflow-x: auto; }
+  .gbox {
+    display: grid; grid-template-rows: 0fr;
+    transition: grid-template-rows .22s ease;
+    background: var(--paper-2);
+  }
+  .gbox.open { grid-template-rows: 1fr; border-bottom: 1px solid var(--rule-2); }
+  .gbox > .gbox-in { overflow: hidden; }
+  .gbox.open > .gbox-in { overflow-x: auto; }
+  @media (prefers-reduced-motion: reduce) { .gbox { transition: none; } }
   .gbox table { font-size: 0.78rem; }
-  .gbox th { position: static; background: transparent; padding: 5px 14px; }
-  .gbox td { padding: 4px 14px; border-bottom: 1px solid var(--rule-2); }
+  .gbox th { position: static; background: transparent; padding: 5px 12px; }
+  .gbox td { padding: 4px 12px; border-bottom: 1px solid var(--rule-2); }
   .gbox tr:last-child td { border-bottom: 0; }
-  .gbox .slot { font-weight: 700; color: var(--ink-3); width: 26px; }
+  .gbox .slot { font-weight: 700; color: var(--ink-3); width: 26px; padding-left: 2px; }
   .gbox .w { font-weight: 700; }
   .gbox .l { color: var(--ink-3); }
   .gbox .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
@@ -95,7 +109,7 @@
   @media (max-width: 640px) {
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
-    .g { padding: 6px 12px; grid-template-columns: 20px 1fr auto; }
+    .g { padding: 5px 2px; grid-template-columns: 18px 1fr auto; }
     .g .when { grid-column: 2 / 4; }
   }
 </style>
@@ -117,10 +131,8 @@
       </div>
     </div>
 
-    <div class="panel">
-      <div class="panel-head"><h2>Results</h2></div>
-      <div class="panel-body flush"><div id="resbody" class="sched"></div></div>
-    </div>
+    <h2 class="loghead">Results</h2>
+    <div id="resbody" class="sched"></div>
 
     <div class="panel">
       <div class="panel-head"><h2>By position</h2></div>
@@ -284,8 +296,7 @@ function renderSchedule(t, ourClass) {
     const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
     const bits = [
       r.opponentClassRank ? `#${r.opponentClassRank}` : '',
-      r.opponentClassification && r.opponentClassification !== ourClass
-        ? r.opponentClassification : '',
+      r.opponentClassification || '',
     ].filter(Boolean);
     const rank = bits.length ? `(${bits.join(', ')})` : '';
     return `<button class="g" data-i="${i}" aria-expanded="false">
@@ -294,7 +305,7 @@ function renderSchedule(t, ourClass) {
         <span class="sc">${esc(r.scoreline)}</span>
         <span class="when">${esc(fmtDate(r.date))} &middot; ${esc(kindOf(r))}</span>
       </button>
-      <div class="gbox" id="gbox-${i}" hidden></div>`;
+      <div class="gbox" id="gbox-${i}"><div class="gbox-in"></div></div>`;
   }).join('');
 
   el.querySelectorAll('.g').forEach((b) => {
@@ -321,13 +332,14 @@ async function dayDuals(date) {
 
 async function expand(i, r, button, t) {
   const mount = document.getElementById(`gbox-${i}`);
-  if (!mount.hidden) {
-    mount.hidden = true;
+  const inner = mount.querySelector('.gbox-in');
+  if (mount.classList.contains('open')) {
+    mount.classList.remove('open');
     button.setAttribute('aria-expanded', 'false');
     return;
   }
   button.setAttribute('aria-expanded', 'true');
-  mount.hidden = false;
+  mount.classList.add('open');
 
   if (mount.dataset.loaded) return;
   const duals = await dayDuals(r.date);
@@ -336,7 +348,7 @@ async function expand(i, r, button, t) {
     || (String(x.b.id) === String(t.schoolId) && String(x.a.id) === String(r.opponentId)));
 
   if (!d || !d.flights || !d.flights.length) {
-    mount.innerHTML = '<div class="empty" style="padding:12px 14px">No card on record.</div>';
+    inner.innerHTML = '<div class="empty" style="padding:12px">No card on record.</div>';
     mount.dataset.loaded = '1';
     return;
   }
@@ -355,7 +367,7 @@ async function expand(i, r, button, t) {
     </tr>`;
   }).join('');
 
-  mount.innerHTML = `<table>
+  inner.innerHTML = `<table>
     <thead><tr><th></th><th></th><th>${esc(r.opponent)}</th><th class="sc">Score</th></tr></thead>
     <tbody>${rows}</tbody></table>`;
   mount.dataset.loaded = '1';
