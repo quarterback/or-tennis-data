@@ -418,6 +418,10 @@ tr.cutline-label td {
 
 @media (max-width: 720px) {
   .mast-tagline { display: none; }
+  /* Six nav items do not fit a phone on one line. Let them wrap rather than
+     push the page wider than the viewport — adding Teams was what tipped it. */
+  .mast-nav { flex-wrap: wrap; gap: 6px 14px; margin-left: 0; width: 100%; }
+  .mast-inner { gap: 8px; }
   .pagehead h1 { font-size: 1.3rem; }
   .controls { gap: 8px; }
 }
