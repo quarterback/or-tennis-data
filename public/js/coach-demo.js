@@ -32,6 +32,34 @@ const NAMES = [
   ['Cleo', 'Mbeki', '12'],
 ];
 
+// Three duals already on the books, so the tool opens with a season in it
+// rather than an empty table and a "no duals reported yet" line. Somebody being
+// shown this should see what it looks like in use: a confirmed win, a loss, and
+// a draft half-entered. Real opponents, plausible scores.
+const SAMPLE = [
+  { days: 21, opponent: 124884, home: true, status: 'confirmed',
+    // 5–3. Won the singles, split the doubles.
+    results: [true, true, false, true, true, false, false, true] },
+  { days: 14, opponent: 124656, home: false, status: 'confirmed',
+    // 3–5 the other way.
+    results: [false, true, false, false, true, true, false, false] },
+  { days: 5, opponent: 75860, home: true, status: 'draft',
+    // Half a card typed and not yet submitted, which is the state a coach
+    // leaves one in when a match runs late.
+    results: [true, true, false, null, null, null, null, null] },
+];
+
+const CARD = [
+  ['Singles', 1], ['Singles', 2], ['Singles', 3], ['Singles', 4],
+  ['Doubles', 1], ['Doubles', 2], ['Doubles', 3], ['Doubles', 4],
+];
+
+const SCORES = [
+  [[6, 3], [6, 4]], [[7, 5], [6, 2]], [[6, 4], [3, 6], [10, 7]],
+  [[6, 1], [6, 0]], [[6, 2], [7, 6]], [[4, 6], [6, 3], [10, 8]],
+  [[6, 4], [6, 4]], [[7, 6], [6, 3]],
+];
+
 function seed() {
   const players = [];
   let pid = 950000;
@@ -43,7 +71,56 @@ function seed() {
       });
     }
   }
-  return { players, duals: [], nextDualId: 8001, nextLineId: 700001 };
+
+  // Dates are counted back from today so the season always looks current.
+  const today = new Date();
+  const iso = (daysAgo) => {
+    const d = new Date(today.getTime() - daysAgo * 86400000);
+    return d.toISOString().slice(0, 10);
+  };
+
+  const girls = TEAMS[0];
+  const ours = players.filter((p) => p.team_season_id === girls.id);
+  let lineId = 700001;
+  let dualId = 8001;
+
+  const duals = SAMPLE.map((sample) => ({
+    id: dualId++,
+    team_season_id: girls.id,
+    home_school_id: sample.home ? girls.school_id : sample.opponent,
+    away_school_id: sample.home ? sample.opponent : girls.school_id,
+    is_home: sample.home,
+    opponent_school_id: sample.opponent,
+    played_on: iso(sample.days),
+    status: sample.status,
+    updated_at: new Date().toISOString(),
+    lines: sample.results.map((weWon, i) => {
+      if (weWon === null) return null;   // flight not entered yet
+      const [type, flight] = CARD[i];
+      const doubles = type === 'Doubles';
+      const homeWon = sample.home ? weWon : !weWon;
+      // Set scores are written from the home side, so flip them when we are away.
+      const sets = SCORES[i].map(([a, b], n) => ({
+        number: n + 1,
+        homeGames: weWon === sample.home ? a : b,
+        awayGames: weWon === sample.home ? b : a,
+      }));
+      const pick = (n) => ours[(i * 2 + n) % ours.length];
+      return {
+        id: lineId++,
+        match_type: type,
+        flight,
+        home_won: homeWon,
+        finish: null,
+        sets: weWon === homeWon ? sets : sets.map((x) => ({
+          number: x.number, homeGames: x.awayGames, awayGames: x.homeGames })),
+        homePlayers: sample.home ? [pick(0), ...(doubles ? [pick(1)] : [])] : [],
+        awayPlayers: sample.home ? [] : [pick(0), ...(doubles ? [pick(1)] : [])],
+      };
+    }).filter(Boolean),
+  }));
+
+  return { players, duals, nextDualId: dualId, nextLineId: lineId };
 }
 
 function load() {

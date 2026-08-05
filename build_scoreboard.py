@@ -22,7 +22,7 @@ import csv
 import json
 import os
 import sys
-from collections import Counter
+from collections import Counter, defaultdict
 
 from season_duals import box_score, by_date, load_year
 
@@ -61,7 +61,28 @@ def build_year(year: int) -> dict:
     grouped = by_date(duals)
     index_dates = []
 
+    # Running record per (school, gender), advanced as the season is written out
+    # in date order. A scoreboard that says "Jesuit (12-3)" is showing the record
+    # as it stood after that match, not the team's final one — quoting the final
+    # record next to an April result would be wrong by every game played since.
+    tally = defaultdict(lambda: [0, 0, 0])
+
+    def record_str(school_id, gender):
+        w, l, t = tally[(school_id, gender)]
+        return f"{w}-{l}" + (f"-{t}" if t else "")
+
     for date, days in sorted(grouped.items()):
+        # Advance every team on this date before writing, so both sides of a
+        # dual show the record including that dual — the way a box score does.
+        for d in days:
+            g = d["gender"]
+            if d["tied"]:
+                tally[(d["winner"]["id"], g)][2] += 1
+                tally[(d["loser"]["id"], g)][2] += 1
+            else:
+                tally[(d["winner"]["id"], g)][0] += 1
+                tally[(d["loser"]["id"], g)][1] += 1
+
         records = []
         for d in days:
             # The feed does not record who hosted, so the two sides are simply
@@ -84,10 +105,17 @@ def build_year(year: int) -> dict:
                     if d["tiebreak"] else None),
                 "a": {"id": a_id, "name": d["winner"]["name"], "score": d["winner"]["score"],
                       "classification": a_meta.get("classification", ""),
-                      "league": a_meta.get("league", "")},
+                      "league": a_meta.get("league", ""),
+                      "record": record_str(a_id, d["gender"])},
                 "b": {"id": b_id, "name": d["loser"]["name"], "score": d["loser"]["score"],
                       "classification": b_meta.get("classification", ""),
-                      "league": b_meta.get("league", "")},
+                      "league": b_meta.get("league", ""),
+                      "record": record_str(b_id, d["gender"])},
+                # Both sides in the same league is a conference match, which is
+                # the one piece of context a reader wants that the names do not
+                # already carry.
+                "conference": bool(a_meta.get("league")
+                                   and a_meta.get("league") == b_meta.get("league")),
                 "flights": box_score(d["meet"], a_id, b_id),
             })
 

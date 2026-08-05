@@ -27,6 +27,11 @@
     border-bottom: 1px solid var(--rule-2); font-size: 0.7rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3);
   }
+  /* FINAL sits where a scoreboard puts it: first, small, and unmissable. */
+  .game-head .final { color: var(--ink); }
+  .game-head .tag { font-weight: 700; color: var(--accent-2); }
+  /* The record rides with the name at a smaller weight, like ESPN's (12-3). */
+  .team-row .name .rec { font-weight: 400; color: var(--ink-3); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
   .team-row {
     display: flex; align-items: center; gap: 10px; padding: 9px 12px; cursor: pointer;
   }
@@ -177,8 +182,11 @@ function teamRow(side, dual) {
   const state = dual.tied ? '' : (dual.winnerId === t.id ? 'won' : 'lost');
   // Penalty-shootout convention: the tiebreak figures sit beside the score.
   const pk = dual.tiebreak ? (side === 'a' ? dual.tiebreak.a : dual.tiebreak.b) : '';
+  // Record next to the name, the way every scoreboard does it — it is the
+  // context that turns a result into news. It is the record AS OF this match,
+  // not the team's final one.
   return `<div class="team-row ${state}">
-    <span class="name">${esc(t.name)}
+    <span class="name">${esc(t.name)}${t.record ? ` <span class="rec">${esc(t.record)}</span>` : ''}
       <span class="meta">${esc(t.classification)}${t.league ? ` · ${esc(t.league)}` : ''}</span>
     </span>
     <span class="pk">${pk === '' ? '' : `(${pk})`}</span>
@@ -206,10 +214,14 @@ function render() {
       d.postseason ? '<span class="chip quiet">Postseason</span>' : '',
       d.contested ? '<span class="chip flag">Disputed</span>' : '',
       d.source === 'entered' ? '<span class="chip aq">Coach-reported</span>' : '',
-      d.tied ? '<span class="chip quiet">Tie</span>' : '',
     ].filter(Boolean).join(' ');
     return `<div class="game" data-i="${i}">
-      <div class="game-head"><span>${esc(d.gender)}</span>${tags}</div>
+      <div class="game-head">
+        <span class="final">${d.tied ? 'Final · Tie' : 'Final'}</span>
+        <span>${esc(d.gender)}</span>
+        ${d.conference ? '<span class="tag">Conference</span>' : ''}
+        ${tags}
+      </div>
       ${teamRow('a', d)}
       ${teamRow('b', d)}
       <div class="game-foot">
