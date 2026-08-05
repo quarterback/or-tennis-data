@@ -15,7 +15,7 @@
 
 import {
   HttpError, csv, db, json, readJson, requireAdmin, route, segments,
-} from './_db.mjs';
+} from './lib/db.mjs';
 
 function csvRow(values) {
   return values.map((v) => {

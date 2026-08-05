@@ -17,7 +17,7 @@
 import {
   HttpError, currentCoach, db, json, nextIds, readJson, requireClaim,
   requireCoach, route, segments, tx,
-} from './_db.mjs';
+} from './lib/db.mjs';
 
 const MAX_IMPORT_LINES = 60;
 

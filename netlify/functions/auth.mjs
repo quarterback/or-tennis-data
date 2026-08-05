@@ -20,7 +20,7 @@ import {
   HttpError, claimedTeams, clearCookie, currentCoach, db, json,
   readJson, route, segments, sessionCookie, sha256Hex, signSession,
   SESSION_TTL_SECONDS,
-} from './_db.mjs';
+} from './lib/db.mjs';
 
 const TOKEN_TTL_MINUTES = 15;
 const MAX_LINKS_PER_WINDOW = 5;   // per email, per TTL window

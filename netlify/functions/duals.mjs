@@ -29,7 +29,7 @@
 import {
   HttpError, currentCoach, db, json, nextIds, readJson, requireAdmin,
   requireClaim, requireCoach, route, segments, tx,
-} from './_db.mjs';
+} from './lib/db.mjs';
 import { ensurePlayers } from './roster.mjs';
 
 const MATCH_TYPES = new Set(['Singles', 'Doubles']);

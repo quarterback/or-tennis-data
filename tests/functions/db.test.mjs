@@ -1,6 +1,6 @@
 // Unit tests for the session token and the small helpers around it.
 //
-//   node --test netlify/functions/
+//   node --test tests/functions/
 //
 // These need no database: everything covered here is pure. What they pin is the
 // part where being wrong is worst — a session token that verifies when it should
@@ -14,7 +14,7 @@ process.env.SESSION_SECRET = 'test-secret-not-used-anywhere-real';
 const {
   HttpError, clearCookie, route, segments, sessionCookie, sha256Hex,
   signSession, verifySession,
-} = await import('./_db.mjs');
+} = await import('../../netlify/functions/lib/db.mjs');
 
 function req(url, headers = {}) {
   return new Request(url, { headers });
@@ -43,7 +43,7 @@ describe('session tokens', () => {
     const exp = Math.floor(Date.now() / 1000) + 60;
     const token = await signSession({ sub: 1, exp });
     process.env.SESSION_SECRET = 'a-different-secret';
-    const mod = await import(`./_db.mjs?bust=${Math.random()}`);
+    const mod = await import(`../../netlify/functions/lib/db.mjs?bust=${Math.random()}`);
     assert.equal(await mod.verifySession(token), null);
     process.env.SESSION_SECRET = 'test-secret-not-used-anywhere-real';
   });

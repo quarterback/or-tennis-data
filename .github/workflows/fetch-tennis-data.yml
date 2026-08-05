@@ -32,7 +32,7 @@ jobs:
         with:
           node-version: '20'
       - run: npm ci
-      - run: node --test "netlify/functions/*.test.mjs"
+      - run: node --test "tests/functions/*.test.mjs"
 
   fetch-data:
     needs: test

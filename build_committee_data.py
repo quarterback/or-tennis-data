@@ -92,13 +92,33 @@ def _league_win_pct(team: dict) -> float | None:
     return (w + t * 0.5) / played
 
 
-def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
-    """The league champion, by league win percentage.
+# How close two teams' league win percentages have to be before head-to-head is
+# allowed to reorder them. Matches the playoff simulator's threshold.
+LEAGUE_H2H_BAND = 0.1
 
-    Oregon does not publish league champions, so the best available answer is
-    the team that won its league. Ties on win percentage go to head-to-head
-    between the tied teams, then to Power Index — and a tie broken by the head
-    to head uses the head-to-head answer, where losing a 4-4 tiebreaker IS a
+
+def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
+    """The league champion, using the league tiebreakers the site already has.
+
+    Oregon does not publish league champions, so this has to be derived — but
+    the rule is not a new one. It mirrors `loadTeamsForSelection` in the playoff
+    simulator (inside generate_site.py's generated page), which is where the
+    site already decides who tops a league and pre-checks them as the automatic
+    bid:
+
+      1. Sort by league win percentage, then Power Index.
+      2. Repeatedly swap adjacent teams whose league win percentages are within
+         0.1 of each other when the lower one won the head-to-head, until the
+         order settles.
+      3. The team on top is the champion.
+
+    If the two ever disagreed the owner would find a board and a simulator
+    naming different champions, so they follow the same steps. One deliberate
+    difference: the simulator reads head-to-head from `h2h_nearby`, which only
+    carries nearby opponents, while this has every dual — so where the simulator
+    simply cannot see a pair, this is the better-informed answer.
+
+    Head-to-head here is the strict question, where losing a 4-4 tiebreaker is a
     loss.
 
     Returns None when no member played a league match.
@@ -108,35 +128,40 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     if not scored:
         return None
 
-    best = max(p for _, p in scored)
-    contenders = [t for t, p in scored if p == best]
-    if len(contenders) == 1:
-        return {"team": contenders[0], "basis": "league record", "tied_with": []}
+    order = [t for t, _ in sorted(
+        scored, key=lambda x: (x[1], x[0].get("power_index") or 0), reverse=True)]
+    pct = {t["school_id"]: p for t, p in scored}
 
-    # Head to head among the tied teams only.
-    def h2h_points(team):
-        pts = 0
-        for other in contenders:
-            if other is team:
+    def beat(a, b):
+        """Did `a` win the head-to-head against `b`?"""
+        letters = duals_by_pair.get((a["school_id"], b["school_id"]), [])
+        return sum(1 for x in letters if x == "W") > sum(1 for x in letters if x == "L")
+
+    swaps = []
+    changed = True
+    guard = 0
+    while changed and guard < 50:
+        changed = False
+        guard += 1
+        for i in range(len(order) - 1):
+            a, b = order[i], order[i + 1]
+            if abs(pct[a["school_id"]] - pct[b["school_id"]]) > LEAGUE_H2H_BAND:
                 continue
-            for letter in duals_by_pair.get(
-                    (team["school_id"], other["school_id"]), []):
-                pts += 1 if letter == "W" else (-1 if letter == "L" else 0)
-        return pts
+            if beat(b, a):
+                order[i], order[i + 1] = b, a
+                swaps.append((b["school_name"], a["school_name"]))
+                changed = True
 
-    ranked = sorted(
-        contenders,
-        key=lambda t: (h2h_points(t), t.get("power_index") or 0),
-        reverse=True)
-    top = ranked[0]
-    basis = ("league record, head to head"
-             if h2h_points(top) != h2h_points(ranked[1]) else
-             "league record, Power Index")
-    return {
-        "team": top,
-        "basis": basis,
-        "tied_with": [t["school_name"] for t in contenders if t is not top],
-    }
+    top = order[0]
+    level = [t["school_name"] for t in order[1:]
+             if pct[t["school_id"]] == pct[top["school_id"]]]
+    if any(top["school_name"] == w for w, _ in swaps):
+        basis = "league record, head to head"
+    elif level:
+        basis = "league record, Power Index"
+    else:
+        basis = "league record"
+    return {"team": top, "basis": basis, "tied_with": level}
 
 
 def load_ladder(year, gender_id, school_id):
