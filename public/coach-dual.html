@@ -30,7 +30,16 @@
             <input type="date" id="played-on">
           </label>
           <label class="small muted">Opponent
-            <select id="opponent"></select>
+            <div class="combo">
+              <input type="text" id="opponent-search" autocomplete="off"
+                     placeholder="Type a school…" aria-label="Opponent">
+              <button type="button" class="combo-clear" id="opponent-clear"
+                      aria-label="Clear" hidden>&times;</button>
+              <div class="combo-list" id="opponent-list" hidden></div>
+            </div>
+            <!-- The school id lives here so everything downstream keeps
+                 reading `opponent.value` exactly as it did with a select. -->
+            <input type="hidden" id="opponent">
           </label>
           <label class="small muted">Site
             <select id="site">
@@ -160,15 +169,117 @@ async function loadOpponents() {
     const seen = new Map();
     for (const e of rankings) {
       if (e.gender !== gender || Number(e.school_id) === Number(team.school_id)) continue;
-      if (!seen.has(e.school_id)) seen.set(e.school_id, { school_id: e.school_id, school_name: e.school_name });
+      // league/classification come along so the picker can lead with the
+      // teams in your own league.
+      if (!seen.has(e.school_id)) {
+        seen.set(e.school_id, {
+          school_id: e.school_id, school_name: e.school_name,
+          league: e.league || '', classification: e.classification || '',
+        });
+      }
     }
     opponents = [...seen.values()];
   }
   opponents.sort((a, b) => String(a.school_name).localeCompare(String(b.school_name)));
-  document.getElementById('opponent').innerHTML =
-    '<option value="">Choose…</option>' +
-    opponents.map((o) =>
-      `<option value="${o.school_id}">${escapeHtml(o.school_name)}</option>`).join('');
+  buildCombo();
+}
+
+/**
+ * Opponent picker.
+ *
+ * A native select with 132 schools in it is unusable on a phone — you scroll
+ * past sixty names to reach yours. This types to filter instead, and with an
+ * empty box it leads with the teams in your own league, which is who you play
+ * most. Everything else is still there under a heading.
+ */
+function buildCombo() {
+  const search = document.getElementById('opponent-search');
+  const list = document.getElementById('opponent-list');
+  const hidden = document.getElementById('opponent');
+  const clear = document.getElementById('opponent-clear');
+  let active = -1;
+
+  const groups = () => {
+    const q = search.value.trim().toLowerCase();
+    if (q) {
+      const hit = opponents.filter((o) => o.school_name.toLowerCase().includes(q));
+      // Names that START with what was typed are what the person meant.
+      hit.sort((a, b) => {
+        const as = a.school_name.toLowerCase().startsWith(q) ? 0 : 1;
+        const bs = b.school_name.toLowerCase().startsWith(q) ? 0 : 1;
+        return as - bs || a.school_name.localeCompare(b.school_name);
+      });
+      return [{ label: '', items: hit.slice(0, 40) }];
+    }
+    const mine = opponents.filter((o) => o.league && o.league === team.league);
+    const rest = opponents.filter((o) => !mine.includes(o));
+    return [
+      ...(mine.length ? [{ label: team.league, items: mine }] : []),
+      { label: mine.length ? 'Everyone else' : '', items: rest },
+    ];
+  };
+
+  function render() {
+    const gs = groups();
+    let i = -1;
+    list.innerHTML = gs.map((g) => {
+      const head = g.label ? `<div class="combo-head">${escapeHtml(g.label)}</div>` : '';
+      return head + g.items.map((o) => {
+        i += 1;
+        const sub = o.classification && o.league && !search.value.trim()
+          ? '' : `<span class="combo-sub">${escapeHtml(o.league || o.classification || '')}</span>`;
+        return `<button type="button" class="combo-item${i === active ? ' on' : ''}"
+                 data-id="${o.school_id}" data-i="${i}">${escapeHtml(o.school_name)}${sub}</button>`;
+      }).join('');
+    }).join('') || '<div class="combo-empty">No school by that name.</div>';
+
+    list.querySelectorAll('.combo-item').forEach((b) => {
+      b.onmousedown = (e) => { e.preventDefault(); pick(Number(b.dataset.id)); };
+    });
+  }
+
+  function open() { list.hidden = false; active = -1; render(); }
+  function close() { list.hidden = true; }
+
+  function pick(id) {
+    const o = opponents.find((x) => Number(x.school_id) === id);
+    if (!o) return;
+    hidden.value = String(id);
+    search.value = o.school_name;
+    clear.hidden = false;
+    close();
+    onOpponentChange();
+  }
+
+  search.oninput = () => {
+    // Typing after a pick means they are changing their mind.
+    if (hidden.value) { hidden.value = ''; clear.hidden = true; onOpponentChange(); }
+    open();
+  };
+  search.onfocus = open;
+  search.onblur = () => setTimeout(close, 120);
+  search.onkeydown = (e) => {
+    const items = [...list.querySelectorAll('.combo-item')];
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (list.hidden) return open();
+      active = Math.max(0, Math.min(items.length - 1, active + (e.key === 'ArrowDown' ? 1 : -1)));
+      render();
+      items[active]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      if (!list.hidden && items[active]) { e.preventDefault(); pick(Number(items[active].dataset.id)); }
+      else if (!list.hidden && items.length === 1) { e.preventDefault(); pick(Number(items[0].dataset.id)); }
+    } else if (e.key === 'Escape') { close(); }
+  };
+  clear.onclick = () => {
+    hidden.value = ''; search.value = ''; clear.hidden = true; onOpponentChange(); search.focus();
+  };
+
+  // Reflect a value set programmatically (loading a saved dual).
+  hidden.addEventListener('change', () => {
+    const o = opponents.find((x) => Number(x.school_id) === Number(hidden.value));
+    if (o) { search.value = o.school_name; clear.hidden = false; }
+  });
 }
 
 async function onOpponentChange() {
@@ -193,8 +304,9 @@ async function loadExisting() {
   document.getElementById('postseason').checked = !!dual.is_postseason;
   const weAreHome = Number(dual.home_school_id) === Number(team.school_id);
   document.getElementById('site').value = weAreHome ? 'home' : 'away';
-  document.getElementById('opponent').value =
-    weAreHome ? dual.away_school_id : dual.home_school_id;
+  const oppField = document.getElementById('opponent');
+  oppField.value = weAreHome ? dual.away_school_id : dual.home_school_id;
+  oppField.dispatchEvent(new Event('change'));
 
   // A flight absent from a saved dual was not contested — that is what absence
   // means in the store — so start everything skipped and fill in what is there.

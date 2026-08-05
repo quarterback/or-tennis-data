@@ -165,3 +165,37 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
   .flight-side .side-label { min-width: 100%; }
   .savebar { flex-wrap: wrap; }
 }
+
+/* Opponent picker.
+   A native select holding 132 schools means scrolling past sixty names on a
+   phone to reach yours. This is a text box that filters as you type, with the
+   list anchored under it. */
+.combo { position: relative; display: flex; align-items: center; }
+.combo input[type="text"] { width: 100%; padding-right: 26px; }
+.combo-clear {
+  position: absolute; right: 4px; background: none; border: 0; color: var(--muted);
+  font-size: 1.1rem; line-height: 1; padding: 2px 6px; cursor: pointer;
+}
+.combo-clear:hover { background: none; color: var(--fg); }
+.combo-list {
+  position: absolute; top: calc(100% + 3px); left: 0; right: 0; z-index: 50;
+  max-height: 46vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: #fff; border: 1px solid var(--line); border-radius: 8px;
+  box-shadow: 0 8px 26px rgba(0,0,0,.14);
+}
+.combo-head {
+  position: sticky; top: 0; background: var(--pane); color: var(--muted);
+  font-size: 0.68rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; padding: 5px 11px; border-bottom: 1px solid var(--line-soft);
+}
+.combo-item {
+  display: flex; align-items: baseline; gap: 8px; width: 100%;
+  background: #fff; color: var(--fg); border: 0; border-radius: 0;
+  text-align: left; font-weight: 500; font-size: 0.92rem;
+  padding: 10px 11px;              /* a comfortable tap target */
+  border-bottom: 1px solid var(--line-soft);
+}
+.combo-item:last-child { border-bottom: 0; }
+.combo-item:hover, .combo-item.on { background: var(--blue-soft); }
+.combo-sub { margin-left: auto; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
+.combo-empty { padding: 14px 12px; color: var(--muted); font-size: 0.88rem; }
