@@ -108,6 +108,7 @@ applyBrand('Team', {
   links: [
     { href: 'cheesybook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
     { href: 'coach.html', label: 'Report' },
     { href: 'index.html', label: 'Rankings' },
@@ -216,21 +217,47 @@ function render(t, field) {
       <div class="v">${v === null || v === undefined ? '—' : `${Math.round(v)}%`}</div></div>`;
   }).join('');
 
-  // The ladder here carries names but no player ids, so a roster row links to
-  // the Lineups tool for the team rather than pretending to know the player's
-  // card URL.
   const ladder = t.ladder || [];
   document.getElementById('rosnote').textContent =
     ladder.length ? `${ladder.length} players` : '';
   document.getElementById('rosbody').innerHTML = ladder.map((p, i) => `
     <tr>
       <td class="mid">${i + 1}</td>
-      <td>${esc(p.name)}</td>
+      <td class="js-nm" data-name="${esc(p.name)}">${esc(p.name)}</td>
       <td class="mid">${esc(p.grade || '')}</td>
       <td class="mid">${p.primary ? `<span class="chip quiet">${esc(SLOT_LABEL[p.primary] || p.primary)}</span>` : ''}</td>
       <td class="num">${p.record ? `${p.record[0]}–${p.record[1]}` : '—'}</td>
     </tr>`).join('')
     || '<tr><td colspan="5" class="empty">No roster published.</td></tr>';
+
+  linkRoster(t.schoolId, field.gender);
+}
+
+/**
+ * Turn roster names into links to player cards.
+ *
+ * The committee export carries names without player ids, but the lineups
+ * export carries both — and its file name is computable (gender digit then
+ * school id), so the pair can be joined here rather than adding a field to an
+ * export. Names that do not resolve simply stay as text.
+ */
+async function linkRoster(schoolId, genderWord) {
+  const key = `${String(genderWord).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
+  let ladder;
+  try {
+    ladder = (await fetch(`data/lineups/${year}/${key}.json`).then((r) => {
+      if (!r.ok) throw new Error('none');
+      return r.json();
+    })).ladder || [];
+  } catch { return; }
+
+  const byName = new Map(ladder.map((p) => [String(p.name).trim().toLowerCase(), p.pid]));
+  document.querySelectorAll('.js-nm').forEach((td) => {
+    const pid = byName.get(String(td.dataset.name).trim().toLowerCase());
+    if (!pid) return;
+    td.innerHTML =
+      `<a href="player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(pid)}">${esc(td.dataset.name)}</a>`;
+  });
 }
 
 boot();

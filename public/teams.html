@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teams — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* The way into every team page. Without this the team pages exist and
+     nothing points at them unless you happen to be on a scoreboard card. */
+  .findbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0 16px; }
+  .findbar input { flex: 1 1 240px; min-height: 40px; font-size: 16px; }
+
+  .lg { margin: 0 0 18px; }
+  .lg > h2 {
+    font-family: var(--display-font); font-size: 0.95rem; margin: 0 0 7px;
+    padding-bottom: 4px; border-bottom: 2px solid var(--ink); letter-spacing: .02em;
+  }
+  .rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 6px; }
+  .row {
+    display: flex; align-items: baseline; gap: 8px;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
+    padding: 8px 11px; text-decoration: none; color: inherit;
+  }
+  .row:hover { border-color: var(--accent); background: var(--accent-wash); text-decoration: none; }
+  .row .nm { font-weight: 600; font-size: 0.9rem; flex: 1; min-width: 0; }
+  .row .rk { font-size: 0.7rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .row .rec { font-size: 0.8rem; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div class="pagehead">
+    <h1>Teams</h1>
+    <p class="sub">Every team's season, by league.</p>
+  </div>
+
+  <div class="findbar">
+    <input type="search" id="q" placeholder="Find a school…" autocomplete="off">
+    <label class="tiny muted">Gender
+      <select id="gender"><option>Girls</option><option>Boys</option></select></label>
+    <label class="tiny muted">Class <select id="class"></select></label>
+  </div>
+
+  <div id="list"></div>
+  <div id="empty" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+
+applyBrand('Teams', {
+  current: 'Teams',
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const YEAR = 2026;
+let index = null;
+const cache = new Map();
+
+async function boot() {
+  index = await fetch(`data/committee/${YEAR}/index.json`).then((r) => r.json());
+  const classes = [...new Set(index.fields.map((f) => f.classification))];
+  document.getElementById('class').innerHTML =
+    '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
+
+  for (const id of ['q', 'gender', 'class']) {
+    const el = document.getElementById(id);
+    el.oninput = render;
+    el.onchange = render;
+  }
+  await render();
+}
+
+/** Every team in the chosen gender, across the classifications. */
+async function teams() {
+  const gender = document.getElementById('gender').value.toLowerCase();
+  const cls = document.getElementById('class').value;
+  const fields = index.fields.filter((f) =>
+    f.gender.toLowerCase() === gender && (!cls || f.classification === cls));
+
+  const out = [];
+  for (const f of fields) {
+    if (!cache.has(f.file)) {
+      cache.set(f.file, await fetch(`data/committee/${YEAR}/${f.file}`).then((r) => r.json()));
+    }
+    const data = cache.get(f.file);
+    for (const t of data.teams) out.push({ ...t, gender, classification: data.classification });
+  }
+  return out;
+}
+
+async function render() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  let list = await teams();
+  if (q) list = list.filter((t) => t.name.toLowerCase().includes(q));
+
+  const el = document.getElementById('list');
+  const empty = document.getElementById('empty');
+  if (!list.length) {
+    el.innerHTML = '';
+    empty.style.display = '';
+    empty.textContent = 'No school by that name.';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Grouped by league, the way a standings page is organised.
+  const byLeague = new Map();
+  for (const t of list) {
+    const k = t.league || 'No league';
+    if (!byLeague.has(k)) byLeague.set(k, []);
+    byLeague.get(k).push(t);
+  }
+
+  el.innerHTML = [...byLeague.entries()].sort().map(([league, ts]) => {
+    // Best league record first — a league list is a standings list.
+    ts.sort((a, b) => (b.powerIndex || 0) - (a.powerIndex || 0));
+    return `<section class="lg">
+      <h2>${esc(league)}</h2>
+      <div class="rows">${ts.map((t) => `
+        <a class="row" href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">
+          <span class="rk">${t.classRank ? `#${t.classRank}` : ''}</span>
+          <span class="nm">${esc(t.name)}</span>
+          <span class="rec">${esc(t.record || '')}</span>
+        </a>`).join('')}</div>
+    </section>`;
+  }).join('');
+}
+
+boot();
+</script>
+</body>
+</html>

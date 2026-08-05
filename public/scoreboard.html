@@ -126,6 +126,8 @@
   .box .w { font-weight: 700; }
   .box .l { color: var(--ink-3); }
   .box .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .box td a, .box th a { color: inherit; text-decoration: none; }
+  .box td a:hover, .box th a:hover { color: var(--accent); text-decoration: underline; }
   .box .fin { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--flag); }
 </style>
 </head>
@@ -169,6 +171,7 @@ applyBrand('Scoreboard', {
   links: [
     { href: 'cheesybook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
     { href: 'coach.html', label: 'Report' },
     { href: 'index.html', label: 'Rankings' },
@@ -413,7 +416,37 @@ function render() {
   });
 }
 
-function toggleBox(i, list, button) {
+// A team's lineup file, keyed the way the export names it: gender digit then
+// school id. Computed rather than indexed, so no new export is needed to turn
+// box-score names into links.
+const teamKey = (schoolId, gender) =>
+  `${String(gender).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
+
+const rosterCache = new Map();
+async function rosterFor(schoolId, gender) {
+  const key = teamKey(schoolId, gender);
+  if (rosterCache.has(key)) return rosterCache.get(key);
+  let map = null;
+  try {
+    const d = await fetch(`data/lineups/${index.year}/${key}.json`).then((r) => {
+      if (!r.ok) throw new Error('none');
+      return r.json();
+    });
+    map = new Map((d.ladder || []).map((pl) => [String(pl.name).trim().toLowerCase(), pl.pid]));
+    map.key = key;
+  } catch { /* team has no published lineup — names stay plain text */ }
+  rosterCache.set(key, map);
+  return map;
+}
+
+/** A player's name, linked to their card when we can resolve them. */
+function playerLink(name, roster) {
+  const pid = roster && roster.get(String(name).trim().toLowerCase());
+  if (!pid) return esc(name);
+  return `<a href="player.html?t=${encodeURIComponent(roster.key)}&p=${encodeURIComponent(pid)}">${esc(name)}</a>`;
+}
+
+async function toggleBox(i, list, button) {
   const mount = document.getElementById(`box-${i}`);
   if (mount.style.display !== 'none') {
     mount.style.display = 'none';
@@ -421,22 +454,31 @@ function toggleBox(i, list, button) {
     return;
   }
   const d = list[i];
+  // Both sides' rosters, so every name in the box score can become a link.
+  const [rosterA, rosterB] = await Promise.all([
+    rosterFor(d.a.id, d.gender), rosterFor(d.b.id, d.gender),
+  ]);
   const rows = d.flights.map((f) => {
     const score = f.sets.map((s) =>
       `${s.home}-${s.away}${s.tie != null ? `(${s.tie})` : ''}`).join(', ');
-    const name = (arr) => (arr.length ? esc(arr.join(' / ')) : '<span class="muted">no player</span>');
+    const name = (arr, roster) => (arr.length
+      ? arr.map((n) => playerLink(n, roster)).join(' / ')
+      : '<span class="muted">no player</span>');
     const finish = f.finish
       ? `<span class="fin">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
     return `<tr>
       <td class="slot">${esc(f.label)}</td>
-      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players)}</td>
-      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players)}</td>
+      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players, rosterA)}</td>
+      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players, rosterB)}</td>
       <td class="sc">${esc(score) || '&mdash;'} ${finish}</td>
     </tr>`;
   }).join('');
 
   mount.innerHTML = `<table>
-    <thead><tr><th></th><th>${esc(d.a.name)}</th><th>${esc(d.b.name)}</th><th class="sc">Score</th></tr></thead>
+    <thead><tr><th></th>
+      <th><a href="team.html?s=${encodeURIComponent(d.a.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.a.name)}</a></th>
+      <th><a href="team.html?s=${encodeURIComponent(d.b.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.b.name)}</a></th>
+      <th class="sc">Score</th></tr></thead>
     <tbody>${rows}</tbody></table>`
     + (d.flights.length < 8
       ? `<p class="tiny muted" style="padding:6px 12px 0">Only ${d.flights.length} of the
