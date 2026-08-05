@@ -34,6 +34,24 @@
   .flights .p { font-size: 0.62rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
   .flights .v { font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
 
+  .poschip {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 2px 7px; font-size: 0.75rem; margin: 1px 3px 1px 0;
+    white-space: nowrap;
+  }
+  .poschip b { font-weight: 700; }
+  .poschip.primary { border-color: var(--accent); background: var(--accent-wash); }
+
+  /* Where each player actually appeared. Shaded so the shape of a lineup is
+     readable before any of the numbers are. */
+  .matrix td.slot, .matrix th.slot { text-align: center; font-variant-numeric: tabular-nums; }
+  .matrix td.z { color: var(--ink-4); }
+  .matrix td.h1 { background: #fff3d0; }
+  .matrix td.h2 { background: #ffe49b; }
+  .matrix td.h3 { background: #f5c264; }
+  .matrix td.h4 { background: #e0a03c; }
+
   @media (max-width: 640px) {
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
@@ -85,14 +103,28 @@
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h2>Roster</h2><span class="tiny muted" id="rosnote"></span></div>
+      <div class="panel-head"><h2>Ladder</h2>
+        <span class="tiny muted" id="rosnote"></span>
+        <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
+      </div>
       <div class="panel-body flush scroll">
         <table>
           <thead><tr>
-            <th class="mid">#</th><th>Player</th><th class="mid">Grade</th>
-            <th class="mid">Position</th><th class="num">Record</th>
+            <th class="mid">#</th><th>Player</th><th class="mid">Gr</th>
+            <th>Positions played</th><th class="num">Overall</th>
           </tr></thead>
           <tbody id="rosbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="panel" id="matrix-panel" style="display:none">
+      <div class="panel-head"><h2>Position matrix</h2>
+        <span class="tiny muted">Matches played at each position</span></div>
+      <div class="panel-body flush scroll">
+        <table class="matrix">
+          <thead><tr id="matrix-head"></tr></thead>
+          <tbody id="matrix-body"></tbody>
         </table>
       </div>
     </div>
@@ -230,19 +262,28 @@ function render(t, field) {
     </tr>`).join('')
     || '<tr><td colspan="5" class="empty">No roster published.</td></tr>';
 
-  linkRoster(t.schoolId, field.gender);
+  // The ladder and matrix come from the lineups export, which is the only
+  // place per-position records live. Fetched here so a team's page is the one
+  // stop — roster, season, ladder and lineup — rather than sending a reader to
+  // a second tool for half of it.
+  loadLineups(t.schoolId, field.gender);
 }
 
+const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? 'h3' : 'h4');
+
 /**
- * Turn roster names into links to player cards.
+ * Fold the lineups export into this page.
  *
- * The committee export carries names without player ids, but the lineups
- * export carries both — and its file name is computable (gender digit then
- * school id), so the pair can be joined here rather than adding a field to an
- * export. Names that do not resolve simply stay as text.
+ * The committee export carries names and season records; the lineups export
+ * carries player ids, per-position records and where each player appeared.
+ * Its file name is computable — gender digit then school id — so the two join
+ * at read time with no change to either exporter. If a team has no published
+ * lineup the page keeps the plain roster it already rendered.
  */
-async function linkRoster(schoolId, genderWord) {
+async function loadLineups(schoolId, genderWord) {
   const key = `${String(genderWord).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
+  document.getElementById('editladder').href = `lineups.html?team=${encodeURIComponent(key)}`;
+
   let ladder;
   try {
     ladder = (await fetch(`data/lineups/${year}/${key}.json`).then((r) => {
@@ -250,14 +291,43 @@ async function linkRoster(schoolId, genderWord) {
       return r.json();
     })).ladder || [];
   } catch { return; }
+  if (!ladder.length) return;
 
-  const byName = new Map(ladder.map((p) => [String(p.name).trim().toLowerCase(), p.pid]));
-  document.querySelectorAll('.js-nm').forEach((td) => {
-    const pid = byName.get(String(td.dataset.name).trim().toLowerCase());
-    if (!pid) return;
-    td.innerHTML =
-      `<a href="player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(pid)}">${esc(td.dataset.name)}</a>`;
-  });
+  const card = (p) => `player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(p.pid)}`;
+
+  // Ladder: the derived order, with what each player did at each position.
+  document.getElementById('rosnote').textContent = `${ladder.length} players`;
+  document.getElementById('rosbody').innerHTML = ladder.map((p, i) => {
+    const chips = SLOTS.filter((sl) => (p.rec_slots || {})[sl]).map((sl) => {
+      const [w, l] = p.rec_slots[sl];
+      return `<span class="poschip${sl === p.primary ? ' primary' : ''}">`
+        + `<b>${SLOT_LABEL[sl]}</b> ${w}\u2013${l}</span>`;
+    }).join('') || '<span class="muted">—</span>';
+    const [w, l] = p.rec || [0, 0];
+    return `<tr>
+      <td class="mid">${i + 1}</td>
+      <td><a href="${card(p)}">${esc(p.name)}</a></td>
+      <td class="mid">${esc(p.grade || '')}</td>
+      <td>${chips}</td>
+      <td class="num">${w}\u2013${l}</td>
+    </tr>`;
+  }).join('');
+
+  // Matrix: player by position, shaded by how often they played there.
+  document.getElementById('matrix-panel').style.display = '';
+  document.getElementById('matrix-head').innerHTML =
+    '<th>Player</th>' + SLOTS.map((sl) => `<th class="slot">${SLOT_LABEL[sl]}</th>`).join('')
+    + '<th class="slot">Total</th>';
+  document.getElementById('matrix-body').innerHTML = ladder.map((p) => {
+    const cells = SLOTS.map((sl) => {
+      const n = (p.slots || {})[sl] || 0;
+      const rec = (p.rec_slots || {})[sl];
+      const title = rec ? ` title="${SLOT_LABEL[sl]}: ${rec[0]}\u2013${rec[1]}"` : '';
+      return `<td class="slot ${heat(n)}"${title}>${n || '\u00b7'}</td>`;
+    }).join('');
+    return `<tr><td><a href="${card(p)}">${esc(p.name)}</a></td>${cells}`
+      + `<td class="slot">${p.total ?? ''}</td></tr>`;
+  }).join('');
 }
 
 boot();
