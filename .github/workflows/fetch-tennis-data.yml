@@ -11,6 +11,12 @@ on:
         description: 'Season to refresh'
         required: false
         default: '2027'
+  # Run the tests on every pull request. Without this the suite only ever runs
+  # ahead of a scheduled refresh, which means a change can be reviewed and
+  # merged without anything having executed it.
+  pull_request:
+  push:
+    branches: [main]
 
 env:
   SEASON: ${{ github.event.inputs.year || '2027' }}
@@ -34,8 +40,11 @@ jobs:
       - run: npm ci
       - run: node --test "tests/functions/*.test.mjs"
 
+  # Only the scheduled and manual runs fetch and commit. A pull request runs the
+  # tests and stops — it must never push data to the branch it is reviewing.
   fetch-data:
     needs: test
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     permissions:
       contents: write
