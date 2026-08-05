@@ -67,7 +67,7 @@
 </div>
 
 <script type="module">
-import { applyBrand } from './js/brand.js';
+import { applyBrand, leagueKey, leagueLabel } from './js/brand.js';
 
 applyBrand('Teams', {
   current: 'Teams',
@@ -153,15 +153,18 @@ async function render() {
   }
   empty.style.display = 'none';
 
-  // Grouped by league, the way a standings page is organised.
+  // Grouped by league — keyed on classification too, because 6A, 5A and
+  // 4A/3A/2A/1A each have a Special District 1 and they are not the same league.
   const byLeague = new Map();
   for (const t of list) {
-    const k = t.league || 'No league';
-    if (!byLeague.has(k)) byLeague.set(k, []);
-    byLeague.get(k).push(t);
+    const k = t.league ? leagueKey(t.classification, t.league) : '|No league';
+    if (!byLeague.has(k)) byLeague.set(k, { label: t.league ? leagueLabel(t.classification, t.league) : 'No league', teams: [] });
+    byLeague.get(k).teams.push(t);
   }
 
-  el.innerHTML = [...byLeague.entries()].sort().map(([league, ts]) => {
+  el.innerHTML = [...byLeague.entries()].sort().map(([, group]) => {
+    const league = group.label;
+    const ts = group.teams;
     // Standings order follows whichever record is being stood on, with the
     // other as the tiebreak and Power Index behind that.
     const key = (t) => (sortBy === 'league' ? t.leagueRecord : t.record);

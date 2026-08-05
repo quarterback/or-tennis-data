@@ -199,7 +199,7 @@
 </div>
 
 <script type="module">
-import { applyBrand } from './js/brand.js';
+import { applyBrand, leagueLabel } from './js/brand.js';
 
 applyBrand('Team', {
   links: [
@@ -274,7 +274,8 @@ function render(t, field) {
   document.title = `${t.name} — Cheesybook`;
   document.getElementById('tname').textContent = t.name;
   document.getElementById('tsub').textContent = [
-    t.city, `${field.classification} ${field.gender}`, t.league,
+    t.city, `${field.classification} ${field.gender}`,
+    leagueLabel(field.classification, t.league),
   ].filter(Boolean).join(' · ');
 
   document.getElementById('tlines').innerHTML = [

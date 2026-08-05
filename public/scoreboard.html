@@ -169,7 +169,7 @@
 </div>
 
 <script type="module">
-import { applyBrand } from './js/brand.js';
+import { applyBrand, leagueKey, leagueLabel } from './js/brand.js';
 
 applyBrand('Scoreboard', {
   current: 'Scoreboard',
@@ -214,8 +214,12 @@ const anyFilter = () => F.some((id) => val(id));
 function renderActiveFilters() {
   // A collapsed drawer must still say what it is hiding, or a filtered board
   // looks like a day with no matches.
-  const on = F.filter((id) => val(id))
-    .map((id) => `<span class="chip flag" data-clear="${id}">${esc(val(id))} &times;</span>`);
+  const on = F.filter((id) => val(id)).map((id) => {
+    const el = document.getElementById(id);
+    const shown = el.tagName === 'SELECT' && el.selectedOptions.length
+      ? el.selectedOptions[0].textContent : val(id);
+    return `<span class="chip flag" data-clear="${id}">${esc(shown)} &times;</span>`;
+  });
   const el = document.getElementById('active-filters');
   el.innerHTML = on.join('');
   el.querySelectorAll('[data-clear]').forEach((c) => {
@@ -278,14 +282,15 @@ async function loadYear(year) {
   const leagues = new Map();
   for (const t of index.teams) {
     if (!t.league) continue;
-    byLeague.set(t.id, t.league);
+    byLeague.set(t.id, leagueKey(t.classification, t.league));
     if (!leagues.has(t.classification)) leagues.set(t.classification, new Set());
     leagues.get(t.classification).add(t.league);
   }
   document.getElementById('league').innerHTML = '<option value="">All</option>'
     + [...leagues.entries()].sort().map(([cls, set]) =>
       `<optgroup label="${esc(cls)}">`
-      + [...set].sort().map((l) => `<option>${esc(l)}</option>`).join('')
+      + [...set].sort().map((l) =>
+        `<option value="${esc(leagueKey(cls, l))}">${esc(leagueLabel(cls, l))}</option>`).join('')
       + '</optgroup>').join('');
 
   document.getElementById('date').innerHTML = index.dates.map((d) =>
@@ -356,7 +361,7 @@ function card(d, i) {
     d.source === 'entered' ? '<span class="chip aq">Reported</span>' : '',
   ].filter(Boolean).join(' ');
   // One metadata line, at the foot, in small type.
-  const meta = d.conference ? d.a.league : '';
+  const meta = d.conference ? leagueLabel(d.a.classification, d.a.league) : '';
   return `<div class="game" data-i="${i}">
     <div class="game-head"><span class="final">${d.tied ? 'Final · Tie' : 'Final'}</span>${tags}</div>
     ${teamRow('a', d)}
