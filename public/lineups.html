@@ -102,6 +102,11 @@
   th { background: var(--pane); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
   td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
   .ladder-row td { vertical-align: middle; }
+  /* A player's own page, reachable from the row without disturbing the
+     ordering control that occupies the name cell. */
+  .pcard-link { font-size: 0.72rem; margin-left: 8px; white-space: nowrap; }
+  .matrix td.name a { color: var(--primary); text-decoration: none; }
+  .matrix td.name a:hover { text-decoration: underline; }
   .rank { font-weight: 700; font-size: 1.05rem; width: 34px; text-align: center; color: var(--fg); }
   .pos-select { padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 0.9rem; min-width: 190px; max-width: 100%; }
   .move-btns { display: inline-flex; gap: 3px; }
@@ -171,7 +176,7 @@
       font-size: 0.72rem; font-weight: 700; color: var(--muted);
       text-transform: uppercase; letter-spacing: .06em;
     }
-    #ladder-table .rank::before { content: 'Court '; }
+    #ladder-table .rank::before { content: 'Position '; }
     .pos-select { width: 100%; min-width: 0; min-height: 44px; font-size: 16px; }
     /* Overall record loses its header when the table stacks, so name it. */
     #ladder-table .ladder-row td.n { text-align: left; font-size: 0.82rem; color: var(--muted); }
@@ -404,6 +409,9 @@ async function selectTeam(key) {
 // ---------- rendering ----------
 function playerByPid(pid) { return detail.ladder.find(p => p.pid === pid); }
 
+/** The lineups data file key for the team on screen, e.g. "1124656". */
+function teamKey() { return document.getElementById('sel-team').value; }
+
 function recStr(rec) { return rec && (rec[0] || rec[1]) ? `${rec[0]}–${rec[1]}` : '–'; }
 
 // Chips for the courts a player actually played, in strength order, each with
@@ -455,7 +463,8 @@ function renderLadder() {
     tr.className = 'ladder-row';
     tr.innerHTML =
       `<td class="rank">${i+1}</td>` +
-      `<td><select class="pos-select" data-pos="${i}">${opts}</select></td>` +
+      `<td><select class="pos-select" data-pos="${i}">${opts}</select>` +
+        `<a class="pcard-link" href="player.html?t=${encodeURIComponent(teamKey())}&p=${encodeURIComponent(pid)}" title="Player card">card</a></td>` +
       `<td>${posChips(p)}</td>` +
       `<td class="n">${recStr(p.rec)}</td>`;
     tr.querySelector('select').value = pid;
@@ -496,7 +505,7 @@ function renderMatrix() {
     tr.dataset.pid = p.pid;
     tr.style.cursor = 'pointer';
     tr.innerHTML =
-      `<td class="name">${escapeHtml(p.name)}</td>` +
+      `<td class="name"><a href="player.html?t=${encodeURIComponent(teamKey())}&p=${encodeURIComponent(p.pid)}">${escapeHtml(p.name)}</a></td>` +
       `<td class="small muted">${escapeHtml(p.grade||'')}</td>` +
       cells +
       `<td class="n">${p.total}</td>` +
