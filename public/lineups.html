@@ -16,145 +16,141 @@
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <style>
-  /* Aliases onto the Cheesybook tokens in css/brand.css, so this page moves
-     with the palette (including the data-palette alternates). The heat ramp is
-     the one thing kept literal: it encodes how often a player appeared at a
-     court, and it needs five steps that stay distinguishable. */
+  /* This page sits on css/brand.css like every other Cheesybook page: the
+     masthead, .wrap, .panel, the tables, the buttons and the controls bar all
+     come from there. What is left here is what only a lineup page needs.
+
+     The heat ramp is the one thing kept literal. It encodes how often a player
+     appeared at a position and needs five steps that stay apart from each
+     other, which a token pair cannot give it. */
   :root {
-    --fg: var(--ink); --muted: var(--ink-3); --bg: var(--paper); --pane: var(--paper-2);
-    --line: var(--rule); --line-soft: var(--rule-2); --primary: var(--accent);
-    --green: var(--win); --green-bg: var(--win-wash); --red: var(--loss);
-    --amber: var(--flag); --amber-bg: var(--flag-wash); --blue-soft: var(--accent-wash);
     --heat0: #fff9e6; --heat1: #ffeeba; --heat2: #ffd97a; --heat3: #f0ac3c; --heat4: #c97e1c;
   }
-  * { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
-  html { -webkit-text-size-adjust: 100%; }
-  body { font-family: var(--body-font);
-         background: var(--paper-2); margin: 0; color: var(--fg); line-height: 1.4;
-         overscroll-behavior-y: none;
-         padding-bottom: calc(24px + env(safe-area-inset-bottom)); }
-  a { color: var(--primary); }
-  .container { max-width: 1200px; margin: 0 auto;
-               padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left)); }
-  /* Horizontal-scroll wrapper so wide tables never blow out the layout */
+
+  /* Wide tables scroll inside their panel instead of widening the page. */
   .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  /* Site chrome — matches the main rankings site */
-  .navbar { background: var(--mast); position: sticky; top: 0; z-index: 30;
-            padding-top: env(safe-area-inset-top); }
-  .navbar-inner { max-width: 1200px; margin: 0 auto;
-                  padding: 12px calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));
-                  display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
-  .navbar .back { color: var(--mast-fg); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-  .navbar .back:hover { color: var(--mast-dim); }
-  .navbar .brand { color: var(--mast-fg); font-weight: 600; font-size: 1.05rem; margin-left: auto; }
-  .hero { background: var(--mast); color: var(--mast-fg);
-          padding: 26px 0; margin-bottom: 22px; }
-  .hero h1 { margin: 0; font-weight: 700; font-size: 1.6rem; font-family: var(--display-font); }
-  h1 { font-size: 1.5rem; margin: 0 0 4px; }
-  h2 { font-size: 1.15rem; margin: 22px 0 10px; color: var(--primary); }
-  p.lede { color: var(--muted); margin: 4px 0 14px; font-size: 0.92rem; max-width: 820px; }
-  .backlink { font-size: 0.85rem; }
-  .header-bar { display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
-                background: var(--pane); border: 1px solid var(--line);
-                border-radius: 6px; padding: 10px 14px; margin: 14px 0 4px;
-                font-size: 0.88rem; }
-  .header-bar label { display: flex; gap: 6px; align-items: center; }
-  .header-bar select, .header-bar input[type="text"], .header-bar input[type="password"] {
-    padding: 4px 8px; border: 1px solid var(--line); border-radius: 3px; font-size: 0.88rem; }
-  .header-bar .backend { margin-left: auto; font-size: 0.82rem; }
-  .header-bar .backend.ok { color: var(--green); }
-  .header-bar .backend.fail { color: #b54708; }
-  button, .btn { background: var(--primary); color: #fff; border: 0;
-                 padding: 6px 14px; border-radius: 4px; cursor: pointer;
-                 font-size: 0.88rem; font-weight: 600; }
-  button:hover { filter: brightness(0.92); }
-  button.ghost { background: #fff; color: var(--fg); border: 1px solid var(--line); }
-  button.tiny { padding: 2px 7px; font-size: 0.78rem; }
-  button:disabled { background: #adb5bd; cursor: not-allowed; }
-  .tabs { display: flex; gap: 0; border-bottom: 1px solid var(--line); margin: 18px 0 16px; }
-  .tabs .tab { padding: 9px 18px; border: 1px solid transparent; border-bottom: 0;
-               cursor: pointer; font-size: 0.92rem; background: transparent; color: var(--fg);
-               border-radius: 5px 5px 0 0; font-weight: 600; }
-  .tabs .tab.active { background: var(--pane); border-color: var(--line); color: var(--primary); }
+
+  .header-bar {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    padding: 12px 16px; margin: 14px 0;
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: var(--shadow);
+  }
+  .header-bar label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-3); min-width: 0; }
+  .header-bar select { min-width: 0; max-width: 100%; }
+  .header-bar .backend { margin-left: auto; font-size: 0.76rem; color: var(--ink-3); }
+  .header-bar .backend.ok { color: var(--win); }
+  .header-bar .backend.fail { color: var(--flag); }
+
+  /* Same tabs as the team page: each choice carries its own field so the two
+     read as navigation rather than as a line of text. */
+  .tabs {
+    display: flex; gap: 6px; margin: 20px 0 0;
+    border-bottom: 2px solid var(--ink);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tabs::-webkit-scrollbar { height: 0; }
+  .tabs .tab {
+    flex: none; background: var(--rule-2); border: 0;
+    border-radius: 7px 7px 0 0;
+    padding: 9px 20px; font-size: 0.9rem; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; white-space: nowrap;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+  }
+  .tabs .tab:hover { background: var(--rule); color: var(--ink); }
+  .tabs .tab.active {
+    color: var(--accent-2); font-weight: 700;
+    background: var(--accent-wash); border-bottom-color: var(--accent);
+  }
+  .tabs .tab.active:hover { background: var(--accent-wash); }
   .tab-pane { display: none; } .tab-pane.active { display: block; }
-  .card { border: 1px solid var(--line); border-radius: 8px; background: #fff; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-  .card-head { padding: 10px 14px; background: var(--pane); border-bottom: 1px solid var(--line);
-               border-radius: 6px 6px 0 0; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-  .card-body { padding: 12px 14px; }
-  .muted { color: var(--muted); }
+
+  /* .card is this page's name for .panel. Kept, because the markup and the
+     mobile rules below key off it. */
+  .card {
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: var(--shadow);
+    margin: 16px 0; overflow: hidden;
+  }
+  .card-head {
+    padding: 11px 16px; border-bottom: 1px solid var(--rule);
+    background: var(--paper-2);
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    font-size: 0.92rem; font-weight: 700; color: var(--ink-2);
+  }
+  .card-body { padding: 14px 16px; }
+  .card-body.flush { padding: 0; }
+
   .small { font-size: 0.82rem; }
-  .pill { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
-  .pill.s { background: var(--blue-soft); color: #084298; }
-  .pill.d { background: #e2e3e5; color: #41464b; }
-  .pill.lock { background: var(--green-bg); color: #0f5132; }
-  .pill.open { background: var(--amber-bg); color: #664d03; }
-  .pill.derived { background: #e9ecef; color: #495057; }
-  .pill.grade { background: #ede7f6; color: #4527a0; }
-  .poschip { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 0.78rem;
-             margin: 2px 4px 2px 0; border: 1px solid transparent; white-space: nowrap; }
-  .poschip.s { background: var(--blue-soft); color: #084298; }
-  .poschip.d { background: #e2e3e5; color: #41464b; }
-  .poschip.primary { border-color: #495057; font-weight: 600; }
+
+  .pill {
+    display: inline-block; padding: 1px 7px; border-radius: 999px;
+    font-size: 0.68rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+  }
+  .pill.s { background: var(--accent-wash); color: var(--accent-2); }
+  .pill.d { background: var(--rule); color: var(--ink-2); }
+  .pill.lock { background: var(--win-wash); color: var(--win); }
+  .pill.open { background: var(--flag-wash); color: var(--flag); }
+  .pill.derived, .pill.grade { background: var(--rule-2); color: var(--ink-3); }
+
+  .poschip {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 2px 7px; font-size: 0.75rem;
+    margin: 1px 3px 1px 0; white-space: nowrap;
+  }
+  .poschip.primary { border-color: var(--accent); background: var(--accent-wash); }
   .poschip b { font-weight: 700; }
+
   /* ladder */
-  table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
-  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line-soft); text-align: left; }
-  th { background: var(--pane); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
   td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
   .ladder-row td { vertical-align: middle; }
   /* A player's own page, reachable from the row without disturbing the
      ordering control that occupies the name cell. */
   .pcard-link { font-size: 0.72rem; margin-left: 8px; white-space: nowrap; }
-  .matrix td.name a { color: var(--primary); text-decoration: none; }
-  .matrix td.name a:hover { text-decoration: underline; }
-  .rank { font-weight: 700; font-size: 1.05rem; width: 34px; text-align: center; color: var(--fg); }
-  .pos-select { padding: 4px 8px; border: 1px solid var(--line); border-radius: 4px; font-size: 0.9rem; min-width: 190px; max-width: 100%; }
+  .rank { font-weight: 700; font-size: 1.05rem; width: 34px; text-align: center; color: var(--ink); }
+  .pos-select { min-width: 190px; max-width: 100%; }
   .move-btns { display: inline-flex; gap: 3px; }
   .delta { font-size: 0.72rem; margin-left: 6px; }
-  .delta.up { color: var(--green); } .delta.down { color: var(--red); }
+  .delta.up { color: var(--win); } .delta.down { color: var(--loss); }
+
   /* matrix */
   .matrix th.slot, .matrix td.slot { text-align: center; width: 44px; }
   .matrix td.slot { font-weight: 600; }
-  .matrix td.slot.z { color: #ccd; font-weight: 400; }
+  .matrix td.slot.z { color: var(--ink-4); font-weight: 400; }
   .matrix .name { min-width: 170px; }
-  .matrix tr:hover td { background: #fbfdff; }
+  .matrix td.name a { color: var(--accent); }
   .spread { font-size: 0.78rem; }
-  .flag { color: #b54708; font-weight: 600; }
+  .flag { color: var(--flag); font-weight: 600; }
   .heat0{background:var(--heat0)} .heat1{background:var(--heat1)} .heat2{background:var(--heat2)}
   .heat3{background:var(--heat3);color:#fff} .heat4{background:var(--heat4);color:#fff}
-  .log { display: none; background: #fbfcfe; }
+
+  .log { display: none; background: var(--paper-2); }
   .log td { padding: 0; }
   .log-inner { padding: 8px 12px 12px; }
   .log table { font-size: 0.8rem; }
   .status { font-size: 0.84rem; }
-  .status.ok { color: var(--green); } .status.err { color: var(--red); }
-  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--muted); margin-top: 8px; }
+  .status.ok { color: var(--win); } .status.err { color: var(--loss); }
+  .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 0.78rem; color: var(--ink-3); margin-top: 10px; }
   .legend .sw { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 4px; }
-  .empty { padding: 40px; text-align: center; color: var(--muted); }
-  .submit-bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; padding: 10px 14px;
-                background: var(--pane); border: 1px solid var(--line); border-radius: 6px; margin-top: 6px; }
-  .submit-bar input[type="password"], .submit-bar input[type="text"] {
-    padding: 5px 8px; border: 1px solid var(--line); border-radius: 3px; font-size: 0.86rem; }
-  details.help { margin: 10px 0 0; }
-  details.help summary { cursor: pointer; font-size: 0.84rem; color: var(--primary); }
-  details.help .help-body { font-size: 0.83rem; color: var(--muted); padding: 8px 0 0; line-height: 1.5; max-width: 780px; }
+  .submit-bar {
+    display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+    padding: 12px 16px; margin: 16px 0;
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: var(--shadow);
+  }
 
-  /* ===== Mobile / app layout ===== */
+  /* ===== Mobile ===== */
   @media (max-width: 640px) {
-    .hero { padding: 16px 0; margin-bottom: 16px; }
-    .hero h1 { font-size: 1.2rem; }
-    .navbar .brand { font-size: 0.95rem; }
-
-    /* Filters: full-width, two-up, and 16px fonts so iOS doesn't zoom on focus */
-    .header-bar { gap: 10px; padding: 12px; border-radius: 10px; }
+    /* Filters go two-up and full-width; the 16px/40px sizing that stops iOS
+       zooming on focus is in brand.css and applies here. */
+    .header-bar { gap: 10px; padding: 12px; }
     .header-bar label { flex: 1 1 44%; flex-direction: column; align-items: stretch; gap: 3px;
-                        font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
-    .header-bar select { width: 100%; min-width: 0 !important; min-height: 42px; font-size: 16px; }
+                        font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; }
+    .header-bar select { width: 100%; min-width: 0 !important; }
     .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
 
-    /* Tabs: full-width, thumb-sized */
-    .tabs { gap: 4px; }
-    .tabs .tab { flex: 1; text-align: center; padding: 12px 6px; font-size: 0.9rem; }
+    .tabs .tab { padding: 9px 13px; }
 
     /* Ladder becomes one card per player.
        As a four-column table the name dropdown gets whatever width is left
@@ -165,28 +161,28 @@
     #ladder-table, #ladder-table tbody, #ladder-table tr, #ladder-table td { display: block; width: 100%; }
     #ladder-table thead { display: none; }
     #ladder-table .ladder-row {
-      border: 1px solid var(--line); border-radius: 10px;
-      padding: 10px 12px 12px; margin-bottom: 10px; background: #fff;
+      border: 1px solid var(--rule); border-radius: 10px;
+      /* Top padding clears the absolutely-positioned position badge, which
+         otherwise draws over the name select. */
+      padding: 26px 12px 12px; margin-bottom: 10px; background: var(--paper);
       position: relative;
     }
     #ladder-table .ladder-row td { border: 0; padding: 3px 0; }
+    #ladder-table .ladder-row:hover td { background: none; }
     /* Rank sits as a badge in the corner rather than its own column. */
     #ladder-table .rank {
       position: absolute; top: 10px; right: 12px; width: auto;
-      font-size: 0.72rem; font-weight: 700; color: var(--muted);
+      font-size: 0.72rem; font-weight: 700; color: var(--ink-3);
       text-transform: uppercase; letter-spacing: .06em;
     }
     #ladder-table .rank::before { content: 'Position '; }
-    .pos-select { width: 100%; min-width: 0; min-height: 44px; font-size: 16px; }
+    .pos-select { width: 100%; min-width: 0; }
     /* Overall record loses its header when the table stacks, so name it. */
-    #ladder-table .ladder-row td.n { text-align: left; font-size: 0.82rem; color: var(--muted); }
+    #ladder-table .ladder-row td.n { text-align: left; font-size: 0.82rem; color: var(--ink-3); }
     #ladder-table .ladder-row td.n::before { content: 'Overall '; }
 
-    /* Submit bar stacks */
     .submit-bar { flex-direction: column; align-items: stretch; }
     .submit-bar > * { width: 100%; }
-    .submit-bar input[type="password"], .submit-bar input[type="text"] { min-height: 42px; font-size: 16px; }
-    button, .btn { min-height: 42px; }
 
     /* Matrix stays dense but scrolls sideways inside its wrapper */
     .matrix th, .matrix td { padding: 6px 4px; }
@@ -197,20 +193,13 @@
 </head>
 <body>
 
-<nav class="navbar">
-  <div class="navbar-inner">
-    <a class="back" href="cheesybook.html">&larr; Cheesybook</a>
-    <a class="back" href="coach.html">Report</a>
-    <a class="back" href="scoreboard.html">Scoreboard</a>
-    <a class="back" href="index.html">Rankings</a>
-    <span class="brand">Lineups</span>
-  </div>
-</nav>
-<header class="hero">
-  <div class="container"><h1>Lineups — Ladder &amp; Position Matrix</h1></div>
-</header>
+<header class="mast"></header>
 
-<div class="container">
+<div class="wrap">
+  <div class="pagehead">
+    <h1>Lineups</h1>
+  </div>
+
 <div class="header-bar">
   <label>Year
     <select id="sel-year"></select>
@@ -231,8 +220,8 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-tab="ladder">Team Ladder</button>
-  <button class="tab" data-tab="matrix">Position Matrix</button>
+  <button class="tab active" data-tab="ladder">Team ladder</button>
+  <button class="tab" data-tab="matrix">Position matrix</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
@@ -256,11 +245,11 @@
     </div>
 
     <div class="submit-bar">
-      <button class="ghost" id="btn-reset-order">Reset to data order</button>
+      <button id="btn-reset-order">Reset to data order</button>
       <label class="small"><input type="checkbox" id="chk-lock"> Lock as final ladder</label>
       <span style="margin-left:auto"></span>
       <input type="password" id="team-code" placeholder="team access code" autocomplete="off">
-      <button id="btn-submit">Submit ladder</button>
+      <button class="primary" id="btn-submit">Submit ladder</button>
       <span id="submit-status" class="status"></span>
     </div>
   </div>
@@ -297,7 +286,22 @@
     </div>
   </div>
 </div>
-</div><!-- /.container -->
+</div><!-- /.wrap -->
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+applyBrand('Lineups', {
+  current: 'Lineups',
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+</script>
 
 <script>
 const SLOTS = ['S1','S2','S3','S4','D1','D2','D3','D4'];

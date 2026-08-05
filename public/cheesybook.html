@@ -29,12 +29,6 @@
     letter-spacing: -0.025em;
     margin: 0;
   }
-  .hero .say {
-    font-size: 1.02rem;
-    max-width: 48ch;
-    margin: 14px 0 0;
-    color: #f0dcd6;
-  }
   .hero .rule { height: 4px; width: 74px; background: var(--brand-pop); margin: 20px 0 0; border-radius: 2px; }
 
   .doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 14px; margin: -30px 0 0; }
@@ -43,7 +37,7 @@
     border: 1px solid var(--rule);
     border-radius: 12px;
     box-shadow: var(--shadow);
-    padding: 16px 18px 14px;
+    padding: 18px;
     text-decoration: none;
     color: inherit;
     display: block;
@@ -56,12 +50,6 @@
     letter-spacing: .01em;
     color: var(--ink);
   }
-  .door .who {
-    display: inline-block; margin-top: 9px; font-size: 0.68rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .07em; color: var(--accent-2);
-    background: var(--accent-wash); padding: 2px 8px; border-radius: 999px;
-  }
-
   /* Palette preview. Unlabelled swatches, bottom of the page — this is here to
      choose a scheme before launch, not a setting anyone needs after. */
   .palettes { display: flex; gap: 8px; align-items: center; margin-top: 34px; }
@@ -81,29 +69,16 @@
 <header class="hero">
   <div class="wrap">
     <h1 class="mark">Cheesybook</h1>
-    <p class="say">Oregon high school tennis.</p>
     <div class="rule"></div>
   </div>
 </header>
 
 <div class="wrap">
   <div class="doors">
-    <a class="door" href="coach.html">
-      <h2>Report a dual</h2>
-      <span class="who">Coaches</span>
-    </a>
-    <a class="door" href="scoreboard.html">
-      <h2>Scoreboard</h2>
-      <span class="who">Everyone</span>
-    </a>
-    <a class="door" href="teams.html">
-      <h2>Teams</h2>
-      <span class="who">Everyone</span>
-    </a>
-    <a class="door" href="lineups.html">
-      <h2>Lineups</h2>
-      <span class="who">Coaches &middot; Committees</span>
-    </a>
+    <a class="door" href="coach.html"><h2>Report a dual</h2></a>
+    <a class="door" href="scoreboard.html"><h2>Scoreboard</h2></a>
+    <a class="door" href="teams.html"><h2>Teams</h2></a>
+    <a class="door" href="lineups.html"><h2>Lineups</h2></a>
   </div>
 
   <div class="palettes">
