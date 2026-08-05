@@ -9,6 +9,21 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Report">
+<!-- link preview -->
+<meta name="description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cheesybook">
+<meta property="og:title" content="Report a result — Cheesybook">
+<meta property="og:description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta property="og:url" content="https://oregontennis.org/coach.html">
+<meta property="og:image" content="https://oregontennis.org/og-cheesybook.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cheesybook">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Report a result — Cheesybook">
+<meta name="twitter:description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta name="twitter:image" content="https://oregontennis.org/og-cheesybook.png">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
 <link rel="manifest" href="coach.webmanifest">
@@ -25,6 +40,16 @@
 
   <div id="app" style="display:none">
     <div class="header-bar">
+      <!-- Demo only: which program the tool is standing in for. A coach
+           trying this out needs to try it as their own school. -->
+      <label id="program-field" hidden>Program
+        <span class="combo" style="min-width:220px">
+          <input type="text" id="program-search" autocomplete="off" placeholder="Search schools…">
+          <button type="button" class="combo-clear" id="program-clear" aria-label="Clear" hidden>&times;</button>
+          <span class="combo-list" id="program-list" hidden></span>
+        </span>
+        <input type="hidden" id="program">
+      </label>
       <label>Team
         <select id="team-picker"></select>
       </label>
@@ -81,9 +106,10 @@
 
 <script type="module">
 import {
-  api, checkBackend, escapeHtml, fmtDate, lastTeam, renderChrome,
-  requireSession, signOut, teamLabel,
+  api, attachCombo, checkBackend, escapeHtml, fmtDate, isDemo, lastTeam,
+  renderChrome, requireSession, signOut, teamLabel,
 } from './js/coach-common.js';
+import { demoProgram, setDemoProgram } from './js/coach-demo.js';
 
 renderChrome({ title: 'Report', subtitle: '' });
 
@@ -110,6 +136,7 @@ async function boot() {
   document.getElementById('who').textContent = s.coach.email +
     (s.coach.isAdmin ? ' (administrator)' : '');
   checkBackend(document.getElementById('backend'));
+  if (isDemo()) await buildProgramPicker();
   document.getElementById('signout').onclick = signOut;
 
   teams = s.teams || [];
@@ -197,6 +224,65 @@ function renderDuals(duals) {
     </tr>`;
   }).join('');
 }
+
+/**
+ * Pick the school the demo stands in for.
+ *
+ * Every program in the state, off the rankings the public site is built from,
+ * so a coach can point the tool at their own school and see what their own
+ * entry looks like. Switching starts that program's season clean — carrying
+ * the previous school's duals across would show a record that never happened.
+ */
+async function buildProgramPicker() {
+  const field = document.getElementById('program-field');
+  let schools = [];
+  try {
+    const rankings = await fetch('data/processed_rankings.json').then((r) => r.json());
+    const seen = new Map();
+    for (const e of rankings) {
+      if (seen.has(e.school_id)) continue;
+      seen.set(e.school_id, {
+        school_id: e.school_id, school_name: e.school_name,
+        league: e.league || '', classification: e.classification || '',
+      });
+    }
+    schools = [...seen.values()].sort((a, b) =>
+      String(a.school_name).localeCompare(String(b.school_name)));
+  } catch { return; }   // no rankings file — leave the picker hidden
+  if (!schools.length) return;
+
+  field.hidden = false;
+  const show = attachCombo(
+    { search: 'program-search', list: 'program-list', clear: 'program-clear', hidden: 'program' },
+    {
+      groups: (q) => {
+        if (!q) return [{ label: '', items: schools.slice(0, 60).map(asItem) }];
+        const hit = schools.filter((o) => o.school_name.toLowerCase().includes(q));
+        hit.sort((a, b) => {
+          const as = a.school_name.toLowerCase().startsWith(q) ? 0 : 1;
+          const bs = b.school_name.toLowerCase().startsWith(q) ? 0 : 1;
+          return as - bs || a.school_name.localeCompare(b.school_name);
+        });
+        return [{ label: '', items: hit.slice(0, 40).map(asItem) }];
+      },
+      onPick: (id) => {
+        if (!id) return;
+        const s = schools.find((x) => String(x.school_id) === String(id));
+        if (!s) return;
+        setDemoProgram(s);
+        location.href = 'coach.html';
+      },
+    });
+
+  const current = demoProgram();
+  show(current.school_id, current.school_name);
+}
+
+const asItem = (s) => ({
+  id: s.school_id,
+  label: s.school_name,
+  sub: s.league || s.classification || '',
+});
 
 boot();
 </script>

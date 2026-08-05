@@ -5,6 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Team Roster — Cheesybook</title>
 <meta name="theme-color" content="#6a3937">
+<!-- link preview -->
+<meta name="description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Cheesybook">
+<meta property="og:title" content="Roster — Cheesybook">
+<meta property="og:description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta property="og:url" content="https://oregontennis.org/coach-roster.html">
+<meta property="og:image" content="https://oregontennis.org/og-cheesybook.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Cheesybook">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Roster — Cheesybook">
+<meta name="twitter:description" content="Scorekeeping &amp; results from high school tennis in Oregon">
+<meta name="twitter:image" content="https://oregontennis.org/og-cheesybook.png">
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
@@ -23,13 +38,11 @@
       <span class="status" id="status" style="margin-left:auto"></span>
     </div>
 
-    <p class="lede">Your roster is what keeps a player's record together across
-    the season &mdash; the ladder, the position matrix and the flight records all
-    follow these names. Returning players were carried over from last season, so
-    most of this should already be right.</p>
-
     <div class="card">
-      <div class="card-head">Add a player</div>
+      <div class="card-head">
+        <span>Add a player</span>
+        <button id="load-lineup" style="margin-left:auto">Load lineup</button>
+      </div>
       <div class="card-body">
         <div class="row">
           <input type="text" id="first" placeholder="First name" autocomplete="off">
@@ -73,8 +86,8 @@
 
 <script type="module">
 import {
-  api, escapeHtml, lastTeam, renderChrome, requireSession, setStatus, teamLabel,
-  setSubtitle,
+  api, escapeHtml, lastTeam, publishedLadder, renderChrome, requireSession,
+  setStatus, setSubtitle, teamLabel,
 } from './js/coach-common.js';
 
 renderChrome({ title: 'Roster', subtitle: '' });
@@ -99,6 +112,7 @@ async function boot() {
 
   document.getElementById('add').onclick = addPlayer;
   document.getElementById('import').onclick = importRoster;
+  document.getElementById('load-lineup').onclick = loadLineup;
   await load(Number(picker.value));
 }
 
@@ -195,6 +209,50 @@ async function toggle(e) {
     setStatus(status, 'Roster updated.');
   } catch (err) {
     setStatus(status, err.message, 'err');
+  }
+}
+
+/**
+ * Pull the school's published ladder onto the roster.
+ *
+ * Typing twelve names to report one dual is the reason a coach stops using a
+ * tool. The site already publishes every school's ladder, so this takes the top
+ * twelve off it and the coach edits from there — add the freshman who came up,
+ * deactivate the one who did not come out. Last season's is used when this
+ * season has none, which early in the year it will not.
+ *
+ * Names already on the roster are skipped, so pressing it twice is harmless.
+ */
+const TOP = 12;
+
+async function loadLineup() {
+  const status = document.getElementById('status');
+  const button = document.getElementById('load-lineup');
+  button.disabled = true;
+  try {
+    const found = await publishedLadder(team.year, team.gender_id, team.school_id);
+    if (!found) return setStatus(status, 'No published lineup for this school.', 'err');
+
+    const have = new Set(players.map((p) =>
+      `${p.first_name} ${p.last_name}`.trim().toLowerCase()));
+    const fresh = found.players.slice(0, TOP).filter((p) =>
+      !have.has(`${p.first_name} ${p.last_name}`.trim().toLowerCase()));
+
+    if (!fresh.length) return setStatus(status, 'Everyone in that lineup is already on the roster.');
+
+    for (const p of fresh) {
+      await api(`/api/roster/${team.id}`, {
+        method: 'POST',
+        body: JSON.stringify({ firstName: p.first_name, lastName: p.last_name, grade: p.grade || null }),
+      });
+    }
+    await load(team.id);
+    setStatus(status,
+      `Added ${fresh.length} player${fresh.length === 1 ? '' : 's'} from the ${found.year} lineup.`);
+  } catch (e) {
+    setStatus(status, e.message, 'err');
+  } finally {
+    button.disabled = false;
   }
 }
 

@@ -440,3 +440,106 @@ export function formatScore(sets) {
       + (s.tiePoints == null ? '' : `(${s.tiePoints})`))
     .join(', ');
 }
+
+/**
+ * A type-to-filter picker over a long list.
+ *
+ * A native select holding 250 schools is unusable on a phone — you scroll past
+ * a hundred names to reach yours. Two pages need this now, so it lives here.
+ *
+ * `ids` names the four elements (search box, list, clear button, hidden value).
+ * `groups()` returns [{label, items: [{id, label, sub}]}]; an empty label is a
+ * group with no heading.
+ */
+export function attachCombo(ids, { groups, onPick }) {
+  const search = document.getElementById(ids.search);
+  const list = document.getElementById(ids.list);
+  const hidden = document.getElementById(ids.hidden);
+  const clear = document.getElementById(ids.clear);
+  let active = -1;
+
+  function paint() {
+    const gs = groups(search.value.trim().toLowerCase());
+    let i = -1;
+    list.innerHTML = gs.map((g) => {
+      const head = g.label ? `<div class="combo-head">${escapeHtml(g.label)}</div>` : '';
+      return head + g.items.map((o) => {
+        i += 1;
+        return `<button type="button" class="combo-item${i === active ? ' on' : ''}"
+                 data-id="${escapeHtml(String(o.id))}">${escapeHtml(o.label)}` +
+               (o.sub ? `<span class="combo-sub">${escapeHtml(o.sub)}</span>` : '') + '</button>';
+      }).join('');
+    }).join('') || '<div class="combo-empty">Nothing by that name.</div>';
+
+    list.querySelectorAll('.combo-item').forEach((b) => {
+      b.onmousedown = (e) => { e.preventDefault(); close(); onPick(b.dataset.id); };
+    });
+  }
+
+  function open() { list.hidden = false; active = -1; paint(); }
+  function close() { list.hidden = true; }
+
+  search.oninput = () => {
+    // Typing after a pick means they are changing their mind.
+    if (hidden.value) { hidden.value = ''; clear.hidden = true; onPick(''); }
+    open();
+  };
+  search.onfocus = open;
+  search.onblur = () => setTimeout(close, 120);
+  search.onkeydown = (e) => {
+    const items = [...list.querySelectorAll('.combo-item')];
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (list.hidden) return open();
+      active = Math.max(0, Math.min(items.length - 1, active + (e.key === 'ArrowDown' ? 1 : -1)));
+      paint();
+      items[active]?.scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter') {
+      const pick = items[active] || (items.length === 1 ? items[0] : null);
+      if (!list.hidden && pick) { e.preventDefault(); close(); onPick(pick.dataset.id); }
+    } else if (e.key === 'Escape') { close(); }
+  };
+  clear.onclick = () => {
+    hidden.value = ''; search.value = ''; clear.hidden = true; onPick(''); search.focus();
+  };
+
+  /** Reflect a value chosen programmatically. */
+  return function show(id, label) {
+    hidden.value = id ? String(id) : '';
+    search.value = label || '';
+    clear.hidden = !id;
+  };
+}
+
+/**
+ * A school's published ladder — the order and names the Lineups page shows.
+ *
+ * This is what "Load lineup" pulls from, and what the entry form falls back to
+ * for an opponent whose coach does not use this tool. Last season is tried too:
+ * a roster mostly carries over, and a list that is one graduate stale is a
+ * better starting point than an empty table.
+ */
+export async function publishedLadder(year, genderId, schoolId) {
+  const key = `${Number(genderId) === 1 ? 1 : 2}${schoolId}`;
+  for (const y of [Number(year), Number(year) - 1]) {
+    try {
+      const d = await fetch(`data/lineups/${y}/${key}.json`).then((r) => {
+        if (!r.ok) throw new Error('none');
+        return r.json();
+      });
+      const ladder = d.ladder || [];
+      if (ladder.length) return { year: y, players: ladder.map(splitName) };
+    } catch { /* try the season before */ }
+  }
+  return null;
+}
+
+/** "Beatrix Ahlgren" -> {first_name, last_name}. A single word is a surname. */
+export function splitName(pl) {
+  const parts = String(pl.name || pl).trim().split(/\s+/);
+  return {
+    first_name: parts.length > 1 ? parts.slice(0, -1).join(' ') : '',
+    last_name: parts[parts.length - 1] || String(pl.name || pl),
+    grade: pl.grade ? String(pl.grade) : '',
+  };
+}

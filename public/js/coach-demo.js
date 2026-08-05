@@ -15,15 +15,52 @@
 // once per page load, and a configured deployment never reaches this file.
 
 const KEY = 'cb_demo_state';
+const PROGRAM_KEY = 'cb_demo_program';
 
-// Real Oregon schools, so a demo does not show invented ones to coaches who
-// would notice. Two teams, so the team picker has something to pick.
-const TEAMS = [
-  { id: 9001, year: 2027, school_id: 124895, school_name: 'Catlin Gabel', gender_id: 2,
-    is_jv: false, league: 'Special District 1', classification: '4A/3A/2A/1A', entry_enabled: true },
-  { id: 9002, year: 2027, school_id: 124895, school_name: 'Catlin Gabel', gender_id: 1,
-    is_jv: false, league: 'Special District 1', classification: '4A/3A/2A/1A', entry_enabled: true },
-];
+// The program the demo is standing in for. A coach trying the tool out has to
+// be able to try it as THEIR program — one hard-coded school means everybody
+// else is looking at somebody else's roster and cannot tell what their own
+// entry would look like. Changing it re-seeds, so each program opens with its
+// own season rather than the last one's duals under a new name.
+const DEFAULT_PROGRAM = {
+  school_id: 124895, school_name: 'Catlin Gabel',
+  league: 'Special District 1', classification: '4A/3A/2A/1A',
+};
+
+export function demoProgram() {
+  try {
+    const raw = localStorage.getItem(PROGRAM_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch { /* corrupt or unavailable */ }
+  return DEFAULT_PROGRAM;
+}
+
+/** Point the demo at another school, and start that program's season clean. */
+export function setDemoProgram(program) {
+  try {
+    localStorage.setItem(PROGRAM_KEY, JSON.stringify(program));
+    localStorage.removeItem(KEY);
+  } catch { /* private mode */ }
+}
+
+// Team-season ids are derived from the program so state keyed on them survives
+// a reload: gender digit then school id, the same shape as a lineups key.
+const teamId = (genderId, schoolId) => Number(`${genderId}${schoolId}`);
+
+function teams() {
+  const p = demoProgram();
+  return [2, 1].map((genderId) => ({
+    id: teamId(genderId, p.school_id),
+    year: 2027,
+    school_id: p.school_id,
+    school_name: p.school_name,
+    gender_id: genderId,
+    is_jv: false,
+    league: p.league || '',
+    classification: p.classification || '',
+    entry_enabled: true,
+  }));
+}
 
 const NAMES = [
   ['Ada', 'Whitfield', '12'], ['Nora', 'Ellingsen', '12'], ['Priya', 'Raghunathan', '11'],
@@ -63,6 +100,7 @@ const SCORES = [
 function seed() {
   const players = [];
   let pid = 950000;
+  const TEAMS = teams();
   for (const team of TEAMS) {
     for (const [first, last, grade] of NAMES) {
       players.push({
@@ -80,11 +118,14 @@ function seed() {
   };
 
   const girls = TEAMS[0];
+  // The sample opponents are fixed schools, so a demo pointed at one of them
+  // would show it playing itself. Drop that fixture rather than seed nonsense.
+  const samples = SAMPLE.filter((x) => Number(x.opponent) !== Number(girls.school_id));
   const ours = players.filter((p) => p.team_season_id === girls.id);
   let lineId = 700001;
   let dualId = 8001;
 
-  const duals = SAMPLE.map((sample) => ({
+  const duals = samples.map((sample) => ({
     id: dualId++,
     team_season_id: girls.id,
     home_school_id: sample.home ? girls.school_id : sample.opponent,
@@ -145,7 +186,8 @@ export function resetDemo() {
 const COACH = { id: 1, email: 'demo@oregontennis.org', name: 'Demo', is_admin: true };
 
 function team(id) {
-  return TEAMS.find((t) => Number(t.id) === Number(id)) || TEAMS[0];
+  const all = teams();
+  return all.find((t) => Number(t.id) === Number(id)) || all[0];
 }
 
 /**
@@ -158,9 +200,10 @@ function team(id) {
  */
 function applyPayload(d, body, state) {
   const gender = Number(body.genderId);
-  const ours = TEAMS.find((t) => Number(t.gender_id) === gender
+  const all = teams();
+  const ours = all.find((t) => Number(t.gender_id) === gender
     && (Number(t.school_id) === Number(body.homeSchoolId)
-      || Number(t.school_id) === Number(body.awaySchoolId))) || TEAMS[0];
+      || Number(t.school_id) === Number(body.awaySchoolId))) || all[0];
 
   d.team_season_id = ours.id;
   d.home_school_id = Number(body.homeSchoolId);
@@ -234,7 +277,7 @@ export async function demoApi(path, options = {}) {
   if (rest[0] === '__ping') return { ok: true, demo: true };
 
   if (group === 'auth') {
-    if (rest[0] === 'me') return { coach: COACH, teams: TEAMS };
+    if (rest[0] === 'me') return { coach: COACH, teams: teams() };
     if (rest[0] === 'logout') { resetDemo(); return null; }
     return { ok: true };
   }
