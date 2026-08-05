@@ -1,4 +1,5 @@
 import { BRAND } from './brand.js';
+import { demoApi, probeBackend, resetDemo } from './coach-demo.js';
 
 // Session handling and fetch wrappers shared by the coach-* pages.
 //
@@ -86,8 +87,14 @@ export function fmtDate(iso) {
   } catch { return iso; }
 }
 
+// Resolved once per page load by requireSession(); null until then.
+let DEMO = null;
+
+export function isDemo() { return DEMO === true; }
+
 /** Fetch JSON from the API, turning a non-2xx into a thrown Error. */
 export async function api(path, options = {}) {
+  if (DEMO) return demoApi(path, options);
   const res = await fetch(path, {
     credentials: 'same-origin',
     headers: options.body ? { 'content-type': 'application/json' } : {},
@@ -116,6 +123,7 @@ export async function session() {
 }
 
 export async function signOut() {
+  if (DEMO) { resetDemo(); location.reload(); return; }
   await api('/api/auth/logout', { method: 'POST' });
   location.href = 'coach.html';
 }
@@ -123,6 +131,11 @@ export async function signOut() {
 /** The backend health chip the SD1 and Lineups pages already show. */
 export async function checkBackend(el) {
   if (!el) return;
+  if (DEMO) {
+    el.textContent = 'demo mode';
+    el.className = 'backend';
+    return;
+  }
   try {
     await api('/api/auth/__ping');
     el.textContent = 'backend connected';
@@ -131,6 +144,31 @@ export async function checkBackend(el) {
     el.textContent = 'backend unavailable — changes will not save';
     el.className = 'backend fail';
   }
+}
+
+/**
+ * Say plainly that this is a demo.
+ *
+ * Somebody being shown the tool needs to know the results they type are not
+ * going anywhere — otherwise the first real season starts with a coach who
+ * thinks they already reported three duals.
+ */
+function showDemoBanner() {
+  if (document.getElementById('demo-banner')) return;
+  const bar = document.createElement('div');
+  bar.id = 'demo-banner';
+  bar.className = 'banner warn';
+  bar.style.cssText = 'display:flex;gap:10px;align-items:center;flex-wrap:wrap';
+  bar.innerHTML = '<span><strong>Demo.</strong> Sign-in is off and nothing is '
+    + 'saved to the server — everything you enter stays on this device.</span>'
+    + '<button class="ghost tiny" id="demo-reset" style="margin-left:auto">Start over</button>';
+  // The hero has a .container of its own and comes first in the document, so
+  // querySelector('.container') puts the banner inside the dark header. Take
+  // the first one that is not part of the chrome.
+  const host = [...document.querySelectorAll('.container')]
+    .find((el) => !el.closest('.hero') && !el.closest('.navbar'));
+  if (host) host.prepend(bar);
+  document.getElementById('demo-reset').onclick = () => { resetDemo(); location.reload(); };
 }
 
 export function setStatus(el, message, kind = 'ok') {
@@ -240,6 +278,12 @@ export function renderChrome({ title, subtitle }) {
  * Resolves to the session when signed in, or null when the prompt was shown.
  */
 export async function requireSession(mountId = 'signin') {
+  if (DEMO === null) DEMO = !(await probeBackend());
+  if (DEMO) {
+    showDemoBanner();
+    return demoApi('/api/auth/me');
+  }
+
   const s = await session();
   if (s.coach) return s;
 
