@@ -13,10 +13,10 @@
 <link rel="stylesheet" href="css/coach.css">
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"></div></nav>
-<header class="hero"><div class="container"></div></header>
+<header class="mast"></header>
 
-<div class="container">
+<div class="wrap">
+  <div class="pagehead"></div>
   <div id="signin" style="display:none"></div>
   <div id="app" style="display:none">
 
@@ -79,16 +79,17 @@
   <span class="grow"></span>
   <span class="status" id="status"></span>
   <button class="ghost" id="save-draft">Save draft</button>
-  <button id="submit">Submit to opponent</button>
+  <button class="primary" id="submit">Submit to opponent</button>
 </div>
 
 <script type="module">
 import {
   api, cardProblems, cardScore, cardTiebreak, completeSets, escapeHtml, FLIGHTS, lastTeam,
   lineWinner, OUTCOMES, renderChrome, requireSession, setStatus, teamLabel,
+  setSubtitle,
 } from './js/coach-common.js';
 
-renderChrome({ title: 'Report a Dual', subtitle: 'One card, eight flights.' });
+renderChrome({ title: 'Report a dual', subtitle: '' });
 
 const params = new URLSearchParams(location.search);
 const dualId = params.get('dual') ? Number(params.get('dual')) : null;
@@ -119,8 +120,7 @@ async function boot() {
 
   document.getElementById('app').style.display = '';
   document.getElementById('savebar').style.display = '';
-  document.querySelector('.hero p').textContent =
-    `${teamLabel(team)} — one card, eight flights.`;
+  setSubtitle(teamLabel(team));
 
   lines = FLIGHTS.map(() => ({
     homePlayers: [], awayPlayers: [], sets: [], homeWon: null, outcome: 'played',

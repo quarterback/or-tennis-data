@@ -1,4 +1,4 @@
-import { BRAND } from './brand.js';
+import { applyBrand } from './brand.js';
 import { demoApi, probeBackend, resetDemo } from './coach-demo.js';
 
 // Session handling and fetch wrappers shared by the coach-* pages.
@@ -162,11 +162,7 @@ function showDemoBanner() {
   bar.innerHTML = '<span><strong>Demo.</strong> Sign-in is off and nothing is '
     + 'saved to the server — everything you enter stays on this device.</span>'
     + '<button class="ghost tiny" id="demo-reset" style="margin-left:auto">Start over</button>';
-  // The hero has a .container of its own and comes first in the document, so
-  // querySelector('.container') puts the banner inside the dark header. Take
-  // the first one that is not part of the chrome.
-  const host = [...document.querySelectorAll('.container')]
-    .find((el) => !el.closest('.hero') && !el.closest('.navbar'));
+  const host = document.querySelector('.wrap');
   if (host) host.prepend(bar);
   document.getElementById('demo-reset').onclick = () => { resetDemo(); location.reload(); };
 }
@@ -280,27 +276,42 @@ export function cardScore(lines) {
   return { home, away };
 }
 
-/** Render the shared navbar and hero into the page. */
+/**
+ * Render the page's chrome: the site masthead, then its heading.
+ *
+ * Same masthead as every other Cheesybook page, from js/brand.js — these are
+ * not a separate tool a coach visits, they are part of the site.
+ */
 export function renderChrome({ title, subtitle }) {
-  const nav = document.querySelector('.navbar-inner');
-  if (nav) {
-    // Sibling-relative, matching lineups.html and methodology.html — the
-    // publish root is whatever those already resolve against.
-    nav.innerHTML =
-      '<a class="back" href="cheesybook.html">&larr; Cheesybook</a>' +
-      '<a class="back" href="coach.html">Report</a>' +
-      '<a class="back" href="scoreboard.html">Scoreboard</a>' +
-      '<a class="back" href="lineups.html">Lineups</a>' +
-      '<a class="back" href="index.html">Rankings</a>' +
-      `<span class="brand">${BRAND.name}</span>`;
+  applyBrand(title, {
+    current: 'Report',
+    links: [
+      { href: 'cheesybook.html', label: 'Home' },
+      { href: 'scoreboard.html', label: 'Scoreboard' },
+      { href: 'teams.html', label: 'Teams' },
+      { href: 'lineups.html', label: 'Lineups' },
+      { href: 'coach.html', label: 'Report' },
+      { href: 'index.html', label: 'Rankings' },
+    ],
+  });
+  const head = document.querySelector('.pagehead');
+  if (head) {
+    // The subtitle is always rendered, empty or not: pages fill it in with the
+    // team name once the session loads, and a conditional element means they
+    // have to null-check something that is only sometimes there.
+    head.innerHTML = `<h1>${escapeHtml(title)}</h1><p class="sub">${escapeHtml(subtitle || '')}</p>`;
   }
-  const hero = document.querySelector('.hero .container');
-  if (hero) {
-    // The <p> is always rendered, empty or not: pages fill it in with the team
-    // name once the session loads, and a conditional element means they have to
-    // null-check something that is only sometimes there.
-    hero.innerHTML = `<h1>${escapeHtml(title)}</h1><p>${escapeHtml(subtitle || '')}</p>`;
-  }
+}
+
+/**
+ * Set the line under the page heading — the team, once the session knows it.
+ *
+ * Pages used to reach for `.hero p` themselves, so moving the chrome onto the
+ * shared masthead broke three of them at once. The selector lives here now.
+ */
+export function setSubtitle(text) {
+  const el = document.querySelector('.pagehead .sub');
+  if (el) el.textContent = text || '';
 }
 
 /**
@@ -330,7 +341,7 @@ export async function requireSession(mountId = 'signin') {
           <div class="row">
             <input type="email" id="signin-email" placeholder="coach@school.org"
                    autocomplete="email" class="grow">
-            <button id="signin-go">Send the link</button>
+            <button class="primary" id="signin-go">Send the link</button>
           </div>
           <p class="small muted" style="margin-top:10px">
             Not sure which address? It is the one on your team's TennisReporting
