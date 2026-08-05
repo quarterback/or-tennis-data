@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Player — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* A player card, in the shape a reader already knows from a sports
+     reference site: who they are, the season line, what they did at each
+     position, then every match. */
+  .pcard { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; padding: 16px; }
+  .pcard .who { min-width: 0; }
+  .pcard h1 {
+    font-family: var(--display-font); font-size: 1.7rem; margin: 0; letter-spacing: .01em;
+  }
+  .pcard .sub { color: var(--ink-3); font-size: 0.88rem; margin: 3px 0 0; }
+  .pcard .lines { display: flex; gap: 22px; margin-left: auto; text-align: right; flex-wrap: wrap; }
+  .pcard .lines .n { font-family: var(--display-font); font-size: 1.5rem; line-height: 1; }
+  .pcard .lines .k {
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--ink-3); margin-top: 4px;
+  }
+
+  .poschips { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+  .poschip {
+    display: inline-flex; align-items: baseline; gap: 5px;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    border-radius: 7px; padding: 4px 9px; font-size: 0.8rem;
+  }
+  .poschip b { font-weight: 700; }
+  .poschip span { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .poschip.main { border-color: var(--accent); background: var(--accent-wash); }
+
+  td.res { font-weight: 700; width: 30px; }
+  td.res.w { color: var(--win); }
+  td.res.l { color: var(--loss); }
+  td.sc { font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  @media (max-width: 640px) {
+    .pcard { gap: 12px; }
+    .pcard .lines { margin-left: 0; text-align: left; gap: 18px; }
+    /* The match log stacks: date and result lead, the rest sits under. */
+    #log-table, #log-table tbody, #log-table tr, #log-table td { display: block; width: 100%; }
+    #log-table thead { display: none; }
+    #log-table tbody tr {
+      border: 1px solid var(--rule); border-radius: 9px;
+      padding: 9px 11px; margin-bottom: 8px; position: relative;
+    }
+    #log-table td { border: 0; padding: 2px 0; }
+    #log-table td.res { position: absolute; top: 9px; right: 11px; width: auto; }
+    #log-table td.opp::before { content: 'vs '; color: var(--ink-3); }
+  }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div id="loading" class="empty">Loading…</div>
+
+  <div id="player" style="display:none">
+    <div class="panel" style="margin-top:18px">
+      <div class="pcard">
+        <div class="who">
+          <h1 id="pname"></h1>
+          <p class="sub" id="psub"></p>
+          <div class="poschips" id="pchips"></div>
+        </div>
+        <div class="lines" id="plines"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-head"><h2>Match log</h2></div>
+      <div class="panel-body flush scroll">
+        <table id="log-table">
+          <thead><tr>
+            <th>Date</th><th class="mid">Pos</th><th class="mid"></th>
+            <th>Score</th><th>Opponent</th><th>Match</th>
+          </tr></thead>
+          <tbody id="logbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div id="missing" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand } from './js/brand.js';
+
+applyBrand('Player', {
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const SLOT_LABEL = {
+  S1: '1S', S2: '2S', S3: '3S', S4: '4S',
+  D1: '1D', D2: '2D', D3: '3D', D4: '4D',
+};
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined,
+    { month: 'short', day: 'numeric' });
+}
+
+const params = new URLSearchParams(location.search);
+const teamKey = params.get('t');
+const pid = params.get('p');
+const year = params.get('y') || '2026';
+
+async function boot() {
+  if (!teamKey || !pid) return fail('No player asked for.');
+
+  let team;
+  try {
+    team = await fetch(`data/lineups/${year}/${teamKey}.json`).then((r) => {
+      if (!r.ok) throw new Error('not found');
+      return r.json();
+    });
+  } catch {
+    return fail('That team has no published lineup data for this season.');
+  }
+
+  const p = (team.ladder || []).find((x) => String(x.pid) === String(pid));
+  if (!p) return fail('That player is not on this team’s published roster.');
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('player').style.display = '';
+  render(team, p);
+}
+
+function fail(message) {
+  document.getElementById('loading').style.display = 'none';
+  const el = document.getElementById('missing');
+  el.style.display = '';
+  el.innerHTML = `${esc(message)} <a href="lineups.html">Back to Lineups</a>`;
+}
+
+function render(team, p) {
+  document.title = `${p.name} — Cheesybook`;
+  document.getElementById('pname').textContent = p.name;
+
+  const bits = [
+    p.grade ? `Grade ${p.grade}` : '',
+    `${team.name} ${team.gender}`,
+    team.classification,
+    team.league,
+  ].filter(Boolean);
+  document.getElementById('psub').innerHTML = bits.map(esc).join(' · ')
+    + ` · <a href="lineups.html?team=${encodeURIComponent(teamKey)}">team lineup</a>`;
+
+  const [w, l] = p.rec || [0, 0];
+  const played = w + l;
+  const pct = played ? (w / played) : null;
+  document.getElementById('plines').innerHTML = [
+    [`${w}–${l}`, 'Record'],
+    [pct === null ? '—' : pct.toFixed(3).replace(/^0/, ''), 'Win pct'],
+    [p.total ?? played, 'Matches'],
+  ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
+
+  // Positions played, best-used first. `primary` is the one they played most,
+  // which is the answer to "where does this player actually play".
+  const chips = Object.entries(p.slots || {})
+    .filter(([, n]) => n > 0)
+    .sort((a, b) => b[1] - a[1])
+    .map(([slot, n]) => {
+      const rec = (p.rec_slots || {})[slot];
+      const label = SLOT_LABEL[slot] || slot;
+      const main = slot === p.primary ? ' main' : '';
+      return `<span class="poschip${main}"><b>${esc(label)}</b>`
+        + `<span>${rec ? `${rec[0]}–${rec[1]}` : `${n}×`}</span></span>`;
+    }).join('');
+  document.getElementById('pchips').innerHTML = chips;
+
+  const matches = (p.matches || []).slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  document.getElementById('logbody').innerHTML = matches.map((m) => `
+    <tr>
+      <td>${esc(fmtDate(m.date))}</td>
+      <td class="mid"><span class="chip quiet">${esc(SLOT_LABEL[m.slot] || m.slot)}</span></td>
+      <td class="res ${m.won ? 'w' : 'l'}">${m.won ? 'W' : 'L'}</td>
+      <td class="sc">${esc(m.score || '')}</td>
+      <td class="opp">${esc(m.opp || '')}</td>
+      <td class="tiny muted">${m.post ? '<span class="chip quiet">post</span> ' : ''}${esc(m.meet || '')}</td>
+    </tr>`).join('')
+    || '<tr><td colspan="6" class="empty">No matches recorded.</td></tr>';
+}
+
+boot();
+</script>
+</body>
+</html>

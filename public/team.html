@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Team — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* A team's season, in the order a reference site puts it: who they are and
+     the season line, then results, then the roster. */
+  .tcard { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; padding: 16px; }
+  .tcard h1 { font-family: var(--display-font); font-size: 1.7rem; margin: 0; letter-spacing: .01em; }
+  .tcard .sub { color: var(--ink-3); font-size: 0.88rem; margin: 3px 0 0; }
+  .tcard .lines { display: flex; gap: 22px; margin-left: auto; text-align: right; flex-wrap: wrap; }
+  .tcard .lines .n { font-family: var(--display-font); font-size: 1.5rem; line-height: 1; }
+  .tcard .lines .k {
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--ink-3); margin-top: 4px;
+  }
+
+  /* A season reads as a timeline: a divided list of tight rows, not one card
+     per match. Result first, then opponent, then score; date and match type
+     sit under in small type. Rows are ~34px so a phone shows eight of them. */
+  /* One continuous season log — no container, no rounded rectangle. The rule
+     above the first row and between rows is the only structure it needs. */
+  /* Tabs, so a phone is not scrolling past a sixteen-game log to reach the
+     matrix. The strip scrolls sideways rather than wrapping, which keeps the
+     selected tab and its neighbours on one line at any width. */
+  .tabs {
+    display: flex; gap: 6px; margin: 20px 0 0;
+    border-bottom: 2px solid var(--ink);
+    overflow-x: auto; -webkit-overflow-scrolling: touch;
+  }
+  .tabs::-webkit-scrollbar { height: 0; }
+  .tabs button {
+    /* Four navigation choices, not a sentence. Set close together at the same
+       weight they read as one run of words, so each one carries its own field:
+       wide padding, a gap between, and a tinted top on the selected one. */
+    flex: none; background: var(--rule-2); border: 0;
+    border-radius: 7px 7px 0 0;
+    padding: 9px 20px; font-size: 0.9rem; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; white-space: nowrap;
+    border-bottom: 3px solid transparent; margin-bottom: -2px;
+  }
+  .tabs button:hover { background: var(--rule); color: var(--ink); }
+  .tabs button[aria-selected="true"] {
+    color: var(--accent-2); font-weight: 700;
+    background: var(--accent-wash); border-bottom-color: var(--accent);
+  }
+  .tabs button[aria-selected="true"]:hover { background: var(--accent-wash); }
+  [role="tabpanel"] { margin-top: 4px; }
+  .sched { display: flex; flex-direction: column; }
+  .g {
+    display: grid;
+    /* Date, opponent, kind, result — one line. People browse a schedule by
+       date, so it leads and it is set at reading size rather than as a
+       footnote. The result column is fixed so scores line up down the page. */
+    grid-template-columns: 4.6rem minmax(0, 21rem) 5.2rem minmax(6rem, 1fr);
+    align-items: baseline;
+    gap: 0 12px;
+    padding: 8px 2px;
+    line-height: 1.25;
+    /* The faint rule token disappeared between 48px rows. A game needs to read
+       as its own block at a glance. */
+    border-bottom: 2px solid var(--rule);
+    color: inherit;
+    text-decoration: none;
+  }
+  .g:last-of-type { border-bottom: 0; }
+  .g:hover { background: var(--paper-2); text-decoration: none; }
+  .g:hover .opp { color: var(--accent-2); }
+
+  .g .date { font-size: 0.88rem; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
+  .g .kind {
+    justify-self: start; font-size: 0.66rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+    padding: 2px 7px; border-radius: 999px;
+    background: var(--rule-2); color: var(--ink-3); white-space: nowrap;
+  }
+  .g .kind.conf { background: var(--accent-wash); color: var(--accent-2); }
+  .g .r { font-weight: 700; font-size: 0.95rem; margin-right: 3px; }
+  .g .r.w { color: var(--win); }
+  .g .r.l { color: var(--loss); }
+  .g .r.t { color: var(--ink-3); }
+  .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
+  .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.8rem; margin-right: 5px; }
+  .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; text-align: right; }
+
+  /* How often the team won each position across the season. */
+  .flights { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 4px 0; }
+  .flights div { text-align: center; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 7px; padding: 7px 2px; }
+  .flights .p { font-size: 0.62rem; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); }
+  .flights .v { font-weight: 700; font-size: 0.9rem; font-variant-numeric: tabular-nums; }
+
+  /* `display` beats the hidden attribute, so say so. */
+  [hidden] { display: none !important; }
+
+  .poschip {
+    display: inline-flex; align-items: baseline; gap: 4px;
+    background: var(--paper-2); border: 1px solid var(--rule);
+    border-radius: 6px; padding: 2px 7px; font-size: 0.75rem; margin: 1px 3px 1px 0;
+    white-space: nowrap;
+  }
+  .poschip b { font-weight: 700; }
+  .poschip.primary { border-color: var(--accent); background: var(--accent-wash); }
+
+  /* Where each player actually appeared. Shaded so the shape of a lineup is
+     readable before any of the numbers are. */
+  .matrix td.slot, .matrix th.slot { text-align: center; font-variant-numeric: tabular-nums; }
+  .matrix td.z { color: var(--ink-4); }
+  .matrix td.h1 { background: #fff3d0; }
+  .matrix td.h2 { background: #ffe49b; }
+  .matrix td.h3 { background: #f5c264; }
+  .matrix td.h4 { background: #e0a03c; }
+
+  @media (max-width: 640px) {
+    .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
+    .flights { grid-template-columns: repeat(4, 1fr); }
+    /* A phone keeps the hierarchy, wrapping the pill under the opponent rather
+       than squeezing a fourth column in. Every cell is placed explicitly —
+       leaving one to auto-placement dropped it into the row the score already
+       occupied and the two drew on top of each other. */
+    .g { padding: 7px 2px; grid-template-columns: 3.4rem minmax(0, 1fr) auto; gap: 0 10px; }
+    .g .date { grid-column: 1 / 2; grid-row: 1; }
+    .g .opp { grid-column: 2 / 3; grid-row: 1; }
+    .g .sc { grid-column: 3 / 4; grid-row: 1; }
+    .g .kind {
+      grid-column: 2 / 4; grid-row: 2; justify-self: start;
+      margin-top: 2px; font-size: 0.6rem; padding: 1px 6px;
+    }
+  }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div id="loading" class="empty">Loading…</div>
+
+  <div id="team" style="display:none">
+    <div class="panel" style="margin-top:18px">
+      <div class="tcard">
+        <div>
+          <h1 id="tname"></h1>
+          <p class="sub" id="tsub"></p>
+        </div>
+        <div class="lines" id="tlines"></div>
+      </div>
+    </div>
+
+    <div class="tabs" role="tablist">
+      <button role="tab" data-tab="results" aria-selected="true">Results</button>
+      <button role="tab" data-tab="ladder" aria-selected="false">Ladder</button>
+      <button role="tab" data-tab="matrix" aria-selected="false">Position matrix</button>
+      <button role="tab" data-tab="byposition" aria-selected="false">By position</button>
+    </div>
+
+    <section id="tab-results" role="tabpanel">
+      <div id="resbody" class="sched"></div>
+    </section>
+
+    <section id="tab-ladder" role="tabpanel" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2>Ladder</h2>
+          <span class="chip aq" id="laddermark" hidden></span>
+          <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
+        </div>
+        <div class="panel-body flush scroll">
+          <table>
+            <thead><tr>
+              <th class="mid">#</th><th>Player</th><th class="mid">Gr</th>
+              <th>Positions played</th><th class="num">Overall</th>
+            </tr></thead>
+            <tbody id="rosbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-matrix" role="tabpanel" hidden>
+      <div class="panel" id="matrix-panel" style="display:none">
+        <div class="panel-head"><h2>Position matrix</h2></div>
+        <div class="panel-body flush scroll">
+          <table class="matrix">
+            <thead><tr id="matrix-head"></tr></thead>
+            <tbody id="matrix-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-byposition" role="tabpanel" hidden>
+      <div class="panel">
+        <div class="panel-head"><h2>By position</h2></div>
+        <div class="panel-body"><div class="flights" id="flights"></div></div>
+      </div>
+    </section>
+  </div>
+
+  <div id="missing" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand, leagueLabel } from './js/brand.js';
+
+applyBrand('Team', {
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const SLOT_LABEL = {
+  S1: '1S', S2: '2S', S3: '3S', S4: '4S',
+  D1: '1D', D2: '2D', D3: '3D', D4: '4D',
+};
+const SLOTS = ['S1', 'S2', 'S3', 'S4', 'D1', 'D2', 'D3', 'D4'];
+
+// These are our numbers, not OSAA's, and they move every week. A number beside
+// every school reads like an official standing; a number on the handful at the
+// top of a classification reads like what it is. Classifications run 30 to 50
+// teams, so the top ten is the cut. Below it, no number anywhere.
+const RANKED_TOP = 10;
+const ranked = (n) => Number.isFinite(Number(n)) && Number(n) >= 1 && Number(n) <= RANKED_TOP;
+
+function fmtDate(iso) {
+  if (!iso) return '';
+  const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+}
+
+const params = new URLSearchParams(location.search);
+const schoolId = params.get('s');
+const gender = (params.get('g') || 'girls').toLowerCase();
+const year = params.get('y') || '2026';
+
+async function boot() {
+  if (!schoolId) return fail('No team asked for.');
+
+  // The committee export is per classification, and a school's classification
+  // is not in the URL, so find the team by walking the season's fields. There
+  // are six; this is one small fetch each and it keeps the URL to a school id.
+  let index;
+  try {
+    index = await fetch(`data/committee/${year}/index.json`).then((r) => r.json());
+  } catch {
+    return fail('No season data published yet.');
+  }
+
+  // The index names each field's file, so use it rather than rebuilding the
+  // slug — one fewer thing to keep in step with the exporter.
+  const fields = index.fields.filter((f) => f.gender.toLowerCase() === gender);
+  for (const f of fields) {
+    let data;
+    try {
+      data = await fetch(`data/committee/${year}/${f.file}`).then((r) => r.json());
+    } catch { continue; }
+    const team = data.teams.find((t) => String(t.schoolId) === String(schoolId));
+    if (team) {
+      document.getElementById('loading').style.display = 'none';
+      document.getElementById('team').style.display = '';
+      return render(team, data);
+    }
+  }
+  fail('That team has no published season for this year.');
+}
+
+function fail(message) {
+  document.getElementById('loading').style.display = 'none';
+  const el = document.getElementById('missing');
+  el.style.display = '';
+  el.innerHTML = `${esc(message)} <a href="scoreboard.html">Back to the scoreboard</a>`;
+}
+
+function render(t, field) {
+  document.title = `${t.name} — Cheesybook`;
+  document.getElementById('tname').textContent = t.name;
+  document.getElementById('tsub').textContent = [
+    t.city, `${field.classification} ${field.gender}`,
+    leagueLabel(field.classification, t.league),
+  ].filter(Boolean).join(' · ');
+
+  document.getElementById('tlines').innerHTML = [
+    [t.record, 'Record'],
+    [t.leagueRecord, 'League'],
+    [t.powerIndex === null ? '—' : Number(t.powerIndex).toFixed(4), 'Power Index'],
+    ranked(t.classRank) ? [`#${t.classRank}`, 'Class rank'] : null,
+    [t.owp === null ? '—' : Number(t.owp).toFixed(3), 'SOS'],
+  ].filter(Boolean)
+    .map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
+
+  renderSchedule(t, field.classification);
+
+  const fb = t.flightBreakdown || {};
+  document.getElementById('flights').innerHTML = SLOTS.map((s) => {
+    const v = fb[s];
+    return `<div><div class="p">${SLOT_LABEL[s]}</div>
+      <div class="v">${v === null || v === undefined ? '—' : `${Math.round(v)}%`}</div></div>`;
+  }).join('');
+
+  const ladder = t.ladder || [];
+  document.getElementById('rosbody').innerHTML = ladder.map((p, i) => `
+    <tr>
+      <td class="mid">${i + 1}</td>
+      <td class="js-nm" data-name="${esc(p.name)}">${esc(p.name)}</td>
+      <td class="mid">${esc(p.grade || '')}</td>
+      <td class="mid">${p.primary ? `<span class="chip quiet">${esc(SLOT_LABEL[p.primary] || p.primary)}</span>` : ''}</td>
+      <td class="num">${p.record ? `${p.record[0]}–${p.record[1]}` : '—'}</td>
+    </tr>`).join('')
+    || '<tr><td colspan="5" class="empty">No roster published.</td></tr>';
+
+  // The ladder and matrix come from the lineups export, which is the only
+  // place per-position records live. Fetched here so a team's page is the one
+  // stop — roster, season, ladder and lineup — rather than sending a reader to
+  // a second tool for half of it.
+  loadLineups(t.schoolId, field.gender);
+}
+
+const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? 'h3' : 'h4');
+
+// Conf / Non-Conf in the UI. "League" is what the data calls it; a schedule
+// reader calls it a conference game.
+const kindOf = (r) => (r.postseason ? 'Post' : (r.league ? 'Conf' : 'Non-Conf'));
+
+/**
+ * A dual scoreline, winner first.
+ *
+ * Tennis reports the winning side's figure first — never the home team's, and
+ * never the page's own team's. The export writes it from this team's side, so a
+ * loss arrives as 2-6 and has to be turned round to 6-2. The tiebreak in
+ * parentheses turns with it.
+ */
+function winnerFirst(scoreline) {
+  return String(scoreline || '').replace(/(\d+)-(\d+)/g, (whole, a, b) => {
+    const x = Number(a);
+    const y = Number(b);
+    return x >= y ? `${x}-${y}` : `${y}-${x}`;
+  });
+}
+
+/* `result` is already asymmetric for a dual decided on a tiebreaker: the team
+   that took it reads W, the team that lost it reads T, and the scoreline
+   carries the figures — Grant 4-4 (7-6) W, Lakeridge 4-4 (6-7) T, one dual.
+   Nothing to compute here. */
+
+// The scoreline already carries the tiebreak in parentheses — "4-4 (7-6)" —
+// which is the convention this site has always used and the one a soccer page
+// uses for PKs. Nothing more is needed on the metadata line.
+
+/** The season as a divided list: result, opponent, score; date and type under. */
+function renderSchedule(t, ourClass) {
+  const results = (t.results || []).slice()
+    .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+
+  const el = document.getElementById('resbody');
+  el.innerHTML = results.map((r, i) => {
+    const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
+    // Rank leads the name, the way a college schedule prints it — #10
+    // Lakeridge — and only for a ranked opponent. See `ranked`.
+    const rank = ranked(r.opponentClassRank) ? `#${r.opponentClassRank}` : '';
+    const kind = kindOf(r);
+    const href = `match.html?d=${encodeURIComponent(r.date)}`
+      + `&a=${encodeURIComponent(t.schoolId)}&b=${encodeURIComponent(r.opponentId)}`
+      + `&from=${encodeURIComponent(t.schoolId)}&fg=${encodeURIComponent(gender)}`;
+    return `<a class="g" href="${href}">
+        <span class="date">${esc(fmtDate(r.date))}</span>
+        <span class="opp">${rank ? `<span class="rk">${esc(rank)}</span>` : ''}${esc(r.opponent)}</span>
+        <span class="kind ${kind === 'Conf' ? 'conf' : ''}">${esc(kind)}</span>
+        <span class="sc"><span class="r ${cls}">${esc(r.result)}</span> ${esc(winnerFirst(r.scoreline))}</span>
+      </a>`;
+  }).join('');
+}
+
+/**
+ * The ladder a coach submitted, if there is one.
+ *
+ * Same endpoint the Lineups page writes to. It is a live read rather than
+ * something baked into the export, because the export runs nightly and a coach
+ * who reorders their ladder expects to see it on their team page now.
+ */
+async function storedLadder(key) {
+  try {
+    // The blob id is <year>_<key>, the same one lineups.html writes under.
+    // Fetching the bare key returned nothing, every time, silently.
+    const r = await fetch(`/api/lineups/${encodeURIComponent(`${year}_${key}`)}`);
+    if (!r.ok) return null;
+    return await r.json();
+  } catch { return null; }   // no backend — the derived order stands
+}
+
+async function loadLineups(schoolId, genderWord) {
+  const key = `${String(genderWord).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
+  document.getElementById('editladder').href = `lineups.html?team=${encodeURIComponent(key)}`;
+
+  let ladder;
+  try {
+    ladder = (await fetch(`data/lineups/${year}/${key}.json`).then((r) => {
+      if (!r.ok) throw new Error('none');
+      return r.json();
+    })).ladder || [];
+  } catch { return; }
+  if (!ladder.length) return;
+
+  // The export carries the order derived from results. A coach who has set a
+  // ladder on the Lineups page has said something different, and that is the
+  // order the team's own page has to show — otherwise submitting a ladder
+  // appears to do nothing until the next nightly export.
+  const stored = await storedLadder(key);
+  if (stored && stored.ladder && stored.ladder.length) {
+    const byPid = new Map(ladder.map((pl) => [String(pl.pid), pl]));
+    const named = stored.ladder.map((pid) => byPid.get(String(pid))).filter(Boolean);
+    const rest = ladder.filter((pl) => !stored.ladder.some((pid) => String(pid) === String(pl.pid)));
+    if (named.length) ladder = [...named, ...rest];
+    const mark = document.getElementById('laddermark');
+    if (mark) {
+      mark.textContent = stored.locked ? 'Coach ladder · locked' : 'Coach ladder';
+      mark.hidden = false;
+    }
+  }
+
+  const card = (p) => `player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(p.pid)}`;
+
+  // Ladder: the derived order, with what each player did at each position.
+  document.getElementById('rosbody').innerHTML = ladder.map((p, i) => {
+    const chips = SLOTS.filter((sl) => (p.rec_slots || {})[sl]).map((sl) => {
+      const [w, l] = p.rec_slots[sl];
+      return `<span class="poschip${sl === p.primary ? ' primary' : ''}">`
+        + `<b>${SLOT_LABEL[sl]}</b> ${w}\u2013${l}</span>`;
+    }).join('') || '<span class="muted">—</span>';
+    const [w, l] = p.rec || [0, 0];
+    return `<tr>
+      <td class="mid">${i + 1}</td>
+      <td><a href="${card(p)}">${esc(p.name)}</a></td>
+      <td class="mid">${esc(p.grade || '')}</td>
+      <td>${chips}</td>
+      <td class="num">${w}\u2013${l}</td>
+    </tr>`;
+  }).join('');
+
+  // Matrix: player by position, shaded by how often they played there.
+  document.getElementById('matrix-panel').style.display = '';
+  document.getElementById('matrix-head').innerHTML =
+    '<th>Player</th>' + SLOTS.map((sl) => `<th class="slot">${SLOT_LABEL[sl]}</th>`).join('')
+    + '<th class="slot">Total</th>';
+  document.getElementById('matrix-body').innerHTML = ladder.map((p) => {
+    const cells = SLOTS.map((sl) => {
+      const n = (p.slots || {})[sl] || 0;
+      const rec = (p.rec_slots || {})[sl];
+      const title = rec ? ` title="${SLOT_LABEL[sl]}: ${rec[0]}\u2013${rec[1]}"` : '';
+      return `<td class="slot ${heat(n)}"${title}>${n || '\u00b7'}</td>`;
+    }).join('');
+    return `<tr><td><a href="${card(p)}">${esc(p.name)}</a></td>${cells}`
+      + `<td class="slot">${p.total ?? ''}</td></tr>`;
+  }).join('');
+}
+
+const TABS = ['results', 'ladder', 'matrix', 'byposition'];
+
+/** Show one panel. The name lives in the hash so a tab can be linked to. */
+function showTab(name, push) {
+  if (!TABS.includes(name)) name = TABS[0];
+  for (const t of TABS) {
+    document.getElementById(`tab-${t}`).hidden = t !== name;
+    document.querySelector(`.tabs [data-tab="${t}"]`)
+      .setAttribute('aria-selected', String(t === name));
+  }
+  if (push) history.replaceState(null, '', `#${name}`);
+}
+
+document.querySelectorAll('.tabs [data-tab]').forEach((b) => {
+  b.onclick = () => showTab(b.dataset.tab, true);
+});
+window.addEventListener('hashchange', () => showTab(location.hash.slice(1), false));
+showTab(location.hash.slice(1) || 'results', false);
+
+boot();
+</script>
+</body>
+</html>

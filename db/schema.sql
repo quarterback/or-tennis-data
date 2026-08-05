@@ -162,6 +162,16 @@ CREATE TABLE IF NOT EXISTS dual (
     home_school_id BIGINT   NOT NULL,
     away_school_id BIGINT   NOT NULL,
     is_postseason  BOOLEAN  NOT NULL DEFAULT FALSE,
+    -- Whether the dual is in league play. Derived from the two schools today,
+    -- but a coach can say so directly and leagues change year to year.
+    conference     BOOLEAN,
+    venue          TEXT     NOT NULL DEFAULT 'home'
+                            CHECK (venue IN ('home', 'away')),
+    -- What happened to the fixture, as against `status` below, which is where
+    -- the REPORT is in the confirm cycle. A postponed or cancelled dual is a
+    -- real row with no card.
+    result_status  TEXT     NOT NULL DEFAULT 'completed'
+                            CHECK (result_status IN ('completed', 'postponed', 'cancelled')),
     event_name     TEXT,
     title          TEXT     NOT NULL DEFAULT '',
     status         TEXT     NOT NULL DEFAULT 'draft'

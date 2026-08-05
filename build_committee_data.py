@@ -33,7 +33,7 @@ import sys
 from collections import defaultdict
 
 import generate_site as gs
-from scoreline import result_letter, scoreline
+from scoreline import result_letter, scoreline, tiebreak
 from season_duals import load_year
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -96,6 +96,16 @@ def _league_win_pct(team: dict) -> float | None:
 # allowed to reorder them. Matches the playoff simulator's threshold.
 LEAGUE_H2H_BAND = 0.1
 
+# A league record ranks a team once three matches sit behind it. Below that,
+# win percentage says 1-0-0 is a better season than 10-1-0 — and this decides an
+# automatic bid, so it cannot. Same floor the standings page uses.
+CHAMPION_MIN_MATCHES = 3
+
+
+def _league_played(team: dict) -> int:
+    return ((team.get("league_wins") or 0) + (team.get("league_losses") or 0)
+            + (team.get("league_ties") or 0))
+
 
 def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     """The league champion, using the league tiebreakers the site already has.
@@ -128,8 +138,18 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     if not scored:
         return None
 
+    # A team short of three league matches cannot be champion on a percentage
+    # nobody else had the chance to run up. Kept off entirely until somebody
+    # clears it, so an early-season league still has a champion.
+    eligible = [(t, p) for t, p in scored if _league_played(t) >= CHAMPION_MIN_MATCHES]
+    if eligible:
+        scored = eligible
+
+    # Ordered on league record alone. Power Index does not decide a league
+    # title — a league is won on the league, and where the league cannot
+    # separate two teams the answer is that it did not.
     order = [t for t, _ in sorted(
-        scored, key=lambda x: (x[1], x[0].get("power_index") or 0), reverse=True)]
+        scored, key=lambda x: (x[1], x[0]["school_name"]), reverse=True)]
     pct = {t["school_id"]: p for t, p in scored}
 
     def beat(a, b):
@@ -153,15 +173,25 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
                 changed = True
 
     top = order[0]
-    level = [t["school_name"] for t in order[1:]
-             if pct[t["school_id"]] == pct[top["school_id"]]]
-    if any(top["school_name"] == w for w, _ in swaps):
-        basis = "league record, head to head"
-    elif level:
-        basis = "league record, Power Index"
-    else:
-        basis = "league record"
-    return {"team": top, "basis": basis, "tied_with": level}
+    level_teams = [t for t in order[1:]
+                   if pct[t["school_id"]] == pct[top["school_id"]]]
+    level = [t["school_name"] for t in level_teams]
+
+    if not level_teams:
+        return {"team": top, "basis": "league record", "tied_with": [],
+                "undecided": False}
+
+    # Level on the league, so head to head has to do it. Beating every team
+    # level with you wins the league; anything else — a split, or two teams that
+    # never met — is a league that did not produce a champion, and saying so is
+    # the honest answer. The alternative is inventing one from a rating the
+    # league does not use.
+    if all(beat(top, t) for t in level_teams):
+        return {"team": top, "basis": "league record, head to head",
+                "tied_with": level, "undecided": False}
+
+    return {"team": top, "basis": "level on league record and head to head",
+            "tied_with": level, "undecided": True}
 
 
 def load_ladder(year, gender_id, school_id):
@@ -231,6 +261,7 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
                 "name": got["team"]["school_name"],
                 "basis": got["basis"],
                 "derived": True,
+                "undecided": got.get("undecided", False),
                 "tiedWith": got["tied_with"],
             }
 
@@ -282,6 +313,12 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
                 "postseason": d["postseason"],
                 "source": d["source"],
                 "tied": d["tied"],
+                # A 4-4 decided on sets is the tennis equivalent of a shootout:
+                # the dual is a tie, and the parenthetical says who took the
+                # tiebreaker. Null when nothing decided it, which is every
+                # scraped tie — the feed records no winner for those.
+                "tiebreak": (lambda tb: {"basis": tb[0], "ours": tb[1], "theirs": tb[2]}
+                             if tb else None)(tiebreak(d["meet"], sid)),
             }
             results.append(row)
 

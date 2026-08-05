@@ -1,4 +1,4 @@
-import { BRAND } from './brand.js';
+import { applyBrand } from './brand.js';
 import { demoApi, probeBackend, resetDemo } from './coach-demo.js';
 
 // Session handling and fetch wrappers shared by the coach-* pages.
@@ -28,11 +28,15 @@ export const FLIGHTS = [
  * the eight is ordinary practice, not an exception.
  */
 export const OUTCOMES = [
-  { key: 'played', label: 'Played', hint: 'Normal match, enter the set scores.' },
-  { key: 'retired', label: 'Retired', hint: 'A player quit mid-match. The other side wins whatever the score was.' },
-  { key: 'default', label: 'Default', hint: 'One team had nobody at this position. The other side wins the point.' },
-  { key: 'skipped', label: 'Not played', hint: 'Neither team contested this position. It counts for nobody.' },
+  { key: 'played', label: 'Completed' },
+  { key: 'skipped', label: 'Not played' },
+  { key: 'forfeit', label: 'Forfeit' },
+  { key: 'retired', label: 'Retired' },
+  { key: 'default', label: 'Default' },
 ];
+
+/** Outcomes that need no score: one side simply took the point. */
+export const AWARDED = new Set(['forfeit', 'default']);
 
 const CONTESTED = new Set(['played', 'retired']);
 
@@ -53,18 +57,28 @@ export function cardProblems(lines) {
       .map((f, i) => ({ f, i }))
       .filter(({ f }) => f.matchType === matchType);
 
+    // A flight left on Completed with nothing in it has not been entered yet —
+    // it is not evidence that the position was contested. Every flight starts
+    // on Completed, so treating an empty one as played fired this warning
+    // against rows the coach had not reached.
+    const contested = (i) => CONTESTED.has(lines[i].outcome)
+      && ((lines[i].sets || []).length
+        || (lines[i].homePlayers || []).length
+        || (lines[i].awayPlayers || []).length);
+
     let lastContested = 0;
     for (const { f, i } of indexes) {
-      if (CONTESTED.has(lines[i].outcome)) lastContested = f.flight;
+      if (contested(i)) lastContested = f.flight;
     }
     for (const { f, i } of indexes) {
       if (f.flight >= lastContested) continue;
-      if (!CONTESTED.has(lines[i].outcome)) {
+      if (!contested(i)) {
         const played = FLIGHTS.find((x) => x.matchType === matchType && x.flight === lastContested);
+        const name = (x) => `${x.flight} ${x.matchType}`;
         problems.push(
-          `${f.label} was not played but ${played.label} was. Forfeits come from ` +
-          `the bottom of the card up, so ${played.label} cannot be played while ` +
-          `${f.label} is empty.`);
+          `${name(f)} was not played but ${name(played)} was. Forfeits come from ` +
+          `the bottom of the card up, so ${name(played)} cannot be played while ` +
+          `${name(f)} is empty.`);
       }
     }
   }
@@ -162,11 +176,7 @@ function showDemoBanner() {
   bar.innerHTML = '<span><strong>Demo.</strong> Sign-in is off and nothing is '
     + 'saved to the server — everything you enter stays on this device.</span>'
     + '<button class="ghost tiny" id="demo-reset" style="margin-left:auto">Start over</button>';
-  // The hero has a .container of its own and comes first in the document, so
-  // querySelector('.container') puts the banner inside the dark header. Take
-  // the first one that is not part of the chrome.
-  const host = [...document.querySelectorAll('.container')]
-    .find((el) => !el.closest('.hero') && !el.closest('.navbar'));
+  const host = document.querySelector('.wrap');
   if (host) host.prepend(bar);
   document.getElementById('demo-reset').onclick = () => { resetDemo(); location.reload(); };
 }
@@ -233,6 +243,36 @@ export function lineWinner(sets) {
 }
 
 /** Flights won by each side across a card. */
+/**
+ * The tiebreak on a level card — computed, never asked.
+ *
+ * A dual that finishes level goes to sets, then games. Both are already on the
+ * card, so the coach is never asked to nominate a winner: totalling what they
+ * typed is the whole rule. Mirrors `tiebreak_winner` in entered_shape.py, which
+ * is what the pipeline applies on save.
+ *
+ * Returns null when the card is not level, and {basis: null} when sets AND
+ * games are also level — a tie that stays a tie, which is a real result.
+ */
+export function cardTiebreak(lines) {
+  const { home, away } = cardScore(lines);
+  if (home !== away) return null;
+
+  let hs = 0; let as = 0; let hg = 0; let ag = 0;
+  for (const line of lines) {
+    if (line.outcome === 'skipped') continue;
+    for (const set of completeSets(line.sets)) {
+      if (set.homeGames > set.awayGames) hs += 1; else as += 1;
+      hg += set.homeGames;
+      ag += set.awayGames;
+    }
+  }
+
+  if (hs !== as) return { basis: 'sets', home: hs, away: as, homeWon: hs > as };
+  if (hg !== ag) return { basis: 'games', home: hg, away: ag, homeWon: hg > ag };
+  return { basis: null, home: hs, away: as, homeWon: null };
+}
+
 export function cardScore(lines) {
   let home = 0;
   let away = 0;
@@ -250,27 +290,42 @@ export function cardScore(lines) {
   return { home, away };
 }
 
-/** Render the shared navbar and hero into the page. */
+/**
+ * Render the page's chrome: the site masthead, then its heading.
+ *
+ * Same masthead as every other Cheesybook page, from js/brand.js — these are
+ * not a separate tool a coach visits, they are part of the site.
+ */
 export function renderChrome({ title, subtitle }) {
-  const nav = document.querySelector('.navbar-inner');
-  if (nav) {
-    // Sibling-relative, matching lineups.html and methodology.html — the
-    // publish root is whatever those already resolve against.
-    nav.innerHTML =
-      '<a class="back" href="cheesybook.html">&larr; Cheesybook</a>' +
-      '<a class="back" href="coach.html">Report</a>' +
-      '<a class="back" href="scoreboard.html">Scoreboard</a>' +
-      '<a class="back" href="lineups.html">Lineups</a>' +
-      '<a class="back" href="index.html">Rankings</a>' +
-      `<span class="brand">${BRAND.name}</span>`;
+  applyBrand(title, {
+    current: 'Report',
+    links: [
+      { href: 'cheesybook.html', label: 'Home' },
+      { href: 'scoreboard.html', label: 'Scoreboard' },
+      { href: 'teams.html', label: 'Teams' },
+      { href: 'lineups.html', label: 'Lineups' },
+      { href: 'coach.html', label: 'Report' },
+      { href: 'index.html', label: 'Rankings' },
+    ],
+  });
+  const head = document.querySelector('.pagehead');
+  if (head) {
+    // The subtitle is always rendered, empty or not: pages fill it in with the
+    // team name once the session loads, and a conditional element means they
+    // have to null-check something that is only sometimes there.
+    head.innerHTML = `<h1>${escapeHtml(title)}</h1><p class="sub">${escapeHtml(subtitle || '')}</p>`;
   }
-  const hero = document.querySelector('.hero .container');
-  if (hero) {
-    // The <p> is always rendered, empty or not: pages fill it in with the team
-    // name once the session loads, and a conditional element means they have to
-    // null-check something that is only sometimes there.
-    hero.innerHTML = `<h1>${escapeHtml(title)}</h1><p>${escapeHtml(subtitle || '')}</p>`;
-  }
+}
+
+/**
+ * Set the line under the page heading — the team, once the session knows it.
+ *
+ * Pages used to reach for `.hero p` themselves, so moving the chrome onto the
+ * shared masthead broke three of them at once. The selector lives here now.
+ */
+export function setSubtitle(text) {
+  const el = document.querySelector('.pagehead .sub');
+  if (el) el.textContent = text || '';
 }
 
 /**
@@ -300,7 +355,7 @@ export async function requireSession(mountId = 'signin') {
           <div class="row">
             <input type="email" id="signin-email" placeholder="coach@school.org"
                    autocomplete="email" class="grow">
-            <button id="signin-go">Send the link</button>
+            <button class="primary" id="signin-go">Send the link</button>
           </div>
           <p class="small muted" style="margin-top:10px">
             Not sure which address? It is the one on your team's TennisReporting
@@ -332,4 +387,56 @@ export async function requireSession(mountId = 'signin') {
     });
   }
   return null;
+}
+
+/**
+ * Parse a tennis score as a coach writes it.
+ *
+ * "6-4, 6-2" · "4-6, 6-3, 10-7" · "7-6(5), 6-4" · "6-0 6-0". An en dash reads
+ * as a hyphen, because a phone keyboard and a paste from a scoresheet both
+ * produce them. Returns { sets, error }; sets is index-ordered and shaped the
+ * way the API takes them.
+ *
+ * This replaced a grid of six number inputs per flight. Coaches read scores off
+ * a scoresheet in exactly this notation, and typing it is one field instead of
+ * six tab stops.
+ */
+export function parseScore(text) {
+  const raw = String(text || '').trim();
+  if (!raw) return { sets: [], error: null };
+
+  const chunks = raw
+    .replace(/[\u2010-\u2015\u2212]/g, '-')   // en/em dash, minus
+    .split(/[,;]|\s{2,}|\s(?=\d+\s*-)/)
+    .map((c) => c.trim())
+    .filter(Boolean);
+
+  const sets = [];
+  for (const chunk of chunks) {
+    const m = chunk.match(/^(\d{1,2})\s*-\s*(\d{1,2})(?:\s*\((\d{1,2})\))?$/);
+    if (!m) return { sets: [], error: `“${chunk}” is not a set score.` };
+    const home = Number(m[1]);
+    const away = Number(m[2]);
+    if (home > 30 || away > 30) return { sets: [], error: `“${chunk}” is not a set score.` };
+    if (home === away) return { sets: [], error: `“${chunk}” has no winner.` };
+    sets.push({
+      number: sets.length + 1,
+      homeGames: home,
+      awayGames: away,
+      tiePoints: m[3] === undefined ? null : Number(m[3]),
+    });
+  }
+  if (sets.length > 5) return { sets: [], error: 'A match is at most five sets.' };
+  return { sets, error: null };
+}
+
+/** The inverse: sets back to the text a coach would have typed. */
+export function formatScore(sets) {
+  return (sets || [])
+    .slice()
+    .sort((a, b) => Number(a.number) - Number(b.number))
+    .filter((s) => s.homeGames != null && s.awayGames != null)
+    .map((s) => `${s.homeGames}-${s.awayGames}`
+      + (s.tiePoints == null ? '' : `(${s.tiePoints})`))
+    .join(', ');
 }

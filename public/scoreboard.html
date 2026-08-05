@@ -9,91 +9,216 @@
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <style>
-  /* Scoreboard-specific: a day's slate, then a box score behind each line. */
-  #date { max-width: 15rem; }
-  .daybar { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding-bottom: 4px; }
-  .daybar button { white-space: nowrap; }
-  .daybar button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+  /* The games are the product; the filters are tools. The page opens on a
+     day's results, with one row of date navigation above them and everything
+     else folded away. */
+  .datebar {
+    display: flex; gap: 8px; align-items: center;
+    position: sticky; top: 0; z-index: 30;
+    background: var(--paper-2); padding: 10px 0 8px;
+  }
+  .daynav {
+    flex: none; width: 34px; padding: 0; height: 34px; font-size: 1.1rem; line-height: 1;
+  }
+  .daystrip {
+    display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth; flex: 1; min-width: 0; padding-bottom: 2px;
+  }
+  .daystrip::-webkit-scrollbar { height: 0; }
+  .daystrip button {
+    white-space: nowrap; flex: none; font-weight: 600;
+    border-radius: 999px; padding: 6px 13px;
+  }
+  .daystrip button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .daystrip button.today { border-color: var(--accent); }
+
+  /* A month calendar, the way every scoreboard offers one. Paging back to
+     April through a seven-day strip is a dozen clicks; the strip is for
+     "yesterday and tomorrow", the calendar is for "the 14th". */
+  .calwrap { position: relative; flex: none; }
+  .daynav.cal { display: inline-flex; align-items: center; justify-content: center; }
+  .daynav.cal[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .calpop[hidden] { display: none; }
+  .calpop {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+    width: 268px; padding: 10px;
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.16);
+  }
+  .cal-head { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .cal-head span { flex: 1; text-align: center; font-weight: 700; font-size: 0.86rem; }
+  .cal-head button { padding: 3px 10px; font-size: 0.9rem; line-height: 1; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-grid .dow {
+    text-align: center; font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); padding: 2px 0 4px;
+  }
+  .cal-grid .day {
+    padding: 0; height: 32px; font-size: 0.82rem; font-variant-numeric: tabular-nums;
+    border: 0; border-radius: 7px; background: none; color: var(--ink-4); cursor: default;
+  }
+  /* A day with results is the only thing worth clicking. */
+  .cal-grid .day.has { color: var(--ink); font-weight: 600; cursor: pointer; background: var(--rule-2); }
+  .cal-grid .day.has:hover { background: var(--accent-wash); color: var(--accent-2); }
+  .cal-grid .day.on { background: var(--ink); color: var(--paper); }
+  .cal-grid .day.on:hover { background: var(--ink); color: var(--paper); }
+  .cal-grid .pad { height: 32px; }
+  .cal-foot { margin-top: 8px; display: flex; }
+  .cal-foot button { flex: 1; font-size: 0.78rem; }
+  .filters-toggle { flex: none; }
+  .filters-toggle.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+  /* display:flex beats the hidden attribute, so say so explicitly or the
+     drawer ships open and the filters are back on top of the games. */
+  .drawer[hidden] { display: none; }
+  .drawer {
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 10px;
+    padding: 12px 14px; margin-bottom: 12px; box-shadow: var(--shadow);
+  }
+  .drawer label { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; color: var(--ink-3); min-width: 0; }
+  .drawer select, .drawer input { min-width: 0; max-width: 100%; }
+
+  .activefilters { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 10px; }
+  .activefilters .chip { cursor: pointer; }
+
+  .dayhead {
+    font-family: var(--display-font); font-size: 1.15rem; margin: 4px 0 12px;
+    letter-spacing: .01em;
+  }
+
+  /* Grouping: gender, then how the dual counted. A reader scans to their
+     half of the page and then to the kind of match they care about. */
+  .grp { margin: 0 0 22px; }
+  .grp > h2 {
+    font-family: var(--display-font); font-size: 1rem; margin: 0 0 8px;
+    padding-bottom: 5px; border-bottom: 2px solid var(--ink); letter-spacing: .02em;
+  }
+  .sub-grp { margin: 0 0 14px; }
+  .sub-grp > h3 {
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--ink-3); margin: 12px 0 7px; font-weight: 700;
+  }
 
   /* align-items:start so expanding one box score does not stretch every card
      in its row to match. */
-  .slate { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 12px; align-items: start; }
+  .slate { display: grid; grid-template-columns: repeat(auto-fill, minmax(272px, 1fr)); gap: 10px; align-items: start; }
   .game {
     background: var(--paper); border: 1px solid var(--rule); border-radius: 10px;
     box-shadow: var(--shadow); overflow: hidden;
   }
   .game-head {
-    display: flex; align-items: center; gap: 8px; padding: 7px 12px;
-    border-bottom: 1px solid var(--rule-2); font-size: 0.7rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3);
+    display: flex; align-items: center; gap: 7px; padding: 6px 11px 0;
+    font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3);
   }
+  /* FINAL sits where a scoreboard puts it: first, small, and unmissable. */
+  .game-head .final { color: var(--ink); }
+  .game-head .tag { font-weight: 700; color: var(--accent-2); }
+  /* The record rides with the name at a smaller weight, like ESPN's (12-3). */
+  .team-row .name .rec { font-weight: 400; color: var(--ink-3); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
   .team-row {
-    display: flex; align-items: center; gap: 10px; padding: 9px 12px; cursor: pointer;
+    display: flex; align-items: center; gap: 9px; padding: 6px 11px;
   }
-  .team-row + .team-row { border-top: 1px solid var(--rule-2); }
+  .team-row + .team-row { border-top: 0; }
   .team-row .name { flex: 1; font-weight: 600; font-size: 0.92rem; }
-  .team-row .name .meta { display: block; font-weight: 400; font-size: 0.72rem; color: var(--ink-3); }
-  .team-row .score { font-size: 1.28rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 26px; text-align: right; }
+  .team-row { text-decoration: none; color: inherit; }
+  /* Give the row a visible affordance — without one it reads as static text. */
+  .team-row:hover { background: var(--accent-wash); text-decoration: none; }
+  .team-row:hover .name { color: var(--accent-2); }
+  /* ESPN marks the winner with a caret at the row's left edge. The column is
+     always present so the two rows stay aligned. */
+  .team-row .mark { width: 9px; color: var(--ink); font-size: 0.72rem; }
+  /* The classification and league sit once at the foot of the card, not on
+     every row — metadata supports the score rather than competing with it. */
+  .team-row .name .meta { display: none; }
+  .game-meta {
+    padding: 2px 11px 0; font-size: 0.68rem; color: var(--ink-3);
+  }
+  .team-row .score { font-size: 1.45rem; font-weight: 700; font-variant-numeric: tabular-nums; min-width: 24px; text-align: right; line-height: 1.15; }
   .team-row.won .score, .team-row.won .name { color: var(--ink); }
   .team-row.lost .score, .team-row.lost .name { color: var(--ink-4); }
-  .team-row .pk { font-size: 0.78rem; color: var(--ink-3); font-variant-numeric: tabular-nums; min-width: 34px; text-align: right; }
-  .game-foot {
-    padding: 6px 12px; border-top: 1px solid var(--rule-2); background: var(--paper-2);
-    display: flex; align-items: center; gap: 8px; font-size: 0.74rem; color: var(--ink-3);
+  /* The tiebreak reads as one line under the score, the way a soccer page
+     prints PKs (4-3) — not as a figure split across the two team rows. */
+  .game-tb {
+    padding: 0 11px 2px; text-align: right;
+    font-size: 0.72rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
   }
-  .game-foot button { padding: 2px 8px; font-size: 0.72rem; margin-left: auto; }
+  .game-foot {
+    padding: 5px 11px 7px;
+    display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--ink-3);
+  }
+  .game-foot button {
+    padding: 2px 9px; font-size: 0.68rem; margin-left: auto;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
 
-  /* The card clips its corners, so the box score has to scroll inside itself
-     rather than be cut off — the set scores are the point of opening it. */
-  .box { border-top: 1px solid var(--rule); padding: 4px 0 8px; background: var(--paper-2); overflow-x: auto; }
-  .box table { font-size: 0.78rem; min-width: 100%; }
-  .box th { position: static; background: transparent; padding: 5px 12px; }
-  .box td { padding: 5px 12px; border-bottom: 1px solid var(--rule-2); }
-  .box td:nth-child(2), .box td:nth-child(3) { min-width: 108px; }
-  .box tr:last-child td { border-bottom: 0; }
-  .box .slot { font-weight: 700; color: var(--ink-3); width: 30px; }
-  .box .w { font-weight: 700; }
-  .box .l { color: var(--ink-3); }
-  .box .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .box .fin { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--flag); }
+  .game-foot .boxlink {
+    margin-left: auto; font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
+
+@media (max-width: 720px) {
+}
 </style>
 </head>
 <body>
 <header class="mast"></header>
 
 <div class="wrap">
-  <div class="pagehead">
-    <h1>Scoreboard</h1>
-    <p class="sub">Every dual, by the day it was played.</p>
+  <!-- Date navigation is the page's primary control, so it leads and it
+       sticks. Everything else is a tool and lives behind Filters. -->
+  <div class="datebar">
+    <button class="daynav" id="prev" aria-label="Previous day">&lsaquo;</button>
+    <div class="daystrip" id="daystrip"></div>
+    <button class="daynav" id="next" aria-label="Next day">&rsaquo;</button>
+    <div class="calwrap">
+      <button class="daynav cal" id="cal-toggle" aria-label="Choose a date" aria-expanded="false">
+        <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
+          <rect x="2.5" y="4" width="15" height="13.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M2.5 8h15M6.5 2.5v3M13.5 2.5v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="calpop" id="calpop" hidden>
+        <div class="cal-head">
+          <button id="cal-prev" aria-label="Previous month">&lsaquo;</button>
+          <span id="cal-title"></span>
+          <button id="cal-next" aria-label="Next month">&rsaquo;</button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-foot"><button id="cal-latest">Latest results</button></div>
+      </div>
+    </div>
+    <button id="filters-toggle" class="filters-toggle">Filters</button>
   </div>
 
-  <div class="controls">
+  <div class="drawer" id="drawer" hidden>
     <label>Season <select id="year"></select></label>
-    <label>Date <select id="date"></select></label>
-    <label>Gender
-      <select id="gender">
-        <option value="">Both</option><option>Boys</option><option>Girls</option>
-      </select>
-    </label>
+    <label>Gender <select id="gender">
+      <option value="">Both</option><option>Boys</option><option>Girls</option></select></label>
     <label>Class <select id="class"><option value="">All</option></select></label>
-    <input type="search" id="q" placeholder="Find a school…" style="min-width:170px">
-    <span id="count" class="tiny muted" style="margin-left:auto"></span>
+    <label>League <select id="league"><option value="">All</option></select></label>
+    <input type="search" id="q" placeholder="Find a school…">
+    <button id="drawer-clear" class="ghost">Clear</button>
   </div>
 
-  <div class="daybar no-print" id="daybar"></div>
+  <div id="active-filters" class="activefilters"></div>
 
-  <div id="slate" class="slate" style="margin-top:14px"></div>
+  <h1 class="dayhead" id="dayhead"></h1>
+
+  <div id="slate"></div>
   <div id="empty" class="empty" style="display:none"></div>
 </div>
 
 <script type="module">
-import { applyBrand } from './js/brand.js';
+import { applyBrand, leagueKey, leagueLabel } from './js/brand.js';
 
 applyBrand('Scoreboard', {
   current: 'Scoreboard',
   links: [
     { href: 'cheesybook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
     { href: 'coach.html', label: 'Report' },
     { href: 'index.html', label: 'Rankings' },
@@ -103,29 +228,89 @@ applyBrand('Scoreboard', {
 const YEARS = [2026];
 let index = null;
 let day = null;
+let byLeague = new Map();
 
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
   (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+const TIEBREAK_LABEL = { sets: 'Sets', games: 'Games' };
+
+const parts = (iso) => String(iso).split('-').map(Number);
 function longDate(iso) {
-  const [y, m, d] = iso.split('-').map(Number);
+  const [y, m, d] = parts(iso);
   return new Date(y, m - 1, d).toLocaleDateString(undefined,
     { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
 }
 function shortDate(iso) {
-  const [y, m, d] = iso.split('-').map(Number);
-  return new Date(y, m - 1, d).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  const [y, m, d] = parts(iso);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined, { weekday: 'short', month: 'numeric', day: 'numeric' });
 }
+const todayIso = () => new Date().toISOString().slice(0, 10);
+
+// ---------------------------------------------------------------- filters
+
+const F = ['gender', 'class', 'league', 'q'];
+const val = (id) => document.getElementById(id).value.trim();
+const anyFilter = () => F.some((id) => val(id));
+
+function renderActiveFilters() {
+  // A collapsed drawer must still say what it is hiding, or a filtered board
+  // looks like a day with no matches.
+  const on = F.filter((id) => val(id)).map((id) => {
+    const el = document.getElementById(id);
+    const shown = el.tagName === 'SELECT' && el.selectedOptions.length
+      ? el.selectedOptions[0].textContent : val(id);
+    return `<span class="chip flag" data-clear="${id}">${esc(shown)} &times;</span>`;
+  });
+  const el = document.getElementById('active-filters');
+  el.innerHTML = on.join('');
+  el.querySelectorAll('[data-clear]').forEach((c) => {
+    c.onclick = () => {
+      document.getElementById(c.dataset.clear).value = '';
+      renderActiveFilters();
+      render();
+    };
+  });
+  document.getElementById('filters-toggle').classList.toggle('on', anyFilter());
+}
+
+// ---------------------------------------------------------------- boot
 
 async function boot() {
   const yearSel = document.getElementById('year');
   yearSel.innerHTML = YEARS.map((y) => `<option>${y}</option>`).join('');
   yearSel.onchange = () => loadYear(Number(yearSel.value));
-  for (const el of ['gender', 'class', 'q']) {
-    document.getElementById(el).oninput = render;
-    document.getElementById(el).onchange = render;
+
+  // Text search listens on input only. Binding change as well means clicking a
+  // result blurs the box, fires change, re-renders the slate, and removes the
+  // link under the cursor before the click lands — so nothing navigates.
+  const refresh = () => { renderActiveFilters(); render(); };
+  document.getElementById('q').oninput = refresh;
+  for (const id of ['gender', 'class', 'league']) {
+    document.getElementById(id).onchange = refresh;
   }
+  document.getElementById('drawer-clear').onclick = () => {
+    F.forEach((id) => { document.getElementById(id).value = ''; });
+    renderActiveFilters();
+    render();
+  };
+  const toggle = document.getElementById('filters-toggle');
+  toggle.onclick = () => {
+    const d = document.getElementById('drawer');
+    d.hidden = !d.hidden;
+  };
+
+  document.getElementById('prev').onclick = () => step(1);
+  document.getElementById('next').onclick = () => step(-1);
+
   await loadYear(YEARS[0]);
+}
+
+/** Move through the season's dates. Index 0 is the most recent. */
+function step(delta) {
+  const i = index.dates.findIndex((d) => d.date === day.date);
+  const next = index.dates[i + delta];
+  if (next) loadDate(next.date);
 }
 
 async function loadYear(year) {
@@ -135,37 +320,63 @@ async function loadYear(year) {
   document.getElementById('class').innerHTML =
     '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
 
-  const sel = document.getElementById('date');
-  sel.innerHTML = index.dates.map((d) =>
-    `<option value="${d.date}">${longDate(d.date)} — ${d.duals} dual${d.duals === 1 ? '' : 's'}</option>`
-  ).join('');
-  sel.onchange = () => loadDate(sel.value);
+  byLeague = new Map();
+  const leagues = new Map();
+  for (const t of index.teams) {
+    if (!t.league) continue;
+    byLeague.set(t.id, leagueKey(t.classification, t.league));
+    if (!leagues.has(t.classification)) leagues.set(t.classification, new Set());
+    leagues.get(t.classification).add(t.league);
+  }
+  document.getElementById('league').innerHTML = '<option value="">All</option>'
+    + [...leagues.entries()].sort().map(([cls, set]) =>
+      `<optgroup label="${esc(cls)}">`
+      + [...set].sort().map((l) =>
+        `<option value="${esc(leagueKey(cls, l))}">${esc(leagueLabel(cls, l))}</option>`).join('')
+      + '</optgroup>').join('');
 
-  // The most recent ten days as one-tap buttons; the select covers the season.
-  document.getElementById('daybar').innerHTML = index.dates.slice(0, 10).map((d) =>
-    `<button data-date="${d.date}">${shortDate(d.date)} <span class="muted">${d.duals}</span></button>`
+  // The strip runs oldest to newest so it reads like a calendar, even though
+  // the index is newest first.
+  const strip = [...index.dates].reverse();
+  const today = todayIso();
+  document.getElementById('daystrip').innerHTML = strip.map((d) =>
+    `<button data-date="${d.date}" class="${d.date === today ? 'today' : ''}">${shortDate(d.date)}</button>`
   ).join('');
-  document.querySelectorAll('#daybar button').forEach((b) => {
-    b.onclick = () => { document.getElementById('date').value = b.dataset.date; loadDate(b.dataset.date); };
+  document.querySelectorAll('#daystrip button').forEach((b) => {
+    b.onclick = () => loadDate(b.dataset.date);
   });
 
+  wireCalendar();
+
+  // Open on the most recent day with results — "what happened today".
   await loadDate(index.dates[0].date);
 }
 
 async function loadDate(date) {
   day = await fetch(`data/scoreboard/${index.year}/${date}.json`).then((r) => r.json());
-  document.querySelectorAll('#daybar button').forEach((b) =>
-    b.classList.toggle('on', b.dataset.date === date));
+  renderCalendar(date.slice(0, 7));
+  document.querySelectorAll('#daystrip button').forEach((b) => {
+    b.classList.toggle('on', b.dataset.date === date);
+    if (b.dataset.date === date) b.scrollIntoView({ block: 'nearest', inline: 'center' });
+  });
+  const i = index.dates.findIndex((d) => d.date === date);
+  document.getElementById('prev').disabled = i >= index.dates.length - 1;
+  document.getElementById('next').disabled = i <= 0;
   render();
 }
 
+// ---------------------------------------------------------------- render
+
 function visible() {
-  const gender = document.getElementById('gender').value;
-  const cls = document.getElementById('class').value;
-  const q = document.getElementById('q').value.trim().toLowerCase();
+  const gender = val('gender');
+  const cls = val('class');
+  const league = val('league');
+  const q = val('q').toLowerCase();
   return day.duals.filter((d) => {
     if (gender && d.gender !== gender) return false;
     if (cls && d.a.classification !== cls && d.b.classification !== cls) return false;
+    if (league && d.a.league !== league && d.b.league !== league
+        && byLeague.get(d.a.id) !== league && byLeague.get(d.b.id) !== league) return false;
     if (q && !`${d.a.name} ${d.b.name}`.toLowerCase().includes(q)) return false;
     return true;
   });
@@ -173,88 +384,170 @@ function visible() {
 
 function teamRow(side, dual) {
   const t = dual[side];
-  // A tie styles neither side as a winner — that is the whole point of it.
   const state = dual.tied ? '' : (dual.winnerId === t.id ? 'won' : 'lost');
-  // Penalty-shootout convention: the tiebreak figures sit beside the score.
-  const pk = dual.tiebreak ? (side === 'a' ? dual.tiebreak.a : dual.tiebreak.b) : '';
-  return `<div class="team-row ${state}">
-    <span class="name">${esc(t.name)}
-      <span class="meta">${esc(t.classification)}${t.league ? ` · ${esc(t.league)}` : ''}</span>
-    </span>
-    <span class="pk">${pk === '' ? '' : `(${pk})`}</span>
+
+  // The whole row is the link: wrapping only the name gives a target a few
+  // glyphs wide that looks exactly like the text beside it.
+  return `<a class="team-row ${state}" href="team.html?s=${encodeURIComponent(t.id)}&g=${esc(String(dual.gender).toLowerCase())}">
+    <span class="mark">${state === 'won' ? '\u25B8' : ''}</span>
+    <span class="name">${esc(t.name)}${t.record ? ` <span class="rec">${esc(t.record)}</span>` : ''}</span>
     <span class="score">${esc(t.score)}</span>
+  </a>`;
+}
+
+function card(d, i) {
+  const tags = [
+    d.contested ? '<span class="chip flag">Disputed</span>' : '',
+    d.source === 'entered' ? '<span class="chip aq">Reported</span>' : '',
+  ].filter(Boolean).join(' ');
+  // One metadata line, at the foot, in small type.
+  const meta = d.conference ? leagueLabel(d.a.classification, d.a.league) : '';
+  return `<div class="game" data-i="${i}">
+    <div class="game-head"><span class="final">${d.tied ? 'Final · Tie' : 'Final'}</span>${tags}</div>
+    ${teamRow('a', d)}
+    ${teamRow('b', d)}
+    ${d.tiebreak ? `<div class="game-tb">${esc(TIEBREAK_LABEL[d.tiebreak.basis] || d.tiebreak.basis)} (${esc(d.tiebreak.a)}-${esc(d.tiebreak.b)})</div>` : ''}
+    <div class="game-meta">${esc(meta)}</div>
+    <div class="game-foot"><a class="boxlink" href="match.html?d=${encodeURIComponent(day.date)}&amp;id=${encodeURIComponent(d.id)}">Box score</a></div>
   </div>`;
+}
+
+/** Girls then Boys, and inside each: conference, non-league, postseason. */
+function group(list) {
+  const kind = (d) => (d.postseason ? 'Postseason' : (d.conference ? 'Conference' : 'Non-league'));
+  const out = [];
+  for (const gender of ['Girls', 'Boys']) {
+    const mine = list.filter((d) => d.gender === gender);
+    if (!mine.length) continue;
+    const subs = [];
+    for (const k of ['Conference', 'Non-league', 'Postseason']) {
+      const got = mine.filter((d) => kind(d) === k);
+      if (got.length) subs.push([k, got]);
+    }
+    out.push([gender, subs]);
+  }
+  return out;
 }
 
 function render() {
   const list = visible();
   const slate = document.getElementById('slate');
   const empty = document.getElementById('empty');
-  document.getElementById('count').textContent =
-    `${list.length} of ${day.duals.length} duals`;
+
+  document.getElementById('dayhead').textContent = longDate(day.date);
 
   if (!list.length) {
     slate.innerHTML = '';
     empty.style.display = '';
-    empty.textContent = 'No duals match those filters on this date.';
+    empty.textContent = anyFilter()
+      ? 'No duals match those filters on this date.'
+      : 'No duals were played on this date.';
     return;
   }
   empty.style.display = 'none';
 
-  slate.innerHTML = list.map((d, i) => {
-    const tags = [
-      d.postseason ? '<span class="chip quiet">Postseason</span>' : '',
-      d.contested ? '<span class="chip flag">Disputed</span>' : '',
-      d.source === 'entered' ? '<span class="chip aq">Coach-reported</span>' : '',
-      d.tied ? '<span class="chip quiet">Tie</span>' : '',
-    ].filter(Boolean).join(' ');
-    return `<div class="game" data-i="${i}">
-      <div class="game-head"><span>${esc(d.gender)}</span>${tags}</div>
-      ${teamRow('a', d)}
-      ${teamRow('b', d)}
-      <div class="game-foot">
-        <span>${d.flights.length} flight${d.flights.length === 1 ? '' : 's'}</span>
-        <button class="js-box" data-i="${i}">Box score</button>
-      </div>
-      <div class="box" id="box-${i}" style="display:none"></div>
-    </div>`;
-  }).join('');
+  // Index against the filtered list so the box-score toggle stays aligned.
+  let i = -1;
+  slate.innerHTML = group(list).map(([gender, subs]) => `
+    <section class="grp">
+      <h2>${esc(gender)}</h2>
+      ${subs.map(([kind, games]) => `
+        <div class="sub-grp">
+          <h3>${esc(kind)}</h3>
+          <div class="slate">${games.map((d) => { i += 1; return card(d, i); }).join('')}</div>
+        </div>`).join('')}
+    </section>`).join('');
 
-  slate.querySelectorAll('.js-box').forEach((b) => {
-    b.onclick = () => toggleBox(Number(b.dataset.i), list, b);
-  });
+  // Flatten in the same order the cards were emitted.
+  const flat = [];
+  for (const [, subs] of group(list)) for (const [, games] of subs) flat.push(...games);
 }
 
-function toggleBox(i, list, button) {
-  const mount = document.getElementById(`box-${i}`);
-  if (mount.style.display !== 'none') {
-    mount.style.display = 'none';
-    button.textContent = 'Box score';
-    return;
-  }
-  const d = list[i];
-  const rows = d.flights.map((f) => {
-    const score = f.sets.map((s) =>
-      `${s.home}-${s.away}${s.tie != null ? `(${s.tie})` : ''}`).join(', ');
-    const name = (arr) => arr.length ? esc(arr.join(' / ')) : '<span class="muted">no player</span>';
-    const finish = f.finish
-      ? `<span class="fin">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
-    return `<tr>
-      <td class="slot">${esc(f.label)}</td>
-      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players)}</td>
-      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players)}</td>
-      <td class="sc">${esc(score) || '&mdash;'} ${finish}</td>
-    </tr>`;
-  }).join('');
+// A team's lineup file, keyed the way the export names it: gender digit then
+// school id. Computed rather than indexed, so no new export is needed to turn
+// box-score names into links.
 
-  mount.innerHTML = `<table>
-    <thead><tr><th></th><th>${esc(d.a.name)}</th><th>${esc(d.b.name)}</th><th class="sc">Score</th></tr></thead>
-    <tbody>${rows}</tbody></table>` +
-    (d.flights.length < 8
-      ? `<p class="tiny muted" style="padding:6px 12px 0">Only ${d.flights.length} of the
-         eight flights were contested.</p>` : '');
-  mount.style.display = '';
-  button.textContent = 'Hide';
+
+
+// ── Calendar ──────────────────────────────────────────────────────────────
+//
+// The strip answers "yesterday and tomorrow". Reaching a date three weeks back
+// through it is a dozen taps, so the calendar answers "the 14th" directly.
+// Only days with published results are clickable — an empty April 3rd is not a
+// destination, and greying it out says so without a word of copy.
+
+let calMonth = '';
+
+const withDay = () => new Set(index.dates.map((d) => d.date));
+
+function renderCalendar(month) {
+  calMonth = month;
+  const [y, m] = month.split('-').map(Number);
+  const has = withDay();
+  const selected = day && day.date;
+
+  document.getElementById('cal-title').textContent =
+    new Date(y, m - 1, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+
+  const first = new Date(y, m - 1, 1).getDay();
+  const days = new Date(y, m, 0).getDate();
+  const cells = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+    .map((d, i) => `<div class="dow" aria-hidden="true">${d}</div>`);
+  for (let i = 0; i < first; i += 1) cells.push('<div class="pad"></div>');
+  for (let d = 1; d <= days; d += 1) {
+    const iso = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const on = iso === selected;
+    const live = has.has(iso);
+    cells.push(live
+      ? `<button class="day has${on ? ' on' : ''}" data-date="${iso}"${on ? ' aria-current="date"' : ''}>${d}</button>`
+      : `<span class="day">${d}</span>`);
+  }
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = cells.join('');
+  grid.querySelectorAll('.day.has').forEach((b) => {
+    b.onclick = () => { closeCalendar(); loadDate(b.dataset.date); };
+  });
+
+  // Months with nothing in them are not worth paging into.
+  const months = [...has].map((d) => d.slice(0, 7));
+  document.getElementById('cal-prev').disabled = !months.some((x) => x < month);
+  document.getElementById('cal-next').disabled = !months.some((x) => x > month);
+}
+
+function shiftMonth(month, by) {
+  const [y, m] = month.split('-').map(Number);
+  const d = new Date(y, m - 1 + by, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+function closeCalendar() {
+  document.getElementById('calpop').hidden = true;
+  document.getElementById('cal-toggle').setAttribute('aria-expanded', 'false');
+}
+
+function wireCalendar() {
+  const pop = document.getElementById('calpop');
+  const toggle = document.getElementById('cal-toggle');
+  toggle.onclick = (e) => {
+    e.stopPropagation();
+    const open = pop.hidden;
+    pop.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open && day) renderCalendar(day.date.slice(0, 7));
+  };
+  document.getElementById('cal-prev').onclick = () => renderCalendar(shiftMonth(calMonth, -1));
+  document.getElementById('cal-next').onclick = () => renderCalendar(shiftMonth(calMonth, 1));
+  document.getElementById('cal-latest').onclick = () => {
+    closeCalendar();
+    loadDate(index.dates[0].date);
+  };
+  // Click-away and Escape, the way a popover is expected to close.
+  document.addEventListener('click', (e) => {
+    if (!pop.hidden && !pop.contains(e.target)) closeCalendar();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !pop.hidden) { closeCalendar(); toggle.focus(); }
+  });
 }
 
 boot();

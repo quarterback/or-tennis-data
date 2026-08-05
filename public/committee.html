@@ -15,6 +15,8 @@
 
   td.team { min-width: 190px; }
   td.team .nm { font-weight: 600; }
+  td.team .nm a { color: inherit; }
+  td.team .nm a:hover { color: var(--accent); }
   td.team .lg { display: block; font-size: 0.72rem; color: var(--ink-3); }
   tr.selected td { background: var(--accent-wash) !important; }
   tr.out td .nm { color: var(--ink-3); }
@@ -38,6 +40,13 @@
   .cmp dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; }
 
   @media (max-width: 860px) { .sheet-inner { grid-template-columns: 1fr; } }
+
+  @media (max-width: 720px) {
+    /* The pick box is the one thing a committee actually taps on this page,
+       so it gets a real target rather than a browser-default checkbox. */
+    td .js-pick { width: 26px; height: 26px; }
+    #board td, #board th { padding: 10px 8px; }
+  }
 </style>
 </head>
 <body>
@@ -46,7 +55,6 @@
 <div class="wrap">
   <div class="pagehead">
     <h1>Selection Board</h1>
-    <p class="sub">Every team in the classification, with its season behind it.</p>
   </div>
 
   <div class="controls no-print">
@@ -100,6 +108,7 @@ applyBrand('Selection Board', {
   links: [
     { href: 'cheesybook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
     { href: 'coach.html', label: 'Report' },
     { href: 'index.html', label: 'Rankings' },
@@ -181,6 +190,15 @@ function renderFieldbar() {
       bids are read from the league standings</strong> — best league record, ties
       broken on head to head. Hover a bid for the basis.</div>`);
   }
+  const unsettled = Object.entries(data.champions || {})
+    .filter(([, c]) => c.undecided)
+    .map(([lg, c]) => `${lg} (${[c.name, ...c.tiedWith].join(', ')})`);
+  if (unsettled.length) {
+    parts.push(`<div class="note flag"><strong>${unsettled.length} league(s) did not
+      produce a champion</strong> — ${esc(unsettled.join('; '))}. Level on league
+      record with head to head unable to separate them. The automatic bid is the
+      committee's to settle.</div>`);
+  }
   if (data.undesignated.length) {
     parts.push(`<div class="note flag"><strong>No champion in
       ${esc(data.undesignated.join(', '))}</strong> — no league matches on
@@ -216,7 +234,7 @@ function render() {
     rows.push(`<tr data-id="${t.schoolId}" class="${picked.has(t.schoolId) ? 'selected' : ''}${inField ? '' : ' out'}">
       <td class="mid"><span class="rankbox">${i + 1}</span></td>
       <td class="team js-sheet" style="cursor:pointer">
-        <span class="nm">${esc(t.name)}</span>
+        <span class="nm"><a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(String(data.gender).toLowerCase())}">${esc(t.name)}</a></span>
         <span class="lg">${esc(t.league || '')} &middot; class rank
           ${t.classRank ?? 'NR'}</span>
       </td>
@@ -382,9 +400,7 @@ function renderComparison() {
       <div class="panel-body">
         <div class="cmp">${cols}</div>
         ${h2hRows.length ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Head to head</h4>
-          <table><tbody>${h2hRows.join('')}</tbody></table>
-          <p class="tiny muted" style="margin-top:6px">A dual level at 4-4 is a tie on
-          both records, but the tiebreak winner still wins the head-to-head.</p>` : ''}
+          <table><tbody>${h2hRows.join('')}</tbody></table>` : ''}
         ${commonRows ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Common opponents</h4>
           <div class="scroll"><table><thead><tr><th>Opponent</th>
             ${teams.map((t) => `<th class="num">${esc(t.name)}</th>`).join('')}</tr></thead>

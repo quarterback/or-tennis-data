@@ -1,120 +1,91 @@
-/* Chrome for the Cheesybook scoring-input pages.
- *
- * These four pages are the product's front door for a coach, so they wear the
- * same identity as the rest of it: the palette comes from css/brand.css, which
- * every coach page also loads, and the names below are aliases onto those
- * tokens. Changing the palette — or flipping to the warm one with
- * data-palette="warm" — moves these pages with it.
- *
- * Phone-first throughout: this gets filled in courtside, on a phone, by someone
- * who wants to be done in ninety seconds.
- */
-
 :root {
-  --fg: var(--ink); --muted: var(--ink-3); --bg: var(--paper); --pane: var(--paper-2);
+  /* Aliases kept for the page-specific rules below; the chrome, the layout,
+     the tables, the buttons and the controls all come from brand.css, which
+     every coach page loads first. */
+  --fg: var(--ink); --muted: var(--ink-3); --pane: var(--paper-2);
   --line: var(--rule); --line-soft: var(--rule-2); --primary: var(--accent);
   --green: var(--win); --green-bg: var(--win-wash); --red: var(--loss); --red-bg: var(--loss-wash);
   --amber: var(--flag); --amber-bg: var(--flag-wash); --blue-soft: var(--accent-wash);
 }
 
-* { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
-html { -webkit-text-size-adjust: 100%; }
 body {
-  font-family: var(--body-font);
-  background: var(--paper-2); margin: 0; color: var(--fg); line-height: 1.4;
-  overscroll-behavior-y: none;
+  /* Room under the sticky save bar on a phone. */
   padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  overscroll-behavior-y: none;
 }
-a { color: var(--primary); }
+* { -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
 
-.container {
-  max-width: 1200px; margin: 0 auto;
-  padding: 0 calc(16px + env(safe-area-inset-right)) 0 calc(16px + env(safe-area-inset-left));
-}
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
-/* Site chrome */
-.navbar { background: var(--mast); position: sticky; top: 0; z-index: 30; padding-top: env(safe-area-inset-top); }
-.navbar-inner {
-  max-width: 1200px; margin: 0 auto;
-  padding: 12px calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));
-  display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-}
-.navbar .back { color: var(--mast-fg); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-.navbar .back:hover { color: var(--mast-dim); }
-.navbar .brand { color: var(--mast-fg); font-weight: 600; font-size: 1.05rem; margin-left: auto; }
-.hero { background: var(--mast); color: var(--mast-fg); padding: 26px 0; margin-bottom: 22px; }
-.hero h1 { margin: 0; font-weight: 700; font-size: 1.6rem; font-family: var(--display-font); }
-.hero p { margin: 6px 0 0; opacity: 0.9; font-size: 0.92rem; }
-
-h1 { font-size: 1.5rem; margin: 0 0 4px; }
-h2 { font-size: 1.15rem; margin: 22px 0 10px; color: var(--primary); }
-p.lede { color: var(--muted); margin: 4px 0 14px; font-size: 0.92rem; max-width: 820px; }
-
 .header-bar {
-  display: flex; flex-wrap: wrap; gap: 14px; align-items: center;
-  background: var(--pane); border: 1px solid var(--line); border-radius: 6px;
-  padding: 10px 14px; margin: 14px 0 4px; font-size: 0.88rem;
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  padding: 12px 16px; margin: 14px 0;
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 10px; box-shadow: var(--shadow);
 }
-.header-bar label { display: flex; gap: 6px; align-items: center; }
-.header-bar .backend { margin-left: auto; font-size: 0.82rem; }
-.header-bar .backend.ok { color: var(--green); }
-.header-bar .backend.fail { color: #b54708; }
+.header-bar label { display: flex; align-items: center; gap: 7px; font-size: 0.82rem; color: var(--ink-3); min-width: 0; }
+.header-bar select { min-width: 0; max-width: 100%; }
+.header-bar .backend { margin-left: auto; font-size: 0.76rem; color: var(--ink-3); }
+.header-bar .backend.ok { color: var(--win); }
+.header-bar .backend.fail { color: var(--flag); }
 
-select, input[type="text"], input[type="email"], input[type="date"], input[type="number"], textarea {
-  padding: 6px 9px; border: 1px solid var(--line); border-radius: 4px;
-  font-size: 0.92rem; font-family: inherit; background: #fff; color: var(--fg);
-  max-width: 100%;
+textarea {
+  font: inherit; font-size: 0.86rem; padding: 6px 10px;
+  border: 1px solid var(--rule); border-radius: 7px;
+  background: var(--paper); color: var(--ink);
+  width: 100%; min-height: 80px; max-width: 100%;
 }
-textarea { width: 100%; min-height: 80px; }
-
-button, .btn {
-  background: var(--primary); color: #fff; border: 0; padding: 8px 16px;
-  border-radius: 4px; cursor: pointer; font-size: 0.9rem; font-weight: 600;
-  font-family: inherit;
+input[type="email"], input[type="date"], input[type="number"], input[type="password"] {
+  font: inherit; font-size: 0.86rem; padding: 6px 10px;
+  border: 1px solid var(--rule); border-radius: 7px;
+  background: var(--paper); color: var(--ink); max-width: 100%;
 }
-button:hover { filter: brightness(0.92); }
-button.ghost { background: #fff; color: var(--fg); border: 1px solid var(--line); }
-button.danger { background: var(--red); }
-button.tiny { padding: 3px 9px; font-size: 0.78rem; }
-button:disabled { background: #adb5bd; cursor: not-allowed; filter: none; }
 
-.card { border: 1px solid var(--line); border-radius: 8px; background: #fff; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+/* brand.css makes a plain button the quiet one. These pages were written
+   against the opposite default, so the two shapes get names instead. */
+button.ghost { background: var(--paper); }
+button.danger { background: var(--loss); border-color: var(--loss); color: #fff; }
+button.danger:hover { background: var(--loss); filter: brightness(0.92); }
+button.tiny { padding: 3px 9px; font-size: 0.76rem; }
+
+.card {
+  background: var(--paper); border: 1px solid var(--rule);
+  border-radius: 10px; box-shadow: var(--shadow);
+  margin: 16px 0; overflow: hidden;
+}
 .card-head {
-  padding: 10px 14px; background: var(--pane); border-bottom: 1px solid var(--line);
-  border-radius: 6px 6px 0 0; font-weight: 600; display: flex; align-items: center;
-  gap: 10px; flex-wrap: wrap;
+  padding: 11px 16px; border-bottom: 1px solid var(--rule);
+  background: var(--paper-2);
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  font-size: 0.92rem; font-weight: 700; color: var(--ink-2);
 }
-.card-body { padding: 12px 14px; }
+.card-body { padding: 14px 16px; }
 
-.muted { color: var(--muted); }
 .small { font-size: 0.82rem; }
-.empty { color: var(--muted); padding: 22px 4px; font-size: 0.92rem; }
 .stack { display: flex; flex-direction: column; gap: 10px; }
 .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .grow { flex: 1 1 auto; }
 
-.pill { display: inline-block; padding: 2px 9px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
-.pill.s { background: var(--blue-soft); color: #084298; }
-.pill.d { background: #e2e3e5; color: #41464b; }
-.pill.ok { background: var(--green-bg); color: #0f5132; }
-.pill.warn { background: var(--amber-bg); color: #664d03; }
-.pill.bad { background: var(--red-bg); color: #842029; }
-.pill.grade { background: #ede7f6; color: #4527a0; }
+.pill {
+  display: inline-block; padding: 1px 7px; border-radius: 999px;
+  font-size: 0.68rem; font-weight: 700; letter-spacing: .02em; white-space: nowrap;
+}
+.pill.s { background: var(--accent-wash); color: var(--accent-2); }
+.pill.d, .pill.grade { background: var(--rule-2); color: var(--ink-3); }
+.pill.ok { background: var(--win-wash); color: var(--win); }
+.pill.warn { background: var(--flag-wash); color: var(--flag); }
+.pill.bad { background: var(--loss-wash); color: var(--loss); }
 
 .status { font-size: 0.85rem; }
 .status.ok { color: var(--green); }
 .status.err { color: var(--red); }
 
-table { border-collapse: collapse; width: 100%; font-size: 0.88rem; }
-th, td { padding: 7px 8px; border-bottom: 1px solid var(--line-soft); text-align: left; }
-th { background: var(--pane); font-size: 0.78rem; text-transform: uppercase; letter-spacing: .03em; color: var(--muted); }
 td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 
 /* Tiles on the hub */
 .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; }
-.tile { border: 1px solid var(--line); border-radius: 8px; background: #fff; padding: 14px; text-decoration: none; color: inherit; display: block; }
-.tile:hover { border-color: var(--primary); }
+.tile { border: 1px solid var(--rule); border-radius: 10px; background: var(--paper); box-shadow: var(--shadow); padding: 14px; text-decoration: none; color: inherit; display: block; }
+.tile:hover { border-color: var(--accent); text-decoration: none; }
 .tile .n { font-size: 1.8rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .tile .label { font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
 .tile.alert .n { color: var(--red); }
@@ -145,24 +116,28 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 .winner.home { color: var(--green); }
 .winner.away { color: var(--red); }
 
+/* The automatic tiebreak readout on a level card. */
+.tb-win { color: var(--green); font-weight: 600; }
+.tb-lose { color: var(--red); font-weight: 600; }
+
 /* Sticky save bar */
 .savebar {
-  position: sticky; bottom: 0; background: #fff; border-top: 1px solid var(--line);
+  position: sticky; bottom: 0; background: var(--paper); border-top: 1px solid var(--rule);
   padding: 10px calc(16px + env(safe-area-inset-right)) calc(10px + env(safe-area-inset-bottom)) calc(16px + env(safe-area-inset-left));
   display: flex; gap: 10px; align-items: center; z-index: 20;
   box-shadow: 0 -2px 10px rgba(0,0,0,0.07);
 }
 .savebar .score { font-weight: 700; font-size: 1.1rem; font-variant-numeric: tabular-nums; }
 
-.banner { border-radius: 6px; padding: 10px 14px; margin: 12px 0; font-size: 0.9rem; }
-.banner.warn { background: var(--amber-bg); color: #664d03; border: 1px solid #ffe69c; }
-.banner.err { background: var(--red-bg); color: #842029; border: 1px solid #f1aeb5; }
-.banner.ok { background: var(--green-bg); color: #0f5132; border: 1px solid #a3cfbb; }
+.banner { border-radius: 8px; padding: 10px 14px; margin: 12px 0; font-size: 0.9rem; border: 1px solid transparent; }
+.banner.warn { background: var(--flag-wash); color: var(--flag); border-color: var(--flag); }
+.banner.err { background: var(--loss-wash); color: var(--loss); border-color: var(--loss); }
+.banner.ok { background: var(--win-wash); color: var(--win); border-color: var(--win); }
 
 @media (max-width: 640px) {
-  .hero { padding: 18px 0; margin-bottom: 16px; }
-  .hero h1 { font-size: 1.3rem; }
   .flight-side .side-label { min-width: 100%; }
+  .header-bar label { flex: 1 1 44%; flex-direction: column; align-items: stretch; gap: 3px; }
+  .header-bar select { width: 100%; }
   .savebar { flex-wrap: wrap; }
 }
 
@@ -180,7 +155,7 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 .combo-list {
   position: absolute; top: calc(100% + 3px); left: 0; right: 0; z-index: 50;
   max-height: 46vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
-  background: #fff; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--paper); border: 1px solid var(--rule); border-radius: 8px;
   box-shadow: 0 8px 26px rgba(0,0,0,.14);
 }
 .combo-head {
@@ -190,7 +165,7 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 }
 .combo-item {
   display: flex; align-items: baseline; gap: 8px; width: 100%;
-  background: #fff; color: var(--fg); border: 0; border-radius: 0;
+  background: var(--paper); color: var(--ink); border: 0; border-radius: 0;
   text-align: left; font-weight: 500; font-size: 0.92rem;
   padding: 10px 11px;              /* a comfortable tap target */
   border-bottom: 1px solid var(--line-soft);
@@ -199,3 +174,21 @@ td.n, th.n { text-align: center; font-variant-numeric: tabular-nums; }
 .combo-item:hover, .combo-item.on { background: var(--blue-soft); }
 .combo-sub { margin-left: auto; font-size: 0.72rem; color: var(--muted); font-weight: 400; }
 .combo-empty { padding: 14px 12px; color: var(--muted); font-size: 0.88rem; }
+
+
+@media (max-width: 720px) {
+  /* This sheet loads after brand.css, so its base font-size beats the mobile
+     rule there — equal specificity, later wins. Restated here so a coach
+     tapping a score box on a phone does not get the page zoomed in on them. */
+  select, textarea,
+  input[type="text"], input[type="email"], input[type="date"],
+  input[type="number"], input[type="password"] {
+    font-size: 16px;
+    min-height: 40px;
+  }
+  .setbox input { width: 52px; min-height: 44px; font-size: 17px; }
+  .flight-outcome { font-size: 16px; min-height: 40px; }
+  button, .btn { min-height: 40px; }
+  button.tiny { min-height: 32px; }
+  input[type="checkbox"] { width: 24px; height: 24px; }
+}

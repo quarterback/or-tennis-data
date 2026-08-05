@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Teams — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  /* The way into every team page. Without this the team pages exist and
+     nothing points at them unless you happen to be on a scoreboard card. */
+  .findbar { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 6px 0 16px; }
+  .findbar input { flex: 1 1 240px; min-height: 40px; font-size: 16px; }
+
+  /* Standings, not cards. A box per team ate the page; a league is a table. */
+  .lg { margin: 0 0 20px; }
+  .lg > h2 {
+    font-size: 0.92rem; font-weight: 700; margin: 0 0 4px;
+    padding-bottom: 4px; border-bottom: 2px solid var(--ink);
+  }
+  table.stand { width: 100%; border-collapse: collapse; }
+  table.stand th {
+    position: static; background: none; border-bottom: 1px solid var(--rule);
+    font-size: 0.66rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--ink-3); padding: 5px 8px; text-align: left; white-space: nowrap;
+  }
+  table.stand td { padding: 6px 8px; border-bottom: 1px solid var(--rule-2); font-size: 0.87rem; }
+  table.stand tr:last-child td { border-bottom: 0; }
+  table.stand tbody tr:hover td { background: var(--paper-2); }
+  table.stand .pos { color: var(--ink-3); font-variant-numeric: tabular-nums; width: 26px; text-align: right; }
+  table.stand .nm { font-weight: 600; }
+  table.stand .nm a { color: inherit; }
+  table.stand .nm a:hover { color: var(--accent); }
+  table.stand .rec { font-variant-numeric: tabular-nums; white-space: nowrap; text-align: right; width: 4.5rem; }
+  table.stand th.rec { text-align: right; }
+  table.stand .lead { font-weight: 700; }
+  /* Too few league matches to be ranked on the record — shown, not hidden. */
+  table.stand tr.short td { color: var(--ink-3); }
+  table.stand tr.short .nm a { color: var(--ink-3); }
+
+  .sortby { display: flex; gap: 4px; align-items: center; margin-left: auto; }
+  .sortby button { padding: 5px 11px; font-size: 0.78rem; }
+  .sortby button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div class="pagehead">
+    <h1>Teams</h1>
+  </div>
+
+  <div class="findbar">
+    <input type="search" id="q" placeholder="Find a school…" autocomplete="off">
+    <label class="tiny muted">Gender
+      <select id="gender"><option>Girls</option><option>Boys</option></select></label>
+    <label class="tiny muted">Class <select id="class"></select></label>
+    <span class="sortby">
+      <button data-sort="league" class="on">League</button>
+      <button data-sort="overall">Overall</button>
+    </span>
+  </div>
+
+  <div id="list"></div>
+  <div id="empty" class="empty" style="display:none"></div>
+</div>
+
+<script type="module">
+import { applyBrand, leagueKey, leagueLabel } from './js/brand.js';
+
+applyBrand('Teams', {
+  current: 'Teams',
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const YEAR = 2026;
+let index = null;
+let sortBy = 'league';
+const cache = new Map();
+
+/** W-L-T as a fraction, a tie counting half — the same convention as the record. */
+function pct(rec) {
+  const [w, l, t] = String(rec || '0-0-0').split('-').map(Number);
+  const played = (w || 0) + (l || 0) + (t || 0);
+  return played ? ((w || 0) + (t || 0) * 0.5) / played : -1;
+}
+
+function played(rec) {
+  const [w, l, t] = String(rec || '0-0-0').split('-').map(Number);
+  return (w || 0) + (l || 0) + (t || 0);
+}
+
+// A record ranks a team once it has three matches behind it. Under that,
+// percentage says 1-0-0 beats 10-1-0; the team is listed below, unranked,
+// rather than hidden — it played, and a committee should see it.
+const MIN_MATCHES = 3;
+
+// How close two teams may be on percentage before head-to-head reorders them.
+// The same band the champion derivation and the playoff simulator use.
+const H2H_BAND = 0.1;
+
+/**
+ * Reorder on head-to-head, the way the rest of the site breaks a league tie.
+ *
+ * Sorting on percentage alone put Oregon Episcopal above Catlin Gabel when the
+ * two finished 9-0-1 and Catlin Gabel had taken their 4-4 on the tiebreaker.
+ * Repeatedly swap adjacent teams inside the band when the lower one won the
+ * head-to-head, until the order settles.
+ */
+function beatsHead(a, b) {
+  let n = 0;
+  for (const r of a.results || []) {
+    if (String(r.opponentId) !== String(b.schoolId)) continue;
+    if (r.h2h === 'W') n += 1; else if (r.h2h === 'L') n -= 1;
+  }
+  return n > 0;
+}
+
+function applyH2H(order, pctOf) {
+  const beat = (a, b) => {
+    let n = 0;
+    for (const r of a.results || []) {
+      if (String(r.opponentId) !== String(b.schoolId)) continue;
+      if (r.h2h === 'W') n += 1; else if (r.h2h === 'L') n -= 1;
+    }
+    return n > 0;
+  };
+  for (let guard = 0; guard < 50; guard += 1) {
+    let changed = false;
+    for (let i = 0; i < order.length - 1; i += 1) {
+      const a = order[i];
+      const b = order[i + 1];
+      if (Math.abs(pctOf(a) - pctOf(b)) > H2H_BAND) continue;
+      if (beat(b, a)) { order[i] = b; order[i + 1] = a; changed = true; }
+    }
+    if (!changed) break;
+  }
+  return order;
+}
+
+async function boot() {
+  index = await fetch(`data/committee/${YEAR}/index.json`).then((r) => r.json());
+  const classes = [...new Set(index.fields.map((f) => f.classification))];
+  document.getElementById('class').innerHTML =
+    '<option value="">All</option>' + classes.map((c) => `<option>${esc(c)}</option>`).join('');
+
+  // The search box listens on input only. With change as well, clicking a
+  // result blurred the box, fired change, and re-rendered the list — which
+  // removed the anchor under the cursor before the click landed, so nothing
+  // navigated. The selects legitimately need change.
+  document.getElementById('q').oninput = render;
+  document.getElementById('gender').onchange = render;
+  document.getElementById('class').onchange = render;
+  document.querySelectorAll('.sortby button').forEach((b) => {
+    b.onclick = () => {
+      sortBy = b.dataset.sort;
+      document.querySelectorAll('.sortby button')
+        .forEach((x) => x.classList.toggle('on', x.dataset.sort === sortBy));
+      render();
+    };
+  });
+  await render();
+}
+
+/** Every team in the chosen gender, across the classifications. */
+async function teams() {
+  const gender = document.getElementById('gender').value.toLowerCase();
+  const cls = document.getElementById('class').value;
+  const fields = index.fields.filter((f) =>
+    f.gender.toLowerCase() === gender && (!cls || f.classification === cls));
+
+  const out = [];
+  for (const f of fields) {
+    if (!cache.has(f.file)) {
+      cache.set(f.file, await fetch(`data/committee/${YEAR}/${f.file}`).then((r) => r.json()));
+    }
+    const data = cache.get(f.file);
+    for (const t of data.teams) out.push({ ...t, gender, classification: data.classification });
+  }
+  return out;
+}
+
+async function render() {
+  const q = document.getElementById('q').value.trim().toLowerCase();
+  let list = await teams();
+  if (q) list = list.filter((t) => t.name.toLowerCase().includes(q));
+
+  const el = document.getElementById('list');
+  const empty = document.getElementById('empty');
+  if (!list.length) {
+    el.innerHTML = '';
+    empty.style.display = '';
+    empty.textContent = 'No school by that name.';
+    return;
+  }
+  empty.style.display = 'none';
+
+  // Grouped by league — keyed on classification too, because 6A, 5A and
+  // 4A/3A/2A/1A each have a Special District 1 and they are not the same league.
+  const byLeague = new Map();
+  for (const t of list) {
+    const k = t.league ? leagueKey(t.classification, t.league) : '|No league';
+    if (!byLeague.has(k)) byLeague.set(k, { label: t.league ? leagueLabel(t.classification, t.league) : 'No league', teams: [] });
+    byLeague.get(k).teams.push(t);
+  }
+
+  el.innerHTML = [...byLeague.entries()].sort().map(([, group]) => {
+    const league = group.label;
+    let ts = group.teams;
+    // Standings order follows whichever record is being stood on, with the
+    // other as the tiebreak and Power Index behind that.
+    const key = (t) => (sortBy === 'league' ? t.leagueRecord : t.record);
+    const other = (t) => (sortBy === 'league' ? t.record : t.leagueRecord);
+
+    // Nobody past three matches yet means nothing to separate, so the gate
+    // stays off rather than unranking the whole league.
+    const anyQualify = ts.some((t) => played(key(t)) >= MIN_MATCHES);
+    const qualifies = (t) => !anyQualify || played(key(t)) >= MIN_MATCHES;
+
+    // Power Index does not order a league. Record, then the other record, then
+    // the name — and head to head below. It is one tool among several and the
+    // committee picks fields, not an index.
+    ts.sort((a, b) =>
+      (qualifies(b) ? 1 : 0) - (qualifies(a) ? 1 : 0)
+      || pct(key(b)) - pct(key(a))
+      || pct(other(b)) - pct(other(a))
+      || String(a.name).localeCompare(String(b.name)));
+
+    // Head-to-head only reorders the ranked teams; an unranked one is below
+    // them on match count, not on a result.
+    const ranked = ts.filter(qualifies);
+    const rest = ts.filter((t) => !qualifies(t));
+    ts = [...applyH2H(ranked, (t) => pct(key(t))), ...rest];
+
+    // Teams the league could not separate share a position, the way standings
+    // print T-1, rather than being ordered by something the league does not use.
+    let pos = 0;
+    let prev = null;
+    let prevPos = 0;
+    const rows = ts.map((t, i) => {
+      let shown = '&mdash;';
+      if (qualifies(t)) {
+        pos = i + 1;
+        const level = prev && pct(key(prev)) === pct(key(t))
+          && !beatsHead(prev, t) && !beatsHead(t, prev);
+        shown = level ? `T${prevPos}` : String(pos);
+        if (!level) prevPos = pos;
+        else shown = `T${prevPos}`;
+        prev = t;
+      }
+      return `<tr class="${qualifies(t) ? '' : 'short'}">
+      <td class="pos">${shown}</td>
+      <td class="nm"><a href="team.html?s=${encodeURIComponent(t.schoolId)}&g=${esc(t.gender)}">${esc(t.name)}</a></td>
+      <td class="rec ${sortBy === 'league' ? 'lead' : ''}">${esc(t.leagueRecord || '')}</td>
+      <td class="rec ${sortBy === 'overall' ? 'lead' : ''}">${esc(t.record || '')}</td>
+    </tr>`;
+    }).join('');
+
+    return `<section class="lg">
+      <h2>${esc(league)}</h2>
+      <table class="stand">
+        <thead><tr>
+          <th></th><th>Team</th><th class="rec">League</th><th class="rec">Overall</th>
+        </tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    </section>`;
+  }).join('');
+}
+
+boot();
+</script>
+</body>
+</html>

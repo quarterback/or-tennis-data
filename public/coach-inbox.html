@@ -11,10 +11,10 @@
 <link rel="stylesheet" href="css/coach.css">
 </head>
 <body>
-<nav class="navbar"><div class="navbar-inner"></div></nav>
-<header class="hero"><div class="container"></div></header>
+<header class="mast"></header>
 
-<div class="container">
+<div class="wrap">
+  <div class="pagehead"></div>
   <div id="signin" style="display:none"></div>
   <div id="app" style="display:none">
     <div class="header-bar">
@@ -35,9 +35,10 @@
 import {
   api, escapeHtml, fmtDate, FLIGHTS, lastTeam, renderChrome, requireSession,
   setStatus, teamLabel,
+  setSubtitle,
 } from './js/coach-common.js';
 
-renderChrome({ title: 'Confirm Results', subtitle: '' });
+renderChrome({ title: 'Confirm results', subtitle: '' });
 
 let teams = [];
 let team = null;
@@ -61,7 +62,7 @@ async function boot() {
 async function load(id) {
   team = teams.find((t) => Number(t.id) === id);
   lastTeam.set(id);
-  document.querySelector('.hero p').textContent = teamLabel(team);
+  setSubtitle(teamLabel(team));
 
   const res = await api(`/api/duals?team=${id}`);
   const pending = res.duals.filter((d) => res.awaitingYou.includes(Number(d.id)));
@@ -123,7 +124,7 @@ async function renderDual(summary) {
         </table>
       </div>
       <div class="row" style="margin-top:14px">
-        <button class="js-confirm">This matches our card</button>
+        <button class="primary js-confirm">This matches our card</button>
         <button class="ghost js-dispute">Something is wrong</button>
         <span class="status js-status"></span>
       </div>

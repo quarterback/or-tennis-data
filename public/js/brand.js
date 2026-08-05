@@ -52,3 +52,27 @@ export function applyBrand(page, { links, current } = {}) {
   const mast = document.querySelector('.mast');
   if (mast) mast.innerHTML = masthead({ links, current });
 }
+
+
+/**
+ * A league's display name, distinct across classifications.
+ *
+ * The named leagues carry their classification already — "6A-2 Metro",
+ * "5A-4 Intermountain". The Special Districts do not: 6A, 5A and 4A/3A/2A/1A
+ * each have a Special District 1, and they are three different leagues. Keyed
+ * or labelled on the name alone they collide, so the classification goes in
+ * front the way OSAA writes it: 4A/3A/2A/1A-SD1.
+ */
+export function leagueLabel(classification, league) {
+  const name = String(league || '').trim();
+  const cls = String(classification || '').trim();
+  if (!name) return '';
+  if (!cls || name.startsWith(cls)) return name;
+  const sd = name.match(/^Special District\s+(\d+)$/i);
+  return sd ? `${cls}-SD${sd[1]}` : `${cls} ${name}`;
+}
+
+/** A key that cannot collide across classifications. */
+export function leagueKey(classification, league) {
+  return `${String(classification || '').trim()}|${String(league || '').trim()}`;
+}
