@@ -7,6 +7,7 @@
 <meta name="theme-color" content="#14181f">
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <style>
   .fieldbar { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; padding: 14px 16px; }
   .fieldbar .stat .n { font-size: 1.5rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
@@ -99,7 +100,6 @@ applyBrand('Selection Board', {
   links: [
     { href: 'cheesybook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
-    { href: 'committee.html', label: 'Selection' },
     { href: 'lineups.html', label: 'Lineups' },
     { href: 'coach.html', label: 'Report' },
     { href: 'index.html', label: 'Rankings' },
