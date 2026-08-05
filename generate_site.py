@@ -2500,12 +2500,12 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         </div>
     </div>
 
+    <!-- The two SD1 bracket links are gone: that tournament is over and the
+         pages remain reachable by URL for anyone who wants them. Cheesybook is
+         deliberately NOT linked here yet — it goes into the nav when it
+         launches, not before. -->
     <footer>
         <a href="changelog.html">Changelog</a>
-        &middot;
-        <a href="sd1-live-bracket.html">SD1 Live Bracket</a>
-        &middot;
-        <a href="sd1-printable-bracket.html">SD1 Printable Bracket</a>
         &middot;
         <a href="?view=analysis" id="adminLink">Admin Analysis</a>
     </footer>

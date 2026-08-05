@@ -219,6 +219,7 @@ export function renderChrome({ title, subtitle }) {
     // Sibling-relative, matching lineups.html and methodology.html — the
     // publish root is whatever those already resolve against.
     nav.innerHTML =
+      '<a class="back" href="cheesybook.html">&larr; Cheesybook</a>' +
       '<a class="back" href="coach.html">Report</a>' +
       '<a class="back" href="scoreboard.html">Scoreboard</a>' +
       '<a class="back" href="lineups.html">Lineups</a>' +

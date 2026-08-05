@@ -40,7 +40,7 @@ export function masthead({ links = [], current = '' } = {}) {
   ).join('');
   return `
     <div class="mast-inner">
-      <a class="wordmark" href="committee.html">${BRAND.name}</a>
+      <a class="wordmark" href="cheesybook.html">${BRAND.name}</a>
       <span class="mast-tagline">${BRAND.tagline}</span>
       <nav class="mast-nav">${nav}</nav>
     </div>`;

@@ -17,24 +17,47 @@
  * raw #ffa600. Where those hues need to be read, the tokens below use darkened
  * versions that clear AA, which is why --flag is not the orange you handed me.
  *
- * The wordmark font drops into the @font-face block below; nothing else needs
- * to change, and no file outside this one and js/brand.js carries the name.
+ * The name lives in js/brand.js and the look lives here; no other file carries
+ * either, so a rebrand is these two files.
  * ───────────────────────────────────────────────────────────────────────────
  */
 
-/* The custom wordmark face goes here when it arrives. Until then --brand-font
- * falls through to a tight grotesque that will not embarrass the layout.
+/* ── Type ─────────────────────────────────────────────────────────────────
  *
- * @font-face {
- *   font-family: 'Cheesybook';
- *   src: url('../fonts/cheesybook.woff2') format('woff2');
- *   font-weight: 700;
- *   font-display: swap;
- * }
+ * Two custom faces, from public/fonts, and deliberately no more:
+ *
+ *   Funkora Regular  the wordmark, and only the wordmark. Chunky and friendly,
+ *                    which is the right register for a thing called Cheesybook.
+ *   Heilo Champion   page headings. Condensed athletic caps — the register a
+ *                    sports results page wants, and it harmonises with the
+ *                    wordmark instead of arguing with it.
+ *
+ * Tables, numbers and body copy stay on the system UI font on purpose. This is
+ * a product people read four-digit Power Indexes off, down a column, on a phone
+ * at a tennis court — a display face there costs legibility and buys nothing.
+ * `font-display: swap` so text is never invisible while a face loads.
+ *
+ * public/brand-fonts.html renders every face in the library against the
+ * wordmark and a line of real data, for when the final mark gets chosen.
  */
 
+@font-face {
+  font-family: 'Cheesybook Wordmark';
+  src: url('../fonts/Funkora-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Cheesybook Display';
+  src: url('../fonts/Heilo-Champion.otf') format('opentype');
+  font-weight: 400;
+  font-display: swap;
+}
+
 :root {
-  --brand-font: 'Cheesybook', 'Inter Tight', 'SF Pro Display', system-ui, -apple-system, sans-serif;
+  --brand-font: 'Cheesybook Wordmark', 'Inter Tight', 'SF Pro Display', system-ui, sans-serif;
+  --display-font: 'Cheesybook Display', 'Inter Tight', system-ui, -apple-system, sans-serif;
   --body-font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   /* ── Cheese palette (default) ────────────────────────────────────────────
@@ -173,7 +196,7 @@ a:hover { text-decoration: underline; }
 }
 .wordmark {
   font-family: var(--brand-font);
-  font-weight: 700;
+  font-weight: 400;   /* Funkora ships one weight; 700 would synthesise a bold */
   font-size: 1.24rem;
   letter-spacing: -0.022em;
   color: var(--mast-fg);
@@ -203,7 +226,7 @@ a:hover { text-decoration: underline; }
 
 .pagehead { padding: 26px 0 6px; }
 .pagehead h1 {
-  font-family: var(--brand-font);
+  font-family: var(--display-font);
   font-size: 1.6rem;
   font-weight: 700;
   letter-spacing: -0.02em;
