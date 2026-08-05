@@ -27,7 +27,10 @@
   .sched { display: flex; flex-direction: column; }
   .g {
     display: grid;
-    grid-template-columns: 20px 1fr auto;
+    /* A fixed name column so every score lands in the same place — a schedule
+       is scanned down the score, and a ragged one cannot be. The trailing 1fr
+       keeps the score near the name instead of at the far edge of a wide page. */
+    grid-template-columns: 20px 20rem 3.5rem 1fr;
     align-items: baseline;
     gap: 0 10px;
     padding: 6px 14px;
@@ -53,7 +56,7 @@
   .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
   .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.74rem; margin-left: 5px; }
   .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; }
-  .g .when { grid-column: 2 / 4; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
+  .g .when { grid-column: 2 / 5; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
 
   .gbox { border-bottom: 1px solid var(--rule-2); background: var(--paper-2); overflow-x: auto; }
   .gbox table { font-size: 0.78rem; }
@@ -92,7 +95,8 @@
   @media (max-width: 640px) {
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
-    .g { padding: 7px 12px; }
+    .g { padding: 6px 12px; grid-template-columns: 20px 1fr auto; }
+    .g .when { grid-column: 2 / 4; }
   }
 </style>
 </head>
@@ -239,7 +243,7 @@ function render(t, field) {
     [t.owp === null ? '—' : Number(t.owp).toFixed(3), 'SOS'],
   ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
 
-  renderSchedule(t);
+  renderSchedule(t, field.classification);
 
   const fb = t.flightBreakdown || {};
   document.getElementById('flights').innerHTML = SLOTS.map((s) => {
@@ -271,17 +275,19 @@ const heat = (n) => (n === 0 ? 'z' : n === 1 ? 'h1' : n <= 3 ? 'h2' : n <= 6 ? '
 const kindOf = (r) => (r.postseason ? 'Postseason' : (r.league ? 'League' : 'Non-league'));
 
 /** The season as a divided list: result, opponent, score; date and type under. */
-function renderSchedule(t) {
+function renderSchedule(t, ourClass) {
   const results = (t.results || []).slice()
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
 
   const el = document.getElementById('resbody');
   el.innerHTML = results.map((r, i) => {
     const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
-    const rank = [
+    const bits = [
       r.opponentClassRank ? `#${r.opponentClassRank}` : '',
-      r.opponentClassification || '',
-    ].filter(Boolean).join(', ');
+      r.opponentClassification && r.opponentClassification !== ourClass
+        ? r.opponentClassification : '',
+    ].filter(Boolean);
+    const rank = bits.length ? `(${bits.join(', ')})` : '';
     return `<button class="g" data-i="${i}" aria-expanded="false">
         <span class="r ${cls}">${esc(r.result)}</span>
         <span class="opp">${esc(r.opponent)}${rank ? `<span class="rk">${esc(rank)}</span>` : ''}</span>
@@ -350,7 +356,7 @@ async function expand(i, r, button, t) {
   }).join('');
 
   mount.innerHTML = `<table>
-    <thead><tr><th></th><th>${esc(d.a.name)}</th><th>${esc(d.b.name)}</th><th class="sc">Score</th></tr></thead>
+    <thead><tr><th></th><th></th><th>${esc(r.opponent)}</th><th class="sc">Score</th></tr></thead>
     <tbody>${rows}</tbody></table>`;
   mount.dataset.loaded = '1';
 }
