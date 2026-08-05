@@ -384,9 +384,7 @@ function renderComparison() {
       <div class="panel-body">
         <div class="cmp">${cols}</div>
         ${h2hRows.length ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Head to head</h4>
-          <table><tbody>${h2hRows.join('')}</tbody></table>
-          <p class="tiny muted" style="margin-top:6px">A dual level at 4-4 is a tie on
-          both records, but the tiebreak winner still wins the head-to-head.</p>` : ''}
+          <table><tbody>${h2hRows.join('')}</tbody></table>` : ''}
         ${commonRows ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Common opponents</h4>
           <div class="scroll"><table><thead><tr><th>Opponent</th>
             ${teams.map((t) => `<th class="num">${esc(t.name)}</th>`).join('')}</tr></thead>
