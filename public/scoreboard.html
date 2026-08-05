@@ -356,11 +356,7 @@ function card(d, i) {
     d.source === 'entered' ? '<span class="chip aq">Reported</span>' : '',
   ].filter(Boolean).join(' ');
   // One metadata line, at the foot, in small type.
-  const meta = [
-    d.a.classification === d.b.classification ? d.a.classification
-      : `${d.a.classification} v ${d.b.classification}`,
-    d.conference ? d.a.league : '',
-  ].filter(Boolean).join(' \u00b7 ');
+  const meta = d.conference ? d.a.league : '';
   return `<div class="game" data-i="${i}">
     <div class="game-head"><span class="final">${d.tied ? 'Final · Tie' : 'Final'}</span>${tags}</div>
     ${teamRow('a', d)}

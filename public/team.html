@@ -60,7 +60,7 @@
   .g .r.l { color: var(--loss); }
   .g .r.t { color: var(--ink-3); }
   .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
-  .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.74rem; margin-left: 5px; }
+  .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.8rem; margin-right: 5px; }
   .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; }
   .g .when { grid-column: 2 / 5; font-size: 0.71rem; color: var(--ink-3); line-height: 1.3; }
 
@@ -303,14 +303,13 @@ function renderSchedule(t, ourClass) {
   const el = document.getElementById('resbody');
   el.innerHTML = results.map((r, i) => {
     const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
-    const bits = [
-      r.opponentClassRank ? `#${r.opponentClassRank}` : '',
-      r.opponentClassification || '',
-    ].filter(Boolean);
-    const rank = bits.length ? `(${bits.join(', ')})` : '';
+    // Rank leads the name, the way a college schedule prints it — #10
+    // Lakeridge. No classification: everybody knows or can look it up, and two
+    // schools sharing a number across classes bothers nobody.
+    const rank = r.opponentClassRank ? `#${r.opponentClassRank}` : '';
     return `<button class="g" data-i="${i}" aria-expanded="false">
         <span class="r ${cls}">${esc(r.result)}</span>
-        <span class="opp">${esc(r.opponent)}${rank ? `<span class="rk">${esc(rank)}</span>` : ''}</span>
+        <span class="opp">${rank ? `<span class="rk">${esc(rank)}</span>` : ''}${esc(r.opponent)}</span>
         <span class="sc">${esc(r.scoreline)}</span>
         <span class="when">${esc(fmtDate(r.date))} &middot; ${esc(kindOf(r))}</span>
       </button>
