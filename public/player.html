@@ -75,7 +75,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h2>Match log</h2><span class="tiny muted" id="lognote"></span></div>
+      <div class="panel-head"><h2>Match log</h2></div>
       <div class="panel-body flush scroll">
         <table id="log-table">
           <thead><tr>
@@ -187,13 +187,10 @@ function render(team, p) {
       return `<span class="poschip${main}"><b>${esc(label)}</b>`
         + `<span>${rec ? `${rec[0]}–${rec[1]}` : `${n}×`}</span></span>`;
     }).join('');
-  document.getElementById('pchips').innerHTML = chips
-    || '<span class="muted tiny">No positions recorded.</span>';
+  document.getElementById('pchips').innerHTML = chips;
 
   const matches = (p.matches || []).slice()
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
-  document.getElementById('lognote').textContent =
-    `${matches.length} match${matches.length === 1 ? '' : 'es'}, newest first`;
   document.getElementById('logbody').innerHTML = matches.map((m) => `
     <tr>
       <td>${esc(fmtDate(m.date))}</td>

@@ -84,7 +84,7 @@
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h2>Results</h2><span class="tiny muted" id="resnote"></span></div>
+      <div class="panel-head"><h2>Results</h2></div>
       <div class="panel-body flush scroll">
         <table id="res-table">
           <thead><tr>
@@ -97,14 +97,12 @@
     </div>
 
     <div class="panel">
-      <div class="panel-head"><h2>By position</h2>
-        <span class="tiny muted">Share of flights won at each position</span></div>
+      <div class="panel-head"><h2>By position</h2></div>
       <div class="panel-body"><div class="flights" id="flights"></div></div>
     </div>
 
     <div class="panel">
       <div class="panel-head"><h2>Ladder</h2>
-        <span class="tiny muted" id="rosnote"></span>
         <a class="tiny" id="editladder" style="margin-left:auto" href="lineups.html">Edit in Lineups</a>
       </div>
       <div class="panel-body flush scroll">
@@ -119,8 +117,7 @@
     </div>
 
     <div class="panel" id="matrix-panel" style="display:none">
-      <div class="panel-head"><h2>Position matrix</h2>
-        <span class="tiny muted">Matches played at each position</span></div>
+      <div class="panel-head"><h2>Position matrix</h2></div>
       <div class="panel-body flush scroll">
         <table class="matrix">
           <thead><tr id="matrix-head"></tr></thead>
@@ -223,8 +220,6 @@ function render(t, field) {
   // Results, newest first the way a schedule page reads once a season is done.
   const results = (t.results || []).slice()
     .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
-  document.getElementById('resnote').textContent =
-    `${results.length} dual${results.length === 1 ? '' : 's'}, newest first`;
   document.getElementById('resbody').innerHTML = results.map((r) => {
     const cls = r.result === 'W' ? 'w' : (r.result === 'L' ? 'l' : 't');
     const tags = [
@@ -250,8 +245,6 @@ function render(t, field) {
   }).join('');
 
   const ladder = t.ladder || [];
-  document.getElementById('rosnote').textContent =
-    ladder.length ? `${ladder.length} players` : '';
   document.getElementById('rosbody').innerHTML = ladder.map((p, i) => `
     <tr>
       <td class="mid">${i + 1}</td>
@@ -296,7 +289,6 @@ async function loadLineups(schoolId, genderWord) {
   const card = (p) => `player.html?t=${encodeURIComponent(key)}&p=${encodeURIComponent(p.pid)}`;
 
   // Ladder: the derived order, with what each player did at each position.
-  document.getElementById('rosnote').textContent = `${ladder.length} players`;
   document.getElementById('rosbody').innerHTML = ladder.map((p, i) => {
     const chips = SLOTS.filter((sl) => (p.rec_slots || {})[sl]).map((sl) => {
       const [w, l] = p.rec_slots[sl];
