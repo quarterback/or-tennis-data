@@ -170,9 +170,16 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
                 changed = True
 
     top = order[0]
-    level = [t["school_name"] for t in order[1:]
-             if pct[t["school_id"]] == pct[top["school_id"]]]
-    if any(top["school_name"] == w for w, _ in swaps):
+    level_teams = [t for t in order[1:]
+                   if pct[t["school_id"]] == pct[top["school_id"]]]
+    level = [t["school_name"] for t in level_teams]
+
+    # Say head to head whenever it is what actually separates them — not only
+    # when a swap was needed to get there. A champion who beat the team level
+    # with them was decided on that result, and reporting "Power Index" to a
+    # committee names the wrong reason.
+    decided_h2h = bool(level_teams) and all(beat(top, t) for t in level_teams)
+    if decided_h2h or any(top["school_name"] == w for w, _ in swaps):
         basis = "league record, head to head"
     elif level:
         basis = "league record, Power Index"
