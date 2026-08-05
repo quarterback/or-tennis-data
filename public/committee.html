@@ -45,9 +45,7 @@
 <div class="wrap">
   <div class="pagehead">
     <h1>Selection Board</h1>
-    <p class="sub">Every team in the classification, with the season behind each
-    one. Automatic bids go to league champions; the committee picks the rest and
-    seeds the field.</p>
+    <p class="sub">Every team in the classification, with its season behind it.</p>
   </div>
 
   <div class="controls no-print">
@@ -177,21 +175,16 @@ function renderFieldbar() {
   const un = document.getElementById('undesignated');
   const parts = [];
   if (data.derivedChampions.length) {
-    // Oregon does not publish league champions anywhere, so the board reads them
-    // off the standings. Saying so plainly is the difference between a committee
-    // trusting the number and a committee arguing with it.
+    // Oregon does not publish league champions, so the board reads them off the
+    // standings. Saying so is what stops a committee arguing with the number.
     parts.push(`<div class="note"><strong>${data.derivedChampions.length} automatic
-      bids are read from the league standings.</strong> Oregon does not publish
-      league champions, so each league's automatic bid goes to the best league
-      win percentage, breaking ties on head-to-head and then Power Index. Hover a
-      bid to see the basis. Anything settled another way — a league tournament, a
-      coaches' vote — can be entered in <code>league_champions.csv</code> and
-      overrides this.</div>`);
+      bids are read from the league standings</strong> — best league record, ties
+      broken on head to head. Hover a bid for the basis.</div>`);
   }
   if (data.undesignated.length) {
-    parts.push(`<div class="note flag"><strong>${data.undesignated.length} league(s)
-      have no champion at all</strong> — ${esc(data.undesignated.join(', '))} —
-      because no league matches are on record. Those automatic bids are open.</div>`);
+    parts.push(`<div class="note flag"><strong>No champion in
+      ${esc(data.undesignated.join(', '))}</strong> — no league matches on
+      record. Those bids are open.</div>`);
   }
   un.innerHTML = parts.join('');
 }
