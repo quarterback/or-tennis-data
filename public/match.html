@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Match — Cheesybook</title>
+<meta name="theme-color" content="#6a3937">
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="css/brand.css">
+<script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
+<style>
+  .back { display: inline-block; margin: 18px 0 0; font-size: 0.84rem; }
+
+  /* The two teams and the dual score, the way a game page leads. */
+  .head {
+    background: var(--paper); border: 1px solid var(--rule); border-radius: 10px;
+    box-shadow: var(--shadow); margin: 10px 0 16px; overflow: hidden;
+  }
+  .head .when {
+    padding: 8px 16px 0; font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3);
+    display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
+  }
+  .head .when .final { color: var(--ink); }
+  .head .when .tag { color: var(--accent-2); }
+  .side {
+    display: flex; align-items: center; gap: 12px; padding: 9px 16px;
+    text-decoration: none; color: inherit;
+  }
+  .side:hover { background: var(--accent-wash); text-decoration: none; }
+  .side:hover .nm { color: var(--accent-2); }
+  .side .mark { width: 10px; color: var(--ink); font-size: 0.8rem; }
+  .side .nm { flex: 1; font-weight: 600; font-size: 1.12rem; min-width: 0; }
+  .side .nm .rec { font-weight: 400; color: var(--ink-3); font-size: 0.86rem; font-variant-numeric: tabular-nums; margin-left: 7px; }
+  .side .sc { font-size: 1.9rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1.1; }
+  .side.lost .nm, .side.lost .sc { color: var(--ink-4); }
+  .head .tb {
+    padding: 0 16px 3px; text-align: right;
+    font-size: 0.78rem; color: var(--ink-3); font-variant-numeric: tabular-nums;
+  }
+  .head .foot {
+    padding: 6px 16px 9px; font-size: 0.74rem; color: var(--ink-3);
+    border-top: 1px solid var(--rule-2);
+  }
+
+  /* The card. Four columns, full page width — this page exists because a box
+     score does not fit in a 272px scoreboard column. */
+  .cardwrap { background: var(--paper); border: 1px solid var(--rule); border-radius: 10px; box-shadow: var(--shadow); overflow: hidden; }
+  table.card thead th { background: var(--paper-2); }
+  table.card td { vertical-align: top; }
+  table.card .slot { font-weight: 700; color: var(--ink-3); width: 46px; }
+  table.card .w { font-weight: 700; }
+  table.card .l { color: var(--ink-3); }
+  table.card .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  table.card td a { color: inherit; }
+  table.card td a:hover { color: var(--accent); }
+  table.card .fin {
+    font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em;
+    color: var(--flag); margin-left: 6px;
+  }
+  table.card tr.dline td { border-top: 2px solid var(--rule); }
+
+  @media (max-width: 640px) {
+    .side .nm { font-size: 1rem; }
+    .side .sc { font-size: 1.5rem; }
+    .side .nm .rec { display: block; margin-left: 0; }
+    /* A flight becomes a block: the position and the whole score both readable
+       instead of four columns fighting over 390px. */
+    table.card, table.card tbody, table.card tr, table.card td { display: block; width: 100%; }
+    table.card thead { display: none; }
+    table.card tbody tr { position: relative; padding: 9px 14px 10px; border-bottom: 1px solid var(--rule-2); }
+    table.card tbody tr:last-child { border-bottom: 0; }
+    table.card tbody tr:hover td { background: none; }
+    table.card td { border: 0; padding: 0; }
+    table.card td.slot { font-size: 0.72rem; margin-bottom: 4px; width: auto; }
+    table.card td.sc { position: absolute; top: 9px; right: 14px; text-align: right; }
+    table.card td:nth-child(2), table.card td:nth-child(3) { padding-right: 7.5rem; }
+    table.card tr.dline td { border-top: 0; }
+  }
+</style>
+</head>
+<body>
+<header class="mast"></header>
+
+<div class="wrap">
+  <div id="loading" class="empty">Loading…</div>
+  <div id="content" style="display:none">
+    <a class="back" id="back" href="scoreboard.html">&larr; Scoreboard</a>
+    <div class="head" id="head"></div>
+    <div class="cardwrap"><table class="card">
+      <thead><tr>
+        <th>Pos</th><th id="th-a">Home</th><th id="th-b">Away</th><th class="sc">Score</th>
+      </tr></thead>
+      <tbody id="card"></tbody>
+    </table></div>
+  </div>
+</div>
+
+<script type="module">
+import { applyBrand, leagueLabel } from './js/brand.js';
+
+applyBrand('Match', {
+  current: 'Scoreboard',
+  links: [
+    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scoreboard.html', label: 'Scoreboard' },
+    { href: 'teams.html', label: 'Teams' },
+    { href: 'lineups.html', label: 'Lineups' },
+    { href: 'coach.html', label: 'Report' },
+    { href: 'index.html', label: 'Rankings' },
+  ],
+});
+
+const esc = (s) => String(s ?? '').replace(/[&<>"']/g,
+  (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+const params = new URLSearchParams(location.search);
+const date = params.get('d') || '';
+// Two ways in. The scoreboard has the dual's id; a team schedule does not —
+// the committee export it is built from carries the opponent, not the dual —
+// so it passes the two school ids and the day file is searched on the pair.
+const dualId = params.get('id') || '';
+const pairA = params.get('a') || '';
+const pairB = params.get('b') || '';
+// Where the reader came from, so Back returns there rather than always to the
+// scoreboard. A team page sends its own id; anything else falls through.
+const fromTeam = params.get('from') || '';
+const fromGender = params.get('fg') || '';
+const year = date.slice(0, 4);
+
+function longDate(iso) {
+  const [y, m, d] = String(iso).slice(0, 10).split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString(undefined,
+    { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
+}
+
+const rosterCache = new Map();
+const teamKey = (schoolId, gender) =>
+  `${String(gender).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
+
+/** A team's published ladder, so box-score names can become player links. */
+async function rosterFor(schoolId, gender) {
+  const key = teamKey(schoolId, gender);
+  if (rosterCache.has(key)) return rosterCache.get(key);
+  let map = null;
+  try {
+    const d = await fetch(`data/lineups/${year}/${key}.json`).then((r) => {
+      if (!r.ok) throw new Error('none');
+      return r.json();
+    });
+    map = new Map((d.ladder || []).map((pl) => [String(pl.name).trim().toLowerCase(), pl.pid]));
+    map.key = key;
+  } catch { /* team has no published lineup — names stay plain text */ }
+  rosterCache.set(key, map);
+  return map;
+}
+
+function playerLink(name, roster) {
+  const pid = roster && roster.get(String(name).trim().toLowerCase());
+  if (!pid) return esc(name);
+  return `<a href="player.html?t=${encodeURIComponent(roster.key)}&p=${encodeURIComponent(pid)}">${esc(name)}</a>`;
+}
+
+const teamHref = (id, gender) =>
+  `team.html?s=${encodeURIComponent(id)}&g=${encodeURIComponent(gender)}`;
+
+function fail(message) {
+  document.getElementById('loading').textContent = message;
+}
+
+async function boot() {
+  if (!date || (!dualId && !(pairA && pairB))) return fail('No match given.');
+
+  let day;
+  try {
+    day = await fetch(`data/scoreboard/${year}/${date}.json`).then((r) => {
+      if (!r.ok) throw new Error('missing');
+      return r.json();
+    });
+  } catch { return fail('No results published for that date.'); }
+
+  const same = (x, y) => String(x) === String(y);
+  const d = (day.duals || []).find((x) => (dualId
+    ? same(x.id, dualId)
+    : ((same(x.a.id, pairA) && same(x.b.id, pairB))
+      || (same(x.b.id, pairA) && same(x.a.id, pairB)))));
+  if (!d) return fail('No card on record for that match.');
+
+  document.title = `${d.a.name} vs ${d.b.name} — Cheesybook`;
+
+  if (fromTeam) {
+    const back = document.getElementById('back');
+    back.href = teamHref(fromTeam, fromGender || d.gender);
+    back.textContent = '← Back to schedule';
+  }
+
+  // The header. Winner leads, the way a tennis result is always reported.
+  const aWon = d.a.score > d.b.score;
+  const bWon = d.b.score > d.a.score;
+  const kind = d.postseason ? 'Postseason' : (d.conference ? 'Conf' : 'Non-Conf');
+  const league = leagueLabel(d.a.classification, d.a.league);
+
+  const sideHtml = (t, won, lost) => `
+    <a class="side ${won ? 'won' : ''} ${lost ? 'lost' : ''}" href="${teamHref(t.id, d.gender)}">
+      <span class="mark">${won ? '▸' : ''}</span>
+      <span class="nm">${esc(t.name)}${t.record ? `<span class="rec">${esc(t.record)}</span>` : ''}</span>
+      <span class="sc">${esc(String(t.score))}</span>
+    </a>`;
+
+  document.getElementById('head').innerHTML = `
+    <div class="when">
+      <span class="final">Final</span>
+      <span>${esc(longDate(date))}</span>
+      <span class="tag">${esc(kind)}</span>
+      <span>${esc(d.gender)}</span>
+    </div>
+    ${sideHtml(d.a, aWon, bWon)}
+    ${sideHtml(d.b, bWon, aWon)}
+    ${d.tiebreak ? `<div class="tb">Tiebreak ${esc(String(d.tiebreak.ours))}–${esc(String(d.tiebreak.theirs))} on ${esc(d.tiebreak.basis)}</div>` : ''}
+    ${league ? `<div class="foot">${esc(league)}</div>` : ''}`;
+
+  document.getElementById('th-a').textContent = d.a.name;
+  document.getElementById('th-b').textContent = d.b.name;
+
+  const [rosterA, rosterB] = await Promise.all([
+    rosterFor(d.a.id, d.gender), rosterFor(d.b.id, d.gender),
+  ]);
+
+  const names = (arr, roster) => (arr && arr.length
+    ? arr.map((n) => playerLink(n, roster)).join(' / ')
+    : '<span class="muted">no player</span>');
+
+  const flights = d.flights || [];
+  document.getElementById('card').innerHTML = flights.map((f, i) => {
+    const score = (f.sets || []).map((s) =>
+      `${s.home}-${s.away}${s.tie != null ? `(${s.tie})` : ''}`).join(', ');
+    const finish = f.finish
+      ? `<span class="fin">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
+    // A rule between the singles and the doubles, the way a card is printed.
+    const prev = flights[i - 1];
+    const breaks = prev && String(prev.slot)[0] !== String(f.slot)[0];
+    return `<tr class="${breaks ? 'dline' : ''}">
+      <td class="slot">${esc(f.label)}</td>
+      <td class="${f.home_won ? 'w' : 'l'}">${names(f.home_players, rosterA)}</td>
+      <td class="${f.away_won ? 'w' : 'l'}">${names(f.away_players, rosterB)}</td>
+      <td class="sc">${esc(score)}${finish}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display = '';
+}
+
+boot();
+</script>
+</body>
+</html>

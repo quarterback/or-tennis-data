@@ -31,6 +31,40 @@
   }
   .daystrip button.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
   .daystrip button.today { border-color: var(--accent); }
+
+  /* A month calendar, the way every scoreboard offers one. Paging back to
+     April through a seven-day strip is a dozen clicks; the strip is for
+     "yesterday and tomorrow", the calendar is for "the 14th". */
+  .calwrap { position: relative; flex: none; }
+  .daynav.cal { display: inline-flex; align-items: center; justify-content: center; }
+  .daynav.cal[aria-expanded="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+  .calpop[hidden] { display: none; }
+  .calpop {
+    position: absolute; top: calc(100% + 6px); right: 0; z-index: 60;
+    width: 268px; padding: 10px;
+    background: var(--paper); border: 1px solid var(--rule);
+    border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,.16);
+  }
+  .cal-head { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .cal-head span { flex: 1; text-align: center; font-weight: 700; font-size: 0.86rem; }
+  .cal-head button { padding: 3px 10px; font-size: 0.9rem; line-height: 1; }
+  .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+  .cal-grid .dow {
+    text-align: center; font-size: 0.62rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); padding: 2px 0 4px;
+  }
+  .cal-grid .day {
+    padding: 0; height: 32px; font-size: 0.82rem; font-variant-numeric: tabular-nums;
+    border: 0; border-radius: 7px; background: none; color: var(--ink-4); cursor: default;
+  }
+  /* A day with results is the only thing worth clicking. */
+  .cal-grid .day.has { color: var(--ink); font-weight: 600; cursor: pointer; background: var(--rule-2); }
+  .cal-grid .day.has:hover { background: var(--accent-wash); color: var(--accent-2); }
+  .cal-grid .day.on { background: var(--ink); color: var(--paper); }
+  .cal-grid .day.on:hover { background: var(--ink); color: var(--paper); }
+  .cal-grid .pad { height: 32px; }
+  .cal-foot { margin-top: 8px; display: flex; }
+  .cal-foot button { flex: 1; font-size: 0.78rem; }
   .filters-toggle { flex: none; }
   .filters-toggle.on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
 
@@ -119,39 +153,12 @@
     text-transform: uppercase; letter-spacing: .05em;
   }
 
-  /* The card clips its corners, so the box score has to scroll inside itself
-     rather than be cut off — the set scores are the point of opening it. */
-  .box { border-top: 1px solid var(--rule); padding: 4px 0 8px; background: var(--paper-2); overflow-x: auto; }
-  .box table { font-size: 0.78rem; min-width: 100%; }
-  .box th { position: static; background: transparent; padding: 5px 12px; }
-  .box td { padding: 5px 12px; border-bottom: 1px solid var(--rule-2); }
-  .box td:nth-child(2), .box td:nth-child(3) { min-width: 108px; }
-  .box tr:last-child td { border-bottom: 0; }
-  .box .slot { font-weight: 700; color: var(--ink-3); width: 30px; }
-  .box .w { font-weight: 700; }
-  .box .l { color: var(--ink-3); }
-  .box .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .box td a, .box th a { color: inherit; text-decoration: none; }
-  .box td a:hover, .box th a:hover { color: var(--accent); text-decoration: underline; }
-  .box .fin { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--flag); }
+  .game-foot .boxlink {
+    margin-left: auto; font-size: 0.68rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .05em;
+  }
 
 @media (max-width: 720px) {
-  /* A four-column box score on a phone wraps every name to three lines and
-     pushes the score — the thing the box score exists to show — off the right
-     edge. Each flight becomes a block: position and score on one line, the two
-     sides stacked under it. */
-  .box table, .box tbody, .box tr, .box td { display: block; width: 100%; }
-  .box thead { display: none; }
-  .box tbody tr {
-    position: relative; padding: 8px 12px 9px;
-    border-bottom: 1px solid var(--rule-2);
-  }
-  .box tbody tr:last-child { border-bottom: 0; }
-  .box td { border: 0; padding: 0; }
-  .box td.slot { font-size: 0.72rem; margin-bottom: 3px; width: auto; }
-  .box td.sc { position: absolute; top: 8px; right: 12px; text-align: right; width: auto; }
-  .box td:nth-child(2), .box td:nth-child(3) { min-width: 0; padding-right: 7rem; }
-  .box .fin { display: block; }
 }
 </style>
 </head>
@@ -165,12 +172,28 @@
     <button class="daynav" id="prev" aria-label="Previous day">&lsaquo;</button>
     <div class="daystrip" id="daystrip"></div>
     <button class="daynav" id="next" aria-label="Next day">&rsaquo;</button>
+    <div class="calwrap">
+      <button class="daynav cal" id="cal-toggle" aria-label="Choose a date" aria-expanded="false">
+        <svg viewBox="0 0 20 20" width="17" height="17" aria-hidden="true">
+          <rect x="2.5" y="4" width="15" height="13.5" rx="2" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M2.5 8h15M6.5 2.5v3M13.5 2.5v3" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+      <div class="calpop" id="calpop" hidden>
+        <div class="cal-head">
+          <button id="cal-prev" aria-label="Previous month">&lsaquo;</button>
+          <span id="cal-title"></span>
+          <button id="cal-next" aria-label="Next month">&rsaquo;</button>
+        </div>
+        <div class="cal-grid" id="cal-grid"></div>
+        <div class="cal-foot"><button id="cal-latest">Latest results</button></div>
+      </div>
+    </div>
     <button id="filters-toggle" class="filters-toggle">Filters</button>
   </div>
 
   <div class="drawer" id="drawer" hidden>
     <label>Season <select id="year"></select></label>
-    <label>Date <select id="date"></select></label>
     <label>Gender <select id="gender">
       <option value="">Both</option><option>Boys</option><option>Girls</option></select></label>
     <label>Class <select id="class"><option value="">All</option></select></label>
@@ -312,10 +335,6 @@ async function loadYear(year) {
         `<option value="${esc(leagueKey(cls, l))}">${esc(leagueLabel(cls, l))}</option>`).join('')
       + '</optgroup>').join('');
 
-  document.getElementById('date').innerHTML = index.dates.map((d) =>
-    `<option value="${d.date}">${longDate(d.date)}</option>`).join('');
-  document.getElementById('date').onchange = (e) => loadDate(e.target.value);
-
   // The strip runs oldest to newest so it reads like a calendar, even though
   // the index is newest first.
   const strip = [...index.dates].reverse();
@@ -327,13 +346,15 @@ async function loadYear(year) {
     b.onclick = () => loadDate(b.dataset.date);
   });
 
+  wireCalendar();
+
   // Open on the most recent day with results — "what happened today".
   await loadDate(index.dates[0].date);
 }
 
 async function loadDate(date) {
   day = await fetch(`data/scoreboard/${index.year}/${date}.json`).then((r) => r.json());
-  document.getElementById('date').value = date;
+  renderCalendar(date.slice(0, 7));
   document.querySelectorAll('#daystrip button').forEach((b) => {
     b.classList.toggle('on', b.dataset.date === date);
     if (b.dataset.date === date) b.scrollIntoView({ block: 'nearest', inline: 'center' });
@@ -387,8 +408,7 @@ function card(d, i) {
     ${teamRow('b', d)}
     ${d.tiebreak ? `<div class="game-tb">${esc(TIEBREAK_LABEL[d.tiebreak.basis] || d.tiebreak.basis)} (${esc(d.tiebreak.a)}-${esc(d.tiebreak.b)})</div>` : ''}
     <div class="game-meta">${esc(meta)}</div>
-    <div class="game-foot"><button class="js-box" data-i="${i}">Box score</button></div>
-    <div class="box" id="box-${i}" style="display:none"></div>
+    <div class="game-foot"><a class="boxlink" href="match.html?d=${encodeURIComponent(day.date)}&amp;id=${encodeURIComponent(d.id)}">Box score</a></div>
   </div>`;
 }
 
@@ -441,77 +461,93 @@ function render() {
   // Flatten in the same order the cards were emitted.
   const flat = [];
   for (const [, subs] of group(list)) for (const [, games] of subs) flat.push(...games);
-  slate.querySelectorAll('.js-box').forEach((b) => {
-    b.onclick = () => toggleBox(Number(b.dataset.i), flat, b);
-  });
 }
 
 // A team's lineup file, keyed the way the export names it: gender digit then
 // school id. Computed rather than indexed, so no new export is needed to turn
 // box-score names into links.
-const teamKey = (schoolId, gender) =>
-  `${String(gender).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
 
-const rosterCache = new Map();
-async function rosterFor(schoolId, gender) {
-  const key = teamKey(schoolId, gender);
-  if (rosterCache.has(key)) return rosterCache.get(key);
-  let map = null;
-  try {
-    const d = await fetch(`data/lineups/${index.year}/${key}.json`).then((r) => {
-      if (!r.ok) throw new Error('none');
-      return r.json();
-    });
-    map = new Map((d.ladder || []).map((pl) => [String(pl.name).trim().toLowerCase(), pl.pid]));
-    map.key = key;
-  } catch { /* team has no published lineup — names stay plain text */ }
-  rosterCache.set(key, map);
-  return map;
-}
 
-/** A player's name, linked to their card when we can resolve them. */
-function playerLink(name, roster) {
-  const pid = roster && roster.get(String(name).trim().toLowerCase());
-  if (!pid) return esc(name);
-  return `<a href="player.html?t=${encodeURIComponent(roster.key)}&p=${encodeURIComponent(pid)}">${esc(name)}</a>`;
-}
 
-async function toggleBox(i, list, button) {
-  const mount = document.getElementById(`box-${i}`);
-  if (mount.style.display !== 'none') {
-    mount.style.display = 'none';
-    button.textContent = 'Box score';
-    return;
+// ── Calendar ──────────────────────────────────────────────────────────────
+//
+// The strip answers "yesterday and tomorrow". Reaching a date three weeks back
+// through it is a dozen taps, so the calendar answers "the 14th" directly.
+// Only days with published results are clickable — an empty April 3rd is not a
+// destination, and greying it out says so without a word of copy.
+
+let calMonth = '';
+
+const withDay = () => new Set(index.dates.map((d) => d.date));
+
+function renderCalendar(month) {
+  calMonth = month;
+  const [y, m] = month.split('-').map(Number);
+  const has = withDay();
+  const selected = day && day.date;
+
+  document.getElementById('cal-title').textContent =
+    new Date(y, m - 1, 1).toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+
+  const first = new Date(y, m - 1, 1).getDay();
+  const days = new Date(y, m, 0).getDate();
+  const cells = ['S', 'M', 'T', 'W', 'T', 'F', 'S']
+    .map((d, i) => `<div class="dow" aria-hidden="true">${d}</div>`);
+  for (let i = 0; i < first; i += 1) cells.push('<div class="pad"></div>');
+  for (let d = 1; d <= days; d += 1) {
+    const iso = `${y}-${String(m).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+    const on = iso === selected;
+    const live = has.has(iso);
+    cells.push(live
+      ? `<button class="day has${on ? ' on' : ''}" data-date="${iso}"${on ? ' aria-current="date"' : ''}>${d}</button>`
+      : `<span class="day">${d}</span>`);
   }
-  const d = list[i];
-  // Both sides' rosters, so every name in the box score can become a link.
-  const [rosterA, rosterB] = await Promise.all([
-    rosterFor(d.a.id, d.gender), rosterFor(d.b.id, d.gender),
-  ]);
-  const rows = d.flights.map((f) => {
-    const score = f.sets.map((s) =>
-      `${s.home}-${s.away}${s.tie != null ? `(${s.tie})` : ''}`).join(', ');
-    const name = (arr, roster) => (arr.length
-      ? arr.map((n) => playerLink(n, roster)).join(' / ')
-      : '<span class="muted">no player</span>');
-    const finish = f.finish
-      ? `<span class="fin">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
-    return `<tr>
-      <td class="slot">${esc(f.label)}</td>
-      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players, rosterA)}</td>
-      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players, rosterB)}</td>
-      <td class="sc">${esc(score) || '&mdash;'} ${finish}</td>
-    </tr>`;
-  }).join('');
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = cells.join('');
+  grid.querySelectorAll('.day.has').forEach((b) => {
+    b.onclick = () => { closeCalendar(); loadDate(b.dataset.date); };
+  });
 
-  mount.innerHTML = `<table>
-    <thead><tr><th></th>
-      <th><a href="team.html?s=${encodeURIComponent(d.a.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.a.name)}</a></th>
-      <th><a href="team.html?s=${encodeURIComponent(d.b.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.b.name)}</a></th>
-      <th class="sc">Score</th></tr></thead>
-    <tbody>${rows}</tbody></table>`;
-  mount.style.display = '';
-  button.textContent = 'Hide';
+  // Months with nothing in them are not worth paging into.
+  const months = [...has].map((d) => d.slice(0, 7));
+  document.getElementById('cal-prev').disabled = !months.some((x) => x < month);
+  document.getElementById('cal-next').disabled = !months.some((x) => x > month);
+}
+
+function shiftMonth(month, by) {
+  const [y, m] = month.split('-').map(Number);
+  const d = new Date(y, m - 1 + by, 1);
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`;
+}
+
+function closeCalendar() {
+  document.getElementById('calpop').hidden = true;
+  document.getElementById('cal-toggle').setAttribute('aria-expanded', 'false');
+}
+
+function wireCalendar() {
+  const pop = document.getElementById('calpop');
+  const toggle = document.getElementById('cal-toggle');
+  toggle.onclick = (e) => {
+    e.stopPropagation();
+    const open = pop.hidden;
+    pop.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    if (open && day) renderCalendar(day.date.slice(0, 7));
+  };
+  document.getElementById('cal-prev').onclick = () => renderCalendar(shiftMonth(calMonth, -1));
+  document.getElementById('cal-next').onclick = () => renderCalendar(shiftMonth(calMonth, 1));
+  document.getElementById('cal-latest').onclick = () => {
+    closeCalendar();
+    loadDate(index.dates[0].date);
+  };
+  // Click-away and Escape, the way a popover is expected to close.
+  document.addEventListener('click', (e) => {
+    if (!pop.hidden && !pop.contains(e.target)) closeCalendar();
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !pop.hidden) { closeCalendar(); toggle.focus(); }
+  });
 }
 
 boot();

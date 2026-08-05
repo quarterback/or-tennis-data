@@ -66,18 +66,12 @@
     /* The faint rule token disappeared between 48px rows. A game needs to read
        as its own block at a glance. */
     border-bottom: 2px solid var(--rule);
-    cursor: pointer;
-    background: none;
-    border-left: 0; border-right: 0; border-top: 0;
-    text-align: left;
-    width: 100%;
-    font: inherit;
     color: inherit;
-    border-radius: 0;
+    text-decoration: none;
   }
   .g:last-of-type { border-bottom: 0; }
-  .g:hover { background: var(--paper-2); }
-  .g[aria-expanded="true"] { background: var(--paper-2); }
+  .g:hover { background: var(--paper-2); text-decoration: none; }
+  .g:hover .opp { color: var(--accent-2); }
 
   .g .date { font-size: 0.88rem; font-weight: 600; color: var(--ink-2); white-space: nowrap; }
   .g .kind {
@@ -94,24 +88,6 @@
   .g .opp { font-weight: 600; font-size: 0.9rem; min-width: 0; }
   .g .opp .rk { font-weight: 400; color: var(--ink-3); font-size: 0.8rem; margin-right: 5px; }
   .g .sc { font-weight: 700; font-variant-numeric: tabular-nums; font-size: 0.95rem; white-space: nowrap; text-align: right; }
-
-  .gbox {
-    display: grid; grid-template-rows: 0fr;
-    transition: grid-template-rows .22s ease;
-    background: var(--paper-2);
-  }
-  .gbox.open { grid-template-rows: 1fr; border-bottom: 2px solid var(--rule); }
-  .gbox > .gbox-in { overflow: hidden; }
-  .gbox.open > .gbox-in { overflow-x: auto; }
-  @media (prefers-reduced-motion: reduce) { .gbox { transition: none; } }
-  .gbox table { font-size: 0.78rem; }
-  .gbox th { position: static; background: transparent; padding: 5px 12px; }
-  .gbox td { padding: 4px 12px; border-bottom: 1px solid var(--rule-2); }
-  .gbox tr:last-child td { border-bottom: 0; }
-  .gbox .slot { font-weight: 700; color: var(--ink-3); width: 26px; padding-left: 2px; }
-  .gbox .w { font-weight: 700; }
-  .gbox .l { color: var(--ink-3); }
-  .gbox .sc { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
   /* How often the team won each position across the season. */
   .flights { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; padding: 4px 0; }
@@ -138,21 +114,6 @@
   .matrix td.h4 { background: #e0a03c; }
 
   @media (max-width: 640px) {
-    /* Same as the scoreboard: a flight is a block, not a four-column row, so
-       the position and the whole score are both readable. */
-    .gbox table, .gbox tbody, .gbox tr, .gbox td { display: block; width: 100%; }
-    .gbox thead { display: none; }
-    .gbox tbody tr { position: relative; padding: 8px 12px 9px; border-bottom: 1px solid var(--rule-2); }
-    .gbox tbody tr:last-child { border-bottom: 0; }
-    .gbox td { border: 0; padding: 0; }
-    .gbox td.slot { font-size: 0.72rem; margin-bottom: 3px; width: auto; }
-    .gbox td.sc { position: absolute; top: 8px; right: 12px; text-align: right; }
-    .gbox td:nth-child(2), .gbox td:nth-child(3) { padding-right: 6.5rem; }
-
-    /* The wider desktop tabs would push "By position" off a phone entirely.
-       The strip still scrolls, but three of four start on screen. */
-    .tabs button { padding: 9px 13px; }
-
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
     /* A phone keeps the hierarchy, wrapping the pill under the opponent rather
@@ -404,89 +365,18 @@ function renderSchedule(t, ourClass) {
     // Lakeridge — and only for a ranked opponent. See `ranked`.
     const rank = ranked(r.opponentClassRank) ? `#${r.opponentClassRank}` : '';
     const kind = kindOf(r);
-    return `<button class="g" data-i="${i}" aria-expanded="false">
+    const href = `match.html?d=${encodeURIComponent(r.date)}`
+      + `&a=${encodeURIComponent(t.schoolId)}&b=${encodeURIComponent(r.opponentId)}`
+      + `&from=${encodeURIComponent(t.schoolId)}&fg=${encodeURIComponent(gender)}`;
+    return `<a class="g" href="${href}">
         <span class="date">${esc(fmtDate(r.date))}</span>
         <span class="opp">${rank ? `<span class="rk">${esc(rank)}</span>` : ''}${esc(r.opponent)}</span>
         <span class="kind ${kind === 'Conf' ? 'conf' : ''}">${esc(kind)}</span>
         <span class="sc"><span class="r ${cls}">${esc(r.result)}</span> ${esc(winnerFirst(r.scoreline))}</span>
-      </button>
-      <div class="gbox" id="gbox-${i}"><div class="gbox-in"></div></div>`;
+      </a>`;
   }).join('');
-
-  el.querySelectorAll('.g').forEach((b) => {
-    b.onclick = () => expand(Number(b.dataset.i), results[Number(b.dataset.i)], b, t);
-  });
 }
 
-// A day's duals, for the flights behind a schedule row. The committee export
-// carries the scoreline but not the card, and the scoreboard export carries the
-// card — so the row opens by reading that day's file.
-const dayCache = new Map();
-async function dayDuals(date) {
-  if (dayCache.has(date)) return dayCache.get(date);
-  let duals = [];
-  try {
-    duals = (await fetch(`data/scoreboard/${year}/${date}.json`).then((r) => {
-      if (!r.ok) throw new Error('none');
-      return r.json();
-    })).duals || [];
-  } catch { /* nothing published for that date */ }
-  dayCache.set(date, duals);
-  return duals;
-}
-
-async function expand(i, r, button, t) {
-  const mount = document.getElementById(`gbox-${i}`);
-  const inner = mount.querySelector('.gbox-in');
-  if (mount.classList.contains('open')) {
-    mount.classList.remove('open');
-    button.setAttribute('aria-expanded', 'false');
-    return;
-  }
-  button.setAttribute('aria-expanded', 'true');
-  mount.classList.add('open');
-
-  if (mount.dataset.loaded) return;
-  const duals = await dayDuals(r.date);
-  const d = duals.find((x) =>
-    (String(x.a.id) === String(t.schoolId) && String(x.b.id) === String(r.opponentId))
-    || (String(x.b.id) === String(t.schoolId) && String(x.a.id) === String(r.opponentId)));
-
-  if (!d || !d.flights || !d.flights.length) {
-    inner.innerHTML = '<div class="empty" style="padding:12px">No card on record.</div>';
-    mount.dataset.loaded = '1';
-    return;
-  }
-
-  const rows = d.flights.map((f) => {
-    const score = f.sets.map((x) =>
-      `${x.home}-${x.away}${x.tie != null ? `(${x.tie})` : ''}`).join(', ');
-    const name = (arr) => (arr.length ? esc(arr.join(' / ')) : '<span class="muted">—</span>');
-    const fin = f.finish
-      ? ` <span class="tiny muted">${f.finish === 'default' ? 'default' : 'ret.'}</span>` : '';
-    return `<tr>
-      <td class="slot">${esc(f.label)}</td>
-      <td class="${f.home_won ? 'w' : 'l'}">${name(f.home_players)}</td>
-      <td class="${f.away_won ? 'w' : 'l'}">${name(f.away_players)}</td>
-      <td class="sc">${esc(score) || '&mdash;'}${fin}</td>
-    </tr>`;
-  }).join('');
-
-  inner.innerHTML = `<table>
-    <thead><tr><th></th><th></th><th>${esc(r.opponent)}</th><th class="sc">Score</th></tr></thead>
-    <tbody>${rows}</tbody></table>`;
-  mount.dataset.loaded = '1';
-}
-
-/**
- * Fold the lineups export into this page.
- *
- * The committee export carries names and season records; the lineups export
- * carries player ids, per-position records and where each player appeared.
- * Its file name is computable — gender digit then school id — so the two join
- * at read time with no change to either exporter. If a team has no published
- * lineup the page keeps the plain roster it already rendered.
- */
 async function loadLineups(schoolId, genderWord) {
   const key = `${String(genderWord).toLowerCase() === 'boys' ? 1 : 2}${schoolId}`;
   document.getElementById('editladder').href = `lineups.html?team=${encodeURIComponent(key)}`;
