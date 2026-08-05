@@ -104,21 +104,43 @@ function played(rec) {
   return (w || 0) + (l || 0) + (t || 0);
 }
 
+// A record ranks a team once it has three matches behind it. Under that,
+// percentage says 1-0-0 beats 10-1-0; the team is listed below, unranked,
+// rather than hidden — it played, and a committee should see it.
+const MIN_MATCHES = 3;
+
+// How close two teams may be on percentage before head-to-head reorders them.
+// The same band the champion derivation and the playoff simulator use.
+const H2H_BAND = 0.1;
+
 /**
- * How many matches a team needs before its record ranks it.
+ * Reorder on head-to-head, the way the rest of the site breaks a league tie.
  *
- * 1-0-0 is not a better season than 10-1-0, but sorting on percentage says it
- * is. The bar is half the league's median, so it travels between a twelve-team
- * district and a five-team one, with a floor of three so a tiny league does not
- * set it at one. Teams under the bar are listed below, unranked, rather than
- * hidden — they played, and a committee should see them.
+ * Sorting on percentage alone put Oregon Episcopal above Catlin Gabel when the
+ * two finished 9-0-1 and Catlin Gabel had taken their 4-4 on the tiebreaker.
+ * Repeatedly swap adjacent teams inside the band when the lower one won the
+ * head-to-head, until the order settles.
  */
-function minMatches(counts) {
-  const sorted = [...counts].sort((a, b) => a - b);
-  if (!sorted.length) return 0;
-  const mid = Math.floor(sorted.length / 2);
-  const median = sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
-  return Math.max(3, Math.floor(median / 2));
+function applyH2H(order, pctOf) {
+  const beat = (a, b) => {
+    let n = 0;
+    for (const r of a.results || []) {
+      if (String(r.opponentId) !== String(b.schoolId)) continue;
+      if (r.h2h === 'W') n += 1; else if (r.h2h === 'L') n -= 1;
+    }
+    return n > 0;
+  };
+  for (let guard = 0; guard < 50; guard += 1) {
+    let changed = false;
+    for (let i = 0; i < order.length - 1; i += 1) {
+      const a = order[i];
+      const b = order[i + 1];
+      if (Math.abs(pctOf(a) - pctOf(b)) > H2H_BAND) continue;
+      if (beat(b, a)) { order[i] = b; order[i + 1] = a; changed = true; }
+    }
+    if (!changed) break;
+  }
+  return order;
 }
 
 async function boot() {
@@ -189,23 +211,28 @@ async function render() {
 
   el.innerHTML = [...byLeague.entries()].sort().map(([, group]) => {
     const league = group.label;
-    const ts = group.teams;
+    let ts = group.teams;
     // Standings order follows whichever record is being stood on, with the
     // other as the tiebreak and Power Index behind that.
     const key = (t) => (sortBy === 'league' ? t.leagueRecord : t.record);
     const other = (t) => (sortBy === 'league' ? t.record : t.leagueRecord);
 
-    const bar = minMatches(ts.map((t) => played(key(t))));
-    // Early in a season nobody has cleared the bar yet. Gating then would
-    // unrank the entire league, so the gate only applies once somebody has
-    // played enough for it to separate anyone.
-    const anyQualify = ts.some((t) => played(key(t)) >= bar);
-    const qualifies = (t) => !anyQualify || played(key(t)) >= bar;
+    // Nobody past three matches yet means nothing to separate, so the gate
+    // stays off rather than unranking the whole league.
+    const anyQualify = ts.some((t) => played(key(t)) >= MIN_MATCHES);
+    const qualifies = (t) => !anyQualify || played(key(t)) >= MIN_MATCHES;
+
     ts.sort((a, b) =>
       (qualifies(b) ? 1 : 0) - (qualifies(a) ? 1 : 0)
       || pct(key(b)) - pct(key(a))
       || pct(other(b)) - pct(other(a))
       || (b.powerIndex || 0) - (a.powerIndex || 0));
+
+    // Head-to-head only reorders the ranked teams; an unranked one is below
+    // them on match count, not on a result.
+    const ranked = ts.filter(qualifies);
+    const rest = ts.filter((t) => !qualifies(t));
+    ts = [...applyH2H(ranked, (t) => pct(key(t))), ...rest];
 
     let pos = 0;
     const rows = ts.map((t) => `<tr class="${qualifies(t) ? '' : 'short'}">

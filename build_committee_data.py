@@ -96,31 +96,15 @@ def _league_win_pct(team: dict) -> float | None:
 # allowed to reorder them. Matches the playoff simulator's threshold.
 LEAGUE_H2H_BAND = 0.1
 
-# The fewest league matches a team may have played and still be eligible to be
-# named champion, expressed against the league's median.
-CHAMPION_MIN_FLOOR = 3
+# A league record ranks a team once three matches sit behind it. Below that,
+# win percentage says 1-0-0 is a better season than 10-1-0 — and this decides an
+# automatic bid, so it cannot. Same floor the standings page uses.
+CHAMPION_MIN_MATCHES = 3
 
 
 def _league_played(team: dict) -> int:
     return ((team.get("league_wins") or 0) + (team.get("league_losses") or 0)
             + (team.get("league_ties") or 0))
-
-
-def _champion_bar(members: list[dict]) -> int:
-    """Half the league's median, with a floor.
-
-    A 1-0-0 is not a better league season than 10-1-0, but win percentage says
-    it is — and this decides an automatic bid, so it cannot. The bar travels
-    between a twelve-team district and a five-team one instead of being a fixed
-    number, and it is switched off entirely until somebody clears it, so an
-    early-season league is not left with no champion at all.
-    """
-    counts = sorted(_league_played(t) for t in members)
-    if not counts:
-        return 0
-    mid = len(counts) // 2
-    median = counts[mid] if len(counts) % 2 else (counts[mid - 1] + counts[mid]) / 2
-    return max(CHAMPION_MIN_FLOOR, int(median // 2))
 
 
 def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
@@ -154,10 +138,10 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     if not scored:
         return None
 
-    # Teams too far short of the league's usual match count cannot be champion
-    # on a percentage nobody else had the chance to run up.
-    bar = _champion_bar([t for t, _ in scored])
-    eligible = [(t, p) for t, p in scored if _league_played(t) >= bar]
+    # A team short of three league matches cannot be champion on a percentage
+    # nobody else had the chance to run up. Kept off entirely until somebody
+    # clears it, so an early-season league still has a champion.
+    eligible = [(t, p) for t, p in scored if _league_played(t) >= CHAMPION_MIN_MATCHES]
     if eligible:
         scored = eligible
 
