@@ -30,19 +30,27 @@
      matrix. The strip scrolls sideways rather than wrapping, which keeps the
      selected tab and its neighbours on one line at any width. */
   .tabs {
-    display: flex; gap: 4px; margin: 20px 0 0;
+    display: flex; gap: 6px; margin: 20px 0 0;
     border-bottom: 2px solid var(--ink);
     overflow-x: auto; -webkit-overflow-scrolling: touch;
   }
   .tabs::-webkit-scrollbar { height: 0; }
   .tabs button {
-    flex: none; background: none; border: 0; border-radius: 0;
-    padding: 8px 12px; font-size: 0.9rem; font-weight: 600;
-    color: var(--ink-3); cursor: pointer; white-space: nowrap;
+    /* Four navigation choices, not a sentence. Set close together at the same
+       weight they read as one run of words, so each one carries its own field:
+       wide padding, a gap between, and a tinted top on the selected one. */
+    flex: none; background: var(--rule-2); border: 0;
+    border-radius: 7px 7px 0 0;
+    padding: 9px 20px; font-size: 0.9rem; font-weight: 600;
+    color: var(--ink-2); cursor: pointer; white-space: nowrap;
     border-bottom: 3px solid transparent; margin-bottom: -2px;
   }
-  .tabs button:hover { background: none; color: var(--ink); }
-  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  .tabs button:hover { background: var(--rule); color: var(--ink); }
+  .tabs button[aria-selected="true"] {
+    color: var(--accent-2); font-weight: 700;
+    background: var(--accent-wash); border-bottom-color: var(--accent);
+  }
+  .tabs button[aria-selected="true"]:hover { background: var(--accent-wash); }
   [role="tabpanel"] { margin-top: 4px; }
   .sched { display: flex; flex-direction: column; }
   .g {
@@ -140,6 +148,10 @@
     .gbox td.slot { font-size: 0.72rem; margin-bottom: 3px; width: auto; }
     .gbox td.sc { position: absolute; top: 8px; right: 12px; text-align: right; }
     .gbox td:nth-child(2), .gbox td:nth-child(3) { padding-right: 6.5rem; }
+
+    /* The wider desktop tabs would push "By position" off a phone entirely.
+       The strip still scrolls, but three of four start on screen. */
+    .tabs button { padding: 9px 13px; }
 
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
