@@ -190,6 +190,15 @@ function renderFieldbar() {
       bids are read from the league standings</strong> — best league record, ties
       broken on head to head. Hover a bid for the basis.</div>`);
   }
+  const unsettled = Object.entries(data.champions || {})
+    .filter(([, c]) => c.undecided)
+    .map(([lg, c]) => `${lg} (${[c.name, ...c.tiedWith].join(', ')})`);
+  if (unsettled.length) {
+    parts.push(`<div class="note flag"><strong>${unsettled.length} league(s) did not
+      produce a champion</strong> — ${esc(unsettled.join('; '))}. Level on league
+      record with head to head unable to separate them. The automatic bid is the
+      committee's to settle.</div>`);
+  }
   if (data.undesignated.length) {
     parts.push(`<div class="note flag"><strong>No champion in
       ${esc(data.undesignated.join(', '))}</strong> — no league matches on

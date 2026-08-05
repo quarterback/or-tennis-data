@@ -145,8 +145,11 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
     if eligible:
         scored = eligible
 
+    # Ordered on league record alone. Power Index does not decide a league
+    # title — a league is won on the league, and where the league cannot
+    # separate two teams the answer is that it did not.
     order = [t for t, _ in sorted(
-        scored, key=lambda x: (x[1], x[0].get("power_index") or 0), reverse=True)]
+        scored, key=lambda x: (x[1], x[0]["school_name"]), reverse=True)]
     pct = {t["school_id"]: p for t, p in scored}
 
     def beat(a, b):
@@ -174,18 +177,21 @@ def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
                    if pct[t["school_id"]] == pct[top["school_id"]]]
     level = [t["school_name"] for t in level_teams]
 
-    # Say head to head whenever it is what actually separates them — not only
-    # when a swap was needed to get there. A champion who beat the team level
-    # with them was decided on that result, and reporting "Power Index" to a
-    # committee names the wrong reason.
-    decided_h2h = bool(level_teams) and all(beat(top, t) for t in level_teams)
-    if decided_h2h or any(top["school_name"] == w for w, _ in swaps):
-        basis = "league record, head to head"
-    elif level:
-        basis = "league record, Power Index"
-    else:
-        basis = "league record"
-    return {"team": top, "basis": basis, "tied_with": level}
+    if not level_teams:
+        return {"team": top, "basis": "league record", "tied_with": [],
+                "undecided": False}
+
+    # Level on the league, so head to head has to do it. Beating every team
+    # level with you wins the league; anything else — a split, or two teams that
+    # never met — is a league that did not produce a champion, and saying so is
+    # the honest answer. The alternative is inventing one from a rating the
+    # league does not use.
+    if all(beat(top, t) for t in level_teams):
+        return {"team": top, "basis": "league record, head to head",
+                "tied_with": level, "undecided": False}
+
+    return {"team": top, "basis": "level on league record and head to head",
+            "tied_with": level, "undecided": True}
 
 
 def load_ladder(year, gender_id, school_id):
@@ -255,6 +261,7 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
                 "name": got["team"]["school_name"],
                 "basis": got["basis"],
                 "derived": True,
+                "undecided": got.get("undecided", False),
                 "tiedWith": got["tied_with"],
             }
 
