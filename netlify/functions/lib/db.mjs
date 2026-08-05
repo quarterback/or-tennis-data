@@ -18,11 +18,22 @@ const SESSION_TTL_DAYS = 30;
 
 let _sql = null;
 
+/**
+ * The connection string, whichever way the database was provisioned.
+ *
+ * Netlify's own Postgres integration injects NETLIFY_DATABASE_URL; a database
+ * created directly at Neon gives you a string you paste in as DATABASE_URL.
+ * Accepting both means the integration works with nothing else to configure.
+ */
+export function databaseUrl() {
+  return process.env.DATABASE_URL || process.env.NETLIFY_DATABASE_URL || null;
+}
+
 /** Lazily-built Neon HTTP client. Throws a clear error if unconfigured. */
 export function db() {
   if (_sql) return _sql;
-  const url = process.env.DATABASE_URL;
-  if (!url) throw new Error('DATABASE_URL is not set');
+  const url = databaseUrl();
+  if (!url) throw new Error('no database configured (set DATABASE_URL)');
   _sql = neon(url);
   return _sql;
 }
