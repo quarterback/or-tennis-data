@@ -58,7 +58,13 @@ FIELD_SIZE = {"6A": 12, "5A": 8, "4A/3A/2A/1A": 8}
 
 
 def load_champions() -> dict:
-    """(year, classification, gender, league) -> {school_id, note}."""
+    """(year, classification, gender, league) -> {school_id, note}.
+
+    Hand-entered overrides only. Nobody publishes Oregon's league champions —
+    they are not documented anywhere — so this file exists for the cases where
+    someone actually knows (a league tournament, a coaches' vote) and wants to
+    correct what the standings imply.
+    """
     out = {}
     if not os.path.exists(CHAMPIONS_CSV):
         return out
@@ -72,6 +78,65 @@ def load_champions() -> dict:
             except (KeyError, ValueError):
                 continue
     return out
+
+
+def _league_win_pct(team: dict) -> float | None:
+    w = team.get("league_wins") or 0
+    l = team.get("league_losses") or 0
+    t = team.get("league_ties") or 0
+    played = w + l + t
+    if not played:
+        return None
+    # Same convention as the overall record: a tie is half a win, which is what
+    # a 4-4 is worth.
+    return (w + t * 0.5) / played
+
+
+def derive_champion(members: list[dict], duals_by_pair: dict) -> dict | None:
+    """The league champion, by league win percentage.
+
+    Oregon does not publish league champions, so the best available answer is
+    the team that won its league. Ties on win percentage go to head-to-head
+    between the tied teams, then to Power Index — and a tie broken by the head
+    to head uses the head-to-head answer, where losing a 4-4 tiebreaker IS a
+    loss.
+
+    Returns None when no member played a league match.
+    """
+    scored = [(t, _league_win_pct(t)) for t in members]
+    scored = [(t, p) for t, p in scored if p is not None]
+    if not scored:
+        return None
+
+    best = max(p for _, p in scored)
+    contenders = [t for t, p in scored if p == best]
+    if len(contenders) == 1:
+        return {"team": contenders[0], "basis": "league record", "tied_with": []}
+
+    # Head to head among the tied teams only.
+    def h2h_points(team):
+        pts = 0
+        for other in contenders:
+            if other is team:
+                continue
+            for letter in duals_by_pair.get(
+                    (team["school_id"], other["school_id"]), []):
+                pts += 1 if letter == "W" else (-1 if letter == "L" else 0)
+        return pts
+
+    ranked = sorted(
+        contenders,
+        key=lambda t: (h2h_points(t), t.get("power_index") or 0),
+        reverse=True)
+    top = ranked[0]
+    basis = ("league record, head to head"
+             if h2h_points(top) != h2h_points(ranked[1]) else
+             "league record, Power Index")
+    return {
+        "team": top,
+        "basis": basis,
+        "tied_with": [t["school_name"] for t in contenders if t is not top],
+    }
 
 
 def load_ladder(year, gender_id, school_id):
@@ -104,6 +169,7 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
 
     # Every dual involving one of our teams, indexed by school.
     per_team = defaultdict(list)
+    duals_by_pair = defaultdict(list)
     for d in duals:
         if d["gender_id"] != gender_id:
             continue
@@ -111,6 +177,39 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
             sid = d[side]["id"]
             if sid in by_id:
                 per_team[sid].append((d, d[other]["id"]))
+                duals_by_pair[(sid, d[other]["id"])].append(
+                    {"win": "W", "loss": "L", "tie": "T"}.get(
+                        gs.get_meet_result(d["meet"], sid, for_h2h=True), "T"))
+
+    # Champions: an administrator's designation if there is one, otherwise the
+    # team that won the league. Nobody publishes Oregon's league champions, so
+    # deriving is the only way the board has automatic bids at all — but the
+    # basis is carried through to the page so a committee can see it was
+    # inferred from the standings rather than reported by anyone.
+    champion_by_league = {}
+    for league in leagues:
+        override = champions.get((year, classification, gender, league))
+        if override and override["school_id"] in by_id:
+            champion_by_league[league] = {
+                "schoolId": override["school_id"],
+                "name": by_id[override["school_id"]]["school_name"],
+                "basis": override["note"] or "entered by an administrator",
+                "derived": False,
+                "tiedWith": [],
+            }
+            continue
+        members = [t for t in teams if t.get("league") == league]
+        got = derive_champion(members, duals_by_pair)
+        if got:
+            champion_by_league[league] = {
+                "schoolId": got["team"]["school_id"],
+                "name": got["team"]["school_name"],
+                "basis": got["basis"],
+                "derived": True,
+                "tiedWith": got["tied_with"],
+            }
+
+    champion_ids = {c["schoolId"] for c in champion_by_league.values()}
 
     out_teams = []
     for t in teams:
@@ -168,7 +267,8 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
                 if worst_loss is None or opp_rank > worst_loss["opponentClassRank"]:
                     worst_loss = row
 
-        champ = champions.get((year, classification, gender, t.get("league")))
+        champ = champion_by_league.get(t.get("league"))
+        is_champ = bool(champ and champ["schoolId"] == sid)
         out_teams.append({
             "schoolId": sid,
             "name": t["school_name"],
@@ -191,8 +291,10 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
             "flightsWon": t.get("total_flights_won"),
             "flightsPlayed": t.get("total_flights_played"),
             "matchesPlayed": t.get("matches_played"),
-            "autoBid": bool(champ and champ["school_id"] == sid),
-            "autoBidNote": (champ or {}).get("note", "") if champ and champ["school_id"] == sid else "",
+            "autoBid": is_champ,
+            "autoBidBasis": champ["basis"] if is_champ else "",
+            "autoBidDerived": bool(is_champ and champ["derived"]),
+            "autoBidTiedWith": champ["tiedWith"] if is_champ else [],
             "bands": bands,
             "bestWin": best_win,
             "worstLoss": worst_loss,
@@ -200,9 +302,6 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
             "ladder": load_ladder(year, gender_id, sid),
         })
 
-    designated = {
-        lg: champions.get((year, classification, gender, lg)) for lg in leagues
-    }
     return {
         "year": year,
         "classification": classification,
@@ -211,11 +310,12 @@ def build(year: int, classification: str, gender: str, entries: list[dict],
         "leagues": leagues,
         "autoBids": len(leagues),
         "atLargeBids": max(0, field - len(leagues)),
-        "champions": {
-            lg: (by_id.get(v["school_id"], {}).get("school_name") if v else None)
-            for lg, v in designated.items()
-        },
-        "undesignated": [lg for lg, v in designated.items() if not v],
+        "champions": champion_by_league,
+        # Leagues where nobody played a league match, so not even the standings
+        # can suggest a champion.
+        "undesignated": [lg for lg in leagues if lg not in champion_by_league],
+        "derivedChampions": sorted(
+            lg for lg, c in champion_by_league.items() if c["derived"]),
         "teams": out_teams,
     }
 

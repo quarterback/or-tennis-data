@@ -1,29 +1,26 @@
 // The one place the product's identity is defined.
 //
-// ─────────────────────────────────────────────────────────────────────────────
-// WORKING TITLE. The owner is supplying the real name and a custom wordmark font
-// before launch. Everything below is a placeholder chosen so the pages look
-// finished rather than unfinished; swapping it is this file plus the @font-face
-// block in css/brand.css, and nothing else in the codebase hard-codes a name.
-// ─────────────────────────────────────────────────────────────────────────────
+// The platform is not "oregontennis.org". It runs there, and the public rankings
+// site keeps that name, but the scoring-input and evaluation system is its own
+// product — so it can be pointed at another state, or stand on its own domain,
+// without a rename.
 //
-// The platform is not "oregontennis.org". It runs there, and the rankings site
-// remains oregontennis.org, but the reporting and evaluation system is its own
-// product with its own name — so it can be pointed at another state, or stand on
-// its own domain, without a rename.
+// The custom wordmark font is still to come. It drops into the @font-face block
+// in css/brand.css and is picked up by --brand-font; this file and that block are
+// the only two places the identity lives.
 
 export const BRAND = {
   // The wordmark. Rendered in --brand-font wherever `.wordmark` is used.
-  name: 'Baseline',
+  name: 'Cheesybook',
 
-  // Sits under the wordmark in the masthead. One line, sentence case.
+  // Sits beside the wordmark in the masthead. One line, sentence case.
   tagline: 'Oregon high school tennis',
 
-  // Shown in the footer of printed artifacts, where a reader has no URL bar.
+  // Shown on printed artifacts, where a reader has no URL bar.
   host: 'oregontennis.org',
 
   // Suffix for <title>. Keep it short — it is the browser tab.
-  titleSuffix: 'Baseline',
+  titleSuffix: 'Cheesybook',
 };
 
 /** `document.title` for a page, e.g. "Selection Board — Baseline". */

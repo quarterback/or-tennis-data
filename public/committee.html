@@ -174,13 +174,25 @@ function renderFieldbar() {
       <div class="k">Champions designated</div></div>`;
 
   const un = document.getElementById('undesignated');
-  un.innerHTML = data.undesignated.length
-    ? `<div class="note flag"><strong>${data.undesignated.length} of ${data.autoBids}
-       league champions are not yet designated</strong> —
-       ${esc(data.undesignated.join(', '))}. Automatic bids are entered by an
-       administrator, not inferred from the standings, so those bids are shown as
-       open rather than guessed at.</div>`
-    : '';
+  const parts = [];
+  if (data.derivedChampions.length) {
+    // Oregon does not publish league champions anywhere, so the board reads them
+    // off the standings. Saying so plainly is the difference between a committee
+    // trusting the number and a committee arguing with it.
+    parts.push(`<div class="note"><strong>${data.derivedChampions.length} automatic
+      bids are read from the league standings.</strong> Oregon does not publish
+      league champions, so each league's automatic bid goes to the best league
+      win percentage, breaking ties on head-to-head and then Power Index. Hover a
+      bid to see the basis. Anything settled another way — a league tournament, a
+      coaches' vote — can be entered in <code>league_champions.csv</code> and
+      overrides this.</div>`);
+  }
+  if (data.undesignated.length) {
+    parts.push(`<div class="note flag"><strong>${data.undesignated.length} league(s)
+      have no champion at all</strong> — ${esc(data.undesignated.join(', '))} —
+      because no league matches are on record. Those automatic bids are open.</div>`);
+  }
+  un.innerHTML = parts.join('');
 }
 
 function render() {
@@ -215,7 +227,9 @@ function render() {
           ${t.classRank ?? 'NR'}</span>
       </td>
       <td class="mid">${t.autoBid
-        ? '<span class="chip aq">Auto</span>'
+        ? `<span class="chip aq" title="${esc(t.league)} champion — ${esc(t.autoBidBasis)}${
+            t.autoBidTiedWith.length ? `; level with ${esc(t.autoBidTiedWith.join(', '))}` : ''
+          }">Auto${t.autoBidDerived ? '*' : ''}</span>`
         : (inField ? '<span class="chip quiet">At large</span>' : '')}</td>
       <td class="num">${esc(t.record)}</td>
       <td class="num">${esc(t.leagueRecord)}</td>

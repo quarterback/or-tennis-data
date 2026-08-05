@@ -1,3 +1,5 @@
+import { BRAND } from './brand.js';
+
 // Session handling and fetch wrappers shared by the coach-* pages.
 //
 // The four reporting pages each need identical sign-in handling, identical error
@@ -217,10 +219,11 @@ export function renderChrome({ title, subtitle }) {
     // Sibling-relative, matching lineups.html and methodology.html — the
     // publish root is whatever those already resolve against.
     nav.innerHTML =
-      '<a class="back" href="index.html">&larr; Rankings</a>' +
-      '<a class="back" href="coach.html">Reporting</a>' +
+      '<a class="back" href="coach.html">Report</a>' +
+      '<a class="back" href="scoreboard.html">Scoreboard</a>' +
       '<a class="back" href="lineups.html">Lineups</a>' +
-      '<span class="brand">Oregon HS Tennis</span>';
+      '<a class="back" href="index.html">Rankings</a>' +
+      `<span class="brand">${BRAND.name}</span>`;
   }
   const hero = document.querySelector('.hero .container');
   if (hero) {

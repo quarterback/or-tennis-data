@@ -1,26 +1,27 @@
-/* Shared chrome for the coach reporting pages.
+/* Chrome for the Cheesybook scoring-input pages.
  *
- * The tokens and component classes are lifted from public/lineups.html so the
- * reporting tool looks like the rest of the site. The existing pages keep their
- * inline styles — this file is shared only by the four coach-* pages, where
- * duplicating 200 lines four times would guarantee they drift apart.
+ * These four pages are the product's front door for a coach, so they wear the
+ * same identity as the rest of it: the palette comes from css/brand.css, which
+ * every coach page also loads, and the names below are aliases onto those
+ * tokens. Changing the palette — or flipping to the warm one with
+ * data-palette="warm" — moves these pages with it.
  *
  * Phone-first throughout: this gets filled in courtside, on a phone, by someone
  * who wants to be done in ninety seconds.
  */
 
 :root {
-  --fg: #212529; --muted: #6c757d; --bg: #fff; --pane: #f8f9fa;
-  --line: #dee2e6; --line-soft: #e9ecef; --primary: #198754;
-  --green: #198754; --green-bg: #d1e7dd; --red: #dc3545; --red-bg: #f8d7da;
-  --amber: #ffc107; --amber-bg: #fff3cd; --blue-soft: #cfe2ff;
+  --fg: var(--ink); --muted: var(--ink-3); --bg: var(--paper); --pane: var(--paper-2);
+  --line: var(--rule); --line-soft: var(--rule-2); --primary: var(--accent);
+  --green: var(--win); --green-bg: var(--win-wash); --red: var(--loss); --red-bg: var(--loss-wash);
+  --amber: var(--flag); --amber-bg: var(--flag-wash); --blue-soft: var(--accent-wash);
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: rgba(0,0,0,0.06); }
 html { -webkit-text-size-adjust: 100%; }
 body {
-  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
-  background: #f8f9fa; margin: 0; color: var(--fg); line-height: 1.4;
+  font-family: var(--body-font);
+  background: var(--paper-2); margin: 0; color: var(--fg); line-height: 1.4;
   overscroll-behavior-y: none;
   padding-bottom: calc(24px + env(safe-area-inset-bottom));
 }
@@ -33,16 +34,16 @@ a { color: var(--primary); }
 .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* Site chrome */
-.navbar { background: #198754; position: sticky; top: 0; z-index: 30; padding-top: env(safe-area-inset-top); }
+.navbar { background: var(--mast); position: sticky; top: 0; z-index: 30; padding-top: env(safe-area-inset-top); }
 .navbar-inner {
   max-width: 1200px; margin: 0 auto;
   padding: 12px calc(16px + env(safe-area-inset-right)) 12px calc(16px + env(safe-area-inset-left));
   display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
 }
-.navbar .back { color: #fff; text-decoration: none; font-size: 0.9rem; font-weight: 600; }
-.navbar .back:hover { color: #dee2e6; }
-.navbar .brand { color: #fff; font-weight: 600; font-size: 1.05rem; margin-left: auto; }
-.hero { background: linear-gradient(135deg, #198754, #0d503a); color: #fff; padding: 26px 0; margin-bottom: 22px; }
+.navbar .back { color: var(--mast-fg); text-decoration: none; font-size: 0.9rem; font-weight: 600; }
+.navbar .back:hover { color: var(--mast-dim); }
+.navbar .brand { color: var(--mast-fg); font-weight: 600; font-size: 1.05rem; margin-left: auto; }
+.hero { background: var(--mast); color: var(--mast-fg); padding: 26px 0; margin-bottom: 22px; }
 .hero h1 { margin: 0; font-weight: 700; font-size: 1.6rem; }
 .hero p { margin: 6px 0 0; opacity: 0.9; font-size: 0.92rem; }
 
