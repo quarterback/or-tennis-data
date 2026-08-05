@@ -134,6 +134,25 @@
   .box td a, .box th a { color: inherit; text-decoration: none; }
   .box td a:hover, .box th a:hover { color: var(--accent); text-decoration: underline; }
   .box .fin { font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--flag); }
+
+@media (max-width: 720px) {
+  /* A four-column box score on a phone wraps every name to three lines and
+     pushes the score — the thing the box score exists to show — off the right
+     edge. Each flight becomes a block: position and score on one line, the two
+     sides stacked under it. */
+  .box table, .box tbody, .box tr, .box td { display: block; width: 100%; }
+  .box thead { display: none; }
+  .box tbody tr {
+    position: relative; padding: 8px 12px 9px;
+    border-bottom: 1px solid var(--rule-2);
+  }
+  .box tbody tr:last-child { border-bottom: 0; }
+  .box td { border: 0; padding: 0; }
+  .box td.slot { font-size: 0.72rem; margin-bottom: 3px; width: auto; }
+  .box td.sc { position: absolute; top: 8px; right: 12px; text-align: right; width: auto; }
+  .box td:nth-child(2), .box td:nth-child(3) { min-width: 0; padding-right: 7rem; }
+  .box .fin { display: block; }
+}
 </style>
 </head>
 <body>
@@ -490,10 +509,7 @@ async function toggleBox(i, list, button) {
       <th><a href="team.html?s=${encodeURIComponent(d.a.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.a.name)}</a></th>
       <th><a href="team.html?s=${encodeURIComponent(d.b.id)}&g=${esc(String(d.gender).toLowerCase())}">${esc(d.b.name)}</a></th>
       <th class="sc">Score</th></tr></thead>
-    <tbody>${rows}</tbody></table>`
-    + (d.flights.length < 8
-      ? `<p class="tiny muted" style="padding:6px 12px 0">Only ${d.flights.length} of the
-         eight flights were contested.</p>` : '');
+    <tbody>${rows}</tbody></table>`;
   mount.style.display = '';
   button.textContent = 'Hide';
 }

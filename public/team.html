@@ -123,6 +123,17 @@
   .matrix td.h4 { background: #e0a03c; }
 
   @media (max-width: 640px) {
+    /* Same as the scoreboard: a flight is a block, not a four-column row, so
+       the position and the whole score are both readable. */
+    .gbox table, .gbox tbody, .gbox tr, .gbox td { display: block; width: 100%; }
+    .gbox thead { display: none; }
+    .gbox tbody tr { position: relative; padding: 8px 12px 9px; border-bottom: 1px solid var(--rule-2); }
+    .gbox tbody tr:last-child { border-bottom: 0; }
+    .gbox td { border: 0; padding: 0; }
+    .gbox td.slot { font-size: 0.72rem; margin-bottom: 3px; width: auto; }
+    .gbox td.sc { position: absolute; top: 8px; right: 12px; text-align: right; }
+    .gbox td:nth-child(2), .gbox td:nth-child(3) { padding-right: 6.5rem; }
+
     .tcard .lines { margin-left: 0; text-align: left; gap: 18px; }
     .flights { grid-template-columns: repeat(4, 1fr); }
     .g { padding: 5px 2px; grid-template-columns: 18px 1fr auto; }
