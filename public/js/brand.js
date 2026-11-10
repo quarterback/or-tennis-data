@@ -61,7 +61,8 @@ export function applyBrand(page, { links, current } = {}) {
  * "5A-4 Intermountain". The Special Districts do not: 6A, 5A and 4A/3A/2A/1A
  * each have a Special District 1, and they are three different leagues. Keyed
  * or labelled on the name alone they collide, so the classification goes in
- * front the way OSAA writes it: 4A/3A/2A/1A-SD1.
+ * front, spelled out for readers: 4A/3A/2A/1A Special District 1. (OSAA's own
+ * shorthand is 4A/3A/2A/1A-SD1; the site uses the plain form.)
  */
 export function leagueLabel(classification, league) {
   const name = String(league || '').trim();
@@ -69,7 +70,7 @@ export function leagueLabel(classification, league) {
   if (!name) return '';
   if (!cls || name.startsWith(cls)) return name;
   const sd = name.match(/^Special District\s+(\d+)$/i);
-  return sd ? `${cls}-SD${sd[1]}` : `${cls} ${name}`;
+  return sd ? `${cls} Special District ${sd[1]}` : `${cls} ${name}`;
 }
 
 /** A key that cannot collide across classifications. */

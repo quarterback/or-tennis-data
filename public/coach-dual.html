@@ -40,8 +40,7 @@
   }
   .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
   .field > label {
-    font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .05em; color: var(--ink-3);
+    font-size: 0.84rem; font-weight: 600; color: var(--ink-2);
   }
   .field select, .field input { width: 100%; }
 
@@ -67,12 +66,10 @@
   .lineup .sc-in.bad { border-color: var(--loss); }
   .lineup .awarded { font-size: 0.78rem; color: var(--ink-3); }
   .lineup .won {
-    font-size: 0.66rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .05em; color: var(--win); white-space: nowrap;
+    font-size: 0.8rem; font-weight: 700; color: var(--win); white-space: nowrap;
   }
   .lineup .wonby {
-    font-size: 0.64rem; font-weight: 700; text-transform: uppercase;
-    letter-spacing: .05em; color: var(--ink-3); margin: 4px 0 3px;
+    font-size: 0.8rem; font-weight: 600; color: var(--ink-3); margin: 4px 0 3px;
   }
   .lineup .who { display: flex; gap: 5px; }
   .lineup .who button {
@@ -111,8 +108,7 @@
     .lineup td.flight { font-size: 0.9rem; margin-bottom: 4px; }
     .lineup td[data-label]::before {
       content: attr(data-label);
-      display: block; font-size: 0.66rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3);
+      display: block; font-size: 0.8rem; font-weight: 600; color: var(--ink-2);
       margin-bottom: 3px;
     }
     .pair { flex-direction: column; }
@@ -135,7 +131,7 @@
     <div id="banner"></div>
 
     <div class="card">
-      <div class="card-head">Match details</div>
+      <div class="card-head">When and where</div>
       <div class="card-body">
         <div class="fields">
           <div class="field">
@@ -194,7 +190,7 @@
 
     <div class="card" id="lineup-card">
       <div class="card-head">
-        <span>Lineup and results</span>
+        <span>Lineup and scores</span>
         <span class="small muted" id="entered"></span>
       </div>
       <div class="card-body flush">

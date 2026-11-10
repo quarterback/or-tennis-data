@@ -233,7 +233,7 @@
        zooming on focus is in brand.css and applies here. */
     .header-bar { gap: 10px; padding: 12px; }
     .header-bar label { flex: 1 1 44%; flex-direction: column; align-items: stretch; gap: 3px;
-                        font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; }
+                        font-size: 0.82rem; }
     .header-bar select { width: 100%; min-width: 0 !important; }
     .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
 
@@ -310,9 +310,9 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-tab="ladder">Team ladder</button>
-  <button class="tab" data-tab="matrix">Position matrix</button>
-  <button class="tab" data-tab="check">Lineup check</button>
+  <button class="tab active" data-tab="ladder">Ladder</button>
+  <button class="tab" data-tab="matrix">Who played where</button>
+  <button class="tab" data-tab="check">Check a lineup</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
@@ -360,7 +360,7 @@
 
 <!-- ===================== MATRIX TAB ===================== -->
 <div class="tab-pane" id="pane-matrix">
-  <div id="matrix-empty" class="empty">Select a team above to view its position matrix.</div>
+  <div id="matrix-empty" class="empty">Select a team above to see who played where.</div>
   <div id="matrix-content" style="display:none">
     <div class="card">
       <div class="card-head">
@@ -396,7 +396,7 @@
   <div id="check-content" style="display:none">
     <div class="card">
       <div class="card-head">
-        <span>Rule version</span>
+        <span>Which version of the rule</span>
         <span class="muted small" style="margin-left:auto">Not final. The committee is still choosing.</span>
       </div>
       <div class="card-body">
@@ -432,7 +432,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-head">Rules</div>
+        <div class="card-head">Rule by rule</div>
         <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
       </div>
     </div>
@@ -452,11 +452,11 @@
     </div>
     <div class="card">
       <div class="card-head">
-        <span>Ladder and availability</span>
+        <span>Who's available</span>
         <span class="muted small" id="avail-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin:0 0 10px">This is the ladder on the Team ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
+        <p class="small muted" style="margin:0 0 10px">This is the ladder from the Ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
         <div class="avail" id="avail-list"></div>
       </div>
     </div>
@@ -638,7 +638,7 @@ function renderLadder() {
   const lp = document.getElementById('ladder-lockpill');
   if (coachSet && stored.locked) lp.innerHTML = '<span class="pill lock">Coach ladder · locked</span>';
   else if (coachSet) lp.innerHTML = '<span class="pill open">Coach ladder · draft</span>';
-  else lp.innerHTML = '<span class="pill derived">Data-derived order · coach hasn\'t set a ladder</span>';
+  else lp.innerHTML = '<span class="pill derived">Ordered by season results. The coach hasn\'t set a ladder.</span>';
   document.getElementById('ladder-updated').textContent =
     stored && stored.updatedAt ? 'Updated ' + fmtDate(stored.updatedAt) : '';
 

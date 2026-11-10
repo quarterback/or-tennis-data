@@ -65,8 +65,7 @@
   .cal-head button { padding: 3px 10px; font-size: 0.9rem; line-height: 1; }
   .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
   .cal-grid .dow {
-    text-align: center; font-size: 0.62rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .04em; color: var(--ink-3); padding: 2px 0 4px;
+    text-align: center; font-size: 0.74rem; font-weight: 700; color: var(--ink-3); padding: 2px 0 4px;
   }
   .cal-grid .day {
     padding: 0; height: 32px; font-size: 0.82rem; font-variant-numeric: tabular-nums;
@@ -111,8 +110,7 @@
   }
   .sub-grp { margin: 0 0 14px; }
   .sub-grp > h3 {
-    font-size: 0.68rem; text-transform: uppercase; letter-spacing: .08em;
-    color: var(--ink-3); margin: 12px 0 7px; font-weight: 700;
+    font-size: 0.95rem; color: var(--ink-2); margin: 14px 0 7px; font-weight: 700;
   }
 
   /* align-items:start so expanding one box score does not stretch every card
@@ -124,8 +122,7 @@
   }
   .game-head {
     display: flex; align-items: center; gap: 7px; padding: 6px 11px 0;
-    font-size: 0.62rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3);
+    font-size: 0.8rem; font-weight: 600; color: var(--ink-3);
   }
   /* FINAL sits where a scoreboard puts it: first, small, and unmissable. */
   .game-head .final { color: var(--ink); }
@@ -164,13 +161,11 @@
     display: flex; align-items: center; gap: 8px; font-size: 0.72rem; color: var(--ink-3);
   }
   .game-foot button {
-    padding: 2px 9px; font-size: 0.68rem; margin-left: auto;
-    text-transform: uppercase; letter-spacing: .05em;
+    padding: 2px 9px; font-size: 0.8rem; margin-left: auto;
   }
 
   .game-foot .boxlink {
-    margin-left: auto; font-size: 0.68rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .05em;
+    margin-left: auto; font-size: 0.82rem; font-weight: 600;
   }
 
 @media (max-width: 720px) {
@@ -429,13 +424,13 @@ function card(d, i) {
 
 /** Girls then Boys, and inside each: conference, non-league, postseason. */
 function group(list) {
-  const kind = (d) => (d.postseason ? 'Postseason' : (d.conference ? 'Conference' : 'Non-league'));
+  const kind = (d) => (d.postseason ? 'Postseason' : (d.conference ? 'Conference' : 'Non-conference'));
   const out = [];
   for (const gender of ['Girls', 'Boys']) {
     const mine = list.filter((d) => d.gender === gender);
     if (!mine.length) continue;
     const subs = [];
-    for (const k of ['Conference', 'Non-league', 'Postseason']) {
+    for (const k of ['Conference', 'Non-conference', 'Postseason']) {
       const got = mine.filter((d) => kind(d) === k);
       if (got.length) subs.push([k, got]);
     }
