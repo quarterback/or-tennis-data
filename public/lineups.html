@@ -140,6 +140,40 @@
     border-radius: 10px; box-shadow: var(--shadow);
   }
 
+
+  /* lineup check */
+  .verdict { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+             padding:12px 16px; margin:16px 0; border-radius:10px;
+             border:1px solid var(--rule); background:var(--paper); box-shadow:var(--shadow); }
+  .verdict .big { font-size:1.05rem; font-weight:800; }
+  .verdict.ok { border-color:var(--win); background:var(--win-wash); }
+  .verdict.ok .big { color:var(--win); }
+  .verdict.bad { border-color:var(--loss); background:var(--flag-wash); }
+  .verdict.bad .big { color:var(--loss); }
+  .checks { list-style:none; margin:0; padding:0; }
+  .checks li { display:flex; gap:10px; padding:7px 0; border-bottom:1px solid var(--rule-2); font-size:0.88rem; }
+  .checks li:last-child { border-bottom:0; }
+  .checks .mk { flex:none; width:18px; font-weight:800; text-align:center; }
+  .checks .ok .mk { color:var(--win); } .checks .bad .mk { color:var(--loss); }
+  .checks .na { color:var(--ink-3); } .checks .na .mk { color:var(--ink-4); }
+  .checks .bad { font-weight:600; }
+  .checks .rule { flex:none; margin-left:auto; font-size:0.72rem; color:var(--ink-3); white-space:nowrap; }
+  .lu-table td { vertical-align:middle; }
+  .lu-table .fl { font-weight:700; white-space:nowrap; width:120px; }
+  .lu-table select { min-width:0; width:100%; max-width:260px; }
+  .lu-table .pair { display:flex; gap:6px; flex-wrap:wrap; }
+  .lu-table .pair select { flex:1 1 160px; }
+  .lu-table tr.err td.fl { color:var(--loss); }
+  .lu-table tr.off td { color:var(--ink-3); }
+  .avail { columns: 2 220px; column-gap: 24px; }
+  .avail label { display:flex; gap:8px; align-items:baseline; padding:3px 0; font-size:0.86rem; break-inside:avoid; }
+  .avail .lr { width:30px; text-align:right; font-variant-numeric:tabular-nums; color:var(--ink-3); flex:none; }
+  .avail .dr { font-size:0.72rem; color:var(--accent-2); font-weight:700; }
+  .avail .gone { text-decoration:line-through; color:var(--ink-3); }
+  .check-grid { display:grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap:16px; }
+  .check-grid > .card { margin:0; }
+  @media (max-width: 860px) { .check-grid { grid-template-columns: 1fr; } }
+
   /* ===== Mobile ===== */
   @media (max-width: 640px) {
     /* Filters go two-up and full-width; the 16px/40px sizing that stops iOS
@@ -151,6 +185,14 @@
     .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
 
     .tabs .tab { padding: 9px 13px; }
+
+    /* Lineup check: each flight stacks so a player's name gets the full width. */
+    .lu-table, .lu-table tbody, .lu-table tr, .lu-table td { display: block; width: 100%; }
+    .lu-table tr { padding: 10px 12px; border-bottom: 1px solid var(--rule); }
+    .lu-table td { border: 0; padding: 2px 0; }
+    .lu-table .fl { width: auto; }
+    .lu-table select { max-width: none; }
+    .lu-table .pair select { flex: 1 1 100%; }
 
     /* Ladder becomes one card per player.
        As a four-column table the name dropdown gets whatever width is left
@@ -222,6 +264,7 @@
 <div class="tabs">
   <button class="tab active" data-tab="ladder">Team ladder</button>
   <button class="tab" data-tab="matrix">Position matrix</button>
+  <button class="tab" data-tab="check">Lineup check</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
@@ -281,6 +324,47 @@
           <span><span class="sw heat3"></span>4–6</span>
           <span><span class="sw heat4"></span>7+</span>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== LINEUP CHECK TAB ===================== -->
+<div class="tab-pane" id="pane-check">
+  <div id="check-empty" class="empty">Select a team above to check a state championship lineup.</div>
+  <div id="check-content" style="display:none">
+    <div id="verdict" class="verdict"></div>
+    <div class="check-grid">
+      <div class="card">
+        <div class="card-head">
+          <span id="check-team-name">Lineup</span>
+          <span class="muted small" style="margin-left:auto">Ladder # on the day in parentheses</span>
+        </div>
+        <div class="card-body flush">
+          <div class="table-wrap">
+          <table class="lu-table">
+            <tbody id="lu-body"></tbody>
+          </table>
+          </div>
+        </div>
+        <div class="submit-bar" style="margin:0;border:0;border-top:1px solid var(--rule);border-radius:0;box-shadow:none">
+          <button id="btn-lu-default">Fill from ladder</button>
+          <button id="btn-lu-clear">Clear</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-head">Rules</div>
+        <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span>Ladder and availability</span>
+        <span class="muted small" id="avail-summary" style="margin-left:auto"></span>
+      </div>
+      <div class="card-body">
+        <p class="small muted" style="margin:0 0 10px">This is the ladder on the Team ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
+        <div class="avail" id="avail-list"></div>
       </div>
     </div>
   </div>
@@ -355,6 +439,15 @@ async function boot() {
   refreshClassOptions();
   refreshDistrictOptions();
   refreshTeamOptions();
+  // Deep link: lineups.html?team=<key>[&tab=check]. The team page links here.
+  const q = new URLSearchParams(location.search);
+  const tab = q.get('tab');
+  if (tab) document.querySelector(`.tab[data-tab="${CSS.escape(tab)}"]`)?.click();
+  const want = q.get('team');
+  if (want && currentTeams().some(t => t.key === want)) {
+    document.getElementById('sel-team').value = want;
+    selectTeam(want);
+  }
 }
 
 function currentTeams() {
@@ -406,6 +499,8 @@ async function selectTeam(key) {
         .concat(derivedOrder.filter(pid => !stored.ladder.includes(pid)))
     : derivedOrder.slice();
   document.getElementById('chk-lock').checked = !!(stored && stored.locked);
+  await rulesReady;
+  resetCheck();
   render();
 }
 
@@ -436,9 +531,10 @@ function render() {
   document.getElementById('ladder-content').style.display = has ? '' : 'none';
   document.getElementById('matrix-empty').style.display = has ? 'none' : '';
   document.getElementById('matrix-content').style.display = has ? '' : 'none';
-  if (!has) return;
+  if (!has) { renderCheck(); return; }
   renderLadder();
   renderMatrix();
+  renderCheck();
 }
 
 function renderLadder() {
@@ -486,6 +582,7 @@ function setPos(i, pid) {
   if (j >= 0) { workingOrder[j] = workingOrder[i]; }
   workingOrder[i] = pid;
   renderLadder();
+  renderCheck();
 }
 
 function heatClass(n) { return n===0?'heat0':n===1?'heat1':n<=3?'heat2':n<=6?'heat3':'heat4'; }
@@ -535,6 +632,100 @@ function matchLog(p) {
   return `<table><thead><tr><th>Date</th><th>Position</th><th>Res</th><th>Score</th><th>Opponent</th><th></th></tr></thead><tbody>${rows}</tbody></table>`;
 }
 
+
+// ---------- lineup check ----------
+// The rules live in js/lineup-rules.js (pinned by tests/functions/lineup-rules.test.mjs).
+let RULES = null;
+let lineup = null;        // { S1: pid|null, ..., D1: [pid|null, pid|null] | null, ... }
+let absent = new Set();   // pids marked absent for the match
+const rulesReady = import('./js/lineup-rules.js').then(m => { RULES = m; });
+
+function resetCheck() {
+  absent = new Set();
+  lineup = RULES && detail ? RULES.defaultLineup(workingOrder, []) : null;
+}
+
+function renderCheck() {
+  const has = !!detail && !!RULES;
+  document.getElementById('check-empty').style.display = has ? 'none' : '';
+  document.getElementById('check-content').style.display = has ? '' : 'none';
+  if (!has) return;
+  if (!lineup) lineup = RULES.defaultLineup(workingOrder, [...absent]);
+  // A player can leave the ladder only by a data rebuild; drop them from absent.
+  absent = new Set([...absent].filter(pid => workingOrder.includes(pid)));
+  const abs = [...absent];
+  const ranks = RULES.effectiveRanks(workingOrder, abs);
+  const res = RULES.validateLineup(workingOrder, lineup, abs);
+  const off = new Set(res.defaulted || []);
+
+  document.getElementById('check-team-name').textContent =
+    `${detail.name} — ${detail.gender} ${detail.classification||''}`;
+
+  // Verdict
+  const bad = res.checks.filter(c => !c.ok);
+  const v = document.getElementById('verdict');
+  v.className = 'verdict ' + (res.valid ? 'ok' : 'bad');
+  v.innerHTML = res.valid
+    ? `<span class="big">✓ Valid lineup</span><span class="small muted">${res.available} players available${off.size ? ' · defaulted: ' + [...off].map(f => RULES.FLIGHT_NAME[f]).join(', ') : ''}</span>`
+    : `<span class="big">✗ Not a valid lineup</span><span class="small">${bad.length} rule${bad.length===1?'':'s'} broken</span>`;
+
+  // Rule list
+  document.getElementById('lu-checks').innerHTML = res.checks.map(c =>
+    `<li class="${c.na ? 'na' : c.ok ? 'ok' : 'bad'}"><span class="mk">${c.na ? '–' : c.ok ? '✓' : '✗'}</span>` +
+    `<span>${escapeHtml(c.text)}</span><span class="rule">${/^\d/.test(c.rule) ? 'Rule ' : ''}${escapeHtml(c.rule)}</span></li>`
+  ).join('');
+
+  // Lineup rows
+  const opt = (sel) => {
+    let h = '<option value="">—</option>';
+    workingOrder.forEach(pid => {
+      const p = playerByPid(pid); if (!p) return;
+      const r = ranks.get(pid);
+      if (!r && pid !== sel) return; // absent players are not offered
+      h += `<option value="${pid}"${pid===sel?' selected':''}>${r ? '(#' + r + ') ' : '(absent) '}${escapeHtml(p.name)}</option>`;
+    });
+    return h;
+  };
+  const errFlights = new Set();
+  bad.forEach(c => { const m = c.text.match(/No\. (\d) (singles|doubles)/g) || []; m.forEach(x => errFlights.add((x.includes('singles')?'S':'D') + x[4])); });
+  const body = document.getElementById('lu-body');
+  body.innerHTML = RULES.FLIGHTS.map(f => {
+    const cls = off.has(f) ? 'off' : errFlights.has(f) ? 'err' : '';
+    let cell, extra = '';
+    if (f[0] === 'S') {
+      cell = `<select data-f="${f}" data-i="0">${opt(lineup[f])}</select>`;
+    } else {
+      const pr = lineup[f] || [null, null];
+      cell = `<div class="pair"><select data-f="${f}" data-i="0">${opt(pr[0])}</select><select data-f="${f}" data-i="1">${opt(pr[1])}</select></div>`;
+      const c = RULES.combined(workingOrder, pr, abs);
+      extra = c ? `<span class="small muted">combined ${c}</span>` : '';
+    }
+    if (off.has(f)) extra = '<span class="pill open">default</span>';
+    return `<tr class="${cls}"><td class="fl">${RULES.FLIGHT_NAME[f]}</td><td>${cell}</td><td class="small" style="white-space:nowrap">${extra}</td></tr>`;
+  }).join('');
+  body.querySelectorAll('select').forEach(sel => sel.onchange = () => {
+    const f = sel.dataset.f, i = +sel.dataset.i, pid = sel.value || null;
+    if (f[0] === 'S') lineup[f] = pid;
+    else { const pr = (lineup[f] || [null, null]).slice(); pr[i] = pid; lineup[f] = pr; }
+    renderCheck();
+  });
+
+  // Availability
+  document.getElementById('avail-summary').textContent =
+    `${res.available} of ${workingOrder.length} available`;
+  document.getElementById('avail-list').innerHTML = workingOrder.map((pid, i) => {
+    const p = playerByPid(pid); if (!p) return '';
+    const gone = absent.has(pid), r = ranks.get(pid);
+    const moved = !gone && r !== i + 1 ? ` <span class="dr">→ #${r}</span>` : '';
+    return `<label><span class="lr">#${i+1}</span><input type="checkbox" data-pid="${pid}"${gone?' checked':''}>` +
+      `<span class="${gone?'gone':''}">${escapeHtml(p.name)}</span>${gone?' <span class="small muted">absent</span>':''}${moved}</label>`;
+  }).join('');
+  document.querySelectorAll('#avail-list input').forEach(cb => cb.onchange = () => {
+    if (cb.checked) absent.add(cb.dataset.pid); else absent.delete(cb.dataset.pid);
+    renderCheck();
+  });
+}
+
 // ---------- submit ----------
 async function submitLadder() {
   const st = document.getElementById('submit-status');
@@ -575,7 +766,11 @@ document.getElementById('sel-class').onchange = () => { refreshDistrictOptions()
 document.getElementById('sel-district').onchange = refreshTeamOptions;
 document.getElementById('sel-gender').onchange = () => { refreshDistrictOptions(); refreshTeamOptions(); };
 document.getElementById('sel-team').onchange = (e) => selectTeam(e.target.value);
-document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); };
+document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); renderCheck(); };
+document.getElementById('btn-lu-default').onclick = () => { lineup = RULES.defaultLineup(workingOrder, [...absent]); renderCheck(); };
+document.getElementById('btn-lu-clear').onclick = () => {
+  lineup = Object.fromEntries(RULES.FLIGHTS.map(f => [f, f[0] === 'S' ? null : [null, null]])); renderCheck();
+};
 document.getElementById('btn-submit').onclick = submitLadder;
 
 boot();
