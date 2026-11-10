@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Match — Cheesybook</title>
+<title>Match — Oregon Scorebook</title>
+<meta name="description" content="Tennis score reporting system for Oregon high school tennis.">
+<!-- Link previews (Open Graph / Twitter). Crawlers read these from the HTML, never from script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oregon Scorebook">
+<meta property="og:title" content="Match — Oregon Scorebook">
+<meta property="og:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta property="og:url" content="https://oregontennis.org/match.html">
+<meta property="og:image" content="https://oregontennis.org/scorebook-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oregon Scorebook — score reporting for Oregon high school tennis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Match — Oregon Scorebook">
+<meta name="twitter:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta name="twitter:image" content="https://oregontennis.org/scorebook-social.png">
 <meta name="theme-color" content="#6a3937">
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/brand.css">
@@ -17,8 +32,7 @@
     box-shadow: var(--shadow); margin: 10px 0 16px; overflow: hidden;
   }
   .head .when {
-    padding: 8px 16px 0; font-size: 0.68rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3);
+    padding: 8px 16px 0; font-size: 0.84rem; font-weight: 600; color: var(--ink-3);
     display: flex; align-items: center; gap: 9px; flex-wrap: wrap;
   }
   .head .when .final { color: var(--ink); }
@@ -55,8 +69,7 @@
   table.card td a { color: inherit; }
   table.card td a:hover { color: var(--accent); }
   table.card .fin {
-    font-size: 0.68rem; text-transform: uppercase; letter-spacing: .05em;
-    color: var(--flag); margin-left: 6px;
+    font-size: 0.8rem; color: var(--flag); margin-left: 6px;
   }
   table.card tr.dline td { border-top: 2px solid var(--rule); }
 
@@ -102,7 +115,7 @@ import { applyBrand, leagueLabel } from './js/brand.js';
 applyBrand('Match', {
   current: 'Scoreboard',
   links: [
-    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scorebook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
     { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
@@ -186,7 +199,7 @@ async function boot() {
       || (same(x.b.id, pairA) && same(x.a.id, pairB)))));
   if (!d) return fail('No card on record for that match.');
 
-  document.title = `${d.a.name} vs ${d.b.name} — Cheesybook`;
+  document.title = `${d.a.name} vs ${d.b.name} — Oregon Scorebook`;
 
   if (fromTeam) {
     const back = document.getElementById('back');
@@ -197,7 +210,7 @@ async function boot() {
   // The header. Winner leads, the way a tennis result is always reported.
   const aWon = d.a.score > d.b.score;
   const bWon = d.b.score > d.a.score;
-  const kind = d.postseason ? 'Postseason' : (d.conference ? 'Conf' : 'Non-Conf');
+  const kind = d.postseason ? 'Postseason' : (d.conference ? 'Conference' : 'Non-conference');
   const league = leagueLabel(d.a.classification, d.a.league);
 
   const sideHtml = (t, won, lost) => `

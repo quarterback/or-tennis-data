@@ -1,9 +1,9 @@
-/* Cheesybook — the product's visual identity.
+/* Oregon Scorebook — the product's visual identity.
  *
  * ───────────────────────────────────────────────────────────────────────────
  * THREE PALETTES, ONE SWITCH.
  *
- * The default is the cheese palette, because the product is called Cheesybook:
+ * The default is the cheese palette, the product's original look:
  * ivory paper, a bitter-chocolate masthead, gold and orange for the things that
  * need to interrupt, jungle green for good news.
  *
@@ -27,7 +27,8 @@
  * Two custom faces, from public/fonts, and deliberately no more:
  *
  *   Funkora Regular  the wordmark, and only the wordmark. Chunky and friendly,
- *                    which is the right register for a thing called Cheesybook.
+ *                    which is the right register for a scorebook
+ *                    coaches keep on their phones.
  *   Heilo Champion   page headings. Condensed athletic caps — the register a
  *                    sports results page wants, and it harmonises with the
  *                    wordmark instead of arguing with it.
@@ -42,22 +43,22 @@
  */
 
 @font-face {
-  font-family: 'Cheesybook Wordmark';
+  font-family: 'Scorebook Wordmark';
   src: url('../fonts/Funkora-Regular.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Cheesybook Display';
+  font-family: 'Scorebook Display';
   src: url('../fonts/Heilo-Champion.otf') format('opentype');
   font-weight: 400;
   font-display: swap;
 }
 
 :root {
-  --brand-font: 'Cheesybook Wordmark', 'Inter Tight', 'SF Pro Display', system-ui, sans-serif;
-  --display-font: 'Cheesybook Display', 'Inter Tight', system-ui, -apple-system, sans-serif;
+  --brand-font: 'Scorebook Wordmark', 'Inter Tight', 'SF Pro Display', system-ui, sans-serif;
+  --display-font: 'Scorebook Display', 'Inter Tight', system-ui, -apple-system, sans-serif;
   --body-font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   /* ── Cheese palette (default) ────────────────────────────────────────────
@@ -313,11 +314,9 @@ thead th {
   position: sticky;
   top: 0;
   background: var(--paper-2);
-  font-size: 0.68rem;
+  font-size: 0.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--ink-3);
+  color: var(--ink-2);
   text-align: left;
   padding: 8px 10px;
   border-bottom: 1px solid var(--rule);
@@ -367,10 +366,8 @@ tr.cutline td { border-bottom: 2px solid var(--flag); position: relative; }
 tr.cutline-label td {
   background: var(--flag-wash);
   color: var(--flag);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: .07em;
   padding: 5px 10px;
 }
 

@@ -346,7 +346,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
           ? `Laddered below their season position: ${low.map(([pid, m]) => `${name(pid)} (No. ${m.k} singles in ${m.n} of ${m.total} matches, laddered #${pos.get(pid)})`).join('; ')}.`
           : 'No player is laddered below the singles position they played 50%+ of the season.',
       !ctx.seasonSlots,
-      `On the Team ladder tab, move ${low.map(([pid, m]) => `${name(pid)} up to #${m.k} or higher`).join('; ')}.` +
+      `On the Ladder tab, move ${low.map(([pid, m]) => `${name(pid)} up to #${m.k} or higher`).join('; ')}.` +
         ([1, 2, 3, 4].some((k) => [...maj.values()].filter((m) => m.k <= k).length > k)
           ? ` This team has more players with a 50% season position in the top spots than there are spots, so no ladder satisfies the rule as written.`
           : ''));

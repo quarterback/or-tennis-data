@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lineups — Cheesybook</title>
+<title>Lineups — Oregon Scorebook</title>
+<meta name="description" content="Tennis score reporting system for Oregon high school tennis.">
+<!-- Link previews (Open Graph / Twitter). Crawlers read these from the HTML, never from script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oregon Scorebook">
+<meta property="og:title" content="Lineups — Oregon Scorebook">
+<meta property="og:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta property="og:url" content="https://oregontennis.org/lineups.html">
+<meta property="og:image" content="https://oregontennis.org/scorebook-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oregon Scorebook — score reporting for Oregon high school tennis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lineups — Oregon Scorebook">
+<meta name="twitter:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta name="twitter:image" content="https://oregontennis.org/scorebook-social.png">
 <!-- PWA / installable home-screen app -->
 <meta name="theme-color" content="#6a3937">
 <meta name="mobile-web-app-capable" content="yes">
@@ -16,7 +31,7 @@
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <style>
-  /* This page sits on css/brand.css like every other Cheesybook page: the
+  /* This page sits on css/brand.css like every other Oregon Scorebook page: the
      masthead, .wrap, .panel, the tables, the buttons and the controls bar all
      come from there. What is left here is what only a lineup page needs.
 
@@ -109,7 +124,26 @@
      ordering control that occupies the name cell. */
   .pcard-link { font-size: 0.72rem; margin-left: 8px; white-space: nowrap; }
   .rank { font-weight: 700; font-size: 1.05rem; width: 34px; text-align: center; color: var(--ink); }
-  .pos-select { min-width: 190px; max-width: 100%; }
+  /* Ladder reordering: a drag handle and a position box on every row. Both
+     INSERT (everyone between slides one place); neither swaps. */
+  td.rank-cell { white-space: nowrap; width: 1%; }
+  .rank-cell .rc { display: inline-flex; align-items: center; gap: 4px; }
+  .grip {
+    cursor: grab; touch-action: none; user-select: none;
+    padding: 6px 6px; border-radius: 6px; color: var(--ink-3); font-size: 1.05rem; line-height: 1;
+  }
+  .grip:hover { background: var(--rule-2); color: var(--ink); }
+  .pos-in { width: 3.4em; text-align: center; font-weight: 700; font-variant-numeric: tabular-nums; padding: 4px 2px; }
+  .pname { font-weight: 600; }
+  .pgrade { font-size: 0.78rem; color: var(--ink-3); margin-left: 4px; }
+  .ladder-row.dragging td { opacity: 0.45; }
+  .ladder-row.drop-before td { box-shadow: inset 0 3px 0 var(--accent); }
+  .ladder-row.drop-after td { box-shadow: inset 0 -3px 0 var(--accent); }
+  body.ladder-dragging, body.ladder-dragging * { cursor: grabbing !important; user-select: none; }
+  #order-panel textarea { width: 100%; min-height: 260px; font: inherit; font-size: 0.95rem; line-height: 1.5; padding: 8px 10px; }
+  #order-panel .order-msgs { font-size: 0.86rem; margin-top: 8px; }
+  #order-panel .order-msgs li { margin: 2px 0; }
+  .order-actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 10px; }
   .move-btns { display: inline-flex; gap: 3px; }
   .delta { font-size: 0.72rem; margin-left: 6px; }
   .delta.up { color: var(--win); } .delta.down { color: var(--loss); }
@@ -199,7 +233,7 @@
        zooming on focus is in brand.css and applies here. */
     .header-bar { gap: 10px; padding: 12px; }
     .header-bar label { flex: 1 1 44%; flex-direction: column; align-items: stretch; gap: 3px;
-                        font-size: 0.72rem; text-transform: uppercase; letter-spacing: .03em; }
+                        font-size: 0.82rem; }
     .header-bar select { width: 100%; min-width: 0 !important; }
     .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
 
@@ -223,21 +257,16 @@
     #ladder-table thead { display: none; }
     #ladder-table .ladder-row {
       border: 1px solid var(--rule); border-radius: 10px;
-      /* Top padding clears the absolutely-positioned position badge, which
-         otherwise draws over the name select. */
-      padding: 26px 12px 12px; margin-bottom: 10px; background: var(--paper);
+      padding: 10px 12px 12px; margin-bottom: 10px; background: var(--paper);
       position: relative;
     }
     #ladder-table .ladder-row td { border: 0; padding: 3px 0; }
     #ladder-table .ladder-row:hover td { background: none; }
     /* Rank sits as a badge in the corner rather than its own column. */
-    #ladder-table .rank {
-      position: absolute; top: 10px; right: 12px; width: auto;
-      font-size: 0.72rem; font-weight: 700; color: var(--ink-3);
-      text-transform: uppercase; letter-spacing: .06em;
-    }
-    #ladder-table .rank::before { content: 'Position '; }
-    .pos-select { width: 100%; min-width: 0; }
+    #ladder-table .rank-cell { width: auto; }
+    /* A thumb-sized handle and position box. */
+    .grip { padding: 10px 12px; font-size: 1.3rem; margin-left: -8px; }
+    .pos-in { width: 3.6em; }
     /* Overall record loses its header when the table stacks, so name it. */
     #ladder-table .ladder-row td.n { text-align: left; font-size: 0.82rem; color: var(--ink-3); }
     #ladder-table .ladder-row td.n::before { content: 'Overall '; }
@@ -281,15 +310,27 @@
 </div>
 
 <div class="tabs">
-  <button class="tab active" data-tab="ladder">Team ladder</button>
-  <button class="tab" data-tab="matrix">Position matrix</button>
-  <button class="tab" data-tab="check">Lineup check</button>
+  <button class="tab active" data-tab="ladder">Ladder</button>
+  <button class="tab" data-tab="matrix">Who played where</button>
+  <button class="tab" data-tab="check">Check a lineup</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
 <div class="tab-pane active" id="pane-ladder">
   <div id="ladder-empty" class="empty">Select a team above to view its ladder.</div>
   <div id="ladder-content" style="display:none">
+    <div class="card" id="order-panel" style="display:none">
+      <div class="card-head">Enter the ladder order</div>
+      <div class="card-body">
+        <p class="small muted" style="margin:0 0 8px">One player per line, No. 1 at the top. A last name or first name is enough when it points at one player. Anyone you leave out goes to the bottom in their current order.</p>
+        <textarea id="order-text" spellcheck="false"></textarea>
+        <div class="order-msgs" id="order-msgs"></div>
+        <div class="order-actions">
+          <button class="primary" id="btn-order-apply">Apply order</button>
+          <button id="btn-order-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
     <div class="card">
       <div class="card-head">
         <span id="ladder-team-name">Team</span>
@@ -299,7 +340,7 @@
       <div class="card-body">
         <div class="table-wrap">
         <table id="ladder-table">
-          <thead><tr><th class="n">#</th><th>Player</th><th>Positions (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
+          <thead><tr><th class="n" title="Drag the handle, or type a new position">#</th><th>Player</th><th>Positions (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
           <tbody id="ladder-body"></tbody>
         </table>
         </div>
@@ -307,6 +348,7 @@
     </div>
 
     <div class="submit-bar">
+      <button id="btn-order-open">Enter order</button>
       <button id="btn-reset-order">Reset to data order</button>
       <label class="small"><input type="checkbox" id="chk-lock"> Lock as final ladder</label>
       <span style="margin-left:auto"></span>
@@ -318,7 +360,7 @@
 
 <!-- ===================== MATRIX TAB ===================== -->
 <div class="tab-pane" id="pane-matrix">
-  <div id="matrix-empty" class="empty">Select a team above to view its position matrix.</div>
+  <div id="matrix-empty" class="empty">Select a team above to see who played where.</div>
   <div id="matrix-content" style="display:none">
     <div class="card">
       <div class="card-head">
@@ -354,7 +396,7 @@
   <div id="check-content" style="display:none">
     <div class="card">
       <div class="card-head">
-        <span>Rule version</span>
+        <span>Which version of the rule</span>
         <span class="muted small" style="margin-left:auto">Not final. The committee is still choosing.</span>
       </div>
       <div class="card-body">
@@ -390,7 +432,7 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-head">Rules</div>
+        <div class="card-head">Rule by rule</div>
         <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
       </div>
     </div>
@@ -410,11 +452,11 @@
     </div>
     <div class="card">
       <div class="card-head">
-        <span>Ladder and availability</span>
+        <span>Who's available</span>
         <span class="muted small" id="avail-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin:0 0 10px">This is the ladder on the Team ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
+        <p class="small muted" style="margin:0 0 10px">This is the ladder from the Ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
         <div class="avail" id="avail-list"></div>
       </div>
     </div>
@@ -427,7 +469,7 @@ import { applyBrand } from './js/brand.js';
 applyBrand('Lineups', {
   current: 'Lineups',
   links: [
-    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scorebook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
     { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
@@ -551,6 +593,7 @@ async function selectTeam(key) {
     : derivedOrder.slice();
   document.getElementById('chk-lock').checked = !!(stored && stored.locked);
   await rulesReady;
+  await ladderReady;
   resetCheck();
   render();
 }
@@ -595,14 +638,9 @@ function renderLadder() {
   const lp = document.getElementById('ladder-lockpill');
   if (coachSet && stored.locked) lp.innerHTML = '<span class="pill lock">Coach ladder · locked</span>';
   else if (coachSet) lp.innerHTML = '<span class="pill open">Coach ladder · draft</span>';
-  else lp.innerHTML = '<span class="pill derived">Data-derived order · coach hasn\'t set a ladder</span>';
+  else lp.innerHTML = '<span class="pill derived">Ordered by season results. The coach hasn\'t set a ladder.</span>';
   document.getElementById('ladder-updated').textContent =
     stored && stored.updatedAt ? 'Updated ' + fmtDate(stored.updatedAt) : '';
-
-  // Options list (stable player order) reused by every position dropdown.
-  const opts = detail.ladder.map(p =>
-    `<option value="${p.pid}">${escapeHtml(p.name)}${p.grade?` (gr ${escapeHtml(p.grade)})`:''}</option>`
-  ).join('');
 
   const body = document.getElementById('ladder-body');
   body.innerHTML = '';
@@ -612,28 +650,120 @@ function renderLadder() {
     const tr = document.createElement('tr');
     tr.className = 'ladder-row';
     tr.innerHTML =
-      `<td class="rank">${i+1}</td>` +
-      `<td><select class="pos-select" data-pos="${i}">${opts}</select>` +
+      `<td class="rank-cell"><span class="rc">` +
+        `<span class="grip" title="Drag to move" aria-hidden="true">⠿</span>` +
+        `<input class="pos-in" type="number" inputmode="numeric" min="1" max="${workingOrder.length}" value="${i+1}" aria-label="Ladder position for ${escapeHtml(p.name)}">` +
+      `</span></td>` +
+      `<td><span class="pname">${escapeHtml(p.name)}</span>${p.grade?`<span class="pgrade">gr ${escapeHtml(p.grade)}</span>`:''}` +
         `<a class="pcard-link" href="player.html?t=${encodeURIComponent(teamKey())}&p=${encodeURIComponent(pid)}" title="Player card">card</a></td>` +
       `<td>${posChips(p)}</td>` +
       `<td class="n">${recStr(p.rec)}</td>`;
-    tr.querySelector('select').value = pid;
+    tr.dataset.pid = pid;
     body.appendChild(tr);
   });
-  body.querySelectorAll('.pos-select').forEach(sel =>
-    sel.onchange = () => setPos(+sel.dataset.pos, sel.value)
-  );
+  body.querySelectorAll('.ladder-row').forEach(tr => {
+    const inp = tr.querySelector('.pos-in');
+    const commit = () => {
+      const n = parseInt(inp.value, 10);
+      const at = workingOrder.indexOf(tr.dataset.pid);
+      if (!Number.isFinite(n) || n - 1 === at) { inp.value = at + 1; return; }
+      setOrder(LADDER.moveTo(workingOrder, tr.dataset.pid, n - 1), tr.dataset.pid);
+    };
+    inp.onchange = commit;
+    inp.onkeydown = (e) => { if (e.key === 'Enter') { e.preventDefault(); inp.blur(); } };
+    inp.onfocus = () => inp.select();
+    tr.querySelector('.grip').onpointerdown = (e) => startDrag(e, tr);
+  });
 }
 
-// Assign a player to a ladder position; if they already sit elsewhere, swap so
-// the ladder stays a clean permutation with no duplicates or gaps.
-function setPos(i, pid) {
-  const j = workingOrder.indexOf(pid);
-  if (j === i) return;
-  if (j >= 0) { workingOrder[j] = workingOrder[i]; }
-  workingOrder[i] = pid;
+// Every reorder goes through here: the ladder and the lineup check redraw, and
+// the moved player's position box keeps focus so a coach can keep adjusting.
+function setOrder(order, focusPid) {
+  workingOrder = order;
   renderLadder();
   renderCheck();
+  if (focusPid) {
+    const row = document.querySelector(`.ladder-row[data-pid="${CSS.escape(focusPid)}"]`);
+    if (row) { row.scrollIntoView({ block: 'nearest' }); }
+  }
+}
+
+// ---------- drag to reorder ----------
+// Pointer events, so the same code handles a mouse and a finger. The handle
+// sets touch-action: none, so dragging it never scrolls the page; the rest of
+// the row scrolls as normal.
+function startDrag(e, tr) {
+  e.preventDefault();
+  const pid = tr.dataset.pid;
+  const handle = e.currentTarget;
+  handle.setPointerCapture(e.pointerId);
+  tr.classList.add('dragging');
+  document.body.classList.add('ladder-dragging');
+  let target = null, before = true, scrollTimer = null, lastY = e.clientY;
+
+  const rows = () => [...document.querySelectorAll('#ladder-body .ladder-row')].filter(r => r !== tr);
+  const mark = (y) => {
+    lastY = y;
+    rows().forEach(r => r.classList.remove('drop-before', 'drop-after'));
+    const list = rows();
+    target = list.find(r => { const b = r.getBoundingClientRect(); return y < b.top + b.height / 2; }) || null;
+    before = !!target;
+    if (!target && list.length) target = list[list.length - 1];
+    if (target) target.classList.add(before ? 'drop-before' : 'drop-after');
+  };
+  // Near the top or bottom of the screen, scroll so a long roster is reachable.
+  const autoScroll = () => {
+    const edge = 60, h = window.innerHeight;
+    const dy = lastY < edge ? -14 : lastY > h - edge ? 14 : 0;
+    if (dy) { window.scrollBy(0, dy); mark(lastY); }
+  };
+  scrollTimer = setInterval(autoScroll, 30);
+  mark(e.clientY);
+
+  handle.onpointermove = (ev) => mark(ev.clientY);
+  const end = (commit) => {
+    clearInterval(scrollTimer);
+    handle.onpointermove = handle.onpointerup = handle.onpointercancel = null;
+    document.body.classList.remove('ladder-dragging');
+    tr.classList.remove('dragging');
+    rows().forEach(r => r.classList.remove('drop-before', 'drop-after'));
+    if (!commit || !target) return;
+    const without = workingOrder.filter(x => x !== pid);
+    let idx = without.indexOf(target.dataset.pid);
+    if (!before) idx += 1;
+    setOrder(LADDER.moveTo(workingOrder, pid, idx), pid);
+  };
+  handle.onpointerup = () => end(true);
+  handle.onpointercancel = () => end(false);
+}
+
+// ---------- enter order by typing ----------
+function openOrderPanel() {
+  const panel = document.getElementById('order-panel');
+  document.getElementById('order-text').value =
+    workingOrder.map(pid => (playerByPid(pid) || {}).name).filter(Boolean).join('\n');
+  document.getElementById('order-msgs').innerHTML = '';
+  panel.style.display = '';
+  panel.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  document.getElementById('order-text').focus();
+}
+function applyOrderText() {
+  const r = LADDER.parseOrder(document.getElementById('order-text').value,
+    detail.ladder.map(p => ({ pid: p.pid, name: p.name })), workingOrder);
+  const msgs = [];
+  r.unmatched.forEach(l => msgs.push(`“${escapeHtml(l)}” isn't anyone on this roster.`));
+  r.ambiguous.forEach(a => msgs.push(`“${escapeHtml(a.line)}” could be ${a.could.map(escapeHtml).join(' or ')} — type more of the name.`));
+  r.repeated.forEach(l => msgs.push(`“${escapeHtml(l)}” is listed twice; kept the first.`));
+  if (r.leftOver.length && r.leftOver.length < workingOrder.length) {
+    msgs.push(`Not listed, so placed at the bottom: ${r.leftOver.map(pid => escapeHtml((playerByPid(pid)||{}).name)).join(', ')}.`);
+  }
+  setOrder(r.order);
+  const box = document.getElementById('order-msgs');
+  if (msgs.length) {
+    box.innerHTML = '<b>Applied, with notes:</b><ul>' + msgs.map(m => `<li>${m}</li>`).join('') + '</ul>';
+  } else {
+    document.getElementById('order-panel').style.display = 'none';
+  }
 }
 
 function heatClass(n) { return n===0?'heat0':n===1?'heat1':n<=3?'heat2':n<=6?'heat3':'heat4'; }
@@ -763,6 +893,8 @@ function renderCompare() {
   });
 }
 const rulesReady = import('./js/lineup-rules.js').then(m => { RULES = m; readRulesFromUrl(); });
+let LADDER = null;
+const ladderReady = import('./js/ladder-order.js').then(m => { LADDER = m; });
 
 function resetCheck() {
   absent = new Set();
@@ -906,7 +1038,10 @@ document.getElementById('sel-class').onchange = () => { refreshDistrictOptions()
 document.getElementById('sel-district').onchange = refreshTeamOptions;
 document.getElementById('sel-gender').onchange = () => { refreshDistrictOptions(); refreshTeamOptions(); };
 document.getElementById('sel-team').onchange = (e) => selectTeam(e.target.value);
-document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); renderCheck(); };
+document.getElementById('btn-reset-order').onclick = () => setOrder(derivedOrder.slice());
+document.getElementById('btn-order-open').onclick = openOrderPanel;
+document.getElementById('btn-order-apply').onclick = applyOrderText;
+document.getElementById('btn-order-cancel').onclick = () => { document.getElementById('order-panel').style.display = 'none'; };
 document.getElementById('btn-lu-default').onclick = () => { lineup = RULES.defaultLineup(workingOrder, [...absent], ruleOpts); renderCheck(); };
 document.getElementById('btn-lu-clear').onclick = () => {
   lineup = Object.fromEntries(RULES.FLIGHTS.map(f => [f, f[0] === 'S' ? null : [null, null]])); renderCheck();

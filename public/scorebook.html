@@ -3,8 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cheesybook</title>
-<meta name="description" content="Report and read Oregon high school tennis dual matches.">
+<title>Oregon Scorebook</title>
+<meta name="description" content="Tennis score reporting system for Oregon high school tennis.">
+<!-- Link previews (Open Graph / Twitter). Crawlers read these from the HTML, never from script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oregon Scorebook">
+<meta property="og:title" content="Oregon Scorebook">
+<meta property="og:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta property="og:url" content="https://oregontennis.org/scorebook.html">
+<meta property="og:image" content="https://oregontennis.org/scorebook-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oregon Scorebook — score reporting for Oregon high school tennis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oregon Scorebook">
+<meta name="twitter:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta name="twitter:image" content="https://oregontennis.org/scorebook-social.png">
 <meta name="theme-color" content="#6a3937">
 <link rel="icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
@@ -25,7 +39,8 @@
   .hero .mark {
     font-family: var(--brand-font);
     font-size: clamp(2.6rem, 9vw, 4.2rem);
-    line-height: 1;
+    /* The name wraps to two lines on a phone; this keeps Oregon's g clear of Scorebook. */
+    line-height: 1.12;
     letter-spacing: -0.025em;
     margin: 0;
   }
@@ -53,7 +68,7 @@
   /* Palette preview. Unlabelled swatches, bottom of the page — this is here to
      choose a scheme before launch, not a setting anyone needs after. */
   .palettes { display: flex; gap: 8px; align-items: center; margin-top: 34px; }
-  .palettes .k { font-size: 0.7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); margin-right: 4px; }
+  .palettes .k { font-size: 0.85rem; color: var(--ink-3); margin-right: 4px; }
   .sw { width: 30px; height: 30px; border-radius: 50%; border: 2px solid var(--rule); cursor: pointer; padding: 0; }
   .sw.on { border-color: var(--ink); }
   .sw.cheese { background: linear-gradient(135deg, #6a3937 50%, #ffd800 50%); }
@@ -68,7 +83,7 @@
 
 <header class="hero">
   <div class="wrap">
-    <h1 class="mark">Cheesybook</h1>
+    <h1 class="mark">Oregon Scorebook</h1>
     <div class="rule"></div>
   </div>
 </header>

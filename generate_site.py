@@ -2467,7 +2467,7 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
         </div>
     </div>
 
-    <!-- Cheesybook is deliberately NOT linked here yet — it goes into the nav
+    <!-- Oregon Scorebook is deliberately NOT linked here yet — it goes into the nav
          when it launches, not before. -->
     <footer>
         <a href="changelog.html">Changelog</a>

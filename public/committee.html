@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Selection Board</title>
+<title>Selection Board — Oregon Scorebook</title>
+<meta name="description" content="Tennis score reporting system for Oregon high school tennis.">
+<!-- Link previews (Open Graph / Twitter). Crawlers read these from the HTML, never from script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oregon Scorebook">
+<meta property="og:title" content="Selection Board — Oregon Scorebook">
+<meta property="og:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta property="og:url" content="https://oregontennis.org/committee.html">
+<meta property="og:image" content="https://oregontennis.org/scorebook-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oregon Scorebook — score reporting for Oregon high school tennis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Selection Board — Oregon Scorebook">
+<meta name="twitter:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta name="twitter:image" content="https://oregontennis.org/scorebook-social.png">
 <meta name="theme-color" content="#14181f">
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="css/brand.css">
@@ -11,7 +26,7 @@
 <style>
   .fieldbar { display: flex; gap: 22px; flex-wrap: wrap; align-items: flex-end; padding: 14px 16px; }
   .fieldbar .stat .n { font-size: 1.5rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
-  .fieldbar .stat .k { font-size: 0.7rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); margin-top: 3px; }
+  .fieldbar .stat .k { font-size: 0.84rem; color: var(--ink-3); margin-top: 3px; }
 
   td.team { min-width: 190px; }
   td.team .nm { font-weight: 600; }
@@ -23,13 +38,13 @@
 
   .sheet { background: var(--paper-2); }
   .sheet-inner { padding: 14px 16px; display: grid; grid-template-columns: 1.35fr 1fr; gap: 20px; }
-  .sheet h4 { margin: 0 0 7px; font-size: 0.72rem; text-transform: uppercase; letter-spacing: .07em; color: var(--ink-3); }
+  .sheet h4 { margin: 0 0 7px; font-size: 0.92rem; color: var(--ink-2); }
   .sheet table { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; overflow: hidden; }
   .sheet td, .sheet th { font-size: 0.78rem; padding: 5px 9px; }
 
   .flightgrid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; }
   .flightgrid div { text-align: center; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 6px 2px; }
-  .flightgrid .p { font-size: 0.64rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: .04em; }
+  .flightgrid .p { font-size: 0.76rem; color: var(--ink-3); }
   .flightgrid .v { font-weight: 700; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
 
   .cmp { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
@@ -76,7 +91,7 @@
 
   <div class="panel">
     <div class="panel-head">
-      <h2>The board</h2>
+      <h2>Every team in the class</h2>
       <span class="tiny muted" id="boardnote"></span>
     </div>
     <div class="panel-body flush scroll">
@@ -88,7 +103,7 @@
           <th>Record</th>
           <th>League</th>
           <th class="num sortable" data-k="powerIndex">Power Index<span class="arrow">▾</span></th>
-          <th class="num sortable" data-k="owp">SOS<span class="arrow">▾</span></th>
+          <th class="num sortable" data-k="owp">Opponents' win %<span class="arrow">▾</span></th>
           <th class="mid">vs Field</th>
           <th>Best win</th>
           <th>Worst loss</th>
@@ -106,7 +121,7 @@ import { applyBrand } from './js/brand.js';
 applyBrand('Selection Board', {
   current: 'Selection',
   links: [
-    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scorebook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
     { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
@@ -246,7 +261,7 @@ function render() {
       <td class="num">${esc(t.record)}</td>
       <td class="num">${esc(t.leagueRecord)}</td>
       <td class="num">${n4(t.powerIndex)}</td>
-      <td class="num">${n3(t.owp)}</td>
+      <td class="num">${t.owp === null || t.owp === undefined ? '—' : (Number(t.owp) * 100).toFixed(1) + '%'}</td>
       <td class="mid">${band(t.bands.field)}</td>
       <td>${res(t.bestWin)}</td>
       <td>${res(t.worstLoss)}</td>
@@ -269,7 +284,7 @@ function render() {
   // letting them look like the same number disagreeing with itself.
   document.getElementById('boardnote').textContent =
     `# is this board's order, sorted by ` +
-    `${sortKey === 'owp' ? 'strength of schedule' : 'Power Index'}; published class ` +
+    `${sortKey === 'owp' ? "opponents' win %" : 'Power Index'}; published class ` +
     `rank is under each team · “vs Field” is the record against the top ` +
     `${data.fieldSize} of the classification`;
 
@@ -364,7 +379,7 @@ function renderComparison() {
       <dt>League</dt><dd>${esc(t.leagueRecord)}</dd>
       <dt>Power Index</dt><dd>${n4(t.powerIndex)}</dd>
       <dt>APR</dt><dd>${n4(t.apr)}</dd>
-      <dt>Strength of schedule</dt><dd>${n3(t.owp)}</dd>
+      <dt>Opponents' win %</dt><dd>${t.owp === null || t.owp === undefined ? '—' : (Number(t.owp) * 100).toFixed(1) + '%'}</dd>
       <dt>vs top ${data.fieldSize}</dt><dd>${band(t.bands.field)}</dd>
       <dt>Flights won</dt><dd>${t.flightsWon}/${t.flightsPlayed}</dd>
       <dt>Best win</dt><dd>${t.bestWin ? esc(t.bestWin.opponent) : '—'}</dd>
@@ -399,9 +414,9 @@ function renderComparison() {
         <span class="tiny muted">${teams.length} teams · ${common.length} common opponents</span></div>
       <div class="panel-body">
         <div class="cmp">${cols}</div>
-        ${h2hRows.length ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Head to head</h4>
+        ${h2hRows.length ? `<h4 style="margin:18px 0 6px">Head to head</h4>
           <table><tbody>${h2hRows.join('')}</tbody></table>` : ''}
-        ${commonRows ? `<h4 style="margin:18px 0 6px;font-size:.72rem;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-3)">Common opponents</h4>
+        ${commonRows ? `<h4 style="margin:18px 0 6px">Common opponents</h4>
           <div class="scroll"><table><thead><tr><th>Opponent</th>
             ${teams.map((t) => `<th class="num">${esc(t.name)}</th>`).join('')}</tr></thead>
             <tbody>${commonRows}</tbody></table></div>`
