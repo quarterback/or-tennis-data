@@ -293,14 +293,14 @@ export function cardScore(lines) {
 /**
  * Render the page's chrome: the site masthead, then its heading.
  *
- * Same masthead as every other Cheesybook page, from js/brand.js — these are
+ * Same masthead as every other Oregon Scorebook page, from js/brand.js — these are
  * not a separate tool a coach visits, they are part of the site.
  */
 export function renderChrome({ title, subtitle }) {
   applyBrand(title, {
     current: 'Report',
     links: [
-      { href: 'cheesybook.html', label: 'Home' },
+      { href: 'scorebook.html', label: 'Home' },
       { href: 'scoreboard.html', label: 'Scoreboard' },
       { href: 'teams.html', label: 'Teams' },
       { href: 'lineups.html', label: 'Lineups' },

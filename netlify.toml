@@ -10,3 +10,15 @@
 
 # /api/draws/<id> is wired via config.path inside netlify/functions/draws.mjs
 # (Netlify Functions v2 path-based routing) — no redirect rule needed.
+
+# The product was called Cheesybook before it was Oregon Scorebook. Old links
+# and home-screen bookmarks to the landing page keep working.
+[[redirects]]
+  from = "/cheesybook.html"
+  to = "/scorebook.html"
+  status = 301
+
+[[redirects]]
+  from = "/cheesybook"
+  to = "/scorebook"
+  status = 301

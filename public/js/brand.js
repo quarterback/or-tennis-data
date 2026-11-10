@@ -11,19 +11,19 @@
 
 export const BRAND = {
   // The wordmark. Rendered in --brand-font wherever `.wordmark` is used.
-  name: 'Cheesybook',
+  name: 'Oregon Scorebook',
 
   // Sits beside the wordmark in the masthead. One line, sentence case.
-  tagline: 'Oregon high school tennis',
+  tagline: 'High school tennis',
 
   // Shown on printed artifacts, where a reader has no URL bar.
   host: 'oregontennis.org',
 
   // Suffix for <title>. Keep it short — it is the browser tab.
-  titleSuffix: 'Cheesybook',
+  titleSuffix: 'Oregon Scorebook',
 };
 
-/** `document.title` for a page, e.g. "Selection Board — Cheesybook". */
+/** `document.title` for a page, e.g. "Selection Board — Oregon Scorebook". */
 export function pageTitle(page) {
   return page ? `${page} — ${BRAND.titleSuffix}` : BRAND.titleSuffix;
 }
@@ -40,7 +40,7 @@ export function masthead({ links = [], current = '' } = {}) {
   ).join('');
   return `
     <div class="mast-inner">
-      <a class="wordmark" href="cheesybook.html">${BRAND.name}</a>
+      <a class="wordmark" href="scorebook.html">${BRAND.name}</a>
       <span class="mast-tagline">${BRAND.tagline}</span>
       <nav class="mast-nav">${nav}</nav>
     </div>`;

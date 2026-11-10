@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lineups — Cheesybook</title>
+<title>Lineups — Oregon Scorebook</title>
+<meta name="description" content="Tennis score reporting system for Oregon high school tennis.">
+<!-- Link previews (Open Graph / Twitter). Crawlers read these from the HTML, never from script. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Oregon Scorebook">
+<meta property="og:title" content="Lineups — Oregon Scorebook">
+<meta property="og:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta property="og:url" content="https://oregontennis.org/lineups.html">
+<meta property="og:image" content="https://oregontennis.org/scorebook-social.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Oregon Scorebook — score reporting for Oregon high school tennis">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Lineups — Oregon Scorebook">
+<meta name="twitter:description" content="Tennis score reporting system for Oregon high school tennis.">
+<meta name="twitter:image" content="https://oregontennis.org/scorebook-social.png">
 <!-- PWA / installable home-screen app -->
 <meta name="theme-color" content="#6a3937">
 <meta name="mobile-web-app-capable" content="yes">
@@ -16,7 +31,7 @@
 <link rel="stylesheet" href="css/brand.css">
 <script>/* palette: ?palette=cool|warm|cheese, remembered after */(()=>{try{const u=new URLSearchParams(location.search).get('palette');if(u)localStorage.setItem('cb_palette',u);const p=localStorage.getItem('cb_palette');if(p&&p!=='cheese')document.documentElement.setAttribute('data-palette',p);}catch(e){}})()</script>
 <style>
-  /* This page sits on css/brand.css like every other Cheesybook page: the
+  /* This page sits on css/brand.css like every other Oregon Scorebook page: the
      masthead, .wrap, .panel, the tables, the buttons and the controls bar all
      come from there. What is left here is what only a lineup page needs.
 
@@ -454,7 +469,7 @@ import { applyBrand } from './js/brand.js';
 applyBrand('Lineups', {
   current: 'Lineups',
   links: [
-    { href: 'cheesybook.html', label: 'Home' },
+    { href: 'scorebook.html', label: 'Home' },
     { href: 'scoreboard.html', label: 'Scoreboard' },
     { href: 'teams.html', label: 'Teams' },
     { href: 'lineups.html', label: 'Lineups' },
