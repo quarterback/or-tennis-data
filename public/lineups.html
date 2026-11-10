@@ -804,13 +804,25 @@ function renderCheck() {
   ).join('');
 
   // Lineup rows
-  const opt = (sel) => {
+  // Where each player sits now, by dropdown, so a player already in one flight
+  // cannot be picked into another. They stay listed (greyed, with the flight
+  // they are in) so the coach can see who is taken; to move one, empty their
+  // current flight first.
+  const placed = new Map(); // pid -> { f, i }
+  RULES.FLIGHTS.forEach(f => {
+    const v = lineup[f];
+    (Array.isArray(v) ? v : [v]).forEach((pid, i) => { if (pid && !placed.has(pid)) placed.set(pid, { f, i }); });
+  });
+  const opt = (sel, f, i) => {
     let h = '<option value="">—</option>';
     workingOrder.forEach(pid => {
       const p = playerByPid(pid); if (!p) return;
       const r = ranks.get(pid);
       if (!r && pid !== sel) return; // absent players are not offered
-      h += `<option value="${pid}"${pid===sel?' selected':''}>${r ? '(#' + r + ') ' : '(absent) '}${escapeHtml(p.name)}</option>`;
+      const at = placed.get(pid);
+      const taken = pid !== sel && at && !(at.f === f && at.i === i);
+      h += `<option value="${pid}"${pid===sel?' selected':''}${taken?' disabled':''}>` +
+        `${r ? '(#' + r + ') ' : '(absent) '}${escapeHtml(p.name)}${taken ? ' — ' + RULES.FLIGHT_NAME[at.f] : ''}</option>`;
     });
     return h;
   };
@@ -821,10 +833,10 @@ function renderCheck() {
     const cls = off.has(f) ? 'off' : errFlights.has(f) ? 'err' : '';
     let cell, extra = '';
     if (f[0] === 'S') {
-      cell = `<select data-f="${f}" data-i="0">${opt(lineup[f])}</select>`;
+      cell = `<select data-f="${f}" data-i="0">${opt(lineup[f], f, 0)}</select>`;
     } else {
       const pr = lineup[f] || [null, null];
-      cell = `<div class="pair"><select data-f="${f}" data-i="0">${opt(pr[0])}</select><select data-f="${f}" data-i="1">${opt(pr[1])}</select></div>`;
+      cell = `<div class="pair"><select data-f="${f}" data-i="0">${opt(pr[0], f, 0)}</select><select data-f="${f}" data-i="1">${opt(pr[1], f, 1)}</select></div>`;
       const c = RULES.combined(workingOrder, pr, abs);
       extra = c ? `<span class="small muted">combined ${c}</span>` : '';
     }
