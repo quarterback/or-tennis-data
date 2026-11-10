@@ -28,6 +28,7 @@ import csv
 import glob
 import json
 import os
+import re
 import sys
 from collections import defaultdict
 
@@ -67,6 +68,16 @@ def player_name(p):
     fn = (p.get("firstName") or "").strip()
     ln = (p.get("lastName") or "").strip()
     return (fn + " " + ln).strip() or "Unknown"
+
+
+# Coaches record a forfeited flight by entering a fake player named "Default",
+# "Default1 Default1", "Default NA" and so on. Those are not people and must not
+# land on a ladder (the state-tournament lineup check would count them).
+_PLACEHOLDER = re.compile(r"^defaults?\d*$", re.I)
+
+
+def is_placeholder(p):
+    return bool(_PLACEHOLDER.match((p.get("firstName") or "").strip()))
 
 
 def slot_for(line):
@@ -154,6 +165,8 @@ def build_team(path, school_id, gender):
                         line.get("sets"), t.get("id"), opp_team.get("id") if opp_team else None
                     )
                     for p in ours:
+                        if is_placeholder(p):
+                            continue
                         pid = str(p.get("id"))
                         rec = players.get(pid)
                         if rec is None:
