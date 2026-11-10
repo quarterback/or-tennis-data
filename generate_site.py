@@ -2198,9 +2198,6 @@ def generate_html(rankings, school_data, raw_data_cache, school_info, state_resu
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-tab="playoffs">Playoff Simulator</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#" data-tab="comparison">APR vs State</a>
-                </li>
                 <li class="nav-item" id="analysisNavItem" style="display:none;">
                     <a class="nav-link" href="#" data-tab="analysis">League Analysis</a>
                 </li>
