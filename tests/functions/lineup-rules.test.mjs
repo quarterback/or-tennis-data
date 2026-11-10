@@ -160,3 +160,52 @@ describe('the options the committee is choosing between', () => {
     assert.ok(failed(R.validateLineup(ladder(8), l)).includes('defaults'));
   });
 });
+
+describe('every broken rule says how to fix it', () => {
+  const names = Object.fromEntries(L15.map((id) => [id, `Player ${id}`]));
+  const fixes = (l, opts, absent = [], ctx = {}) =>
+    R.validateLineup(L15, l, absent, opts, { names, ...ctx }).checks.filter((c) => !c.ok);
+
+  it('no failing check is without a fix, and passing checks carry none', () => {
+    const broken = [
+      { ...example1, S3: '4', S4: '3' },
+      { ...example1, S1: '2', S2: '3', S3: '1' },
+      { ...example1, D1: ['5', '9'], D3: ['7', '11'] },
+      { ...example2, S1: '4', S2: '3' },
+      { ...example1, D4: ['10', '9'] },
+      { ...example1, D4: null },
+    ];
+    for (const l of broken) for (const p of R.PRESETS) {
+      const res = R.validateLineup(L15, l, ['14'], p.opts, { names, seasonSlots: { 3: { S1: 9 } } });
+      for (const c of res.checks) {
+        if (c.ok) assert.equal(c.fix, '', `${p.id} ${c.id} passed but has a fix`);
+        else assert.ok(c.fix.length > 10, `${p.id} ${c.id} failed with no fix`);
+      }
+    }
+  });
+  it('S3/S4 reversed: swap them, by name', () => {
+    const [c] = fixes({ ...example1, S3: '4', S4: '3' });
+    assert.equal(c.fix, 'Swap No. 3 and No. 4 singles: #3 Player 3 to No. 3 singles, #4 Player 4 to No. 4 singles.');
+  });
+  it('S1/S2 reversed: one swap, not two moves', () => {
+    const f = fixes({ ...example2, S1: '4', S2: '3' });
+    assert.ok(f.every((c) => c.fix.startsWith('Swap No. 1 and No. 2 singles: #3 Player 3 to No. 1 singles')));
+  });
+  it('D1 outside the pool names who can replace them', () => {
+    const c = fixes({ ...example1, D1: ['5', '9'], D3: ['6', '11'] }).find((x) => x.id === 'd1pool');
+    assert.match(c.fix, /^Replace #9 Player 9 on No\. 1 doubles with a player ranked #1-#6: /);
+  });
+  it('doubles out of order: swap the pairs', () => {
+    const c = fixes({ ...example1, D3: ['10', '12'], D4: ['9', '11'] }).find((x) => x.id === 'd3d4');
+    assert.match(c.fix, /^Swap the two pairs: #10 Player 10 \/ #12 Player 12 to No\. 4 doubles|^Swap the two pairs: #9 Player 9 \/ #11 Player 11 to No\. 3 doubles/);
+  });
+  it('an empty flight lists who is free to fill it', () => {
+    const c = fixes({ ...example1, D4: null }).find((x) => x.id === 'complete');
+    assert.match(c.fix, /^Fill No\. 4 doubles\. Available and not yet in the lineup: #10 Player 10, #12 Player 12/);
+  });
+  it('the 50% rule says when no ladder can satisfy it', () => {
+    const seasonSlots = { 3: { S1: 6 }, 4: { S1: 5 } };
+    const c = fixes(example1, { fiftyRule: true }, [], { seasonSlots }).find((x) => x.id === 'fifty');
+    assert.match(c.fix, /no ladder satisfies the rule as written/);
+  });
+});

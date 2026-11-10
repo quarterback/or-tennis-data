@@ -157,6 +157,10 @@
   .checks .ok .mk { color:var(--win); } .checks .bad .mk { color:var(--loss); }
   .checks .na { color:var(--ink-3); } .checks .na .mk { color:var(--ink-4); }
   .checks .bad { font-weight:600; }
+  .checks .fix { display:block; font-weight:400; color:var(--ink-2); margin-top:3px; }
+  .verdict .howto { flex-basis:100%; font-size:0.9rem; color:var(--ink); }
+  .verdict .howto ol { margin:6px 0 0; padding-left:22px; }
+  .verdict .howto li { margin:3px 0; }
   .checks .rule { flex:none; margin-left:auto; font-size:0.72rem; color:var(--ink-3); white-space:nowrap; }
   .lu-table td { vertical-align:middle; }
   .lu-table .fl { font-weight:700; white-space:nowrap; width:120px; }
@@ -789,12 +793,14 @@ function renderCheck() {
   v.className = 'verdict ' + (res.valid ? 'ok' : 'bad');
   v.innerHTML = res.valid
     ? `<span class="big">✓ Valid lineup</span><span class="small muted">${res.available} players available${off.size ? ' · defaulted: ' + [...off].map(f => RULES.FLIGHT_NAME[f]).join(', ') : ''}</span>`
-    : `<span class="big">✗ Not a valid lineup</span><span class="small">${bad.length} rule${bad.length===1?'':'s'} broken</span>`;
+    : `<span class="big">✗ Not a valid lineup</span><span class="small">${bad.length} rule${bad.length===1?'':'s'} broken</span>` +
+      `<div class="howto"><b>How to fix it</b><ol>${[...new Set(bad.map(c => c.fix).filter(Boolean))]
+        .map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ol></div>`;
 
   // Rule list
   document.getElementById('lu-checks').innerHTML = res.checks.map(c =>
     `<li class="${c.na ? 'na' : c.ok ? 'ok' : 'bad'}"><span class="mk">${c.na ? '–' : c.ok ? '✓' : '✗'}</span>` +
-    `<span>${escapeHtml(c.text)}</span><span class="rule">${/^\d/.test(c.rule) ? 'Rule ' : ''}${escapeHtml(c.rule)}</span></li>`
+    `<span>${escapeHtml(c.text)}${c.fix ? `<span class="fix">Fix: ${escapeHtml(c.fix)}</span>` : ''}</span><span class="rule">${/^\d/.test(c.rule) ? 'Rule ' : ''}${escapeHtml(c.rule)}</span></li>`
   ).join('');
 
   // Lineup rows

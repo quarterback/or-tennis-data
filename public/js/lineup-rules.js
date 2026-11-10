@@ -152,8 +152,11 @@ export function majoritySingles(seasonSlots = {}) {
 //   opts:   see the header; missing keys take the draft's value
 //   ctx:    { seasonSlots, names } — season positions for the 50% rule, and
 //           pid -> name to make its messages readable
-// Returns { valid, available, defaulted, checks: [{ id, rule, ok, na, text }] }.
+// Returns { valid, available, defaulted, checks: [{ id, rule, ok, na, text, fix }] }.
 // Every check is reported, passing or not, so the page can show the whole list.
+// A failing check carries `fix`: what to change, in plain language, naming the
+// players and flights involved. It is one way to repair the lineup, not the
+// only one — the coach may prefer another legal arrangement.
 export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   const o = withDefaults(opts);
   const ranks = effectiveRanks(ladder, absent);
@@ -162,13 +165,22 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   const gone = new Set(absent);
   const defaulted = defaultedFlights(available, o);
   const checks = [];
-  const add = (id, rule, ok, text, na = false) => checks.push({ id, rule, ok: na ? true : ok, na, text });
+  const add = (id, rule, ok, text, na = false, fix = '') =>
+    checks.push({ id, rule, ok: na ? true : ok, na, text, fix: (na || ok) ? '' : fix });
   const rk = (pid) => ranks.get(pid);
   const tag = (pid) => (rk(pid) ? `#${rk(pid)}` : '?');
+  const nm = (pid) => (ctx.names && ctx.names[pid]) || '';
+  // "#3 Jane Doe" — the ladder number on the day and the name, for fix text.
+  const who = (pid) => [tag(pid), nm(pid)].filter(Boolean).join(' ');
+  const where = new Map(); // pid -> flight, for "they are at No. 3 singles now"
+  for (const f of FLIGHTS) for (const pid of pidsAt(lineup, f)) if (!where.has(pid)) where.set(pid, f);
+  const now = (pid) => (where.has(pid) ? ` (now at ${FLIGHT_NAME[where.get(pid)]})` : ' (not in the lineup now)');
+  const unused = () => [...ranks.keys()].filter((p) => !where.has(p));
 
   if (defaulted === null) {
     add('size', '9', false,
-      `Only ${available} players are available. The format defines lineups for 8 to 12 players.`);
+      `Only ${available} players are available. The format defines lineups for 8 to 12 players.`, false,
+      `Add players to the ladder or clear an absence so at least 8 are available.`);
     return { valid: false, available, defaulted: [], checks };
   }
   const off = new Set(defaulted);
@@ -182,29 +194,43 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     if (off.has(f)) { if (have) shouldDefault.push(f); }
     else if (have < need) missing.push(f);
   }
+  const spare = unused();
   add('complete', '1', missing.length === 0,
     missing.length ? `Not filled: ${missing.map((f) => FLIGHT_NAME[f]).join(', ')}.`
-                   : 'Every flight is filled.');
+                   : 'Every flight is filled.', false,
+    `Fill ${missing.map((f) => FLIGHT_NAME[f]).join(', ')}` +
+      (spare.length ? `. Available and not yet in the lineup: ${spare.slice(0, 6).map(who).join(', ')}.` : '.'));
   if (available < FULL_LINEUP) {
     const names = defaulted.map((f) => FLIGHT_NAME[f]).join(', ');
     add('defaults', '9', shouldDefault.length === 0,
       shouldDefault.length
         ? `With ${available} players, ${names} must be defaulted; ` +
           `${shouldDefault.map((f) => FLIGHT_NAME[f]).join(', ')} has a player in it.`
-        : `With ${available} players, ${names} is defaulted.`);
+        : `With ${available} players, ${names} is defaulted.`, false,
+      `Empty ${shouldDefault.map((f) => FLIGHT_NAME[f]).join(' and ')} and leave it as a default. ` +
+      `Use those players elsewhere in the lineup if a flight still needs them.`);
   }
 
   // Eligibility: on the ladder, present, and in one flight only.
   const seen = new Map();
-  const bad = [];
+  const bad = [], fixes = [];
   for (const f of FLIGHTS) for (const pid of pidsAt(lineup, f)) {
-    if (!listed.has(pid)) bad.push(`a player not on the ladder is in ${FLIGHT_NAME[f]}`);
-    else if (gone.has(pid)) bad.push(`an absent player is in ${FLIGHT_NAME[f]}`);
-    if (seen.has(pid)) bad.push(`the same player is in ${FLIGHT_NAME[seen.get(pid)]} and ${FLIGHT_NAME[f]}`);
-    else seen.set(pid, f);
+    if (!listed.has(pid)) {
+      bad.push(`a player not on the ladder is in ${FLIGHT_NAME[f]}`);
+      fixes.push(`replace the player in ${FLIGHT_NAME[f]} with someone on the ladder`);
+    } else if (gone.has(pid)) {
+      bad.push(`an absent player${nm(pid) ? ` (${nm(pid)})` : ''} is in ${FLIGHT_NAME[f]}`);
+      fixes.push(`take ${nm(pid) || 'the absent player'} out of ${FLIGHT_NAME[f]}, or clear their absence`);
+    }
+    if (seen.has(pid)) {
+      bad.push(`${nm(pid) || 'the same player'} is in both ${FLIGHT_NAME[seen.get(pid)]} and ${FLIGHT_NAME[f]}`);
+      fixes.push(`keep ${nm(pid) || 'that player'} in one of ${FLIGHT_NAME[seen.get(pid)]} or ${FLIGHT_NAME[f]} and put someone else in the other`);
+    } else seen.set(pid, f);
   }
+  const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
   add('eligible', 'Ladder 1', bad.length === 0,
-    bad.length ? `Ineligible: ${[...new Set(bad)].join('; ')}.` : 'Every player is on the ladder and plays once.');
+    bad.length ? `Ineligible: ${[...new Set(bad)].join('; ')}.` : 'Every player is on the ladder and plays once.',
+    false, cap([...new Set(fixes)].join('; ')) + '.');
 
   // Rule 2: ladder #1 at S1 or D1.
   const top = [...ranks.keys()][0];
@@ -212,7 +238,8 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   add('top', '2', topAt === 'S1' || topAt === 'D1',
     topAt === 'S1' || topAt === 'D1'
       ? `Ladder #1 plays ${FLIGHT_NAME[topAt]}.`
-      : `Ladder #1 must play No. 1 singles or No. 1 doubles${topAt ? `, not ${FLIGHT_NAME[topAt]}` : ''}.`);
+      : `Ladder #1 must play No. 1 singles or No. 1 doubles${topAt ? `, not ${FLIGHT_NAME[topAt]}` : ''}.`,
+    false, `Move ${who(top)}${now(top)} to No. 1 singles or into No. 1 doubles.`);
 
   // Rule 3a: D1 pool.
   const d1 = pidsAt(lineup, 'D1');
@@ -222,7 +249,10 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
       d1.length < 2 ? 'No. 1 doubles is not filled.'
         : d1Out.length ? `No. 1 doubles must come from ladder #1-#${o.d1Pool}; ${d1Out.map(tag).join(' and ')} is outside it.`
         : `No. 1 doubles is ${d1.map(tag).join(' / ')}, inside the top ${o.d1Pool}.`,
-      d1.length < 2);
+      d1.length < 2,
+      `Replace ${d1Out.map(who).join(' and ')} on No. 1 doubles with ` +
+        `${d1Out.length > 1 ? 'players' : 'a player'} ranked #1-#${o.d1Pool}: ` +
+        `${[...ranks.keys()].filter((p) => rk(p) <= o.d1Pool && !d1.includes(p)).map(who).join(', ')}.`);
   } else {
     add('d1pool', '3', true, 'No. 1 doubles may be any two players on the ladder.', true);
   }
@@ -242,15 +272,31 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     else add('s2', '3', s2 === want,
       s2 === want
         ? `No. 2 singles is ${tag(s2)}, the next-highest-ranked player not on No. 1 doubles.`
-        : `No. 2 singles must be ${tag(want)}, the next-highest-ranked player not on No. 1 doubles; ${tag(s2)} is there.`);
+        : `No. 2 singles must be ${tag(want)}, the next-highest-ranked player not on No. 1 doubles; ${tag(s2)} is there.`,
+      false, `Put ${who(want)}${now(want)} at No. 2 singles, and move ${who(s2)} to another flight.`);
   } else {
+    // Fix text for a wrong player at No. 1 / No. 2 singles under the examples' reading.
+    const singlesFix = (f, got, want) => {
+      const other = f === 'S1' ? 'S2' : 'S1';
+      if (where.get(want) === other && got === (f === 'S1' ? notD1[1] : notD1[0])) {
+        return `Swap No. 1 and No. 2 singles: ${who(notD1[0])} to No. 1 singles, ${who(notD1[1])} to No. 2 singles.`;
+      }
+      let t = `Put ${who(want)}${now(want)} at ${FLIGHT_NAME[f]}, and move ${who(got)} to another flight.`;
+      if (where.has(want) && where.get(want)[0] === 'D') {
+        t += ` If you want ${nm(want) || tag(want)} in doubles instead, the only doubles flight they can play is No. 1 doubles: ` +
+          'the two highest-ranked players not on No. 1 doubles must play No. 1 and No. 2 singles.';
+      }
+      return t;
+    };
     for (const [f, got, want] of [['S1', s1, notD1[0]], ['S2', s2, notD1[1]]]) {
       const which = f === 'S1' ? 'highest' : 'next-highest';
       if (!got) { add(f.toLowerCase(), '3', true, `${FLIGHT_NAME[f]} is not filled.`, true); continue; }
       add(f.toLowerCase(), '3', got === want,
         got === want
           ? `${FLIGHT_NAME[f]} is ${tag(got)}, the ${which}-ranked player not on No. 1 doubles.`
-          : `${FLIGHT_NAME[f]} must be ${tag(want)}, the ${which}-ranked player not on No. 1 doubles; ${tag(got)} is there.`);
+          : `${FLIGHT_NAME[f]} must be ${tag(want)}, the ${which}-ranked player not on No. 1 doubles; ${tag(got)} is there.`,
+        false,
+        singlesFix(f, got, want));
     }
   }
 
@@ -259,7 +305,8 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   if (s3 && s4) {
     add('s3s4', '6', rk(s3) < rk(s4),
       rk(s3) < rk(s4) ? `No. 3 singles (${tag(s3)}) ranks above No. 4 singles (${tag(s4)}).`
-                      : `No. 3 singles (${tag(s3)}) must rank above No. 4 singles (${tag(s4)}).`);
+                      : `No. 3 singles (${tag(s3)}) must rank above No. 4 singles (${tag(s4)}).`,
+      false, `Swap No. 3 and No. 4 singles: ${who(s4)} to No. 3 singles, ${who(s3)} to No. 4 singles.`);
   } else {
     add('s3s4', '6', true, 'No. 3 / No. 4 singles: not both played.', true);
   }
@@ -280,7 +327,11 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     add(id, '6', cb >= ca,
       cb >= ca ? `${FLIGHT_NAME[a]} (${ca}) is equal to or stronger than ${FLIGHT_NAME[b]} (${cb}).`
                : `${FLIGHT_NAME[b]} (combined ${cb}) is a stronger pair than ${FLIGHT_NAME[a]} (combined ${ca}); ` +
-                 `${FLIGHT_NAME[a]} must be equal or stronger.`);
+                 `${FLIGHT_NAME[a]} must be equal or stronger.`,
+      false,
+      `Swap the two pairs: ${pidsAt(lineup, b).map(who).join(' / ')} to ${FLIGHT_NAME[a]} and ` +
+        `${pidsAt(lineup, a).map(who).join(' / ')} to ${FLIGHT_NAME[b]}. ` +
+        `Or re-pair them so ${FLIGHT_NAME[a]}'s combined number is ${cb} or lower.`);
   }
 
   // 50% rule: a check on the LADDER (as submitted, before absences).
@@ -294,7 +345,11 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
         : low.length
           ? `Laddered below their season position: ${low.map(([pid, m]) => `${name(pid)} (No. ${m.k} singles in ${m.n} of ${m.total} matches, laddered #${pos.get(pid)})`).join('; ')}.`
           : 'No player is laddered below the singles position they played 50%+ of the season.',
-      !ctx.seasonSlots);
+      !ctx.seasonSlots,
+      `On the Team ladder tab, move ${low.map(([pid, m]) => `${name(pid)} up to #${m.k} or higher`).join('; ')}.` +
+        ([1, 2, 3, 4].some((k) => [...maj.values()].filter((m) => m.k <= k).length > k)
+          ? ` This team has more players with a 50% season position in the top spots than there are spots, so no ladder satisfies the rule as written.`
+          : ''));
   }
 
   return { valid: checks.every((c) => c.ok), available, defaulted, checks };
