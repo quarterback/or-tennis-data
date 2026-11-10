@@ -110,3 +110,53 @@ describe('9: short lineups', () => {
     assert.equal(R.validateLineup(ladder(7), R.defaultLineup(ladder(7))).valid, false);
   });
 });
+
+describe('the options the committee is choosing between', () => {
+  it('both worked examples are valid under every preset', () => {
+    // The 50% rule needs season data; with none, it has nothing to object to.
+    for (const p of R.PRESETS) {
+      for (const [name, ex] of [['Example #1', example1], ['Example #2', example2]]) {
+        const res = R.validateLineup(L15, ex, [], p.opts, {});
+        assert.equal(res.valid, true, `${p.id} / ${name}: ${failed(res)}`);
+      }
+    }
+  });
+  it('the ladder-built lineup is valid under every preset', () => {
+    for (const p of R.PRESETS) for (let n = 8; n <= 13; n++) {
+      const res = R.validateLineup(ladder(n), R.defaultLineup(ladder(n), [], p.opts), [], p.opts);
+      assert.equal(res.valid, true, `${p.id} at ${n}: ${failed(res)}`);
+    }
+  });
+  it('rule 3 as written leaves No. 1 singles open when #1 plays doubles', () => {
+    // #1/#2 on D1, #5 at S1, #3 at S2: the text allows it, the examples do not.
+    const l = { ...example2, S1: '5', S3: '4', S4: '6', S2: '3' };
+    assert.equal(R.validateLineup(L15, l, [], { rule3: 'literal' }).valid, true);
+    assert.ok(failed(R.validateLineup(L15, l)).includes('s1'));
+  });
+  it('the D1 pool size moves with the option, and 0 lifts it', () => {
+    const l = { ...example1, D1: ['5', '7'], D2: ['6', '8'] };
+    assert.ok(failed(R.validateLineup(L15, l, [], { d1Pool: 6 })).includes('d1pool'));
+    assert.equal(R.validateLineup(L15, l, [], { d1Pool: 8 }).valid, true);
+    assert.equal(R.validateLineup(L15, l, [], { d1Pool: 0 }).valid, true);
+  });
+  it('"all doubles in order" catches a stronger pair below a weaker one', () => {
+    // D2 = 9+11 (20) and D3 = 7+8 (15): legal under the draft, not when ordered.
+    const l = { ...example1, D2: ['9', '11'], D3: ['7', '8'] };
+    assert.equal(R.validateLineup(L15, l).valid, true);
+    assert.deepEqual(failed(R.validateLineup(L15, l, [], { doublesOrder: 'all' })), ['d2d3']);
+  });
+  it('the 50% rule reads the ladder against season positions', () => {
+    const seasonSlots = { 3: { S1: 6, S2: 2 }, 1: { S2: 5, D1: 3 } };
+    const res = R.validateLineup(L15, example1, [], { fiftyRule: true }, { seasonSlots });
+    assert.deepEqual(failed(res), ['fifty']); // #3 was No. 1 singles all season
+    const ok = R.validateLineup(['3', ...L15.filter((x) => x !== '3')],
+      R.defaultLineup(['3', ...L15.filter((x) => x !== '3')]), [], { fiftyRule: true }, { seasonSlots });
+    assert.equal(ok.valid, true, JSON.stringify(failed(ok)));
+  });
+  it('8 players: the alternative defaults No. 3 and No. 4 doubles', () => {
+    assert.deepEqual(R.defaultedFlights(8, { shortDefaults: 'eight-doubles' }), ['D3', 'D4']);
+    const l = R.defaultLineup(ladder(8), [], { shortDefaults: 'eight-doubles' });
+    assert.equal(R.validateLineup(ladder(8), l, [], { shortDefaults: 'eight-doubles' }).valid, true);
+    assert.ok(failed(R.validateLineup(ladder(8), l)).includes('defaults'));
+  });
+});

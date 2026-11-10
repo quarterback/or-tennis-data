@@ -172,6 +172,21 @@
   .avail .gone { text-decoration:line-through; color:var(--ink-3); }
   .check-grid { display:grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap:16px; }
   .check-grid > .card { margin:0; }
+  .rv-top { display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .rv-top label { display:flex; gap:8px; align-items:center; }
+  .rv-top select { min-width:0; max-width:100%; }
+  #rv-details { margin-top:10px; }
+  #rv-details summary { cursor:pointer; color:var(--accent-2); font-weight:600; }
+  .rv-opts { display:grid; grid-template-columns: minmax(0,max-content) minmax(0,1fr); gap:8px 14px; margin-top:10px; align-items:center; }
+  .rv-opts .k { font-size:0.84rem; font-weight:700; color:var(--ink-2); }
+  .rv-opts select { width:100%; min-width:0; }
+  .cmp-table tr { cursor:pointer; }
+  .cmp-table tr.cur td { background:var(--accent-wash); }
+  .cmp-table td.v { white-space:nowrap; font-weight:700; }
+  .cmp-table td.v.ok { color:var(--win); } .cmp-table td.v.bad { color:var(--loss); }
+  .cmp-table .nm { font-weight:600; }
+  .cmp-table .why { font-size:0.82rem; }
+  @media (max-width: 640px) { .rv-opts { grid-template-columns: 1fr; } .rv-opts .k { margin-top:6px; } }
   @media (max-width: 860px) { .check-grid { grid-template-columns: 1fr; } }
 
   /* ===== Mobile ===== */
@@ -333,6 +348,24 @@
 <div class="tab-pane" id="pane-check">
   <div id="check-empty" class="empty">Select a team above to check a state championship lineup.</div>
   <div id="check-content" style="display:none">
+    <div class="card">
+      <div class="card-head">
+        <span>Rule version</span>
+        <span class="muted small" style="margin-left:auto">Not final. The committee is still choosing.</span>
+      </div>
+      <div class="card-body">
+        <div class="rv-top">
+          <label class="small">Version
+            <select id="rv-preset"></select>
+          </label>
+          <span class="small muted" id="rv-note"></span>
+        </div>
+        <details id="rv-details">
+          <summary class="small">Adjust each rule</summary>
+          <div class="rv-opts" id="rv-opts"></div>
+        </details>
+      </div>
+    </div>
     <div id="verdict" class="verdict"></div>
     <div class="check-grid">
       <div class="card">
@@ -355,6 +388,20 @@
       <div class="card">
         <div class="card-head">Rules</div>
         <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-head">
+        <span>This lineup under every version</span>
+        <span class="muted small" style="margin-left:auto">Click a version to switch to it</span>
+      </div>
+      <div class="card-body flush">
+        <div class="table-wrap">
+        <table class="cmp-table">
+          <thead><tr><th>Version</th><th>Verdict</th><th>What it breaks</th></tr></thead>
+          <tbody id="cmp-body"></tbody>
+        </table>
+        </div>
       </div>
     </div>
     <div class="card">
@@ -638,11 +685,84 @@ function matchLog(p) {
 let RULES = null;
 let lineup = null;        // { S1: pid|null, ..., D1: [pid|null, pid|null] | null, ... }
 let absent = new Set();   // pids marked absent for the match
-const rulesReady = import('./js/lineup-rules.js').then(m => { RULES = m; });
+let ruleOpts = null;      // the version being checked (see RULES.OPTIONS)
+let rulePreset = 'draft'; // preset id, or '' when the options match none
+
+function seasonCtx() {
+  const seasonSlots = {}, names = {};
+  (detail ? detail.ladder : []).forEach(p => { seasonSlots[p.pid] = p.slots || {}; names[p.pid] = p.name; });
+  return { seasonSlots, names };
+}
+function matchPreset(o) {
+  const hit = RULES.PRESETS.find(p => RULES.OPTIONS.every(({ key }) => p.opts[key] === o[key]));
+  return hit ? hit.id : '';
+}
+// The version lives in the URL (?rules=<preset> or ?rules=custom&r3=..&pool=..)
+// so a committee member can send a link to exactly what they are looking at.
+const URL_KEYS = { rule3: 'r3', d1Pool: 'pool', doublesOrder: 'dbl', fiftyRule: 'fifty', shortDefaults: 'short' };
+function readRulesFromUrl() {
+  const q = new URLSearchParams(location.search);
+  const pr = RULES.presetById(q.get('rules') || 'draft');
+  const o = { ...(pr ? pr.opts : RULES.DRAFT) };
+  if (q.get('rules') === 'custom') for (const { key, choices } of RULES.OPTIONS) {
+    const raw = q.get(URL_KEYS[key]);
+    const hit = choices.find(([v]) => String(v) === raw);
+    if (hit) o[key] = hit[0];
+  }
+  ruleOpts = o; rulePreset = matchPreset(o);
+}
+function writeRulesToUrl() {
+  const q = new URLSearchParams(location.search);
+  Object.values(URL_KEYS).forEach(k => q.delete(k));
+  if (rulePreset) q.set('rules', rulePreset);
+  else { q.set('rules', 'custom'); for (const { key } of RULES.OPTIONS) q.set(URL_KEYS[key], String(ruleOpts[key])); }
+  history.replaceState(null, '', location.pathname + '?' + q.toString());
+}
+function setRules(o) {
+  ruleOpts = { ...o }; rulePreset = matchPreset(ruleOpts);
+  writeRulesToUrl(); renderCheck();
+}
+
+function renderVersion() {
+  const sel = document.getElementById('rv-preset');
+  sel.innerHTML = RULES.PRESETS.map(p => `<option value="${p.id}">${escapeHtml(p.name)}</option>`).join('') +
+    (rulePreset ? '' : '<option value="" selected>Custom</option>');
+  sel.value = rulePreset;
+  const pr = RULES.presetById(rulePreset);
+  document.getElementById('rv-note').textContent = pr ? pr.note : 'A combination of options that is not one of the named versions.';
+  sel.onchange = () => { const p = RULES.presetById(sel.value); if (p) setRules(p.opts); };
+  const box = document.getElementById('rv-opts');
+  box.innerHTML = RULES.OPTIONS.map(({ key, label, choices }) =>
+    `<span class="k">${escapeHtml(label)}</span><select data-k="${key}">` +
+    choices.map(([v, t], i) => `<option value="${i}"${v === ruleOpts[key] ? ' selected' : ''}>${escapeHtml(t)}</option>`).join('') +
+    '</select>').join('');
+  box.querySelectorAll('select').forEach(el => el.onchange = () => {
+    const opt = RULES.OPTIONS.find(x => x.key === el.dataset.k);
+    setRules({ ...ruleOpts, [opt.key]: opt.choices[+el.value][0] });
+  });
+}
+
+function renderCompare() {
+  const abs = [...absent], ctx = seasonCtx();
+  const rows = RULES.PRESETS.map(p => ({ id: p.id, name: p.name, opts: p.opts }));
+  if (!rulePreset) rows.push({ id: '', name: 'Custom (current)', opts: ruleOpts });
+  document.getElementById('cmp-body').innerHTML = rows.map(r => {
+    const res = RULES.validateLineup(workingOrder, lineup, abs, r.opts, ctx);
+    const bad = res.checks.filter(c => !c.ok);
+    return `<tr data-id="${r.id}" class="${r.id === rulePreset ? 'cur' : ''}">` +
+      `<td class="nm">${escapeHtml(r.name)}</td>` +
+      `<td class="v ${res.valid ? 'ok' : 'bad'}">${res.valid ? '✓ Valid' : '✗ Not valid'}</td>` +
+      `<td class="why">${bad.length ? bad.map(c => escapeHtml(c.text)).join('<br>') : '<span class="muted">—</span>'}</td></tr>`;
+  }).join('');
+  document.querySelectorAll('#cmp-body tr').forEach(tr => tr.onclick = () => {
+    const p = RULES.presetById(tr.dataset.id); if (p) setRules(p.opts);
+  });
+}
+const rulesReady = import('./js/lineup-rules.js').then(m => { RULES = m; readRulesFromUrl(); });
 
 function resetCheck() {
   absent = new Set();
-  lineup = RULES && detail ? RULES.defaultLineup(workingOrder, []) : null;
+  lineup = RULES && detail ? RULES.defaultLineup(workingOrder, [], ruleOpts) : null;
 }
 
 function renderCheck() {
@@ -650,12 +770,14 @@ function renderCheck() {
   document.getElementById('check-empty').style.display = has ? 'none' : '';
   document.getElementById('check-content').style.display = has ? '' : 'none';
   if (!has) return;
-  if (!lineup) lineup = RULES.defaultLineup(workingOrder, [...absent]);
+  if (!lineup) lineup = RULES.defaultLineup(workingOrder, [...absent], ruleOpts);
   // A player can leave the ladder only by a data rebuild; drop them from absent.
   absent = new Set([...absent].filter(pid => workingOrder.includes(pid)));
   const abs = [...absent];
   const ranks = RULES.effectiveRanks(workingOrder, abs);
-  const res = RULES.validateLineup(workingOrder, lineup, abs);
+  const res = RULES.validateLineup(workingOrder, lineup, abs, ruleOpts, seasonCtx());
+  renderVersion();
+  renderCompare();
   const off = new Set(res.defaulted || []);
 
   document.getElementById('check-team-name').textContent =
@@ -767,7 +889,7 @@ document.getElementById('sel-district').onchange = refreshTeamOptions;
 document.getElementById('sel-gender').onchange = () => { refreshDistrictOptions(); refreshTeamOptions(); };
 document.getElementById('sel-team').onchange = (e) => selectTeam(e.target.value);
 document.getElementById('btn-reset-order').onclick = () => { workingOrder = derivedOrder.slice(); renderLadder(); renderCheck(); };
-document.getElementById('btn-lu-default').onclick = () => { lineup = RULES.defaultLineup(workingOrder, [...absent]); renderCheck(); };
+document.getElementById('btn-lu-default').onclick = () => { lineup = RULES.defaultLineup(workingOrder, [...absent], ruleOpts); renderCheck(); };
 document.getElementById('btn-lu-clear').onclick = () => {
   lineup = Object.fromEntries(RULES.FLIGHTS.map(f => [f, f[0] === 'S' ? null : [null, null]])); renderCheck();
 };
