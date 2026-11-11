@@ -233,7 +233,7 @@
     /* All three tabs fit the screen: they share the width and a long label
        wraps to two lines, instead of the last tab running off the edge. */
     .tabs { overflow-x: visible; }
-    .tabs .tab { flex: 1 1 0; min-width: 0; padding: 9px 8px; white-space: normal; text-align: center; line-height: 1.2; }
+    .tabs .tab { flex: 1 1 0; min-width: 0; padding: 9px 4px; white-space: normal; text-align: center; line-height: 1.2; font-size: 0.84rem; }
 
     /* Lineup check: each flight stacks so a player's name gets the full width. */
     .lu-table, .lu-table tbody, .lu-table tr, .lu-table td { display: block; width: 100%; }
@@ -307,8 +307,8 @@
 
 <div class="tabs">
   <button class="tab active" data-tab="ladder">Ladder</button>
-  <button class="tab" data-tab="matrix">Who played where</button>
-  <button class="tab" data-tab="check">Check a lineup</button>
+  <button class="tab" data-tab="matrix">Positions</button>
+  <button class="tab" data-tab="check">Check</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
