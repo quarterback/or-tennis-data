@@ -38,10 +38,9 @@
       <span class="status" id="status" style="margin-left:auto"></span>
     </div>
 
-    <p class="lede">Your roster is what keeps a player's record together across
-    the season &mdash; the ladder, the position matrix and the flight records all
-    follow these names. Returning players were carried over from last season, so
-    most of this should already be right.</p>
+    <p class="lede">Each player's record, ladder spot and positions are tracked
+    by the names on this roster. Players from last season are already listed.
+    Check them and add anyone new.</p>
 
     <div class="card">
       <div class="card-head">Add a player</div>
@@ -59,7 +58,7 @@
           <summary class="small muted" style="cursor:pointer">Paste a whole roster</summary>
           <p class="small muted" style="margin:8px 0">One name per line, either
           &ldquo;First Last&rdquo; or &ldquo;Last, First&rdquo;.</p>
-          <textarea id="bulk" placeholder="Ada Lovelace&#10;Curie, Marie"></textarea>
+          <textarea id="bulk" placeholder="One player per line: First Last, or Last, First"></textarea>
           <button class="ghost" id="import" style="margin-top:8px">Add these players</button>
         </details>
       </div>
@@ -75,7 +74,7 @@
         <div class="table-wrap">
           <table id="roster-table" style="display:none">
             <thead><tr>
-              <th>Player</th><th class="n">Grade</th><th class="n">Carried over</th>
+              <th>Player</th><th class="n">Grade</th><th class="n">From last season</th>
               <th class="n">Status</th><th></th>
             </tr></thead>
             <tbody id="roster-body"></tbody>
@@ -92,7 +91,7 @@ import {
   setSubtitle,
 } from './js/coach-common.js';
 
-renderChrome({ title: 'Roster', subtitle: '' });
+renderChrome({ title: 'Your roster', subtitle: '' });
 
 let teams = [];
 let team = null;

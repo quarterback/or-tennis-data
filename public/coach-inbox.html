@@ -37,10 +37,9 @@
       <span class="status" id="status" style="margin-left:auto"></span>
     </div>
 
-    <p class="lede">Your opponent reported these duals. Confirming says the card
-    matches yours. A dual counts in the rankings either way &mdash; confirming
-    records that both teams agree, and disputing flags it for a human rather than
-    removing it.</p>
+    <p class="lede">Your opponents reported these duals. If a result matches your
+    scorecard, confirm it. If it doesn't, dispute it and an administrator will
+    review it. The result counts in the rankings either way.</p>
 
     <div id="list"></div>
   </div>
@@ -84,8 +83,8 @@ async function load(id) {
   const list = document.getElementById('list');
 
   if (!pending.length) {
-    list.innerHTML = '<div class="empty">Nothing waiting on you. Anything your ' +
-      'opponents report will show up here.</div>';
+    list.innerHTML = '<div class="empty">Nothing to confirm. Results your opponents ' +
+      'report will appear here.</div>';
     return;
   }
 

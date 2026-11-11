@@ -209,3 +209,13 @@ describe('every broken rule says how to fix it', () => {
     assert.match(c.fix, /no ladder satisfies the rule as written/);
   });
 });
+
+describe('one instruction per fix', () => {
+  it('swapped No. 1 and No. 2 singles gives rules 2 and 3 the same fix', () => {
+    const names = Object.fromEntries(L15.map((id) => [id, `Player ${id}`]));
+    const res = R.validateLineup(L15, { ...example1, S1: '2', S2: '1' }, [], {}, { names });
+    const fixes = new Set(res.checks.filter((c) => !c.ok).map((c) => c.fix));
+    assert.equal(fixes.size, 1, [...fixes].join(' | '));
+    assert.match([...fixes][0], /^Swap No\. 1 and No\. 2 singles/);
+  });
+});

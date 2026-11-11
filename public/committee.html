@@ -69,7 +69,7 @@
 
 <div class="wrap">
   <div class="pagehead">
-    <h1>Selection Board</h1>
+    <h1>Playoff selection board</h1>
   </div>
 
   <div class="controls no-print">
@@ -104,7 +104,7 @@
           <th>League</th>
           <th class="num sortable" data-k="powerIndex">Power Index<span class="arrow">▾</span></th>
           <th class="num sortable" data-k="owp">Opponents' win %<span class="arrow">▾</span></th>
-          <th class="mid">vs Field</th>
+          <th class="mid">vs top of class</th>
           <th>Best win</th>
           <th>Worst loss</th>
           <th class="mid">Pick</th>
@@ -188,13 +188,13 @@ function ranked() {
 
 function renderFieldbar() {
   document.getElementById('fieldbar').innerHTML = `
-    <div class="stat"><div class="n">${data.fieldSize}</div><div class="k">Field</div></div>
+    <div class="stat"><div class="n">${data.fieldSize}</div><div class="k">Teams in the field</div></div>
     <div class="stat"><div class="n">${data.autoBids}</div><div class="k">Automatic bids</div></div>
-    <div class="stat"><div class="n">${data.atLargeBids}</div><div class="k">At large</div></div>
+    <div class="stat"><div class="n">${data.atLargeBids}</div><div class="k">At-large bids</div></div>
     <div class="stat"><div class="n">${data.teams.length}</div><div class="k">Teams in class</div></div>
     <div class="stat" style="margin-left:auto">
       <div class="n">${data.autoBids - data.undesignated.length}/${data.autoBids}</div>
-      <div class="k">Champions designated</div></div>`;
+      <div class="k">League champions set</div></div>`;
 
   const un = document.getElementById('undesignated');
   const parts = [];
@@ -202,8 +202,9 @@ function renderFieldbar() {
     // Oregon does not publish league champions, so the board reads them off the
     // standings. Saying so is what stops a committee arguing with the number.
     parts.push(`<div class="note"><strong>${data.derivedChampions.length} automatic
-      bids are read from the league standings</strong> — best league record, ties
-      broken on head to head. Hover a bid for the basis.</div>`);
+      bids go to league champions</strong>, taken from the standings: the best
+      league record, with ties broken by head-to-head results. Point at a bid to
+      see how it was decided.</div>`);
   }
   const unsettled = Object.entries(data.champions || {})
     .filter(([, c]) => c.undecided)
@@ -283,10 +284,9 @@ function render() {
   // tiebreakers move teams in the official table — so both are shown rather than
   // letting them look like the same number disagreeing with itself.
   document.getElementById('boardnote').textContent =
-    `# is this board's order, sorted by ` +
-    `${sortKey === 'owp' ? "opponents' win %" : 'Power Index'}; published class ` +
-    `rank is under each team · “vs Field” is the record against the top ` +
-    `${data.fieldSize} of the classification`;
+    `Sorted by ${sortKey === 'owp' ? "opponents' win %" : 'Power Index'}. ` +
+    `Each team's published class rank is under its name. ` +
+    `“vs top of class” is its record against the top ${data.fieldSize} teams in the class.`;
 
   document.querySelectorAll('.js-pick').forEach((cb) => {
     cb.onclick = (e) => {
