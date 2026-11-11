@@ -230,7 +230,10 @@
     .header-bar select { width: 100%; min-width: 0 !important; }
     .header-bar .backend { flex-basis: 100%; margin-left: 0; text-align: right; }
 
-    .tabs .tab { padding: 9px 13px; }
+    /* All three tabs fit the screen: they share the width and a long label
+       wraps to two lines, instead of the last tab running off the edge. */
+    .tabs { overflow-x: visible; }
+    .tabs .tab { flex: 1 1 0; min-width: 0; padding: 9px 4px; white-space: normal; text-align: center; line-height: 1.2; font-size: 0.84rem; }
 
     /* Lineup check: each flight stacks so a player's name gets the full width. */
     .lu-table, .lu-table tbody, .lu-table tr, .lu-table td { display: block; width: 100%; }
@@ -297,15 +300,15 @@
     <select id="sel-gender"><option value="">All</option><option>Boys</option><option>Girls</option></select>
   </label>
   <label>Team
-    <select id="sel-team" style="min-width:220px"><option value="">— select a team —</option></select>
+    <select id="sel-team" style="min-width:220px"><option value="">Choose a team</option></select>
   </label>
   <span id="backend" class="backend"></span>
 </div>
 
 <div class="tabs">
   <button class="tab active" data-tab="ladder">Ladder</button>
-  <button class="tab" data-tab="matrix">Who played where</button>
-  <button class="tab" data-tab="check">Check a lineup</button>
+  <button class="tab" data-tab="matrix">Positions</button>
+  <button class="tab" data-tab="check">Lineup ✅</button>
 </div>
 
 <!-- ===================== LADDER TAB ===================== -->
@@ -564,7 +567,7 @@ function refreshTeamOptions() {
   const teams = currentTeams()
     .filter(t => (!cls || t.classification === cls) && (!dist || t.league === dist) && (!gen || t.gender === gen))
     .sort((a,b) => a.name.localeCompare(b.name) || a.gender.localeCompare(b.gender));
-  sel.innerHTML = '<option value="">— select a team —</option>' +
+  sel.innerHTML = '<option value="">Choose a team</option>' +
     teams.map(t => `<option value="${t.key}">${escapeHtml(t.name)} — ${t.gender} (${t.classification||'?'})</option>`).join('');
 }
 

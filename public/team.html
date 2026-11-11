@@ -66,6 +66,12 @@
   }
   .tabs button[aria-selected="true"]:hover { background: var(--accent-wash); }
   [role="tabpanel"] { margin-top: 4px; }
+  /* On a phone the four tabs share the width and long labels wrap, so the
+     last one never runs off the screen. */
+  @media (max-width: 640px) {
+    .tabs { overflow-x: visible; gap: 4px; }
+    .tabs button { flex: 1 1 0; min-width: 0; padding: 8px 4px; white-space: normal; text-align: center; line-height: 1.2; font-size: 0.82rem; }
+  }
   .sched { display: flex; flex-direction: column; }
   .g {
     display: grid;
@@ -167,8 +173,8 @@
     <div class="tabs" role="tablist">
       <button role="tab" data-tab="results" aria-selected="true">Results</button>
       <button role="tab" data-tab="ladder" aria-selected="false">Ladder</button>
-      <button role="tab" data-tab="matrix" aria-selected="false">Who played where</button>
-      <button role="tab" data-tab="byposition" aria-selected="false">Results by position</button>
+      <button role="tab" data-tab="matrix" aria-selected="false">Positions</button>
+      <button role="tab" data-tab="byposition" aria-selected="false">Flights</button>
     </div>
 
     <section id="tab-results" role="tabpanel">
