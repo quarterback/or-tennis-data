@@ -173,9 +173,9 @@ function showDemoBanner() {
   bar.id = 'demo-banner';
   bar.className = 'banner warn';
   bar.style.cssText = 'display:flex;gap:10px;align-items:center;flex-wrap:wrap';
-  bar.innerHTML = '<span><strong>Demo.</strong> Sign-in is off and nothing is '
-    + 'saved to the server — everything you enter stays on this device.</span>'
-    + '<button class="ghost tiny" id="demo-reset" style="margin-left:auto">Start over</button>';
+  bar.innerHTML = '<span><strong>This is a demo.</strong> Sign-in is off, and '
+    + 'anything you enter is saved only on this device.</span>'
+    + '<button class="ghost tiny" id="demo-reset" style="margin-left:auto">Clear demo data</button>';
   const host = document.querySelector('.wrap');
   if (host) host.prepend(bar);
   document.getElementById('demo-reset').onclick = () => { resetDemo(); location.reload(); };

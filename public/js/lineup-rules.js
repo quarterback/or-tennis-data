@@ -64,7 +64,7 @@ export const OPTIONS = [
     ['d3d4', 'No. 3 doubles equal to or stronger than No. 4 only (draft)'],
     ['all', 'All four doubles in order: No. 1 ≥ No. 2 ≥ No. 3 ≥ No. 4'],
   ] },
-  { key: 'fiftyRule', label: '50% rule (ladder)', choices: [
+  { key: 'fiftyRule', label: '50% rule', choices: [
     [false, 'Off (draft)'],
     [true, 'On: no one laddered below the singles position they played 50%+ of the season'],
   ] },
@@ -196,7 +196,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   }
   const spare = unused();
   add('complete', '1', missing.length === 0,
-    missing.length ? `Not filled: ${missing.map((f) => FLIGHT_NAME[f]).join(', ')}.`
+    missing.length ? `Empty: ${missing.map((f) => FLIGHT_NAME[f]).join(', ')}.`
                    : 'Every flight is filled.', false,
     `Fill ${missing.map((f) => FLIGHT_NAME[f]).join(', ')}` +
       (spare.length ? `. Available and not yet in the lineup: ${spare.slice(0, 6).map(who).join(', ')}.` : '.'));
@@ -228,7 +228,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     } else seen.set(pid, f);
   }
   const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
-  add('eligible', 'Ladder 1', bad.length === 0,
+  add('eligible', 'Ladder rule 1', bad.length === 0,
     bad.length ? `Ineligible: ${[...new Set(bad)].join('; ')}.` : 'Every player is on the ladder and plays once.',
     false, cap([...new Set(fixes)].join('; ')) + '.');
 
@@ -272,7 +272,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     else add('s2', '3', s2 === want,
       s2 === want
         ? `No. 2 singles is ${tag(s2)}, the next-highest-ranked player not on No. 1 doubles.`
-        : `No. 2 singles must be ${tag(want)}, the next-highest-ranked player not on No. 1 doubles; ${tag(s2)} is there.`,
+        : `No. 2 singles should be ${tag(want)}, the next-highest-ranked player not on No. 1 doubles, but ${tag(s2)} is there.`,
       false, `Put ${who(want)}${now(want)} at No. 2 singles, and move ${who(s2)} to another flight.`);
   } else {
     // Fix text for a wrong player at No. 1 / No. 2 singles under the examples' reading.
@@ -294,7 +294,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
       add(f.toLowerCase(), '3', got === want,
         got === want
           ? `${FLIGHT_NAME[f]} is ${tag(got)}, the ${which}-ranked player not on No. 1 doubles.`
-          : `${FLIGHT_NAME[f]} must be ${tag(want)}, the ${which}-ranked player not on No. 1 doubles; ${tag(got)} is there.`,
+          : `${FLIGHT_NAME[f]} should be ${tag(want)}, the ${which}-ranked player not on No. 1 doubles, but ${tag(got)} is there.`,
         false,
         singlesFix(f, got, want));
     }
@@ -308,7 +308,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
                       : `No. 3 singles (${tag(s3)}) must rank above No. 4 singles (${tag(s4)}).`,
       false, `Swap No. 3 and No. 4 singles: ${who(s4)} to No. 3 singles, ${who(s3)} to No. 4 singles.`);
   } else {
-    add('s3s4', '6', true, 'No. 3 / No. 4 singles: not both played.', true);
+    add('s3s4', '6', true, "Doesn't apply yet: No. 3 and No. 4 singles aren't both filled.", true);
   }
 
   // Rule 6b: doubles order on combined ladder number (lower = stronger).
@@ -321,7 +321,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     const ca = sum(a), cb = sum(b);
     const id = `${a}${b}`.toLowerCase();
     if (ca === null || cb === null) {
-      add(id, '6', true, `${FLIGHT_NAME[a]} / ${FLIGHT_NAME[b]}: not both played.`, true);
+      add(id, '6', true, `Doesn't apply yet: ${FLIGHT_NAME[a]} and ${FLIGHT_NAME[b]} aren't both filled.`, true);
       continue;
     }
     add(id, '6', cb >= ca,
@@ -343,7 +343,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     add('fifty', '50%', low.length === 0,
       !ctx.seasonSlots ? 'No season positions to check against.'
         : low.length
-          ? `Laddered below their season position: ${low.map(([pid, m]) => `${name(pid)} (No. ${m.k} singles in ${m.n} of ${m.total} matches, laddered #${pos.get(pid)})`).join('; ')}.`
+          ? `Lower on the ladder than the singles position they played most: ${low.map(([pid, m]) => `${name(pid)} (No. ${m.k} singles in ${m.n} of ${m.total} matches, laddered #${pos.get(pid)})`).join('; ')}.`
           : 'No player is laddered below the singles position they played 50%+ of the season.',
       !ctx.seasonSlots,
       `On the Ladder tab, move ${low.map(([pid, m]) => `${name(pid)} up to #${m.k} or higher`).join('; ')}.` +

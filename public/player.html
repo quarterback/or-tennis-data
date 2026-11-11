@@ -93,7 +93,7 @@
       <div class="panel-body flush scroll">
         <table id="log-table">
           <thead><tr>
-            <th>Date</th><th class="mid">Pos</th><th class="mid"></th>
+            <th>Date</th><th class="mid">Position</th><th class="mid"></th>
             <th>Score</th><th>Opponent</th><th>Match</th>
           </tr></thead>
           <tbody id="logbody"></tbody>
@@ -178,14 +178,14 @@ function render(team, p) {
     team.league,
   ].filter(Boolean);
   document.getElementById('psub').innerHTML = bits.map(esc).join(' · ')
-    + ` · <a href="lineups.html?team=${encodeURIComponent(teamKey)}">team lineup</a>`;
+    + ` · <a href="lineups.html?team=${encodeURIComponent(teamKey)}">team ladder</a>`;
 
   const [w, l] = p.rec || [0, 0];
   const played = w + l;
   const pct = played ? (w / played) : null;
   document.getElementById('plines').innerHTML = [
     [`${w}–${l}`, 'Record'],
-    [pct === null ? '—' : pct.toFixed(3).replace(/^0/, ''), 'Win pct'],
+    [pct === null ? '—' : pct.toFixed(3).replace(/^0/, ''), 'Win rate'],
     [p.total ?? played, 'Matches'],
   ].map(([n, k]) => `<div><div class="n">${esc(n)}</div><div class="k">${esc(k)}</div></div>`).join('');
 

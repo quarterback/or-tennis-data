@@ -287,7 +287,7 @@
 
 <div class="wrap">
   <div class="pagehead">
-    <h1>Lineups</h1>
+    <h1>Ladders and lineups</h1>
   </div>
 
 <div class="header-bar">
@@ -306,7 +306,7 @@
   <label>Team
     <select id="sel-team" style="min-width:220px"><option value="">— select a team —</option></select>
   </label>
-  <span id="backend" class="backend">Backend: …</span>
+  <span id="backend" class="backend"></span>
 </div>
 
 <div class="tabs">
@@ -317,16 +317,16 @@
 
 <!-- ===================== LADDER TAB ===================== -->
 <div class="tab-pane active" id="pane-ladder">
-  <div id="ladder-empty" class="empty">Select a team above to view its ladder.</div>
+  <div id="ladder-empty" class="empty">Choose a team to see its ladder.</div>
   <div id="ladder-content" style="display:none">
     <div class="card" id="order-panel" style="display:none">
-      <div class="card-head">Enter the ladder order</div>
+      <div class="card-head">Type the ladder</div>
       <div class="card-body">
-        <p class="small muted" style="margin:0 0 8px">One player per line, No. 1 at the top. A last name or first name is enough when it points at one player. Anyone you leave out goes to the bottom in their current order.</p>
+        <p class="small muted" style="margin:0 0 8px">Type one name per line, starting with No. 1. A first or last name is enough if only one player has it. Players you leave out go to the bottom.</p>
         <textarea id="order-text" spellcheck="false"></textarea>
         <div class="order-msgs" id="order-msgs"></div>
         <div class="order-actions">
-          <button class="primary" id="btn-order-apply">Apply order</button>
+          <button class="primary" id="btn-order-apply">Use this order</button>
           <button id="btn-order-cancel">Cancel</button>
         </div>
       </div>
@@ -340,7 +340,7 @@
       <div class="card-body">
         <div class="table-wrap">
         <table id="ladder-table">
-          <thead><tr><th class="n" title="Drag the handle, or type a new position">#</th><th>Player</th><th>Positions (W&ndash;L)</th><th class="n">Overall</th></tr></thead>
+          <thead><tr><th class="n" title="Drag the handle, or type a new position">#</th><th>Player</th><th>Record at each position</th><th class="n">Record</th></tr></thead>
           <tbody id="ladder-body"></tbody>
         </table>
         </div>
@@ -348,11 +348,11 @@
     </div>
 
     <div class="submit-bar">
-      <button id="btn-order-open">Enter order</button>
-      <button id="btn-reset-order">Reset to data order</button>
-      <label class="small"><input type="checkbox" id="chk-lock"> Lock as final ladder</label>
+      <button id="btn-order-open">Type the order</button>
+      <button id="btn-reset-order">Go back to season order</button>
+      <label class="small"><input type="checkbox" id="chk-lock"> Lock this as the final ladder</label>
       <span style="margin-left:auto"></span>
-      <button class="primary" id="btn-submit">Submit ladder</button>
+      <button class="primary" id="btn-submit">Save ladder</button>
       <span id="submit-status" class="status"></span>
     </div>
   </div>
@@ -360,7 +360,7 @@
 
 <!-- ===================== MATRIX TAB ===================== -->
 <div class="tab-pane" id="pane-matrix">
-  <div id="matrix-empty" class="empty">Select a team above to see who played where.</div>
+  <div id="matrix-empty" class="empty">Choose a team to see who played where.</div>
   <div id="matrix-content" style="display:none">
     <div class="card">
       <div class="card-head">
@@ -371,10 +371,10 @@
         <div class="table-wrap">
         <table class="matrix" id="matrix-table">
           <thead><tr>
-            <th class="name">Player</th><th>Gr</th>
+            <th class="name">Player</th><th>Grade</th>
             <th class="slot">1S</th><th class="slot">2S</th><th class="slot">3S</th><th class="slot">4S</th>
             <th class="slot">1D</th><th class="slot">2D</th><th class="slot">3D</th><th class="slot">4D</th>
-            <th class="n">Total</th><th class="n">Rec</th>
+            <th class="n">Matches</th><th class="n">Record</th>
           </tr></thead>
           <tbody id="matrix-body"></tbody>
         </table>
@@ -392,12 +392,12 @@
 
 <!-- ===================== LINEUP CHECK TAB ===================== -->
 <div class="tab-pane" id="pane-check">
-  <div id="check-empty" class="empty">Select a team above to check a state championship lineup.</div>
+  <div id="check-empty" class="empty">Choose a team to check a lineup.</div>
   <div id="check-content" style="display:none">
     <div class="card">
       <div class="card-head">
-        <span>Which version of the rule</span>
-        <span class="muted small" style="margin-left:auto">Not final. The committee is still choosing.</span>
+        <span>Rules to check against</span>
+        <span class="muted small" style="margin-left:auto">OSAA has not adopted a final rule.</span>
       </div>
       <div class="card-body">
         <div class="rv-top">
@@ -407,7 +407,7 @@
           <span class="small muted" id="rv-note"></span>
         </div>
         <details id="rv-details">
-          <summary class="small">Adjust each rule</summary>
+          <summary class="small">Change individual rules</summary>
           <div class="rv-opts" id="rv-opts"></div>
         </details>
       </div>
@@ -417,7 +417,7 @@
       <div class="card">
         <div class="card-head">
           <span id="check-team-name">Lineup</span>
-          <span class="muted small" style="margin-left:auto">Ladder # on the day in parentheses</span>
+          <span class="muted small" style="margin-left:auto">(#) is the ladder position after absences</span>
         </div>
         <div class="card-body flush">
           <div class="table-wrap">
@@ -427,24 +427,24 @@
           </div>
         </div>
         <div class="submit-bar" style="margin:0;border:0;border-top:1px solid var(--rule);border-radius:0;box-shadow:none">
-          <button id="btn-lu-default">Fill from ladder</button>
-          <button id="btn-lu-clear">Clear</button>
+          <button id="btn-lu-default">Fill in from the ladder</button>
+          <button id="btn-lu-clear">Empty every flight</button>
         </div>
       </div>
       <div class="card">
-        <div class="card-head">Rule by rule</div>
+        <div class="card-head">Rule checks</div>
         <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
       </div>
     </div>
     <div class="card">
       <div class="card-head">
-        <span>This lineup under every version</span>
-        <span class="muted small" style="margin-left:auto">Click a version to switch to it</span>
+        <span>Results under each rule version</span>
+        <span class="muted small" style="margin-left:auto">Select a row to check against that version</span>
       </div>
       <div class="card-body flush">
         <div class="table-wrap">
         <table class="cmp-table">
-          <thead><tr><th>Version</th><th>Verdict</th><th>What it breaks</th></tr></thead>
+          <thead><tr><th>Version</th><th>Result</th><th>Rules broken</th></tr></thead>
           <tbody id="cmp-body"></tbody>
         </table>
         </div>
@@ -452,11 +452,11 @@
     </div>
     <div class="card">
       <div class="card-head">
-        <span>Who's available</span>
+        <span>Who's playing today</span>
         <span class="muted small" id="avail-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin:0 0 10px">This is the ladder from the Ladder tab. Mark a player absent and everyone below moves up one (rule 8).</p>
+        <p class="small muted" style="margin:0 0 10px">Check anyone who is absent. Players below them move up one spot (rule 8).</p>
         <div class="avail" id="avail-list"></div>
       </div>
     </div>
@@ -498,7 +498,7 @@ async function checkBackend() {
     const r = await fetch(`${API_BASE}/__ping`);
     backendOk = r.ok || r.status === 404;
   } catch { backendOk = false; }
-  el.textContent = backendOk ? 'Backend: ✓ syncing' : 'Backend: ✗ view-only (offline)';
+  el.textContent = backendOk ? '' : 'Saving is unavailable right now. You can still view ladders and check lineups.';
   el.className = 'backend ' + (backendOk ? 'ok' : 'fail');
 }
 
@@ -638,7 +638,7 @@ function renderLadder() {
   const lp = document.getElementById('ladder-lockpill');
   if (coachSet && stored.locked) lp.innerHTML = '<span class="pill lock">Coach ladder · locked</span>';
   else if (coachSet) lp.innerHTML = '<span class="pill open">Coach ladder · draft</span>';
-  else lp.innerHTML = '<span class="pill derived">Ordered by season results. The coach hasn\'t set a ladder.</span>';
+  else lp.innerHTML = '<span class="pill derived">No coach ladder yet. This order comes from season results.</span>';
   document.getElementById('ladder-updated').textContent =
     stored && stored.updatedAt ? 'Updated ' + fmtDate(stored.updatedAt) : '';
 
@@ -751,16 +751,16 @@ function applyOrderText() {
   const r = LADDER.parseOrder(document.getElementById('order-text').value,
     detail.ladder.map(p => ({ pid: p.pid, name: p.name })), workingOrder);
   const msgs = [];
-  r.unmatched.forEach(l => msgs.push(`“${escapeHtml(l)}” isn't anyone on this roster.`));
-  r.ambiguous.forEach(a => msgs.push(`“${escapeHtml(a.line)}” could be ${a.could.map(escapeHtml).join(' or ')} — type more of the name.`));
-  r.repeated.forEach(l => msgs.push(`“${escapeHtml(l)}” is listed twice; kept the first.`));
+  r.unmatched.forEach(l => msgs.push(`“${escapeHtml(l)}” doesn't match anyone on the roster.`));
+  r.ambiguous.forEach(a => msgs.push(`“${escapeHtml(a.line)}” matches ${a.could.map(escapeHtml).join(' and ')}. Type more of the name.`));
+  r.repeated.forEach(l => msgs.push(`“${escapeHtml(l)}” is in your list twice. The first one was used.`));
   if (r.leftOver.length && r.leftOver.length < workingOrder.length) {
-    msgs.push(`Not listed, so placed at the bottom: ${r.leftOver.map(pid => escapeHtml((playerByPid(pid)||{}).name)).join(', ')}.`);
+    msgs.push(`Not in your list, so moved to the bottom: ${r.leftOver.map(pid => escapeHtml((playerByPid(pid)||{}).name)).join(', ')}.`);
   }
   setOrder(r.order);
   const box = document.getElementById('order-msgs');
   if (msgs.length) {
-    box.innerHTML = '<b>Applied, with notes:</b><ul>' + msgs.map(m => `<li>${m}</li>`).join('') + '</ul>';
+    box.innerHTML = '<b>Order saved. Check these:</b><ul>' + msgs.map(m => `<li>${m}</li>`).join('') + '</ul>';
   } else {
     document.getElementById('order-panel').style.display = 'none';
   }
@@ -925,7 +925,7 @@ function renderCheck() {
   v.className = 'verdict ' + (res.valid ? 'ok' : 'bad');
   v.innerHTML = res.valid
     ? `<span class="big">✓ Valid lineup</span><span class="small muted">${res.available} players available${off.size ? ' · defaulted: ' + [...off].map(f => RULES.FLIGHT_NAME[f]).join(', ') : ''}</span>`
-    : `<span class="big">✗ Not a valid lineup</span><span class="small">${bad.length} rule${bad.length===1?'':'s'} broken</span>` +
+    : `<span class="big">✗ Not a valid lineup</span><span class="small">It breaks ${bad.length} rule${bad.length===1?'':'s'}.</span>` +
       `<div class="howto"><b>How to fix it</b><ol>${[...new Set(bad.map(c => c.fix).filter(Boolean))]
         .map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ol></div>`;
 
