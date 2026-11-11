@@ -176,26 +176,19 @@
 
 
   /* lineup check */
-  .verdict { display:flex; align-items:center; gap:12px; flex-wrap:wrap;
-             padding:12px 16px; margin:16px 0; border-radius:10px;
-             border:1px solid var(--rule); background:var(--paper); box-shadow:var(--shadow); }
-  .verdict .big { font-size:1.05rem; font-weight:800; }
-  .verdict.ok { border-color:var(--win); background:var(--win-wash); }
-  .verdict.ok .big { color:var(--win); }
-  .verdict.bad { border-color:var(--loss); background:var(--flag-wash); }
-  .verdict.bad .big { color:var(--loss); }
-  .checks { list-style:none; margin:0; padding:0; }
-  .checks li { display:flex; gap:10px; padding:7px 0; border-bottom:1px solid var(--rule-2); font-size:0.88rem; }
-  .checks li:last-child { border-bottom:0; }
-  .checks .mk { flex:none; width:18px; font-weight:800; text-align:center; }
-  .checks .ok .mk { color:var(--win); } .checks .bad .mk { color:var(--loss); }
-  .checks .na { color:var(--ink-3); } .checks .na .mk { color:var(--ink-4); }
-  .checks .bad { font-weight:600; }
-  .checks .fix { display:block; font-weight:400; color:var(--ink-2); margin-top:3px; }
-  .verdict .howto { flex-basis:100%; font-size:0.9rem; color:var(--ink); }
-  .verdict .howto ol { margin:6px 0 0; padding-left:22px; }
-  .verdict .howto li { margin:3px 0; }
-  .checks .rule { flex:none; margin-left:auto; font-size:0.72rem; color:var(--ink-3); white-space:nowrap; }
+  /* Lineup result panel */
+  #lu-result .res { margin: 0 0 10px; font-size: 1rem; }
+  #lu-result .res.ok b { color: var(--win); }
+  #lu-result .res.bad b { color: var(--loss); }
+  #lu-result .probs { margin: 0 0 12px; padding-left: 20px; }
+  #lu-result .probs li { margin: 0 0 10px; }
+  #lu-result .probs .why { display: block; font-weight: 600; }
+  #lu-result .probs .do { display: block; margin-top: 3px; color: var(--ink-2); }
+  #lu-result .ref { font-weight: 400; font-size: 0.78rem; color: var(--ink-3); white-space: nowrap; }
+  #lu-result details.met { margin-top: 8px; font-size: 0.88rem; }
+  #lu-result details.met summary { cursor: pointer; color: var(--ink-2); }
+  #lu-result details.met ul { margin: 6px 0 0; padding-left: 18px; color: var(--ink-2); }
+  #lu-result details.met li { margin: 3px 0; }
   .lu-table td { vertical-align:middle; }
   .lu-table .fl { font-weight:700; white-space:nowrap; width:120px; }
   .lu-table select { min-width:0; width:100%; max-width:260px; }
@@ -412,12 +405,10 @@
         </details>
       </div>
     </div>
-    <div id="verdict" class="verdict"></div>
     <div class="check-grid">
       <div class="card">
         <div class="card-head">
-          <span id="check-team-name">Lineup</span>
-          <span class="muted small" style="margin-left:auto">(#) is the ladder position after absences</span>
+          <span>Lineup</span>
         </div>
         <div class="card-body flush">
           <div class="table-wrap">
@@ -432,8 +423,8 @@
         </div>
       </div>
       <div class="card">
-        <div class="card-head">Rule checks</div>
-        <div class="card-body"><ul class="checks" id="lu-checks"></ul></div>
+        <div class="card-head">Is this lineup valid?</div>
+        <div class="card-body" id="lu-result"></div>
       </div>
     </div>
     <div class="card">
@@ -456,7 +447,7 @@
         <span class="muted small" id="avail-summary" style="margin-left:auto"></span>
       </div>
       <div class="card-body">
-        <p class="small muted" style="margin:0 0 10px">Check anyone who is absent. Players below them move up one spot (rule 8).</p>
+        <p class="small muted" style="margin:0 0 10px">Check anyone who is absent. Everyone below them moves up one spot (rule 8), and the numbers in the lineup change to match.</p>
         <div class="avail" id="avail-list"></div>
       </div>
     </div>
@@ -885,8 +876,8 @@ function renderCompare() {
     const bad = res.checks.filter(c => !c.ok);
     return `<tr data-id="${r.id}" class="${r.id === rulePreset ? 'cur' : ''}">` +
       `<td class="nm">${escapeHtml(r.name)}</td>` +
-      `<td class="v ${res.valid ? 'ok' : 'bad'}">${res.valid ? '✓ Valid' : '✗ Not valid'}</td>` +
-      `<td class="why">${bad.length ? bad.map(c => escapeHtml(c.text)).join('<br>') : '<span class="muted">—</span>'}</td></tr>`;
+      `<td class="v ${res.valid ? 'ok' : 'bad'}">${res.valid ? 'Valid' : 'Not valid'}</td>` +
+      `<td class="why">${bad.length ? escapeHtml([...new Set(bad.map(c => c.name))].join(', ')) : ''}</td></tr>`;
   }).join('');
   document.querySelectorAll('#cmp-body tr').forEach(tr => tr.onclick = () => {
     const p = RULES.presetById(tr.dataset.id); if (p) setRules(p.opts);
@@ -916,24 +907,27 @@ function renderCheck() {
   renderCompare();
   const off = new Set(res.defaulted || []);
 
-  document.getElementById('check-team-name').textContent =
-    `${detail.name} — ${detail.gender} ${detail.classification||''}`;
-
-  // Verdict
+  // Result: what is wrong and what to do, said once. Problems that share a
+  // fix (No. 1 and No. 2 singles swapped breaks two checks) are listed together
+  // under that one fix. Rules the lineup meets are folded away.
   const bad = res.checks.filter(c => !c.ok);
-  const v = document.getElementById('verdict');
-  v.className = 'verdict ' + (res.valid ? 'ok' : 'bad');
-  v.innerHTML = res.valid
-    ? `<span class="big">✓ Valid lineup</span><span class="small muted">${res.available} players available${off.size ? ' · defaulted: ' + [...off].map(f => RULES.FLIGHT_NAME[f]).join(', ') : ''}</span>`
-    : `<span class="big">✗ Not a valid lineup</span><span class="small">It breaks ${bad.length} rule${bad.length===1?'':'s'}.</span>` +
-      `<div class="howto"><b>How to fix it</b><ol>${[...new Set(bad.map(c => c.fix).filter(Boolean))]
-        .map(f => `<li>${escapeHtml(f)}</li>`).join('')}</ol></div>`;
-
-  // Rule list
-  document.getElementById('lu-checks').innerHTML = res.checks.map(c =>
-    `<li class="${c.na ? 'na' : c.ok ? 'ok' : 'bad'}"><span class="mk">${c.na ? '–' : c.ok ? '✓' : '✗'}</span>` +
-    `<span>${escapeHtml(c.text)}${c.fix ? `<span class="fix">Fix: ${escapeHtml(c.fix)}</span>` : ''}</span><span class="rule">${/^\d/.test(c.rule) ? 'Rule ' : ''}${escapeHtml(c.rule)}</span></li>`
-  ).join('');
+  const good = res.checks.filter(c => c.ok && !c.na);
+  const skipped = res.checks.filter(c => c.na);
+  const byFix = new Map();
+  bad.forEach(c => { const k = c.fix || c.text; if (!byFix.has(k)) byFix.set(k, []); byFix.get(k).push(c); });
+  const ruleRef = (c) => `${/^\d/.test(c.rule) ? 'Rule ' : ''}${c.rule}`;
+  const defaultsNote = off.size
+    ? `<p class="small muted">With ${res.available} players, ${[...off].map(f => RULES.FLIGHT_NAME[f]).join(' and ')} ${off.size > 1 ? 'are defaults' : 'is a default'}.</p>` : '';
+  const head = res.valid
+    ? `<p class="res ok"><b>Valid.</b> It meets every rule in this version.</p>${defaultsNote}`
+    : `<p class="res bad"><b>Not valid.</b> ${byFix.size === 1 ? 'One thing to fix:' : `${byFix.size} things to fix:`}</p>` +
+      `<ol class="probs">${[...byFix.entries()].map(([fix, cs]) =>
+        `<li>${cs.map(c => `<span class="why">${escapeHtml(c.text)} <span class="ref">${escapeHtml(ruleRef(c))}</span></span>`).join('')}` +
+        `${cs[0].fix ? `<span class="do">${escapeHtml(fix)}</span>` : ''}</li>`).join('')}</ol>${defaultsNote}`;
+  const list = (cs) => cs.map(c => `<li>${escapeHtml(c.text)} <span class="ref">${escapeHtml(ruleRef(c))}</span></li>`).join('');
+  document.getElementById('lu-result').innerHTML = head +
+    (good.length ? `<details class="met"><summary>Rules it meets (${good.length})</summary><ul>${list(good)}</ul></details>` : '') +
+    (skipped.length ? `<details class="met"><summary>Rules that don't apply yet (${skipped.length})</summary><ul>${list(skipped)}</ul></details>` : '');
 
   // Lineup rows
   // Where each player sits now, by dropdown, so a player already in one flight
@@ -954,12 +948,22 @@ function renderCheck() {
       const at = placed.get(pid);
       const taken = pid !== sel && at && !(at.f === f && at.i === i);
       h += `<option value="${pid}"${pid===sel?' selected':''}${taken?' disabled':''}>` +
-        `${r ? '(#' + r + ') ' : '(absent) '}${escapeHtml(p.name)}${taken ? ' — ' + RULES.FLIGHT_NAME[at.f] : ''}</option>`;
+        `${r ? '#' + r + ' ' : '(absent) '}${escapeHtml(p.name)}${taken ? ' (' + RULES.FLIGHT_NAME[at.f] + ')' : ''}</option>`;
     });
     return h;
   };
+  // Mark the flights each broken rule is about (not every flight its message mentions).
+  const FLIGHTS_OF = { s1: ['S1'], s2: ['S2'], s3s4: ['S3', 'S4'], d1pool: ['D1'],
+    d1d2: ['D1', 'D2'], d2d3: ['D2', 'D3'], d3d4: ['D3', 'D4'] };
+  const filled = (f) => { const x = lineup[f]; return (Array.isArray(x) ? x : [x]).filter(Boolean).length; };
+  const topPid = [...ranks.keys()][0];
   const errFlights = new Set();
-  bad.forEach(c => { const m = c.text.match(/No\. (\d) (singles|doubles)/g) || []; m.forEach(x => errFlights.add((x.includes('singles')?'S':'D') + x[4])); });
+  bad.forEach(c => {
+    if (FLIGHTS_OF[c.id]) FLIGHTS_OF[c.id].forEach(f => errFlights.add(f));
+    else if (c.id === 'complete') RULES.FLIGHTS.forEach(f => { if (!off.has(f) && filled(f) < (f[0] === 'S' ? 1 : 2)) errFlights.add(f); });
+    else if (c.id === 'defaults') off.forEach(f => { if (filled(f)) errFlights.add(f); });
+    else if (c.id === 'top') RULES.FLIGHTS.forEach(f => { const x = lineup[f]; if ((Array.isArray(x) ? x : [x]).includes(topPid)) errFlights.add(f); });
+  });
   const body = document.getElementById('lu-body');
   body.innerHTML = RULES.FLIGHTS.map(f => {
     const cls = off.has(f) ? 'off' : errFlights.has(f) ? 'err' : '';

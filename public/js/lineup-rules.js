@@ -50,43 +50,50 @@ export const DRAFT = Object.freeze({
 
 // The choices for each option, in the order the page lists them.
 export const OPTIONS = [
-  { key: 'rule3', label: 'Rule 3 (who plays No. 1 / No. 2 singles)', choices: [
-    ['examples', 'As the worked examples show: the top two players not on No. 1 doubles play No. 1 and No. 2 singles'],
-    ['literal', 'As the text reads: the next-highest player not on No. 1 doubles plays No. 2 singles; No. 1 singles is open if #1 plays doubles'],
+  { key: 'rule3', label: 'Who plays No. 1 and No. 2 singles', choices: [
+    ['examples', 'The two highest-ranked players not on No. 1 doubles (draft examples)'],
+    ['literal', 'Only No. 2 singles is set (draft text as written)'],
   ] },
-  { key: 'd1Pool', label: 'No. 1 doubles pool', choices: [
-    [6, 'Top 6 on the ladder (draft)'],
-    [4, 'Top 4 on the ladder'],
-    [8, 'Top 8 on the ladder'],
+  { key: 'd1Pool', label: 'No. 1 doubles comes from', choices: [
+    [6, 'Ladder #1-#6 (draft)'],
+    [4, 'Ladder #1-#4'],
+    [8, 'Ladder #1-#8'],
     [0, 'Anyone on the ladder'],
   ] },
   { key: 'doublesOrder', label: 'Doubles order', choices: [
-    ['d3d4', 'No. 3 doubles equal to or stronger than No. 4 only (draft)'],
-    ['all', 'All four doubles in order: No. 1 ≥ No. 2 ≥ No. 3 ≥ No. 4'],
+    ['d3d4', 'No. 3 doubles at least as strong as No. 4 (draft)'],
+    ['all', 'Each doubles team at least as strong as the one below it'],
   ] },
   { key: 'fiftyRule', label: '50% rule', choices: [
     [false, 'Off (draft)'],
-    [true, 'On: no one laddered below the singles position they played 50%+ of the season'],
+    [true, 'On'],
   ] },
-  { key: 'shortDefaults', label: 'Short lineups (rule 9)', choices: [
-    ['draft', 'Draft table: 8 players default No. 3 and No. 4 singles and No. 4 doubles'],
-    ['eight-doubles', 'With 8 players, default No. 3 and No. 4 doubles instead'],
+  { key: 'shortDefaults', label: 'With 8 players, default', choices: [
+    ['draft', 'No. 3 and No. 4 singles and No. 4 doubles (draft)'],
+    ['eight-doubles', 'No. 3 and No. 4 doubles'],
   ] },
 ];
 
 // The versions on the table. `id` is what the page puts in its URL.
 export const PRESETS = [
   { id: 'draft', name: 'Draft (current text)', opts: { ...DRAFT },
-    note: 'The most recent written draft, with rule 3 read as its worked examples show.' },
+    note: 'The latest written draft. Rule 3 follows its worked examples.' },
   { id: 'literal', name: 'Draft, rule 3 as literally written', opts: { ...DRAFT, rule3: 'literal' },
-    note: 'Rule 3 says "#2 singles" and never names who plays No. 1 singles when #1 plays doubles.' },
+    note: 'Rule 3 as worded: when #1 plays doubles, it names no one for No. 1 singles.' },
   { id: 'ordered', name: 'Draft + all doubles in order', opts: { ...DRAFT, doublesOrder: 'all' },
-    note: 'Closes the gap reviewers flagged: nothing in the draft stops a stronger pair at No. 3 doubles than No. 2.' },
+    note: 'All four doubles teams must be in order of strength.' },
   { id: 'specialists', name: 'Doubles specialists', opts: { ...DRAFT, d1Pool: 0, doublesOrder: 'all' },
-    note: 'Any ladder player may play No. 1 doubles; all four doubles flights must be in order.' },
+    note: 'Anyone may play No. 1 doubles. All four doubles teams must be in order.' },
   { id: 'fifty', name: 'Draft + 50% rule', opts: { ...DRAFT, fiftyRule: true },
-    note: 'The survey proposal: the ladder must respect where each player played most of the season.' },
+    note: 'No one is laddered below the singles position they played most of the season.' },
 ];
+
+export const CHECK_NAME = {
+  size: 'Enough players', complete: 'Every flight filled', defaults: 'Short-lineup defaults',
+  eligible: 'Eligible players', top: 'Ladder #1 placement', d1pool: 'No. 1 doubles pool',
+  s1: 'No. 1 singles', s2: 'No. 2 singles', s3s4: 'No. 3 and No. 4 singles order',
+  d1d2: 'Doubles order', d2d3: 'Doubles order', d3d4: 'Doubles order', fifty: '50% rule',
+};
 
 export function presetById(id) { return PRESETS.find((p) => p.id === id) || null; }
 export function withDefaults(opts) { return { ...DRAFT, ...(opts || {}) }; }
@@ -166,7 +173,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   const defaulted = defaultedFlights(available, o);
   const checks = [];
   const add = (id, rule, ok, text, na = false, fix = '') =>
-    checks.push({ id, rule, ok: na ? true : ok, na, text, fix: (na || ok) ? '' : fix });
+    checks.push({ id, name: CHECK_NAME[id] || id, rule, ok: na ? true : ok, na, text, fix: (na || ok) ? '' : fix });
   const rk = (pid) => ranks.get(pid);
   const tag = (pid) => (rk(pid) ? `#${rk(pid)}` : '?');
   const nm = (pid) => (ctx.names && ctx.names[pid]) || '';
@@ -238,7 +245,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
   add('top', '2', topAt === 'S1' || topAt === 'D1',
     topAt === 'S1' || topAt === 'D1'
       ? `Ladder #1 plays ${FLIGHT_NAME[topAt]}.`
-      : `Ladder #1 must play No. 1 singles or No. 1 doubles${topAt ? `, not ${FLIGHT_NAME[topAt]}` : ''}.`,
+      : 'Ladder #1 must play No. 1 singles or No. 1 doubles.',
     false, `Move ${who(top)}${now(top)} to No. 1 singles or into No. 1 doubles.`);
 
   // Rule 3a: D1 pool.
@@ -272,7 +279,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
     else add('s2', '3', s2 === want,
       s2 === want
         ? `No. 2 singles is ${tag(s2)}, the next-highest-ranked player not on No. 1 doubles.`
-        : `No. 2 singles should be ${tag(want)}, the next-highest-ranked player not on No. 1 doubles, but ${tag(s2)} is there.`,
+        : `No. 2 singles must be the next-highest-ranked player not on No. 1 doubles (${tag(want)}).`,
       false, `Put ${who(want)}${now(want)} at No. 2 singles, and move ${who(s2)} to another flight.`);
   } else {
     // Fix text for a wrong player at No. 1 / No. 2 singles under the examples' reading.
@@ -294,7 +301,7 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
       add(f.toLowerCase(), '3', got === want,
         got === want
           ? `${FLIGHT_NAME[f]} is ${tag(got)}, the ${which}-ranked player not on No. 1 doubles.`
-          : `${FLIGHT_NAME[f]} should be ${tag(want)}, the ${which}-ranked player not on No. 1 doubles, but ${tag(got)} is there.`,
+          : `${FLIGHT_NAME[f]} must be the ${which}-ranked player not on No. 1 doubles (${tag(want)}).`,
         false,
         singlesFix(f, got, want));
     }
@@ -351,6 +358,13 @@ export function validateLineup(ladder, lineup, absent = [], opts, ctx = {}) {
           ? ` This team has more players with a 50% season position in the top spots than there are spots, so no ladder satisfies the rule as written.`
           : ''));
   }
+
+  // When putting the right player at No. 1 singles also puts ladder #1 there,
+  // rule 2 and rule 3 have the same fix. Give them the same text, so the page
+  // can list both problems under one instruction instead of two.
+  const topC = checks.find((c) => c.id === 'top' && !c.ok);
+  const s1C = checks.find((c) => c.id === 's1' && !c.ok);
+  if (topC && s1C && notD1[0] === top) topC.fix = s1C.fix;
 
   return { valid: checks.every((c) => c.ok), available, defaulted, checks };
 }
